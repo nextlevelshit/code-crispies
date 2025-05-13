@@ -33,7 +33,8 @@ const elements = {
 	resetBtn: document.getElementById("reset-btn"),
 	helpBtn: document.getElementById("help-btn"),
 	lessonContainer: document.querySelector(".lesson-container"),
-	editorContent: document.querySelector(".editor-content")
+	editorContent: document.querySelector(".editor-content"),
+	codeEditor: document.querySelector(".code-editor")
 };
 
 // Initialize the lesson engine
@@ -151,10 +152,9 @@ function selectModule(moduleId) {
 
 // Reset success indicators
 function resetSuccessIndicators() {
-	elements.lessonContainer.classList.remove("success-highlight");
+	elements.codeEditor.classList.remove("success-highlight");
 	elements.lessonTitle.classList.remove("success-text");
-	const headings = elements.lessonContainer.querySelectorAll("h2, h3, h4");
-	headings.forEach((heading) => heading.classList.remove("success-text"));
+	elements.runBtn.classList.remove("success");
 }
 
 // Load the current lesson
@@ -262,10 +262,9 @@ function runCode() {
 		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
 
 		// Add success visual indicators
-		elements.lessonContainer.classList.add("success-highlight");
+		elements.codeEditor.classList.add("success-highlight");
 		elements.lessonTitle.classList.add("success-text");
-		const headings = elements.lessonContainer.querySelectorAll("h3, h4");
-		headings.forEach((heading) => heading.classList.add("success-text"));
+		elements.runBtn.classList.add("success");
 
 		// Apply the code to see the result
 		lessonEngine.applyUserCode(userCode);

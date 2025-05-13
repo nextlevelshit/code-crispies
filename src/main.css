@@ -238,8 +238,8 @@ code {
 	padding: 0.5rem 0;
 	outline: none;
 	resize: vertical;
-	caret-color: var(--primary-color);
-	caret-shape: block;
+	caret-color: var(--primary-light);
+	/*caret-shape: block;*/
 	transition: background-color 0.2s ease;
 }
 
@@ -369,6 +369,13 @@ code {
 .success-text {
 	color: var(--success-color);
 	transition: color 0.3s ease;
+}
+
+.success,
+.success:hover,
+.success:focus {
+	background-color: var(--success-color);
+	border: 1px solid var(--success-color);
 }
 
 /* Friendlier error feedback */
