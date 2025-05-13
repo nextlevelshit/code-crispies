@@ -3,10 +3,10 @@
  */
 
 // Import lesson configs
-import flexboxConfig from './configs/flexbox.json';
-import gridConfig from './configs/grid.json';
-import basicsConfig from './configs/basics.json';
-import tailwindConfig from './configs/tailwindcss.json';
+import flexboxConfig from '../../lessons/flexbox.json';
+import gridConfig from '../../lessons/grid.json';
+import basicsConfig from '../../lessons/basics.json';
+import tailwindConfig from '../../lessons/tailwindcss.json';
 
 // Module store
 const moduleStore = [

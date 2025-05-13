@@ -1,9 +1,9 @@
 /**
  * LessonEngine - Core class for managing lessons and applying/testing user code
- * This file is the implementation of the LessonEngine class declaration from app.js
+ * This file is the implementation of the LessonEngine class declaration from app.helpers
  */
-import { validateUserCode } from './validator.js';
-import { showFeedback } from './renderer.js';
+import { validateUserCode } from '../helpers/validator.js';
+import { showFeedback } from '../helpers/renderer.js';
 
 export class LessonEngine {
     constructor() {

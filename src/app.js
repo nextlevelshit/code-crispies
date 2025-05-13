@@ -1,7 +1,7 @@
-import { LessonEngine } from './LessonEngine';
-import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback } from './renderer';
-import { validateUserCode } from './validator';
-import { loadModules } from '../lessons/config.js';
+import { LessonEngine } from './impl/LessonEngine.js';
+import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback } from './helpers/renderer.js';
+import { validateUserCode } from './helpers/validator.js';
+import { loadModules } from './config/lessons.js';
 
 // Main Application state
 const state = {
@@ -33,6 +33,7 @@ const elements = {
     resetBtn: document.getElementById('reset-btn'),
     helpBtn: document.getElementById('help-btn'),
     lessonContainer: document.querySelector('.lesson-container'),
+    editorContent: document.querySelector('.editor-content')
 };
 
 // Initialize the lesson engine
@@ -424,11 +425,11 @@ function handleEditorClick() {
     elements.codeInput.focus();
 
     // Add a temporary highlight class to show where the cursor is
-    elements.codeInput.classList.add('editor-focused');
+    elements.editorContent.classList.add('editor-focused');
 
     // Remove the highlight after a short delay
     setTimeout(() => {
-        elements.codeInput.classList.remove('editor-focused');
+        elements.editorContent.classList.remove('editor-focused');
     }, 300);
 }
 
@@ -462,20 +463,10 @@ function init() {
     elements.resetBtn.addEventListener('click', resetProgress);
     elements.helpBtn.addEventListener('click', showHelp);
     elements.codeInput.addEventListener('click', handleEditorClick);
-    elements.codeInput.addEventListener('focus', () => {
-        elements.codeInput.classList.add('editor-active');
-    });
-    elements.codeInput.addEventListener('blur', () => {
-        elements.codeInput.classList.remove('editor-active');
-    });
 
     // Also make the editor container clickable to focus the text area
-    const editorContent = document.querySelector('.editor-content');
-    editorContent.addEventListener('click', (e) => {
-        // Only trigger if clicking the container itself, not child elements
-        if (e.target === editorContent) {
-            elements.codeInput.focus();
-        }
+    elements.editorContent.addEventListener('click', (e) => {
+        elements.codeInput.focus();
     });
 
     // Add tab key handler for the code input
