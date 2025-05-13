@@ -154,7 +154,9 @@ function selectModule(moduleId) {
 function resetSuccessIndicators() {
 	elements.codeEditor.classList.remove("success-highlight");
 	elements.lessonTitle.classList.remove("success-text");
-	elements.runBtn.classList.remove("success");
+	elements.runBtn.classList.remove("hidden");
+	elements.nextBtn.classList.remove("success");
+	elements.taskInstruction.classList.remove("success-instruction");
 }
 
 // Load the current lesson
@@ -264,7 +266,9 @@ function runCode() {
 		// Add success visual indicators
 		elements.codeEditor.classList.add("success-highlight");
 		elements.lessonTitle.classList.add("success-text");
-		elements.runBtn.classList.add("success");
+		elements.runBtn.classList.add("hidden");
+		elements.nextBtn.classList.add("success");
+		elements.taskInstruction.classList.add("success-instruction");
 
 		// Apply the code to see the result
 		lessonEngine.applyUserCode(userCode);

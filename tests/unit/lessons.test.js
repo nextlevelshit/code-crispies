@@ -4,7 +4,7 @@ import { loadModules, getModuleById, loadModuleFromUrl, addCustomModule } from "
 // Mock the module store for testing
 vi.mock("../../lessons/flexbox.json", () => ({ default: { id: "flexbox", title: "Flexbox", lessons: [] } }));
 vi.mock("../../lessons/grid.json", () => ({ default: { id: "grid", title: "CSS Grid", lessons: [] } }));
-vi.mock("../../lessons/basics.json", () => ({ default: { id: "basics", title: "CSS Basics", lessons: [] } }));
+vi.mock("../../lessons/00-basics.json", () => ({ default: { id: "basics", title: "CSS Basics", lessons: [] } }));
 vi.mock("../../lessons/tailwindcss.json", () => ({ default: { id: "tailwind", title: "Tailwind CSS", lessons: [] } }));
 
 describe("Lessons Config Module", () => {

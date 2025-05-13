@@ -1,0 +1,97 @@
+{
+	"id": "units-variables",
+	"title": "CSS Units & Variables",
+	"description": "Understand the variety of CSS measurement units and how to define and use custom properties for maintainable styles.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "units-1",
+			"title": "Absolute vs. Relative Units",
+			"description": "Learn the difference between px, rem, em, %, and vw/vh for flexible, responsive layouts.",
+			"task": "Set the width of '.unit-box' to 80% and max-width to 37.5rem.",
+			"previewHTML": "<div class=\"unit-box\">Resize me!</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .unit-box { background: #f5f5f5; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set flexible sizing */\n.unit-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "width", "message": "Use 'width' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Set width to '80%'" },
+				{ "type": "contains", "value": "max-width", "message": "Use 'max-width' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "max-width", "expected": "37.5rem" }, "message": "Set max-width to '37.5rem'" }
+			]
+		},
+		{
+			"id": "units-2",
+			"title": "CSS Custom Properties",
+			"description": "Define and reuse variables (--custom properties) to centralize your theme values.",
+			"task": "Create a <code>--main-color</code> variable in :root with #6200ee and apply it as the border color on '.var-box'.",
+			"previewHTML": "<div class=\"var-box\">Variable Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .var-box { padding: 1rem; border: 0.125rem solid #ddd; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Define and use a CSS variable */\n:root {",
+			"initialCode": "",
+			"codeSuffix": "}\n.var-box { }",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "--main-color", "message": "Define '--main-color' in :root", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "var(--main-color)", "message": "Use var(--main-color)", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "border", "expected": "var(--main-color)" },
+					"message": "Apply variable to border color",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "units-3",
+			"title": "Unit Calculations (calc)",
+			"description": "Use the <code>calc()</code> function to combine different units in one expression.",
+			"task": "Set the width of '.calc-box' to calc(100% - 2rem) and min-height to calc(10vh + 1rem).",
+			"previewHTML": "<div class=\"calc-box\">Calc Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .calc-box { background: #e8f5e9; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Use calc for dynamic sizing */\n.calc-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "calc", "message": "Use 'calc()' function", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "width:\\s*calc\\(100% - 2rem\\)",
+					"message": "Width should be calc(100% - 2rem)",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "min-height:\\s*calc\\(10vh \\+ 1rem\\)",
+					"message": "Min-height should be calc(10vh + 1rem)",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "units-4",
+			"title": "Viewport & Responsive Units",
+			"description": "Control layouts relative to viewport size with vw, vh, and vmin/vmax units.",
+			"task": "Give '.viewport-box' a width of 50vw and height of 20vh.",
+			"previewHTML": "<div class=\"viewport-box\">Viewport Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .viewport-box { background: #ffe0b2; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Use viewport units */\n.viewport-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "vw", "message": "Use 'vw' unit", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "vh", "message": "Use 'vh' unit", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Set width to '50vw'" },
+				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Set height to '20vh'" }
+			]
+		}
+	]
+}
