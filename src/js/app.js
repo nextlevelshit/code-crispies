@@ -212,7 +212,6 @@ function runCode() {
 
 // Show the module selector modal
 function showModuleSelector() {
-    debugger;
     elements.modalTitle.textContent = 'Select a Module';
 
     // Create module buttons
@@ -228,7 +227,6 @@ function showModuleSelector() {
         // Add completion status
         const progress = state.userProgress[module.id];
         const completedCount = progress ? progress.completed.length : 0;
-        debugger;
         const totalLessons = module.lessons.length;
         const percentComplete = Math.round((completedCount / totalLessons) * 100);
 

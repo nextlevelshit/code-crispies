@@ -9,8 +9,8 @@ import basicsConfig from './configs/basics.json';
 
 // Module store
 const moduleStore = [
-    // flexboxConfig,
-    // gridConfig,
+    flexboxConfig,
+    gridConfig,
     basicsConfig
 ];
 

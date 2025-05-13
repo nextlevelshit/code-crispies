@@ -47,7 +47,7 @@ body {
 }
 
 .logo h1 {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1.7rem;
     font-weight: 700;
 }
@@ -321,4 +321,40 @@ code {
     border-radius: 4px;
     background-color: rgba(231, 76, 60, 0.1);
     border-left: 3px solid var(--error-color);
+}
+
+/* Add these styles to your main.css file */
+
+/* Success highlight for lesson container */
+.success-highlight {
+    box-shadow: 0 0 0 3px var(--success-color);
+    transition: all 0.3s ease;
+}
+
+/* Success text color for headings */
+.success-text {
+    color: var(--success-color);
+    transition: color 0.3s ease;
+}
+
+/* Friendlier error feedback */
+.feedback-error {
+    color: #996633;
+    font-weight: 500;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: rgba(255, 248, 230, 0.5);
+    border-left: 3px solid #cc9944;
+}
+
+/* Module selector button with progress */
+#module-selector-btn {
+    overflow: hidden;
+}
+
+/* Button disabled state */
+.btn-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
