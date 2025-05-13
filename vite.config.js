@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig((env) => ({
-	base: env.command.build ? "/code-crispies/" : "/",
+	base: env.command === "build" ? "/code-crispies/" : "/",
 	root: "./src",
 	publicDir: "../public",
 	build: {
