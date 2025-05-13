@@ -1,60 +1,64 @@
 {
 	"id": "basics",
-	"title": "CSS Basics",
-	"description": "Learn the fundamental concepts of CSS styling",
+	"title": "CSS Fundamentals",
+	"description": "Establish a solid foundation in Cascading Style Sheets (CSS), the language used to control the presentation and layout of web documents. This module introduces core concepts that form the basis of modern web styling.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "basics-1",
-			"title": "Introduction to Selectors",
-			"description": "Selectors are patterns used to select HTML elements you want to style. In this lesson, you'll learn how to target elements with CSS.",
-			"task": "Style the paragraph element by making its text color blue. Use the 'color' property with the value 'blue'.",
+			"title": "CSS Syntax Structure",
+			"description": "CSS consists of selectors that target HTML elements and declaration blocks that specify how those elements should be styled. Understanding this fundamental syntax structure is essential for all CSS development.",
+			"task": "Complete the CSS rule by adding a semicolon after the color property value. Every CSS declaration must end with a semicolon to separate it from the next declaration.",
 			"previewHTML": "<p class='target'>This paragraph needs to be blue!</p><p>This paragraph should remain unchanged.</p>",
 			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
 			"sandboxCSS": ".target { outline: 0.125rem dashed #ccc; padding: 0.625rem; }",
-			"codePrefix": "/* Style the paragraph with class 'target' */\n",
+			"codePrefix": "/* Complete the CSS rule by adding a semicolon */\n.target {\n  color: blue",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains",
-					"value": ".target",
-					"message": "Make sure to use the '.target' class selector",
+					"value": ";",
+					"message": "Make sure to add a semicolon after the color value",
 					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "color",
-					"message": "Use the 'color' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "blue"
-					},
-					"message": "Set the color property to 'blue'",
-					"options": {
-						"exact": false
+						"caseSensitive": true
 					}
 				}
 			]
 		},
 		{
 			"id": "basics-2",
-			"title": "Box Model Basics",
-			"description": "The CSS box model is a fundamental concept that describes how elements are sized and spaced on a page.",
-			"task": "Add padding of 1.25rem and a 0.125rem solid border with color #333 to the box element.",
-			"previewHTML": "<div class='box'>This box needs padding and a border!</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #f0f0f0; }",
+			"title": "CSS Selectors: Classes",
+			"description": "Class selectors allow you to target specific HTML elements that share the same class attribute. Classes are denoted by a dot (.) followed by the class name and are one of the most frequently used selectors in CSS.",
+			"task": "Write a class selector to target elements with the class 'highlight'. Then, set their text color to 'crimson'. Begin with the dot (.) followed by the class name.",
+			"previewHTML": "<p class='highlight'>This text should be crimson.</p><p>This text remains unchanged.</p>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
+			"sandboxCSS": ".highlight { background-color: #fffacd; padding: 0.3125rem; }",
+			"codePrefix": "/* Write a class selector to target elements with the class 'highlight' */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: crimson;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".highlight",
+					"message": "Make sure to use the '.highlight' class selector",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "basics-3",
+			"title": "Box Model: Adding Padding",
+			"description": "The CSS box model consists of content, padding, border, and margin areas. Padding creates space between an element's content and its border, improving visual appearance and readability.",
+			"task": "Add padding to the box element. Set the padding to '1.25rem' to create space between the content and the element's edges.",
+			"previewHTML": "<div class='box'>This box needs padding!</div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #f0f0f0; border: 0.0625rem solid #ddd; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add padding and border to the box */\n.box {\n  /* Add your code below */\n",
+			"codePrefix": "/* Add padding to the box */\n.box {\n  /* Add your code below */\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -68,14 +72,6 @@
 					}
 				},
 				{
-					"type": "contains",
-					"value": "border",
-					"message": "Use the 'border' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
 					"type": "property_value",
 					"value": {
 						"property": "padding",
@@ -83,7 +79,30 @@
 					},
 					"message": "Set the padding to '1.25rem'",
 					"options": {
-						"exact": false
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "basics-4",
+			"title": "Box Model: Adding Borders",
+			"description": "Borders define the perimeter of an element, separating it visually from surrounding content. CSS offers precise control over border thickness, style, and color.",
+			"task": "Add a border to the element. Set the border property to '0.125rem solid #333' to create a thin, solid dark border around the box.",
+			"previewHTML": "<div class='bordered-box'>This box needs a border!</div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .bordered-box { background-color: #f8f8f8; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add a border to the box */\n.bordered-box {\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "border",
+					"message": "Use the 'border' property",
+					"options": {
+						"caseSensitive": false
 					}
 				},
 				{
@@ -97,38 +116,22 @@
 			]
 		},
 		{
-			"id": "basics-3",
-			"title": "Colors and Backgrounds",
-			"description": "Learn how to apply background colors and control text coloring in different ways.",
-			"task": "Style the element with a background color of #e0f7fa and text color of #01579b.",
-			"previewHTML": "<div class='colorbox'>This element needs colors!</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .colorbox { padding: 1.5rem; text-align: center; font-weight: bold; font-size: 1.125rem; }",
+			"id": "basics-5",
+			"title": "Colors: RGB and Hexadecimal Notation",
+			"description": "CSS supports various color models, with RGB (Red, Green, Blue) and hexadecimal notation being among the most common. Understanding color representation is essential for creating visually appealing designs.",
+			"task": "Set the background color of the element to the hexadecimal value '#e0f7fa' (a light cyan). Hexadecimal color values start with a hash symbol (#) followed by 6 characters representing RGB values.",
+			"previewHTML": "<div class='colorbox'>This element needs a background color!</div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .colorbox { padding: 1.5rem; text-align: center; font-weight: bold; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Style the colorbox with background and text colors */\n",
+			"codePrefix": "/* Set the background color using a hexadecimal value */\n.colorbox {\n  /* Add your code below */\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains",
-					"value": ".colorbox",
-					"message": "Use the '.colorbox' class selector",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
 					"value": "background-color",
 					"message": "Use the 'background-color' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "color",
-					"message": "Use the 'color' property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -143,41 +146,22 @@
 					"options": {
 						"exact": true
 					}
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "#01579b"
-					},
-					"message": "Set the text color to '#01579b'",
-					"options": {
-						"exact": true
-					}
 				}
 			]
 		},
 		{
-			"id": "basics-4",
-			"title": "Typography Basics",
-			"description": "Learn how to control text appearance with CSS typography properties.",
-			"task": "Style the heading with font-family 'Georgia, serif', font-size of 1.5rem, and add text-shadow of 0.0625rem 0.0625rem 0.125rem #aaa.",
-			"previewHTML": "<h2 class='heading'>Style This Heading Text</h2>",
+			"id": "basics-6",
+			"title": "Typography: Font Family",
+			"description": "The font-family property specifies the typeface used for text content. It's best practice to provide a list of fonts (a 'font stack') to ensure compatibility across different operating systems.",
+			"task": "Set the font family of the heading to 'Georgia, serif'. The comma indicates that 'serif' will be used as a fallback if 'Georgia' is not available on the user's system.",
+			"previewHTML": "<h2 class='heading'>This heading needs a serif font</h2>",
 			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
 			"sandboxCSS": ".heading { border-bottom: 0.0625rem solid #ddd; padding-bottom: 0.625rem; }",
-			"codePrefix": "/* Style the heading text */\n",
+			"codePrefix": "/* Set the font family */\n.heading {\n  /* Add your code below */\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": ".heading",
-					"message": "Use the '.heading' class selector",
-					"options": {
-						"caseSensitive": false
-					}
-				},
 				{
 					"type": "contains",
 					"value": "font-family",
@@ -187,25 +171,9 @@
 					}
 				},
 				{
-					"type": "contains",
-					"value": "font-size",
-					"message": "Use the 'font-size' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "text-shadow",
-					"message": "Use the 'text-shadow' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
 					"type": "regex",
-					"value": "text-shadow:\\s*0.0625rem\\s+0.0625rem\\s+0.125rem\\s+#aaa",
-					"message": "Set the text-shadow to '0.0625rem 0.0625rem 0.125rem #aaa'",
+					"value": "font-family:\\s*Georgia,\\s*serif",
+					"message": "Set the font-family to 'Georgia, serif'",
 					"options": {
 						"caseSensitive": false
 					}
@@ -213,54 +181,22 @@
 			]
 		},
 		{
-			"id": "basics-5",
-			"title": "CSS Units and Variables",
-			"description": "Learn about different CSS units like rem, percentages, em, and how to use CSS variables (custom properties).",
-			"task": "Set the width of the box to 80%, the max-width to 37.5rem, and create a CSS variable --main-color with the value #6200ee, then use it for the border color.",
-			"previewHTML": "<div class='units-box'>This box needs sizing with different units and a border using a CSS variable.</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .units-box { background-color: #f5f5f5; padding: 1rem; border: 0.125rem solid #ddd; }",
+			"id": "basics-7",
+			"title": "CSS Units: Relative vs. Absolute",
+			"description": "CSS offers various measurement units for specifying sizes. Relative units (like rem, em, %) adapt to different screen sizes, while absolute units (like pixels) maintain fixed dimensions regardless of context.",
+			"task": "Set the width of the box to '80%' of its parent container. Percentage units are relative to the parent element's dimensions and are crucial for responsive design.",
+			"previewHTML": "<div class='container'><div class='responsive-box'>This box should take up 80% width</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .container { background-color: #f5f5f5; padding: 1rem; } .responsive-box { background-color: #e1bee7; padding: 1rem; text-align: center; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Style the box using different units and CSS variables */\n:root {\n  /* Define your CSS variable here */\n}\n\n",
+			"codePrefix": "/* Set the width using a percentage unit */\n.responsive-box {\n  /* Add your code below */\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains",
-					"value": ".units-box",
-					"message": "Use the '.units-box' class selector",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
 					"value": "width",
 					"message": "Use the 'width' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "max-width",
-					"message": "Use the 'max-width' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "--main-color",
-					"message": "Define the '--main-color' CSS variable",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "var(--main-color)",
-					"message": "Use the CSS variable with var(--main-color)",
 					"options": {
 						"caseSensitive": false
 					}
@@ -275,16 +211,36 @@
 					"options": {
 						"exact": true
 					}
+				}
+			]
+		},
+		{
+			"id": "basics-8",
+			"title": "CSS Variables: Custom Properties",
+			"description": "CSS variables (custom properties) allow you to store specific values for reuse throughout your stylesheet. They help create consistent designs and make global changes more efficient.",
+			"task": "Create a CSS variable named '--accent-color' with the value '#6200ee' in the root scope, then use it for the text color of the element.",
+			"previewHTML": "<div class='themed-element'>This text should use the accent color</div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
+			"sandboxCSS": ".themed-element { padding: 1rem; background-color: #f5f5f5; font-weight: bold; }",
+			"codePrefix": "/* Define and use a CSS variable */\n:root {\n  /* Define your variable here */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n.themed-element {\n  color: var(--accent-color);\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "--accent-color",
+					"message": "Define the '--accent-color' CSS variable",
+					"options": {
+						"caseSensitive": true
+					}
 				},
 				{
-					"type": "property_value",
-					"value": {
-						"property": "max-width",
-						"expected": "37.5rem"
-					},
-					"message": "Set the max-width to '37.5rem'",
+					"type": "contains",
+					"value": "#6200ee",
+					"message": "Set the variable value to '#6200ee'",
 					"options": {
-						"exact": true
+						"caseSensitive": false
 					}
 				}
 			]
