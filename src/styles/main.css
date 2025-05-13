@@ -201,6 +201,25 @@ body {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-size: 14px;
     line-height: 1.5;
+    cursor: text; /* Add text cursor to indicate it's editable */
+}
+
+/* Style for when editor is clicked - pulse effect */
+.editor-focused {
+    animation: focus-pulse 0.3s ease;
+}
+
+/* Style for when editor has focus */
+.editor-active {
+    background-color: #252525;
+    box-shadow: inset 0 0 0 1px var(--primary-light);
+}
+
+/* Pulse animation */
+@keyframes focus-pulse {
+    0% { background-color: #1e1e1e; }
+    50% { background-color: #303030; }
+    100% { background-color: #1e1e1e; }
 }
 
 code {
@@ -219,6 +238,8 @@ code {
     padding: 0.5rem 0;
     outline: none;
     resize: vertical;
+    caret-color: #ff7e5f; /* Make cursor more visible with accent color */
+    transition: background-color 0.2s ease;
 }
 
 /* Controls */
