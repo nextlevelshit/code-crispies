@@ -203,6 +203,9 @@ function loadCurrentLesson() {
 
     // Update progress indicator on module selector button
     updateModuleSelectorButtonProgress();
+
+    // Focus on the code editor by default
+    elements.codeInput.focus();
 }
 
 // Update navigation buttons state
@@ -416,6 +419,19 @@ function closeModal() {
     elements.modalContainer.classList.add('hidden');
 }
 
+// Handle clicks in the code editor to focus the input
+function handleEditorClick() {
+    elements.codeInput.focus();
+
+    // Add a temporary highlight class to show where the cursor is
+    elements.codeInput.classList.add('editor-focused');
+
+    // Remove the highlight after a short delay
+    setTimeout(() => {
+        elements.codeInput.classList.remove('editor-focused');
+    }, 300);
+}
+
 // Handle tab key in the code editor
 function handleTabKey(e) {
     if (e.key === 'Tab') {
@@ -445,6 +461,22 @@ function init() {
     elements.moduleSelectorBtn.addEventListener('click', showModuleSelector);
     elements.resetBtn.addEventListener('click', resetProgress);
     elements.helpBtn.addEventListener('click', showHelp);
+    elements.codeInput.addEventListener('click', handleEditorClick);
+    elements.codeInput.addEventListener('focus', () => {
+        elements.codeInput.classList.add('editor-active');
+    });
+    elements.codeInput.addEventListener('blur', () => {
+        elements.codeInput.classList.remove('editor-active');
+    });
+
+    // Also make the editor container clickable to focus the text area
+    const editorContent = document.querySelector('.editor-content');
+    editorContent.addEventListener('click', (e) => {
+        // Only trigger if clicking the container itself, not child elements
+        if (e.target === editorContent) {
+            elements.codeInput.focus();
+        }
+    });
 
     // Add tab key handler for the code input
     elements.codeInput.addEventListener('keydown', handleTabKey);
