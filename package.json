@@ -4,6 +4,7 @@
   "description": "An interactive platform for learning CSS through practical challenges",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
