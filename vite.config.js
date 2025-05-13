@@ -1,9 +1,9 @@
 import { defineConfig } from "vite";
 
-export default defineConfig({
-	base: "/code-crispies/",
+export default defineConfig((env) => ({
+	base: env.command.build ? "/code-crispies/" : "/",
 	root: "./src",
-	publicDir: "./public",
+	publicDir: "../public",
 	build: {
 		outDir: "../dist",
 		emptyOutDir: true,
@@ -13,4 +13,4 @@ export default defineConfig({
 		port: 1312,
 		open: false
 	}
-});
+}));

@@ -1,0 +1,120 @@
+{
+	"id": "colors-backgrounds",
+	"title": "Colors & Backgrounds",
+	"description": "Learn how to apply and manipulate colors, backgrounds, and graphical fills using CSS properties.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "colors-1",
+			"title": "Setting Background Colors",
+			"description": "Use the <code>background-color</code> property to fill elements with solid colors.",
+			"task": "Apply a light cyan background (#e0f7fa) to the element with class 'colorbox'.",
+			"previewHTML": "<div class=\"colorbox\">Background Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .colorbox { padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set a background color */\n.colorbox {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": ".colorbox", "message": "Select '.colorbox'", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "background-color",
+					"message": "Use 'background-color' property",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "background-color", "expected": "#e0f7fa" },
+					"message": "Set background-color to '#e0f7fa'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "colors-2",
+			"title": "Text Color and Contrast",
+			"description": "Apply the <code>color</code> property to control text readability against backgrounds.",
+			"task": "Set the text color of '.colorbox' to deep blue (#01579b). Ensure good contrast.",
+			"previewHTML": "<div class=\"colorbox\">Color & Contrast</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .colorbox { padding: 1rem; background: #e0f7fa; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set text color */\n.colorbox {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": ".colorbox", "message": "Select '.colorbox'", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "color", "message": "Use the 'color' property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "#01579b" },
+					"message": "Set color to '#01579b'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "colors-3",
+			"title": "CSS Gradients",
+			"description": "Learn to create smooth transitions between colors using linear and radial gradients.",
+			"task": "Apply a linear gradient background from #ff9a9e to #fad0c4 on an element with class 'gradient-box'.",
+			"previewHTML": "<div class=\"gradient-box\">Gradient Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .gradient-box { padding: 1rem; color: white; text-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set a linear gradient background */\n.gradient-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": ".gradient-box", "message": "Select '.gradient-box'", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "background-image",
+					"message": "Use 'background-image' property",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "linear-gradient\\(.*#ff9a9e.*,.*#fad0c4.*\\)",
+					"message": "Use linear-gradient from #ff9a9e to #fad0c4",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "colors-4",
+			"title": "Background Images & Repeat",
+			"description": "Add images as backgrounds and control repetition and positioning.",
+			"task": "Set a background image on '.bg-img' using a placeholder URL, center it, and prevent tiling.",
+			"previewHTML": "<div class=\"bg-img\">Image Background</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .bg-img { height: 150px; display: flex; align-items: center; justify-content: center; color: white; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set background image */\n.bg-img {",
+			"initialCode": "background-image: url('https://via.placeholder.com/300'); background-position: center; background-repeat: no-repeat;",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "background-image",
+					"message": "Use 'background-image' property",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "background-position: center",
+					"message": "Center the background image",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "background-repeat: no-repeat",
+					"message": "Prevent image tiling",
+					"options": { "caseSensitive": false }
+				}
+			]
+		}
+	]
+}

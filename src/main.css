@@ -1,14 +1,18 @@
 :root {
-	--primary-color: #4a6bfd;
-	--primary-light: #7a93fe;
-	--primary-dark: #244ae8;
+	--primary-color: #dd3b59;
+	--primary-light: #ff5f7f;
+	--primary-dark: #af2740;
 	--secondary-color: #ff7e5f;
-	--text-color: #2c3e50;
+	--text-color: #13181c;
 	--light-text: #777;
 	--bg-color: #f9f9f9;
 	--panel-bg: #ffffff;
 	--border-color: #e0e0e0;
-	--success-color: #2ecc71;
+	--info-color: #7a93fe;
+	--info-color-dark: #4a6bfd;
+	--success-color: #24b664;
+	--success-color-dark: #1e8f4d;
+	--success-color-light: #a3e6b4;
 	--error-color: #e74c3c;
 	--font-main: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	--shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -46,10 +50,21 @@ body {
 	z-index: 100;
 }
 
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
 .logo h1 {
 	color: var(--text-color);
-	font-size: 1.7rem;
-	font-weight: 700;
+	font-size: 1.1rem;
+	line-height: 0.8;
+	font-weight: 900;
+}
+
+.logo h1 span {
+	color: var(--primary-color);
 }
 
 .main-nav ul {
@@ -87,6 +102,19 @@ body {
 	margin-bottom: 2rem;
 }
 
+.module-list h3 {
+	margin-bottom: 1rem;
+	/*color: var(--light-text);*/
+	font-size: 0.7rem;
+	letter-spacing: 1px;
+	font-weight: 800;
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	border-left: 4px solid var(--primary-color);
+	border-radius: 2px;
+	/*background-color: rgba(0, 0, 0, 0.05);*/
+}
+
 .module-list-item {
 	padding: 0.75rem 1rem;
 	margin-bottom: 0.5rem;
@@ -96,13 +124,12 @@ body {
 }
 
 .module-list-item:hover {
-	background-color: rgba(74, 107, 253, 0.05);
+	background-color: rgba(253, 74, 149, 0.05);
 }
 
 .module-list-item.active {
-	background-color: rgba(74, 107, 253, 0.1);
+	background-color: rgba(253, 74, 149, 0.1);
 	color: var(--primary-color);
-	font-weight: 600;
 }
 
 /* Lesson Container */
@@ -170,13 +197,14 @@ body {
 }
 
 .task-instruction {
-	background-color: rgba(74, 107, 253, 0.05);
+	background-color: rgba(253, 74, 122, 0.05);
 	border-left: 4px solid var(--primary-color);
 	padding: 1rem;
 	border-radius: 4px;
 }
 
 .code-editor {
+	position: relative;
 	border: 1px solid var(--border-color);
 	border-radius: 6px;
 	overflow: hidden;
@@ -192,11 +220,11 @@ body {
 	color: var(--light-text);
 	border-bottom: 1px solid var(--border-color);
 }
-
+/*.target{color:blue}*/
 .editor-content {
 	background-color: #1e1e1e;
 	color: #d4d4d4;
-	padding: 1rem;
+	padding: 1rem 1rem 4rem;
 	overflow-y: auto;
 	font-family: "JetBrains Mono", "Fira Code", monospace;
 	font-size: 14px;
@@ -271,7 +299,10 @@ code {
 	cursor: pointer;
 	font-family: var(--font-main);
 	font-size: 0.9rem;
-	transition: all 0.2s;
+	transition:
+		background,
+		color 0.2s;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
@@ -324,6 +355,26 @@ code {
 	padding: 1.5rem;
 }
 
+.modal-content ol,
+.modal-content ul {
+	margin-left: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+	margin-bottom: 0.2rem;
+	font-size: 1.2rem;
+}
+
+.modal-content h4 {
+	margin-bottom: 0.1rem;
+	font-size: 1rem;
+}
+
+.modal-content p {
+	margin-bottom: 1rem;
+}
+
 .modal-close {
 	background: none;
 	border: none;
@@ -338,30 +389,34 @@ code {
 
 /* Feedback */
 .feedback-success {
-	color: var(--success-color);
-	font-weight: 500;
-	margin-top: 1rem;
+	position: absolute;
+	bottom: 0.8rem;
+	right: 0.8rem;
+	color: var(--success-color-light);
+	font-weight: 800;
 	padding: 0.5rem;
 	border-radius: 4px;
-	background-color: rgba(46, 204, 113, 0.1);
+	background-color: rgba(46, 204, 113, 0.4);
 	border-left: 3px solid var(--success-color);
+	transition: all 0.3s ease;
 }
 
-.feedback-error {
-	color: var(--error-color);
-	font-weight: 500;
-	margin-top: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	background-color: rgba(231, 76, 60, 0.1);
-	border-left: 3px solid var(--error-color);
-}
+/*.feedback-error {*/
+/*	color: var(--error-color);*/
+/*	font-weight: 500;*/
+/*	margin-top: 1rem;*/
+/*	padding: 0.5rem;*/
+/*	border-radius: 4px;*/
+/*	background-color: rgba(231, 76, 60, 0.1);*/
+/*	border-left: 3px solid var(--error-color);*/
+/*}*/
 
 /* Add these styles to your main.css file */
 
 /* Success highlight for lesson container */
 .success-highlight {
-	box-shadow: 0 0 0 3px var(--success-color);
+	/*box-shadow: 0 0 0 3px var(--success-color);*/
+	border-left: 4px solid var(--success-color);
 	transition: all 0.3s ease;
 }
 
@@ -369,6 +424,13 @@ code {
 .success-text {
 	color: var(--success-color);
 	transition: color 0.3s ease;
+}
+
+.success-instruction {
+	background-color: rgba(46, 204, 113, 0.1);
+	border-left: 4px solid var(--success-color);
+	padding: 1rem;
+	border-radius: 4px;
 }
 
 .success,
@@ -380,13 +442,15 @@ code {
 
 /* Friendlier error feedback */
 .feedback-error {
-	color: #996633;
+	position: absolute;
+	bottom: 0.8rem;
+	right: 0.8rem;
+	color: var(--text-color);
 	font-weight: 500;
-	margin-top: 1rem;
 	padding: 0.5rem;
 	border-radius: 4px;
-	background-color: rgba(255, 248, 230, 0.5);
-	border-left: 3px solid #cc9944;
+	background-color: rgba(244, 244, 244, 0.8);
+	border-left: 3px solid white;
 }
 
 /* Module selector button with progress */

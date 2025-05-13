@@ -13,7 +13,7 @@ let feedbackElement = null;
  */
 export function renderModuleList(container, modules, onSelectModule) {
 	// Clear the container
-	container.innerHTML = "<h3>Modules</h3>";
+	container.innerHTML = "<h3>CSS Lessons</h3>";
 
 	// Create list items for each module
 	modules.forEach((module) => {
@@ -86,16 +86,18 @@ export function showFeedback(isSuccess, message) {
 	feedbackElement.textContent = message;
 
 	// Find where to insert the feedback
-	const insertAfter = document.querySelector(".code-editor");
+	const insertAfter = document.querySelector(".editor-content");
 	if (insertAfter && insertAfter.parentNode) {
 		insertAfter.parentNode.insertBefore(feedbackElement, insertAfter.nextSibling);
 	}
 
-	// Auto-remove feedback after some time if successful
-	if (isSuccess) {
+	if (!isSuccess) {
 		setTimeout(() => {
-			clearFeedback();
-		}, 5000);
+			if (feedbackElement && feedbackElement.parentNode) {
+				feedbackElement.parentNode.removeChild(feedbackElement);
+			}
+			feedbackElement = null;
+		}, 3_000); // Remove feedback after 3 seconds
 	}
 }
 

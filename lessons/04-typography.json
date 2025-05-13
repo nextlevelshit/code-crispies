@@ -1,0 +1,90 @@
+{
+	"id": "typography-fonts",
+	"title": "Typography & Fonts",
+	"description": "Learn how to control text appearance through font selection, sizing, spacing, and decorative effects.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "typography-1",
+			"title": "Font Family & Fallbacks",
+			"description": "Specify custom fonts and reliable fallback stacks for consistent typography across devices.",
+			"task": "Set the <code>font-family</code> of the '.text' element to 'Georgia, serif' with serif fallback.",
+			"previewHTML": "<p class=\"text\">This text shows the chosen font family.</p>",
+			"previewBaseCSS": "body { padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set font family */\n.text {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "font-family", "message": "Use the 'font-family' property", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "Georgia, serif",
+					"message": "Include 'Georgia, serif' in the font stack",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "typography-2",
+			"title": "Font Size & Line Height",
+			"description": "Control text scale and readability by adjusting size and line heights.",
+			"task": "Set the heading '.heading' to 1.5rem font-size and 1.5 line-height.",
+			"previewHTML": "<h2 class=\"heading\">Readable Heading</h2>",
+			"previewBaseCSS": "body { padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set size and line height */\n.heading {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "font-size", "message": "Use 'font-size' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "font-size", "expected": "1.5rem" }, "message": "Set font-size to '1.5rem'" },
+				{ "type": "contains", "value": "line-height", "message": "Use 'line-height' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "line-height", "expected": "1.5" }, "message": "Set line-height to '1.5'" }
+			]
+		},
+		{
+			"id": "typography-3",
+			"title": "Font Weight & Style",
+			"description": "Apply weight and style variations like bold, light, italic to emphasize text.",
+			"task": "Make the paragraph '.emphasis' italic and bold using <code>font-style</code> and <code>font-weight</code>.",
+			"previewHTML": "<p class=\"emphasis\">This text should stand out.</p>",
+			"previewBaseCSS": "body { padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Emphasize text */\n.emphasis {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "font-style", "message": "Use 'font-style' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "font-style", "expected": "italic" }, "message": "Set font-style to 'italic'" },
+				{ "type": "contains", "value": "font-weight", "message": "Use 'font-weight' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "font-weight", "expected": "bold" }, "message": "Set font-weight to 'bold'" }
+			]
+		},
+		{
+			"id": "typography-4",
+			"title": "Text Decoration & Shadow",
+			"description": "Add decorative underlines, overlines, line-throughs and subtle shadows to text.",
+			"task": "Apply an underline with <code>text-decoration</code> and a light shadow using <code>text-shadow</code> on '.fancy'.",
+			"previewHTML": "<p class=\"fancy\">Fancy text effect!</p>",
+			"previewBaseCSS": "body { padding: 1rem; } .fancy { font-size: 1.25rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Decorate text */\n.fancy {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "text-decoration",
+					"message": "Use 'text-decoration' property",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "text-shadow", "message": "Use 'text-shadow' property", "options": { "caseSensitive": false } }
+			]
+		}
+	]
+}

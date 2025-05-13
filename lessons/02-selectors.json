@@ -1,0 +1,102 @@
+{
+	"id": "selectors",
+	"title": "CSS Selectors Deep Dive",
+	"description": "Master the art of targeting HTML elements using various CSS selectors, from basics to specificity rules.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "selectors-1",
+			"title": "Element Selectors",
+			"description": "Learn to target HTML elements by their tag name and apply styling.",
+			"task": "Use the element selector to make all <code>&lt;p&gt;</code> tags have a dark gray color.",
+			"previewHTML": "<p>This paragraph should be dark gray.</p><p>This one too!</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style all paragraphs */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "p {", "message": "Use the element selector 'p'", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "color", "message": "Include the 'color' property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "darkgray" },
+					"message": "Set color to 'darkgray'",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "selectors-2",
+			"title": "Class Selectors",
+			"description": "Use class selectors to style elements sharing the same class name.",
+			"task": "Apply a blueviolet text color to any element with the class 'title'.",
+			"previewHTML": "<h2 class=\"title\">Hello World</h2><h2>Another Heading</h2>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style elements with class 'title' */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": ".title", "message": "Use the '.title' class selector", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "blueviolet" },
+					"message": "Set color to 'blueviolet'",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "selectors-3",
+			"title": "ID Selectors",
+			"description": "Target a unique element by its ID to apply specific styling.",
+			"task": "Make the element with <code>id=\"description\"</code> have orangered text.",
+			"previewHTML": "<div id=\"description\">This is the description text.</div><div>This is another div.</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style the element with ID 'description' */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "#description",
+					"message": "Use the '#description' ID selector",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "orangered" },
+					"message": "Set color to 'orangered'",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "selectors-4",
+			"title": "Combined Selectors & Specificity",
+			"description": "Discover how combining selectors controls which rules take precedence.",
+			"task": "Use a class and element selector together (e.g., <code>div.note</code>) to give a yellow background to the note box.",
+			"previewHTML": "<div class=\"note\">Important note!</div><div>Regular div</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style div with class 'note' */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "div.note", "message": "Use the 'div.note' combined selector", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "background-color", "expected": "yellow" },
+					"message": "Set background-color to 'yellow'",
+					"options": { "exact": false }
+				}
+			]
+		}
+	]
+}

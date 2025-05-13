@@ -1,0 +1,99 @@
+{
+	"id": "box-model",
+	"title": "CSS Box Model Essentials",
+	"description": "Understand how CSS calculates sizes and spacing around elements using margin, border, padding, and content areas.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "box-model-1",
+			"title": "Content, Padding, Border, Margin",
+			"description": "Learn the four layers of the CSS box model and how each affects element dimensions.",
+			"task": "Create a <code>div</code> with class 'box' and add 1.25rem padding, a 0.125rem solid #333 border, and 1rem margin.",
+			"previewHTML": "<div class=\"box\">Box Model Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .box { background-color: #f0f0f0; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style the box element */\n.box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "padding", "message": "Use the 'padding' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "padding", "expected": "1.25rem" }, "message": "Padding should be 1.25rem" },
+				{ "type": "contains", "value": "border", "message": "Use the 'border' property", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "border:\\s*0.125rem\\s+solid\\s+#333",
+					"message": "Border should be '0.125rem solid #333'",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "margin", "message": "Use the 'margin' property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "margin", "expected": "1rem" }, "message": "Margin should be 1rem" }
+			]
+		},
+		{
+			"id": "box-model-2",
+			"title": "Box-Sizing Property",
+			"description": "Discover how <code>box-sizing</code> changes the box model calculation for width and height.",
+			"task": "Set <code>box-sizing: border-box;</code> on the .box element and note how its width includes padding and border.",
+			"previewHTML": "<div class=\"box\">Border-box Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; } .box { width: 200px; padding: 1rem; border: 0.125rem solid #333; background: #eef; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Apply box-sizing */\n.box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "box-sizing", "message": "Include the 'box-sizing' property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "box-sizing", "expected": "border-box" },
+					"message": "Set box-sizing to 'border-box'"
+				}
+			]
+		},
+		{
+			"id": "box-model-3",
+			"title": "Margin Collapse",
+			"description": "Understand how vertical margins can collapse between adjacent elements.",
+			"task": "Create two stacked <code>div</code>s with class 'box' and 1rem top margin on each. Observe margin collapse.",
+			"previewHTML": "<div class=\"box\">First</div><div class=\"box\">Second</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; } .box { padding: 1rem; background: #ddd; margin-top: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "margin-top", "message": "Use 'margin-top' on .box", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "margin-top", "expected": "1rem" }, "message": "Top margin should be 1rem" }
+			]
+		},
+		{
+			"id": "box-model-4",
+			"title": "Using Shorthand Properties",
+			"description": "Learn to write concise padding and margin using shorthand notation.",
+			"task": "Refactor separate margin and padding properties into a single shorthand declaration on .box.",
+			"previewHTML": "<div class=\"box\">Shorthand Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; } .box { background: #fef; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Refactor to shorthand */\n.box {",
+			"initialCode": "margin: 1rem 0 2rem 0; padding: 0.5rem 1rem 0.5rem 1rem;",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "margin:\\s*1rem\\s+0\\s+2rem\\s+0",
+					"message": "Use shorthand for margin: 1rem 0 2rem 0",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "padding:\\s*0.5rem\\s+1rem\\s+0.5rem\\s+1rem",
+					"message": "Use shorthand for padding: 0.5rem 1rem 0.5rem 1rem",
+					"options": { "caseSensitive": false }
+				}
+			]
+		}
+	]
+}
