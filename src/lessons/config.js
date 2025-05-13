@@ -6,12 +6,14 @@
 import flexboxConfig from './configs/flexbox.json';
 import gridConfig from './configs/grid.json';
 import basicsConfig from './configs/basics.json';
+import tailwindConfig from './configs/tailwindcss.json';
 
 // Module store
 const moduleStore = [
+    basicsConfig,
     flexboxConfig,
     gridConfig,
-    basicsConfig
+    tailwindConfig
 ];
 
 /**

@@ -1,0 +1,143 @@
+{
+  "id": "tailwindcss-basics",
+  "title": "Tailwind CSS Basics",
+  "description": "Learn how to use Tailwind CSS utility classes to quickly style your HTML elements",
+  "difficulty": "beginner",
+  "lessons": [
+	{
+	  "id": "tw-1",
+	  "title": "Text and Font Weight",
+	  "description": "Tailwind provides utility classes to style text appearance, like size and weight.",
+	  "task": "Make the heading bold and the paragraph text gray using Tailwind classes.",
+	  "previewHTML": "<h1 class='heading'>Welcome to Tailwind</h1><p class='description'>Tailwind makes styling easy.</p>",
+	  "previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1.25rem; }",
+	  "sandboxCSS": "",
+	  "codePrefix": "<!-- Add Tailwind classes to these elements -->\n<h1 class=\"heading",
+	  "initialCode": "\">Welcome to Tailwind</h1>\n<p class=\"description\">Tailwind makes styling easy.</p>",
+	  "codeSuffix": "",
+	  "previewContainer": "preview-area",
+	  "validations": [
+		{
+		  "type": "contains",
+		  "value": "font-bold",
+		  "message": "Add 'font-bold' to the heading"
+		},
+		{
+		  "type": "contains",
+		  "value": "text-gray-600",
+		  "message": "Add 'text-gray-600' to the paragraph"
+		}
+	  ]
+	},
+	{
+	  "id": "tw-2",
+	  "title": "Background Colors",
+	  "description": "Use Tailwind background utility classes like bg-red-400 to style element backgrounds.",
+	  "task": "Apply a red background to the alert box and make the text white.",
+	  "previewHTML": "<div class='alert'>Error: Something went wrong!</div>",
+	  "previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1.25rem; } .alert { padding: 1rem; border-radius: 0.5rem; }",
+	  "sandboxCSS": "",
+	  "codePrefix": "<div class=\"alert",
+	  "initialCode": "\">Error: Something went wrong!</div>",
+	  "codeSuffix": "",
+	  "previewContainer": "preview-area",
+	  "validations": [
+		{
+		  "type": "contains",
+		  "value": "bg-red-400",
+		  "message": "Use 'bg-red-400' to set the background color"
+		},
+		{
+		  "type": "contains",
+		  "value": "text-white",
+		  "message": "Use 'text-white' for the text color"
+		}
+	  ]
+	},
+	{
+	  "id": "tw-3",
+	  "title": "Spacing with Margin and Padding",
+	  "description": "Tailwind provides spacing utilities such as 'm-' for margin and 'p-' for padding.",
+	  "task": "Add margin between the buttons and padding inside them.",
+	  "previewHTML": "<button class='btn'>Accept</button><button class='btn'>Decline</button>",
+	  "previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1.25rem; } .btn { background-color: #3498db; color: white; border-radius: 0.375rem; }",
+	  "sandboxCSS": "",
+	  "codePrefix": "<button class=\"btn",
+	  "initialCode": "\">Accept</button>\n<button class=\"btn\">Decline</button>",
+	  "codeSuffix": "",
+	  "previewContainer": "preview-area",
+	  "validations": [
+		{
+		  "type": "contains",
+		  "value": "m-2",
+		  "message": "Add 'm-2' to add spacing between the buttons"
+		},
+		{
+		  "type": "contains",
+		  "value": "p-2",
+		  "message": "Add 'p-2' for internal button padding"
+		}
+	  ]
+	},
+	{
+	  "id": "tw-4",
+	  "title": "Using Hover Variants",
+	  "description": "Tailwind makes it easy to add hover styles using the 'hover:' prefix.",
+	  "task": "Add a hover effect that changes the background color of the button to green.",
+	  "previewHTML": "<button class='action'>Hover me!</button>",
+	  "previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1.25rem; } .action { padding: 0.75rem 1.25rem; border-radius: 0.5rem; background-color: #ccc; color: #000; }",
+	  "sandboxCSS": "",
+	  "codePrefix": "<button class=\"action",
+	  "initialCode": "\">Hover me!</button>",
+	  "codeSuffix": "",
+	  "previewContainer": "preview-area",
+	  "validations": [
+		{
+		  "type": "contains",
+		  "value": "hover:bg-green-500",
+		  "message": "Add 'hover:bg-green-500' to change background color on hover"
+		}
+	  ]
+	},
+	{
+	  "id": "tw-5",
+	  "title": "Combining Multiple Classes",
+	  "description": "You can combine multiple Tailwind utilities to quickly build components.",
+	  "task": "Style the card with a white background, shadow, rounded corners, padding, and center-aligned text.",
+	  "previewHTML": "<div class='card'>This is a card component.</div>",
+	  "previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1.25rem; background-color: #f3f4f6; }",
+	  "sandboxCSS": "",
+	  "codePrefix": "<div class=\"card",
+	  "initialCode": "\">This is a card component.</div>",
+	  "codeSuffix": "",
+	  "previewContainer": "preview-area",
+	  "validations": [
+		{
+		  "type": "contains",
+		  "value": "bg-white",
+		  "message": "Use 'bg-white' for background color"
+		},
+		{
+		  "type": "contains",
+		  "value": "shadow",
+		  "message": "Use 'shadow' to add a shadow"
+		},
+		{
+		  "type": "contains",
+		  "value": "rounded",
+		  "message": "Use 'rounded' to add rounded corners"
+		},
+		{
+		  "type": "contains",
+		  "value": "p-4",
+		  "message": "Use 'p-4' for padding"
+		},
+		{
+		  "type": "contains",
+		  "value": "text-center",
+		  "message": "Use 'text-center' to center the text"
+		}
+	  ]
+	}
+  ]
+}

@@ -1,7 +1,7 @@
 import { LessonEngine } from './LessonEngine';
 import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback } from './renderer';
 import { validateUserCode } from './validator';
-import { loadModules } from '../lessons/lesson-config';
+import { loadModules } from '../lessons/config.js';
 
 // Main Application state
 const state = {
