@@ -9,7 +9,7 @@ let feedbackElement = null;
  * Render the module list in the sidebar
  * @param {HTMLElement} container - The container element for the module list
  * @param {Array} modules - The list of modules
- * @param {Function} onSelectModule - Callback when a module is selected
+ * @param { Function} onSelectModule - Callback when a module is selected
  */
 export function renderModuleList(container, modules, onSelectModule) {
     // Clear the container
