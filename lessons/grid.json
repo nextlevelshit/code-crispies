@@ -1,388 +1,388 @@
 {
-  "id": "grid",
-  "title": "CSS Grid",
-  "description": "Master the grid layout system for complex two-dimensional layouts",
-  "difficulty": "intermediate",
-  "lessons": [
-	{
-	  "id": "grid-1",
-	  "title": "Grid Container Basics",
-	  "description": "Learn how to create a grid container and define basic grid structures.",
-	  "task": "Create a grid with 3 columns of equal width and a 1rem gap between grid items.",
-	  "previewHTML": "<div class='grid-container'><div class='item'>1</div><div class='item'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; }",
-	  "sandboxCSS": ".grid-container { border: 0.125rem dashed #ccc; padding: 1rem; }",
-	  "codePrefix": "/* Create a grid with 3 equal columns and gap */\n",
-	  "initialCode": "",
-	  "codeSuffix": "",
-	  "previewContainer": "preview-area",
-	  "validations": [
+	"id": "grid",
+	"title": "CSS Grid",
+	"description": "Master the grid layout system for complex two-dimensional layouts",
+	"difficulty": "intermediate",
+	"lessons": [
 		{
-		  "type": "contains",
-		  "value": ".grid-container",
-		  "message": "Use the '.grid-container' class selector",
-		  "options": {
-			"caseSensitive": false
-		  }
+			"id": "grid-1",
+			"title": "Grid Container Basics",
+			"description": "Learn how to create a grid container and define basic grid structures.",
+			"task": "Create a grid with 3 columns of equal width and a 1rem gap between grid items.",
+			"previewHTML": "<div class='grid-container'><div class='item'>1</div><div class='item'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; }",
+			"sandboxCSS": ".grid-container { border: 0.125rem dashed #ccc; padding: 1rem; }",
+			"codePrefix": "/* Create a grid with 3 equal columns and gap */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".grid-container",
+					"message": "Use the '.grid-container' class selector",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "display",
+					"message": "Use the 'display' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "grid-template-columns",
+					"message": "Use the 'grid-template-columns' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "gap",
+					"message": "Use the 'gap' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "display",
+						"expected": "grid"
+					},
+					"message": "Set display to 'grid'",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "grid-template-columns:\\s*repeat\\(\\s*3\\s*,\\s*1fr\\s*\\)",
+					"message": "Set grid-template-columns to 'repeat(3, 1fr)'",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "gap",
+						"expected": "1rem"
+					},
+					"message": "Set gap to '1rem'",
+					"options": {
+						"exact": true
+					}
+				}
+			]
 		},
 		{
-		  "type": "contains",
-		  "value": "display",
-		  "message": "Use the 'display' property",
-		  "options": {
-			"caseSensitive": false
-		  }
+			"id": "grid-2",
+			"title": "Grid Template Areas",
+			"description": "Use named grid areas to create visual layouts that are easy to understand.",
+			"task": "Create a layout with a header, sidebar, main content area, and footer using grid-template-areas.",
+			"previewHTML": "<div class='grid-layout'><div class='header'>Header</div><div class='sidebar'>Sidebar</div><div class='content'>Main Content</div><div class='footer'>Footer</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .grid-layout > div { padding: 1.25rem; color: white; text-align: center; font-weight: bold; } .header { background-color: #e74c3c; } .sidebar { background-color: #3498db; } .content { background-color: #2ecc71; } .footer { background-color: #f39c12; }",
+			"sandboxCSS": ".grid-layout { border: 0.125rem dashed #ccc; padding: 1rem; height: 25rem; }",
+			"codePrefix": "/* Create a layout using grid-template-areas */\n.grid-layout {\n  display: grid;\n  grid-template-columns: 12rem 1fr;\n  grid-template-rows: auto 1fr auto;\n  gap: 1rem;\n  \n  /* Add your grid-template-areas code below */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Define which element goes in which grid area */\n.header {\n  grid-area: header;\n}\n\n.sidebar {\n  grid-area: sidebar;\n}\n\n.content {\n  grid-area: content;\n}\n\n.footer {\n  grid-area: footer;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "grid-template-areas",
+					"message": "Use the 'grid-template-areas' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "header",
+					"message": "Define a 'header' area",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "sidebar",
+					"message": "Define a 'sidebar' area",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "content",
+					"message": "Define a 'content' area",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "footer",
+					"message": "Define a 'footer' area",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "grid-template-areas:\\s*['\"]header\\s+header['\"]\\s*['\"]sidebar\\s+content['\"]\\s*['\"]footer\\s+footer['\"]",
+					"message": "Create a layout with header spanning full width, sidebar and content in middle row, and footer spanning full width",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
 		},
 		{
-		  "type": "contains",
-		  "value": "grid-template-columns",
-		  "message": "Use the 'grid-template-columns' property",
-		  "options": {
-			"caseSensitive": false
-		  }
+			"id": "grid-3",
+			"title": "Spanning Grid Cells",
+			"description": "Make grid items span multiple grid cells horizontally or vertically.",
+			"task": "Make the featured item span 2 columns and 2 rows using grid-column and grid-row.",
+			"previewHTML": "<div class='grid-container'><div class='item'>1</div><div class='item'>2</div><div class='item featured'>Featured</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div><div class='item'>7</div><div class='item'>8</div><div class='item'>9</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; } .featured { background-color: #e74c3c; }",
+			"sandboxCSS": ".grid-container { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }",
+			"codePrefix": "/* Make the featured item span 2x2 cells */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".featured",
+					"message": "Use the '.featured' class selector",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "grid-column",
+					"message": "Use the 'grid-column' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "grid-row",
+					"message": "Use the 'grid-row' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "grid-column:\\s*span\\s+2",
+					"message": "Set grid-column to 'span 2'",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "grid-row:\\s*span\\s+2",
+					"message": "Set grid-row to 'span 2'",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
 		},
 		{
-		  "type": "contains",
-		  "value": "gap",
-		  "message": "Use the 'gap' property",
-		  "options": {
-			"caseSensitive": false
-		  }
+			"id": "grid-4",
+			"title": "Automatic Grid Placement",
+			"description": "Learn how to use auto-placement and auto-fit/auto-fill for responsive grid layouts.",
+			"task": "Create a responsive grid with auto-fit that has at least 10rem wide columns that fill the available space.",
+			"previewHTML": "<div class='responsive-grid'><div class='card'>Card 1</div><div class='card'>Card 2</div><div class='card'>Card 3</div><div class='card'>Card 4</div><div class='card'>Card 5</div><div class='card'>Card 6</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .card { background-color: #3498db; color: white; padding: 1.25rem; text-align: center; font-weight: bold; height: 6rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".responsive-grid { border: 0.125rem dashed #ccc; padding: 1rem; }",
+			"codePrefix": "/* Create a responsive grid with auto-fit columns */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".responsive-grid",
+					"message": "Use the '.responsive-grid' class selector",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "display",
+					"message": "Use the 'display' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "grid-template-columns",
+					"message": "Use the 'grid-template-columns' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "minmax",
+					"message": "Use the 'minmax' function",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "auto-fit",
+					"message": "Use 'auto-fit'",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "grid-template-columns:\\s*repeat\\(\\s*auto-fit\\s*,\\s*minmax\\(\\s*10rem\\s*,\\s*1fr\\s*\\)\\s*\\)",
+					"message": "Set grid-template-columns to 'repeat(auto-fit, minmax(10rem, 1fr))'",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
 		},
 		{
-		  "type": "property_value",
-		  "value": {
-			"property": "display",
-			"expected": "grid"
-		  },
-		  "message": "Set display to 'grid'",
-		  "options": {
-			"exact": true
-		  }
+			"id": "grid-5",
+			"title": "Grid Alignment",
+			"description": "Control the alignment of grid items within their cells on both axes.",
+			"task": "Center the grid items both horizontally and vertically within their grid cells.",
+			"previewHTML": "<div class='align-grid'><div class='item'>1</div><div class='item tall'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item wide'>6</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; } .tall { height: 6rem; } .wide { width: 6rem; }",
+			"sandboxCSS": ".align-grid { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; height: 25rem; }",
+			"codePrefix": "/* Center grid items both horizontally and vertically */\n.align-grid {\n  /* Add alignment properties below */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "justify-items",
+					"message": "Use the 'justify-items' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "align-items",
+					"message": "Use the 'align-items' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "justify-items",
+						"expected": "center"
+					},
+					"message": "Set justify-items to 'center'",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "align-items",
+						"expected": "center"
+					},
+					"message": "Set align-items to 'center'",
+					"options": {
+						"exact": true
+					}
+				}
+			]
 		},
 		{
-		  "type": "regex",
-		  "value": "grid-template-columns:\\s*repeat\\(\\s*3\\s*,\\s*1fr\\s*\\)",
-		  "message": "Set grid-template-columns to 'repeat(3, 1fr)'",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "property_value",
-		  "value": {
-			"property": "gap",
-			"expected": "1rem"
-		  },
-		  "message": "Set gap to '1rem'",
-		  "options": {
-			"exact": true
-		  }
+			"id": "grid-6",
+			"title": "Overlapping Grid Items",
+			"description": "Learn how to create overlapping layouts by using grid positioning and z-index.",
+			"task": "Position the overlay element to cover the entire grid area and use z-index to place it above other items.",
+			"previewHTML": "<div class='overlap-grid'><div class='base'>Base Content</div><div class='overlay'>Overlay</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .overlap-grid { position: relative; height: 15rem; } .base { background-color: #3498db; color: white; padding: 1.25rem; display: flex; align-items: center; justify-content: center; font-weight: bold; } .overlay { background-color: rgba(231, 76, 60, 0.7); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; }",
+			"sandboxCSS": ".overlap-grid { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr; }",
+			"codePrefix": "/* Position the overlay to cover the entire grid */\n.base {\n  grid-column: 1;\n  grid-row: 1;\n}\n\n.overlay {\n  /* Add your code below to position the overlay */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "grid-column",
+					"message": "Use the 'grid-column' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "grid-row",
+					"message": "Use the 'grid-row' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "contains",
+					"value": "z-index",
+					"message": "Use the 'z-index' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "grid-column",
+						"expected": "1"
+					},
+					"message": "Set grid-column to '1'",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "grid-row",
+						"expected": "1"
+					},
+					"message": "Set grid-row to '1'",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "z-index:\\s*[1-9]\\d*",
+					"message": "Set z-index to a positive number",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
 		}
-	  ]
-	},
-	{
-	  "id": "grid-2",
-	  "title": "Grid Template Areas",
-	  "description": "Use named grid areas to create visual layouts that are easy to understand.",
-	  "task": "Create a layout with a header, sidebar, main content area, and footer using grid-template-areas.",
-	  "previewHTML": "<div class='grid-layout'><div class='header'>Header</div><div class='sidebar'>Sidebar</div><div class='content'>Main Content</div><div class='footer'>Footer</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .grid-layout > div { padding: 1.25rem; color: white; text-align: center; font-weight: bold; } .header { background-color: #e74c3c; } .sidebar { background-color: #3498db; } .content { background-color: #2ecc71; } .footer { background-color: #f39c12; }",
-	  "sandboxCSS": ".grid-layout { border: 0.125rem dashed #ccc; padding: 1rem; height: 25rem; }",
-	  "codePrefix": "/* Create a layout using grid-template-areas */\n.grid-layout {\n  display: grid;\n  grid-template-columns: 12rem 1fr;\n  grid-template-rows: auto 1fr auto;\n  gap: 1rem;\n  \n  /* Add your grid-template-areas code below */\n",
-	  "initialCode": "",
-	  "codeSuffix": "\n}\n\n/* Define which element goes in which grid area */\n.header {\n  grid-area: header;\n}\n\n.sidebar {\n  grid-area: sidebar;\n}\n\n.content {\n  grid-area: content;\n}\n\n.footer {\n  grid-area: footer;\n}",
-	  "previewContainer": "preview-area",
-	  "validations": [
-		{
-		  "type": "contains",
-		  "value": "grid-template-areas",
-		  "message": "Use the 'grid-template-areas' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "header",
-		  "message": "Define a 'header' area",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "sidebar",
-		  "message": "Define a 'sidebar' area",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "content",
-		  "message": "Define a 'content' area",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "footer",
-		  "message": "Define a 'footer' area",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "regex",
-		  "value": "grid-template-areas:\\s*['\"]header\\s+header['\"]\\s*['\"]sidebar\\s+content['\"]\\s*['\"]footer\\s+footer['\"]",
-		  "message": "Create a layout with header spanning full width, sidebar and content in middle row, and footer spanning full width",
-		  "options": {
-			"caseSensitive": false
-		  }
-		}
-	  ]
-	},
-	{
-	  "id": "grid-3",
-	  "title": "Spanning Grid Cells",
-	  "description": "Make grid items span multiple grid cells horizontally or vertically.",
-	  "task": "Make the featured item span 2 columns and 2 rows using grid-column and grid-row.",
-	  "previewHTML": "<div class='grid-container'><div class='item'>1</div><div class='item'>2</div><div class='item featured'>Featured</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div><div class='item'>7</div><div class='item'>8</div><div class='item'>9</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; } .featured { background-color: #e74c3c; }",
-	  "sandboxCSS": ".grid-container { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }",
-	  "codePrefix": "/* Make the featured item span 2x2 cells */\n",
-	  "initialCode": "",
-	  "codeSuffix": "",
-	  "previewContainer": "preview-area",
-	  "validations": [
-		{
-		  "type": "contains",
-		  "value": ".featured",
-		  "message": "Use the '.featured' class selector",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "grid-column",
-		  "message": "Use the 'grid-column' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "grid-row",
-		  "message": "Use the 'grid-row' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "regex",
-		  "value": "grid-column:\\s*span\\s+2",
-		  "message": "Set grid-column to 'span 2'",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "regex",
-		  "value": "grid-row:\\s*span\\s+2",
-		  "message": "Set grid-row to 'span 2'",
-		  "options": {
-			"caseSensitive": false
-		  }
-		}
-	  ]
-	},
-	{
-	  "id": "grid-4",
-	  "title": "Automatic Grid Placement",
-	  "description": "Learn how to use auto-placement and auto-fit/auto-fill for responsive grid layouts.",
-	  "task": "Create a responsive grid with auto-fit that has at least 10rem wide columns that fill the available space.",
-	  "previewHTML": "<div class='responsive-grid'><div class='card'>Card 1</div><div class='card'>Card 2</div><div class='card'>Card 3</div><div class='card'>Card 4</div><div class='card'>Card 5</div><div class='card'>Card 6</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .card { background-color: #3498db; color: white; padding: 1.25rem; text-align: center; font-weight: bold; height: 6rem; display: flex; align-items: center; justify-content: center; }",
-	  "sandboxCSS": ".responsive-grid { border: 0.125rem dashed #ccc; padding: 1rem; }",
-	  "codePrefix": "/* Create a responsive grid with auto-fit columns */\n",
-	  "initialCode": "",
-	  "codeSuffix": "",
-	  "previewContainer": "preview-area",
-	  "validations": [
-		{
-		  "type": "contains",
-		  "value": ".responsive-grid",
-		  "message": "Use the '.responsive-grid' class selector",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "display",
-		  "message": "Use the 'display' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "grid-template-columns",
-		  "message": "Use the 'grid-template-columns' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "minmax",
-		  "message": "Use the 'minmax' function",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "auto-fit",
-		  "message": "Use 'auto-fit'",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "regex",
-		  "value": "grid-template-columns:\\s*repeat\\(\\s*auto-fit\\s*,\\s*minmax\\(\\s*10rem\\s*,\\s*1fr\\s*\\)\\s*\\)",
-		  "message": "Set grid-template-columns to 'repeat(auto-fit, minmax(10rem, 1fr))'",
-		  "options": {
-			"caseSensitive": false
-		  }
-		}
-	  ]
-	},
-	{
-	  "id": "grid-5",
-	  "title": "Grid Alignment",
-	  "description": "Control the alignment of grid items within their cells on both axes.",
-	  "task": "Center the grid items both horizontally and vertically within their grid cells.",
-	  "previewHTML": "<div class='align-grid'><div class='item'>1</div><div class='item tall'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item wide'>6</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; } .tall { height: 6rem; } .wide { width: 6rem; }",
-	  "sandboxCSS": ".align-grid { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; height: 25rem; }",
-	  "codePrefix": "/* Center grid items both horizontally and vertically */\n.align-grid {\n  /* Add alignment properties below */\n",
-	  "initialCode": "",
-	  "codeSuffix": "\n}",
-	  "previewContainer": "preview-area",
-	  "validations": [
-		{
-		  "type": "contains",
-		  "value": "justify-items",
-		  "message": "Use the 'justify-items' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "align-items",
-		  "message": "Use the 'align-items' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "property_value",
-		  "value": {
-			"property": "justify-items",
-			"expected": "center"
-		  },
-		  "message": "Set justify-items to 'center'",
-		  "options": {
-			"exact": true
-		  }
-		},
-		{
-		  "type": "property_value",
-		  "value": {
-			"property": "align-items",
-			"expected": "center"
-		  },
-		  "message": "Set align-items to 'center'",
-		  "options": {
-			"exact": true
-		  }
-		}
-	  ]
-	},
-	{
-	  "id": "grid-6",
-	  "title": "Overlapping Grid Items",
-	  "description": "Learn how to create overlapping layouts by using grid positioning and z-index.",
-	  "task": "Position the overlay element to cover the entire grid area and use z-index to place it above other items.",
-	  "previewHTML": "<div class='overlap-grid'><div class='base'>Base Content</div><div class='overlay'>Overlay</div></div>",
-	  "previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .overlap-grid { position: relative; height: 15rem; } .base { background-color: #3498db; color: white; padding: 1.25rem; display: flex; align-items: center; justify-content: center; font-weight: bold; } .overlay { background-color: rgba(231, 76, 60, 0.7); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; }",
-	  "sandboxCSS": ".overlap-grid { border: 0.125rem dashed #ccc; padding: 1rem; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr; }",
-	  "codePrefix": "/* Position the overlay to cover the entire grid */\n.base {\n  grid-column: 1;\n  grid-row: 1;\n}\n\n.overlay {\n  /* Add your code below to position the overlay */\n",
-	  "initialCode": "",
-	  "codeSuffix": "\n}",
-	  "previewContainer": "preview-area",
-	  "validations": [
-		{
-		  "type": "contains",
-		  "value": "grid-column",
-		  "message": "Use the 'grid-column' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "grid-row",
-		  "message": "Use the 'grid-row' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "contains",
-		  "value": "z-index",
-		  "message": "Use the 'z-index' property",
-		  "options": {
-			"caseSensitive": false
-		  }
-		},
-		{
-		  "type": "property_value",
-		  "value": {
-			"property": "grid-column",
-			"expected": "1"
-		  },
-		  "message": "Set grid-column to '1'",
-		  "options": {
-			"exact": true
-		  }
-		},
-		{
-		  "type": "property_value",
-		  "value": {
-			"property": "grid-row",
-			"expected": "1"
-		  },
-		  "message": "Set grid-row to '1'",
-		  "options": {
-			"exact": true
-		  }
-		},
-		{
-		  "type": "regex",
-		  "value": "z-index:\\s*[1-9]\\d*",
-		  "message": "Set z-index to a positive number",
-		  "options": {
-			"caseSensitive": false
-		  }
-		}
-	  ]
-	}
-  ]
+	]
 }
