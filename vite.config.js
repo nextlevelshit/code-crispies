@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+	base: "/code-crispies/",
 	root: "./src",
 	publicDir: "./public",
 	build: {
