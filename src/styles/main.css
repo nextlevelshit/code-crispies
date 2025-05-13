@@ -107,10 +107,16 @@ body {
 
 /* Lesson Container */
 .lesson-container {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2rem;
     background-color: var(--panel-bg);
     border-radius: 8px;
     box-shadow: var(--shadow);
     padding: 2rem;
+    height: 100%;
     margin-bottom: 2rem;
 }
 
@@ -128,6 +134,7 @@ body {
 /* Challenge Container */
 .challenge-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 2rem;
@@ -216,6 +223,11 @@ code {
 
 /* Controls */
 .controls {
+    /*justify-self: end;*/
+    /*position: absolute;*/
+    /*left: 2rem;*/
+    /*right: 2rem;*/
+    /*bottom: 2rem;*/
     display: flex;
     justify-content: space-between;
     align-items: center;

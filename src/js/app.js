@@ -32,6 +32,7 @@ const elements = {
     moduleSelectorBtn: document.getElementById('module-selector-btn'),
     resetBtn: document.getElementById('reset-btn'),
     helpBtn: document.getElementById('help-btn'),
+    lessonContainer: document.querySelector('.lesson-container'),
 };
 
 // Initialize the lesson engine
@@ -63,10 +64,57 @@ async function initializeModules() {
         } else if (state.modules.length > 0) {
             selectModule(state.modules[0].id);
         }
+
+        // Update progress indicator on module selector button
+        updateModuleSelectorButtonProgress();
     } catch (error) {
         console.error('Failed to load modules:', error);
         elements.lessonDescription.textContent = 'Failed to load modules. Please refresh the page.';
     }
+}
+
+// Update progress indicator on module selector button
+function updateModuleSelectorButtonProgress() {
+    if (!state.modules.length) return;
+
+    // Calculate overall progress across all modules
+    let totalLessons = 0;
+    let totalCompleted = 0;
+
+    state.modules.forEach(module => {
+        totalLessons += module.lessons.length;
+        const progress = state.userProgress[module.id];
+        if (progress && progress.completed) {
+            totalCompleted += progress.completed.length;
+        }
+    });
+
+    const percentComplete = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+
+    // Create progress indicator
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-indicator';
+    progressBar.style.cssText = `
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: ${percentComplete}%;
+        background-color: var(--success-color);
+        border-radius: 0 3px 3px 0;
+    `;
+
+    // Add progress percentage text
+    elements.moduleSelectorBtn.innerHTML = `Progress <span style="font-size: 0.8em; opacity: 0.8;">${percentComplete}%</span>`;
+    elements.moduleSelectorBtn.style.position = 'relative';
+
+    // Remove any existing progress bar before adding new one
+    const existingBar = elements.moduleSelectorBtn.querySelector('.progress-indicator');
+    if (existingBar) {
+        existingBar.remove();
+    }
+
+    elements.moduleSelectorBtn.appendChild(progressBar);
 }
 
 // Select a module
@@ -95,6 +143,17 @@ function selectModule(moduleId) {
 
     // Save the last selected module
     localStorage.setItem('lastModuleId', moduleId);
+
+    // Reset any success indicators
+    resetSuccessIndicators();
+}
+
+// Reset success indicators
+function resetSuccessIndicators() {
+    elements.lessonContainer.classList.remove('success-highlight');
+    elements.lessonTitle.classList.remove('success-text');
+    const headings = elements.lessonContainer.querySelectorAll('h2, h3, h4');
+    headings.forEach(heading => heading.classList.remove('success-text'));
 }
 
 // Load the current lesson
@@ -112,6 +171,9 @@ function loadCurrentLesson() {
 
     const lesson = state.currentModule.lessons[state.currentLessonIndex];
     lessonEngine.setLesson(lesson);
+
+    // Reset any success indicators
+    resetSuccessIndicators();
 
     // Update UI
     renderLesson(
@@ -138,6 +200,9 @@ function loadCurrentLesson() {
     // Save current progress
     state.userProgress[state.currentModule.id].current = state.currentLessonIndex;
     saveUserProgress();
+
+    // Update progress indicator on module selector button
+    updateModuleSelectorButtonProgress();
 }
 
 // Update navigation buttons state
@@ -191,10 +256,17 @@ function runCode() {
         if (!moduleProgress.completed.includes(state.currentLessonIndex)) {
             moduleProgress.completed.push(state.currentLessonIndex);
             saveUserProgress();
+            updateModuleSelectorButtonProgress();
         }
 
-        // Show success feedback
+        // Show success feedback with visual indicators
         showFeedback(true, validationResult.message || 'Great job! Your code works correctly.');
+
+        // Add success visual indicators
+        elements.lessonContainer.classList.add('success-highlight');
+        elements.lessonTitle.classList.add('success-text');
+        const headings = elements.lessonContainer.querySelectorAll('h3, h4');
+        headings.forEach(heading => heading.classList.add('success-text'));
 
         // Apply the code to see the result
         lessonEngine.applyUserCode(userCode);
@@ -205,8 +277,11 @@ function runCode() {
             elements.nextBtn.classList.remove('btn-disabled');
         }
     } else {
-        // Show error feedback
-        showFeedback(false, validationResult.message || 'Your code doesn\'t seem to be correct. Try again!');
+        // Reset any success indicators
+        resetSuccessIndicators();
+
+        // Show error feedback (with friendly message)
+        showFeedback(false, validationResult.message || 'Not quite there yet! Let\'s try again.');
     }
 }
 
@@ -285,7 +360,7 @@ function showHelp() {
     <ul>
       <li><strong>Run</strong> - Test your CSS code</li>
       <li><strong>Previous/Next</strong> - Navigate between lessons</li>
-      <li><strong>Modules</strong> - Select a different learning module</li>
+      <li><strong>Progress</strong> - Select a different learning module</li>
       <li><strong>Reset Progress</strong> - Clear all your saved progress</li>
     </ul>
     
@@ -294,6 +369,8 @@ function showHelp() {
       <li>Use the preview area to see how your CSS affects the elements</li>
       <li>Your progress is automatically saved in your browser storage</li>
       <li>You can revisit completed lessons at any time</li>
+      <li>Press Tab in the code editor to indent with two spaces</li>
+      <li>Use Ctrl+Enter to quickly run your code</li>
     </ul>
   `;
 
@@ -326,6 +403,9 @@ function resetProgress() {
         } else if (state.modules.length > 0) {
             selectModule(state.modules[0].id);
         }
+
+        // Update progress indicator
+        updateModuleSelectorButtonProgress();
     });
 
     elements.modalContainer.classList.remove('hidden');
@@ -334,6 +414,22 @@ function resetProgress() {
 // Close the modal
 function closeModal() {
     elements.modalContainer.classList.add('hidden');
+}
+
+// Handle tab key in the code editor
+function handleTabKey(e) {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+
+        const start = e.target.selectionStart;
+        const end = e.target.selectionEnd;
+
+        // Add two spaces at cursor position
+        e.target.value = e.target.value.substring(0, start) + '  ' + e.target.value.substring(end);
+
+        // Move cursor position after the inserted spaces
+        e.target.selectionStart = e.target.selectionEnd = start + 2;
+    }
 }
 
 // Initialize the application
@@ -349,6 +445,9 @@ function init() {
     elements.moduleSelectorBtn.addEventListener('click', showModuleSelector);
     elements.resetBtn.addEventListener('click', resetProgress);
     elements.helpBtn.addEventListener('click', showHelp);
+
+    // Add tab key handler for the code input
+    elements.codeInput.addEventListener('keydown', handleTabKey);
 
     // Handle keyboard shortcuts
     document.addEventListener('keydown', (e) => {
