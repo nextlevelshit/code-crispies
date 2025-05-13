@@ -2,229 +2,229 @@
  * LessonEngine - Core class for managing lessons and applying/testing user code
  * This file is the implementation of the LessonEngine class declaration from app.helpers
  */
-import { validateUserCode } from '../helpers/validator.js';
-import { showFeedback } from '../helpers/renderer.js';
+import { validateUserCode } from "../helpers/validator.js";
+import { showFeedback } from "../helpers/renderer.js";
 
 export class LessonEngine {
-    constructor() {
-        this.currentLesson = null;
-        this.userCode = '';
-        this.currentModule = null;
-        this.currentLessonIndex = 0;
-    }
+	constructor() {
+		this.currentLesson = null;
+		this.userCode = "";
+		this.currentModule = null;
+		this.currentLessonIndex = 0;
+	}
 
-    /**
-     * Set the current module
-     * @param {Object} module - The module object from the config
-     */
-    setModule(module) {
-        this.currentModule = module;
-        this.currentLessonIndex = 0;
-        if (module && module.lessons && module.lessons.length > 0) {
-            this.setLesson(module.lessons[0]);
-        }
-    }
+	/**
+	 * Set the current module
+	 * @param {Object} module - The module object from the config
+	 */
+	setModule(module) {
+		this.currentModule = module;
+		this.currentLessonIndex = 0;
+		if (module && module.lessons && module.lessons.length > 0) {
+			this.setLesson(module.lessons[0]);
+		}
+	}
 
-    /**
-     * Set the current lesson
-     * @param {Object} lesson - The lesson object from the config
-     */
-    setLesson(lesson) {
-        this.currentLesson = lesson;
-        this.userCode = lesson.initialCode || '';
-        this.renderPreview();
-    }
+	/**
+	 * Set the current lesson
+	 * @param {Object} lesson - The lesson object from the config
+	 */
+	setLesson(lesson) {
+		this.currentLesson = lesson;
+		this.userCode = lesson.initialCode || "";
+		this.renderPreview();
+	}
 
-    /**
-     * Set lesson by index within the current module
-     * @param {number} index - The lesson index
-     * @returns {boolean} Whether the operation was successful
-     */
-    setLessonByIndex(index) {
-        if (!this.currentModule || !this.currentModule.lessons) {
-            return false;
-        }
+	/**
+	 * Set lesson by index within the current module
+	 * @param {number} index - The lesson index
+	 * @returns {boolean} Whether the operation was successful
+	 */
+	setLessonByIndex(index) {
+		if (!this.currentModule || !this.currentModule.lessons) {
+			return false;
+		}
 
-        if (index < 0 || index >= this.currentModule.lessons.length) {
-            return false;
-        }
+		if (index < 0 || index >= this.currentModule.lessons.length) {
+			return false;
+		}
 
-        this.currentLessonIndex = index;
-        this.setLesson(this.currentModule.lessons[index]);
-        return true;
-    }
+		this.currentLessonIndex = index;
+		this.setLesson(this.currentModule.lessons[index]);
+		return true;
+	}
 
-    /**
-     * Move to the next lesson
-     * @returns {boolean} Whether the operation was successful
-     */
-    nextLesson() {
-        return this.setLessonByIndex(this.currentLessonIndex + 1);
-    }
+	/**
+	 * Move to the next lesson
+	 * @returns {boolean} Whether the operation was successful
+	 */
+	nextLesson() {
+		return this.setLessonByIndex(this.currentLessonIndex + 1);
+	}
 
-    /**
-     * Move to the previous lesson
-     * @returns {boolean} Whether the operation was successful
-     */
-    previousLesson() {
-        return this.setLessonByIndex(this.currentLessonIndex - 1);
-    }
+	/**
+	 * Move to the previous lesson
+	 * @returns {boolean} Whether the operation was successful
+	 */
+	previousLesson() {
+		return this.setLessonByIndex(this.currentLessonIndex - 1);
+	}
 
-    /**
-     * Apply user-written CSS to the preview area
-     * @param {string} code - User CSS code
-     */
-    applyUserCode(code) {
-        if (!this.currentLesson) return;
+	/**
+	 * Apply user-written CSS to the preview area
+	 * @param {string} code - User CSS code
+	 */
+	applyUserCode(code) {
+		if (!this.currentLesson) return;
 
-        this.userCode = code;
-        this.renderPreview();
-    }
+		this.userCode = code;
+		this.renderPreview();
+	}
 
-    /**
-     * Render the preview for the current lesson
-     */
-    renderPreview() {
-        if (!this.currentLesson) return;
+	/**
+	 * Render the preview for the current lesson
+	 */
+	renderPreview() {
+		if (!this.currentLesson) return;
 
-        const { previewHTML, previewBaseCSS, previewContainer, sandboxCSS } = this.currentLesson;
+		const { previewHTML, previewBaseCSS, previewContainer, sandboxCSS } = this.currentLesson;
 
-        // Create an iframe for isolated preview rendering
-        const iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.title = 'Preview';
+		// Create an iframe for isolated preview rendering
+		const iframe = document.createElement("iframe");
+		iframe.style.width = "100%";
+		iframe.style.height = "100%";
+		iframe.style.border = "none";
+		iframe.title = "Preview";
 
-        // Get the preview container
-        const container = document.getElementById(previewContainer || 'preview-area');
+		// Get the preview container
+		const container = document.getElementById(previewContainer || "preview-area");
 
-        // Clear the container and add the iframe
-        container.innerHTML = '';
-        container.appendChild(iframe);
+		// Clear the container and add the iframe
+		container.innerHTML = "";
+		container.appendChild(iframe);
 
-        // Create the complete CSS by combining base CSS with user code and sandbox CSS
-        const combinedCSS = `
+		// Create the complete CSS by combining base CSS with user code and sandbox CSS
+		const combinedCSS = `
             /* Base CSS */
-            ${previewBaseCSS || ''}
+            ${previewBaseCSS || ""}
             
             /* User Code */
-            ${this.userCode || ''}
+            ${this.userCode || ""}
             
             /* Sandbox CSS (for visualizing the exercise) */
-            ${sandboxCSS || ''}
+            ${sandboxCSS || ""}
         `;
 
-        // Write the content to the iframe
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(`
+		// Write the content to the iframe
+		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+		iframeDoc.open();
+		iframeDoc.write(`
             <!DOCTYPE html>
             <html>
                 <head>
                     <style>${combinedCSS}</style>
                 </head>
                 <body>
-                    ${previewHTML || '<div>No preview available</div>'}
+                    ${previewHTML || "<div>No preview available</div>"}
                 </body>
             </html>
         `);
-        iframeDoc.close();
-    }
+		iframeDoc.close();
+	}
 
-    /**
-     * Validate user code against the current lesson's requirements
-     * @returns {Object} Validation result
-     */
-    validateCode() {
-        if (!this.currentLesson) {
-            return { isValid: false, message: 'No active lesson to validate against.' };
-        }
+	/**
+	 * Validate user code against the current lesson's requirements
+	 * @returns {Object} Validation result
+	 */
+	validateCode() {
+		if (!this.currentLesson) {
+			return { isValid: false, message: "No active lesson to validate against." };
+		}
 
-        const result = validateUserCode(this.userCode, this.currentLesson);
+		const result = validateUserCode(this.userCode, this.currentLesson);
 
-        // Display feedback to the user
-        showFeedback(result.isValid, result.message);
+		// Display feedback to the user
+		showFeedback(result.isValid, result.message);
 
-        return result;
-    }
+		return result;
+	}
 
-    /**
-     * Get the current state of the lesson
-     * @returns {Object} The current lesson state
-     */
-    getCurrentState() {
-        return {
-            module: this.currentModule,
-            lesson: this.currentLesson,
-            lessonIndex: this.currentLessonIndex,
-            userCode: this.userCode,
-            totalLessons: this.currentModule ? this.currentModule.lessons.length : 0
-        };
-    }
+	/**
+	 * Get the current state of the lesson
+	 * @returns {Object} The current lesson state
+	 */
+	getCurrentState() {
+		return {
+			module: this.currentModule,
+			lesson: this.currentLesson,
+			lessonIndex: this.currentLessonIndex,
+			userCode: this.userCode,
+			totalLessons: this.currentModule ? this.currentModule.lessons.length : 0
+		};
+	}
 
-    /**
-     * Save progress to localStorage
-     */
-    saveProgress() {
-        if (!this.currentModule || !this.currentLesson) return;
+	/**
+	 * Save progress to localStorage
+	 */
+	saveProgress() {
+		if (!this.currentModule || !this.currentLesson) return;
 
-        const progressData = {
-            moduleId: this.currentModule.id,
-            lessonIndex: this.currentLessonIndex,
-            userCode: this.userCode,
-            timestamp: new Date().toISOString()
-        };
+		const progressData = {
+			moduleId: this.currentModule.id,
+			lessonIndex: this.currentLessonIndex,
+			userCode: this.userCode,
+			timestamp: new Date().toISOString()
+		};
 
-        localStorage.setItem('cssQuest_progress', JSON.stringify(progressData));
-    }
+		localStorage.setItem("cssQuest_progress", JSON.stringify(progressData));
+	}
 
-    /**
-     * Load progress from localStorage
-     * @param {Array} modules - Available modules
-     * @returns {Object|null} Loaded progress data or null if not found
-     */
-    loadProgress(modules) {
-        const savedProgress = localStorage.getItem('cssQuest_progress');
-        if (!savedProgress) return null;
+	/**
+	 * Load progress from localStorage
+	 * @param {Array} modules - Available modules
+	 * @returns {Object|null} Loaded progress data or null if not found
+	 */
+	loadProgress(modules) {
+		const savedProgress = localStorage.getItem("cssQuest_progress");
+		if (!savedProgress) return null;
 
-        try {
-            const progressData = JSON.parse(savedProgress);
+		try {
+			const progressData = JSON.parse(savedProgress);
 
-            // Find the module
-            const module = modules.find(m => m.id === progressData.moduleId);
-            if (!module) return null;
+			// Find the module
+			const module = modules.find((m) => m.id === progressData.moduleId);
+			if (!module) return null;
 
-            this.setModule(module);
-            this.setLessonByIndex(progressData.lessonIndex);
+			this.setModule(module);
+			this.setLessonByIndex(progressData.lessonIndex);
 
-            // Restore user code if available
-            if (progressData.userCode) {
-                this.userCode = progressData.userCode;
-                this.renderPreview();
-            }
+			// Restore user code if available
+			if (progressData.userCode) {
+				this.userCode = progressData.userCode;
+				this.renderPreview();
+			}
 
-            return progressData;
-        } catch (e) {
-            console.error('Error loading progress:', e);
-            return null;
-        }
-    }
+			return progressData;
+		} catch (e) {
+			console.error("Error loading progress:", e);
+			return null;
+		}
+	}
 
-    /**
-     * Reset the current state
-     */
-    reset() {
-        if (this.currentLesson) {
-            this.userCode = this.currentLesson.initialCode || '';
-            this.renderPreview();
-        }
-    }
+	/**
+	 * Reset the current state
+	 */
+	reset() {
+		if (this.currentLesson) {
+			this.userCode = this.currentLesson.initialCode || "";
+			this.renderPreview();
+		}
+	}
 
-    /**
-     * Clear all saved progress
-     */
-    clearProgress() {
-        localStorage.removeItem('cssQuest_progress');
-    }
+	/**
+	 * Clear all saved progress
+	 */
+	clearProgress() {
+		localStorage.removeItem("cssQuest_progress");
+	}
 }

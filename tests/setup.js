@@ -1,26 +1,28 @@
-import { afterEach } from 'vitest';
-import '@testing-library/jest-dom/vitest';
+import { afterEach } from "vitest";
+import "@testing-library/jest-dom/vitest";
 // import 'whatwg-fetch';
 
 // Setup mock for localStorage
 const localStorageMock = (() => {
-    let store = {};
-    return {
-        getItem(key) {
-            return store[key] || null;
-        },
-        setItem(key, value) {
-            store[key] = String(value);
-        },
-        removeItem(key) {
-            delete store[key];
-        },
-        clear() {
-            store = {};
-        },
-        length: 0,
-        key() { return null; }
-    };
+	let store = {};
+	return {
+		getItem(key) {
+			return store[key] || null;
+		},
+		setItem(key, value) {
+			store[key] = String(value);
+		},
+		removeItem(key) {
+			delete store[key];
+		},
+		clear() {
+			store = {};
+		},
+		length: 0,
+		key() {
+			return null;
+		}
+	};
 })();
 
 // Mock the DOM environment
@@ -80,14 +82,14 @@ window.localStorage = localStorageMock;
 
 // For iframe support in jsdom
 if (!window.document.createRange) {
-    window.document.createRange = () => ({
-        setStart: () => {},
-        setEnd: () => {},
-        commonAncestorContainer: {
-            nodeName: 'BODY',
-            ownerDocument: document,
-        },
-    });
+	window.document.createRange = () => ({
+		setStart: () => {},
+		setEnd: () => {},
+		commonAncestorContainer: {
+			nodeName: "BODY",
+			ownerDocument: document
+		}
+	});
 }
 
 // Add fetch mock
@@ -95,6 +97,6 @@ global.fetch = vi.fn();
 
 // Clean up after each test
 afterEach(() => {
-    localStorage.clear();
-    fetch.mockReset();
+	localStorage.clear();
+	fetch.mockReset();
 });

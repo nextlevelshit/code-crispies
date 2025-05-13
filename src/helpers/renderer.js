@@ -12,22 +12,22 @@ let feedbackElement = null;
  * @param { Function} onSelectModule - Callback when a module is selected
  */
 export function renderModuleList(container, modules, onSelectModule) {
-    // Clear the container
-    container.innerHTML = '<h3>Modules</h3>';
+	// Clear the container
+	container.innerHTML = "<h3>Modules</h3>";
 
-    // Create list items for each module
-    modules.forEach(module => {
-        const moduleItem = document.createElement('div');
-        moduleItem.classList.add('module-list-item');
-        moduleItem.dataset.moduleId = module.id;
-        moduleItem.textContent = module.title;
+	// Create list items for each module
+	modules.forEach((module) => {
+		const moduleItem = document.createElement("div");
+		moduleItem.classList.add("module-list-item");
+		moduleItem.dataset.moduleId = module.id;
+		moduleItem.textContent = module.title;
 
-        moduleItem.addEventListener('click', () => {
-            onSelectModule(module.id);
-        });
+		moduleItem.addEventListener("click", () => {
+			onSelectModule(module.id);
+		});
 
-        container.appendChild(moduleItem);
-    });
+		container.appendChild(moduleItem);
+	});
 }
 
 /**
@@ -41,33 +41,24 @@ export function renderModuleList(container, modules, onSelectModule) {
  * @param {HTMLElement} suffixEl - The code editor suffix element
  * @param {Object} lesson - The lesson object
  */
-export function renderLesson(
-    titleEl,
-    descriptionEl,
-    taskEl,
-    previewEl,
-    prefixEl,
-    inputEl,
-    suffixEl,
-    lesson
-) {
-    // Set lesson title and description
-    titleEl.textContent = lesson.title || 'Untitled Lesson';
-    descriptionEl.innerHTML = lesson.description || '';
+export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl, inputEl, suffixEl, lesson) {
+	// Set lesson title and description
+	titleEl.textContent = lesson.title || "Untitled Lesson";
+	descriptionEl.innerHTML = lesson.description || "";
 
-    // Set task instructions
-    taskEl.innerHTML = lesson.task || '';
+	// Set task instructions
+	taskEl.innerHTML = lesson.task || "";
 
-    // Set code editor contents
-    prefixEl.textContent = lesson.codePrefix || '';
-    inputEl.value = lesson.initialCode || '';
-    suffixEl.textContent = lesson.codeSuffix || '';
+	// Set code editor contents
+	prefixEl.textContent = lesson.codePrefix || "";
+	inputEl.value = lesson.initialCode || "";
+	suffixEl.textContent = lesson.codeSuffix || "";
 
-    // Clear any existing feedback
-    clearFeedback();
+	// Clear any existing feedback
+	clearFeedback();
 
-    // Initial preview render with empty user code
-    // The LessonEngine will handle this when it's first set
+	// Initial preview render with empty user code
+	// The LessonEngine will handle this when it's first set
 }
 
 /**
@@ -77,7 +68,7 @@ export function renderLesson(
  * @param {number} total - The total number of levels
  */
 export function renderLevelIndicator(element, current, total) {
-    element.textContent = `Lesson ${current} of ${total}`;
+	element.textContent = `Lesson ${current} of ${total}`;
 }
 
 /**
@@ -86,34 +77,34 @@ export function renderLevelIndicator(element, current, total) {
  * @param {string} message - The feedback message
  */
 export function showFeedback(isSuccess, message) {
-    // Clear any existing feedback
-    clearFeedback();
+	// Clear any existing feedback
+	clearFeedback();
 
-    // Create feedback element
-    feedbackElement = document.createElement('div');
-    feedbackElement.classList.add(isSuccess ? 'feedback-success' : 'feedback-error');
-    feedbackElement.textContent = message;
+	// Create feedback element
+	feedbackElement = document.createElement("div");
+	feedbackElement.classList.add(isSuccess ? "feedback-success" : "feedback-error");
+	feedbackElement.textContent = message;
 
-    // Find where to insert the feedback
-    const insertAfter = document.querySelector('.code-editor');
-    if (insertAfter && insertAfter.parentNode) {
-        insertAfter.parentNode.insertBefore(feedbackElement, insertAfter.nextSibling);
-    }
+	// Find where to insert the feedback
+	const insertAfter = document.querySelector(".code-editor");
+	if (insertAfter && insertAfter.parentNode) {
+		insertAfter.parentNode.insertBefore(feedbackElement, insertAfter.nextSibling);
+	}
 
-    // Auto-remove feedback after some time if successful
-    if (isSuccess) {
-        setTimeout(() => {
-            clearFeedback();
-        }, 5000);
-    }
+	// Auto-remove feedback after some time if successful
+	if (isSuccess) {
+		setTimeout(() => {
+			clearFeedback();
+		}, 5000);
+	}
 }
 
 /**
  * Clear any existing feedback
  */
 export function clearFeedback() {
-    if (feedbackElement && feedbackElement.parentNode) {
-        feedbackElement.parentNode.removeChild(feedbackElement);
-    }
-    feedbackElement = null;
+	if (feedbackElement && feedbackElement.parentNode) {
+		feedbackElement.parentNode.removeChild(feedbackElement);
+	}
+	feedbackElement = null;
 }
