@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Crispies - Learn CSS Interactively</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+<div class="app-container">
+    <header class="header">
+        <div class="logo">
+            <h1>Code Crispies</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><button id="module-selector-btn" class="btn">Modules</button></li>
+                <li><button id="reset-btn" class="btn">Reset Progress</button></li>
+                <li><button id="help-btn" class="btn">Help</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="sidebar">
+            <div class="module-list">
+                <!-- Module list will be populated here -->
+            </div>
+            <div class="lesson-progress">
+                <!-- Lesson progress will be shown here -->
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="lesson-container">
+                <h2 id="lesson-title">Loading...</h2>
+                <div class="lesson-description" id="lesson-description">
+                    Please select a lesson to begin.
+                </div>
+
+                <div class="challenge-container">
+                    <div class="preview-area" id="preview-area">
+                        <!-- Preview of the challenge will be shown here -->
+                    </div>
+
+                    <div class="editor-container">
+                        <div class="task-instruction" id="task-instruction">
+                            <!-- Task instructions will be shown here -->
+                        </div>
+
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>CSS Editor</span>
+                                <button id="run-btn" class="btn btn-primary">Run</button>
+                            </div>
+                            <div class="editor-content">
+                                <pre><code id="editor-prefix"></code></pre>
+                                <textarea id="code-input" class="code-input" spellcheck="false"></textarea>
+                                <pre><code id="editor-suffix"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="prev-btn" class="btn">Previous</button>
+                    <div class="level-indicator" id="level-indicator">Level 0/0</div>
+                    <button id="next-btn" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-container" class="modal-container hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button id="modal-close" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-content" id="modal-content">
+                <!-- Modal content will be populated here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
