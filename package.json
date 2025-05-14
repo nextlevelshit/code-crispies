@@ -22,7 +22,7 @@
 		"education"
 	],
 	"author": "Michael Czechowski <mail@dailysh.it>",
-	"license": "Copyright Michael Czechowski 2025",
+	"license": "Copyright 2025 (c) Michael Czechowski",
 	"devDependencies": {
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.6.3",
