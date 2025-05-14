@@ -1,0 +1,318 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-basic-selectors",
+	"title": "CSS Basic Selectors",
+	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector. You'll learn how to precisely target elements both individually and in groups, create selector lists for efficiency, and understand how specificity affects your styles. Through these lessons, you'll develop the core skills needed to apply CSS effectively across your web projects.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "introduction-to-selectors",
+			"title": "What is a CSS Selector?",
+			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' Mastering different selector types gives you precise control over your web page styling.",
+			"task": "Complete the CSS rule by writing a selector that targets all paragraph elements (p) in the document. This basic type selector will apply the defined style (blue color) to every paragraph on the page.",
+			"previewHTML": "<h1>Introduction to CSS Selectors</h1>\n<p>This paragraph should turn blue.</p>\n<div>This div element should remain unchanged.</div>\n<p>This second paragraph should also turn blue.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "h1, p, div { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
+			"codePrefix": "/* Write a type selector to target all paragraph elements */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: blue;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\s*p\\s*$",
+					"message": "Use the 'p' selector to target all paragraph elements",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "type-selectors",
+			"title": "Type Selectors: Targeting HTML Elements",
+			"description": "Type selectors (also called tag name selectors or element selectors) target HTML elements based on their tag name. For example, 'p' selects all paragraph elements, 'h1' selects all level-one headings, and 'div' selects all division elements. Type selectors are the most fundamental way to select elements, applying styles consistently to all instances of a particular HTML element throughout your document. They provide a broad brush for styling your page and are often the starting point for more specific styling using other selector types.",
+			"task": "Write type selectors to target specific HTML elements. Create three separate rules: one for h2 headings (making them purple), one for span elements (giving them a yellow background), and one for strong elements (making them red). This exercise demonstrates how type selectors can target different elements independently.",
+			"previewHTML": "<h2>Type Selectors Example</h2>\n<p>Regular paragraph text <span>with a highlighted span</span> that should have a yellow background.</p>\n<p>Another paragraph with <strong>strong important text</strong> that should be red.</p>\n<h2>Another Heading</h2>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "h2, p, span, strong { padding: 3px; }",
+			"codePrefix": "/* Write three separate type selectors below */\n\n/* 1. Make h2 headings purple */\n",
+			"initialCode": "\n\n/* 2. Give spans a yellow background */\n\n\n/* 3. Make strong elements red */\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "h2\\s*{[^}]*color:\\s*purple",
+					"message": "Create a rule for h2 elements with color: purple",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "span\\s*{[^}]*background(-color)?:\\s*yellow",
+					"message": "Create a rule for span elements with background-color: yellow",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "strong\\s*{[^}]*color:\\s*red",
+					"message": "Create a rule for strong elements with color: red",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "class-selectors",
+			"title": "Class Selectors: Styling Element Groups",
+			"description": "Class selectors target elements with a specific class attribute value. They begin with a dot (.) followed by the class name. Classes are powerful because they allow you to apply the same styles to multiple elements regardless of their type. An HTML element can have multiple classes (separated by spaces in the class attribute), and a class can be applied to any number of elements. This flexibility makes class selectors one of the most commonly used methods for applying styles in CSS, allowing for modular and reusable styling across your website.",
+			"task": "Create a class selector that targets elements with the class 'highlight'. Write a CSS rule that gives these elements a yellow background and bold text. Notice how the class selector applies the style to different HTML elements that share the same class.",
+			"previewHTML": "<h2>Using Class Selectors</h2>\n<p>This is a regular paragraph, but <span class=\"highlight\">this span has the highlight class</span> applied to it.</p>\n<p class=\"highlight\">This entire paragraph has the highlight class.</p>\n<ul>\n  <li>Regular list item</li>\n  <li class=\"highlight\">This list item is highlighted</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "h2, p, li { padding: 5px; margin-bottom: 10px; }",
+			"codePrefix": "/* Create a class selector for elements with the 'highlight' class */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  background-color: yellow;\n  font-weight: bold;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\.highlight$",
+					"message": "Use '.highlight' to select elements with the highlight class",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "multiple-classes",
+			"title": "Working with Multiple Classes",
+			"description": "HTML elements can have multiple classes applied simultaneously, allowing for composable and modular CSS designs. When an element has multiple classes, it will receive styles from all matching class selectors. This approach enables you to build a library of reusable CSS classes that can be combined in different ways. You can also target elements that have a specific combination of classes by chaining class selectors together without spaces (e.g., '.class1.class2'). This technique lets you create conditional styles that only apply when certain classes appear together.",
+			"task": "Complete the CSS rule that targets elements with both 'card' and 'featured' classes. This selector should match only elements that have both classes applied simultaneously. Set the border-color to gold to make featured cards stand out from regular cards.",
+			"previewHTML": "<h2>Multiple Class Combinations</h2>\n<div class=\"card\">Regular Card</div>\n<div class=\"card featured\">Featured Card</div>\n<div class=\"featured\">Just Featured (not a card)</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .card { border: 2px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* The .card class already has basic styling */\n/* Now target elements with BOTH classes: 'card' AND 'featured' */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  border-color: gold;\n  background-color: #fffaf0;  /* Light gold background */\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\.card\\.featured$",
+					"message": "Use '.card.featured' to select elements with both classes (no space between them)",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "class-with-type",
+			"title": "Combining Type and Class Selectors",
+			"description": "You can combine type selectors with class selectors to target specific HTML elements that have a certain class. This creates a more specific selector that only matches when both conditions are true: the element is of the specified type AND it has the specified class. For example, 'p.note' would select paragraph elements with the class 'note', but would not select divs or spans with that same class. This approach allows you to apply different styles to the same class when it appears on different element types.",
+			"task": "Create a CSS rule that specifically targets <span> elements with the class 'highlight'. This combined selector should make those elements have an orange background, while other elements with the highlight class remain untouched.",
+			"previewHTML": "<h2>Type and Class Combinations</h2>\n<p>This paragraph has a <span class=\"highlight\">highlighted span</span> that should have an orange background.</p>\n<p class=\"highlight\">This paragraph has the highlight class but should NOT have an orange background.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .highlight { font-weight: bold; }",
+			"sandboxCSS": "h2, p, span { padding: 5px; }",
+			"codePrefix": "/* The .highlight class already sets font-weight to bold */\n/* Now target ONLY span elements with the highlight class */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  background-color: orange;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^span\\.highlight$",
+					"message": "Use 'span.highlight' to target span elements with the highlight class",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "id-selectors",
+			"title": "ID Selectors: Targeting Unique Elements",
+			"description": "ID selectors target elements with a specific id attribute. They begin with a hash/pound sign (#) followed by the ID name. Unlike classes, IDs must be unique within a document—each ID value should be used only once per page. ID selectors have higher specificity than class or element selectors, meaning they override those selectors when conflicts arise. Because of their uniqueness requirement, IDs are best used for one-of-a-kind elements like page headers, main navigation, or specific unique components that appear only once on a page.",
+			"task": "Create an ID selector that targets the element with the ID 'main-title'. Set its color to purple and add an underline. Remember that ID selectors begin with a hash/pound (#) symbol and should be used only for truly unique elements on your page.",
+			"previewHTML": "<h1 id=\"main-title\">Main Page Title</h1>\n<p>Regular paragraph content.</p>\n<h2>Secondary Heading</h2>\n<p id=\"intro\">Introduction paragraph (different ID).</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "h1, h2, p { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
+			"codePrefix": "/* Create an ID selector to target the element with id=\"main-title\" */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: purple;\n  text-decoration: underline;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^#main-title$",
+					"message": "Use '#main-title' to select the element with id=\"main-title\"",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "id-with-type",
+			"title": "Combining Type and ID Selectors",
+			"description": "Similar to how you can combine type and class selectors, you can also combine type selectors with ID selectors. For example, 'h1#title' targets an h1 element with the ID 'title'. While this approach is more specific than using just the ID selector, it's often unnecessary since IDs should already be unique in a document. However, this technique can be useful for improving code readability or when you want to emphasize that a particular ID should only appear on a specific element type.",
+			"task": "Create a CSS rule that combines a type selector with an ID selector to target specifically a paragraph element with the ID 'special'. Set its font style to italic. While the ID alone would be sufficient to target the element, this combined approach can sometimes improve code readability.",
+			"previewHTML": "<h2 id=\"special\">Heading with ID \"special\" (should NOT be affected)</h2>\n<p id=\"special\">Paragraph with ID \"special\" (should become italic)</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "h2, p { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
+			"codePrefix": "/* Create a combined type+ID selector for a paragraph with id=\"special\" */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  font-style: italic;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^p#special$",
+					"message": "Use 'p#special' to select paragraph elements with id=\"special\"",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "selector-lists",
+			"title": "Selector Lists: Applying the Same Rules to Multiple Selectors",
+			"description": "When multiple elements need the same styling, you can group them together using a selector list (also known as grouping selectors). Selector lists are created by separating individual selectors with commas. This approach reduces repetition in your CSS, making it more maintainable and efficient. For example, 'h1, h2, h3 { color: blue; }' applies the same blue color to all three heading levels. Whitespace around commas is optional, and each selector in the list can be any valid selector type—elements, classes, IDs, or even more complex selectors.",
+			"task": "Create a selector list that applies the same styles to three different elements: paragraphs with class 'note', list items with class 'important', and the element with ID 'summary'. This demonstrates how selector lists can group different selector types (element+class and ID selectors) for efficiency.",
+			"previewHTML": "<p class=\"note\">This is a note paragraph.</p>\n<ul>\n  <li>Regular list item</li>\n  <li class=\"important\">Important list item</li>\n</ul>\n<div id=\"summary\">Summary section</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "p, li, div { padding: 8px; margin-bottom: 8px; border: 1px dashed #ccc; }",
+			"codePrefix": "/* Create a selector list to apply the same styles to multiple different elements */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  background-color: #ffffcc;  /* Light yellow */\n  border-left: 3px solid #ffcc00;  /* Gold border */\n  padding-left: 10px;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "p.note",
+					"message": "Include 'p.note' in your selector list",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "li.important",
+					"message": "Include 'li.important' in your selector list",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "#summary",
+					"message": "Include '#summary' in your selector list",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "^(p\\.note|li\\.important|#summary)(\\s*,\\s*(p\\.note|li\\.important|#summary)){2}$",
+					"message": "Create a comma-separated list of all three selectors",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "universal-selector",
+			"title": "The Universal Selector: Targeting Everything",
+			"description": "The universal selector is denoted by an asterisk (*) and matches any element of any type. It selects everything in the document or, when combined with other selectors, everything within a specific context. For example, '* { margin: 0; }' removes margins from all elements, while 'article *' selects all elements inside article elements. The universal selector is powerful but should be used carefully due to its broad impact. It's commonly used in CSS resets, to override default browser styling, or to target all children of a particular element.",
+			"task": "Use the universal selector to remove margins from all elements inside the container div. This demonstrates how the universal selector can affect all nested elements within a specific context. Add a rule using 'div.container *' as the selector.",
+			"previewHTML": "<div class=\"container\">\n  <h2>Inside Container</h2>\n  <p>This paragraph is inside the container.</p>\n  <ul>\n    <li>List item inside container</li>\n  </ul>\n</div>\n<p>This paragraph is outside the container and should not be affected.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } div.container { border: 2px solid #333; padding: 15px; background-color: #f5f5f5; } h2, p, ul, li { margin: 15px 0; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Use the universal selector to target all elements inside the container */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  margin: 0;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^div\\.container\\s+\\*$",
+					"message": "Use 'div.container *' to select all elements inside the container div",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "specificity-basics",
+			"title": "Understanding Selector Specificity",
+			"description": "CSS specificity determines which styles take precedence when multiple conflicting rules target the same element. Specificity follows a hierarchical system: inline styles have the highest specificity, followed by ID selectors, then class/attribute/pseudo-class selectors, and finally element/pseudo-element selectors. This can be conceptualized as a four-part score (inline, ID, class, element). Understanding specificity is crucial for predictable styling and debugging CSS conflicts. When two selectors have equal specificity, the one that comes last in the stylesheet wins.",
+			"task": "Examine the existing CSS rules and determine which text color will be applied to the paragraph based on specificity. Add a new rule using '.content p' as the selector and 'green' as the color to demonstrate how combining selectors increases specificity compared to a simple element selector.",
+			"previewHTML": "<div class=\"content\">\n  <p>What color will this paragraph be? Look at the CSS rules and their specificity.</p>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
+			"sandboxCSS": "p { border: 1px dashed #ccc; padding: 10px; }",
+			"codePrefix": "/* These CSS rules target the same paragraph but have different specificity */\n\n/* Rule 1: Element selector (lowest specificity) */\np {\n  color: red;\n}\n\n/* Rule 2: Descendant selector (higher specificity than just 'p') */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: green;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\.content\\s+p$",
+					"message": "Use '.content p' to select paragraphs within elements with the 'content' class",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "selector-practice",
+			"title": "Combining Different Selector Types",
+			"description": "In real-world CSS, you'll often combine different selector types to target elements precisely. Combining selectors gives you fine-grained control over which elements receive certain styles. For instance, '.article p' targets paragraphs within elements with the 'article' class, while 'section#main .card h3' targets h3 headings inside elements with class 'card' that are descendants of the section with ID 'main'. By understanding how different selectors work together, you can create more efficient, modular, and maintainable CSS stylesheets.",
+			"task": "Create CSS rules that demonstrate combining different selector types. Write three rules: one targeting all links inside elements with class 'nav', one for paragraphs inside elements with ID 'sidebar', and one for list items with class 'featured' that are inside elements with class 'products'. This exercise will help you practice creating increasingly specific selectors.",
+			"previewHTML": "<div class=\"nav\">\n  <a href=\"#\">Home</a>\n  <a href=\"#\">About</a>\n  <a href=\"#\">Contact</a>\n</div>\n\n<div id=\"sidebar\">\n  <p>Sidebar content that should be smaller.</p>\n  <p>More sidebar text.</p>\n</div>\n\n<div class=\"products\">\n  <ul>\n    <li>Regular product</li>\n    <li class=\"featured\">Featured product</li>\n    <li>Another regular product</li>\n    <li class=\"featured\">Another featured product</li>\n  </ul>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .nav { background-color: #f0f0f0; padding: 10px; } #sidebar { background-color: #f5f5f5; padding: 10px; width: 150px; } .products { padding: 10px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Write three combined selectors below */\n\n/* 1. Target all links inside elements with class 'nav' */\n",
+			"initialCode": "\n\n/* 2. Target paragraphs inside the element with ID 'sidebar' */\n\n\n/* 3. Target list items with class 'featured' inside elements with class 'products' */\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\.nav\\s+a\\s*{[^}]*}",
+					"message": "Create a rule for '.nav a' that styles links in the navigation",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "#sidebar\\s+p\\s*{[^}]*}",
+					"message": "Create a rule for '#sidebar p' that styles paragraphs in the sidebar",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "\\.products\\s+li\\.featured\\s*{[^}]*}",
+					"message": "Create a rule for '.products li.featured' that styles featured product list items",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		}
+	]
+}
