@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "box-model",
 	"title": "Padding, Borders, and Margins",
 	"description": "Master the fundamental principles of space management in web design through the CSS box model. This module explores how content, padding, borders, and margins combine to create layout structures that are both visually appealing and structurally sound.",

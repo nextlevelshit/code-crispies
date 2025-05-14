@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-fundamentals",
 	"title": "101 Rules and Selectors",
 	"description": "Cascading Style Sheets (CSS) form the cornerstone of modern web presentation. This module provides a comprehensive introduction to CSS syntax, selectors, properties, and core design concepts. You'll develop a deep understanding of how CSS empowers web developers to control visual aesthetics, layout, and responsive behavior across digital interfaces. Throughout these lessons, we'll build a robust foundation that prepares you for more advanced web engineering topics.",

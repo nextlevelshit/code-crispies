@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "grid",
 	"title": "CSS Grid",
 	"description": "Master the grid layout system for complex two-dimensional layouts",

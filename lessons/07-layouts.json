@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "layouts",
 	"title": "Flexbox & Grid",
 	"description": "Master modern CSS layout techniques with Flexbox and Grid for responsive, powerful designs.",
