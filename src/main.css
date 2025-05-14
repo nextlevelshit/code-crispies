@@ -264,6 +264,7 @@ code {
 }
 
 .code-editor {
+	flex: 1;
 	position: relative;
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius-md);
@@ -284,8 +285,10 @@ code {
 .editor-content {
 	background-color: var(--editor-bg);
 	color: #d4d4d4;
-	padding: var(--spacing-md) var(--spacing-md) 4rem;
+	padding: var(--spacing-md);
+	margin-bottom: 4rem;
 	overflow-y: auto;
+	height: 100%;
 	font-family: var(--font-code);
 	font-size: 14px;
 	line-height: 1.5;
