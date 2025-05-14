@@ -2,7 +2,8 @@
 	--primary-color: #dd3b59;
 	--primary-light: #ff5f7f;
 	--primary-dark: #af2740;
-	--secondary-color: #ff7e5f;
+	--secondary-color: #393939;
+	--secondary-dark: #1e1e1e;
 	--text-color: #13181c;
 	--light-text: #777;
 	--bg-color: #f9f9f9;
@@ -156,6 +157,17 @@ body {
 	line-height: 1.7;
 	font-size: 1.1rem;
 	width: 72%;
+}
+
+.lesson-description pre {
+	display: inline-block;
+	font-family: "JetBrains Mono", "Fira Code", monospace;
+	font-size: 0.9rem;
+	background-color: #f5f5f5;
+	padding: 2rem 3rem 2rem 2rem;
+	border-radius: 6px;
+	overflow-x: auto;
+	margin-bottom: 1.5rem;
 }
 
 /* Challenge Container */
@@ -317,6 +329,22 @@ code {
 
 .btn-primary:hover {
 	background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+	background-color: var(--secondary-color);
+	color: white;
+	border: 1px solid var(--secondary-dark);
+}
+
+.btn-secondary:hover {
+	background-color: var(--secondary-dark);
+}
+
+.btn img {
+	width: 0.8rem;
+	height: 0.8rem;
+	margin-right: 0.3rem;
 }
 
 /* Modal */

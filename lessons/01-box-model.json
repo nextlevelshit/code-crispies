@@ -1,6 +1,6 @@
 {
 	"id": "box-model",
-	"title": "CSS Box Model & Layout Principles",
+	"title": "Padding, Borders, and Margins",
 	"description": "Master the fundamental principles of space management in web design through the CSS box model. This module explores how content, padding, borders, and margins combine to create layout structures that are both visually appealing and structurally sound.",
 	"difficulty": "beginner",
 	"lessons": [
