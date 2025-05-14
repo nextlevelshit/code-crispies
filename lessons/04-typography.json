@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "typography-fonts",
 	"title": "Typography & Fonts",
 	"description": "Learn how to control text appearance through font selection, sizing, spacing, and decorative effects.",

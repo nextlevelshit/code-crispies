@@ -1,4 +1,5 @@
 {
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "responsive-design",
 	"title": "Responsive Design & Media Queries",
 	"description": "Make your layouts adapt to different screen sizes using media queries and fluid design techniques.",
