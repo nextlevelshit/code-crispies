@@ -4,6 +4,7 @@
 
 // Import lesson configs
 import basicsConfig from "../../lessons/00-basics.json";
+import basicSelectorsConfig from "../../lessons/00-basic-selectors.json";
 import boxModelConfig from "../../lessons/01-box-model.json";
 import selectorsConfig from "../../lessons/02-selectors.json";
 import colorsConfig from "../../lessons/03-colors.json";
@@ -15,15 +16,16 @@ import responsiveConfig from "../../lessons/08-responsive.json";
 
 // Module store
 const moduleStore = [
-	basicsConfig,
-	boxModelConfig,
-	selectorsConfig,
-	colorsConfig,
-	typographyConfig,
-	unitVariablesConfig,
-	transitionsAnimationsConfig,
-	layoutConfig,
-	responsiveConfig
+	basicSelectorsConfig
+	// basicsConfig,
+	// boxModelConfig,
+	// selectorsConfig,
+	// colorsConfig,
+	// typographyConfig,
+	// unitVariablesConfig,
+	// transitionsAnimationsConfig,
+	// layoutConfig,
+	// responsiveConfig
 ];
 
 /**
