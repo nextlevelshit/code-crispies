@@ -12,5 +12,9 @@ export default defineConfig((env) => ({
 	server: {
 		port: 1312,
 		open: false
+	},
+	preview: {
+		port: 1312,
+		open: false
 	}
 }));
