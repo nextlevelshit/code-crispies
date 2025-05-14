@@ -1,49 +1,26 @@
 {
-	"id": "basics",
-	"title": "CSS Fundamentals",
-	"description": "Establish a solid foundation in Cascading Style Sheets (CSS), the language used to control the presentation and layout of web documents. This module introduces core concepts that form the basis of modern web styling.",
+	"id": "css-fundamentals",
+	"title": "CSS Fundamentals: The Language of Web Design",
+	"description": "Cascading Style Sheets (CSS) form the cornerstone of modern web presentation. This module provides a comprehensive introduction to CSS syntax, selectors, properties, and core design concepts. You'll develop a deep understanding of how CSS empowers web developers to control visual aesthetics, layout, and responsive behavior across digital interfaces. Throughout these lessons, we'll build a robust foundation that prepares you for more advanced web engineering topics.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "basics-1",
-			"title": "CSS Syntax Structure",
-			"description": "CSS consists of selectors that target HTML elements and declaration blocks that specify how those elements should be styled. Understanding this fundamental syntax structure is essential for all CSS development.",
-			"task": "Complete the CSS rule by adding a semicolon after the color property value. Every CSS declaration must end with a semicolon to separate it from the next declaration.",
-			"previewHTML": "<p class='target'>This paragraph needs to be blue!</p><p>This paragraph should remain unchanged.</p>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
-			"sandboxCSS": ".target { outline: 0.125rem dashed #ccc; padding: 0.625rem; }",
-			"codePrefix": "/* Complete the CSS rule by adding a semicolon */\n.target {\n  color: blue",
-			"initialCode": "",
-			"codeSuffix": "\n}",
+			"id": "css-syntax-structure",
+			"title": "CSS Syntax: The Building Blocks",
+			"description": "CSS (Cascading Style Sheets) follows a structured syntax that consists of selectors targeting HTML elements and declaration blocks defining their styling. A declaration block contains one or more declarations separated by semicolons, with each declaration consisting of a property and value pair. This fundamental structure forms the basis of all CSS rules and allows for precise control over web page presentation. Understanding this syntax is critical for effectively implementing any styling on the web.",
+			"task": "Complete the CSS rule by providing a valid selector that targets all paragraph elements (p). This selector should apply to every paragraph on the page. Notice how the declaration block is already structured with the property-value pair 'color: blue;'.",
+			"previewHTML": "<p>This paragraph should be blue.</p><p>This paragraph should also be blue.</p><div>This div element should remain unchanged.</div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }",
+			"sandboxCSS": "p, div { border: 1px dashed #ccc; padding: 10px; margin-bottom: 10px; }",
+			"codePrefix": "/* Add the correct selector to target all paragraph elements */\n",
+			"initialCode": " {\n  color: blue;\n}",
+			"codeSuffix": "",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": ";",
-					"message": "Make sure to add a semicolon after the color value",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "basics-2",
-			"title": "CSS Selectors: Classes",
-			"description": "Class selectors allow you to target specific HTML elements that share the same class attribute. Classes are denoted by a dot (.) followed by the class name and are one of the most frequently used selectors in CSS.",
-			"task": "Write a class selector to target elements with the class 'highlight'. Then, set their text color to 'crimson'. Begin with the dot (.) followed by the class name.",
-			"previewHTML": "<p class='highlight'>This text should be crimson.</p><p>This text remains unchanged.</p>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
-			"sandboxCSS": ".highlight { background-color: #fffacd; padding: 0.3125rem; }",
-			"codePrefix": "/* Write a class selector to target elements with the class 'highlight' */\n",
-			"initialCode": "",
-			"codeSuffix": " {\n  color: crimson;\n}",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "contains",
-					"value": ".highlight",
-					"message": "Make sure to use the '.highlight' class selector",
+					"type": "regex",
+					"value": "^\\s*p\\s*$",
+					"message": "Use the 'p' selector to target all paragraph elements",
 					"options": {
 						"caseSensitive": false
 					}
@@ -51,14 +28,106 @@
 			]
 		},
 		{
-			"id": "basics-3",
-			"title": "Box Model: Adding Padding",
-			"description": "The CSS box model consists of content, padding, border, and margin areas. Padding creates space between an element's content and its border, improving visual appearance and readability.",
-			"task": "Add padding to the box element. Set the padding to '1.25rem' to create space between the content and the element's edges.",
-			"previewHTML": "<div class='box'>This box needs padding!</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #f0f0f0; border: 0.0625rem solid #ddd; }",
+			"id": "css-selectors-element",
+			"title": "Element Selectors: Targeting HTML Elements",
+			"description": "Element selectors target HTML elements directly by their tag name. For example, 'p' selects all paragraph elements, 'h1' selects all first-level headings, and 'div' selects all division elements. Element selectors are powerful for applying consistent styling to all instances of a particular HTML element throughout your document. They form the foundation of CSS selection and are often combined with other selectors to create more specific targeting patterns.",
+			"task": "Write an element selector to target all heading level 2 elements (h2). Then complete the code to give them a red text color and an underline. This will make them stand out clearly on the page.",
+			"previewHTML": "<h2>This is a heading that needs styling</h2><p>This is a paragraph that should remain unchanged.</p><h2>This is another heading that needs the same styling</h2>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }",
+			"sandboxCSS": "h2, p { border: 1px dashed #ccc; padding: 10px; margin-bottom: 10px; }",
+			"codePrefix": "/* Write an element selector for h2 elements and set their color and text-decoration */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: red;\n  text-decoration: underline;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\s*h2\\s*$",
+					"message": "Use the 'h2' element selector to target all level 2 headings",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "css-selectors-class",
+			"title": "Class Selectors: Targeting Specific Element Groups",
+			"description": "Class selectors target HTML elements that share the same class attribute value. They begin with a dot (.) followed by the class name. Classes provide a flexible way to apply styles to groups of elements that may not share the same HTML tag. A single element can have multiple classes, and a class can be applied to multiple elements, making class selectors a powerful tool for organizing and applying styles efficiently across your website.",
+			"task": "Write a class selector to target elements with the class 'important-text'. Set their color to 'red' and give them a yellow background. Begin with a dot (.) followed by the class name to create a proper class selector.",
+			"previewHTML": "<p class='important-text'>This text should be red with yellow background.</p><p>This text remains unchanged.</p><span class='important-text'>This span should also be red with yellow background.</span>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }",
+			"sandboxCSS": ".important-text, p { padding: 5px; margin-bottom: 10px; display: block; }",
+			"codePrefix": "/* Write a class selector to target elements with the class 'important-text' */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  color: red;\n  background-color: yellow;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".important-text",
+					"message": "Use the '.important-text' class selector",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "css-selectors-id",
+			"title": "ID Selectors: Targeting Unique Elements",
+			"description": "ID selectors target a single, unique HTML element that has a specific id attribute value. They begin with a hash symbol (#) followed by the ID name. Unlike classes, an ID should be unique within a page—it should only be used once. ID selectors have higher specificity than class selectors, which means they override class and element selectors when specificity conflicts arise. Because of their uniqueness constraint, IDs are ideal for styling one-of-a-kind elements.",
+			"task": "Write an ID selector to target the element with the ID 'header-title'. Set its font-weight to 'bold'. Begin with a hash symbol (#) followed by the ID name.",
+			"previewHTML": "<h1 id='header-title'>This heading needs to be bold</h1><h2>This heading should remain unchanged</h2>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }",
+			"sandboxCSS": "h1, h2 { font-weight: normal; border: 1px dashed #ccc; padding: 10px; margin-bottom: 10px; }",
+			"codePrefix": "/* Write an ID selector to target the element with ID 'header-title' */\n",
+			"initialCode": "",
+			"codeSuffix": " {\n  font-weight: bold;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "#header-title",
+					"message": "Use the '#header-title' ID selector",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "css-pseudo-classes-hover",
+			"title": "Pseudo-classes: Interactive States with :hover",
+			"description": "Pseudo-classes select elements based on states that aren't explicitly part of the document tree, such as user interaction states. The :hover pseudo-class is triggered when a user hovers their cursor over an element. This provides a powerful way to create interactive elements that respond to user actions without requiring JavaScript. Other common pseudo-classes include :focus, :active, and :visited, each representing different interaction states.",
+			"task": "Add the :hover pseudo-class to the button selector to create an interactive effect when users hover over buttons. This will change the background color to 'green' when a user's cursor is positioned over any button element.",
+			"previewHTML": "<button>Hover over me!</button><p>Try hovering over the button to see the effect.</p>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } button { padding: 10px 20px; background-color: blue; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add padding to the box */\n.box {\n  /* Add your code below */\n  ",
+			"codePrefix": "/* Add the :hover pseudo-class to create an interactive effect */\nbutton",
+			"initialCode": "",
+			"codeSuffix": " {\n  background-color: green;\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ":hover",
+					"message": "Add the ':hover' pseudo-class after the button selector",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "css-box-model-padding",
+			"title": "CSS Box Model: Understanding Padding",
+			"description": "The CSS box model represents how elements are rendered in the browser. Every element is effectively a box with content at its core, surrounded by padding, border, and margin areas. Padding creates space between an element's content and its border, providing visual breathing room. You can control padding on all sides at once with the 'padding' property, or target specific sides with 'padding-top', 'padding-right', 'padding-bottom', and 'padding-left'. Proper padding is essential for visual hierarchy and readability.",
+			"task": "Add padding to the content-box element. Set the padding to '20px' to create adequate space between the content and the element's border. This will improve readability and visual appeal.",
+			"previewHTML": "<div class='content-box'><p>This paragraph needs proper padding around it to improve readability and aesthetic appeal.</p><p>Without padding, text would touch the edges of the box, making it harder to read.</p></div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .content-box { background-color: #f5f5f5; border: 1px solid #ddd; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add padding to improve the visual spacing */\n.content-box {\n  /* Add your code below */\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -66,7 +135,7 @@
 				{
 					"type": "contains",
 					"value": "padding",
-					"message": "Use the 'padding' property",
+					"message": "Use the 'padding' property to add space around the content",
 					"options": {
 						"caseSensitive": false
 					}
@@ -75,9 +144,9 @@
 					"type": "property_value",
 					"value": {
 						"property": "padding",
-						"expected": "1.25rem"
+						"expected": "20px"
 					},
-					"message": "Set the padding to '1.25rem'",
+					"message": "Set the padding value to '20px'",
 					"options": {
 						"exact": true
 					}
@@ -85,53 +154,22 @@
 			]
 		},
 		{
-			"id": "basics-4",
-			"title": "Box Model: Adding Borders",
-			"description": "Borders define the perimeter of an element, separating it visually from surrounding content. CSS offers precise control over border thickness, style, and color.",
-			"task": "Add a border to the element. Set the border property to '0.125rem solid #333' to create a thin, solid dark border around the box.",
-			"previewHTML": "<div class='bordered-box'>This box needs a border!</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .bordered-box { background-color: #f8f8f8; padding: 1rem; }",
-			"sandboxCSS": "",
-			"codePrefix": "/* Add a border to the box */\n.bordered-box {\n  /* Add your code below */\n  ",
-			"initialCode": "",
-			"codeSuffix": "\n}",
+			"id": "css-box-model-margin",
+			"title": "CSS Box Model: Understanding Margin",
+			"description": "Margin is the outermost layer of the CSS box model, creating space between an element and its neighboring elements. Unlike padding which affects the internal spacing, margins define the external spacing relationships between elements. Margins can be set for all sides with the 'margin' property or individually with 'margin-top', 'margin-right', 'margin-bottom', and 'margin-left'. Margins can also accept negative values to create overlapping effects, and they collapse in certain situations—an important behavior to understand for precise layout control.",
+			"task": "Add a bottom margin to the section-title element. Set margin-bottom to '30px' to create appropriate spacing between the title and subsequent content. This helps establish visual hierarchy in the document flow.",
+			"previewHTML": "<h2 class='section-title'>Important Section</h2><p>This paragraph should have space above it, separating it from the heading.</p>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .section-title { background-color: #f0f0f0; padding: 8px; }",
+			"sandboxCSS": "h2, p { border: 1px dashed #ccc; padding: 10px; }",
+			"codePrefix": "/* Add bottom margin to create vertical spacing */\n.section-title {\n  /* Add your code below */",
+			"initialCode": "  ",
+			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains",
-					"value": "border",
-					"message": "Use the 'border' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "regex",
-					"value": "border:\\s*0.125rem\\s+solid\\s+#333",
-					"message": "Set the border to '0.125rem solid #333'",
-					"options": {
-						"caseSensitive": false
-					}
-				}
-			]
-		},
-		{
-			"id": "basics-5",
-			"title": "Colors: RGB and Hexadecimal Notation",
-			"description": "CSS supports various color models, with RGB (Red, Green, Blue) and hexadecimal notation being among the most common. Understanding color representation is essential for creating visually appealing designs.",
-			"task": "Set the background color of the element to the hexadecimal value '#e0f7fa' (a light cyan). Hexadecimal color values start with a hash symbol (#) followed by 6 characters representing RGB values.",
-			"previewHTML": "<div class='colorbox'>This element needs a background color!</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .colorbox { padding: 1.5rem; text-align: center; font-weight: bold; }",
-			"sandboxCSS": "",
-			"codePrefix": "/* Set the background color using a hexadecimal value */\n.colorbox {\n  /* Add your code below */\n  ",
-			"initialCode": "",
-			"codeSuffix": "\n}",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "contains",
-					"value": "background-color",
-					"message": "Use the 'background-color' property",
+					"value": "margin-bottom",
+					"message": "Use the 'margin-bottom' property to add space after the title",
 					"options": {
 						"caseSensitive": false
 					}
@@ -139,10 +177,10 @@
 				{
 					"type": "property_value",
 					"value": {
-						"property": "background-color",
-						"expected": "#e0f7fa"
+						"property": "margin-bottom",
+						"expected": "30px"
 					},
-					"message": "Set the background-color to '#e0f7fa'",
+					"message": "Set the margin-bottom value to '30px'",
 					"options": {
 						"exact": true
 					}
@@ -150,14 +188,129 @@
 			]
 		},
 		{
-			"id": "basics-6",
-			"title": "Typography: Font Family",
-			"description": "The font-family property specifies the typeface used for text content. It's best practice to provide a list of fonts (a 'font stack') to ensure compatibility across different operating systems.",
-			"task": "Set the font family of the heading to 'Georgia, serif'. The comma indicates that 'serif' will be used as a fallback if 'Georgia' is not available on the user's system.",
-			"previewHTML": "<h2 class='heading'>This heading needs a serif font</h2>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
-			"sandboxCSS": ".heading { border-bottom: 0.0625rem solid #ddd; padding-bottom: 0.625rem; }",
-			"codePrefix": "/* Set the font family */\n.heading {\n  /* Add your code below */\n  ",
+			"id": "css-box-model-border",
+			"title": "CSS Box Model: Working with Borders",
+			"description": "Borders define the perimeter of an element in the CSS box model, positioned between the padding and margin areas. The 'border' property is shorthand that combines border-width, border-style, and border-color properties. You can apply borders to all sides of an element or target specific sides with 'border-top', 'border-right', 'border-bottom', and 'border-left'. Borders serve both functional and aesthetic purposes: they visually separate elements, highlight interactive components, and can become integral parts of your design language.",
+			"task": "Add a border to the card element. Set the border property to '2px solid blue' to create a defined boundary with a distinctive color. This will help the card stand out visually from surrounding content.",
+			"previewHTML": "<div class='card'><h3>Card Title</h3><p>This card element needs a defined border to enhance its visibility.</p></div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .card { background-color: #fff; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add a border to define the card boundary */\n.card {\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "border",
+					"message": "Use the 'border' property to add a border around the card",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "border:\\s*2px\\s+solid\\s+blue",
+					"message": "Set the border to '2px solid blue'",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "css-centering-techniques",
+			"title": "Horizontal and Vertical Centering",
+			"description": "Centering elements in CSS has historically been challenging, but modern approaches have simplified this task. For horizontal centering, we can use 'margin: 0 auto' for block elements with a defined width, or 'text-align: center' for inline elements. Vertical centering often employs flexbox or grid layouts. Flexbox, in particular, offers a straightforward solution with 'display: flex', 'justify-content: center' (horizontal centering), and 'align-items: center' (vertical centering). Understanding centering techniques is crucial for creating balanced and visually appealing layouts.",
+			"task": "Center the button both horizontally and vertically within its container by adding the correct flexbox properties. The container is already set to 'display: flex', so you need to add both 'justify-content: center' and 'align-items: center' properties.",
+			"previewHTML": "<div class='button-container'><button>Centered Button</button></div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .button-container { display: flex; height: 150px; background-color: #f5f5f5; border: 1px solid #ddd; } button { padding: 12px 24px; background-color: blue; color: white; border: none; border-radius: 4px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add properties to center the button horizontally and vertically */\n.button-container {\n  display: flex;\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "justify-content",
+					"message": "Use 'justify-content' property for horizontal centering",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "justify-content",
+						"expected": "center"
+					},
+					"message": "Set 'justify-content' to 'center'",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "align-items",
+					"message": "Use 'align-items' property for vertical centering",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "align-items",
+						"expected": "center"
+					},
+					"message": "Set 'align-items' to 'center'",
+					"options": {
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "css-colors-hex-rgb",
+			"title": "Color Systems: Hexadecimal and Named Colors",
+			"description": "CSS supports multiple color representation systems. Hexadecimal notation uses a pound sign (#) followed by 3 or 6 characters representing RGB values in base-16 format (e.g., #f00 or #ff0000 for red). CSS also provides named colors like 'red', 'blue', and 'orange' for common colors. Named colors are easier to remember, while hex colors provide more precise control. Understanding different color systems is essential for controlling the visual appearance of your web elements.",
+			"task": "Set the background color of the element to 'orange' using a named color. Named colors are more readable in code than hexadecimal values and are perfect for common colors.",
+			"previewHTML": "<div class='color-block'>This element needs an orange background color</div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .color-block { padding: 30px; text-align: center; font-weight: bold; color: white; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set the background color using a named color */\n.color-block {\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "background",
+					"message": "Use the 'background' or 'background-color' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "background(-color)?:\\s*orange",
+					"message": "Set the background/background-color to 'orange'",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "css-typography-font-family",
+			"title": "Typography: Font Family and Font Stacks",
+			"description": "The font-family property defines the typeface used for text content. Best practice dictates providing a 'font stack'—a comma-separated list of fonts in descending order of preference. If the first font isn't available on the user's system, the browser moves to the next font in the stack. The stack typically ends with a generic font family (serif, sans-serif, monospace, etc.) as a reliable fallback. Well-designed font stacks ensure consistent typographic appearance across different operating systems and devices.",
+			"task": "Set the font family of the element to use 'Courier, monospace'. This creates a font stack where 'Courier' is the first choice and 'monospace' ensures a final generic fallback option is available, creating a typewriter-like effect for the text.",
+			"previewHTML": "<p class='styled-text'>This text needs a monospace font applied to it. Notice how each character takes up the same width in monospace fonts.</p>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }",
+			"sandboxCSS": ".styled-text { font-size: 18px; padding: 15px; background-color: #f5f5f5; border-radius: 4px; }",
+			"codePrefix": "/* Set the font family using a monospace font stack */\n.styled-text {\n  /* Add your code below */\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -172,8 +325,8 @@
 				},
 				{
 					"type": "regex",
-					"value": "font-family:\\s*Georgia,\\s*serif",
-					"message": "Set the font-family to 'Georgia, serif'",
+					"value": "font-family:\\s*Courier,\\s*monospace",
+					"message": "Set the font-family to 'Courier, monospace'",
 					"options": {
 						"caseSensitive": false
 					}
@@ -181,14 +334,14 @@
 			]
 		},
 		{
-			"id": "basics-7",
-			"title": "CSS Units: Relative vs. Absolute",
-			"description": "CSS offers various measurement units for specifying sizes. Relative units (like rem, em, %) adapt to different screen sizes, while absolute units (like pixels) maintain fixed dimensions regardless of context.",
-			"task": "Set the width of the box to '80%' of its parent container. Percentage units are relative to the parent element's dimensions and are crucial for responsive design.",
-			"previewHTML": "<div class='container'><div class='responsive-box'>This box should take up 80% width</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .container { background-color: #f5f5f5; padding: 1rem; } .responsive-box { background-color: #e1bee7; padding: 1rem; text-align: center; }",
+			"id": "css-units-relative-absolute",
+			"title": "CSS Units: Comparing Relative and Absolute Measurements",
+			"description": "CSS offers various measurement units, categorized as either relative or absolute. Relative units (like %, em, rem, vh, vw) scale based on other factors and are essential for responsive design. For instance, 'rem' units scale relative to the root element's font size, while '%' units are proportional to parent element dimensions. Absolute units (like px, pt, cm, in) maintain fixed dimensions regardless of context. Modern web development favors relative units for their adaptability across different screen sizes and user preferences, especially for accessible design.",
+			"task": "Set the width of the responsive element to '80%' of its parent container and its font-size to '18px'. Percentage width enables the element to adapt to different screen sizes, while pixel units provide precise control for font sizes.",
+			"previewHTML": "<div class='container'><div class='responsive-element'>This element should have responsive width and font size.</div></div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .container { background-color: #f0f0f0; padding: 15px; width: 100%; } .responsive-element { background-color: #bbdefb; padding: 15px; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Set the width using a percentage unit */\n.responsive-box {\n  /* Add your code below */\n  ",
+			"codePrefix": "/* Set width using percentage and font-size using pixels */\n.responsive-element {\n  /* Add your code below */\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -211,39 +364,98 @@
 					"options": {
 						"exact": true
 					}
+				},
+				{
+					"type": "contains",
+					"value": "font-size",
+					"message": "Use the 'font-size' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-size",
+						"expected": "18px"
+					},
+					"message": "Set the font-size to '18px'",
+					"options": {
+						"exact": true
+					}
 				}
 			]
 		},
 		{
-			"id": "basics-8",
-			"title": "CSS Variables: Custom Properties",
-			"description": "CSS variables (custom properties) allow you to store specific values for reuse throughout your stylesheet. They help create consistent designs and make global changes more efficient.",
-			"task": "Create a CSS variable named '--accent-color' with the value '#6200ee' in the root scope, then use it for the text color of the element.",
-			"previewHTML": "<div class='themed-element'>This text should use the accent color</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; }",
-			"sandboxCSS": ".themed-element { padding: 1rem; background-color: #f5f5f5; font-weight: bold; }",
-			"codePrefix": "/* Define and use a CSS variable */\n:root {\n  /* Define your variable here */\n  ",
+			"id": "css-specificity",
+			"title": "CSS Specificity: Understanding Rule Precedence",
+			"description": "CSS specificity determines which styles are applied when multiple conflicting rules target the same element. Specificity follows a hierarchical system: inline styles have the highest specificity, followed by ID selectors, then class/attribute/pseudo-class selectors, and finally element/pseudo-element selectors. The specificity value can be conceptualized as a four-part score (inline, ID, class, element). Understanding specificity is crucial for predictable styling and debugging CSS conflicts.",
+			"task": "Look at the two rules targeting paragraph text. Based on CSS specificity, determine which text color will be applied to the paragraph with class 'highlight' by completing the rule using either '#ff0000' (red) or '#0000ff' (blue).",
+			"previewHTML": "<p class='highlight'>Which color will this paragraph have?</p>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } p { color: #ff0000; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* p elements are set to red in the base CSS */\n/* Now add a more specific rule for paragraphs with class 'highlight' */\n.highlight {",
 			"initialCode": "",
-			"codeSuffix": "\n}\n\n.themed-element {\n  color: var(--accent-color);\n}",
+			"codeSuffix": "\n  color: #0000ff;\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "--accent-color",
-					"message": "Define the '--accent-color' CSS variable",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "#6200ee",
-					"message": "Set the variable value to '#6200ee'",
+					"type": "regex",
+					"value": "^\\s*$",
+					"message": "Just leave this blank - the class selector already has higher specificity than the element selector",
 					"options": {
 						"caseSensitive": false
 					}
 				}
 			]
+		},
+		{
+			"id": "css-layout-display-property",
+			"title": "CSS Layout: The Display Property",
+			"description": "The 'display' property defines how an element behaves in the document flow and in relation to other elements. Common values include 'block', 'inline', 'inline-block', 'flex', 'grid', and 'none'. Block elements start on a new line and take up the full width available, inline elements flow within the text and only take up as much width as necessary, and inline-block elements combine aspects of both. The display property is fundamental to controlling layout in CSS and serves as the foundation for more complex positioning techniques.",
+			"task": "Change the display property of the span element to 'block' to make it behave like a block-level element rather than an inline element. This will make it start on a new line and take up the full width available.",
+			"previewHTML": "<p>This is a paragraph with <span class='block-me'>a span that should become</span> a block element.</p>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .block-me { background-color: #ffeb3b; padding: 5px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Change the display property to make the span a block element */\n.block-me {\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "display",
+					"message": "Use the 'display' property",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "display",
+						"expected": "block"
+					},
+					"message": "Set the display value to 'block'",
+					"options": {
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "css-flexbox-basics",
+			"title": "CSS Flexbox: Container and Items",
+			"description": "Flexbox is a powerful layout model that makes it easier to design flexible responsive layouts. It consists of flex containers and flex items. The container is the parent element with 'display: flex' or 'display: inline-flex' set, while items are the direct children within. Flexbox provides properties for controlling direction, alignment, order, and proportions of items. With flexbox, complex layouts that would require tricky positioning and floats can be achieved with much cleaner and more maintainable code.",
+			"task": "Create a basic flexbox container by adding 'display: flex' to the parent element. Then set flex-direction to 'row' to make the items display horizontally (this is the default behavior, but it's good to specify it explicitly).",
+			"previewHTML": "<div class='flex-container'><div class='flex-item'>Item 1</div><div class='flex-item'>Item 2</div><div class='flex-item'>Item 3</div></div>",
+			"previewBaseCSS": "body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; } .flex-item { background-color: #2196f3; color: white; padding: 15px; margin: 5px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Create a flexbox container with horizontal items */\n.flex-container {\n  /* Add your code below */\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": []
 		}
 	]
 }
