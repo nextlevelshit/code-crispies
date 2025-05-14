@@ -91,8 +91,8 @@
 			"previewHTML": "<div class=\"bg-img\">Image Background</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .bg-img { height: 150px; display: flex; align-items: center; justify-content: center; color: white; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Set background image */\n.bg-img {",
-			"initialCode": "background-image: url('https://via.placeholder.com/300'); background-position: center; background-repeat: no-repeat;",
+			"codePrefix": "/* Set background image */\n\n.bg-img {",
+			"initialCode": "  background-image: url('http://placekitten.com/320/320');\n  background-position: center; background-repeat: no-repeat;\n  ",
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
