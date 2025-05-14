@@ -1,6 +1,6 @@
 {
 	"id": "transitions-animations",
-	"title": "CSS Transitions & Animations",
+	"title": "Transitions & Animations",
 	"description": "Bring interactivity to your UI by smoothly transitioning properties and creating keyframe-driven animations.",
 	"difficulty": "beginner",
 	"lessons": [

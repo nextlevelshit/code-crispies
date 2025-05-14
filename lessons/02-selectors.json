@@ -1,6 +1,6 @@
 {
 	"id": "selectors",
-	"title": "CSS Selectors Deep Dive",
+	"title": "Specificity",
 	"description": "Master the art of targeting HTML elements using various CSS selectors, from basics to specificity rules.",
 	"difficulty": "beginner",
 	"lessons": [
