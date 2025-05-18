@@ -16,16 +16,16 @@ import responsiveConfig from "../../lessons/08-responsive.json";
 
 // Module store
 const moduleStore = [
-	basicSelectorsConfig,
-	basicsConfig,
-	boxModelConfig,
-	selectorsConfig,
-	colorsConfig,
-	typographyConfig,
-	unitVariablesConfig,
-	transitionsAnimationsConfig,
-	layoutConfig,
-	responsiveConfig
+	basicSelectorsConfig
+	// basicsConfig,
+	// boxModelConfig,
+	// selectorsConfig,
+	// colorsConfig,
+	// typographyConfig,
+	// unitVariablesConfig,
+	// transitionsAnimationsConfig,
+	// layoutConfig,
+	// responsiveConfig
 ];
 
 /**
@@ -83,15 +83,6 @@ function validateModuleConfig(config) {
 	config.lessons.forEach((lesson, index) => {
 		if (!lesson.title) throw new Error(`Lesson ${index} missing "title"`);
 		if (!lesson.previewHTML) throw new Error(`Lesson ${index} missing "previewHTML"`);
-
-		// Apply defaults for new properties if they don't exist
-		if (lesson.editorDisplayType === undefined) {
-			lesson.editorDisplayType = "block"; // Default to block display
-		}
-
-		if (lesson.editorDisplayType === "inline" && lesson.inlineInputWidth === undefined) {
-			lesson.inlineInputWidth = "auto"; // Default width for inline input
-		}
 	});
 }
 
@@ -120,36 +111,3 @@ export function addCustomModule(moduleConfig) {
 		return false;
 	}
 }
-
-/**
- * Convert a module to include the enhanced schema with editorDisplayType
- * @param {Object} moduleConfig - The module configuration to convert
- * @returns {Object} The enhanced module configuration
- */
-export function enhanceModuleSchema(moduleConfig) {
-	if (!moduleConfig || !moduleConfig.lessons) return moduleConfig;
-
-	const enhancedModule = {...moduleConfig};
-
-	enhancedModule.lessons = moduleConfig.lessons.map(lesson => {
-		const enhancedLesson = {...lesson};
-
-		// Apply defaults for new properties if they don't exist
-		if (enhancedLesson.editorDisplayType === undefined) {
-			enhancedLesson.editorDisplayType = "block"; // Default to block display
-		}
-
-		if (enhancedLesson.editorDisplayType === "inline" && enhancedLesson.inlineInputWidth === undefined) {
-			enhancedLesson.inlineInputWidth = "auto"; // Default width for inline input
-		}
-
-		return enhancedLesson;
-	});
-
-	return enhancedModule;
-}
-
-// Enhance all modules on load to ensure they have the new schema properties
-moduleStore.forEach((module, index) => {
-	moduleStore[index] = enhanceModuleSchema(module);
-});

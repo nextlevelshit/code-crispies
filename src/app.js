@@ -43,7 +43,7 @@ const lessonEngine = new LessonEngine();
 
 // Load user progress from localStorage
 function loadUserProgress() {
-	const savedProgress = localStorage.getItem("codeCrispiesProgress");
+	const savedProgress = localStorage.getItem("codeCrispies.Progress");
 	if (savedProgress) {
 		state.userProgress = JSON.parse(savedProgress);
 	}
@@ -51,7 +51,7 @@ function loadUserProgress() {
 
 // Save user progress to localStorage
 function saveUserProgress() {
-	localStorage.setItem("codeCrispiesProgress", JSON.stringify(state.userProgress));
+	localStorage.setItem("codeCrispies.Progress", JSON.stringify(state.userProgress));
 }
 
 // Initialize the module list
@@ -61,7 +61,7 @@ async function initializeModules() {
 		renderModuleList(elements.moduleList, state.modules, selectModule);
 
 		// Select the first module or the last one user was on
-		const lastModuleId = localStorage.getItem("lastModuleId");
+		const lastModuleId = localStorage.getItem("codeCrispies.lastModuleId");
 		if (lastModuleId && state.modules.find((m) => m.id === lastModuleId)) {
 			selectModule(lastModuleId);
 		} else if (state.modules.length > 0) {
@@ -145,7 +145,7 @@ function selectModule(moduleId) {
 	loadCurrentLesson();
 
 	// Save the last selected module
-	localStorage.setItem("lastModuleId", moduleId);
+	localStorage.setItem("codeCrispies.lastModuleId", moduleId);
 
 	// Reset any success indicators
 	resetSuccessIndicators();
@@ -161,29 +161,10 @@ function resetSuccessIndicators() {
 
 // Configure editor layout based on display type
 function configureEditorLayout(lesson) {
-	// Default to block display if not specified
-	const displayType = lesson.editorDisplayType || "block";
-
-	// Reset classes
-	elements.codeEditor.classList.remove("inline-editor", "block-editor");
-	elements.editorContent.classList.remove("inline-mode", "block-mode");
-
-	// Apply appropriate layout class
-	if (displayType === "inline") {
-		elements.codeEditor.classList.add("inline-editor");
-		elements.editorContent.classList.add("inline-mode");
-
-		// Add special styling for inline mode
-		elements.codeInput.style.display = "inline-block";
-		elements.codeInput.style.width = lesson.inlineInputWidth || "auto";
-	} else {
-		// Default block mode
-		elements.codeEditor.classList.add("block-editor");
-		elements.editorContent.classList.add("block-mode");
-
-		// Reset styles for block mode
-		elements.codeInput.style.display = "block";
-		elements.codeInput.style.width = "100%";
+	// Remove validation indicator if exists
+	const existingIndicator = elements.codeEditor.querySelector(".validation-success-indicator");
+	if (existingIndicator) {
+		existingIndicator.remove();
 	}
 }
 
@@ -248,10 +229,10 @@ function loadCurrentLesson() {
 let previewTimer = null;
 function setupLivePreview() {
 	// Clear previous event listener if any
-	elements.codeInput.removeEventListener('input', handleUserInput);
+	elements.codeInput.removeEventListener("input", handleUserInput);
 
 	// Add new event listener
-	elements.codeInput.addEventListener('input', handleUserInput);
+	elements.codeInput.addEventListener("input", handleUserInput);
 }
 
 // Handle user input with debounced preview updates
@@ -326,6 +307,12 @@ function runCode() {
 			saveUserProgress();
 			updateModuleSelectorButtonProgress();
 		}
+
+		// Add validation indicator to editor
+		const validationIndicator = document.createElement("div");
+		validationIndicator.className = "validation-success-indicator";
+		validationIndicator.innerHTML = "✓";
+		elements.codeEditor.appendChild(validationIndicator);
 
 		// Show success feedback with visual indicators
 		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
@@ -457,8 +444,8 @@ function resetProgress() {
 
 	document.getElementById("cancel-reset").addEventListener("click", closeModal);
 	document.getElementById("confirm-reset").addEventListener("click", () => {
-		localStorage.removeItem("codeCrispiesProgress");
-		localStorage.removeItem("lastModuleId");
+		localStorage.removeItem("codeCrispies.Progress");
+		localStorage.removeItem("codeCrispies.lastModuleId");
 		state.userProgress = {};
 		closeModal();
 
