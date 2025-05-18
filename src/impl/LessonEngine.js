@@ -11,6 +11,7 @@ export class LessonEngine {
 		this.userCode = "";
 		this.currentModule = null;
 		this.currentLessonIndex = 0;
+		this.lastRenderedCode = ""; // Track last applied code to prevent unnecessary re-renders
 	}
 
 	/**
@@ -32,6 +33,7 @@ export class LessonEngine {
 	setLesson(lesson) {
 		this.currentLesson = lesson;
 		this.userCode = lesson.initialCode || "";
+		this.lastRenderedCode = ""; // Reset last rendered code
 		this.renderPreview();
 	}
 
@@ -73,12 +75,34 @@ export class LessonEngine {
 	/**
 	 * Apply user-written CSS to the preview area
 	 * @param {string} code - User CSS code
+	 * @param {boolean} forceUpdate - Force update the preview even if code hasn't changed
 	 */
-	applyUserCode(code) {
+	applyUserCode(code, forceUpdate = false) {
 		if (!this.currentLesson) return;
 
 		this.userCode = code;
-		this.renderPreview();
+
+		// Only re-render if code changed or forced update
+		if (forceUpdate || this.lastRenderedCode !== code) {
+			this.lastRenderedCode = code;
+			this.renderPreview();
+		}
+	}
+
+	/**
+	 * Get the complete CSS by combining all parts
+	 * @returns {string} The complete CSS
+	 */
+	getCompleteCss() {
+		if (!this.currentLesson) return "";
+
+		const { codePrefix, codeSuffix } = this.currentLesson;
+
+		return `
+			${codePrefix || ""}
+			${this.userCode || ""}
+			${codeSuffix || ""}
+		`;
 	}
 
 	/**
@@ -103,32 +127,35 @@ export class LessonEngine {
 		container.innerHTML = "";
 		container.appendChild(iframe);
 
+		// Get the complete CSS by combining all parts
+		const userCssWithWrapper = this.getCompleteCss();
+
 		// Create the complete CSS by combining base CSS with user code and sandbox CSS
 		const combinedCSS = `
-            /* Base CSS */
-            ${previewBaseCSS || ""}
-            
-            /* User Code */
-            ${this.userCode || ""}
-            
-            /* Sandbox CSS (for visualizing the exercise) */
-            ${sandboxCSS || ""}
-        `;
+			/* Base CSS */
+			${previewBaseCSS || ""}
+			
+			/* User Code */
+			${userCssWithWrapper || ""}
+			
+			/* Sandbox CSS (for visualizing the exercise) */
+			${sandboxCSS || ""}
+		`;
 
 		// Write the content to the iframe
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
 		iframeDoc.write(`
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <style>${combinedCSS}</style>
-                </head>
-                <body>
-                    ${previewHTML || "<div>No preview available</div>"}
-                </body>
-            </html>
-        `);
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<style>${combinedCSS}</style>
+				</head>
+				<body>
+					${previewHTML || "<div>No preview available</div>"}
+				</body>
+			</html>
+		`);
 		iframeDoc.close();
 	}
 
@@ -176,7 +203,7 @@ export class LessonEngine {
 			timestamp: new Date().toISOString()
 		};
 
-		localStorage.setItem("cssQuest_progress", JSON.stringify(progressData));
+		localStorage.setItem("codeCrispies.progress", JSON.stringify(progressData));
 	}
 
 	/**
@@ -185,7 +212,7 @@ export class LessonEngine {
 	 * @returns {Object|null} Loaded progress data or null if not found
 	 */
 	loadProgress(modules) {
-		const savedProgress = localStorage.getItem("cssQuest_progress");
+		const savedProgress = localStorage.getItem("codeCrispies.progress");
 		if (!savedProgress) return null;
 
 		try {
@@ -225,6 +252,6 @@ export class LessonEngine {
 	 * Clear all saved progress
 	 */
 	clearProgress() {
-		localStorage.removeItem("cssQuest_progress");
+		localStorage.removeItem("codeCrispies.progress");
 	}
 }

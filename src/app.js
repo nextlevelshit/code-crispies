@@ -8,7 +8,8 @@ const state = {
 	currentModule: null,
 	currentLessonIndex: 0,
 	modules: [],
-	userProgress: {} // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
+	userProgress: {}, // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
+	userCodeBeforeValidation: "" // Track user code state before validation
 };
 
 // DOM elements
@@ -97,14 +98,14 @@ function updateModuleSelectorButtonProgress() {
 	const progressBar = document.createElement("div");
 	progressBar.className = "progress-indicator";
 	progressBar.style.cssText = `
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 3px;
-        width: ${percentComplete}%;
-        background-color: var(--success-color);
-        border-radius: 0 3px 3px 0;
-    `;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 3px;
+		width: ${percentComplete}%;
+		background-color: var(--success-color);
+		border-radius: 0 3px 3px 0;
+	`;
 
 	// Add progress percentage text
 	elements.moduleSelectorBtn.innerHTML = `Progress <span style="font-size: 0.8em; opacity: 0.8;">${percentComplete}%</span>`;
@@ -158,6 +159,34 @@ function resetSuccessIndicators() {
 	elements.taskInstruction.classList.remove("success-instruction");
 }
 
+// Configure editor layout based on display type
+function configureEditorLayout(lesson) {
+	// Default to block display if not specified
+	const displayType = lesson.editorDisplayType || "block";
+
+	// Reset classes
+	elements.codeEditor.classList.remove("inline-editor", "block-editor");
+	elements.editorContent.classList.remove("inline-mode", "block-mode");
+
+	// Apply appropriate layout class
+	if (displayType === "inline") {
+		elements.codeEditor.classList.add("inline-editor");
+		elements.editorContent.classList.add("inline-mode");
+
+		// Add special styling for inline mode
+		elements.codeInput.style.display = "inline-block";
+		elements.codeInput.style.width = lesson.inlineInputWidth || "auto";
+	} else {
+		// Default block mode
+		elements.codeEditor.classList.add("block-editor");
+		elements.editorContent.classList.add("block-mode");
+
+		// Reset styles for block mode
+		elements.codeInput.style.display = "block";
+		elements.codeInput.style.width = "100%";
+	}
+}
+
 // Load the current lesson
 function loadCurrentLesson() {
 	if (!state.currentModule || !state.currentModule.lessons) {
@@ -189,6 +218,9 @@ function loadCurrentLesson() {
 		lesson
 	);
 
+	// Configure editor layout based on lesson settings
+	configureEditorLayout(lesson);
+
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, state.currentLessonIndex + 1, state.currentModule.lessons.length);
 
@@ -204,6 +236,39 @@ function loadCurrentLesson() {
 
 	// Focus on the code editor by default
 	elements.codeInput.focus();
+
+	// Store current code
+	state.userCodeBeforeValidation = elements.codeInput.value;
+
+	// Track live changes and update preview when the user pauses typing
+	setupLivePreview();
+}
+
+// Setup live preview functionality
+let previewTimer = null;
+function setupLivePreview() {
+	// Clear previous event listener if any
+	elements.codeInput.removeEventListener('input', handleUserInput);
+
+	// Add new event listener
+	elements.codeInput.addEventListener('input', handleUserInput);
+}
+
+// Handle user input with debounced preview updates
+function handleUserInput() {
+	// Clear the previous timer
+	if (previewTimer) {
+		clearTimeout(previewTimer);
+	}
+
+	// Set a new timer for preview update after user stops typing
+	previewTimer = setTimeout(() => {
+		// Apply the code for preview without validation
+		lessonEngine.applyUserCode(elements.codeInput.value);
+	}, 500); // Update preview 500ms after user stops typing
+
+	// Store current code state
+	state.userCodeBeforeValidation = elements.codeInput.value;
 }
 
 // Update navigation buttons state
@@ -248,6 +313,9 @@ function runCode() {
 	const userCode = elements.codeInput.value;
 	const lesson = state.currentModule.lessons[state.currentLessonIndex];
 
+	// Always apply the code to the preview, regardless of validation result
+	lessonEngine.applyUserCode(userCode, true);
+
 	const validationResult = validateUserCode(userCode, lesson);
 
 	if (validationResult.isValid) {
@@ -267,9 +335,6 @@ function runCode() {
 		elements.lessonTitle.classList.add("success-text");
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
-
-		// Apply the code to see the result
-		lessonEngine.applyUserCode(userCode);
 
 		// Enable the next button if not already on the last lesson
 		if (state.currentLessonIndex < state.currentModule.lessons.length - 1) {
@@ -306,17 +371,17 @@ function showModuleSelector() {
 		const percentComplete = Math.round((completedCount / totalLessons) * 100);
 
 		button.innerHTML = `
-      <strong>${module.title}</strong>
-      <div style="margin-top: 5px; font-size: 0.8rem; color: var(--light-text);">
-        ${module.description}
-      </div>
-      <div style="margin-top: 8px; height: 6px; background-color: #f0f0f0; border-radius: 3px;">
-        <div style="height: 100%; width: ${percentComplete}%; background-color: var(--primary-color); border-radius: 3px;"></div>
-      </div>
-      <div style="margin-top: 5px; font-size: 0.8rem; text-align: right;">
-        ${completedCount}/${totalLessons} lessons completed
-      </div>
-    `;
+			<strong>${module.title}</strong>
+			<div style="margin-top: 5px; font-size: 0.8rem; color: var(--light-text);">
+				${module.description}
+			</div>
+			<div style="margin-top: 8px; height: 6px; background-color: #f0f0f0; border-radius: 3px;">
+				<div style="height: 100%; width: ${percentComplete}%; background-color: var(--primary-color); border-radius: 3px;"></div>
+			</div>
+			<div style="margin-top: 5px; font-size: 0.8rem; text-align: right;">
+				${completedCount}/${totalLessons} lessons completed
+			</div>
+		`;
 
 		button.addEventListener("click", () => {
 			selectModule(module.id);
@@ -341,38 +406,39 @@ function showHelp() {
 	elements.modalTitle.textContent = "Help";
 
 	elements.modalContent.innerHTML = `
-    <h3>How to Use Code Crispies</h3>
-    <p>Code Crispies is an interactive platform for learning CSS through practical exercises.</p>
-    
-    <h4>Getting Started</h4>
-    <p>Select a module from the sidebar to start learning. Each module contains a series of lessons focused on specific CSS concepts.</p>
-    
-    <h4>Completing Lessons</h4>
-    <p>For each lesson:</p>
-    <ol>
-      <li>Read the instructions and objective</li>
-      <li>Write your CSS code in the editor</li>
-      <li>Click "Run" to test your solution</li>
-      <li>If correct, you can proceed to the next lesson</li>
-    </ol>
-    
-    <h4>Controls</h4>
-    <ul>
-      <li><strong>Run</strong> - Test your CSS code</li>
-      <li><strong>Previous/Next</strong> - Navigate between lessons</li>
-      <li><strong>Progress</strong> - Select a different learning module</li>
-      <li><strong>Reset Progress</strong> - Clear all your saved progress</li>
-    </ul>
-    
-    <h4>Tips</h4>
-    <ul>
-      <li>Use the preview area to see how your CSS affects the elements</li>
-      <li>Your progress is automatically saved in your browser storage</li>
-      <li>You can revisit completed lessons at any time</li>
-      <li>Press Tab in the code editor to indent with two spaces</li>
-      <li>Use Ctrl+Enter to quickly run your code</li>
-    </ul>
-  `;
+		<h3>How to Use Code Crispies</h3>
+		<p>Code Crispies is an interactive platform for learning CSS through practical exercises.</p>
+		
+		<h4>Getting Started</h4>
+		<p>Select a module from the sidebar to start learning. Each module contains a series of lessons focused on specific CSS concepts.</p>
+		
+		<h4>Completing Lessons</h4>
+		<p>For each lesson:</p>
+		<ol>
+			<li>Read the instructions and objective</li>
+			<li>Write your CSS code in the editor</li>
+			<li>Click "Run" to test your solution</li>
+			<li>If correct, you can proceed to the next lesson</li>
+		</ol>
+		
+		<h4>Controls</h4>
+		<ul>
+			<li><strong>Run</strong> - Test your CSS code and apply it to the preview</li>
+			<li><strong>Previous/Next</strong> - Navigate between lessons</li>
+			<li><strong>Progress</strong> - Select a different learning module</li>
+			<li><strong>Reset Progress</strong> - Clear all your saved progress</li>
+		</ul>
+		
+		<h4>Tips</h4>
+		<ul>
+			<li>Your code changes will automatically preview as you type</li>
+			<li>The preview area shows how your CSS affects the elements</li>
+			<li>Your progress is automatically saved in your browser storage</li>
+			<li>You can revisit completed lessons at any time</li>
+			<li>Press Tab in the code editor to indent with two spaces</li>
+			<li>Use Ctrl+Enter to quickly run your code</li>
+		</ul>
+	`;
 
 	elements.modalContainer.classList.remove("hidden");
 }
@@ -382,12 +448,12 @@ function resetProgress() {
 	elements.modalTitle.textContent = "Reset Progress";
 
 	elements.modalContent.innerHTML = `
-    <p>Are you sure you want to reset all your progress? This cannot be undone.</p>
-    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
-      <button id="cancel-reset" class="btn">Cancel</button>
-      <button id="confirm-reset" class="btn btn-primary">Reset Progress</button>
-    </div>
-  `;
+		<p>Are you sure you want to reset all your progress? This cannot be undone.</p>
+		<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+			<button id="cancel-reset" class="btn">Cancel</button>
+			<button id="confirm-reset" class="btn btn-primary">Reset Progress</button>
+		</div>
+	`;
 
 	document.getElementById("cancel-reset").addEventListener("click", closeModal);
 	document.getElementById("confirm-reset").addEventListener("click", () => {
