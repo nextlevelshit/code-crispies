@@ -4,6 +4,7 @@
 
 // Feedback elements cache
 let feedbackElement = null;
+let feedbackTimeout = null;
 
 /**
  * Render the module list in the sidebar
@@ -105,12 +106,7 @@ export function showFeedback(isSuccess, message) {
 	}
 
 	if (!isSuccess) {
-		setTimeout(() => {
-			if (feedbackElement && feedbackElement.parentNode) {
-				feedbackElement.parentNode.removeChild(feedbackElement);
-			}
-			feedbackElement = null;
-		}, 5_000); // Remove feedback after 3 seconds
+		feedbackTimeout = setTimeout(clearFeedback, 3_000);
 	}
 }
 
@@ -118,6 +114,10 @@ export function showFeedback(isSuccess, message) {
  * Clear any existing feedback
  */
 export function clearFeedback() {
+	if (feedbackTimeout) {
+		clearInterval(feedbackTimeout);
+	}
+
 	if (feedbackElement && feedbackElement.parentNode) {
 		feedbackElement.parentNode.removeChild(feedbackElement);
 	}
