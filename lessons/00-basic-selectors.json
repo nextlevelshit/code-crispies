@@ -1,14 +1,14 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
-	"title": "CSS Basic Selectors",
+	"title": "Basic Selectors",
 	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector. You'll learn how to precisely target elements both individually and in groups, create selector lists for efficiency, and understand how specificity affects your styles. Through these lessons, you'll develop the core skills needed to apply CSS effectively across your web projects.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "introduction-to-selectors",
 			"title": "What is a CSS Selector?",
-			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations. For example, to change the text color of elements, you can use the color property within your declaration block. Mastering different selector types gives you precise control over your web page styling.",
+			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations. For example, to change the text color of elements, you can use the color property within your declaration block. Mastering different selector types gives you precise control over your web page styling.<br><br><pre>/* Element selector */\np {\n  color: orangered;\n  /* │       └─── Indicates the value of the expression\n     │                                                     \n     └─────────── Indicates the property of the expression */\n}</pre>",
 			"task": "Write a CSS rule using a type selector that targets all paragraph elements (p) in the document. Make the text blue by setting the color property to blue.",
 			"previewHTML": "<h1>Introduction to CSS Selectors</h1>\n<p>This paragraph should turn blue.</p>\n<div>This div element should remain unchanged.</div>\n<p>This second paragraph should also turn blue.</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -21,7 +21,7 @@
 				{
 					"type": "regex",
 					"value": "^p\\s*{",
-					"message": "Start your rule with 'p' to select all paragraph elements",
+					"message": "Start your rule with <kbd>p { … }</kbd> to select all paragraph elements",
 					"options": {
 						"caseSensitive": false
 					}
@@ -29,22 +29,22 @@
 				{
 					"type": "contains",
 					"value": "color:",
-					"message": "Include the 'color' property in your CSS rule"
+					"message": "Include the <kbd>color:</kbd> property in your CSS rule"
 				},
 				{
 					"type": "contains",
 					"value": "blue",
-					"message": "Set the color value to 'blue'"
+					"message": "Set the color value to <kbd>blue</kbd>"
 				},
 				{
 					"type": "regex",
 					"value": "color:\\s*blue",
-					"message": "Use 'color: blue' to set the text color"
+					"message": "Use <kbd>color: blue</kbd> to set the text color"
 				},
 				{
 					"type": "regex",
 					"value": "p\\s*{[^}]*}",
-					"message": "Make sure to close your CSS rule with a closing brace '}'",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
 					"options": {
 						"caseSensitive": false
 					}
@@ -60,33 +60,41 @@
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
 			"sandboxCSS": "h2, p, span, strong { padding: 3px; }",
 			"codePrefix": "/* Write three separate type selectors below */\n\n",
-			"initialCode": "/* 1. Make h2 headings purple */\n\n/* 2. Give span elements a yellow background */\n\n/* 3. Make strong elements red */\n",
+			"initialCode": "/* 1. Make h2 headings purple */\n\n\n/* 2. Give span elements a yellow background */\n\n\n/* 3. Make strong elements red */\n",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
 			"solution": "/* 1. Make h2 headings purple */\nh2 {\n  color: purple;\n}\n\n/* 2. Give span elements a yellow background */\nspan {\n  background-color: yellow;\n}\n\n/* 3. Make strong elements red */\nstrong {\n  color: red;\n}",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "h2",
-					"message": "Include an h2 selector"
+					"type": "regex",
+					"value": "^h2\\s*{",
+					"message": "Include an <kbd>h2 { … }</kbd> selector"
 				},
 				{
 					"type": "regex",
 					"value": "h2\\s*{[^}]*color:\\s*purple",
-					"message": "Set the color property to purple for h2 elements",
+					"message": "Set the <kbd>color:</kbd> property to <kbd>purple</kbd> for h2 elements",
 					"options": {
 						"caseSensitive": false
 					}
 				},
 				{
-					"type": "contains",
-					"value": "span",
-					"message": "Include a span selector"
+					"type": "regex",
+					"value": "h2\\s*{[^}]*color:\\s*purple[^}]*}",
+					"message": "… and close the expression with a <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "^span\\s*{",
+					"message": "Include a <kbd>span { … }</kbd> selector"
 				},
 				{
 					"type": "regex",
 					"value": "span\\s*{[^}]*background(-color)?:\\s*yellow",
-					"message": "Set a yellow background for span elements using background-color",
+					"message": "Set a yellow background for span elements using <kbd>background-color</kbd> or <kbd>background</kbd>",
 					"options": {
 						"caseSensitive": false
 					}
@@ -189,12 +197,12 @@
 				{
 					"type": "contains",
 					"value": "border-color:",
-					"message": "Include the 'border-color' property"
+					"message": "Include the <kbd>border-color</kbd> property"
 				},
 				{
 					"type": "contains",
 					"value": "gold",
-					"message": "Set the border color to 'gold'"
+					"message": "Set the border color to <kbd>gold</kbd>"
 				},
 				{
 					"type": "regex",
