@@ -8,7 +8,7 @@
 		{
 			"id": "introduction-to-selectors",
 			"title": "What is a CSS Selector?",
-			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations. For example, to change the text color of elements, you can use the color property within your declaration block. Mastering different selector types gives you precise control over your web page styling.<br><br><pre>/* Element selector */\np {\n  color: orangered;\n  /* │       └─── Indicates the value of the expression\n     │                                                     \n     └─────────── Indicates the property of the expression */\n}</pre>",
+			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations.<br/>For example, to change the text color of elements, you can use the <kbd>color</kbd> property within your declaration block.<br><br><pre>/* Element selector */\np {\n  color: orangered;\n  /* │       └─── Indicates the value of the expression\n     │                                                     \n     └─────────── Indicates the property of the expression */\n}</pre>",
 			"task": "Write a CSS rule using a type selector that targets all paragraph elements (p) in the document. Make the text blue by setting the color property to blue.",
 			"previewHTML": "<h1>Introduction to CSS Selectors</h1>\n<p>This paragraph should turn blue.</p>\n<div>This div element should remain unchanged.</div>\n<p>This second paragraph should also turn blue.</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -115,6 +115,7 @@
 			]
 		},
 		{
+			"__comment": "NOTE: Needs rework, consider type property for validation ",
 			"id": "class-selectors",
 			"title": "Class Selectors: Styling Element Groups",
 			"description": "Class selectors target elements with a specific class attribute value. They begin with a dot (.) followed by the class name. Classes are powerful because they allow you to apply the same styles to multiple elements regardless of their type. An HTML element can have multiple classes (separated by spaces in the class attribute), and a class can be applied to any number of elements. When using class selectors, you can apply properties like background-color to set the background color of elements, and font-weight to control text thickness, making text bold or normal. This flexibility makes class selectors one of the most commonly used methods for applying styles in CSS, allowing for modular and reusable styling across your website.",
@@ -130,7 +131,7 @@
 				{
 					"type": "regex",
 					"value": "^\\.highlight\\s*{",
-					"message": "Start your rule with '.highlight' to create a class selector",
+					"message": "Start your rule with <kbd>.highlight { … }</kbd> to create a class selector",
 					"options": {
 						"caseSensitive": true
 					}
@@ -138,35 +139,43 @@
 				{
 					"type": "contains",
 					"value": "background-color:",
-					"message": "Include the 'background-color' property"
+					"message": "Include the <kbd>background-color:</kbd> property"
 				},
 				{
 					"type": "contains",
 					"value": "yellow",
-					"message": "Set the background color to 'yellow'"
+					"message": "Set the background color to <kbd>yellow</kbd>"
 				},
 				{
 					"type": "regex",
 					"value": "background(-color)?:\\s*yellow",
-					"message": "Use 'background-color: yellow' to set the background color",
+					"message": "Use <kbd>background-color: yellow</kbd> to set the background color",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
+					"type": "regex",
+					"value": "background(-color)?:\\s*yellow[^}]*}",
+					"message": "… and close the expression with <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
 					"type": "contains",
 					"value": "font-weight:",
-					"message": "Include the 'font-weight' property"
+					"message": "Include the <kbd>font-weight:</kbd> property"
 				},
 				{
 					"type": "contains",
 					"value": "bold",
-					"message": "Set the font-weight to 'bold'"
+					"message": "Set the font-weight to <kbd>bold</kbd>"
 				},
 				{
 					"type": "regex",
 					"value": "font-weight:\\s*bold",
-					"message": "Use 'font-weight: bold' to make the text bold",
+					"message": "Use <kbd>font-weight: bold</kbd> to make the text bold",
 					"options": {
 						"caseSensitive": true
 					}
@@ -248,7 +257,7 @@
 				{
 					"type": "regex",
 					"value": "^span\\.highlight\\s*{",
-					"message": "Use 'span.highlight' selector (no space between element and class)",
+					"message": "Use <kbd>span.highlight<kbd> selector (no space between element and class)",
 					"options": {
 						"caseSensitive": true
 					}
@@ -392,7 +401,7 @@
 		{
 			"id": "selector-lists",
 			"title": "Selector Lists: Applying the Same Rules to Multiple Selectors",
-			"description": "When multiple elements need the same styling, you can group them together using a selector list (also known as grouping selectors). Selector lists are created by separating individual selectors with commas. This approach reduces repetition in your CSS, making it more maintainable and efficient. For example, 'h1, h2, h3 { color: blue; }' applies the same blue color to all three heading levels. When styling multiple selectors at once, you can apply properties like background-color to set the background, border-left to create a left border with a specific thickness, style, and color, and padding-left to create space between the content and the left border. Whitespace around commas is optional, and each selector in the list can be any valid selector type—elements, classes, IDs, or even more complex selectors.",
+			"description": "When multiple elements need the same styling, you can group them together using a selector list (also known as grouping selectors). Selector lists are created by separating individual selectors with commas. This approach reduces repetition in your CSS, making it more maintainable and efficient. For example, 'h1, h2, h3 { color: blue; }' applies the same blue color to all three heading levels. When styling multiple selectors at once, you can apply properties like background-color to set the background, border-left to create a left border with a specific thickness, style, and color, and padding-left to create space between the content and the left border. Whitespace around commas is optional, and each selector in the list can be any valid selector type-elements, classes, IDs, or even more complex selectors.",
 			"task": "Create a selector list that applies the same styles to three different elements: paragraphs with class 'note', list items with class 'important', and the element with ID 'summary'. Give them a lightyellow background, a gold left border, and some left padding.",
 			"previewHTML": "<p class=\"note\">This is a note paragraph.</p>\n<ul>\n  <li>Regular list item</li>\n  <li class=\"important\">Important list item</li>\n</ul>\n<div id=\"summary\">Summary section</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
