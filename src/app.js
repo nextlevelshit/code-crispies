@@ -132,9 +132,9 @@ function updateModuleSelectorButtonProgress() {
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		height: 2px;
+		height: 3px;
 		width: ${percentComplete}%;
-		background-color: var(--primary-color);
+		background-color: var(--primary-light);
 		border-radius: 0 3px 3px 0;
 	`;
 
