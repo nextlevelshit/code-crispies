@@ -299,6 +299,38 @@ function runCode() {
 
 	const validationResult = validateUserCode(userCode, lesson);
 
+	// Remove any existing validation indicators before adding new ones
+	const existingIndicators = elements.codeEditor.querySelectorAll(".validation-success-indicator");
+	existingIndicators.forEach((indicator) => indicator.remove());
+
+	// Add validation indicators based on validCases count if available
+	if (validationResult.validCases) {
+		const casesCount =
+			typeof validationResult.validCases === "number"
+				? validationResult.validCases
+				: Array.isArray(validationResult.validCases)
+					? validationResult.validCases.length
+					: 1;
+
+		// Create a container for indicators if it doesn't exist
+		let indicatorContainer = elements.codeEditor.querySelector(".validation-indicators-container");
+		if (!indicatorContainer) {
+			indicatorContainer = document.createElement("div");
+			indicatorContainer.className = "validation-indicators-container";
+			elements.codeEditor.appendChild(indicatorContainer);
+		} else {
+			indicatorContainer.innerHTML = "";
+		}
+
+		// Add the appropriate number of checkmarks
+		for (let i = 0; i < casesCount; i++) {
+			const validationIndicator = document.createElement("div");
+			validationIndicator.className = "validation-success-indicator";
+			validationIndicator.innerHTML = "✓";
+			indicatorContainer.appendChild(validationIndicator);
+		}
+	}
+
 	if (validationResult.isValid) {
 		// Mark lesson as completed
 		const moduleProgress = state.userProgress[state.currentModule.id];
@@ -307,12 +339,6 @@ function runCode() {
 			saveUserProgress();
 			updateModuleSelectorButtonProgress();
 		}
-
-		// Add validation indicator to editor
-		const validationIndicator = document.createElement("div");
-		validationIndicator.className = "validation-success-indicator";
-		validationIndicator.innerHTML = "✓";
-		elements.codeEditor.appendChild(validationIndicator);
 
 		// Show success feedback with visual indicators
 		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
