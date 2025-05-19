@@ -11,6 +11,7 @@
 
 	/* Text colors */
 	--text-color: #333333;
+	--dark-text: #111111;
 	--light-text: #666666;
 	--editor-text: #d4d4d4;
 	--white-text: #ffffff;
@@ -233,7 +234,8 @@ code {
 	color: var(--text-color);
 	line-height: 1.7;
 	font-size: 1.1rem;
-	width: 72%;
+	margin-bottom: 2rem;
+	width: 86%;
 }
 
 .lesson-description pre {
@@ -249,8 +251,8 @@ code {
 
 .lesson-description kbd {
 	font-family: var(--font-code);
-	background-color: var(--code-bg);
-	color: var(--text-color);
+	background-color: var(--primary-bg-medium);
+	color: var(--dark-text);
 	border-radius: var(--border-radius-sm);
 	padding: calc(var(--spacing-xs) / 2);
 	font-size: 0.9rem;
@@ -273,7 +275,7 @@ code {
 
 	.preview-area,
 	.editor-container {
-		width: 48%;
+		width: 50%;
 	}
 }
 
@@ -298,8 +300,19 @@ code {
 .task-instruction {
 	background-color: var(--primary-bg-instruction);
 	border-left: var(--border-accent) solid var(--primary-color);
-	padding: var(--spacing-md);
+	padding: var(--spacing-sm);
 	border-radius: var(--border-radius-sm);
+	line-height: 1.8;
+}
+
+.task-instruction kbd {
+	font-family: var(--font-code);
+	background-color: var(--primary-bg-medium);
+	color: var(--dark-text);
+	border-radius: var(--border-radius-sm);
+	padding: calc(var(--spacing-xs) / 2);
+	font-size: 0.9rem;
+	letter-spacing: -0.75px;
 }
 
 .code-editor {
