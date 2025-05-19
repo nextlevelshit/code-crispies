@@ -17,10 +17,10 @@ import responsiveConfig from "../../lessons/08-responsive.json";
 // Module store
 const moduleStore = [
 	// basicsConfig,
-	basicSelectorsConfig
-	// boxModelConfig,
-	// selectorsConfig,
-	// colorsConfig,
+	basicSelectorsConfig,
+	boxModelConfig,
+	selectorsConfig,
+	colorsConfig
 	// typographyConfig,
 	// unitVariablesConfig,
 	// transitionsAnimationsConfig,
