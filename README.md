@@ -1,5 +1,4 @@
-![Code Crispies Logo](./public/bar_1680535.png)
-
+![Code Crispies Logo](./public/android-chrome-192x192.png)
 # Code Crispies
 
 An interactive platform for learning CSS through practical challenges.
