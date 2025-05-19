@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "colors-backgrounds",
-	"title": "Colors & Backgrounds",
+	"title": "WIP: Colors & Backgrounds",
 	"description": "Learn how to apply and manipulate colors, backgrounds, and graphical fills using CSS properties.",
 	"difficulty": "beginner",
 	"lessons": [

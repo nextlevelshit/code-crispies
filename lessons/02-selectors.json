@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "selectors",
-	"title": "Specificity",
+	"title": "WIP: Specificity",
 	"description": "Master the art of targeting HTML elements using various CSS selectors, from basics to specificity rules.",
 	"difficulty": "beginner",
 	"lessons": [
