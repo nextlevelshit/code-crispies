@@ -1,5 +1,5 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
-import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback } from "./helpers/renderer.js";
+import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { validateUserCode } from "./helpers/validator.js";
 import { loadModules } from "./config/lessons.js";
 
@@ -89,7 +89,9 @@ function initFeedbackToggle() {
 async function initializeModules() {
 	try {
 		state.modules = await loadModules();
-		renderModuleList(elements.moduleList, state.modules, selectModule);
+
+		// Use the new renderModuleList function with both callbacks
+		renderModuleList(elements.moduleList, state.modules, selectModule, selectLesson);
 
 		// Select the first module or the last one user was on
 		const lastModuleId = localStorage.getItem("codeCrispies.lastModuleId");
@@ -158,8 +160,8 @@ function selectModule(moduleId) {
 
 	state.currentModule = selectedModule;
 
-	// Update module list UI
-	const moduleItems = elements.moduleList.querySelectorAll(".module-list-item");
+	// Update module list UI to highlight the active module
+	const moduleItems = elements.moduleList.querySelectorAll(".module-header");
 	moduleItems.forEach((item) => {
 		item.classList.remove("active");
 		if (item.dataset.moduleId === moduleId) {
@@ -180,6 +182,23 @@ function selectModule(moduleId) {
 
 	// Reset any success indicators
 	resetSuccessIndicators();
+}
+
+function selectLesson(moduleId, lessonIndex) {
+	// Select the module first if it's not already selected
+	if (!state.currentModule || state.currentModule.id !== moduleId) {
+		selectModule(moduleId);
+	}
+
+	// Update current lesson index
+	state.currentLessonIndex = lessonIndex;
+
+	// Update user progress
+	state.userProgress[moduleId].current = lessonIndex;
+	saveUserProgress();
+
+	// Load the lesson
+	loadCurrentLesson();
 }
 
 // Reset success indicators
@@ -254,6 +273,9 @@ function loadCurrentLesson() {
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, state.currentLessonIndex + 1, state.currentModule.lessons.length);
+
+	// Update active lesson in sidebar
+	updateActiveLessonInSidebar(state.currentModule.id, state.currentLessonIndex);
 
 	// Update navigation buttons
 	updateNavigationButtons();
