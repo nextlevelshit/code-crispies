@@ -158,6 +158,7 @@ function resetSuccessIndicators() {
 	elements.lessonTitle.classList.remove("success-text");
 	elements.nextBtn.classList.remove("success");
 	elements.taskInstruction.classList.remove("success-instruction");
+	elements.runBtn.classList.remove("re-run");
 }
 
 // Configure editor layout based on display type
@@ -198,6 +199,28 @@ function loadCurrentLesson() {
 
 	// Configure editor layout based on lesson settings
 	resetEditorLayout(lesson);
+
+	// Update Run button text based on completion status
+	const moduleProgress = state.userProgress[state.currentModule.id];
+	if (moduleProgress && moduleProgress.completed.includes(state.currentLessonIndex)) {
+		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
+
+		// Add completion badge next to title if not already present
+		if (!document.querySelector(".completion-badge")) {
+			const badge = document.createElement("span");
+			badge.className = "completion-badge";
+			badge.textContent = "Completed";
+			elements.lessonTitle.appendChild(badge);
+		}
+	} else {
+		elements.runBtn.innerHTML = '<img src="./gear.svg" />Run';
+
+		// Remove completion badge if exists
+		const badge = document.querySelector(".completion-badge");
+		if (badge) {
+			badge.remove();
+		}
+	}
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, state.currentLessonIndex + 1, state.currentModule.lessons.length);
@@ -242,8 +265,9 @@ function handleUserInput() {
 	// Set a new timer for preview update after user stops typing
 	previewTimer = setTimeout(() => {
 		// Apply the code for preview without validation
-		lessonEngine.applyUserCode(elements.codeInput.value);
-	}, 500); // Update preview 500ms after user stops typing
+		// lessonEngine.applyUserCode(elements.codeInput.value);
+		runCode();
+	}, 800); // Update preview 500ms after user stops typing
 
 	// Store current code state
 	state.userCodeBeforeValidation = elements.codeInput.value;
@@ -319,6 +343,18 @@ function runCode() {
 
 		// Show success feedback with visual indicators
 		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
+
+		// Add this block to update the Run button to Re-run
+		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
+		elements.runBtn.classList.add("re-run");
+
+		// Add completion badge if not present
+		if (!document.querySelector(".completion-badge")) {
+			const badge = document.createElement("span");
+			badge.className = "completion-badge";
+			badge.textContent = "Completed";
+			elements.lessonTitle.appendChild(badge);
+		}
 
 		// Add success visual indicators
 		elements.codeEditor.classList.add("success-highlight");
