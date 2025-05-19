@@ -19,50 +19,82 @@ export function validateUserCode(userCode, lesson) {
 	// Default validation result
 	let result = {
 		isValid: true,
+		validCases: 0,
 		message: "Your code looks good!"
 	};
 
 	// Process each validation rule
 	for (const validation of validations) {
 		const { type, value, message, options } = validation;
+		let validationPassed = false;
 
 		switch (type) {
 			case "contains":
-				if (!containsValidation(userCode, value, options)) {
-					return { isValid: false, message: message || `Your code should include "${value}".` };
+				validationPassed = containsValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						isValid: false,
+						validCases: result.validCases,
+						message: message || `Your code should include "${value}".`
+					};
 				}
 				break;
 
 			case "not_contains":
-				if (containsValidation(userCode, value, options)) {
-					return { isValid: false, message: message || `Your code should not include "${value}".` };
+				validationPassed = !containsValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						isValid: false,
+						validCases: result.validCases,
+						message: message || `Your code should not include "${value}".`
+					};
 				}
 				break;
 
 			case "regex":
-				if (!regexValidation(userCode, value, options)) {
-					return { isValid: false, message: message || "Your code does not match the expected pattern." };
+				validationPassed = regexValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						isValid: false,
+						validCases: result.validCases,
+						message: message || "Your code does not match the expected pattern."
+					};
 				}
 				break;
 
 			case "property_value":
-				if (!propertyValueValidation(userCode, value, options)) {
-					return { isValid: false, message: message || `The "${value.property}" property should be set to "${value.expected}".` };
+				validationPassed = propertyValueValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						isValid: false,
+						validCases: result.validCases,
+						message: message || `The "${value.property}" property should be set to "${value.expected}".`
+					};
 				}
 				break;
 
 			case "syntax":
 				const syntaxResult = syntaxValidation(userCode);
-				if (!syntaxResult.isValid) {
-					return { isValid: false, message: message || `CSS syntax error: ${syntaxResult.error}` };
+				validationPassed = syntaxResult.isValid;
+				if (!validationPassed) {
+					result = {
+						isValid: false,
+						validCases: result.validCases,
+						message: message || `CSS syntax error: ${syntaxResult.error}`
+					};
 				}
 				break;
 
 			case "custom":
 				if (validation.validator && typeof validation.validator === "function") {
 					const customResult = validation.validator(userCode);
-					if (!customResult.isValid) {
-						return { isValid: false, message: customResult.message || message || "Your code does not meet the requirements." };
+					validationPassed = customResult.isValid;
+					if (!validationPassed) {
+						result = {
+							isValid: false,
+							validCases: result.validCases,
+							message: customResult.message || message || "Your code does not meet the requirements."
+						};
 					}
 				}
 				break;
@@ -71,10 +103,22 @@ export function validateUserCode(userCode, lesson) {
 
 			default:
 				console.warn(`Unknown validation type: ${type}`);
+				continue; // Skip counting this validation
+		}
+
+		// Count valid cases
+		if (validationPassed) {
+			result.validCases++;
+		}
+
+		// Return early if validation failed
+		if (!validationPassed) {
+			return result;
 		}
 	}
 
-	// If we've passed all validations, return success
+	// If we've passed all validations, return success with all cases passed
+	result.validCases = validations.length;
 	return result;
 }
 

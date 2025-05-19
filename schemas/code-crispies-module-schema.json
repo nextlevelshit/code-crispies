@@ -97,7 +97,7 @@
 			  "properties": {
 				"type": {
 				  "type": "string",
-				  "enum": ["contains", "regex", "property_value"],
+				  "enum": ["contains", "not_contains", "regex", "property_value", "syntax", "custom"],
 				  "description": "Type of validation to perform"
 				},
 				"value": {
