@@ -315,6 +315,11 @@ function runCode() {
 	const userCode = elements.codeInput.value;
 	const lesson = state.currentModule.lessons[state.currentLessonIndex];
 
+	// Rotate the Run button icon
+	const runButtonImg = document.querySelector("#run-btn img");
+	const runButtonRotationDegree = Number(runButtonImg.style.transform.match(/\d+/)?.pop() ?? 0);
+	document.querySelector("#run-btn img").style.transform = `rotate(${runButtonRotationDegree + 180}deg)`;
+
 	// Always apply the code to the preview, regardless of validation result
 	lessonEngine.applyUserCode(userCode, true);
 
@@ -329,7 +334,7 @@ function runCode() {
 					? validationResult.validCases.length
 					: 1;
 
-		elements.validationIndicators.innerHTML = `${validationResult.validCases} / ${validationResult.totalCases}`;
+		elements.validationIndicators.innerHTML = `${Math.round((validationResult.validCases / validationResult.totalCases) * 100)}%`;
 	}
 
 	if (validationResult.isValid) {
