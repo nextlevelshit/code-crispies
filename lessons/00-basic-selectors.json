@@ -8,7 +8,7 @@
 		{
 			"id": "introduction-to-selectors",
 			"title": "What is a CSS Selector?",
-			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' Mastering different selector types gives you precise control over your web page styling.",
+			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations. For example, to change the text color of elements, you can use the color property within your declaration block. Mastering different selector types gives you precise control over your web page styling.",
 			"task": "Write a CSS rule using a type selector that targets all paragraph elements (p) in the document. Make the text blue by setting the color property to blue.",
 			"previewHTML": "<h1>Introduction to CSS Selectors</h1>\n<p>This paragraph should turn blue.</p>\n<div>This div element should remain unchanged.</div>\n<p>This second paragraph should also turn blue.</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -20,24 +20,31 @@
 			"validations": [
 				{
 					"type": "regex",
-					"value": "p",
-					"message": "Create a rule that targets all paragraph elements with 'p'",
+					"value": "^p\\s*{",
+					"message": "Start your rule with 'p' to select all paragraph elements",
 					"options": {
 						"caseSensitive": false
 					}
 				},
 				{
-					"type": "regex",
-					"value": "p\\s*{[^}]*color:[^}]*}",
-					"message": "Create a rule that targets all paragraph elements with 'p' and sets their color",
-					"options": {
-						"caseSensitive": false
-					}
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the 'color' property in your CSS rule"
+				},
+				{
+					"type": "contains",
+					"value": "blue",
+					"message": "Set the color value to 'blue'"
 				},
 				{
 					"type": "regex",
-					"value": "p\\s*{[^}]*color:\\s*blue;?[^}]*}",
-					"message": "Create a rule that targets all paragraph elements with 'p' and sets their color to blue",
+					"value": "color:\\s*blue",
+					"message": "Use 'color: blue' to set the text color"
+				},
+				{
+					"type": "regex",
+					"value": "p\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace '}'",
 					"options": {
 						"caseSensitive": false
 					}
@@ -47,36 +54,52 @@
 		{
 			"id": "type-selectors",
 			"title": "Type Selectors: Targeting HTML Elements",
-			"description": "Type selectors (also called tag name selectors or element selectors) target HTML elements based on their tag name. For example, 'p' selects all paragraph elements, 'h1' selects all level-one headings, and 'div' selects all division elements. Type selectors are the most fundamental way to select elements, applying styles consistently to all instances of a particular HTML element throughout your document. They provide a broad brush for styling your page and are often the starting point for more specific styling using other selector types.",
+			"description": "Type selectors (also called tag name selectors or element selectors) target HTML elements based on their tag name. For example, 'p' selects all paragraph elements, 'h1' selects all level-one headings, and 'div' selects all division elements. Type selectors are the most fundamental way to select elements, applying styles consistently to all instances of a particular HTML element throughout your document. You can define a variety of CSS properties with type selectors, such as color for text color, background-color for the background, and font-weight for text emphasis. They provide a broad approach for styling your page and are often the starting point for more specific styling using other selector types.",
 			"task": "Write three separate CSS rules using type selectors to target specific HTML elements: make h2 headings purple, give span elements a yellow background, and make strong elements red.",
 			"previewHTML": "<h2>Type Selectors Example</h2>\n<p>Regular paragraph text <span>with a highlighted span</span> that should have a yellow background.</p>\n<p>Another paragraph with <strong>strong important text</strong> that should be red.</p>\n<h2>Another Heading</h2>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
 			"sandboxCSS": "h2, p, span, strong { padding: 3px; }",
-			"codePrefix": "/* Write three separate type selectors below */\n\n/* 1. Make h2 headings purple */\n",
-			"initialCode": "",
+			"codePrefix": "/* Write three separate type selectors below */\n\n",
+			"initialCode": "/* 1. Make h2 headings purple */\n\n/* 2. Give span elements a yellow background */\n\n/* 3. Make strong elements red */\n",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "/* 1. Make h2 headings purple */\nh2 {\n  color: purple;\n}\n\n/* 2. Give span elements a yellow background */\nspan {\n  background-color: yellow;\n}\n\n/* 3. Make strong elements red */\nstrong {\n  color: red;\n}",
 			"validations": [
 				{
+					"type": "contains",
+					"value": "h2",
+					"message": "Include an h2 selector"
+				},
+				{
 					"type": "regex",
-					"value": "h2\\s*{[^}]*color:\\s*purple;?[^}]*}",
-					"message": "Create a rule for h2 elements with color: purple",
+					"value": "h2\\s*{[^}]*color:\\s*purple",
+					"message": "Set the color property to purple for h2 elements",
 					"options": {
 						"caseSensitive": false
 					}
 				},
 				{
+					"type": "contains",
+					"value": "span",
+					"message": "Include a span selector"
+				},
+				{
 					"type": "regex",
-					"value": "span\\s*{[^}]*background(-color)?:\\s*yellow;?[^}]*}",
-					"message": "Create a rule for span elements with background-color: yellow",
+					"value": "span\\s*{[^}]*background(-color)?:\\s*yellow",
+					"message": "Set a yellow background for span elements using background-color",
 					"options": {
 						"caseSensitive": false
 					}
 				},
 				{
+					"type": "contains",
+					"value": "strong",
+					"message": "Include a strong selector"
+				},
+				{
 					"type": "regex",
-					"value": "strong\\s*{[^}]*color:\\s*red;?[^}]*}",
-					"message": "Create a rule for strong elements with color: red",
+					"value": "strong\\s*{[^}]*color:\\s*red",
+					"message": "Set the color property to red for strong elements",
 					"options": {
 						"caseSensitive": false
 					}
@@ -86,7 +109,7 @@
 		{
 			"id": "class-selectors",
 			"title": "Class Selectors: Styling Element Groups",
-			"description": "Class selectors target elements with a specific class attribute value. They begin with a dot (.) followed by the class name. Classes are powerful because they allow you to apply the same styles to multiple elements regardless of their type. An HTML element can have multiple classes (separated by spaces in the class attribute), and a class can be applied to any number of elements. This flexibility makes class selectors one of the most commonly used methods for applying styles in CSS, allowing for modular and reusable styling across your website.",
+			"description": "Class selectors target elements with a specific class attribute value. They begin with a dot (.) followed by the class name. Classes are powerful because they allow you to apply the same styles to multiple elements regardless of their type. An HTML element can have multiple classes (separated by spaces in the class attribute), and a class can be applied to any number of elements. When using class selectors, you can apply properties like background-color to set the background color of elements, and font-weight to control text thickness, making text bold or normal. This flexibility makes class selectors one of the most commonly used methods for applying styles in CSS, allowing for modular and reusable styling across your website.",
 			"task": "Create a CSS rule using a class selector that targets elements with the class 'highlight'. Give these elements a yellow background and bold text.",
 			"previewHTML": "<h2>Using Class Selectors</h2>\n<p>This is a regular paragraph, but <span class=\"highlight\">this span has the highlight class</span> applied to it.</p>\n<p class=\"highlight\">This entire paragraph has the highlight class.</p>\n<ul>\n  <li>Regular list item</li>\n  <li class=\"highlight\">This list item is highlighted</li>\n</ul>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -97,22 +120,45 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": ".highlight",
-					"message": "Use the '.highlight' class selector"
-				},
-				{
 					"type": "regex",
-					"value": "\\.highlight\\s*{[^}]*background(-color)?:\\s*yellow;[^}]*}",
-					"message": "Use '.highlight' class selector with background-color: yellow",
+					"value": "^\\.highlight\\s*{",
+					"message": "Start your rule with '.highlight' to create a class selector",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the 'background-color' property"
+				},
+				{
+					"type": "contains",
+					"value": "yellow",
+					"message": "Set the background color to 'yellow'"
+				},
+				{
 					"type": "regex",
-					"value": "\\.highlight\\s*{[^}]*font-weight:\\s*bold;[^}]*}",
-					"message": "Add font-weight: bold to the .highlight rule",
+					"value": "background(-color)?:\\s*yellow",
+					"message": "Use 'background-color: yellow' to set the background color",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "font-weight:",
+					"message": "Include the 'font-weight' property"
+				},
+				{
+					"type": "contains",
+					"value": "bold",
+					"message": "Set the font-weight to 'bold'"
+				},
+				{
+					"type": "regex",
+					"value": "font-weight:\\s*bold",
+					"message": "Use 'font-weight: bold' to make the text bold",
 					"options": {
 						"caseSensitive": true
 					}
@@ -122,10 +168,10 @@
 		{
 			"id": "multiple-classes",
 			"title": "Working with Multiple Classes",
-			"description": "HTML elements can have multiple classes applied simultaneously, allowing for composable and modular CSS designs. When an element has multiple classes, it will receive styles from all matching class selectors. This approach enables you to build a library of reusable CSS classes that can be combined in different ways. You can also target elements that have a specific combination of classes by chaining class selectors together without spaces (e.g., '.class1.class2'). This technique lets you create conditional styles that only apply when certain classes appear together.",
+			"description": "HTML elements can have multiple classes applied simultaneously, allowing for composable and modular CSS designs. When an element has multiple classes, it will receive styles from all matching class selectors. This approach enables you to build a library of reusable CSS classes that can be combined in different ways. You can also target elements that have a specific combination of classes by chaining class selectors together without spaces (e.g., '.class1.class2'). When styling these elements, you might use properties like border-color to change the color of element borders, and background-color to set the background color of elements. This technique lets you create conditional styles that only apply when certain classes appear together.",
 			"task": "Complete the CSS rule that targets elements with both 'card' and 'featured' classes by chaining the selectors. Set the border-color to gold and the background-color to lemonchiffon to make featured cards stand out.",
 			"previewHTML": "<h2>Multiple Class Combinations</h2>\n<div class=\"card\">Regular Card</div>\n<div class=\"card featured\">Featured Card</div>\n<div class=\"featured\">Just Featured (not a card)</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .card { border: 2px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .card { border: 2px solid gray; padding: 15px; margin-bottom: 10px; border-radius: 5px; }",
 			"sandboxCSS": "",
 			"codePrefix": "/* The .card class already has basic styling */\n/* Now target elements with BOTH classes: 'card' AND 'featured' */\n",
 			"initialCode": "",
@@ -133,25 +179,45 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
+					"type": "regex",
+					"value": "^\\.card\\.featured\\s*{",
+					"message": "Chain the selectors as '.card.featured' (no space between them)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
 					"type": "contains",
-					"value": ".card.featured",
-					"message": "Use '.card.featured' selector (no space between them)",
+					"value": "border-color:",
+					"message": "Include the 'border-color' property"
+				},
+				{
+					"type": "contains",
+					"value": "gold",
+					"message": "Set the border color to 'gold'"
+				},
+				{
+					"type": "regex",
+					"value": "border-color:\\s*gold",
+					"message": "Use 'border-color: gold' to style the border",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
-					"type": "regex",
-					"value": "\\.card\\.featured\\s*{[^}]*border-color:\\s*gold;?[^}]*}",
-					"message": "Use '.card.featured' selector and set border-color: gold",
-					"options": {
-						"caseSensitive": true
-					}
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the 'background-color' property"
+				},
+				{
+					"type": "contains",
+					"value": "lemonchiffon",
+					"message": "Set the background color to 'lemonchiffon'"
 				},
 				{
 					"type": "regex",
-					"value": "\\.card\\.featured\\s*{[^}]*background(-color)?:\\s*lemonchiffon;?[^}]*}",
-					"message": "Add background-color: lemonchiffon to your .card.featured rule",
+					"value": "background-color:\\s*lemonchiffon",
+					"message": "Use 'background-color: lemonchiffon' for the background",
 					"options": {
 						"caseSensitive": true
 					}
@@ -161,7 +227,7 @@
 		{
 			"id": "class-with-type",
 			"title": "Combining Type and Class Selectors",
-			"description": "You can combine type selectors with class selectors to target specific HTML elements that have a certain class. This creates a more specific selector that only matches when both conditions are true: the element is of the specified type AND it has the specified class. For example, 'p.note' would select paragraph elements with the class 'note', but would not select divs or spans with that same class. This approach allows you to apply different styles to the same class when it appears on different element types.",
+			"description": "You can combine type selectors with class selectors to target specific HTML elements that have a certain class. This creates a more specific selector that only matches when both conditions are true: the element is of the specified type AND it has the specified class. For example, 'p.note' would select paragraph elements with the class 'note', but would not select divs or spans with that same class. You can style these combined selections using properties like background-color to set a colored background for your elements. This approach allows you to apply different styles to the same class when it appears on different element types.",
 			"task": "Create a CSS rule that specifically targets <span> elements with the class 'highlight'. Make those elements have an orange background, while other elements with the highlight class remain untouched.",
 			"previewHTML": "<h2>Type and Class Combinations</h2>\n<p>This paragraph has a <span class=\"highlight\">highlighted span</span> that should have an orange background.</p>\n<p class=\"highlight\">This paragraph has the highlight class but should NOT have an orange background.</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .highlight { font-weight: bold; }",
@@ -172,14 +238,35 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
+					"type": "regex",
+					"value": "^span\\.highlight\\s*{",
+					"message": "Use 'span.highlight' selector (no space between element and class)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
 					"type": "contains",
-					"value": "span.highlight",
-					"message": "Use the 'span.highlight' selector (no space between them)"
+					"value": "background-color:",
+					"message": "Include the 'background-color' property"
+				},
+				{
+					"type": "contains",
+					"value": "orange",
+					"message": "Set the background color to 'orange'"
 				},
 				{
 					"type": "regex",
-					"value": "span\\.highlight\\s*{[^}]*background(-color)?:\\s*orange;?[^}]*}",
-					"message": "Use 'span.highlight' selector and set background-color: orange",
+					"value": "background(-color)?:\\s*orange",
+					"message": "Use 'background-color: orange' to set the background color",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "span\\.highlight\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace '}'",
 					"options": {
 						"caseSensitive": true
 					}
@@ -189,7 +276,7 @@
 		{
 			"id": "id-selectors",
 			"title": "ID Selectors: Targeting Unique Elements",
-			"description": "ID selectors target elements with a specific id attribute. They begin with a hash/pound sign (#) followed by the ID name. Unlike classes, IDs must be unique within a document—each ID value should be used only once per page. ID selectors have higher specificity than class or element selectors, meaning they override those selectors when conflicts arise. Because of their uniqueness requirement, IDs are best used for one-of-a-kind elements like page headers, main navigation, or specific unique components that appear only once on a page.",
+			"description": "ID selectors target elements with a specific id attribute. They begin with a hash/pound sign (#) followed by the ID name. Unlike classes, IDs must be unique within a document—each ID value should be used only once per page. ID selectors have higher specificity than class or element selectors, meaning they override those selectors when conflicts arise. When styling with ID selectors, you can use properties like color to define text color, and text-decoration to control the appearance of text, such as adding underlines to elements. Because of their uniqueness requirement, IDs are best used for one-of-a-kind elements like page headers, main navigation, or specific unique components that appear only once on a page.",
 			"task": "Create a CSS rule with an ID selector that targets the element with the ID 'main-title'. Set its color to purple and add an underline with text-decoration: underline.",
 			"previewHTML": "<h1 id=\"main-title\">Main Page Title</h1>\n<p>Regular paragraph content.</p>\n<h2>Secondary Heading</h2>\n<p id=\"intro\">Introduction paragraph (different ID).</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -201,16 +288,44 @@
 			"validations": [
 				{
 					"type": "regex",
-					"value": "#main-title\\s*{[^}]*color:\\s*purple;[^}]*}",
-					"message": "Use '#main-title' selector and set color: purple",
+					"value": "^#main-title\\s*{",
+					"message": "Start your rule with '#main-title' to create an ID selector",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the 'color' property"
+				},
+				{
+					"type": "contains",
+					"value": "purple",
+					"message": "Set the color to 'purple'"
+				},
+				{
 					"type": "regex",
-					"value": "#main-title\\s*{[^}]*text-decoration:\\s*underline;[^}]*}",
-					"message": "Add text-decoration: underline to your #main-title rule",
+					"value": "color:\\s*purple",
+					"message": "Use 'color: purple' to set the text color",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "text-decoration:",
+					"message": "Include the 'text-decoration' property"
+				},
+				{
+					"type": "contains",
+					"value": "underline",
+					"message": "Set the text-decoration to 'underline'"
+				},
+				{
+					"type": "regex",
+					"value": "text-decoration:\\s*underline",
+					"message": "Use 'text-decoration: underline' to add an underline",
 					"options": {
 						"caseSensitive": true
 					}
@@ -220,7 +335,7 @@
 		{
 			"id": "id-with-type",
 			"title": "Combining Type and ID Selectors",
-			"description": "Similar to how you can combine type and class selectors, you can also combine type selectors with ID selectors. For example, 'h1#title' targets an h1 element with the ID 'title'. While this approach is more specific than using just the ID selector, it's often unnecessary since IDs should already be unique in a document. However, this technique can be useful for improving code readability or when you want to emphasize that a particular ID should only appear on a specific element type.",
+			"description": "Similar to how you can combine type and class selectors, you can also combine type selectors with ID selectors. For example, 'h1#title' targets an h1 element with the ID 'title'. When using this combined approach, you can apply CSS properties like font-style to control the slant of the text, making it italic or normal. While this selector combination is more specific than using just the ID selector, it's often unnecessary since IDs should already be unique in a document. However, this technique can be useful for improving code readability or when you want to emphasize that a particular ID should only appear on a specific element type.",
 			"task": "Create a CSS rule that combines a type selector with an ID selector to target specifically a paragraph element with the ID 'special'. Set its font style to italic.",
 			"previewHTML": "<h2 id=\"special\">Heading with ID \"special\" (should NOT be affected)</h2>\n<p id=\"special\">Paragraph with ID \"special\" (should become italic)</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
@@ -232,8 +347,34 @@
 			"validations": [
 				{
 					"type": "regex",
-					"value": "p#special\\s*{[^}]*font-style:\\s*italic;[^}]*}",
-					"message": "Use 'p#special' selector and set font-style: italic",
+					"value": "^p#special\\s*{",
+					"message": "Use 'p#special' to target paragraphs with ID 'special'",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "font-style:",
+					"message": "Include the 'font-style' property"
+				},
+				{
+					"type": "contains",
+					"value": "italic",
+					"message": "Set the font-style to 'italic'"
+				},
+				{
+					"type": "regex",
+					"value": "font-style:\\s*italic",
+					"message": "Use 'font-style: italic' to make the text italic",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "p#special\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace '}'",
 					"options": {
 						"caseSensitive": true
 					}
@@ -243,11 +384,11 @@
 		{
 			"id": "selector-lists",
 			"title": "Selector Lists: Applying the Same Rules to Multiple Selectors",
-			"description": "When multiple elements need the same styling, you can group them together using a selector list (also known as grouping selectors). Selector lists are created by separating individual selectors with commas. This approach reduces repetition in your CSS, making it more maintainable and efficient. For example, 'h1, h2, h3 { color: blue; }' applies the same blue color to all three heading levels. Whitespace around commas is optional, and each selector in the list can be any valid selector type—elements, classes, IDs, or even more complex selectors.",
-			"task": "Create a selector list that applies the same styles to three different elements: paragraphs with class 'note', list items with class 'important', and the element with ID 'summary'. Give them a light yellow background, a gold left border, and some left padding.",
+			"description": "When multiple elements need the same styling, you can group them together using a selector list (also known as grouping selectors). Selector lists are created by separating individual selectors with commas. This approach reduces repetition in your CSS, making it more maintainable and efficient. For example, 'h1, h2, h3 { color: blue; }' applies the same blue color to all three heading levels. When styling multiple selectors at once, you can apply properties like background-color to set the background, border-left to create a left border with a specific thickness, style, and color, and padding-left to create space between the content and the left border. Whitespace around commas is optional, and each selector in the list can be any valid selector type—elements, classes, IDs, or even more complex selectors.",
+			"task": "Create a selector list that applies the same styles to three different elements: paragraphs with class 'note', list items with class 'important', and the element with ID 'summary'. Give them a lightyellow background, a gold left border, and some left padding.",
 			"previewHTML": "<p class=\"note\">This is a note paragraph.</p>\n<ul>\n  <li>Regular list item</li>\n  <li class=\"important\">Important list item</li>\n</ul>\n<div id=\"summary\">Summary section</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "p, li, div { padding: 8px; margin-bottom: 8px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "p, li, div { padding: 8px; margin-bottom: 8px; border: 1px dashed gray; }",
 			"codePrefix": "/* Create a selector list to apply the same styles to multiple different elements */\n",
 			"initialCode": "",
 			"codeSuffix": "",
@@ -279,24 +420,52 @@
 				},
 				{
 					"type": "regex",
-					"value": "(p\\.note|li\\.important|#summary)(\\s*,\\s*(p\\.note|li\\.important|#summary)){2}\\s*{[^}]*background-color:\\s*#ffffcc;[^}]*}",
-					"message": "Create a comma-separated list with all three selectors and set background-color: #ffffcc",
+					"value": "(p\\.note|li\\.important|#summary)\\s*,\\s*(p\\.note|li\\.important|#summary)\\s*,\\s*(p\\.note|li\\.important|#summary)",
+					"message": "Create a comma-separated list with all three selectors",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the 'background-color' property"
+				},
+				{
+					"type": "contains",
+					"value": "lightyellow",
+					"message": "Set the background color to 'lightyellow'"
+				},
+				{
 					"type": "regex",
-					"value": "(p\\.note|li\\.important|#summary)(\\s*,\\s*(p\\.note|li\\.important|#summary)){2}\\s*{[^}]*border-left:\\s*3px solid #ffcc00;[^}]*}",
-					"message": "Add border-left: 3px solid #ffcc00 to your rule",
+					"value": "background-color:\\s*lightyellow",
+					"message": "Use 'background-color: lightyellow' to set the background color",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
+					"type": "contains",
+					"value": "border-left:",
+					"message": "Include the 'border-left' property"
+				},
+				{
 					"type": "regex",
-					"value": "(p\\.note|li\\.important|#summary)(\\s*,\\s*(p\\.note|li\\.important|#summary)){2}\\s*{[^}]*padding-left:\\s*10px;[^}]*}",
-					"message": "Add padding-left: 10px to your rule",
+					"value": "border-left:\\s*3px\\s+solid\\s+gold",
+					"message": "Use 'border-left: 3px solid gold' to create a left border",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "padding-left:",
+					"message": "Include the 'padding-left' property"
+				},
+				{
+					"type": "regex",
+					"value": "padding-left:\\s*10px",
+					"message": "Use 'padding-left: 10px' to add left padding",
 					"options": {
 						"caseSensitive": true
 					}
@@ -306,10 +475,10 @@
 		{
 			"id": "universal-selector",
 			"title": "The Universal Selector: Targeting Everything",
-			"description": "The universal selector is denoted by an asterisk (*) and matches any element of any type. It selects everything in the document or, when combined with other selectors, everything within a specific context. For example, '* { margin: 0; }' removes margins from all elements, while 'article *' selects all elements inside article elements. The universal selector is powerful but should be used carefully due to its broad impact. It's commonly used in CSS resets, to override default browser styling, or to target all children of a particular element.",
+			"description": "The universal selector is denoted by an asterisk (*) and matches any element of any type. It selects everything in the document or, when combined with other selectors, everything within a specific context. For example, '* { margin: 0; }' removes margins from all elements, while 'article *' selects all elements inside article elements. When using the universal selector in combination with other selectors, you can apply properties like margin to control the spacing around elements. The universal selector is powerful but should be used carefully due to its broad impact. It's commonly used in CSS resets, to override default browser styling, or to target all children of a particular element.",
 			"task": "Use the universal selector to remove margins from all elements inside the container div. Create a rule using 'div.container *' as the selector and set margin: 0.",
 			"previewHTML": "<div class=\"container\">\n  <h2>Inside Container</h2>\n  <p>This paragraph is inside the container.</p>\n  <ul>\n    <li>List item inside container</li>\n  </ul>\n</div>\n<p>This paragraph is outside the container and should not be affected.</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } div.container { border: 2px solid #333; padding: 15px; background-color: #f5f5f5; } h2, p, ul, li { margin: 15px 0; }",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } div.container { border: 2px solid navy; padding: 15px; background-color: lavender; } h2, p, ul, li { margin: 15px 0; }",
 			"sandboxCSS": "",
 			"codePrefix": "/* Use the universal selector to target all elements inside the container */\n",
 			"initialCode": "",
@@ -318,8 +487,34 @@
 			"validations": [
 				{
 					"type": "regex",
-					"value": "div\\.container\\s+\\*\\s*{[^}]*margin:\\s*0;[^}]*}",
-					"message": "Use 'div.container *' selector and set margin: 0",
+					"value": "^div\\.container\\s+\\*\\s*{",
+					"message": "Use 'div.container *' selector (with a space between container and *)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "margin:",
+					"message": "Include the 'margin' property"
+				},
+				{
+					"type": "contains",
+					"value": "margin: 0",
+					"message": "Set margin to '0'"
+				},
+				{
+					"type": "regex",
+					"value": "margin:\\s*0",
+					"message": "Use 'margin: 0' to remove margins",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "regex",
+					"value": "div\\.container\\s+\\*\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace '}'",
 					"options": {
 						"caseSensitive": true
 					}
@@ -329,11 +524,11 @@
 		{
 			"id": "specificity-basics",
 			"title": "Understanding Selector Specificity",
-			"description": "CSS specificity determines which styles take precedence when multiple conflicting rules target the same element. Specificity follows a hierarchical system: inline styles have the highest specificity, followed by ID selectors, then class/attribute/pseudo-class selectors, and finally element/pseudo-element selectors. This can be conceptualized as a four-part score (inline, ID, class, element). Understanding specificity is crucial for predictable styling and debugging CSS conflicts. When two selectors have equal specificity, the one that comes last in the stylesheet wins.",
+			"description": "CSS specificity determines which styles take precedence when multiple conflicting rules target the same element. Specificity follows a hierarchical system: inline styles have the highest specificity, followed by ID selectors, then class/attribute/pseudo-class selectors, and finally element/pseudo-element selectors. This can be conceptualized as a four-part score (inline, ID, class, element). When creating multiple rules that may target the same elements, you can use the color property to set text colors, and specificity will determine which color is actually applied. Understanding specificity is crucial for predictable styling and debugging CSS conflicts. When two selectors have equal specificity, the one that comes last in the stylesheet wins.",
 			"task": "Examine the existing CSS rules and add a new rule with higher specificity to override the text color of the paragraph. Create a rule using '.content p' as the selector and set color: green.",
 			"previewHTML": "<div class=\"content\">\n  <p>What color will this paragraph be? Look at the CSS rules and their specificity.</p>\n</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "p { border: 1px dashed #ccc; padding: 10px; }",
+			"sandboxCSS": "p { border: 1px dashed gray; padding: 10px; }",
 			"codePrefix": "/* These CSS rules target the same paragraph but have different specificity */\n\n/* Rule 1: Element selector (lowest specificity) */\np {\n  color: red;\n}\n\n/* Rule 2: Descendant selector (higher specificity than just 'p') */\n",
 			"initialCode": "",
 			"codeSuffix": "",
@@ -341,58 +536,21 @@
 			"validations": [
 				{
 					"type": "regex",
-					"value": "\\.content\\s+p\\s*{[^}]*color:\\s*green;[^}]*}",
-					"message": "Use '.content p' selector and set color: green",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "selector-practice",
-			"title": "Combining Different Selector Types",
-			"description": "In real-world CSS, you'll often combine different selector types to target elements precisely. Combining selectors gives you fine-grained control over which elements receive certain styles. For instance, '.article p' targets paragraphs within elements with the 'article' class, while 'section#main .card h3' targets h3 headings inside elements with class 'card' that are descendants of the section with ID 'main'. By understanding how different selectors work together, you can create more efficient, modular, and maintainable CSS stylesheets.",
-			"task": "Create three CSS rules that demonstrate combining different selector types: one targeting links inside .nav elements (make them blue), one for paragraphs inside #sidebar (make them smaller with font-size: 0.9rem), and one for list items with class 'featured' inside .products elements (make them bold with a yellow background).",
-			"previewHTML": "<div class=\"nav\">\n  <a href=\"#\">Home</a>\n  <a href=\"#\">About</a>\n  <a href=\"#\">Contact</a>\n</div>\n\n<div id=\"sidebar\">\n  <p>Sidebar content that should be smaller.</p>\n  <p>More sidebar text.</p>\n</div>\n\n<div class=\"products\">\n  <ul>\n    <li>Regular product</li>\n    <li class=\"featured\">Featured product</li>\n    <li>Another regular product</li>\n    <li class=\"featured\">Another featured product</li>\n  </ul>\n</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .nav { background-color: #f0f0f0; padding: 10px; } #sidebar { background-color: #f5f5f5; padding: 10px; width: 150px; } .products { padding: 10px; }",
-			"sandboxCSS": "",
-			"codePrefix": "/* Write three combined selectors below */\n\n/* 1. Target all links inside elements with class 'nav' */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "regex",
-					"value": "\\.nav\\s+a\\s*{[^}]*color:\\s*blue;[^}]*}",
-					"message": "Create a rule for '.nav a' that makes links blue",
+					"value": "^\\.content\\s+p\\s*{",
+					"message": "Use '.content p' as your selector (note the space between)",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
-					"type": "regex",
-					"value": "#sidebar\\s+p\\s*{[^}]*font-size:\\s*0\\.9rem;[^}]*}",
-					"message": "Create a rule for '#sidebar p' that sets font-size: 0.9rem",
-					"options": {
-						"caseSensitive": true
-					}
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the 'color' property"
 				},
 				{
-					"type": "regex",
-					"value": "\\.products\\s+li\\.featured\\s*{[^}]*font-weight:\\s*bold;[^}]*}",
-					"message": "Create a rule for '.products li.featured' with font-weight: bold",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "regex",
-					"value": "\\.products\\s+li\\.featured\\s*{[^}]*background(-color)?:\\s*yellow;[^}]*}",
-					"message": "Add background-color: yellow to your '.products li.featured' rule",
-					"options": {
-						"caseSensitive": true
-					}
+					"type": "contains",
+					"value": "green",
+					"message": ""
 				}
 			]
 		}

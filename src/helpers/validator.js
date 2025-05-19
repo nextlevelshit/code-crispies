@@ -20,6 +20,7 @@ export function validateUserCode(userCode, lesson) {
 	let result = {
 		isValid: true,
 		validCases: 0,
+		totalCases: validations.length ?? 0,
 		message: "Your code looks good!"
 	};
 
@@ -35,6 +36,7 @@ export function validateUserCode(userCode, lesson) {
 					result = {
 						isValid: false,
 						validCases: result.validCases,
+						totalCases: result.totalCases,
 						message: message || `Your code should include "${value}".`
 					};
 				}
@@ -46,6 +48,7 @@ export function validateUserCode(userCode, lesson) {
 					result = {
 						isValid: false,
 						validCases: result.validCases,
+						totalCases: result.totalCases,
 						message: message || `Your code should not include "${value}".`
 					};
 				}
@@ -57,6 +60,7 @@ export function validateUserCode(userCode, lesson) {
 					result = {
 						isValid: false,
 						validCases: result.validCases,
+						totalCases: result.totalCases,
 						message: message || "Your code does not match the expected pattern."
 					};
 				}
@@ -68,6 +72,7 @@ export function validateUserCode(userCode, lesson) {
 					result = {
 						isValid: false,
 						validCases: result.validCases,
+						totalCases: result.totalCases,
 						message: message || `The "${value.property}" property should be set to "${value.expected}".`
 					};
 				}
@@ -80,6 +85,7 @@ export function validateUserCode(userCode, lesson) {
 					result = {
 						isValid: false,
 						validCases: result.validCases,
+						totalCases: result.totalCases,
 						message: message || `CSS syntax error: ${syntaxResult.error}`
 					};
 				}
@@ -93,6 +99,7 @@ export function validateUserCode(userCode, lesson) {
 						result = {
 							isValid: false,
 							validCases: result.validCases,
+							totalCases: result.totalCases,
 							message: customResult.message || message || "Your code does not meet the requirements."
 						};
 					}

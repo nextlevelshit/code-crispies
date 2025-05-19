@@ -35,7 +35,8 @@ const elements = {
 	helpBtn: document.getElementById("help-btn"),
 	lessonContainer: document.querySelector(".lesson-container"),
 	editorContent: document.querySelector(".editor-content"),
-	codeEditor: document.querySelector(".code-editor")
+	codeEditor: document.querySelector(".code-editor"),
+	validationIndicators: document.querySelector(".validation-indicators-container")
 };
 
 // Initialize the lesson engine
@@ -160,12 +161,8 @@ function resetSuccessIndicators() {
 }
 
 // Configure editor layout based on display type
-function configureEditorLayout(lesson) {
-	// Remove validation indicator if exists
-	const existingIndicator = elements.codeEditor.querySelector(".validation-success-indicator");
-	if (existingIndicator) {
-		existingIndicator.remove();
-	}
+function resetEditorLayout(lesson) {
+	elements.validationIndicators.innerHTML = "";
 }
 
 // Load the current lesson
@@ -200,7 +197,7 @@ function loadCurrentLesson() {
 	);
 
 	// Configure editor layout based on lesson settings
-	configureEditorLayout(lesson);
+	resetEditorLayout(lesson);
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, state.currentLessonIndex + 1, state.currentModule.lessons.length);
@@ -299,10 +296,6 @@ function runCode() {
 
 	const validationResult = validateUserCode(userCode, lesson);
 
-	// Remove any existing validation indicators before adding new ones
-	const existingIndicators = elements.codeEditor.querySelectorAll(".validation-success-indicator");
-	existingIndicators.forEach((indicator) => indicator.remove());
-
 	// Add validation indicators based on validCases count if available
 	if (validationResult.validCases) {
 		const casesCount =
@@ -312,23 +305,7 @@ function runCode() {
 					? validationResult.validCases.length
 					: 1;
 
-		// Create a container for indicators if it doesn't exist
-		let indicatorContainer = elements.codeEditor.querySelector(".validation-indicators-container");
-		if (!indicatorContainer) {
-			indicatorContainer = document.createElement("div");
-			indicatorContainer.className = "validation-indicators-container";
-			elements.codeEditor.appendChild(indicatorContainer);
-		} else {
-			indicatorContainer.innerHTML = "";
-		}
-
-		// Add the appropriate number of checkmarks
-		for (let i = 0; i < casesCount; i++) {
-			const validationIndicator = document.createElement("div");
-			validationIndicator.className = "validation-success-indicator";
-			validationIndicator.innerHTML = "✓";
-			indicatorContainer.appendChild(validationIndicator);
-		}
+		elements.validationIndicators.innerHTML = `${validationResult.validCases} / ${validationResult.totalCases}`;
 	}
 
 	if (validationResult.isValid) {
