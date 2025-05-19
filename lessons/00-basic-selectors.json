@@ -9,7 +9,7 @@
 			"id": "introduction-to-selectors",
 			"title": "What is a CSS Selector?",
 			"description": "A CSS selector is the first part of a CSS rule that tells the browser which HTML elements should receive the styles defined in the declaration block. Selectors are essentially patterns that match against elements in your HTML document. Understanding selectors is fundamental because they determine which elements your CSS rules will affect. The element or elements targeted by a selector are referred to as the 'subject of the selector.' When writing a CSS rule, you first specify the selector, followed by curly braces that contain the style declarations.<br/>For example, to change the text color of elements, you can use the <kbd>color</kbd> property within your declaration block.<br><br><pre>/* Element selector */\np {\n  color: orangered;\n  /* │       └─── Indicates the value of the expression\n     │                                                     \n     └─────────── Indicates the property of the expression */\n}</pre>",
-			"task": "Write a CSS rule using a type selector that targets all paragraph elements (p) in the document. Make the text blue by setting the color property to blue.",
+			"task": "Write a CSS rule using a type selector that targets all paragraph elements <kbd>p</kbd> in the document. Make the text blue by setting the <kbd>color</kbd> property to <kbd>blue</kbd>.",
 			"previewHTML": "<h1>Introduction to CSS Selectors</h1>\n<p>This paragraph should turn blue.</p>\n<div>This div element should remain unchanged.</div>\n<p>This second paragraph should also turn blue.</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
 			"sandboxCSS": "h1, p, div { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
@@ -17,6 +17,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "p { color: blue }",
 			"validations": [
 				{
 					"type": "regex",
