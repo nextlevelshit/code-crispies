@@ -147,8 +147,8 @@ code {
 
 .sidebar {
 	width: var(--sidebar-width);
-	background-color: var(--panel-bg);
-	border-right: 1px solid var(--border-color);
+	/*background-color: var(--panel-bg);*/
+	/*border-right: 1px solid var(--border-color);*/
 	padding: var(--spacing-lg) var(--spacing-md);
 	overflow-y: auto;
 	height: calc(100vh - var(--header-height));
@@ -245,6 +245,16 @@ code {
 	border-radius: var(--border-radius-md);
 	overflow-x: auto;
 	margin-bottom: var(--spacing-lg);
+}
+
+.lesson-description kbd {
+	font-family: var(--font-code);
+	background-color: var(--code-bg);
+	color: var(--text-color);
+	border-radius: var(--border-radius-sm);
+	padding: calc(var(--spacing-xs) / 2);
+	font-size: 0.9rem;
+	letter-spacing: -0.75px;
 }
 
 /* Challenge Container */
@@ -557,6 +567,7 @@ code {
 }
 
 .feedback-error kbd {
+	font-family: var(--font-code);
 	background-color: var(--error-bg-light);
 	color: var(--text-color);
 	border-radius: var(--border-radius-sm);
