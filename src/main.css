@@ -77,14 +77,14 @@
 	--spacing-xl: 2rem;
 }
 
-/* Reset */
+/* ================= RESET ================= */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-/* Base styles */
+/* ================= BASE STYLES ================= */
 body {
 	font-family: var(--font-main);
 	background-color: var(--bg-color);
@@ -92,17 +92,24 @@ body {
 	line-height: 1.6;
 }
 
+code {
+	font-family: var(--font-code);
+}
+
+/* ================= LAYOUT ================= */
 .app-container {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 }
 
-code {
-	font-family: var(--font-code);
+.main-content {
+	display: flex;
+	flex: 1;
+	min-height: calc(100vh - var(--header-height));
 }
 
-/* Header Styles */
+/* ================= HEADER ================= */
 .header {
 	background-color: var(--panel-bg);
 	padding: var(--spacing-md) var(--spacing-xl);
@@ -133,37 +140,59 @@ code {
 	color: var(--primary-color);
 }
 
+/* Navigation */
 .main-nav ul {
 	display: flex;
 	list-style: none;
 	gap: var(--spacing-md);
 }
 
-/* Main Content Layout */
-.main-content {
-	display: flex;
-	flex: 1;
-	min-height: calc(100vh - var(--header-height));
+/* Hamburger Menu Icon */
+.hamburger {
+	display: none;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30px;
+	height: 21px;
+	background: transparent;
+	border: none;
+	padding: 0;
 }
 
+.hamburger-line {
+	display: block;
+	width: 100%;
+	height: 3px;
+	background-color: var(--text-color);
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+/* ================= SIDEBAR ================= */
 .sidebar {
 	width: var(--sidebar-width);
-	/*background-color: var(--panel-bg);*/
-	/*border-right: 1px solid var(--border-color);*/
 	padding: var(--spacing-lg) var(--spacing-md);
 	overflow-y: auto;
 	height: calc(100vh - var(--header-height));
 	position: sticky;
 	top: var(--header-height);
+	scroll-behavior: smooth;
 }
 
+.sidebar .module-list {
+	max-height: calc(100vh - 200px);
+	padding-right: 5px;
+}
+
+/* ================= CONTENT AREA ================= */
 .content-area {
 	flex: 1;
 	padding: var(--spacing-xl);
 	max-width: calc(100% - var(--sidebar-width));
 }
 
-/* Module List Styles */
+/* ================= MODULE LIST ================= */
 .module-list {
 	margin-bottom: var(--spacing-xl);
 }
@@ -211,7 +240,70 @@ code {
 	font-weight: bold;
 }
 
-/* Lesson Container */
+/* Module and Lesson List */
+.module-container {
+	margin-bottom: 8px;
+}
+
+.module-header {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 8px 12px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+	font-weight: 600;
+}
+
+.module-header:hover {
+	background-color: var(--hover-color);
+}
+
+.module-header.completed::before {
+	content: "✓";
+	margin-right: 6px;
+	color: var(--success-color);
+}
+
+.expand-icon {
+	display: inline-block;
+	margin-right: 8px;
+	font-size: 10px;
+	transition: transform 0.2s;
+}
+
+.lessons-container {
+	margin-left: 16px;
+	border-left: 2px solid var(--border-color);
+	padding-left: 8px;
+}
+
+.lesson-list-item {
+	padding: 6px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	font-size: 0.9em;
+	margin: 4px 0;
+}
+
+.lesson-list-item:hover {
+	background-color: var(--primary-bg-medium);
+}
+
+.lesson-list-item.active {
+	background-color: var(--primary-bg-medium);
+	color: var(--dark-text);
+	font-weight: bold;
+}
+
+.lesson-list-item.completed::before {
+	content: "✓";
+	margin-right: 6px;
+	color: var(--success-color);
+}
+
+/* ================= LESSON CONTAINER ================= */
 .lesson-container {
 	display: flex;
 	flex-flow: column;
@@ -259,24 +351,13 @@ code {
 	letter-spacing: -0.75px;
 }
 
-/* Challenge Container */
+/* ================= CHALLENGE CONTAINER ================= */
 .challenge-container {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	gap: var(--spacing-lg);
 	margin-bottom: var(--spacing-xl);
-}
-
-@media (min-width: 1024px) {
-	.challenge-container {
-		flex-direction: row;
-	}
-
-	.preview-area,
-	.editor-container {
-		width: 50%;
-	}
 }
 
 .preview-area {
@@ -315,6 +396,7 @@ code {
 	letter-spacing: -0.75px;
 }
 
+/* ================= CODE EDITOR ================= */
 .code-editor {
 	display: flex;
 	flex-direction: column;
@@ -323,6 +405,7 @@ code {
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius-md);
 	overflow: hidden;
+	min-height: 200px;
 }
 
 .editor-header {
@@ -350,22 +433,8 @@ code {
 	cursor: text; /* Add text cursor to indicate it's editable */
 }
 
-/* Style for when editor is clicked - pulse effect */
 .editor-focused {
 	animation: focus-pulse 0.3s ease;
-}
-
-/* Pulse animation */
-@keyframes focus-pulse {
-	0% {
-		background-color: var(--editor-bg);
-	}
-	50% {
-		background-color: var(--editor-highlight);
-	}
-	100% {
-		background-color: var(--editor-bg);
-	}
 }
 
 .code-input {
@@ -387,7 +456,7 @@ code {
 	transition: background-color 0.2s ease;
 }
 
-/* Controls */
+/* ================= CONTROLS ================= */
 .controls {
 	display: flex;
 	justify-content: space-between;
@@ -400,7 +469,7 @@ code {
 	color: var(--light-text);
 }
 
-/* Buttons */
+/* ================= BUTTONS ================= */
 .btn {
 	padding: var(--spacing-xs) var(--spacing-md);
 	border-radius: var(--border-radius-sm);
@@ -418,6 +487,12 @@ code {
 
 .btn:hover {
 	background-color: var(--code-bg);
+}
+
+.btn img {
+	width: 0.8rem;
+	height: 0.8rem;
+	margin-right: 0.3rem;
 }
 
 .btn-primary {
@@ -440,33 +515,31 @@ code {
 	background-color: var(--secondary-dark);
 }
 
-.btn img {
-	width: 0.8rem;
-	height: 0.8rem;
-	margin-right: 0.3rem;
-}
-
-/* Button states */
 .btn-disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
 }
 
-.success {
+#module-selector-btn {
+	overflow: hidden;
+}
+
+#run-btn img {
+	transition: transform 420ms ease;
+}
+
+#run-btn.re-run {
 	background-color: var(--success-color);
-	border: 1px solid var(--success-color);
+	border-color: var(--success-color);
 }
 
-.success:hover,
-.success:focus {
+#run-btn.re-run:hover {
 	background-color: var(--success-color-dark);
-	border: 1px solid var(--success-color-dark);
+	border-color: var(--success-color-dark);
 }
 
+/* ================= VALIDATION INDICATORS ================= */
 .validation-indicators-container {
-	/*position: absolute;*/
-	/*top: 1rem;*/
-	/*right: 8rem;*/
 	display: flex;
 	gap: 5px;
 	z-index: 5;
@@ -484,12 +557,7 @@ code {
 	font-size: 12px;
 }
 
-/* Module selector button with progress */
-#module-selector-btn {
-	overflow: hidden;
-}
-
-/* Modal */
+/* ================= MODAL ================= */
 .modal-container {
 	position: fixed;
 	top: 0;
@@ -553,7 +621,7 @@ code {
 	color: var(--light-text);
 }
 
-/* Feedback styles */
+/* ================= FEEDBACK STYLES ================= */
 .feedback-success {
 	position: absolute;
 	bottom: 0.8rem;
@@ -589,7 +657,18 @@ code {
 	letter-spacing: -0.75px;
 }
 
-/* Success states */
+/* ================= SUCCESS STATES ================= */
+.success {
+	background-color: var(--success-color);
+	border: 1px solid var(--success-color);
+}
+
+.success:hover,
+.success:focus {
+	background-color: var(--success-color-dark);
+	border: 1px solid var(--success-color-dark);
+}
+
 .success-highlight {
 	border-left: var(--border-accent) solid var(--success-color);
 	transition: all 0.3s ease;
@@ -607,47 +686,7 @@ code {
 	border-radius: var(--border-radius-sm);
 }
 
-/* Utility classes */
-.hidden {
-	display: none;
-}
-
-/* Completed lesson indicators */
-.completion-badge {
-	display: inline-block;
-	margin-left: 0.8rem;
-	padding: 0.2rem 0.6rem;
-	font-size: 0.7rem;
-	font-weight: 600;
-	color: var(--white-text);
-	background-color: var(--badge-bg);
-	border-radius: 1rem;
-	vertical-align: middle;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-
-/* Update run button styling when in re-run state */
-#run-btn img {
-	transition: transform 420ms ease;
-}
-
-#run-btn.re-run {
-	background-color: var(--success-color);
-	border-color: var(--success-color);
-}
-
-#run-btn.re-run:hover {
-	background-color: var(--success-color-dark);
-	border-color: var(--success-color-dark);
-}
-
-/**
- * CSS to style the toggle switch in the header
- * Add this to your main.css file
- */
-
-/* Toggle Switch Styles */
+/* ================= TOGGLE SWITCH ================= */
 .toggle-container {
 	display: flex;
 	align-items: center;
@@ -709,33 +748,98 @@ input:checked + .toggle-slider:before {
 	color: var(--text-color);
 }
 
-/* Hamburger Menu Icon */
-.hamburger {
+/* ================= UTILITY CLASSES ================= */
+.hidden {
 	display: none;
-	cursor: pointer;
-	flex-direction: column;
-	justify-content: space-around;
-	width: 30px;
-	height: 21px;
-	background: transparent;
-	border: none;
-	padding: 0;
 }
 
-.hamburger-line {
-	display: block;
-	width: 100%;
-	height: 3px;
-	background-color: var(--text-color);
-	border-radius: 10px;
-	transition: all 0.3s ease;
+.completion-badge {
+	display: inline-block;
+	margin-left: 0.8rem;
+	padding: 0.2rem 0.6rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	color: var(--white-text);
+	background-color: var(--badge-bg);
+	border-radius: 1rem;
+	vertical-align: middle;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
-/* Responsive Header Adjustments */
+/* ================= ANIMATIONS ================= */
+@keyframes focus-pulse {
+	0% {
+		background-color: var(--editor-bg);
+	}
+	50% {
+		background-color: var(--editor-highlight);
+	}
+	100% {
+		background-color: var(--editor-bg);
+	}
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (min-width: 1024px) {
+	.challenge-container {
+		flex-direction: row;
+	}
+
+	.preview-area,
+	.editor-container {
+		width: 50%;
+	}
+}
+
+@media (max-width: 1024px) {
+	.main-content {
+		flex-direction: column;
+	}
+
+	.sidebar {
+		width: 100%;
+		height: auto;
+		position: static;
+		padding: var(--spacing-md);
+		border-right: none;
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.content-area {
+		max-width: 100%;
+		padding: var(--spacing-md);
+	}
+
+	.challenge-container {
+		flex-direction: column;
+	}
+
+	.preview-area,
+	.editor-container {
+		width: 100%;
+	}
+
+	.preview-area {
+		min-height: 200px;
+	}
+
+	.lesson-progress {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: var(--spacing-xs);
+		margin-top: var(--spacing-md);
+	}
+}
+
 @media (max-width: 768px) {
 	.header {
 		flex-wrap: wrap;
 		padding: var(--spacing-md);
+		position: static;
+		height: auto;
+		gap: var(--spacing-md);
 	}
 
 	.logo {
@@ -745,6 +849,18 @@ input:checked + .toggle-slider:before {
 	.hamburger {
 		display: flex;
 		order: 2;
+	}
+
+	.hamburger.open .hamburger-line:nth-child(1) {
+		transform: translateY(9px) rotate(45deg);
+	}
+
+	.hamburger.open .hamburger-line:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.open .hamburger-line:nth-child(3) {
+		transform: translateY(-5px) rotate(-45deg);
 	}
 
 	.main-nav {
@@ -765,6 +881,8 @@ input:checked + .toggle-slider:before {
 		width: 100%;
 		align-items: flex-start;
 		gap: var(--spacing-sm);
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 
 	.main-nav ul li {
@@ -780,173 +898,10 @@ input:checked + .toggle-slider:before {
 		margin: var(--spacing-sm) 0;
 	}
 
-	/* Hamburger animation when open */
-	.hamburger.open .hamburger-line:nth-child(1) {
-		transform: translateY(9px) rotate(45deg);
-	}
-
-	.hamburger.open .hamburger-line:nth-child(2) {
-		opacity: 0;
-	}
-
-	.hamburger.open .hamburger-line:nth-child(3) {
-		transform: translateY(-5px) rotate(-45deg);
-	}
-}
-
-/* Module and Lesson List Styles */
-.module-container {
-	margin-bottom: 8px;
-}
-
-.module-header {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	padding: 8px 12px;
-	border-radius: 4px;
-	transition: background-color 0.2s;
-	font-weight: 600;
-}
-
-.module-header:hover {
-	background-color: var(--hover-color);
-}
-
-.expand-icon {
-	display: inline-block;
-	margin-right: 8px;
-	font-size: 10px;
-	transition: transform 0.2s;
-}
-
-.lessons-container {
-	margin-left: 16px;
-	border-left: 2px solid var(--border-color);
-	padding-left: 8px;
-}
-
-.lesson-list-item {
-	padding: 6px 12px;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.2s;
-	font-size: 0.9em;
-	margin: 4px 0;
-}
-
-.lesson-list-item:hover {
-	background-color: var(--primary-bg-medium);
-}
-
-.lesson-list-item.active {
-	background-color: var(--primary-bg-medium);
-	color: var(--dark-text);
-	font-weight: bold;
-}
-
-.lesson-list-item.completed::before {
-	content: "✓";
-	margin-right: 6px;
-	color: var(--success-color);
-}
-
-.module-header.completed::before {
-	content: "✓";
-	margin-right: 6px;
-	color: var(--success-color);
-}
-
-/* Improve scrolling for the sidebar */
-.sidebar .module-list {
-	max-height: calc(100vh - 200px);
-	padding-right: 5px;
-}
-
-/* Add smooth scrolling */
-.sidebar {
-	scroll-behavior: smooth;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-	.lessons-container {
-		margin-left: 8px;
-		padding-left: 6px;
-	}
-
-	.lesson-list-item,
-	.module-header {
-		padding: 8px 6px;
-	}
-}
-
-/* ================= RESPONSIVE DESIGN ================= */
-
-/* Base responsive layout */
-@media (max-width: 1024px) {
-	.main-content {
-		flex-direction: column;
-	}
-
-	.sidebar {
-		width: 100%;
-		height: auto;
-		position: static;
-		padding: var(--spacing-md);
-		border-right: none;
-		border-bottom: 1px solid var(--border-color);
-	}
-
-	.content-area {
-		max-width: 100%;
-		padding: var(--spacing-md);
-	}
-
-	.module-list {
-	}
-
-	.module-list-item {
-	}
-}
-
-/* Header responsiveness */
-@media (max-width: 768px) {
-	.header {
-		position: static;
-		height: auto;
-		padding: var(--spacing-md) var(--spacing-md);
-		gap: var(--spacing-md);
-	}
-
-	.main-nav ul {
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
 	.main-content {
 		min-height: calc(100vh - 120px);
 	}
-}
 
-/* Challenge container */
-@media (max-width: 1024px) {
-	.challenge-container {
-		flex-direction: column;
-	}
-
-	.preview-area,
-	.editor-container {
-		width: 100%;
-	}
-
-	.preview-area {
-		min-height: 200px;
-	}
-}
-
-/* Text and other element responsiveness */
-@media (max-width: 768px) {
 	.lesson-description {
 		width: 100%;
 		font-size: 1rem;
@@ -973,26 +928,24 @@ input:checked + .toggle-slider:before {
 		padding: var(--spacing-xs) var(--spacing-sm);
 		font-size: 0.85rem;
 	}
-}
 
-/* Small screens */
-@media (max-width: 480px) {
-	.logo {
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
+	.lessons-container {
+		margin-left: 8px;
+		padding-left: 6px;
 	}
 
-	.logo h1 {
-		font-size: 1rem;
+	.lesson-list-item,
+	.module-header {
+		padding: 8px 6px;
 	}
 
-	.main-nav ul {
-		gap: var(--spacing-sm);
+	.validation-indicators-container {
+		justify-content: flex-end;
+		flex: 1;
 	}
 
-	.toggle-label {
-		font-size: 12px;
+	.editor-header {
+		flex-wrap: wrap;
 	}
 
 	.lesson-description pre {
@@ -1003,46 +956,9 @@ input:checked + .toggle-slider:before {
 	.task-instruction {
 		font-size: 0.9rem;
 	}
-
-	.modal {
-		width: 95%;
-	}
-}
-
-/* Ensure code editor has minimum height */
-.code-editor {
-	min-height: 200px;
-}
-
-/* Better spacing for lesson progress in mobile */
-@media (max-width: 1024px) {
-	.lesson-progress {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: var(--spacing-xs);
-		margin-top: var(--spacing-md);
-	}
-}
-
-/* Improve validation indicators visibility */
-@media (max-width: 768px) {
-	.validation-indicators-container {
-		justify-content: flex-end;
-		flex: 1;
-	}
-
-	.editor-header {
-		flex-wrap: wrap;
-	}
 }
 
 @media (max-width: 480px) {
-	.header {
-		padding: var(--spacing-sm);
-		gap: var(--spacing-sm);
-	}
-
 	.logo {
 		flex-direction: row;
 		gap: 0.4rem;
@@ -1054,5 +970,22 @@ input:checked + .toggle-slider:before {
 
 	.logo h1 {
 		font-size: 0.9rem;
+	}
+
+	.main-nav ul {
+		gap: var(--spacing-sm);
+	}
+
+	.toggle-label {
+		font-size: 12px;
+	}
+
+	.modal {
+		width: 95%;
+	}
+
+	.header {
+		padding: var(--spacing-sm);
+		gap: var(--spacing-sm);
 	}
 }
