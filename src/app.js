@@ -9,7 +9,10 @@ const state = {
 	currentLessonIndex: 0,
 	modules: [],
 	userProgress: {}, // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
-	userCodeBeforeValidation: "" // Track user code state before validation
+	userCodeBeforeValidation: "", // Track user code state before validation
+	userSettings: {
+		disableFeedbackErrors: false
+	}
 };
 
 // DOM elements
@@ -36,7 +39,8 @@ const elements = {
 	lessonContainer: document.querySelector(".lesson-container"),
 	editorContent: document.querySelector(".editor-content"),
 	codeEditor: document.querySelector(".code-editor"),
-	validationIndicators: document.querySelector(".validation-indicators-container")
+	validationIndicators: document.querySelector(".validation-indicators-container"),
+	disableFeedbackToggle: document.getElementById("disable-feedback-toggle")
 };
 
 // Initialize the lesson engine
@@ -53,6 +57,32 @@ function loadUserProgress() {
 // Save user progress to localStorage
 function saveUserProgress() {
 	localStorage.setItem("codeCrispies.Progress", JSON.stringify(state.userProgress));
+}
+
+function loadUserSettings() {
+	const savedSettings = localStorage.getItem("codeCrispies.settings");
+	if (savedSettings) {
+		try {
+			const settings = JSON.parse(savedSettings);
+			state.userSettings = { ...state.userSettings, ...settings };
+
+			// Apply saved settings to UI
+			elements.disableFeedbackToggle.checked = !state.userSettings.disableFeedbackErrors;
+		} catch (e) {
+			console.error("Error loading user settings:", e);
+		}
+	}
+}
+
+function saveUserSettings() {
+	localStorage.setItem("codeCrispies.settings", JSON.stringify(state.userSettings));
+}
+
+function initFeedbackToggle() {
+	elements.disableFeedbackToggle.addEventListener("change", (e) => {
+		state.userSettings.disableFeedbackErrors = !e.target.checked;
+		saveUserSettings();
+	});
 }
 
 // Initialize the module list
@@ -102,9 +132,9 @@ function updateModuleSelectorButtonProgress() {
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		height: 3px;
+		height: 2px;
 		width: ${percentComplete}%;
-		background-color: var(--success-color);
+		background-color: var(--primary-color);
 		border-radius: 0 3px 3px 0;
 	`;
 
@@ -545,7 +575,9 @@ function handleTabKey(e) {
 // Initialize the application
 function init() {
 	loadUserProgress();
-	initializeModules();
+	loadUserSettings();
+	initializeModules().catch(console.error);
+	initFeedbackToggle();
 
 	// Event listeners
 	elements.prevBtn.addEventListener("click", prevLesson);
@@ -560,6 +592,12 @@ function init() {
 	// Also make the editor container clickable to focus the text area
 	elements.editorContent.addEventListener("click", (e) => {
 		elements.codeInput.focus();
+	});
+
+	// Load user settings
+	elements.disableFeedbackToggle.addEventListener("change", (e) => {
+		state.userSettings.disableFeedbackErrors = !e.target.checked;
+		saveUserSettings();
 	});
 
 	// Add tab key handler for the code input

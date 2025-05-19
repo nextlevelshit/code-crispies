@@ -94,6 +94,15 @@ export function showFeedback(isSuccess, message) {
 	// Clear any existing feedback
 	clearFeedback();
 
+	// Check if error feedback is disabled in user settings
+	if (!isSuccess) {
+		const disableFeedbackErrors = !document.getElementById("disable-feedback-toggle").checked;
+		if (disableFeedbackErrors) {
+			// Skip showing error feedback if disabled
+			return;
+		}
+	}
+
 	// Create feedback element
 	feedbackElement = document.createElement("div");
 	feedbackElement.classList.add(isSuccess ? "feedback-success" : "feedback-error");
