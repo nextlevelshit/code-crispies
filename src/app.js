@@ -611,6 +611,57 @@ function init() {
 			e.preventDefault();
 		}
 	});
+
+	// Add this to your app.js file
+
+	// Mobile Menu Functionality
+	document.addEventListener("DOMContentLoaded", function () {
+		// Create hamburger menu button
+		const hamburger = document.createElement("button");
+		hamburger.className = "hamburger";
+		hamburger.setAttribute("aria-label", "Toggle menu");
+		hamburger.innerHTML = `
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  `;
+
+		// Get the header and nav elements
+		const header = document.querySelector(".header");
+		const logo = document.querySelector(".logo");
+		const nav = document.querySelector(".main-nav");
+
+		// Insert hamburger button after the logo
+		header.insertBefore(hamburger, logo.nextSibling);
+
+		// Toggle menu on hamburger click
+		hamburger.addEventListener("click", function () {
+			nav.classList.toggle("open");
+			hamburger.classList.toggle("open");
+
+			// Set aria-expanded attribute for accessibility
+			const isExpanded = nav.classList.contains("open");
+			hamburger.setAttribute("aria-expanded", isExpanded);
+		});
+
+		// Close menu when clicking outside
+		document.addEventListener("click", function (event) {
+			if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains("open")) {
+				nav.classList.remove("open");
+				hamburger.classList.remove("open");
+				hamburger.setAttribute("aria-expanded", false);
+			}
+		});
+
+		// Close menu when window is resized to desktop size
+		window.addEventListener("resize", function () {
+			if (window.innerWidth > 768 && nav.classList.contains("open")) {
+				nav.classList.remove("open");
+				hamburger.classList.remove("open");
+				hamburger.setAttribute("aria-expanded", false);
+			}
+		});
+	});
 }
 
 // Start the application
