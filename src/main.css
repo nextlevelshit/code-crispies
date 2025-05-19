@@ -794,6 +794,93 @@ input:checked + .toggle-slider:before {
 	}
 }
 
+/* Module and Lesson List Styles */
+.module-container {
+	margin-bottom: 8px;
+}
+
+.module-header {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 8px 12px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+	font-weight: 600;
+}
+
+.module-header:hover {
+	background-color: var(--hover-color);
+}
+
+.expand-icon {
+	display: inline-block;
+	margin-right: 8px;
+	font-size: 10px;
+	transition: transform 0.2s;
+}
+
+.lessons-container {
+	margin-left: 16px;
+	border-left: 2px solid var(--border-color);
+	padding-left: 8px;
+}
+
+.lesson-list-item {
+	padding: 6px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	font-size: 0.9em;
+	margin: 4px 0;
+}
+
+.lesson-list-item:hover {
+	background-color: var(--primary-bg-medium);
+}
+
+.lesson-list-item.active {
+	background-color: var(--primary-bg-medium);
+	color: var(--dark-text);
+	font-weight: bold;
+}
+
+.lesson-list-item.completed::before {
+	content: "✓";
+	margin-right: 6px;
+	color: var(--success-color);
+}
+
+.module-header.completed::before {
+	content: "✓";
+	margin-right: 6px;
+	color: var(--success-color);
+}
+
+/* Improve scrolling for the sidebar */
+.sidebar .module-list {
+	max-height: calc(100vh - 200px);
+	padding-right: 5px;
+}
+
+/* Add smooth scrolling */
+.sidebar {
+	scroll-behavior: smooth;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+	.lessons-container {
+		margin-left: 8px;
+		padding-left: 6px;
+	}
+
+	.lesson-list-item,
+	.module-header {
+		padding: 8px 6px;
+	}
+}
+
 /* ================= RESPONSIVE DESIGN ================= */
 
 /* Base responsive layout */
