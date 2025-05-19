@@ -2,7 +2,7 @@
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
 	"title": "Basic Selectors",
-	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector. You'll learn how to precisely target elements both individually and in groups, create selector lists for efficiency, and understand how specificity affects your styles. Through these lessons, you'll develop the core skills needed to apply CSS effectively across your web projects.",
+	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
