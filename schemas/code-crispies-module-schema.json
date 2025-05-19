@@ -1,146 +1,150 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Code Crispies Module Schema",
-  "description": "Schema for CSS course modules with lessons",
-  "type": "object",
-  "required": ["id", "title", "description", "difficulty", "lessons"],
-  "properties": {
-	"id": {
-	  "type": "string",
-	  "description": "Unique identifier for the module"
-	},
-	"title": {
-	  "type": "string",
-	  "description": "Title of the module"
-	},
-	"description": {
-	  "type": "string",
-	  "description": "Detailed description of the module content and purpose"
-	},
-	"difficulty": {
-	  "type": "string",
-	  "enum": ["beginner", "intermediate", "advanced"],
-	  "description": "Difficulty level of the module"
-	},
-	"lessons": {
-	  "type": "array",
-	  "description": "Collection of lessons within the module",
-	  "minItems": 1,
-	  "items": {
-		"type": "object",
-		"required": [
-		  "id",
-		  "title",
-		  "description",
-		  "task",
-		  "previewHTML",
-		  "previewBaseCSS",
-		  "sandboxCSS",
-		  "codePrefix",
-		  "initialCode",
-		  "codeSuffix",
-		  "previewContainer",
-		  "validations"
-		],
-		"properties": {
-		  "id": {
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Code Crispies Module Schema",
+	"description": "Schema for CSS course modules with lessons",
+	"type": "object",
+	"required": ["id", "title", "description", "difficulty", "lessons"],
+	"properties": {
+		"id": {
 			"type": "string",
-			"description": "Unique identifier for the lesson"
-		  },
-		  "title": {
+			"description": "Unique identifier for the module"
+		},
+		"title": {
 			"type": "string",
-			"description": "Title of the lesson"
-		  },
-		  "description": {
+			"description": "Title of the module"
+		},
+		"description": {
 			"type": "string",
-			"description": "Detailed description of the lesson content and concepts"
-		  },
-		  "task": {
+			"description": "Detailed description of the module content and purpose"
+		},
+		"difficulty": {
 			"type": "string",
-			"description": "The specific task instructions for the student to complete"
-		  },
-		  "previewHTML": {
-			"type": "string",
-			"description": "HTML content used for the interactive preview"
-		  },
-		  "previewBaseCSS": {
-			"type": "string",
-			"description": "Base CSS styles applied to the preview environment"
-		  },
-		  "sandboxCSS": {
-			"type": "string",
-			"description": "Additional CSS for the sandbox environment"
-		  },
-		  "codePrefix": {
-			"type": "string",
-			"description": "Code that appears before the editable area"
-		  },
-		  "initialCode": {
-			"type": "string",
-			"description": "Initial code provided in the editor"
-		  },
-		  "codeSuffix": {
-			"type": "string",
-			"description": "Code that appears after the editable area"
-		  },
-		  "previewContainer": {
-			"type": "string",
-			"description": "ID of the container element for the preview"
-		  },
-		  "validations": {
+			"enum": ["beginner", "intermediate", "advanced"],
+			"description": "Difficulty level of the module"
+		},
+		"lessons": {
 			"type": "array",
-			"description": "Rules to validate user input",
+			"description": "Collection of lessons within the module",
 			"minItems": 1,
 			"items": {
-			  "type": "object",
-			  "required": ["type", "value", "message"],
-			  "properties": {
-				"type": {
-				  "type": "string",
-				  "enum": ["contains", "not_contains", "regex", "property_value", "syntax", "custom"],
-				  "description": "Type of validation to perform"
-				},
-				"value": {
-				  "description": "Value to check against, format depends on validation type",
-				  "oneOf": [
-					{
-					  "type": "string"
+				"type": "object",
+				"required": [
+					"id",
+					"title",
+					"description",
+					"task",
+					"previewHTML",
+					"previewBaseCSS",
+					"sandboxCSS",
+					"codePrefix",
+					"initialCode",
+					"codeSuffix",
+					"previewContainer",
+					"validations"
+				],
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Unique identifier for the lesson"
 					},
-					{
-					  "type": "object",
-					  "required": ["property", "expected"],
-					  "properties": {
-						"property": {
-						  "type": "string",
-						  "description": "CSS property name to validate"
-						},
-						"expected": {
-						  "type": "string",
-						  "description": "Expected value for the CSS property"
+					"title": {
+						"type": "string",
+						"description": "Title of the lesson"
+					},
+					"description": {
+						"type": "string",
+						"description": "Detailed description of the lesson content and concepts"
+					},
+					"task": {
+						"type": "string",
+						"description": "The specific task instructions for the student to complete"
+					},
+					"previewHTML": {
+						"type": "string",
+						"description": "HTML content used for the interactive preview"
+					},
+					"previewBaseCSS": {
+						"type": "string",
+						"description": "Base CSS styles applied to the preview environment"
+					},
+					"sandboxCSS": {
+						"type": "string",
+						"description": "Additional CSS for the sandbox environment"
+					},
+					"codePrefix": {
+						"type": "string",
+						"description": "Code that appears before the editable area"
+					},
+					"initialCode": {
+						"type": "string",
+						"description": "Initial code provided in the editor"
+					},
+					"codeSuffix": {
+						"type": "string",
+						"description": "Code that appears after the editable area"
+					},
+					"solution": {
+						"type": "string",
+						"description": "Solution code for the lesson, if applicable"
+					},
+					"previewContainer": {
+						"type": "string",
+						"description": "ID of the container element for the preview"
+					},
+					"validations": {
+						"type": "array",
+						"description": "Rules to validate user input",
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"required": ["type", "value", "message"],
+							"properties": {
+								"type": {
+									"type": "string",
+									"enum": ["contains", "not_contains", "regex", "property_value", "syntax", "custom"],
+									"description": "Type of validation to perform"
+								},
+								"value": {
+									"description": "Value to check against, format depends on validation type",
+									"oneOf": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "object",
+											"required": ["property", "expected"],
+											"properties": {
+												"property": {
+													"type": "string",
+													"description": "CSS property name to validate"
+												},
+												"expected": {
+													"type": "string",
+													"description": "Expected value for the CSS property"
+												}
+											}
+										}
+									]
+								},
+								"message": {
+									"type": "string",
+									"description": "Feedback message shown when validation fails"
+								},
+								"options": {
+									"type": "object",
+									"description": "Additional options for validation",
+									"properties": {
+										"caseSensitive": {
+											"type": "boolean",
+											"description": "Whether the validation should be case sensitive"
+										}
+									}
+								}
+							}
 						}
-					  }
 					}
-				  ]
-				},
-				"message": {
-				  "type": "string",
-				  "description": "Feedback message shown when validation fails"
-				},
-				"options": {
-				  "type": "object",
-				  "description": "Additional options for validation",
-				  "properties": {
-					"caseSensitive": {
-					  "type": "boolean",
-					  "description": "Whether the validation should be case sensitive"
-					}
-				  }
 				}
-			  }
 			}
-		  }
 		}
-	  }
 	}
-  }
 }

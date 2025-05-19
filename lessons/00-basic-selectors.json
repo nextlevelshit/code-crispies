@@ -193,6 +193,7 @@
 	  "initialCode": "",
 	  "codeSuffix": "",
 	  "previewContainer": "preview-area",
+	  "solution": ".card.featured { border-color: gold; background-color: lemonchiffon }",
 	  "validations": [
 		{
 		  "type": "regex",
@@ -214,6 +215,11 @@
 			"expected": "gold"
 		  },
 		  "message": "Set the border color to <kbd>gold</kbd>"
+		},
+		{
+		  "type": "regex",
+		  "value": "\\.card\\.featured\\s*{[^}]*;",
+		  "message": "Make sure to end your CSS rule with a semicolon <kbd>;</kbd>"
 		},
 		{
 		  "type": "contains",
