@@ -641,3 +641,70 @@ code {
 	background-color: var(--success-color-dark);
 	border-color: var(--success-color-dark);
 }
+
+/**
+ * CSS to style the toggle switch in the header
+ * Add this to your main.css file
+ */
+
+/* Toggle Switch Styles */
+.toggle-container {
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.toggle-switch {
+	position: relative;
+	display: inline-block;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.toggle-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.toggle-slider {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 20px;
+	background-color: #ccc;
+	border-radius: 34px;
+	transition: 0.4s;
+	margin-right: 8px;
+}
+
+.toggle-slider:before {
+	position: absolute;
+	content: "";
+	height: 16px;
+	width: 16px;
+	left: 2px;
+	bottom: 2px;
+	background-color: white;
+	border-radius: 50%;
+	transition: 0.4s;
+}
+
+input:checked + .toggle-slider {
+	background-color: var(--primary-color);
+}
+
+input:focus + .toggle-slider {
+	box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .toggle-slider:before {
+	transform: translateX(20px);
+}
+
+.toggle-label {
+	font-size: 14px;
+	color: var(--text-color);
+}
