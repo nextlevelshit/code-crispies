@@ -9,7 +9,7 @@ let feedbackElement = null;
  * Render the module list in the sidebar
  * @param {HTMLElement} container - The container element for the module list
  * @param {Array} modules - The list of modules
- * @param { Function} onSelectModule - Callback when a module is selected
+ * @param {Function} onSelectModule - Callback when a module is selected
  */
 export function renderModuleList(container, modules, onSelectModule) {
 	// Clear the container
@@ -21,6 +21,19 @@ export function renderModuleList(container, modules, onSelectModule) {
 		moduleItem.classList.add("module-list-item");
 		moduleItem.dataset.moduleId = module.id;
 		moduleItem.textContent = module.title;
+
+		// Get user progress from localStorage to mark completed lessons
+		const progressData = localStorage.getItem("codeCrispies.Progress");
+		if (progressData) {
+			try {
+				const progress = JSON.parse(progressData);
+				if (progress[module.id] && progress[module.id].completed.length === module.lessons.length) {
+					moduleItem.classList.add("completed");
+				}
+			} catch (e) {
+				console.error("Error parsing progress data:", e);
+			}
+		}
 
 		moduleItem.addEventListener("click", () => {
 			onSelectModule(module.id);
@@ -50,9 +63,9 @@ export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl
 	taskEl.innerHTML = lesson.task || "";
 
 	// Set code editor contents
-	prefixEl.textContent = lesson.codePrefix || "";
+	// prefixEl.textContent = lesson.codePrefix || "";
 	inputEl.value = lesson.initialCode || "";
-	suffixEl.textContent = lesson.codeSuffix || "";
+	// suffixEl.textContent = lesson.codeSuffix || "";
 
 	// Clear any existing feedback
 	clearFeedback();
@@ -83,7 +96,7 @@ export function showFeedback(isSuccess, message) {
 	// Create feedback element
 	feedbackElement = document.createElement("div");
 	feedbackElement.classList.add(isSuccess ? "feedback-success" : "feedback-error");
-	feedbackElement.textContent = message;
+	feedbackElement.innerHTML = message;
 
 	// Find where to insert the feedback
 	const insertAfter = document.querySelector(".editor-content");
@@ -97,7 +110,7 @@ export function showFeedback(isSuccess, message) {
 				feedbackElement.parentNode.removeChild(feedbackElement);
 			}
 			feedbackElement = null;
-		}, 3_000); // Remove feedback after 3 seconds
+		}, 5_000); // Remove feedback after 3 seconds
 	}
 }
 
