@@ -130,18 +130,6 @@ export class LessonEngine {
 		// Get the complete CSS by combining all parts
 		const userCssWithWrapper = this.getCompleteCss();
 
-		// Create the complete CSS by combining base CSS with user code and sandbox CSS
-		const combinedCSS = `
-			/* Base CSS */
-			${previewBaseCSS || ""}
-			
-			/* User Code */
-			${userCssWithWrapper || ""}
-			
-			/* Sandbox CSS (for visualizing the exercise) */
-			${sandboxCSS || ""}
-		`;
-
 		// Write the content to the iframe
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
@@ -149,7 +137,9 @@ export class LessonEngine {
 			<!DOCTYPE html>
 			<html>
 				<head>
-					<style>${combinedCSS}</style>
+					<style>${previewBaseCSS}</style>
+					<style>${userCssWithWrapper}</style>
+					<style>${sandboxCSS}</style>
 				</head>
 				<body>
 					${previewHTML || "<div>No preview available</div>"}

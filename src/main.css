@@ -615,6 +615,10 @@ code {
 }
 
 /* Update run button styling when in re-run state */
+#run-btn img {
+	transition: transform 420ms ease;
+}
+
 #run-btn.re-run {
 	background-color: var(--success-color);
 	border-color: var(--success-color);
