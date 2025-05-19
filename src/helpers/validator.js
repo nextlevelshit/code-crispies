@@ -21,7 +21,7 @@ export function validateUserCode(userCode, lesson) {
 		isValid: true,
 		validCases: 0,
 		totalCases: validations.length ?? 0,
-		message: "Your code looks good!"
+		message: "Your code looks CRISPY!"
 	};
 
 	// Process each validation rule
