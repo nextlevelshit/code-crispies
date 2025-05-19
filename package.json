@@ -11,7 +11,7 @@
 		"test": "vitest run",
 		"test.watch": "vitest watch",
 		"test.coverage": "vitest run --coverage",
-		"format": "prettier --write src/ tests/ package.json vite.config.js vitest.config.js",
+		"format": "prettier --write src/ tests/ schemas/ package.json vite.config.js vitest.config.js",
 		"format.lessons": "prettier --write lessons/*.json"
 	},
 	"keywords": [
