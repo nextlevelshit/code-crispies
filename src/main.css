@@ -96,6 +96,19 @@ code {
 	font-family: var(--font-code);
 }
 
+footer {
+	margin: 2rem auto 0;
+	display: block;
+	color: var(--light-text);
+	text-align: center;
+}
+
+footer a {
+	color: var(--primary-color);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
 /* ================= LAYOUT ================= */
 .app-container {
 	display: flex;
