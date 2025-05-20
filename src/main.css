@@ -332,6 +332,7 @@ code {
 
 .lesson-description pre {
 	display: inline-block;
+	width: 100%;
 	font-family: var(--font-code);
 	font-size: 0.9rem;
 	background-color: var(--code-bg);

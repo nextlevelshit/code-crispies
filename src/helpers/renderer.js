@@ -235,7 +235,9 @@ export function updateActiveLessonInSidebar(moduleId, lessonIndex) {
 				}
 			}
 
-			// Scroll to ensure the item is visible
+			// Scroll to the top of the page
+			document.querySelector("html").scrollTop = 0;
+			// Scroll to the current lesson item
 			currentLessonItem.scrollIntoView({ behavior: "smooth", block: "nearest" });
 		}
 	}
