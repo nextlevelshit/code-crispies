@@ -1,0 +1,473 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-advanced-selectors",
+	"title": "Advanced Selectors",
+	"description": "Master advanced CSS selector techniques including attribute selectors, combinators, and pseudo-classes. This module builds on basic selectors to give you precise control over element targeting, enabling sophisticated styling patterns and interactive effects.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "attribute-selectors",
+			"title": "Attribute Selectors: Targeting by HTML Attributes",
+			"description": "Attribute selectors allow you to target elements based on their HTML attributes and attribute values. They are incredibly powerful for styling forms, links, and other elements with specific attributes. The basic syntax uses square brackets: <kbd>[attribute]</kbd> selects elements with that attribute, <kbd>[attribute=\"value\"]</kbd> selects elements where the attribute equals exactly that value, and <kbd>[attribute^=\"value\"]</kbd> selects elements where the attribute starts with that value. You can style these selected elements using properties like <kbd>border</kbd> to add visual boundaries and <kbd>background-color</kbd> to highlight specific form fields or links.",
+			"task": "Create a CSS rule using an attribute selector that targets all input elements with <kbd>type=\"text\"</kbd>. Give them a <kbd>lightblue</kbd> background and a <kbd>2px solid blue</kbd> border.",
+			"previewHTML": "<form>\n  <p><label>Name: <input type=\"text\" placeholder=\"Enter your name\"></label></p>\n  <p><label>Email: <input type=\"email\" placeholder=\"Enter your email\"></label></p>\n  <p><label>Password: <input type=\"password\" placeholder=\"Enter password\"></label></p>\n  <p><button type=\"submit\">Submit</button></p>\n</form>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } form { max-width: 300px; } label { display: block; margin-bottom: 5px; } input, button { padding: 8px; margin-bottom: 10px; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target input elements with type=\"text\" using an attribute selector */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^input\\[type=\"text\"\\]\\s*{",
+					"message": "Use <kbd>input[type=\"text\"]</kbd> as your attribute selector",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the <kbd>background-color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "lightblue"
+					},
+					"message": "Set the background color to <kbd>lightblue</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "border:",
+					"message": "Include the <kbd>border</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "border",
+						"expected": "2px solid blue"
+					},
+					"message": "Set the border to <kbd>2px solid blue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "input\\[type=\"text\"\\]\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "attribute-partial-matching",
+			"title": "Attribute Partial Matching",
+			"description": "Attribute selectors support partial matching patterns that let you target elements based on portions of attribute values. The <kbd>[attribute^=\"value\"]</kbd> selector matches elements where the attribute starts with the specified value, <kbd>[attribute$=\"value\"]</kbd> matches where it ends with the value, and <kbd>[attribute*=\"value\"]</kbd> matches where the value appears anywhere within the attribute. These patterns are particularly useful for styling external links, file types, or elements with class names that follow naming conventions. When styling these matched elements, you can use properties like <kbd>color</kbd> to change text color and <kbd>text-decoration</kbd> to add visual emphasis like underlines.",
+			"task": "Create a CSS rule that targets all anchor elements (<kbd>a</kbd>) with <kbd>href</kbd> attributes that start with <kbd>\"https\"</kbd>. Make the text <kbd>green</kbd> and add an <kbd>underline</kbd>.",
+			"previewHTML": "<h2>Different Types of Links</h2>\n<ul>\n  <li><a href=\"https://example.com\">External HTTPS link</a></li>\n  <li><a href=\"http://oldsite.com\">External HTTP link</a></li>\n  <li><a href=\"#section1\">Internal anchor link</a></li>\n  <li><a href=\"/about\">Relative link</a></li>\n  <li><a href=\"https://secure-site.org\">Another HTTPS link</a></li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } ul { list-style-type: none; padding: 0; } li { margin-bottom: 8px; } a { text-decoration: none; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target anchor elements with href starting with \"https\" */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "a[href^=\"https\"] {\n  color: green;\n  text-decoration: underline;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^a\\[href\\^=\"https\"\\]\\s*{",
+					"message": "Use <kbd>a[href^=\"https\"]</kbd> to target links starting with https",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the <kbd>color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "green"
+					},
+					"message": "Set the color to <kbd>green</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "text-decoration:",
+					"message": "Include the <kbd>text-decoration</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-decoration",
+						"expected": "underline"
+					},
+					"message": "Set text-decoration to <kbd>underline</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "a\\[href\\^=\"https\"\\]\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "child-combinator",
+			"title": "Child Combinator: Direct Children Only",
+			"description": "The child combinator (<kbd>></kbd>) selects elements that are direct children of another element, not grandchildren or deeper descendants. For example, <kbd>ul > li</kbd> selects list items that are immediate children of unordered lists, but not list items nested inside other list items. This precise targeting is useful when you want to style only the top level of nested structures like navigation menus or nested lists. When styling direct children, you can use properties like <kbd>font-weight</kbd> to make text bold and <kbd>background-color</kbd> to highlight specific elements. The child combinator gives you more control than the descendant selector by limiting selection to one level deep.",
+			"task": "Use the child combinator to target only the direct <kbd>li</kbd> children of the <kbd>ul</kbd> with class <kbd>menu</kbd>. Make them <kbd>bold</kbd> and give them a <kbd>lightgray</kbd> background.",
+			"previewHTML": "<ul class=\"menu\">\n  <li>Home (direct child)</li>\n  <li>Products (direct child)\n    <ul>\n      <li>Laptops (nested, not direct child)</li>\n      <li>Phones (nested, not direct child)</li>\n    </ul>\n  </li>\n  <li>About (direct child)</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } ul { margin-bottom: 10px; } li { padding: 5px; margin-bottom: 3px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target only direct li children of ul.menu using the child combinator */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "ul.menu > li {\n  font-weight: bold;\n  background-color: lightgray;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^ul\\.menu\\s*>\\s*li\\s*{",
+					"message": "Use <kbd>ul.menu > li</kbd> with the child combinator (>)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "font-weight:",
+					"message": "Include the <kbd>font-weight</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-weight",
+						"expected": "bold"
+					},
+					"message": "Set font-weight to <kbd>bold</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the <kbd>background-color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "lightgray"
+					},
+					"message": "Set background-color to <kbd>lightgray</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "ul\\.menu\\s*>\\s*li\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "descendant-combinator",
+			"title": "Descendant Combinator: All Nested Elements",
+			"description": "The descendant combinator uses a space between selectors to target elements that are nested anywhere inside other elements, regardless of how deeply nested they are. For example, <kbd>nav a</kbd> selects all anchor elements inside navigation elements, whether they're direct children or nested several levels deep. This is broader than the child combinator and is useful for applying consistent styling to all elements of a certain type within a container. When styling descendants, you can use properties like <kbd>text-decoration</kbd> to control link appearance and <kbd>color</kbd> to set consistent text colors throughout a section. The descendant combinator is one of the most commonly used combinators in CSS.",
+			"task": "Use the descendant combinator to target all anchor elements (<kbd>a</kbd>) inside the <kbd>nav</kbd> element. Remove their underlines with <kbd>text-decoration: none</kbd> and make them <kbd>blue</kbd>.",
+			"previewHTML": "<nav>\n  <ul>\n    <li><a href=\"#\">Home</a></li>\n    <li><a href=\"#\">About</a>\n      <ul>\n        <li><a href=\"#\">Our Team</a></li>\n        <li><a href=\"#\">History</a></li>\n      </ul>\n    </li>\n    <li><a href=\"#\">Contact</a></li>\n  </ul>\n</nav>\n<p>This <a href=\"#\">link outside nav</a> should not be affected.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } nav { border: 2px solid navy; padding: 15px; background-color: aliceblue; margin-bottom: 15px; } ul { list-style-type: none; padding-left: 20px; } li { margin-bottom: 5px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target all anchor elements inside nav using the descendant combinator */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "nav a {\n  text-decoration: none;\n  color: blue;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^nav\\s+a\\s*{",
+					"message": "Use <kbd>nav a</kbd> with a space between nav and a",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "text-decoration:",
+					"message": "Include the <kbd>text-decoration</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-decoration",
+						"expected": "none"
+					},
+					"message": "Set text-decoration to <kbd>none</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the <kbd>color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "blue"
+					},
+					"message": "Set color to <kbd>blue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "nav\\s+a\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "adjacent-sibling-combinator",
+			"title": "Adjacent Sibling Combinator: The Next Element",
+			"description": "The adjacent sibling combinator (<kbd>+</kbd>) selects an element that immediately follows another element at the same level in the HTML structure. Both elements must share the same parent, and there can be no other elements between them. For example, <kbd>h1 + p</kbd> selects paragraph elements that come directly after h1 headings. This combinator is particularly useful for styling elements that have special relationships, like the first paragraph after a heading, or labels that follow form inputs. When styling adjacent siblings, you can use properties like <kbd>margin-top</kbd> to adjust spacing and <kbd>font-style</kbd> to add emphasis like italics to create visual hierarchy.",
+			"task": "Use the adjacent sibling combinator to target paragraphs that immediately follow <kbd>h2</kbd> headings. Remove their top margin with <kbd>margin-top: 0</kbd> and make them italic.",
+			"previewHTML": "<h2>First Heading</h2>\n<p>This paragraph directly follows h2 (should be affected).</p>\n<p>This paragraph comes after another paragraph (should NOT be affected).</p>\n<h2>Second Heading</h2>\n<p>This paragraph also directly follows h2 (should be affected).</p>\n<div>This div comes after h2 but is not a paragraph.</div>\n<p>This paragraph comes after a div (should NOT be affected).</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } h2, p, div { margin: 15px 0; padding: 8px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target paragraphs that immediately follow h2 headings */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "h2 + p {\n  margin-top: 0;\n  font-style: italic;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^h2\\s*\\+\\s*p\\s*{",
+					"message": "Use <kbd>h2 + p</kbd> with the adjacent sibling combinator (+)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "margin-top:",
+					"message": "Include the <kbd>margin-top</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "margin-top",
+						"expected": "0"
+					},
+					"message": "Set margin-top to <kbd>0</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "font-style:",
+					"message": "Include the <kbd>font-style</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-style",
+						"expected": "italic"
+					},
+					"message": "Set font-style to <kbd>italic</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "h2\\s*\\+\\s*p\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "general-sibling-combinator",
+			"title": "General Sibling Combinator: All Following Siblings",
+			"description": "The general sibling combinator (<kbd>~</kbd>) selects all elements that follow another element at the same level, not just the immediately adjacent one. Unlike the adjacent sibling combinator, there can be other elements between the target elements, as long as they all share the same parent and the selected elements come after the reference element. For example, <kbd>h2 ~ p</kbd> selects all paragraph elements that appear after any h2 heading at the same level. When styling general siblings, you can use properties like <kbd>color</kbd> to change text color and <kbd>padding-left</kbd> to create visual indentation, helping to show the relationship between related content sections.",
+			"task": "Use the general sibling combinator to target all paragraphs that come after the <kbd>h3</kbd> heading (at the same level). Give them a <kbd>gray</kbd> color and <kbd>20px</kbd> of left padding.",
+			"previewHTML": "<div>\n  <p>This paragraph comes before h3 (should NOT be affected).</p>\n  <h3>Section Title</h3>\n  <p>First paragraph after h3 (should be affected).</p>\n  <div>Some other content in between</div>\n  <p>Second paragraph after h3 (should also be affected).</p>\n  <span>More content</span>\n  <p>Third paragraph after h3 (should also be affected).</p>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } h3, p, div, span { margin: 10px 0; padding: 8px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target all paragraphs that follow h3 using the general sibling combinator */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "h3 ~ p {\n  color: gray;\n  padding-left: 20px;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^h3\\s*~\\s*p\\s*{",
+					"message": "Use <kbd>h3 ~ p</kbd> with the general sibling combinator (~)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the <kbd>color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "gray"
+					},
+					"message": "Set color to <kbd>gray</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "padding-left:",
+					"message": "Include the <kbd>padding-left</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "padding-left",
+						"expected": "20px"
+					},
+					"message": "Set padding-left to <kbd>20px</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "h3\\s*~\\s*p\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "hover-pseudo-class",
+			"title": "The :hover Pseudo-Class",
+			"description": "The <kbd>:hover</kbd> pseudo-class applies styles when a user hovers their mouse over an element. This creates interactive feedback that improves user experience by providing visual cues about clickable or interactive elements. Hover effects are commonly used on links, buttons, and other interactive elements to indicate their interactive nature. When creating hover effects, you can use properties like <kbd>background-color</kbd> to change the background on hover and <kbd>color</kbd> to change text color, creating clear visual feedback. The <kbd>:hover</kbd> pseudo-class only applies while the mouse cursor is positioned over the element, reverting to the normal state when the cursor moves away.",
+			"task": "Create a hover effect for the button element. On hover, change the background to <kbd>darkblue</kbd> and the text color to <kbd>white</kbd>.",
+			"previewHTML": "<h2>Interactive Button</h2>\n<p>Hover over the button below to see the effect:</p>\n<button type=\"button\">Hover Over Me</button>\n<p>The button should change colors when you hover over it.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } button { padding: 12px 24px; font-size: 16px; border: 2px solid darkblue; background-color: lightblue; color: darkblue; border-radius: 5px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Create a hover effect for the button */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "button:hover {\n  background-color: darkblue;\n  color: white;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^button:hover\\s*{",
+					"message": "Use <kbd>button:hover</kbd> to target buttons on hover",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Include the <kbd>background-color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "darkblue"
+					},
+					"message": "Set background-color to <kbd>darkblue</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the <kbd>color</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "white"
+					},
+					"message": "Set color to <kbd>white</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "button:hover\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "first-child-pseudo-class",
+			"title": "The :first-child Pseudo-Class",
+			"description": "The <kbd>:first-child</kbd> pseudo-class selects elements that are the first child of their parent element. This is useful for applying special styling to the first item in lists, the first paragraph in articles, or the first element in any container. For example, <kbd>li:first-child</kbd> selects the first list item in each list, while <kbd>p:first-child</kbd> selects paragraphs that are the first child element of their container. When styling first children, you can use properties like <kbd>font-weight</kbd> to make the first item bold and <kbd>margin-top</kbd> to adjust spacing, helping create visual hierarchy and improve the layout of your content.",
+			"task": "Use the <kbd>:first-child</kbd> pseudo-class to target the first list item in each list. Make it <kbd>bold</kbd> and remove its top margin.",
+			"previewHTML": "<h2>Multiple Lists</h2>\n<h3>Fruits</h3>\n<ul>\n  <li>Apple (first child)</li>\n  <li>Banana</li>\n  <li>Orange</li>\n</ul>\n<h3>Colors</h3>\n<ul>\n  <li>Red (first child)</li>\n  <li>Blue</li>\n  <li>Green</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } li { margin: 8px 0; padding: 5px; border: 1px solid #ddd; border-radius: 3px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Target the first list item in each list */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "li:first-child {\n  font-weight: bold;\n  margin-top: 0;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^li:first-child\\s*{",
+					"message": "Use <kbd>li:first-child</kbd> to target first list items",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "font-weight:",
+					"message": "Include the <kbd>font-weight</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-weight",
+						"expected": "bold"
+					},
+					"message": "Set font-weight to <kbd>bold</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "margin-top:",
+					"message": "Include the <kbd>margin-top</kbd> property"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "margin-top",
+						"expected": "0"
+					},
+					"message": "Set margin-top to <kbd>0</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "li:first-child\\s*{[^}]*}",
+					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		}
+	]
+}

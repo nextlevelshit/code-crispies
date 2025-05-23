@@ -4,6 +4,7 @@
 
 // Import lesson configs
 import basicSelectorsConfig from "../../lessons/00-basic-selectors.json";
+import advancedSelectorsConfig from "../../lessons/01-advanced-selectors.json";
 // import basicsConfig from "../../lessons/00-basics.json";
 // import boxModelConfig from "../../lessons/01-box-model.json";
 // import selectorsConfig from "../../lessons/02-selectors.json";
@@ -17,7 +18,8 @@ import basicSelectorsConfig from "../../lessons/00-basic-selectors.json";
 // Module store
 const moduleStore = [
 	// basicsConfig,
-	basicSelectorsConfig
+	basicSelectorsConfig,
+	advancedSelectorsConfig
 	// boxModelConfig,
 	// selectorsConfig,
 	// colorsConfig
