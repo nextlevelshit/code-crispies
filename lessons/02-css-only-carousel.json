@@ -1,0 +1,300 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-carousels",
+	"title": "CSS Carousels",
+	"description": "Learn to create modern, accessible carousels using pure CSS with scroll snapping, scroll buttons, and scroll markers. This module covers advanced CSS features that enable interactive carousel components without JavaScript, focusing on responsive design and user accessibility.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "basic-horizontal-scroll",
+			"title": "Creating a Basic Horizontal Scroll Container",
+			"description": "Before building carousels, we need to understand how to create horizontally scrolling containers. A scroll container is created by setting the <kbd>overflow-x</kbd> property to <kbd>scroll</kbd> on a container element. This allows content that exceeds the container's width to be scrolled horizontally instead of breaking to new lines or being hidden.",
+			"task": "Create a horizontal scroll container by setting <kbd>overflow-x: scroll</kbd> on the <kbd>.container</kbd> element. This will allow the wide content inside to scroll horizontally.",
+			"previewHTML": "<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.container { width: 300px; border: 2px solid #333; padding: 10px; }\n.item { display: inline-block; width: 120px; height: 80px; background: lightblue; margin-right: 10px; text-align: center; line-height: 80px; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Make the container scroll horizontally */\n.container {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "overflow-x: scroll;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "overflow-x:",
+					"message": "Use the <kbd>overflow-x</kbd> property to control horizontal scrolling"
+				},
+				{
+					"type": "contains",
+					"value": "scroll",
+					"message": "Set the value to <kbd>scroll</kbd> to enable horizontal scrolling"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "overflow-x",
+						"expected": "scroll"
+					},
+					"message": "Use <kbd>overflow-x: scroll</kbd> to make the container scrollable horizontally"
+				}
+			]
+		},
+		{
+			"id": "scroll-snap-introduction",
+			"title": "Adding Scroll Snap Behavior",
+			"description": "Scroll snapping makes carousels feel more polished by ensuring that items align properly after scrolling. The <kbd>scroll-snap-type</kbd> property is applied to the scroll container, while <kbd>scroll-snap-align</kbd> is applied to the items inside. The <kbd>x mandatory</kbd> value means horizontal snapping is required.",
+			"task": "Add scroll snapping to the container by setting <kbd>scroll-snap-type: x mandatory</kbd>. Then add <kbd>scroll-snap-align: center</kbd> to the items so they snap to the center of the container.",
+			"previewHTML": "<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n</div>\n<p>Try scrolling in the container above - items should snap into place!</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.container { width: 300px; height: 120px; border: 2px solid #333; padding: 10px; overflow-x: scroll; display: flex; gap: 10px; }\n.item { flex: 0 0 120px; height: 80px; background: lightcoral; text-align: center; line-height: 80px; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add scroll snapping to the container */\n.container {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Make items snap to center */\n.item {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "scroll-snap-type: x mandatory;\n}\n\n.item {\n  scroll-snap-align: center;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "scroll-snap-type:",
+					"message": "Add the <kbd>scroll-snap-type</kbd> property to the container"
+				},
+				{
+					"type": "contains",
+					"value": "x mandatory",
+					"message": "Use <kbd>x mandatory</kbd> for horizontal mandatory snapping"
+				},
+				{
+					"type": "contains",
+					"value": "scroll-snap-align:",
+					"message": "Add <kbd>scroll-snap-align</kbd> to the items"
+				},
+				{
+					"type": "contains",
+					"value": "center",
+					"message": "Use <kbd>center</kbd> to align items to the center of the container"
+				}
+			]
+		},
+		{
+			"id": "flexbox-carousel-layout",
+			"title": "Building a Full-Width Item Carousel with Flexbox",
+			"description": "For carousels where each item takes the full width (like image slideshows), we use flexbox with <kbd>flex: 0 0 100%</kbd> on each item. This means: no grow (0), no shrink (0), and take 100% of the container width. Combined with a horizontal gap, this creates distinct pages.",
+			"task": "Create a full-width carousel layout using flexbox. Set <kbd>display: flex</kbd> and <kbd>gap: 20px</kbd> on the container, then <kbd>flex: 0 0 100%</kbd> on the items.",
+			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.carousel { width: 100%; height: 200px; border: 2px solid #333; overflow-x: scroll; scroll-snap-type: x mandatory; }\n.slide { height: 180px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; scroll-snap-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set up flexbox layout for full-width slides */\n.carousel {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Make each slide take full width */\n.slide {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "display: flex;\n  gap: 20px;\n}\n\n.slide {\n  flex: 0 0 100%;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "display: flex",
+					"message": "Use <kbd>display: flex</kbd> to create a flexbox layout"
+				},
+				{
+					"type": "contains",
+					"value": "gap:",
+					"message": "Add a <kbd>gap</kbd> property to create space between slides"
+				},
+				{
+					"type": "contains",
+					"value": "20px",
+					"message": "Set the gap to <kbd>20px</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "flex: 0 0 100%",
+					"message": "Use <kbd>flex: 0 0 100%</kbd> to make each slide take full width"
+				}
+			]
+		},
+		{
+			"id": "scroll-buttons-basic",
+			"title": "Adding Scroll Buttons",
+			"description": "CSS scroll buttons are created using the <kbd>::scroll-button()</kbd> pseudo-element. You specify the direction (left, right, up, down) and set content to make them visible. The browser automatically handles the scrolling behavior and disables buttons when they can't scroll further.",
+			"task": "Add scroll buttons by creating <kbd>::scroll-button(left)</kbd> and <kbd>::scroll-button(right)</kbd> pseudo-elements. Set their <kbd>content</kbd> to arrow symbols and style them with a font size and color.",
+			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.carousel { width: 100%; height: 200px; border: 2px solid #333; overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; gap: 20px; position: relative; }\n.slide { flex: 0 0 100%; height: 180px; background: linear-gradient(45deg, #667eea, #764ba2); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; scroll-snap-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Style all scroll buttons */\n.carousel::scroll-button(*) {\n  font-size: 24px;\n  color: #333;\n  background: white;\n  border: 2px solid #333;\n  padding: 10px;\n  cursor: pointer;\n}\n\n/* Create left scroll button */\n.carousel::scroll-button(left) {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Create right scroll button */\n.carousel::scroll-button(right) {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "content: \"◀\";\n}\n\n.carousel::scroll-button(right) {\n  content: \"▶\";",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "::scroll-button(left)",
+					"message": "Create a left scroll button using <kbd>::scroll-button(left)</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "::scroll-button(right)",
+					"message": "Create a right scroll button using <kbd>::scroll-button(right)</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "content:",
+					"message": "Set the <kbd>content</kbd> property to display the button"
+				},
+				{
+					"type": "regex",
+					"value": "content:\\s*[\"'][◀◄<][\"']",
+					"message": "Use a left arrow symbol like ◀ or ◄ for the left button content"
+				},
+				{
+					"type": "regex",
+					"value": "content:\\s*[\"'][▶►>][\"']",
+					"message": "Use a right arrow symbol like ▶ or ► for the right button content"
+				}
+			]
+		},
+		{
+			"id": "scroll-markers-introduction",
+			"title": "Creating Scroll Markers",
+			"description": "Scroll markers are navigation dots that show your position in the carousel and allow jumping to specific slides. They're created using <kbd>::scroll-marker</kbd> pseudo-elements on the slide items, and collected in a <kbd>::scroll-marker-group</kbd>. The <kbd>scroll-marker-group</kbd> property must be set to <kbd>after</kbd> or <kbd>before</kbd> to enable them.",
+			"task": "Enable scroll markers by setting <kbd>scroll-marker-group: after</kbd> on the carousel. Then style the markers using <kbd>::scroll-marker</kbd> pseudo-elements with circular appearance.",
+			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.carousel { width: 100%; height: 200px; border: 2px solid #333; overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; gap: 20px; }\n.slide { flex: 0 0 100%; height: 180px; background: linear-gradient(45deg, #f093fb, #f5576c); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; scroll-snap-align: center; }\n.carousel::scroll-button(*) { font-size: 20px; color: #333; background: white; border: 1px solid #333; padding: 8px; }\n.carousel::scroll-button(left) { content: \"◀\"; }\n.carousel::scroll-button(right) { content: \"▶\"; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Enable scroll markers */\n.carousel {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Style the scroll markers */\n.slide::scroll-marker {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "scroll-marker-group: after;\n}\n\n.slide::scroll-marker {\n  content: \"\";\n  width: 12px;\n  height: 12px;\n  border-radius: 50%;\n  background: #ccc;\n  border: 2px solid #333;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "scroll-marker-group:",
+					"message": "Add the <kbd>scroll-marker-group</kbd> property to enable markers"
+				},
+				{
+					"type": "contains",
+					"value": "after",
+					"message": "Set <kbd>scroll-marker-group: after</kbd> to place markers after the content"
+				},
+				{
+					"type": "contains",
+					"value": "::scroll-marker",
+					"message": "Use <kbd>::scroll-marker</kbd> pseudo-element to style the markers"
+				},
+				{
+					"type": "contains",
+					"value": "content:",
+					"message": "Set <kbd>content: \"\"</kbd> to display the markers"
+				},
+				{
+					"type": "contains",
+					"value": "border-radius:",
+					"message": "Use <kbd>border-radius</kbd> to make circular markers"
+				}
+			]
+		},
+		{
+			"id": "active-marker-styling",
+			"title": "Highlighting the Active Marker",
+			"description": "The <kbd>:target-current</kbd> pseudo-class automatically selects the scroll marker that corresponds to the currently visible slide. This is essential for user experience as it shows which slide is active. You can style it differently to indicate the current position.",
+			"task": "Use the <kbd>:target-current</kbd> pseudo-class to highlight the active scroll marker. Change its background color to make it stand out from inactive markers.",
+			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>\n<p>Scroll or click markers to see the active state change!</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.carousel { width: 100%; height: 200px; border: 2px solid #333; overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; gap: 20px; scroll-marker-group: after; }\n.slide { flex: 0 0 100%; height: 180px; background: linear-gradient(45deg, #a8edea, #fed6e3); color: #333; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; scroll-snap-align: center; }\n.slide::scroll-marker { content: \"\"; width: 12px; height: 12px; border-radius: 50%; background: #eee; border: 2px solid #333; }\n.carousel::scroll-button(*) { font-size: 18px; color: #333; background: white; border: 1px solid #333; padding: 6px; }\n.carousel::scroll-button(left) { content: \"◀\"; }\n.carousel::scroll-button(right) { content: \"▶\"; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Highlight the active/current scroll marker */\n.slide::scroll-marker:target-current {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "background: #333;\n  border-color: #666;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ":target-current",
+					"message": "Use the <kbd>:target-current</kbd> pseudo-class to target the active marker"
+				},
+				{
+					"type": "contains",
+					"value": "background:",
+					"message": "Change the <kbd>background</kbd> color to highlight the active marker"
+				},
+				{
+					"type": "regex",
+					"value": "::scroll-marker:target-current",
+					"message": "Apply <kbd>:target-current</kbd> to the <kbd>::scroll-marker</kbd> pseudo-element"
+				}
+			]
+		},
+		{
+			"id": "multi-column-carousel",
+			"title": "Multi-Item Carousel with CSS Columns",
+			"description": "For responsive carousels showing multiple items per page, CSS multi-column layout is ideal. Using <kbd>columns: 1</kbd> creates full-width columns, and items flow naturally into each column. The <kbd>::column</kbd> pseudo-element represents each generated column and can have scroll-snap alignment.",
+			"task": "Create a multi-item carousel using <kbd>columns: 1</kbd> for the layout and <kbd>scroll-snap-align: center</kbd> on the <kbd>::column</kbd> pseudo-elements to snap to each column.",
+			"previewHTML": "<div class=\"multi-carousel\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n  <div class=\"item\">Item 6</div>\n  <div class=\"item\">Item 7</div>\n  <div class=\"item\">Item 8</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; }\n.multi-carousel { width: 100%; height: 250px; border: 2px solid #333; padding: 10px; overflow-x: scroll; scroll-snap-type: x mandatory; text-align: center; }\n.item { display: inline-block; width: 150px; height: 100px; margin: 5px; background: linear-gradient(45deg, #667eea, #764ba2); color: white; line-height: 100px; text-align: center; border-radius: 8px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set up multi-column layout */\n.multi-carousel {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Make columns snap to center */\n.multi-carousel::column {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "columns: 1;\n}\n\n.multi-carousel::column {\n  scroll-snap-align: center;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "columns:",
+					"message": "Use the <kbd>columns</kbd> property to create column layout"
+				},
+				{
+					"type": "contains",
+					"value": "columns: 1",
+					"message": "Set <kbd>columns: 1</kbd> to create full-width columns"
+				},
+				{
+					"type": "contains",
+					"value": "::column",
+					"message": "Use <kbd>::column</kbd> pseudo-element to target generated columns"
+				},
+				{
+					"type": "contains",
+					"value": "scroll-snap-align: center",
+					"message": "Add <kbd>scroll-snap-align: center</kbd> to snap columns to center"
+				}
+			]
+		},
+		{
+			"id": "complete-carousel-styling",
+			"title": "Creating a Complete Styled Carousel",
+			"description": "A professional carousel combines all the features we've learned: scroll snapping, scroll buttons, scroll markers, and proper styling for different states. This includes hover effects, disabled states for buttons, and positioning for optimal user experience.",
+			"task": "Complete the carousel by adding hover effects to buttons using <kbd>:hover</kbd>, styling disabled buttons with <kbd>:disabled</kbd>, and ensuring the marker group has proper flexbox layout.",
+			"previewHTML": "<div class=\"complete-carousel\">\n  <div class=\"slide\">🌅 Slide 1</div>\n  <div class=\"slide\">🌄 Slide 2</div>\n  <div class=\"slide\">🏔️ Slide 3</div>\n  <div class=\"slide\">🌊 Slide 4</div>\n  <div class=\"slide\">🌆 Slide 5</div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }\n.complete-carousel { width: 100%; height: 250px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; gap: 0; scroll-marker-group: after; }\n.slide { flex: 0 0 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; display: flex; align-items: center; justify-content: center; font-size: 36px; scroll-snap-align: center; }\n.slide:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }\n.slide:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }\n.slide:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }\n.slide:nth-child(5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }\n.complete-carousel::scroll-button(*) { font-size: 20px; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; }\n.complete-carousel::scroll-button(left) { content: \"◀\"; }\n.complete-carousel::scroll-button(right) { content: \"▶\"; }\n.complete-carousel::scroll-marker-group { display: flex; gap: 8px; justify-content: center; }\n.slide::scroll-marker { content: \"\"; width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; }\n.slide::scroll-marker:target-current { background: white; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Add hover effects to scroll buttons */\n.complete-carousel::scroll-button(*):hover {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}\n\n/* Style disabled scroll buttons */\n.complete-carousel::scroll-button(*):disabled {\n  \n}",
+			"previewContainer": "preview-area",
+			"solution": "background: white;\n  transform: scale(1.1);\n}\n\n.complete-carousel::scroll-button(*):disabled {\n  opacity: 0.3;\n  cursor: not-allowed;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ":hover",
+					"message": "Add <kbd>:hover</kbd> pseudo-class for button hover effects"
+				},
+				{
+					"type": "contains",
+					"value": ":disabled",
+					"message": "Add <kbd>:disabled</kbd> pseudo-class for disabled button styling"
+				},
+				{
+					"type": "contains",
+					"value": "opacity:",
+					"message": "Use <kbd>opacity</kbd> to show disabled state"
+				},
+				{
+					"type": "contains",
+					"value": "cursor:",
+					"message": "Change the <kbd>cursor</kbd> for better UX on disabled buttons"
+				}
+			]
+		}
+	]
+}
