@@ -111,17 +111,9 @@
 					"message": "Include a <kbd>strong { … }</kbd> selector"
 				},
 				{
-					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "red"
-					},
-					"message": "Set the <kbd>color: red</kbd> for strong elements"
-				},
-				{
 					"type": "regex",
-					"value": "strong\\s*{[^}]*}",
-					"message": "Make sure to close your strong rule with a closing brace <kbd>}</kbd>"
+					"value": "strong\\s*{\\s*color:\\s*red;[^}]*}",
+					"message": "Set the <kbd>color: red</kbd> for strong elements"
 				}
 			]
 		},
