@@ -20,8 +20,8 @@ import carouselConfig from "../../lessons/02-css-only-carousel.json";
 const moduleStore = [
 	// basicsConfig,
 	basicSelectorsConfig,
-	advancedSelectorsConfig,
-	carouselConfig
+	// advancedSelectorsConfig,
+	// carouselConfig
 	// boxModelConfig,
 	// selectorsConfig,
 	// colorsConfig
