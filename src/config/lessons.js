@@ -11,22 +11,24 @@ import carouselConfig from "../../lessons/02-css-only-carousel.json";
 // import selectorsConfig from "../../lessons/02-selectors.json";
 // import colorsConfig from "../../lessons/03-colors.json";
 // import typographyConfig from "../../lessons/04-typography.json";
-// import unitVariablesConfig from "../../lessons/05-units-variables.json";
+import unitVariablesConfig from "../../lessons/05-units-variables.json";
 // import transitionsAnimationsConfig from "../../lessons/06-transitions-animations.json";
 // import layoutConfig from "../../lessons/07-layouts.json";
 // import responsiveConfig from "../../lessons/08-responsive.json";
+import tailwindConfig from "../../lessons/10-tailwind-basics.json";
 
 // Module store
 const moduleStore = [
 	// basicsConfig,
 	basicSelectorsConfig,
-	// advancedSelectorsConfig,
+	advancedSelectorsConfig,
+	tailwindConfig
 	// carouselConfig
 	// boxModelConfig,
 	// selectorsConfig,
 	// colorsConfig
 	// typographyConfig,
-	// unitVariablesConfig,
+	// unitVariablesConfig
 	// transitionsAnimationsConfig,
 	// layoutConfig,
 	// responsiveConfig
@@ -37,8 +39,13 @@ const moduleStore = [
  * @returns {Promise<Array>} Promise resolving to array of modules
  */
 export async function loadModules() {
-	// In a real app, we might load these from a server
-	return moduleStore;
+	return moduleStore.map((module) => ({
+		...module,
+		lessons: module.lessons.map((lesson) => ({
+			...lesson,
+			mode: module.mode || "css"
+		}))
+	}));
 }
 
 /**

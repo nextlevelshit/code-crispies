@@ -111,42 +111,62 @@ export class LessonEngine {
 	renderPreview() {
 		if (!this.currentLesson) return;
 
+		const mode = this.currentLesson.mode || this.currentModule?.mode || "css";
 		const { previewHTML, previewBaseCSS, previewContainer, sandboxCSS } = this.currentLesson;
 
-		// Create an iframe for isolated preview rendering
 		const iframe = document.createElement("iframe");
 		iframe.style.width = "100%";
 		iframe.style.height = "100%";
 		iframe.style.border = "none";
 		iframe.title = "Preview";
 
-		// Get the preview container
 		const container = document.getElementById(previewContainer || "preview-area");
-
-		// Clear the container and add the iframe
 		container.innerHTML = "";
 		container.appendChild(iframe);
 
-		// Get the complete CSS by combining all parts
-		const userCssWithWrapper = this.getCompleteCss();
-
-		// Write the content to the iframe
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
-		iframeDoc.write(`
-			<!DOCTYPE html>
-			<html>
-				<head>
-					<style>${previewBaseCSS}</style>
-					<style>${userCssWithWrapper}</style>
-					<style>${sandboxCSS}</style>
-				</head>
-				<body>
-					${previewHTML || "<div>No preview available</div>"}
-				</body>
-			</html>
-		`);
+
+		if (mode === "tailwind") {
+			// For Tailwind mode, user code goes directly in HTML classes
+			const htmlWithClasses = this.injectTailwindClasses(previewHTML, this.userCode);
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <script src="https://cdn.tailwindcss.com"></script>
+          <style>${previewBaseCSS}</style>
+          <style>${sandboxCSS}</style>
+        </head>
+        <body>
+          ${htmlWithClasses}
+        </body>
+      </html>
+    `);
+		} else {
+			// Original CSS mode
+			const userCssWithWrapper = this.getCompleteCss();
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>${previewBaseCSS}</style>
+          <style>${userCssWithWrapper}</style>
+          <style>${sandboxCSS}</style>
+        </head>
+        <body>
+          ${previewHTML}
+        </body>
+      </html>
+    `);
+		}
+
 		iframeDoc.close();
+	}
+
+	injectTailwindClasses(html, userClasses) {
+		// Replace placeholder in HTML with user's Tailwind classes
+		return html.replace(/{{USER_CLASSES}}/g, userClasses);
 	}
 
 	/**

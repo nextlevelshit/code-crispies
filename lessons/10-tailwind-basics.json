@@ -1,0 +1,28 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "tailwind-basics",
+	"title": "Tailwind CSS Basics",
+	"mode": "tailwind",
+	"lessons": [
+		{
+			"id": "bg-colors",
+			"title": "Background Colors",
+			"description": "Learn to apply background colors using Tailwind utilities.",
+			"task": "Add a blue background to the div using Tailwind classes.",
+			"previewHTML": "<div class=\"{{USER_CLASSES}} p-8 rounded\">Hello Tailwind!</div>",
+			"previewBaseCSS": "body { padding: 20px; font-family: sans-serif; }",
+			"initialCode": "",
+			"validations": [
+				{
+					"type": "contains_class",
+					"value": "bg-blue-500",
+					"message": "Add the 'bg-blue-500' class for a blue background."
+				}
+			],
+			"sandboxCSS": "",
+			"previewContainer": ""
+		}
+	],
+	"description": "",
+	"difficulty": "advanced"
+}

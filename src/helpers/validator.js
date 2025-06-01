@@ -2,13 +2,79 @@
  * Validator - Functions to validate user CSS code
  */
 
+export function validateUserCode(userCode, lesson) {
+	const mode = lesson.mode || "css";
+
+	if (mode === "tailwind") {
+		return validateTailwindClasses(userCode, lesson);
+	} else {
+		return validateCssCode(userCode, lesson);
+	}
+}
+
+function validateTailwindClasses(userClasses, lesson) {
+	if (!lesson || !lesson.validations) {
+		return { isValid: true, message: "No validations specified for this lesson." };
+	}
+
+	let result = {
+		isValid: true,
+		validCases: 0,
+		totalCases: lesson.validations.length,
+		message: "Your Tailwind classes look CRISPY!"
+	};
+
+	for (const validation of lesson.validations) {
+		const { type, value, message } = validation;
+		let validationPassed = false;
+
+		switch (type) {
+			case "contains_class":
+				validationPassed = userClasses.split(/\s+/).includes(value);
+				if (!validationPassed) {
+					result = {
+						...result,
+						isValid: false,
+						message: message || `Your classes should include "${value}".`
+					};
+				}
+				break;
+
+			case "contains_pattern":
+				const regex = new RegExp(value);
+				validationPassed = regex.test(userClasses);
+				if (!validationPassed) {
+					result = {
+						...result,
+						isValid: false,
+						message: message || "Your classes don't match the expected pattern."
+					};
+				}
+				break;
+
+			default:
+				// Fall back to original CSS validation for other types
+				validationPassed = containsValidation(userClasses, value);
+		}
+
+		if (validationPassed) {
+			result.validCases++;
+		} else {
+			return result;
+		}
+	}
+
+	result.validCases = lesson.validations.length;
+	return result;
+}
+
 /**
  * Validate user CSS code against the lesson requirements
  * @param {string} userCode - User submitted CSS code
  * @param {Object} lesson - The current lesson object
  * @returns {Object} Validation result with isValid and message properties
  */
-export function validateUserCode(userCode, lesson) {
+export function validateCssCode(userCode, lesson) {
 	if (!lesson || !lesson.validations) {
 		return { isValid: true, message: "No validations specified for this lesson." };
 	}
