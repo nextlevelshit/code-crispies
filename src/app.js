@@ -210,6 +210,19 @@ function resetSuccessIndicators() {
 	elements.runBtn.classList.remove("re-run");
 }
 
+function updateEditorForMode(mode) {
+	const codeInput = elements.codeInput;
+	const editorLabel = document.querySelector(".editor-label");
+
+	if (mode === "tailwind") {
+		codeInput.placeholder = "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)";
+		if (editorLabel) editorLabel.textContent = "Tailwind Classes:";
+	} else {
+		codeInput.placeholder = "Enter your CSS code here...";
+		if (editorLabel) editorLabel.textContent = "CSS Code:";
+	}
+}
+
 // Configure editor layout based on display type
 function resetEditorLayout(lesson) {
 	elements.validationIndicators.innerHTML = "";
@@ -229,7 +242,11 @@ function loadCurrentLesson() {
 	}
 
 	const lesson = state.currentModule.lessons[state.currentLessonIndex];
+	const mode = lesson.mode || state.currentModule?.mode || "css";
 	lessonEngine.setLesson(lesson);
+
+	// Update UI based on mode
+	updateEditorForMode(mode);
 
 	// Reset any success indicators
 	resetSuccessIndicators();
