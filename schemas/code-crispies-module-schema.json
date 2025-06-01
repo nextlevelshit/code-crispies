@@ -36,9 +36,7 @@
 					"previewHTML",
 					"previewBaseCSS",
 					"sandboxCSS",
-					"codePrefix",
 					"initialCode",
-					"codeSuffix",
 					"previewContainer",
 					"validations"
 				],
@@ -71,17 +69,9 @@
 						"type": "string",
 						"description": "Additional CSS for the sandbox environment"
 					},
-					"codePrefix": {
-						"type": "string",
-						"description": "Code that appears before the editable area"
-					},
 					"initialCode": {
 						"type": "string",
 						"description": "Initial code provided in the editor"
-					},
-					"codeSuffix": {
-						"type": "string",
-						"description": "Code that appears after the editable area"
 					},
 					"solution": {
 						"type": "string",
