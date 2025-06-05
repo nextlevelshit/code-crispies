@@ -1,6 +1,6 @@
 /**
  * LessonEngine - Core class for managing lessons and applying/testing user code
- * This file is the implementation of the LessonEngine class declaration from app.helpers
+ * Single source of truth for lesson state and progress
  */
 import { validateUserCode } from "../helpers/validator.js";
 import { showFeedback } from "../helpers/renderer.js";
@@ -12,6 +12,19 @@ export class LessonEngine {
 		this.currentModule = null;
 		this.currentLessonIndex = 0;
 		this.lastRenderedCode = ""; // Track last applied code to prevent unnecessary re-renders
+		this.modules = [];
+		this.userProgress = {}; // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
+		this.userCodeMap = new Map(); // Store user code for each lesson
+		this.loadUserProgress();
+	}
+
+	/**
+	 * Initialize with modules array
+	 * @param {Array} modules - Available modules
+	 */
+	setModules(modules) {
+		this.modules = modules;
+		this.loadUserCodeFromStorage();
 	}
 
 	/**
@@ -21,9 +34,32 @@ export class LessonEngine {
 	setModule(module) {
 		this.currentModule = module;
 		this.currentLessonIndex = 0;
-		if (module && module.lessons && module.lessons.length > 0) {
-			this.setLesson(module.lessons[0]);
+
+		// Load user progress for this module
+		if (!this.userProgress[module.id]) {
+			this.userProgress[module.id] = { completed: [], current: 0 };
 		}
+
+		this.currentLessonIndex = this.userProgress[module.id].current || 0;
+
+		if (module && module.lessons && module.lessons.length > 0) {
+			this.setLesson(module.lessons[this.currentLessonIndex]);
+		}
+
+		this.saveUserProgress();
+	}
+
+	/**
+	 * Set module by ID
+	 * @param {string} moduleId - The module ID
+	 * @returns {boolean} Whether the operation was successful
+	 */
+	setModuleById(moduleId) {
+		const module = this.modules.find(m => m.id === moduleId);
+		if (!module) return false;
+
+		this.setModule(module);
+		return true;
 	}
 
 	/**
@@ -32,7 +68,11 @@ export class LessonEngine {
 	 */
 	setLesson(lesson) {
 		this.currentLesson = lesson;
-		this.userCode = lesson.initialCode || "";
+
+		// Load saved user code for this lesson or use initial code
+		const lessonKey = `${this.currentModule.id}-${this.currentLessonIndex}`;
+		this.userCode = this.userCodeMap.get(lessonKey) || lesson.initialCode || "";
+
 		this.lastRenderedCode = ""; // Reset last rendered code
 		this.renderPreview();
 	}
@@ -53,6 +93,11 @@ export class LessonEngine {
 
 		this.currentLessonIndex = index;
 		this.setLesson(this.currentModule.lessons[index]);
+
+		// Update progress
+		this.userProgress[this.currentModule.id].current = index;
+		this.saveUserProgress();
+
 		return true;
 	}
 
@@ -81,6 +126,11 @@ export class LessonEngine {
 		if (!this.currentLesson) return;
 
 		this.userCode = code;
+
+		// Save user code for this lesson
+		const lessonKey = `${this.currentModule.id}-${this.currentLessonIndex}`;
+		this.userCodeMap.set(lessonKey, code);
+		this.saveUserCodeToStorage();
 
 		// Only re-render if code changed or forced update
 		if (forceUpdate || this.lastRenderedCode !== code) {
@@ -180,10 +230,38 @@ export class LessonEngine {
 
 		const result = validateUserCode(this.userCode, this.currentLesson);
 
-		// Display feedback to the user
-		showFeedback(result.isValid, result.message);
+		// Mark lesson as completed if valid
+		if (result.isValid) {
+			const moduleProgress = this.userProgress[this.currentModule.id];
+			if (!moduleProgress.completed.includes(this.currentLessonIndex)) {
+				moduleProgress.completed.push(this.currentLessonIndex);
+				this.saveUserProgress();
+			}
+		}
 
 		return result;
+	}
+
+	/**
+	 * Check if current lesson is completed
+	 * @returns {boolean} Whether the lesson is completed
+	 */
+	isCurrentLessonCompleted() {
+		if (!this.currentModule) return false;
+
+		const moduleProgress = this.userProgress[this.currentModule.id];
+		return moduleProgress && moduleProgress.completed.includes(this.currentLessonIndex);
+	}
+
+	/**
+	 * Get completion status for a specific lesson
+	 * @param {string} moduleId - Module ID
+	 * @param {number} lessonIndex - Lesson index
+	 * @returns {boolean} Whether the lesson is completed
+	 */
+	isLessonCompleted(moduleId, lessonIndex) {
+		const moduleProgress = this.userProgress[moduleId];
+		return moduleProgress && moduleProgress.completed.includes(lessonIndex);
 	}
 
 	/**
@@ -196,72 +274,123 @@ export class LessonEngine {
 			lesson: this.currentLesson,
 			lessonIndex: this.currentLessonIndex,
 			userCode: this.userCode,
-			totalLessons: this.currentModule ? this.currentModule.lessons.length : 0
+			totalLessons: this.currentModule ? this.currentModule.lessons.length : 0,
+			isCompleted: this.isCurrentLessonCompleted(),
+			canGoNext: this.currentLessonIndex < (this.currentModule ? this.currentModule.lessons.length - 1 : 0),
+			canGoPrev: this.currentLessonIndex > 0
+		};
+	}
+
+	/**
+	 * Get overall progress statistics
+	 * @returns {Object} Progress statistics
+	 */
+	getProgressStats() {
+		let totalLessons = 0;
+		let totalCompleted = 0;
+
+		this.modules.forEach((module) => {
+			totalLessons += module.lessons.length;
+			const progress = this.userProgress[module.id];
+			if (progress && progress.completed) {
+				totalCompleted += progress.completed.length;
+			}
+		});
+
+		return {
+			totalLessons,
+			totalCompleted,
+			percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0
 		};
 	}
 
 	/**
 	 * Save progress to localStorage
 	 */
-	saveProgress() {
-		if (!this.currentModule || !this.currentLesson) return;
-
-		const progressData = {
-			moduleId: this.currentModule.id,
-			lessonIndex: this.currentLessonIndex,
-			userCode: this.userCode,
-			timestamp: new Date().toISOString()
-		};
-
-		localStorage.setItem("codeCrispies.progress", JSON.stringify(progressData));
-	}
-
-	/**
-	 * Load progress from localStorage
-	 * @param {Array} modules - Available modules
-	 * @returns {Object|null} Loaded progress data or null if not found
-	 */
-	loadProgress(modules) {
-		const savedProgress = localStorage.getItem("codeCrispies.progress");
-		if (!savedProgress) return null;
-
+	saveUserProgress() {
 		try {
-			const progressData = JSON.parse(savedProgress);
-
-			// Find the module
-			const module = modules.find((m) => m.id === progressData.moduleId);
-			if (!module) return null;
-
-			this.setModule(module);
-			this.setLessonByIndex(progressData.lessonIndex);
-
-			// Restore user code if available
-			if (progressData.userCode) {
-				this.userCode = progressData.userCode;
-				this.renderPreview();
-			}
-
-			return progressData;
+			const progressData = {
+				...this.userProgress,
+				lastModuleId: this.currentModule?.id,
+				timestamp: new Date().toISOString()
+			};
+			localStorage.setItem("codeCrispies.progress", JSON.stringify(progressData));
 		} catch (e) {
-			console.error("Error loading progress:", e);
-			return null;
+			console.error("Error saving progress:", e);
 		}
 	}
 
 	/**
-	 * Reset the current state
+	 * Load progress from localStorage
+	 */
+	loadUserProgress() {
+		try {
+			const savedProgress = localStorage.getItem("codeCrispies.progress");
+			if (savedProgress) {
+				const progressData = JSON.parse(savedProgress);
+
+				// Extract user progress, excluding metadata
+				const { lastModuleId, timestamp, ...userProgress } = progressData;
+				this.userProgress = userProgress;
+
+				return { lastModuleId, timestamp };
+			}
+		} catch (e) {
+			console.error("Error loading progress:", e);
+		}
+		return null;
+	}
+
+	/**
+	 * Save user code to localStorage
+	 */
+	saveUserCodeToStorage() {
+		try {
+			localStorage.setItem("codeCrispies.userCode", JSON.stringify(Array.from(this.userCodeMap.entries())));
+		} catch (e) {
+			console.error("Error saving user code:", e);
+		}
+	}
+
+	/**
+	 * Load user code from localStorage
+	 */
+	loadUserCodeFromStorage() {
+		try {
+			const savedCode = localStorage.getItem("codeCrispies.userCode");
+			if (savedCode) {
+				const codeEntries = JSON.parse(savedCode);
+				this.userCodeMap = new Map(codeEntries);
+			}
+		} catch (e) {
+			console.error("Error loading user code:", e);
+		}
+	}
+
+	/**
+	 * Reset the current lesson
 	 */
 	reset() {
 		if (this.currentLesson) {
 			this.userCode = this.currentLesson.initialCode || "";
+
+			// Clear saved user code for this lesson
+			const lessonKey = `${this.currentModule.id}-${this.currentLessonIndex}`;
+			this.userCodeMap.delete(lessonKey);
+			this.saveUserCodeToStorage();
+
 			this.renderPreview();
 		}
 	}
 
 	/**
-	 * Clear all saved progress
+	 * Clear all saved progress and user code
 	 */
 	clearProgress() {
+		this.userProgress = {};
+		this.userCodeMap.clear();
 		localStorage.removeItem("codeCrispies.progress");
+		localStorage.removeItem("codeCrispies.userCode");
+		localStorage.removeItem("codeCrispies.lastModuleId");
 	}
 }

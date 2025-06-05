@@ -1,16 +1,9 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback, updateActiveLessonInSidebar } from "./helpers/renderer.js";
-import { validateUserCode } from "./helpers/validator.js";
 import { loadModules } from "./config/lessons.js";
 
-// Main Application state
+// Simplified state - LessonEngine now manages lesson state and progress
 const state = {
-	currentModule: null,
-	currentLessonIndex: 0,
-	modules: [],
-	userCode: new Map(), // Store user code for each lesson
-	userProgress: {}, // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
-	userCodeBeforeValidation: "", // Track user code state before validation
 	userSettings: {
 		disableFeedbackErrors: false
 	}
@@ -44,7 +37,7 @@ const elements = {
 	disableFeedbackToggle: document.getElementById("disable-feedback-toggle")
 };
 
-// Initialize the lesson engine
+// Initialize the lesson engine - now the single source of truth
 const lessonEngine = new LessonEngine();
 
 // Load user progress from localStorage
@@ -89,17 +82,20 @@ function initFeedbackToggle() {
 // Initialize the module list
 async function initializeModules() {
 	try {
-		state.modules = await loadModules();
+		const modules = await loadModules();
+		lessonEngine.setModules(modules);
 
 		// Use the new renderModuleList function with both callbacks
-		renderModuleList(elements.moduleList, state.modules, selectModule, selectLesson);
+		renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
 
-		// Select the first module or the last one user was on
-		const lastModuleId = localStorage.getItem("codeCrispies.lastModuleId");
-		if (lastModuleId && state.modules.find((m) => m.id === lastModuleId)) {
+		// Load saved progress and select appropriate module
+		const progressData = lessonEngine.loadUserProgress();
+		const lastModuleId = progressData?.lastModuleId;
+
+		if (lastModuleId && modules.find(m => m.id === lastModuleId)) {
 			selectModule(lastModuleId);
-		} else if (state.modules.length > 0) {
-			selectModule(state.modules[0].id);
+		} else if (modules.length > 0) {
+			selectModule(modules[0].id);
 		}
 
 		// Update progress indicator on module selector button
@@ -112,21 +108,7 @@ async function initializeModules() {
 
 // Update progress indicator on module selector button
 function updateModuleSelectorButtonProgress() {
-	if (!state.modules.length) return;
-
-	// Calculate overall progress across all modules
-	let totalLessons = 0;
-	let totalCompleted = 0;
-
-	state.modules.forEach((module) => {
-		totalLessons += module.lessons.length;
-		const progress = state.userProgress[module.id];
-		if (progress && progress.completed) {
-			totalCompleted += progress.completed.length;
-		}
-	});
-
-	const percentComplete = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
+	const stats = lessonEngine.getProgressStats();
 
 	// Create progress indicator
 	const progressBar = document.createElement("div");
@@ -136,13 +118,13 @@ function updateModuleSelectorButtonProgress() {
 		bottom: 0;
 		left: 0;
 		height: 3px;
-		width: ${percentComplete}%;
+		width: ${stats.percentComplete}%;
 		background-color: var(--primary-light);
 		border-radius: 0 3px 3px 0;
 	`;
 
 	// Add progress percentage text
-	elements.moduleSelectorBtn.innerHTML = `Progress <span style="font-size: 0.8em; opacity: 0.8;">${percentComplete}%</span>`;
+	elements.moduleSelectorBtn.innerHTML = `Progress <span style="font-size: 0.8em; opacity: 0.8;">${stats.percentComplete}%</span>`;
 	elements.moduleSelectorBtn.style.position = "relative";
 
 	// Remove any existing progress bar before adding new one
@@ -154,12 +136,10 @@ function updateModuleSelectorButtonProgress() {
 	elements.moduleSelectorBtn.appendChild(progressBar);
 }
 
-// Select a module
+// Select a module - delegate to LessonEngine
 function selectModule(moduleId) {
-	const selectedModule = state.modules.find((module) => module.id === moduleId);
-	if (!selectedModule) return;
-
-	state.currentModule = selectedModule;
+	const success = lessonEngine.setModuleById(moduleId);
+	if (!success) return;
 
 	// Update module list UI to highlight the active module
 	const moduleItems = elements.moduleList.querySelectorAll(".module-header");
@@ -170,16 +150,7 @@ function selectModule(moduleId) {
 		}
 	});
 
-	// Load user progress for this module
-	if (!state.userProgress[moduleId]) {
-		state.userProgress[moduleId] = { completed: [], current: 0 };
-	}
-
-	state.currentLessonIndex = state.userProgress[moduleId].current || 0;
 	loadCurrentLesson();
-
-	// Save the last selected module
-	localStorage.setItem("codeCrispies.lastModuleId", moduleId);
 
 	// Reset any success indicators
 	resetSuccessIndicators();
@@ -187,18 +158,13 @@ function selectModule(moduleId) {
 
 function selectLesson(moduleId, lessonIndex) {
 	// Select the module first if it's not already selected
-	if (!state.currentModule || state.currentModule.id !== moduleId) {
-		selectModule(moduleId);
+	const currentState = lessonEngine.getCurrentState();
+	if (!currentState.module || currentState.module.id !== moduleId) {
+		lessonEngine.setModuleById(moduleId);
 	}
 
-	// Update current lesson index
-	state.currentLessonIndex = lessonIndex;
-
-	// Update user progress
-	state.userProgress[moduleId].current = lessonIndex;
-	saveUserProgress();
-
-	// Load the lesson
+	// Set the lesson
+	lessonEngine.setLessonByIndex(lessonIndex);
 	loadCurrentLesson();
 }
 
@@ -229,22 +195,16 @@ function resetEditorLayout(lesson) {
 	elements.validationIndicators.innerHTML = "";
 }
 
-// Load the current lesson
+// Load the current lesson - now delegates to LessonEngine
 function loadCurrentLesson() {
-	if (!state.currentModule || !state.currentModule.lessons) {
+	const engineState = lessonEngine.getCurrentState();
+
+	if (!engineState.module || !engineState.lesson) {
 		return;
 	}
 
-	// Make sure lesson index is in bounds
-	if (state.currentLessonIndex >= state.currentModule.lessons.length) {
-		state.currentLessonIndex = state.currentModule.lessons.length - 1;
-	} else if (state.currentLessonIndex < 0) {
-		state.currentLessonIndex = 0;
-	}
-
-	const lesson = state.currentModule.lessons[state.currentLessonIndex];
-	const mode = lesson.mode || state.currentModule?.mode || "css";
-	lessonEngine.setLesson(lesson);
+	const lesson = engineState.lesson;
+	const mode = lesson.mode || engineState.module?.mode || "css";
 
 	// Update UI based on mode
 	updateEditorForMode(mode);
@@ -264,12 +224,14 @@ function loadCurrentLesson() {
 		lesson
 	);
 
+	// Set user code in input
+	elements.codeInput.value = engineState.userCode;
+
 	// Configure editor layout based on lesson settings
 	resetEditorLayout(lesson);
 
 	// Update Run button text based on completion status
-	const moduleProgress = state.userProgress[state.currentModule.id];
-	if (moduleProgress && moduleProgress.completed.includes(state.currentLessonIndex)) {
+	if (engineState.isCompleted) {
 		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
 
 		// Add completion badge next to title if not already present
@@ -290,26 +252,19 @@ function loadCurrentLesson() {
 	}
 
 	// Update level indicator
-	renderLevelIndicator(elements.levelIndicator, state.currentLessonIndex + 1, state.currentModule.lessons.length);
+	renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
 
 	// Update active lesson in sidebar
-	updateActiveLessonInSidebar(state.currentModule.id, state.currentLessonIndex);
+	updateActiveLessonInSidebar(engineState.module.id, engineState.lessonIndex);
 
 	// Update navigation buttons
 	updateNavigationButtons();
-
-	// Save current progress
-	state.userProgress[state.currentModule.id].current = state.currentLessonIndex;
-	saveUserProgress();
 
 	// Update progress indicator on module selector button
 	updateModuleSelectorButtonProgress();
 
 	// Focus on the code editor by default
 	elements.codeInput.focus();
-
-	// Store current code
-	state.userCodeBeforeValidation = elements.codeInput.value;
 
 	// Track live changes and update preview when the user pauses typing
 	setupLivePreview();
@@ -334,19 +289,16 @@ function handleUserInput() {
 
 	// Set a new timer for preview update after user stops typing
 	previewTimer = setTimeout(() => {
-		// Apply the code for preview without validation
-		// lessonEngine.applyUserCode(elements.codeInput.value);
 		runCode();
-	}, 800); // Update preview 500ms after user stops typing
-
-	// Store current code state
-	state.userCodeBeforeValidation = elements.codeInput.value;
+	}, 800); // Update preview 800ms after user stops typing
 }
 
 // Update navigation buttons state
 function updateNavigationButtons() {
-	elements.prevBtn.disabled = state.currentLessonIndex === 0;
-	elements.nextBtn.disabled = !state.currentModule || state.currentLessonIndex === state.currentModule.lessons.length - 1;
+	const engineState = lessonEngine.getCurrentState();
+
+	elements.prevBtn.disabled = !engineState.canGoPrev;
+	elements.nextBtn.disabled = !engineState.canGoNext;
 
 	// Style changes for disabled buttons
 	if (elements.prevBtn.disabled) {
@@ -362,42 +314,36 @@ function updateNavigationButtons() {
 	}
 }
 
-// Go to the next lesson
+// Go to the next lesson - delegate to LessonEngine
 function nextLesson() {
-	if (!state.currentModule) return;
-
-	if (state.currentLessonIndex < state.currentModule.lessons.length - 1) {
-		state.currentLessonIndex++;
+	const success = lessonEngine.nextLesson();
+	if (success) {
 		loadCurrentLesson();
 	}
 }
 
-// Go to the previous lesson
+// Go to the previous lesson - delegate to LessonEngine
 function prevLesson() {
-	if (state.currentLessonIndex > 0) {
-		state.currentLessonIndex--;
+	const success = lessonEngine.previousLesson();
+	if (success) {
 		loadCurrentLesson();
 	}
 }
 
-// Run the user code
+// Run the user code - now uses LessonEngine validation
 function runCode() {
 	const userCode = elements.codeInput.value;
-	const lesson = state.currentModule.lessons[state.currentLessonIndex];
 
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
 	const runButtonRotationDegree = Number(runButtonImg.style.transform.match(/\d+/)?.pop() ?? 0);
 	document.querySelector("#run-btn img").style.transform = `rotate(${runButtonRotationDegree + 180}deg)`;
 
-	// Always apply the code to the preview, regardless of validation result
+	// Apply the code to the preview via LessonEngine
 	lessonEngine.applyUserCode(userCode, true);
 
-	// Backup code in local storage
-	state.userCode.set(state.currentLessonIndex, userCode);
-	localStorage.setItem("codeCrispies.userCode", JSON.stringify(Array.from(state.userCode.entries())));
-
-	const validationResult = validateUserCode(userCode, lesson);
+	// Validate code using LessonEngine
+	const validationResult = lessonEngine.validateCode();
 
 	// Add validation indicators based on validCases count if available
 	if (validationResult.validCases) {
@@ -412,18 +358,10 @@ function runCode() {
 	}
 
 	if (validationResult.isValid) {
-		// Mark lesson as completed
-		const moduleProgress = state.userProgress[state.currentModule.id];
-		if (!moduleProgress.completed.includes(state.currentLessonIndex)) {
-			moduleProgress.completed.push(state.currentLessonIndex);
-			saveUserProgress();
-			updateModuleSelectorButtonProgress();
-		}
-
 		// Show success feedback with visual indicators
 		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
 
-		// Add this block to update the Run button to Re-run
+		// Update the Run button to Re-run
 		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
 		elements.runBtn.classList.add("re-run");
 
@@ -441,11 +379,11 @@ function runCode() {
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
 
-		// Enable the next button if not already on the last lesson
-		if (state.currentLessonIndex < state.currentModule.lessons.length - 1) {
-			elements.nextBtn.disabled = false;
-			elements.nextBtn.classList.remove("btn-disabled");
-		}
+		// Update navigation buttons
+		updateNavigationButtons();
+
+		// Update progress indicator
+		updateModuleSelectorButtonProgress();
 	} else {
 		// Reset any success indicators
 		resetSuccessIndicators();
@@ -459,8 +397,11 @@ function runCode() {
 function showModuleSelector() {
 	elements.modalTitle.textContent = "Select a Module";
 
+	const engineState = lessonEngine.getCurrentState();
+	const modules = lessonEngine.modules;
+
 	// Create module buttons
-	const moduleButtons = state.modules.map((module) => {
+	const moduleButtons = modules.map((module) => {
 		const button = document.createElement("button");
 		button.classList.add("btn", "module-button");
 		button.style.display = "block";
@@ -469,9 +410,8 @@ function showModuleSelector() {
 		button.style.padding = "15px";
 		button.style.textAlign = "left";
 
-		// Add completion status
-		const progress = state.userProgress[module.id];
-		const completedCount = progress ? progress.completed.length : 0;
+		// Add completion status using LessonEngine
+		const completedCount = lessonEngine.userProgress[module.id]?.completed.length || 0;
 		const totalLessons = module.lessons.length;
 		const percentComplete = Math.round((completedCount / totalLessons) * 100);
 
