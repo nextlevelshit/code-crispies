@@ -21,7 +21,7 @@ function validateTailwindClasses(userClasses, lesson) {
 		isValid: true,
 		validCases: 0,
 		totalCases: lesson.validations.length,
-		message: "Your Tailwind classes look CRISPY!"
+		message: "Your CODE looks CRISPY!"
 	};
 
 	for (const validation of lesson.validations) {
