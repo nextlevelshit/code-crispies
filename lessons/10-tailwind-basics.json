@@ -1,8 +1,10 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "tailwind-basics",
-	"title": "Tailwind CSS Basics",
+	"title": "Tailwind CSS Basics - Understanding Utility-First Design",
+	"description": "Learn how Tailwind CSS revolutionizes styling by replacing traditional CSS selectors with utility-first classes. Understand the philosophy behind utility classes and how they solve common CSS problems like specificity conflicts and maintenance complexity.",
 	"mode": "tailwind",
+	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "bg-colors",
@@ -11,18 +13,148 @@
 			"task": "Add a blue background to the div using Tailwind classes.",
 			"previewHTML": "<div class=\"{{USER_CLASSES}} p-8 rounded\">Hello Tailwind!</div>",
 			"previewBaseCSS": "body { padding: 20px; font-family: sans-serif; }",
+			"sandboxCSS": "",
 			"initialCode": "",
+			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains_class",
 					"value": "bg-blue-500",
 					"message": "Add the 'bg-blue-500' class for a blue background."
 				}
-			],
-			"sandboxCSS": "",
-			"previewContainer": ""
+			]
+		},
+		{
+			"id": "utility-first-philosophy",
+			"title": "Understanding Utility-First Design",
+			"description": "Tailwind CSS follows a utility-first approach where instead of writing custom CSS classes, you compose designs using small, single-purpose utility classes. Unlike traditional CSS where you might write <kbd>.card { background: white; padding: 1rem; border-radius: 0.5rem; }</kbd>, Tailwind provides pre-built utilities like <kbd>bg-white</kbd>, <kbd>p-4</kbd>, and <kbd>rounded</kbd>.<br><br>The <kbd>bg-white</kbd> utility sets <kbd>background-color: white</kbd>, <kbd>p-4</kbd> applies <kbd>padding: 1rem</kbd> on all sides, and <kbd>rounded</kbd> adds <kbd>border-radius: 0.25rem</kbd>. This approach eliminates the need to context-switch between HTML and CSS files.",
+			"task": "Create a white card-like container with a small drop-shadow, 1rem padding and rounded corners.",
+			"previewHTML": "<div class=\"bg-gray-100 p-6\">\n  <div class=\"{{USER_CLASSES}}\">\n    <h3 class=\"text-lg font-semibold mb-2\">Card Title</h3>\n    <p class=\"text-gray-600\">This is a card component built entirely with utility classes!</p>\n  </div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; margin: 0; }",
+			"sandboxCSS": "/* Traditional CSS approach:\n.card {\n  background-color: white;\n  padding: 1rem;\n  border-radius: 0.25rem;\n}\n*/",
+			"initialCode": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains_class",
+					"value": "bg-white",
+					"message": "Add <kbd>bg-white</kbd> to set the background color to white."
+				},
+				{
+					"type": "contains_class",
+					"value": "p-4",
+					"message": "Add <kbd>p-4</kbd> to apply 1rem padding on all sides."
+				},
+				{
+					"type": "contains_class",
+					"value": "rounded",
+					"message": "Add <kbd>rounded</kbd> to apply border-radius of 0.25rem."
+				},
+				{
+					"type": "contains_class",
+					"value": "shadow-sm",
+					"message": "Add <kbd>shadow-sm</kbd> to apply small drop-shadow."
+				}
+			]
+		},
+		{
+			"id": "text-utilities",
+			"title": "Text Color and Size Utilities",
+			"description": "Tailwind provides comprehensive text utilities for styling typography. Text colors use the pattern <kbd>text-{color}-{shade}</kbd> where colors include red, blue, green, etc., and shades range from 50 (lightest) to 950 (darkest). For example, <kbd>text-blue-600</kbd> applies a medium blue color.<br><br>Text sizes follow the pattern <kbd>text-{size}</kbd> with options like <kbd>text-sm</kbd> (0.875rem), <kbd>text-base</kbd> (1rem), <kbd>text-lg</kbd> (1.125rem), <kbd>text-xl</kbd> (1.25rem), and larger sizes up to <kbd>text-9xl</kbd>. Font weights use <kbd>font-{weight}</kbd> such as <kbd>font-normal</kbd>, <kbd>font-medium</kbd>, <kbd>font-semibold</kbd>, and <kbd>font-bold</kbd>.",
+			"task": "Style the heading with <kbd>text-blue-600</kbd> for color, <kbd>text-2xl</kbd> for size, and <kbd>font-bold</kbd> for weight.",
+			"previewHTML": "<div class=\"p-6 bg-gray-50\">\n  <h1 class=\"{{USER_CLASSES}} mb-4\">Welcome to Tailwind CSS</h1>\n  <p class=\"text-gray-700\">This heading demonstrates text utilities in action.</p>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; margin: 0; }",
+			"sandboxCSS": "/* Traditional CSS would be:\nh1 {\n  color: #2563eb;\n  font-size: 1.5rem;\n  font-weight: 700;\n}\n*/",
+			"initialCode": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains_class",
+					"value": "text-blue-600",
+					"message": "Add <kbd>text-blue-600</kbd> to make the text blue"
+				},
+				{
+					"type": "contains_class",
+					"value": "text-2xl",
+					"message": "Add <kbd>text-2xl</kbd> to increase the font size to 1.5rem"
+				},
+				{
+					"type": "contains_class",
+					"value": "font-bold",
+					"message": "Add <kbd>font-bold</kbd> to make the text bold (font-weight: 700)"
+				}
+			]
+		},
+		{
+			"id": "spacing-utilities",
+			"title": "Spacing with Padding and Margin",
+			"description": "Tailwind's spacing utilities follow a consistent pattern using a spacing scale where each unit represents 0.25rem (4px). Padding utilities use <kbd>p-{size}</kbd> for all sides, <kbd>px-{size}</kbd> for horizontal (left/right), <kbd>py-{size}</kbd> for vertical (top/bottom), or individual sides like <kbd>pt-{size}</kbd>, <kbd>pr-{size}</kbd>, <kbd>pb-{size}</kbd>, <kbd>pl-{size}</kbd>.<br><br>Common sizes include <kbd>p-2</kbd> (0.5rem), <kbd>p-4</kbd> (1rem), <kbd>p-6</kbd> (1.5rem), and <kbd>p-8</kbd> (2rem). Margin follows the same pattern but uses <kbd>m-</kbd> instead of <kbd>p-</kbd>. For example, <kbd>mx-auto</kbd> centers an element horizontally by applying automatic left and right margins.",
+			"task": "Style the button with <kbd>px-6</kbd> for horizontal padding, <kbd>py-3</kbd> for vertical padding, and <kbd>mx-auto</kbd> to center it.",
+			"previewHTML": "<div class=\"p-6 bg-gray-100\">\n  <button class=\"{{USER_CLASSES}} bg-blue-500 text-white rounded block\">\n    Centered Button\n  </button>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; margin: 0; }",
+			"sandboxCSS": "/* Traditional CSS equivalent:\nbutton {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n  padding-top: 0.75rem;\n  padding-bottom: 0.75rem;\n  margin-left: auto;\n  margin-right: auto;\n}\n*/",
+			"initialCode": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains_class",
+					"value": "px-6",
+					"message": "Add <kbd>px-6</kbd> for horizontal padding (1.5rem left and right)"
+				},
+				{
+					"type": "contains_class",
+					"value": "py-3",
+					"message": "Add <kbd>py-3</kbd> for vertical padding (0.75rem top and bottom)"
+				},
+				{
+					"type": "contains_class",
+					"value": "mx-auto",
+					"message": "Add <kbd>mx-auto</kbd> to center the button horizontally"
+				}
+			]
+		},
+		{
+			"id": "responsive-design",
+			"title": "Responsive Design with Breakpoint Prefixes",
+			"description": "Tailwind uses a mobile-first responsive design approach with breakpoint prefixes. The base utilities apply to all screen sizes, then you add prefixes for larger screens: <kbd>sm:</kbd> (640px+), <kbd>md:</kbd> (768px+), <kbd>lg:</kbd> (1024px+), <kbd>xl:</kbd> (1280px+), and <kbd>2xl:</kbd> (1536px+).<br><br>For example, <kbd>text-base md:text-lg lg:text-xl</kbd> makes text normal size on mobile, larger on tablets (md), and even larger on desktop (lg). Each breakpoint overrides the previous one, so <kbd>p-4 md:p-6 lg:p-8</kbd> means 1rem padding on mobile, 1.5rem on tablets, and 2rem on desktop.<br><br>Width utilities like <kbd>w-full</kbd> (100% width), <kbd>w-1/2</kbd> (50% width), or fixed sizes like <kbd>w-64</kbd> (16rem) can also be made responsive.",
+			"task": "Make the box responsive: <kbd>w-full</kbd> on mobile, <kbd>md:w-1/2</kbd> on tablets, and <kbd>lg:w-1/3</kbd> on desktop. Also add responsive text sizing with <kbd>text-lg</kbd>, <kbd>md:text-xl</kbd>, and <kbd>lg:text-2xl</kbd>.",
+			"previewHTML": "<div class=\"p-6 bg-gray-100\">\n  <div class=\"{{USER_CLASSES}} bg-purple-500 text-white p-6 rounded text-center\">\n    <span>Responsive Box</span><br>\n    <small class=\"opacity-75\">Resize your browser to see the effect!</small>\n  </div>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; margin: 0; }",
+			"sandboxCSS": "/* Traditional CSS would require media queries:\n.responsive-box {\n  width: 100%;\n  font-size: 1.125rem;\n}\n@media (min-width: 768px) {\n  .responsive-box {\n    width: 50%;\n    font-size: 1.25rem;\n  }\n}\n@media (min-width: 1024px) {\n  .responsive-box {\n    width: 33.333333%;\n    font-size: 1.5rem;\n  }\n}\n*/",
+			"initialCode": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains_class",
+					"value": "w-full",
+					"message": "Add <kbd>w-full</kbd> for 100% width on mobile"
+				},
+				{
+					"type": "contains_class",
+					"value": "md:w-1/2",
+					"message": "Add <kbd>md:w-1/2</kbd> for 50% width on tablet and up"
+				},
+				{
+					"type": "contains_class",
+					"value": "lg:w-1/3",
+					"message": "Add <kbd>lg:w-1/3</kbd> for 33.33% width on desktop and up"
+				},
+				{
+					"type": "contains_class",
+					"value": "text-lg",
+					"message": "Add <kbd>text-lg</kbd> for the base text size"
+				},
+				{
+					"type": "contains_class",
+					"value": "md:text-xl",
+					"message": "Add <kbd>md:text-xl</kbd> for larger text on tablets"
+				},
+				{
+					"type": "contains_class",
+					"value": "lg:text-2xl",
+					"message": "Add <kbd>lg:text-2xl</kbd> for even larger text on desktop"
+				}
+			]
 		}
-	],
-	"description": "",
-	"difficulty": "advanced"
+	]
 }
