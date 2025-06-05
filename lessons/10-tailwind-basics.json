@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "tailwind-basics",
-	"title": "Tailwind CSS Basics - Understanding Utility-First Design",
+	"title": "Tailwind CSS Basics",
 	"description": "Learn how Tailwind CSS revolutionizes styling by replacing traditional CSS selectors with utility-first classes. Understand the philosophy behind utility classes and how they solve common CSS problems like specificity conflicts and maintenance complexity.",
 	"mode": "tailwind",
 	"difficulty": "beginner",
@@ -29,7 +29,7 @@
 			"title": "Understanding Utility-First Design",
 			"description": "Tailwind CSS follows a utility-first approach where instead of writing custom CSS classes, you compose designs using small, single-purpose utility classes. Unlike traditional CSS where you might write <kbd>.card { background: white; padding: 1rem; border-radius: 0.5rem; }</kbd>, Tailwind provides pre-built utilities like <kbd>bg-white</kbd>, <kbd>p-4</kbd>, and <kbd>rounded</kbd>.<br><br>The <kbd>bg-white</kbd> utility sets <kbd>background-color: white</kbd>, <kbd>p-4</kbd> applies <kbd>padding: 1rem</kbd> on all sides, and <kbd>rounded</kbd> adds <kbd>border-radius: 0.25rem</kbd>. This approach eliminates the need to context-switch between HTML and CSS files.",
 			"task": "Create a white card-like container with a small drop-shadow, 1rem padding and rounded corners.",
-			"previewHTML": "<div class=\"bg-gray-100 p-6\">\n  <div class=\"{{USER_CLASSES}}\">\n    <h3 class=\"text-lg font-semibold mb-2\">Card Title</h3>\n    <p class=\"text-gray-600\">This is a card component built entirely with utility classes!</p>\n  </div>\n</div>",
+			"previewHTML": "<div class=\"bg-gray-100 h-72 p-6\">\n  <div class=\"{{USER_CLASSES}}\">\n    <h3 class=\"text-lg font-semibold mb-2\">Card Title</h3>\n    <p class=\"text-gray-600\">This is a card component built entirely with utility classes!</p>\n  </div>\n</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; margin: 0; }",
 			"sandboxCSS": "/* Traditional CSS approach:\n.card {\n  background-color: white;\n  padding: 1rem;\n  border-radius: 0.25rem;\n}\n*/",
 			"initialCode": "",
