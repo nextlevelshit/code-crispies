@@ -37,7 +37,8 @@
 	/* Special colors */
 	--primary-bg-light: rgba(94, 75, 139, 0.05);
 	--primary-bg-medium: rgba(94, 75, 139, 0.1);
-	--primary-bg-instruction: rgba(94, 75, 139, 0.05);
+	--primary-bg-instruction: rgba(125, 92, 203, 0.84);
+	--primary-bg-instruction-light: rgba(244, 244, 244, 0.2);
 	--success-bg-light: rgba(88, 184, 144, 0.1);
 	--success-bg-medium: rgba(88, 184, 144, 0.4);
 	--error-bg-light: rgba(244, 244, 244, 0.8);
@@ -393,17 +394,19 @@ footer a {
 }
 
 .task-instruction {
+	color: var(--white-text);
 	background-color: var(--primary-bg-instruction);
 	border-left: var(--border-accent) solid var(--primary-color);
 	padding: var(--spacing-sm);
 	border-radius: var(--border-radius-sm);
 	line-height: 1.8;
+	font-weight: 600;
 }
 
 .task-instruction kbd {
 	font-family: var(--font-code);
-	background-color: var(--primary-bg-medium);
-	color: var(--dark-text);
+	background-color: var(--primary-bg-instruction-light);
+	/*color: var(--dark-text);*/
 	border-radius: var(--border-radius-sm);
 	padding: calc(var(--spacing-xs) / 2);
 	font-size: 0.9rem;
