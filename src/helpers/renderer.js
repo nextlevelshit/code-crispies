@@ -18,7 +18,7 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 	container.innerHTML = "<h3>CSS Lessons</h3>";
 
 	// Get user progress from localStorage
-	const progressData = localStorage.getItem("codeCrispies.Progress");
+	const progressData = localStorage.getItem("codeCrispies.progress");
 	let progress = {};
 	if (progressData) {
 		try {

@@ -17,12 +17,12 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue;\n}",
+			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue\n}",
 			"validations": [
 				{
 					"type": "regex",
 					"value": "^input\\[type=\"text\"\\]\\s*{",
-					"message": "Use <kbd>input[type=\"text\"]</kbd> as your attribute selector",
+					"message": "Use <kbd>input[type=\"text\"] { … }</kbd> as your attribute selector",
 					"options": {
 						"caseSensitive": true
 					}
@@ -39,6 +39,11 @@
 						"expected": "lightblue"
 					},
 					"message": "Set the background color to <kbd>lightblue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "background-color:\\s*[^;]*;",
+					"message": "Make sure to close the <kbd>background-color</kbd> declaration with a semicolon <kbd>;</kbd>"
 				},
 				{
 					"type": "contains",
@@ -67,7 +72,7 @@
 			"id": "attribute-partial-matching",
 			"title": "Attribute Partial Matching",
 			"description": "Attribute selectors support partial matching patterns that let you target elements based on portions of attribute values. The <kbd>[attribute^=\"value\"]</kbd> selector matches elements where the attribute starts with the specified value, <kbd>[attribute$=\"value\"]</kbd> matches where it ends with the value, and <kbd>[attribute*=\"value\"]</kbd> matches where the value appears anywhere within the attribute. These patterns are particularly useful for styling external links, file types, or elements with class names that follow naming conventions. When styling these matched elements, you can use properties like <kbd>color</kbd> to change text color and <kbd>text-decoration</kbd> to add visual emphasis like underlines.",
-			"task": "Create a CSS rule that targets all anchor elements (<kbd>a</kbd>) with <kbd>href</kbd> attributes that start with <kbd>\"https\"</kbd>. Make the text <kbd>green</kbd> and add an <kbd>underline</kbd>.",
+			"task": "Create a CSS rule that targets all anchor elements (<kbd>a</kbd>) with <kbd>href</kbd> attributes starting with <kbd>\"https\"</kbd>. Style them with <kbd>green</kbd> text color and <kbd>underline</kbd> text decoration.",
 			"previewHTML": "<h2>Different Types of Links</h2>\n<ul>\n  <li><a href=\"https://example.com\">External HTTPS link</a></li>\n  <li><a href=\"http://oldsite.com\">External HTTP link</a></li>\n  <li><a href=\"#section1\">Internal anchor link</a></li>\n  <li><a href=\"/about\">Relative link</a></li>\n  <li><a href=\"https://secure-site.org\">Another HTTPS link</a></li>\n</ul>",
 			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } ul { list-style-type: none; padding: 0; } li { margin-bottom: 8px; } a { text-decoration: none; }",
 			"sandboxCSS": "",
@@ -80,7 +85,7 @@
 				{
 					"type": "regex",
 					"value": "^a\\[href\\^=\"https\"\\]\\s*{",
-					"message": "Use <kbd>a[href^=\"https\"]</kbd> to target links starting with https",
+					"message": "Use <kbd>a[href^=\"https\"] { … }</kbd> as your attribute selector to target HTTPS links",
 					"options": {
 						"caseSensitive": true
 					}
@@ -88,7 +93,7 @@
 				{
 					"type": "contains",
 					"value": "color:",
-					"message": "Include the <kbd>color</kbd> property"
+					"message": "Include the <kbd>color</kbd> property to set the text color"
 				},
 				{
 					"type": "property_value",
@@ -96,12 +101,13 @@
 						"property": "color",
 						"expected": "green"
 					},
-					"message": "Set the color to <kbd>green</kbd>"
+					"message": "Set the text color to <kbd>green</kbd>"
 				},
+
 				{
 					"type": "contains",
 					"value": "text-decoration:",
-					"message": "Include the <kbd>text-decoration</kbd> property"
+					"message": "Include the <kbd>text-decoration</kbd> property to style the link appearance"
 				},
 				{
 					"type": "property_value",
@@ -109,8 +115,9 @@
 						"property": "text-decoration",
 						"expected": "underline"
 					},
-					"message": "Set text-decoration to <kbd>underline</kbd>"
+					"message": "Set text-decoration to <kbd>underline</kbd> to add underlines to HTTPS links"
 				},
+
 				{
 					"type": "regex",
 					"value": "a\\[href\\^=\"https\"\\]\\s*{[^}]*}",
@@ -124,54 +131,54 @@
 		{
 			"id": "child-combinator",
 			"title": "Child Combinator: Direct Children Only",
-			"description": "The child combinator (<kbd>></kbd>) selects elements that are direct children of another element, not grandchildren or deeper descendants. For example, <kbd>ul > li</kbd> selects list items that are immediate children of unordered lists, but not list items nested inside other list items. This precise targeting is useful when you want to style only the top level of nested structures like navigation menus or nested lists. When styling direct children, you can use properties like <kbd>font-weight</kbd> to make text bold and <kbd>background-color</kbd> to highlight specific elements. The child combinator gives you more control than the descendant selector by limiting selection to one level deep.",
-			"task": "Use the child combinator to target only the direct <kbd>li</kbd> children of the <kbd>ul</kbd> with class <kbd>menu</kbd>. Make them <kbd>bold</kbd> and give them a <kbd>lightgray</kbd> background.",
-			"previewHTML": "<ul class=\"menu\">\n  <li>Home (direct child)</li>\n  <li>Products (direct child)\n    <ul>\n      <li>Laptops (nested, not direct child)</li>\n      <li>Phones (nested, not direct child)</li>\n    </ul>\n  </li>\n  <li>About (direct child)</li>\n</ul>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } ul { margin-bottom: 10px; } li { padding: 5px; margin-bottom: 3px; border: 1px dashed #ccc; }",
+			"description": "The child combinator (<kbd>></kbd>) selects elements that are direct children of another element, not grandchildren or deeper descendants. This is crucial when you have nested structures where you want to style only the outer level. For example, in a navigation menu with dropdowns, you might want main menu items to have different styling than submenu items. The child combinator (<kbd>></kbd>) gives you surgical precision - <kbd>ul > li</kbd> targets only direct list items, while <kbd>ul li</kbd> would target ALL list items including nested ones. This prevents style inheritance chaos in complex layouts.",
+			"task": "Use the child combinator to target only the direct <kbd>li</kbd> children of <kbd>.main-nav</kbd>. Give them a <kbd>cornflowerblue</kbd> background and <kbd>white</kbd> text color. Notice how the nested submenu items remain completely unstyled!",
+			"previewHTML": "<ul class=\"main-nav\">\n  <li>🏠 Home</li>\n  <li>📱 Products\n    <ul>\n      <li>💻 Laptops</li>\n      <li>📱 Phones</li>\n      <li>⌚ Watches</li>\n    </ul>\n  </li>\n  <li>ℹ️ About\n    <ul>\n      <li>👥 Team</li>\n      <li>📍 Location</li>\n    </ul>\n  </li>\n  <li>📧 Contact</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; background: #f5f5f5; } .main-nav { background: white; border-radius: 8px; padding: 0; margin: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); list-style: none; } .main-nav li { padding: 12px 16px; margin: 2px 0; cursor: pointer; transition: all 0.2s; } .main-nav ul { margin: 8px 0 0 20px; padding: 0; list-style: none; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Target only direct li children of ul.menu using the child combinator */\n",
+			"codePrefix": "/* Target only the direct li children of .main-nav (not nested submenu items) */\n",
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": "ul.menu > li {\n  font-weight: bold;\n  background-color: lightgray;\n}",
+			"solution": ".main-nav > li {\n  background-color: cornflowerblue;\n  color: white;\n}",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "^ul\\.menu\\s*>\\s*li\\s*{",
-					"message": "Use <kbd>ul.menu > li</kbd> with the child combinator (>)",
+					"value": "^\\.main-nav\\s*>\\s*li\\s*{",
+					"message": "Use <kbd>.main-nav > li { … }</kbd> with the child combinator to target only direct children",
 					"options": {
 						"caseSensitive": true
 					}
 				},
 				{
 					"type": "contains",
-					"value": "font-weight:",
-					"message": "Include the <kbd>font-weight</kbd> property"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "font-weight",
-						"expected": "bold"
-					},
-					"message": "Set font-weight to <kbd>bold</kbd>"
-				},
-				{
-					"type": "contains",
 					"value": "background-color:",
-					"message": "Include the <kbd>background-color</kbd> property"
+					"message": "Include the <kbd>background-color</kbd> property to highlight main menu items"
 				},
 				{
 					"type": "property_value",
 					"value": {
 						"property": "background-color",
-						"expected": "lightgray"
+						"expected": "cornflowerblue"
 					},
-					"message": "Set background-color to <kbd>lightgray</kbd>"
+					"message": "Set background-color to <kbd>cornflowerblue</kbd> for main menu styling"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Include the <kbd>color</kbd> property to set the text color"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "white"
+					},
+					"message": "Set text color to <kbd>white</kbd> for contrast against the blue background"
 				},
 				{
 					"type": "regex",
-					"value": "ul\\.menu\\s*>\\s*li\\s*{[^}]*}",
+					"value": "\\.main-nav\\s*>\\s*li\\s*{[^}]*}",
 					"message": "Make sure to close your CSS rule with a closing brace <kbd>}</kbd>",
 					"options": {
 						"caseSensitive": true
