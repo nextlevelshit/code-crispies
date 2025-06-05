@@ -39,21 +39,13 @@
 	--primary-bg-medium: rgba(94, 75, 139, 0.1);
 	--primary-bg-instruction: rgba(125, 92, 203, 0.84);
 	--primary-bg-instruction-light: rgba(244, 244, 244, 0.2);
-	--success-bg-light: rgba(88, 184, 144, 0.1);
+	--success-bg-light: rgba(88, 184, 144, 0.76);
 	--success-bg-medium: rgba(88, 184, 144, 0.4);
 	--error-bg-light: rgba(244, 244, 244, 0.8);
 	--modal-bg: rgba(0, 0, 0, 0.5);
 
 	/* Additional colors */
 	--badge-bg: var(--success-color);
-	--black-transparent-10: rgba(0, 0, 0, 0.1);
-	--black-transparent-20: rgba(0, 0, 0, 0.2);
-	--black-transparent-05: rgba(0, 0, 0, 0.05);
-	--white-transparent-80: rgba(255, 255, 255, 0.8);
-	--primary-transparent-05: rgba(94, 75, 139, 0.05);
-	--primary-transparent-10: rgba(94, 75, 139, 0.1);
-	--success-transparent-10: rgba(88, 184, 144, 0.1);
-	--success-transparent-40: rgba(88, 184, 144, 0.4);
 
 	/* Typography */
 	--font-main: "Playfair Display", "Inter", "Segoe UI", Roboto, sans-serif;
