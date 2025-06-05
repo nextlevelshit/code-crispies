@@ -8,6 +8,7 @@ const state = {
 	currentModule: null,
 	currentLessonIndex: 0,
 	modules: [],
+	userCode: new Map(), // Store user code for each lesson
 	userProgress: {}, // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
 	userCodeBeforeValidation: "", // Track user code state before validation
 	userSettings: {
@@ -48,7 +49,7 @@ const lessonEngine = new LessonEngine();
 
 // Load user progress from localStorage
 function loadUserProgress() {
-	const savedProgress = localStorage.getItem("codeCrispies.Progress");
+	const savedProgress = localStorage.getItem("codeCrispies.progress");
 	if (savedProgress) {
 		state.userProgress = JSON.parse(savedProgress);
 	}
@@ -56,7 +57,7 @@ function loadUserProgress() {
 
 // Save user progress to localStorage
 function saveUserProgress() {
-	localStorage.setItem("codeCrispies.Progress", JSON.stringify(state.userProgress));
+	localStorage.setItem("codeCrispies.progress", JSON.stringify(state.userProgress));
 }
 
 function loadUserSettings() {
@@ -392,6 +393,10 @@ function runCode() {
 	// Always apply the code to the preview, regardless of validation result
 	lessonEngine.applyUserCode(userCode, true);
 
+	// Backup code in local storage
+	state.userCode.set(state.currentLessonIndex, userCode);
+	localStorage.setItem("codeCrispies.userCode", JSON.stringify(Array.from(state.userCode.entries())));
+
 	const validationResult = validateUserCode(userCode, lesson);
 
 	// Add validation indicators based on validCases count if available
@@ -557,7 +562,7 @@ function resetProgress() {
 
 	document.getElementById("cancel-reset").addEventListener("click", closeModal);
 	document.getElementById("confirm-reset").addEventListener("click", () => {
-		localStorage.removeItem("codeCrispies.Progress");
+		localStorage.removeItem("codeCrispies.progress");
 		localStorage.removeItem("codeCrispies.lastModuleId");
 		state.userProgress = {};
 		closeModal();
