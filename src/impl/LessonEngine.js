@@ -3,7 +3,6 @@
  * Single source of truth for lesson state and progress
  */
 import { validateUserCode } from "../helpers/validator.js";
-import { showFeedback } from "../helpers/renderer.js";
 
 export class LessonEngine {
 	constructor() {
@@ -55,7 +54,7 @@ export class LessonEngine {
 	 * @returns {boolean} Whether the operation was successful
 	 */
 	setModuleById(moduleId) {
-		const module = this.modules.find(m => m.id === moduleId);
+		const module = this.modules.find((m) => m.id === moduleId);
 		if (!module) return false;
 
 		this.setModule(module);

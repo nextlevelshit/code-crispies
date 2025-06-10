@@ -92,7 +92,7 @@ async function initializeModules() {
 		const progressData = lessonEngine.loadUserProgress();
 		const lastModuleId = progressData?.lastModuleId;
 
-		if (lastModuleId && modules.find(m => m.id === lastModuleId)) {
+		if (lastModuleId && modules.find((m) => m.id === lastModuleId)) {
 			selectModule(lastModuleId);
 		} else if (modules.length > 0) {
 			selectModule(modules[0].id);

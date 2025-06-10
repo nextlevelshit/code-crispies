@@ -5,34 +5,10 @@
 // Import lesson configs
 import basicSelectorsConfig from "../../lessons/00-basic-selectors.json";
 import advancedSelectorsConfig from "../../lessons/01-advanced-selectors.json";
-import carouselConfig from "../../lessons/02-css-only-carousel.json";
-// import basicsConfig from "../../lessons/00-basics.json";
-// import boxModelConfig from "../../lessons/01-box-model.json";
-// import selectorsConfig from "../../lessons/02-selectors.json";
-// import colorsConfig from "../../lessons/03-colors.json";
-// import typographyConfig from "../../lessons/04-typography.json";
-import unitVariablesConfig from "../../lessons/05-units-variables.json";
-// import transitionsAnimationsConfig from "../../lessons/06-transitions-animations.json";
-// import layoutConfig from "../../lessons/07-layouts.json";
-// import responsiveConfig from "../../lessons/08-responsive.json";
 import tailwindConfig from "../../lessons/10-tailwind-basics.json";
 
 // Module store
-const moduleStore = [
-	// basicsConfig,
-	basicSelectorsConfig,
-	advancedSelectorsConfig,
-	tailwindConfig
-	// carouselConfig
-	// boxModelConfig,
-	// selectorsConfig,
-	// colorsConfig
-	// typographyConfig,
-	// unitVariablesConfig
-	// transitionsAnimationsConfig,
-	// layoutConfig,
-	// responsiveConfig
-];
+const moduleStore = [basicSelectorsConfig, advancedSelectorsConfig, tailwindConfig];
 
 /**
  * Load all available modules
