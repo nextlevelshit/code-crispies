@@ -379,6 +379,12 @@ footer a {
 	align-items: center;
 }
 
+.preview-area iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
 .editor-container {
 	display: flex;
 	flex-direction: column;
