@@ -1,6 +1,6 @@
 /**
- * LessonEngine - Core class for managing lessons and applying/testing user code
- * Single source of truth for lesson state and progress
+ * LessonEngine - Core class for managing lessons and user progress
+ * React-compatible version without DOM manipulation
  */
 import { validateUserCode } from "../helpers/validator.js";
 
@@ -10,11 +10,28 @@ export class LessonEngine {
 		this.userCode = "";
 		this.currentModule = null;
 		this.currentLessonIndex = 0;
-		this.lastRenderedCode = ""; // Track last applied code to prevent unnecessary re-renders
 		this.modules = [];
 		this.userProgress = {}; // Format: { moduleId: { completed: [0, 2, 3], current: 4 } }
 		this.userCodeMap = new Map(); // Store user code for each lesson
+		this.subscribers = new Set(); // For state change notifications
 		this.loadUserProgress();
+	}
+
+	/**
+	 * Subscribe to state changes
+	 * @param {Function} callback - Function to call when state changes
+	 * @returns {Function} Unsubscribe function
+	 */
+	subscribe(callback) {
+		this.subscribers.add(callback);
+		return () => this.subscribers.delete(callback);
+	}
+
+	/**
+	 * Notify all subscribers of state changes
+	 */
+	notifyStateChange() {
+		this.subscribers.forEach((callback) => callback(this.getCurrentState()));
 	}
 
 	/**
@@ -24,6 +41,7 @@ export class LessonEngine {
 	setModules(modules) {
 		this.modules = modules;
 		this.loadUserCodeFromStorage();
+		this.notifyStateChange();
 	}
 
 	/**
@@ -46,6 +64,7 @@ export class LessonEngine {
 		}
 
 		this.saveUserProgress();
+		this.notifyStateChange();
 	}
 
 	/**
@@ -72,8 +91,7 @@ export class LessonEngine {
 		const lessonKey = `${this.currentModule.id}-${this.currentLessonIndex}`;
 		this.userCode = this.userCodeMap.get(lessonKey) || lesson.initialCode || "";
 
-		this.lastRenderedCode = ""; // Reset last rendered code
-		this.renderPreview();
+		this.notifyStateChange();
 	}
 
 	/**
@@ -117,11 +135,10 @@ export class LessonEngine {
 	}
 
 	/**
-	 * Apply user-written CSS to the preview area
-	 * @param {string} code - User CSS code
-	 * @param {boolean} forceUpdate - Force update the preview even if code hasn't changed
+	 * Apply user-written code
+	 * @param {string} code - User code
 	 */
-	applyUserCode(code, forceUpdate = false) {
+	applyUserCode(code) {
 		if (!this.currentLesson) return;
 
 		this.userCode = code;
@@ -131,11 +148,7 @@ export class LessonEngine {
 		this.userCodeMap.set(lessonKey, code);
 		this.saveUserCodeToStorage();
 
-		// Only re-render if code changed or forced update
-		if (forceUpdate || this.lastRenderedCode !== code) {
-			this.lastRenderedCode = code;
-			this.renderPreview();
-		}
+		this.notifyStateChange();
 	}
 
 	/**
@@ -151,70 +164,49 @@ export class LessonEngine {
 			${codePrefix || ""}
 			${this.userCode || ""}
 			${codeSuffix || ""}
-		`;
+		`.trim();
 	}
 
 	/**
-	 * Render the preview for the current lesson
+	 * Get preview content for rendering
+	 * @returns {Object} Preview content object
 	 */
-	renderPreview() {
-		if (!this.currentLesson) return;
+	getPreviewContent() {
+		if (!this.currentLesson) return null;
 
 		const mode = this.currentLesson.mode || this.currentModule?.mode || "css";
-		const { previewHTML, previewBaseCSS, previewContainer, sandboxCSS } = this.currentLesson;
-
-		const iframe = document.createElement("iframe");
-		iframe.style.width = "100%";
-		iframe.style.height = "100%";
-		iframe.style.border = "none";
-		iframe.title = "Preview";
-
-		const container = document.getElementById(previewContainer || "preview-area");
-		container.innerHTML = "";
-		container.appendChild(iframe);
-
-		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-		iframeDoc.open();
+		const { previewHTML, previewBaseCSS, sandboxCSS } = this.currentLesson;
 
 		if (mode === "tailwind") {
 			// For Tailwind mode, user code goes directly in HTML classes
 			const htmlWithClasses = this.injectTailwindClasses(previewHTML, this.userCode);
-			iframeDoc.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <script src="https://cdn.tailwindcss.com"></script>
-          <style>${previewBaseCSS}</style>
-          <style>${sandboxCSS}</style>
-        </head>
-        <body>
-          ${htmlWithClasses}
-        </body>
-      </html>
-    `);
+			return {
+				mode: "tailwind",
+				html: htmlWithClasses,
+				baseCSS: previewBaseCSS,
+				sandboxCSS: sandboxCSS,
+				tailwindCDN: "https://cdn.tailwindcss.com"
+			};
 		} else {
 			// Original CSS mode
 			const userCssWithWrapper = this.getCompleteCss();
-			iframeDoc.write(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <style>${previewBaseCSS}</style>
-          <style>${userCssWithWrapper}</style>
-          <style>${sandboxCSS}</style>
-        </head>
-        <body>
-          ${previewHTML}
-        </body>
-      </html>
-    `);
+			return {
+				mode: "css",
+				html: previewHTML,
+				baseCSS: previewBaseCSS,
+				userCSS: userCssWithWrapper,
+				sandboxCSS: sandboxCSS
+			};
 		}
-
-		iframeDoc.close();
 	}
 
+	/**
+	 * Inject Tailwind classes into HTML
+	 * @param {string} html - HTML template
+	 * @param {string} userClasses - User's Tailwind classes
+	 * @returns {string} HTML with injected classes
+	 */
 	injectTailwindClasses(html, userClasses) {
-		// Replace placeholder in HTML with user's Tailwind classes
 		return html.replace(/{{USER_CLASSES}}/g, userClasses);
 	}
 
@@ -235,6 +227,7 @@ export class LessonEngine {
 			if (!moduleProgress.completed.includes(this.currentLessonIndex)) {
 				moduleProgress.completed.push(this.currentLessonIndex);
 				this.saveUserProgress();
+				this.notifyStateChange();
 			}
 		}
 
@@ -276,7 +269,8 @@ export class LessonEngine {
 			totalLessons: this.currentModule ? this.currentModule.lessons.length : 0,
 			isCompleted: this.isCurrentLessonCompleted(),
 			canGoNext: this.currentLessonIndex < (this.currentModule ? this.currentModule.lessons.length - 1 : 0),
-			canGoPrev: this.currentLessonIndex > 0
+			canGoPrev: this.currentLessonIndex > 0,
+			previewContent: this.getPreviewContent()
 		};
 	}
 
@@ -378,7 +372,7 @@ export class LessonEngine {
 			this.userCodeMap.delete(lessonKey);
 			this.saveUserCodeToStorage();
 
-			this.renderPreview();
+			this.notifyStateChange();
 		}
 	}
 
@@ -391,5 +385,6 @@ export class LessonEngine {
 		localStorage.removeItem("codeCrispies.progress");
 		localStorage.removeItem("codeCrispies.userCode");
 		localStorage.removeItem("codeCrispies.lastModuleId");
+		this.notifyStateChange();
 	}
 }

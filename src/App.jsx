@@ -1,11 +1,15 @@
-// src/App.jsx
 import React, { useState, useEffect } from "react";
 import { useLessonEngine } from "./hooks/useLessonEngine.js";
 import { loadModules } from "./config/lessons.js";
+import { ModuleList } from "./components/ModuleList.jsx";
+import { Feedback } from "./components/Feedback.jsx";
+import { PreviewArea } from "./components/PreviewArea.jsx";
 
 function App() {
 	const lessonEngine = useLessonEngine();
 	const [isLoading, setIsLoading] = useState(true);
+	const [showHints, setShowHints] = useState(true);
+	const [lastValidation, setLastValidation] = useState(null);
 
 	// Initialize modules on mount
 	useEffect(() => {
@@ -31,12 +35,40 @@ function App() {
 			}
 		}
 
-		initializeModules().catch();
-	}, [lessonEngine]);
+		initializeModules();
+	}, []);
+
+	const handleSelectLesson = (moduleId, lessonIndex) => {
+		if (moduleId !== lessonEngine.currentState?.module?.id) {
+			lessonEngine.setModuleById(moduleId);
+		}
+		lessonEngine.setLessonByIndex(lessonIndex);
+		setLastValidation(null); // Clear validation when switching lessons
+	};
+
+	const handleCodeChange = (code) => {
+		lessonEngine.applyUserCode(code);
+		setLastValidation(null); // Clear validation when code changes
+	};
+
+	const handleRunCode = () => {
+		const validation = lessonEngine.validateCode();
+		setLastValidation(validation);
+	};
+
+	const handleResetProgress = () => {
+		if (confirm("Are you sure you want to reset all progress? This cannot be undone.")) {
+			lessonEngine.clearProgress();
+			setLastValidation(null);
+		}
+	};
 
 	if (isLoading) {
 		return <div className="app-container">Loading...</div>;
 	}
+
+	const { currentState } = lessonEngine;
+	const progressStats = lessonEngine.getProgressStats();
 
 	return (
 		<div className="app-container">
@@ -53,16 +85,20 @@ function App() {
 					<ul>
 						<li className="toggle-container">
 							<label className="toggle-switch" title="Toggle error feedback">
-								<input type="checkbox" id="disable-feedback-toggle" defaultChecked />
+								<input type="checkbox" checked={showHints} onChange={(e) => setShowHints(e.target.checked)} />
 								<span className="toggle-slider"></span>
 								<span className="toggle-label">Show Hints</span>
 							</label>
 						</li>
 						<li>
-							<button className="btn">Progress</button>
+							<button className="btn">
+								Progress ({progressStats.totalCompleted}/{progressStats.totalLessons})
+							</button>
 						</li>
 						<li>
-							<button className="btn">Reset Progress</button>
+							<button className="btn" onClick={handleResetProgress}>
+								Reset Progress
+							</button>
 						</li>
 						<li>
 							<button className="btn">Help</button>
@@ -73,36 +109,44 @@ function App() {
 
 			<main className="main-content">
 				<div className="sidebar">
-					<div className="module-list">
-						<h3>CSS Lessons</h3>
-						{/* TODO: Convert to ModuleList component */}
-					</div>
+					<ModuleList
+						modules={lessonEngine.modules}
+						userProgress={lessonEngine.userProgress}
+						currentModuleId={currentState?.module?.id}
+						currentLessonIndex={currentState?.lessonIndex}
+						onSelectModule={lessonEngine.setModuleById}
+						onSelectLesson={handleSelectLesson}
+					/>
 				</div>
 
 				<div className="content-area">
 					<div className="lesson-container">
-						<h2>{lessonEngine.currentState?.lesson?.title || "Loading..."}</h2>
+						<h2>{currentState?.lesson?.title || "Loading..."}</h2>
 						<div className="lesson-description">
-							{lessonEngine.currentState?.lesson?.description || "Please select a lesson to begin."}
+							<div
+								dangerouslySetInnerHTML={{
+									__html: currentState?.lesson?.description || "Please select a lesson to begin."
+								}}
+							/>
 						</div>
 
 						<div className="challenge-container">
-							<div className="preview-area" id="preview-area">
-								{/* Preview will be rendered here by LessonEngine */}
-							</div>
+							<PreviewArea previewContent={currentState?.previewContent} />
 
 							<div className="editor-container">
 								<div className="task-instruction">
-									{lessonEngine.currentState?.lesson?.task && (
-										<div dangerouslySetInnerHTML={{ __html: lessonEngine.currentState.lesson.task }} />
-									)}
+									{currentState?.lesson?.task && <div dangerouslySetInnerHTML={{ __html: currentState.lesson.task }} />}
 								</div>
 
 								<div className="code-editor">
 									<div className="editor-header">
-										<label htmlFor="code-input">CSS Editor</label>
-										<div className="validation-indicators-container"></div>
-										<button className="btn btn-secondary">
+										<label htmlFor="code-input">
+											{currentState?.lesson?.mode === "tailwind" ? "Tailwind Classes" : "CSS Editor"}
+										</label>
+										<div className="validation-indicators-container">
+											{currentState?.isCompleted && <span className="completion-indicator">✓ Completed</span>}
+										</div>
+										<button className="btn btn-secondary" onClick={handleRunCode}>
 											<img src="./gear.svg" alt="" />
 											Run
 										</button>
@@ -112,36 +156,42 @@ function App() {
 											id="code-input"
 											className="code-input"
 											spellCheck={false}
-											value={lessonEngine.currentState?.userCode || ""}
-											onChange={(e) => lessonEngine.applyUserCode(e.target.value)}
+											value={currentState?.userCode || ""}
+											onChange={(e) => handleCodeChange(e.target.value)}
+											placeholder={
+												currentState?.lesson?.mode === "tailwind"
+													? "Enter Tailwind classes here..."
+													: "Enter CSS code here..."
+											}
 										/>
 									</div>
+									<Feedback validation={lastValidation} showHints={showHints} />
 								</div>
 							</div>
 						</div>
 
+						<div className="controls">
+							<button className="btn" disabled={!currentState?.canGoPrev} onClick={lessonEngine.previousLesson}>
+								Previous
+							</button>
+							<div className="level-indicator">
+								Level {(currentState?.lessonIndex || 0) + 1} of {currentState?.totalLessons || 0}
+							</div>
+							<button className="btn btn-primary" disabled={!currentState?.canGoNext} onClick={lessonEngine.nextLesson}>
+								Next
+							</button>
+						</div>
+
 						<footer>
-							Free and Open Source Software:
+							Free and Open Source Software:{" "}
 							<a href="https://github.com/nextlevelshit/code-crispies" target="_blank" rel="noopener noreferrer">
 								https://github.com/nextlevelshit/code-crispies
-							</a>
+							</a>{" "}
 							by{" "}
 							<a href="https://dailysh.it" title="Website of Michael W. Czechowski">
 								Michael W. Czechowski
 							</a>
 						</footer>
-
-						<div className="controls">
-							<button className="btn" disabled={!lessonEngine.currentState?.canGoPrev} onClick={lessonEngine.previousLesson}>
-								Previous
-							</button>
-							<div className="level-indicator">
-								Level {(lessonEngine.currentState?.lessonIndex || 0) + 1} of {lessonEngine.currentState?.totalLessons || 0}
-							</div>
-							<button className="btn btn-primary" disabled={!lessonEngine.currentState?.canGoNext} onClick={lessonEngine.nextLesson}>
-								Next
-							</button>
-						</div>
 					</div>
 				</div>
 			</main>

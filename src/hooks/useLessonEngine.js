@@ -1,76 +1,73 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { LessonEngine } from "../impl/LessonEngine.js";
 
 export function useLessonEngine() {
-	const [engine] = useState(() => new LessonEngine());
+	const engineRef = useRef(null);
 	const [currentState, setCurrentState] = useState(null);
 
-	// Update state whenever engine state changes
-	const updateState = useCallback(() => {
+	// Initialize engine once
+	if (!engineRef.current) {
+		engineRef.current = new LessonEngine();
+	}
+
+	const engine = engineRef.current;
+
+	// Subscribe to engine state changes
+	useEffect(() => {
+		const unsubscribe = engine.subscribe(setCurrentState);
+		// Set initial state
 		setCurrentState(engine.getCurrentState());
+
+		return unsubscribe;
 	}, [engine]);
 
 	const setModules = useCallback(
 		(modules) => {
 			engine.setModules(modules);
-			updateState();
 		},
-		[engine, updateState]
+		[engine]
 	);
 
 	const setModuleById = useCallback(
 		(moduleId) => {
-			const success = engine.setModuleById(moduleId);
-			if (success) updateState();
-			return success;
+			return engine.setModuleById(moduleId);
 		},
-		[engine, updateState]
+		[engine]
 	);
 
 	const setLessonByIndex = useCallback(
 		(index) => {
-			const success = engine.setLessonByIndex(index);
-			if (success) updateState();
-			return success;
+			return engine.setLessonByIndex(index);
 		},
-		[engine, updateState]
+		[engine]
 	);
 
 	const nextLesson = useCallback(() => {
-		const success = engine.nextLesson();
-		if (success) updateState();
-		return success;
-	}, [engine, updateState]);
+		return engine.nextLesson();
+	}, [engine]);
 
 	const previousLesson = useCallback(() => {
-		const success = engine.previousLesson();
-		if (success) updateState();
-		return success;
-	}, [engine, updateState]);
+		return engine.previousLesson();
+	}, [engine]);
 
 	const applyUserCode = useCallback(
-		(code, forceUpdate = false) => {
-			engine.applyUserCode(code, forceUpdate);
-			updateState();
+		(code) => {
+			engine.applyUserCode(code);
 		},
-		[engine, updateState]
+		[engine]
 	);
 
 	const validateCode = useCallback(() => {
-		const result = engine.validateCode();
-		updateState(); // Progress might have changed
-		return result;
-	}, [engine, updateState]);
+		return engine.validateCode();
+	}, [engine]);
 
 	const reset = useCallback(() => {
 		engine.reset();
-		updateState();
-	}, [engine, updateState]);
+	}, [engine]);
 
 	const clearProgress = useCallback(() => {
 		engine.clearProgress();
-		updateState();
-	}, [engine, updateState]);
+	}, [engine]);
 
 	const getProgressStats = useCallback(() => {
 		return engine.getProgressStats();
@@ -82,11 +79,6 @@ export function useLessonEngine() {
 		},
 		[engine]
 	);
-
-	// Initialize state on mount
-	useEffect(() => {
-		updateState();
-	}, [updateState]);
 
 	return {
 		engine, // Direct access for complex operations
