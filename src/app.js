@@ -1,4 +1,5 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
+import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 
@@ -55,6 +56,10 @@ const elements = {
 
 // Initialize the lesson engine - now the single source of truth
 const lessonEngine = new LessonEngine();
+
+// Code editor instance (initialized later)
+let codeEditor = null;
+let currentMode = "css";
 
 // ================= SIDEBAR FUNCTIONS =================
 
@@ -214,27 +219,34 @@ function resetSuccessIndicators() {
 }
 
 function updateEditorForMode(mode) {
-	const codeInput = elements.codeInput;
 	const editorLabel = document.querySelector(".editor-label");
 
 	const modeConfig = {
 		html: {
-			placeholder: "Write your HTML here (e.g., <p>Hello World</p>)",
-			label: "HTML Editor"
+			placeholder: "Type HTML here... Try: nav>ul>li*3 then press Tab",
+			label: "HTML Editor",
+			cmMode: "html"
 		},
 		tailwind: {
 			placeholder: "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)",
-			label: "Tailwind Classes"
+			label: "Tailwind Classes",
+			cmMode: "css"
 		},
 		css: {
 			placeholder: "Enter your CSS code here...",
-			label: "CSS Editor"
+			label: "CSS Editor",
+			cmMode: "css"
 		}
 	};
 
 	const config = modeConfig[mode] || modeConfig.css;
-	codeInput.placeholder = config.placeholder;
 	if (editorLabel) editorLabel.textContent = config.label;
+
+	// Update CodeMirror mode if needed
+	if (codeEditor && currentMode !== config.cmMode) {
+		currentMode = config.cmMode;
+		codeEditor.setMode(config.cmMode);
+	}
 }
 
 function loadCurrentLesson() {
@@ -269,13 +281,15 @@ function loadCurrentLesson() {
 		elements.taskInstruction,
 		elements.previewArea,
 		null, // editorPrefix no longer used
-		elements.codeInput,
+		null, // codeInput no longer used (using CodeMirror)
 		null, // editorSuffix no longer used
 		lesson
 	);
 
-	// Set user code in input
-	elements.codeInput.value = engineState.userCode;
+	// Set user code in CodeMirror
+	if (codeEditor) {
+		codeEditor.setValue(engineState.userCode);
+	}
 
 	// Reset validation indicators
 	elements.validationIndicators.innerHTML = "";
@@ -312,25 +326,19 @@ function loadCurrentLesson() {
 	updateProgressDisplay();
 
 	// Focus on the code editor
-	elements.codeInput.focus();
+	if (codeEditor) {
+		codeEditor.focus();
+	}
 
 	// Render the expected/solution preview
 	lessonEngine.renderExpectedPreview();
-
-	// Setup live preview
-	setupLivePreview();
 }
 
 // ================= LIVE PREVIEW =================
 
 let previewTimer = null;
 
-function setupLivePreview() {
-	elements.codeInput.removeEventListener("input", handleUserInput);
-	elements.codeInput.addEventListener("input", handleUserInput);
-}
-
-function handleUserInput() {
+function handleEditorChange(code) {
 	if (previewTimer) {
 		clearTimeout(previewTimer);
 	}
@@ -369,7 +377,7 @@ function prevLesson() {
 // ================= CODE EXECUTION =================
 
 function runCode() {
-	const userCode = elements.codeInput.value;
+	const userCode = codeEditor ? codeEditor.getValue() : "";
 
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
@@ -460,8 +468,16 @@ function showHelp() {
 		<ul>
 			<li>Click "Show Expected" to see the target result</li>
 			<li>Your progress is saved automatically</li>
-			<li>Use Tab for indentation</li>
 			<li>Ctrl+Enter runs your code</li>
+		</ul>
+
+		<h4>Emmet Shortcuts (HTML mode)</h4>
+		<p>Type abbreviations and press Tab to expand:</p>
+		<ul>
+			<li><kbd>div.container</kbd> → div with class</li>
+			<li><kbd>ul>li*5</kbd> → ul with 5 li children</li>
+			<li><kbd>nav>ul>li*3>a</kbd> → nested structure</li>
+			<li><kbd>p{Hello}</kbd> → p with text content</li>
 		</ul>
 	`;
 
@@ -501,24 +517,35 @@ function closeModal() {
 	elements.modalContainer.classList.add("hidden");
 }
 
-// ================= KEYBOARD HANDLERS =================
-
-function handleTabKey(e) {
-	if (e.key === "Tab") {
-		e.preventDefault();
-
-		const start = e.target.selectionStart;
-		const end = e.target.selectionEnd;
-
-		e.target.value = e.target.value.substring(0, start) + "  " + e.target.value.substring(end);
-		e.target.selectionStart = e.target.selectionEnd = start + 2;
-	}
-}
-
 // ================= INITIALIZATION =================
+
+function initCodeEditor() {
+	const container = elements.editorContent;
+	if (!container) return;
+
+	// Remove the textarea - CodeMirror will replace it
+	const textarea = container.querySelector("textarea");
+	if (textarea) {
+		textarea.remove();
+	}
+
+	// Initialize CodeMirror
+	codeEditor = new CodeEditor(container, {
+		mode: currentMode,
+		placeholder: "Type your code here...",
+		onChange: handleEditorChange
+	});
+
+	codeEditor.init("");
+}
 
 function init() {
 	loadUserSettings();
+
+	// Initialize CodeMirror editor
+	initCodeEditor();
+
+	// Load modules after editor is ready
 	initializeModules().catch(console.error);
 
 	// Sidebar controls
@@ -545,10 +572,9 @@ function init() {
 		saveUserSettings();
 	});
 
-	// Editor interactions
-	elements.codeInput.addEventListener("keydown", handleTabKey);
+	// Click on editor content to focus CodeMirror
 	elements.editorContent?.addEventListener("click", () => {
-		elements.codeInput.focus();
+		if (codeEditor) codeEditor.focus();
 	});
 
 	// Keyboard shortcuts

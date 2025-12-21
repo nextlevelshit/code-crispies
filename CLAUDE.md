@@ -47,3 +47,8 @@ For Tailwind mode, user classes are injected via `{{USER_CLASSES}}` placeholder 
 ### Testing
 
 Tests use Vitest with jsdom environment. Setup in `tests/setup.js` includes DOM testing library matchers. Test files are in `tests/unit/`.
+
+## Git Commits
+
+- Do NOT add co-authoring lines to commit messages
+- Follow conventional commit format (feat:, fix:, refactor:, docs:, etc.)
