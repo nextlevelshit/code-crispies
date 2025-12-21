@@ -19,8 +19,8 @@
 		},
 		"mode": {
 			"type": "string",
-			"enum": ["css", "tailwind"],
-			"description": "Whether this module teaches CSS or Tailwind"
+			"enum": ["css", "tailwind", "html"],
+			"description": "Whether this module teaches CSS, Tailwind, or HTML"
 		},
 		"difficulty": {
 			"type": "string",
@@ -60,7 +60,7 @@
 					},
 					"mode": {
 						"type": "string",
-						"enum": ["css", "tailwind"],
+						"enum": ["css", "tailwind", "html"],
 						"description": "Override module mode for individual lessons"
 					},
 					"tailwindConfig": {
@@ -91,6 +91,10 @@
 						"type": "string",
 						"description": "Solution code for the lesson, if applicable"
 					},
+					"solutionCode": {
+						"type": "string",
+						"description": "Expected correct code used to render the expected preview for comparison"
+					},
 					"previewContainer": {
 						"type": "string",
 						"description": "ID of the container element for the preview"
@@ -105,26 +109,83 @@
 							"properties": {
 								"type": {
 									"type": "string",
-									"enum": ["contains", "contains_class", "not_contains", "regex", "property_value", "syntax", "custom"],
+									"enum": [
+										"contains",
+										"contains_class",
+										"contains_pattern",
+										"not_contains",
+										"regex",
+										"property_value",
+										"syntax",
+										"custom",
+										"element_exists",
+										"element_count",
+										"attribute_value",
+										"element_text",
+										"parent_child",
+										"sibling"
+									],
 									"description": "Type of validation to perform"
 								},
 								"value": {
-									"description": "Value to check against, format depends on validation type",
+									"description": "Value to check against, format depends on validation type. String for simple checks, object for complex validations.",
 									"oneOf": [
 										{
 											"type": "string"
 										},
 										{
+											"type": "boolean"
+										},
+										{
 											"type": "object",
-											"required": ["property", "expected"],
+											"description": "Object format for property_value, element_count, attribute_value, element_text, parent_child validations",
 											"properties": {
 												"property": {
 													"type": "string",
-													"description": "CSS property name to validate"
+													"description": "CSS property name (for property_value)"
 												},
 												"expected": {
 													"type": "string",
-													"description": "Expected value for the CSS property"
+													"description": "Expected value (for property_value)"
+												},
+												"selector": {
+													"type": "string",
+													"description": "CSS selector to target element (for HTML validations)"
+												},
+												"count": {
+													"type": "integer",
+													"description": "Expected count of elements (for element_count)"
+												},
+												"min": {
+													"type": "integer",
+													"description": "Minimum count of elements (for element_count)"
+												},
+												"attr": {
+													"type": "string",
+													"description": "Attribute name to check (for attribute_value)"
+												},
+												"value": {
+													"description": "Expected attribute value (for attribute_value). Use true to check existence only."
+												},
+												"text": {
+													"type": "string",
+													"description": "Expected text content (for element_text)"
+												},
+												"parent": {
+													"type": "string",
+													"description": "Parent selector (for parent_child)"
+												},
+												"child": {
+													"type": "string",
+													"description": "Child selector (for parent_child)"
+												},
+												"first": {
+													"type": "string",
+													"description": "First sibling selector (for sibling)"
+												},
+												"then": {
+													"type": "string",
+													"description": "Following sibling selector (for sibling)"
 												}
 											}
 										}

@@ -176,7 +176,22 @@ export class LessonEngine {
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
 
-		if (mode === "tailwind") {
+		if (mode === "html") {
+			// For HTML mode, user code IS the HTML content
+			const userHtml = this.userCode || "";
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${userHtml}
+        </body>
+      </html>
+    `);
+		} else if (mode === "tailwind") {
 			// For Tailwind mode, user code goes directly in HTML classes
 			const htmlWithClasses = this.injectTailwindClasses(previewHTML, this.userCode);
 			iframeDoc.write(`
@@ -216,6 +231,122 @@ export class LessonEngine {
 	injectTailwindClasses(html, userClasses) {
 		// Replace placeholder in HTML with user's Tailwind classes
 		return html.replace(/{{USER_CLASSES}}/g, userClasses);
+	}
+
+	/**
+	 * Render the expected/solution preview for comparison
+	 */
+	renderExpectedPreview() {
+		if (!this.currentLesson) return;
+
+		const solutionCode = this.currentLesson.solutionCode;
+		if (!solutionCode) {
+			// No solution code provided, hide the expected pane or show placeholder
+			const expectedContainer = document.getElementById("preview-expected");
+			if (expectedContainer) {
+				expectedContainer.innerHTML = '<div style="color: #999; font-size: 0.9rem; text-align: center;">No expected output available</div>';
+			}
+			return;
+		}
+
+		const mode = this.currentLesson.mode || this.currentModule?.mode || "css";
+		const { previewHTML, previewBaseCSS, sandboxCSS } = this.currentLesson;
+
+		const iframe = document.createElement("iframe");
+		iframe.style.width = "100%";
+		iframe.style.height = "100%";
+		iframe.style.border = "none";
+		iframe.title = "Expected Result";
+
+		const container = document.getElementById("preview-expected");
+		if (!container) return;
+
+		container.innerHTML = "";
+		container.appendChild(iframe);
+
+		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+		iframeDoc.open();
+
+		if (mode === "html") {
+			// For HTML mode, solution code IS the HTML content
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${solutionCode}
+        </body>
+      </html>
+    `);
+		} else if (mode === "tailwind") {
+			// For Tailwind mode, inject solution classes into HTML
+			const htmlWithClasses = this.injectTailwindClasses(previewHTML, solutionCode);
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <script src="https://cdn.tailwindcss.com"></script>
+          <style>${previewBaseCSS}</style>
+          <style>${sandboxCSS}</style>
+        </head>
+        <body>
+          ${htmlWithClasses}
+        </body>
+      </html>
+    `);
+		} else {
+			// CSS mode - wrap solution with prefix/suffix
+			const { codePrefix, codeSuffix } = this.currentLesson;
+			const solutionCss = `${codePrefix || ""}${solutionCode}${codeSuffix || ""}`;
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>${previewBaseCSS}</style>
+          <style>${solutionCss}</style>
+          <style>${sandboxCSS}</style>
+        </head>
+        <body>
+          ${previewHTML}
+        </body>
+      </html>
+    `);
+		}
+
+		iframeDoc.close();
+	}
+
+	/**
+	 * Show merge animation when student's output matches expected
+	 */
+	showMatchAnimation() {
+		const overlay = document.getElementById("match-overlay");
+		const comparison = document.getElementById("preview-comparison");
+
+		if (overlay && comparison) {
+			overlay.classList.add("matched");
+			comparison.classList.add("matched");
+
+			// Remove animation classes after delay
+			setTimeout(() => {
+				overlay.classList.remove("matched");
+				comparison.classList.remove("matched");
+			}, 2500);
+		}
+	}
+
+	/**
+	 * Hide match animation
+	 */
+	hideMatchAnimation() {
+		const overlay = document.getElementById("match-overlay");
+		const comparison = document.getElementById("preview-comparison");
+
+		if (overlay) overlay.classList.remove("matched");
+		if (comparison) comparison.classList.remove("matched");
 	}
 
 	/**

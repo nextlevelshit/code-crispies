@@ -181,13 +181,24 @@ function updateEditorForMode(mode) {
 	const codeInput = elements.codeInput;
 	const editorLabel = document.querySelector(".editor-label");
 
-	if (mode === "tailwind") {
-		codeInput.placeholder = "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)";
-		if (editorLabel) editorLabel.textContent = "Tailwind Classes:";
-	} else {
-		codeInput.placeholder = "Enter your CSS code here...";
-		if (editorLabel) editorLabel.textContent = "CSS Code:";
-	}
+	const modeConfig = {
+		html: {
+			placeholder: "Write your HTML here (e.g., <p>Hello World</p>)",
+			label: "HTML Editor"
+		},
+		tailwind: {
+			placeholder: "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)",
+			label: "Tailwind Classes"
+		},
+		css: {
+			placeholder: "Enter your CSS code here...",
+			label: "CSS Editor"
+		}
+	};
+
+	const config = modeConfig[mode] || modeConfig.css;
+	codeInput.placeholder = config.placeholder;
+	if (editorLabel) editorLabel.textContent = config.label;
 }
 
 // Configure editor layout based on display type
@@ -265,6 +276,9 @@ function loadCurrentLesson() {
 
 	// Focus on the code editor by default
 	elements.codeInput.focus();
+
+	// Render the expected/solution preview for comparison
+	lessonEngine.renderExpectedPreview();
 
 	// Track live changes and update preview when the user pauses typing
 	setupLivePreview();
@@ -379,6 +393,9 @@ function runCode() {
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
 
+		// Show merge animation for side-by-side comparison
+		lessonEngine.showMatchAnimation();
+
 		// Update navigation buttons
 		updateNavigationButtons();
 
@@ -387,6 +404,9 @@ function runCode() {
 	} else {
 		// Reset any success indicators
 		resetSuccessIndicators();
+
+		// Hide merge animation if it was showing
+		lessonEngine.hideMatchAnimation();
 
 		// Show error feedback (with friendly message)
 		showFeedback(false, validationResult.message || "Not quite there yet! Let's try again.");

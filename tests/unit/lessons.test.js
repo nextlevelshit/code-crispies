@@ -1,26 +1,36 @@
 import { describe, test, expect, vi, beforeEach } from "vitest";
 import { loadModules, getModuleById, loadModuleFromUrl, addCustomModule } from "../../src/config/lessons.js";
 
-// Mock the module store for testing
-vi.mock("../../lessons/flexbox.json", () => ({ default: { id: "flexbox", title: "Flexbox", lessons: [] } }));
-vi.mock("../../lessons/grid.json", () => ({ default: { id: "grid", title: "CSS Grid", lessons: [] } }));
-vi.mock("../../lessons/00-basics.json", () => ({ default: { id: "basics", title: "CSS Basics", lessons: [] } }));
-vi.mock("../../lessons/tailwindcss.json", () => ({ default: { id: "tailwind", title: "Tailwind CSS", lessons: [] } }));
-
 describe("Lessons Config Module", () => {
 	describe("loadModules", () => {
 		test("should return an array of modules", async () => {
 			const modules = await loadModules();
 
 			expect(Array.isArray(modules)).toBe(true);
-			expect(modules.length).toBe(4);
+			expect(modules.length).toBe(6);
 
 			// Check if modules have the right structure
 			const moduleIds = modules.map((m) => m.id);
-			expect(moduleIds).toContain("basics");
-			expect(moduleIds).toContain("flexbox");
-			expect(moduleIds).toContain("grid");
-			expect(moduleIds).toContain("tailwind");
+			// HTML modules (first)
+			expect(moduleIds).toContain("html-elements");
+			expect(moduleIds).toContain("html-forms-basic");
+			expect(moduleIds).toContain("html-forms-validation");
+			// CSS modules
+			expect(moduleIds).toContain("css-basic-selectors");
+			expect(moduleIds).toContain("css-advanced-selectors");
+			// Tailwind
+			expect(moduleIds).toContain("tailwind-basics");
+		});
+
+		test("should have mode set on each lesson", async () => {
+			const modules = await loadModules();
+
+			modules.forEach((module) => {
+				module.lessons.forEach((lesson) => {
+					expect(lesson.mode).toBeDefined();
+					expect(["html", "css", "tailwind"]).toContain(lesson.mode);
+				});
+			});
 		});
 	});
 
@@ -29,10 +39,10 @@ describe("Lessons Config Module", () => {
 			// Load modules first to populate the module store
 			await loadModules();
 
-			const flexboxModule = getModuleById("flexbox");
-			expect(flexboxModule).not.toBeNull();
-			expect(flexboxModule.id).toBe("flexbox");
-			expect(flexboxModule.title).toBe("Flexbox");
+			const htmlModule = getModuleById("html-elements");
+			expect(htmlModule).not.toBeNull();
+			expect(htmlModule.id).toBe("html-elements");
+			expect(htmlModule.mode).toBe("html");
 		});
 
 		test("should return null for non-existent module ID", async () => {

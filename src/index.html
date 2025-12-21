@@ -46,8 +46,28 @@
 						<div class="lesson-description" id="lesson-description">Please select a lesson to begin.</div>
 
 						<div class="challenge-container">
-							<div class="preview-area" id="preview-area">
-								<!-- Preview of the challenge will be shown here -->
+							<div class="preview-comparison" id="preview-comparison">
+								<div class="preview-pane preview-student">
+									<div class="preview-header">
+										<span class="preview-label">Your Output</span>
+									</div>
+									<div class="preview-frame" id="preview-area">
+										<!-- Student's preview iframe will be shown here -->
+									</div>
+								</div>
+
+								<div class="preview-pane preview-expected">
+									<div class="preview-header">
+										<span class="preview-label">Expected Result</span>
+									</div>
+									<div class="preview-frame" id="preview-expected">
+										<!-- Expected result iframe will be shown here -->
+									</div>
+								</div>
+
+								<div class="preview-overlay" id="match-overlay">
+									<div class="match-celebration">Perfect Match!</div>
+								</div>
 							</div>
 
 							<div class="editor-container">

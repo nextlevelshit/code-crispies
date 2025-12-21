@@ -6,9 +6,20 @@
 import basicSelectorsConfig from "../../lessons/00-basic-selectors.json";
 import advancedSelectorsConfig from "../../lessons/01-advanced-selectors.json";
 import tailwindConfig from "../../lessons/10-tailwind-basics.json";
+// HTML lessons
+import htmlElementsConfig from "../../lessons/20-html-elements.json";
+import htmlFormsBasicConfig from "../../lessons/21-html-forms-basic.json";
+import htmlFormsValidationConfig from "../../lessons/22-html-forms-validation.json";
 
 // Module store
-const moduleStore = [basicSelectorsConfig, advancedSelectorsConfig, tailwindConfig];
+const moduleStore = [
+	htmlElementsConfig,
+	htmlFormsBasicConfig,
+	htmlFormsValidationConfig,
+	basicSelectorsConfig,
+	advancedSelectorsConfig,
+	tailwindConfig
+];
 
 /**
  * Load all available modules
