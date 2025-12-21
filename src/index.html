@@ -9,104 +9,126 @@
 	</head>
 	<body>
 		<div class="app-container">
+			<!-- Minimal Header -->
 			<header class="header">
+				<button id="menu-btn" class="menu-toggle" aria-label="Open menu">
+					<span class="hamburger-line"></span>
+					<span class="hamburger-line"></span>
+					<span class="hamburger-line"></span>
+				</button>
 				<div class="logo">
-					<img src="./bowl.png" width="52" alt="CODE CRISPIES Logo" />
-					<h1>CODE<br /><span>CRISPIES</span></h1>
+					<img src="./bowl.png" width="40" alt="CODE CRISPIES Logo" />
+					<h1>CODE<span>CRISPIES</span></h1>
 				</div>
-				<nav class="main-nav">
-					<ul>
-						<li class="toggle-container">
-							<label class="toggle-switch" title="Toggle error feedback">
-								<input type="checkbox" id="disable-feedback-toggle" checked />
-								<span class="toggle-slider"></span>
-								<span class="toggle-label">Show Hints</span>
-							</label>
-						</li>
-						<li><button id="module-selector-btn" class="btn">Progress</button></li>
-						<li><button id="reset-btn" class="btn">Reset Progress</button></li>
-						<li><button id="help-btn" class="btn">Help</button></li>
-					</ul>
-				</nav>
+				<button id="help-btn" class="help-toggle" aria-label="Help">?</button>
 			</header>
 
-			<main class="main-content">
-				<div class="sidebar">
-					<div class="module-list">
-						<!-- Module list will be populated here -->
-					</div>
-					<div class="lesson-progress">
-						<!-- Lesson progress will be shown here -->
-					</div>
+			<!-- Main Game Layout -->
+			<main class="game-layout">
+				<!-- Left Panel: Instructions + Editor -->
+				<div class="left-panel">
+					<section class="instructions">
+						<h2 id="lesson-title">Loading...</h2>
+						<div class="lesson-description" id="lesson-description">
+							Please select a lesson to begin.
+						</div>
+						<div class="task-instruction" id="task-instruction">
+							<!-- Task instructions will be shown here -->
+						</div>
+					</section>
+
+					<section class="editor-section">
+						<div class="code-editor">
+							<div class="editor-header">
+								<label for="code-input" class="editor-label">CSS Editor</label>
+								<div class="editor-actions">
+									<div class="validation-indicators-container"></div>
+									<button id="run-btn" class="btn btn-run">
+										<img src="./gear.svg" alt="" />Run
+									</button>
+								</div>
+							</div>
+							<div class="editor-content">
+								<textarea id="code-input" class="code-input" spellcheck="false"></textarea>
+							</div>
+						</div>
+						<div class="hint-area" id="hint-area">
+							<!-- Hints displayed inline here -->
+						</div>
+					</section>
 				</div>
 
-				<div class="content-area">
-					<div class="lesson-container">
-						<h2 id="lesson-title">Loading...</h2>
-						<div class="lesson-description" id="lesson-description">Please select a lesson to begin.</div>
-
-						<div class="challenge-container">
-							<div class="preview-comparison" id="preview-comparison">
-								<div class="preview-pane preview-student">
-									<div class="preview-header">
-										<span class="preview-label">Your Output</span>
-									</div>
-									<div class="preview-frame" id="preview-area">
-										<!-- Student's preview iframe will be shown here -->
-									</div>
-								</div>
-
-								<div class="preview-pane preview-expected">
-									<div class="preview-header">
-										<span class="preview-label">Expected Result</span>
-									</div>
-									<div class="preview-frame" id="preview-expected">
-										<!-- Expected result iframe will be shown here -->
-									</div>
-								</div>
-
-								<div class="preview-overlay" id="match-overlay">
-									<div class="match-celebration">Perfect Match!</div>
-								</div>
+				<!-- Right Panel: Preview + Navigation -->
+				<div class="right-panel">
+					<div class="preview-section">
+						<div class="preview-header">
+							<span class="preview-label">Your Output</span>
+							<button id="show-expected-btn" class="btn btn-small">Show Expected</button>
+						</div>
+						<div class="preview-wrapper">
+							<div class="preview-frame" id="preview-area">
+								<!-- User's preview iframe will be shown here -->
 							</div>
-
-							<div class="editor-container">
-								<div class="task-instruction" id="task-instruction">
-									<!-- Task instructions will be shown here -->
-								</div>
-
-								<div class="code-editor">
-									<div class="editor-header">
-										<label for="code-input">CSS Editor</label>
-										<div class="validation-indicators-container"></div>
-										<button id="run-btn" class="btn btn-secondary"><img src="./gear.svg" alt="" />Run</button>
-									</div>
-									<div class="editor-content">
-										<!--										<pre><code id="editor-prefix"></code></pre>-->
-										<textarea id="code-input" class="code-input" spellcheck="false"></textarea>
-										<!--										<pre><code id="editor-suffix"></code></pre>-->
-									</div>
+							<div class="expected-overlay" id="expected-overlay">
+								<div class="expected-frame" id="preview-expected">
+									<!-- Expected result iframe (toggleable) -->
 								</div>
 							</div>
 						</div>
-
-						<footer>
-							Free and Open Source Software:
-							<a href="https://github.com/nextlevelshit/code-crispies" target="_blank"
-								>https://github.com/nextlevelshit/code-crispies</a
-							>
-							by <a href="https://dailysh.it" title="Website of Michael W. Czechowski">Michael W. Czechowski</a>
-						</footer>
-
-						<div class="controls">
-							<button id="prev-btn" class="btn">Previous</button>
-							<div class="level-indicator" id="level-indicator">Level 0/0</div>
-							<button id="next-btn" class="btn btn-primary">Next</button>
-						</div>
+					</div>
+					<div class="game-controls">
+						<button id="prev-btn" class="btn">Previous</button>
+						<div class="level-indicator" id="level-indicator">Level 0/0</div>
+						<button id="next-btn" class="btn btn-primary">Next</button>
 					</div>
 				</div>
 			</main>
 
+			<!-- Sidebar Backdrop -->
+			<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+			<!-- Slide-out Sidebar -->
+			<aside class="sidebar-drawer" id="sidebar-drawer">
+				<div class="sidebar-header">
+					<h3>Menu</h3>
+					<button id="close-sidebar" class="close-btn" aria-label="Close menu">&times;</button>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Progress</h4>
+					<div class="progress-display" id="progress-display">
+						<div class="progress-bar">
+							<div class="progress-fill" id="progress-fill"></div>
+						</div>
+						<span class="progress-text" id="progress-text">0% Complete</span>
+					</div>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Lessons</h4>
+					<div class="module-list" id="module-list">
+						<!-- Module list will be populated here -->
+					</div>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Settings</h4>
+					<label class="toggle-switch">
+						<input type="checkbox" id="disable-feedback-toggle" checked />
+						<span class="toggle-slider"></span>
+						<span class="toggle-label">Show Hints</span>
+					</label>
+					<button id="reset-btn" class="btn btn-text">Reset All Progress</button>
+				</div>
+
+				<footer class="app-footer">
+					Open Source:
+					<a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a>
+					by <a href="https://dailysh.it" title="Michael W. Czechowski">mwc</a>
+				</footer>
+			</aside>
+
+			<!-- Help Modal -->
 			<div id="modal-container" class="modal-container hidden">
 				<div class="modal">
 					<div class="modal-header">

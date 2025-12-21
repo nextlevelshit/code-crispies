@@ -1,57 +1,123 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
-import { renderLesson, renderModuleList, renderLevelIndicator, showFeedback, updateActiveLessonInSidebar } from "./helpers/renderer.js";
+import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
 		disableFeedbackErrors: false
-	}
+	},
+	showExpected: false
 };
 
-// DOM elements
+// DOM elements - updated for new layout
 const elements = {
-	moduleList: document.querySelector(".module-list"),
+	// Header
+	menuBtn: document.getElementById("menu-btn"),
+	helpBtn: document.getElementById("help-btn"),
+
+	// Left panel
 	lessonTitle: document.getElementById("lesson-title"),
 	lessonDescription: document.getElementById("lesson-description"),
 	taskInstruction: document.getElementById("task-instruction"),
-	previewArea: document.getElementById("preview-area"),
-	editorPrefix: document.getElementById("editor-prefix"),
 	codeInput: document.getElementById("code-input"),
-	editorSuffix: document.getElementById("editor-suffix"),
+	runBtn: document.getElementById("run-btn"),
+	hintArea: document.getElementById("hint-area"),
+	validationIndicators: document.querySelector(".validation-indicators-container"),
+	editorContent: document.querySelector(".editor-content"),
+	codeEditor: document.querySelector(".code-editor"),
+
+	// Right panel
+	previewArea: document.getElementById("preview-area"),
+	showExpectedBtn: document.getElementById("show-expected-btn"),
+	expectedOverlay: document.getElementById("expected-overlay"),
+	previewWrapper: document.querySelector(".preview-wrapper"),
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
-	runBtn: document.getElementById("run-btn"),
 	levelIndicator: document.getElementById("level-indicator"),
+
+	// Sidebar
+	sidebarDrawer: document.getElementById("sidebar-drawer"),
+	sidebarBackdrop: document.getElementById("sidebar-backdrop"),
+	closeSidebar: document.getElementById("close-sidebar"),
+	moduleList: document.getElementById("module-list"),
+	progressFill: document.getElementById("progress-fill"),
+	progressText: document.getElementById("progress-text"),
+	resetBtn: document.getElementById("reset-btn"),
+	disableFeedbackToggle: document.getElementById("disable-feedback-toggle"),
+
+	// Modal
 	modalContainer: document.getElementById("modal-container"),
 	modalTitle: document.getElementById("modal-title"),
 	modalContent: document.getElementById("modal-content"),
-	modalClose: document.getElementById("modal-close"),
-	moduleSelectorBtn: document.getElementById("module-selector-btn"),
-	resetBtn: document.getElementById("reset-btn"),
-	helpBtn: document.getElementById("help-btn"),
-	lessonContainer: document.querySelector(".lesson-container"),
-	editorContent: document.querySelector(".editor-content"),
-	codeEditor: document.querySelector(".code-editor"),
-	validationIndicators: document.querySelector(".validation-indicators-container"),
-	disableFeedbackToggle: document.getElementById("disable-feedback-toggle")
+	modalClose: document.getElementById("modal-close")
 };
 
 // Initialize the lesson engine - now the single source of truth
 const lessonEngine = new LessonEngine();
 
-// Load user progress from localStorage
-function loadUserProgress() {
-	const savedProgress = localStorage.getItem("codeCrispies.progress");
-	if (savedProgress) {
-		state.userProgress = JSON.parse(savedProgress);
+// ================= SIDEBAR FUNCTIONS =================
+
+function openSidebar() {
+	elements.sidebarDrawer.classList.add("open");
+	elements.sidebarBackdrop.classList.add("visible");
+}
+
+function closeSidebar() {
+	elements.sidebarDrawer.classList.remove("open");
+	elements.sidebarBackdrop.classList.remove("visible");
+}
+
+// ================= EXPECTED RESULT TOGGLE =================
+
+function toggleExpectedResult() {
+	state.showExpected = !state.showExpected;
+
+	if (state.showExpected) {
+		elements.expectedOverlay.classList.add("visible");
+		elements.showExpectedBtn.textContent = "Hide Expected";
+		elements.showExpectedBtn.classList.add("btn-primary");
+	} else {
+		elements.expectedOverlay.classList.remove("visible");
+		elements.showExpectedBtn.textContent = "Show Expected";
+		elements.showExpectedBtn.classList.remove("btn-primary");
 	}
 }
 
-// Save user progress to localStorage
-function saveUserProgress() {
-	localStorage.setItem("codeCrispies.progress", JSON.stringify(state.userProgress));
+// ================= HINT SYSTEM =================
+
+function showHint(message, step, total, isSuccess = false) {
+	const hintClass = isSuccess ? "hint hint-success" : "hint";
+	elements.hintArea.innerHTML = `
+		<div class="${hintClass}">
+			<span class="hint-progress">${step}/${total}</span>
+			<span class="hint-message">${message}</span>
+		</div>
+	`;
 }
+
+function clearHint() {
+	elements.hintArea.innerHTML = "";
+}
+
+function showSuccessHint(message) {
+	elements.hintArea.innerHTML = `
+		<div class="hint hint-success">
+			<span class="hint-progress">✓</span>
+			<span class="hint-message">${message}</span>
+		</div>
+	`;
+}
+
+// ================= PROGRESS DISPLAY =================
+
+function updateProgressDisplay() {
+	const stats = lessonEngine.getProgressStats();
+	elements.progressFill.style.width = `${stats.percentComplete}%`;
+	elements.progressText.textContent = `${stats.percentComplete}% Complete (${stats.totalCompleted}/${stats.totalLessons})`;
+}
+
+// ================= USER SETTINGS =================
 
 function loadUserSettings() {
 	const savedSettings = localStorage.getItem("codeCrispies.settings");
@@ -59,8 +125,6 @@ function loadUserSettings() {
 		try {
 			const settings = JSON.parse(savedSettings);
 			state.userSettings = { ...state.userSettings, ...settings };
-
-			// Apply saved settings to UI
 			elements.disableFeedbackToggle.checked = !state.userSettings.disableFeedbackErrors;
 		} catch (e) {
 			console.error("Error loading user settings:", e);
@@ -72,14 +136,8 @@ function saveUserSettings() {
 	localStorage.setItem("codeCrispies.settings", JSON.stringify(state.userSettings));
 }
 
-function initFeedbackToggle() {
-	elements.disableFeedbackToggle.addEventListener("change", (e) => {
-		state.userSettings.disableFeedbackErrors = !e.target.checked;
-		saveUserSettings();
-	});
-}
+// ================= MODULE INITIALIZATION =================
 
-// Initialize the module list
 async function initializeModules() {
 	try {
 		const modules = await loadModules();
@@ -98,45 +156,15 @@ async function initializeModules() {
 			selectModule(modules[0].id);
 		}
 
-		// Update progress indicator on module selector button
-		updateModuleSelectorButtonProgress();
+		updateProgressDisplay();
 	} catch (error) {
 		console.error("Failed to load modules:", error);
 		elements.lessonDescription.textContent = "Failed to load modules. Please refresh the page.";
 	}
 }
 
-// Update progress indicator on module selector button
-function updateModuleSelectorButtonProgress() {
-	const stats = lessonEngine.getProgressStats();
+// ================= MODULE/LESSON SELECTION =================
 
-	// Create progress indicator
-	const progressBar = document.createElement("div");
-	progressBar.className = "progress-indicator";
-	progressBar.style.cssText = `
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		height: 3px;
-		width: ${stats.percentComplete}%;
-		background-color: var(--primary-light);
-		border-radius: 0 3px 3px 0;
-	`;
-
-	// Add progress percentage text
-	elements.moduleSelectorBtn.innerHTML = `Progress <span style="font-size: 0.8em; opacity: 0.8;">${stats.percentComplete}%</span>`;
-	elements.moduleSelectorBtn.style.position = "relative";
-
-	// Remove any existing progress bar before adding new one
-	const existingBar = elements.moduleSelectorBtn.querySelector(".progress-indicator");
-	if (existingBar) {
-		existingBar.remove();
-	}
-
-	elements.moduleSelectorBtn.appendChild(progressBar);
-}
-
-// Select a module - delegate to LessonEngine
 function selectModule(moduleId) {
 	const success = lessonEngine.setModuleById(moduleId);
 	if (!success) return;
@@ -151,30 +179,38 @@ function selectModule(moduleId) {
 	});
 
 	loadCurrentLesson();
-
-	// Reset any success indicators
 	resetSuccessIndicators();
+
+	// Close sidebar after selection on mobile
+	if (window.innerWidth <= 768) {
+		closeSidebar();
+	}
 }
 
 function selectLesson(moduleId, lessonIndex) {
-	// Select the module first if it's not already selected
 	const currentState = lessonEngine.getCurrentState();
 	if (!currentState.module || currentState.module.id !== moduleId) {
 		lessonEngine.setModuleById(moduleId);
 	}
 
-	// Set the lesson
 	lessonEngine.setLessonByIndex(lessonIndex);
 	loadCurrentLesson();
+
+	// Close sidebar after selection on mobile
+	if (window.innerWidth <= 768) {
+		closeSidebar();
+	}
 }
 
-// Reset success indicators
+// ================= LESSON LOADING =================
+
 function resetSuccessIndicators() {
 	elements.codeEditor.classList.remove("success-highlight");
 	elements.lessonTitle.classList.remove("success-text");
 	elements.nextBtn.classList.remove("success");
 	elements.taskInstruction.classList.remove("success-instruction");
-	elements.runBtn.classList.remove("re-run");
+	elements.runBtn.classList.remove("success");
+	elements.previewWrapper?.classList.remove("matched");
 }
 
 function updateEditorForMode(mode) {
@@ -201,12 +237,6 @@ function updateEditorForMode(mode) {
 	if (editorLabel) editorLabel.textContent = config.label;
 }
 
-// Configure editor layout based on display type
-function resetEditorLayout(lesson) {
-	elements.validationIndicators.innerHTML = "";
-}
-
-// Load the current lesson - now delegates to LessonEngine
 function loadCurrentLesson() {
 	const engineState = lessonEngine.getCurrentState();
 
@@ -223,29 +253,38 @@ function loadCurrentLesson() {
 	// Reset any success indicators
 	resetSuccessIndicators();
 
+	// Clear hints
+	clearHint();
+
+	// Hide expected overlay
+	state.showExpected = false;
+	elements.expectedOverlay.classList.remove("visible");
+	elements.showExpectedBtn.textContent = "Show Expected";
+	elements.showExpectedBtn.classList.remove("btn-primary");
+
 	// Update UI
 	renderLesson(
 		elements.lessonTitle,
 		elements.lessonDescription,
 		elements.taskInstruction,
 		elements.previewArea,
-		elements.editorPrefix,
+		null, // editorPrefix no longer used
 		elements.codeInput,
-		elements.editorSuffix,
+		null, // editorSuffix no longer used
 		lesson
 	);
 
 	// Set user code in input
 	elements.codeInput.value = engineState.userCode;
 
-	// Configure editor layout based on lesson settings
-	resetEditorLayout(lesson);
+	// Reset validation indicators
+	elements.validationIndicators.innerHTML = "";
 
 	// Update Run button text based on completion status
 	if (engineState.isCompleted) {
-		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
+		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
 
-		// Add completion badge next to title if not already present
+		// Add completion badge if not present
 		if (!document.querySelector(".completion-badge")) {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
@@ -253,13 +292,11 @@ function loadCurrentLesson() {
 			elements.lessonTitle.appendChild(badge);
 		}
 	} else {
-		elements.runBtn.innerHTML = '<img src="./gear.svg" />Run';
+		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Run';
 
 		// Remove completion badge if exists
 		const badge = document.querySelector(".completion-badge");
-		if (badge) {
-			badge.remove();
-		}
+		if (badge) badge.remove();
 	}
 
 	// Update level indicator
@@ -271,64 +308,50 @@ function loadCurrentLesson() {
 	// Update navigation buttons
 	updateNavigationButtons();
 
-	// Update progress indicator on module selector button
-	updateModuleSelectorButtonProgress();
+	// Update progress display
+	updateProgressDisplay();
 
-	// Focus on the code editor by default
+	// Focus on the code editor
 	elements.codeInput.focus();
 
-	// Render the expected/solution preview for comparison
+	// Render the expected/solution preview
 	lessonEngine.renderExpectedPreview();
 
-	// Track live changes and update preview when the user pauses typing
+	// Setup live preview
 	setupLivePreview();
 }
 
-// Setup live preview functionality
-let previewTimer = null;
-function setupLivePreview() {
-	// Clear previous event listener if any
-	elements.codeInput.removeEventListener("input", handleUserInput);
+// ================= LIVE PREVIEW =================
 
-	// Add new event listener
+let previewTimer = null;
+
+function setupLivePreview() {
+	elements.codeInput.removeEventListener("input", handleUserInput);
 	elements.codeInput.addEventListener("input", handleUserInput);
 }
 
-// Handle user input with debounced preview updates
 function handleUserInput() {
-	// Clear the previous timer
 	if (previewTimer) {
 		clearTimeout(previewTimer);
 	}
 
-	// Set a new timer for preview update after user stops typing
 	previewTimer = setTimeout(() => {
 		runCode();
-	}, 800); // Update preview 800ms after user stops typing
+	}, 800);
 }
 
-// Update navigation buttons state
+// ================= NAVIGATION =================
+
 function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 
 	elements.prevBtn.disabled = !engineState.canGoPrev;
 	elements.nextBtn.disabled = !engineState.canGoNext;
 
-	// Style changes for disabled buttons
-	if (elements.prevBtn.disabled) {
-		elements.prevBtn.classList.add("btn-disabled");
-	} else {
-		elements.prevBtn.classList.remove("btn-disabled");
-	}
-
-	if (elements.nextBtn.disabled) {
-		elements.nextBtn.classList.add("btn-disabled");
-	} else {
-		elements.nextBtn.classList.remove("btn-disabled");
-	}
+	elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
+	elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
 }
 
-// Go to the next lesson - delegate to LessonEngine
 function nextLesson() {
 	const success = lessonEngine.nextLesson();
 	if (success) {
@@ -336,7 +359,6 @@ function nextLesson() {
 	}
 }
 
-// Go to the previous lesson - delegate to LessonEngine
 function prevLesson() {
 	const success = lessonEngine.previousLesson();
 	if (success) {
@@ -344,14 +366,17 @@ function prevLesson() {
 	}
 }
 
-// Run the user code - now uses LessonEngine validation
+// ================= CODE EXECUTION =================
+
 function runCode() {
 	const userCode = elements.codeInput.value;
 
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
-	const runButtonRotationDegree = Number(runButtonImg.style.transform.match(/\d+/)?.pop() ?? 0);
-	document.querySelector("#run-btn img").style.transform = `rotate(${runButtonRotationDegree + 180}deg)`;
+	if (runButtonImg) {
+		const currentRotation = parseInt(runButtonImg.style.transform?.match(/\d+/)?.[0] || "0");
+		runButtonImg.style.transform = `rotate(${currentRotation + 180}deg)`;
+	}
 
 	// Apply the code to the preview via LessonEngine
 	lessonEngine.applyUserCode(userCode, true);
@@ -359,27 +384,21 @@ function runCode() {
 	// Validate code using LessonEngine
 	const validationResult = lessonEngine.validateCode();
 
-	// Add validation indicators based on validCases count if available
-	if (validationResult.validCases) {
-		const casesCount =
-			typeof validationResult.validCases === "number"
-				? validationResult.validCases
-				: Array.isArray(validationResult.validCases)
-					? validationResult.validCases.length
-					: 1;
-
-		elements.validationIndicators.innerHTML = `${Math.round((validationResult.validCases / validationResult.totalCases) * 100)}%`;
+	// Update validation indicators
+	if (validationResult.totalCases > 0) {
+		const percent = Math.round((validationResult.validCases / validationResult.totalCases) * 100);
+		elements.validationIndicators.innerHTML = `${percent}%`;
 	}
 
 	if (validationResult.isValid) {
-		// Show success feedback with visual indicators
-		showFeedback(true, validationResult.message || "Great job! Your code works correctly.");
+		// Show success hint
+		showSuccessHint(validationResult.message || "Great job! Your code works correctly.");
 
-		// Update the Run button to Re-run
-		elements.runBtn.innerHTML = '<img src="./gear.svg" />Re-run';
-		elements.runBtn.classList.add("re-run");
+		// Update Run button
+		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
+		elements.runBtn.classList.add("success");
 
-		// Add completion badge if not present
+		// Add completion badge
 		if (!document.querySelector(".completion-badge")) {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
@@ -393,174 +412,97 @@ function runCode() {
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
 
-		// Show merge animation for side-by-side comparison
-		lessonEngine.showMatchAnimation();
+		// Show match animation
+		elements.previewWrapper?.classList.add("matched");
+		setTimeout(() => {
+			elements.previewWrapper?.classList.remove("matched");
+		}, 2500);
 
-		// Update navigation buttons
 		updateNavigationButtons();
-
-		// Update progress indicator
-		updateModuleSelectorButtonProgress();
+		updateProgressDisplay();
 	} else {
-		// Reset any success indicators
+		// Reset success indicators
 		resetSuccessIndicators();
 
-		// Hide merge animation if it was showing
-		lessonEngine.hideMatchAnimation();
+		// Show hint with step progress
+		const step = validationResult.validCases + 1;
+		const total = validationResult.totalCases;
 
-		// Show error feedback (with friendly message)
-		showFeedback(false, validationResult.message || "Not quite there yet! Let's try again.");
+		// Only show hints if enabled
+		if (!state.userSettings.disableFeedbackErrors) {
+			showHint(validationResult.message || "Keep trying!", step, total);
+		}
 	}
 }
 
-// Show the module selector modal
-function showModuleSelector() {
-	elements.modalTitle.textContent = "Select a Module";
+// ================= MODALS =================
 
-	const engineState = lessonEngine.getCurrentState();
-	const modules = lessonEngine.modules;
-
-	// Create module buttons
-	const moduleButtons = modules.map((module) => {
-		const button = document.createElement("button");
-		button.classList.add("btn", "module-button");
-		button.style.display = "block";
-		button.style.width = "100%";
-		button.style.marginBottom = "10px";
-		button.style.padding = "15px";
-		button.style.textAlign = "left";
-
-		// Add completion status using LessonEngine
-		const completedCount = lessonEngine.userProgress[module.id]?.completed.length || 0;
-		const totalLessons = module.lessons.length;
-		const percentComplete = Math.round((completedCount / totalLessons) * 100);
-
-		button.innerHTML = `
-			<strong>${module.title}</strong>
-			<div style="margin-top: 5px; font-size: 0.8rem; color: var(--light-text);">
-				${module.description}
-			</div>
-			<div style="margin-top: 8px; height: 6px; background-color: #f0f0f0; border-radius: 3px;">
-				<div style="height: 100%; width: ${percentComplete}%; background-color: var(--primary-color); border-radius: 3px;"></div>
-			</div>
-			<div style="margin-top: 5px; font-size: 0.8rem; text-align: right;">
-				${completedCount}/${totalLessons} lessons completed
-			</div>
-		`;
-
-		button.addEventListener("click", () => {
-			selectModule(module.id);
-			closeModal();
-		});
-
-		return button;
-	});
-
-	// Clear and update modal content
-	elements.modalContent.innerHTML = "";
-	moduleButtons.forEach((button) => {
-		elements.modalContent.appendChild(button);
-	});
-
-	// Show the modal
-	elements.modalContainer.classList.remove("hidden");
-}
-
-// Show help modal
 function showHelp() {
 	elements.modalTitle.textContent = "Help";
 
 	elements.modalContent.innerHTML = `
 		<h3>How to Use Code Crispies</h3>
-		<p>Code Crispies is an interactive platform for learning CSS through practical exercises.</p>
-		
+		<p>Code Crispies is an interactive platform for learning HTML, CSS, and Tailwind through practical exercises.</p>
+
 		<h4>Getting Started</h4>
-		<p>Select a module from the sidebar to start learning. Each module contains a series of lessons focused on specific CSS concepts.</p>
-		
+		<p>Open the menu (☰) to select a lesson module. Each module contains a series of lessons.</p>
+
 		<h4>Completing Lessons</h4>
-		<p>For each lesson:</p>
 		<ol>
-			<li>Read the instructions and objective</li>
-			<li>Write your CSS code in the editor</li>
-			<li>Click "Run" to test your solution</li>
-			<li>If correct, you can proceed to the next lesson</li>
+			<li>Read the instructions on the left</li>
+			<li>Write your code in the editor</li>
+			<li>Click "Run" or press Ctrl+Enter to test</li>
+			<li>Follow the hints to fix any issues</li>
+			<li>Click "Next" when you're done</li>
 		</ol>
-		
-		<h4>Controls</h4>
-		<ul>
-			<li><strong>Run</strong> - Test your CSS code and apply it to the preview</li>
-			<li><strong>Previous/Next</strong> - Navigate between lessons</li>
-			<li><strong>Progress</strong> - Select a different learning module</li>
-			<li><strong>Reset Progress</strong> - Clear all your saved progress</li>
-		</ul>
-		
+
 		<h4>Tips</h4>
 		<ul>
-			<li>Your code changes will automatically preview as you type</li>
-			<li>The preview area shows how your CSS affects the elements</li>
-			<li>Your progress is automatically saved in your browser storage</li>
-			<li>You can revisit completed lessons at any time</li>
-			<li>Press Tab in the code editor to indent with two spaces</li>
-			<li>Use Ctrl+Enter to quickly run your code</li>
+			<li>Click "Show Expected" to see the target result</li>
+			<li>Your progress is saved automatically</li>
+			<li>Use Tab for indentation</li>
+			<li>Ctrl+Enter runs your code</li>
 		</ul>
 	`;
 
 	elements.modalContainer.classList.remove("hidden");
 }
 
-// Reset user progress
-function resetProgress() {
+function showResetConfirmation() {
 	elements.modalTitle.textContent = "Reset Progress";
 
 	elements.modalContent.innerHTML = `
 		<p>Are you sure you want to reset all your progress? This cannot be undone.</p>
 		<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
 			<button id="cancel-reset" class="btn">Cancel</button>
-			<button id="confirm-reset" class="btn btn-primary">Reset Progress</button>
+			<button id="confirm-reset" class="btn btn-ghost">Reset All</button>
 		</div>
 	`;
 
 	document.getElementById("cancel-reset").addEventListener("click", closeModal);
 	document.getElementById("confirm-reset").addEventListener("click", () => {
-		localStorage.removeItem("codeCrispies.progress");
-		localStorage.removeItem("codeCrispies.lastModuleId");
-		state.userProgress = {};
+		lessonEngine.clearProgress();
 		closeModal();
+		closeSidebar();
 
-		// Reload the current module
-		if (state.currentModule) {
-			const currentModuleId = state.currentModule.id;
-			selectModule(currentModuleId);
-		} else if (state.modules.length > 0) {
-			selectModule(state.modules[0].id);
+		// Reload first module
+		const modules = lessonEngine.modules;
+		if (modules.length > 0) {
+			selectModule(modules[0].id);
 		}
 
-		// Update progress indicator
-		updateModuleSelectorButtonProgress();
+		updateProgressDisplay();
 	});
 
 	elements.modalContainer.classList.remove("hidden");
 }
 
-// Close the modal
 function closeModal() {
 	elements.modalContainer.classList.add("hidden");
 }
 
-// Handle clicks in the code editor to focus the input
-function handleEditorClick() {
-	elements.codeInput.focus();
+// ================= KEYBOARD HANDLERS =================
 
-	// Add a temporary highlight class to show where the cursor is
-	elements.editorContent.classList.add("editor-focused");
-
-	// Remove the highlight after a short delay
-	setTimeout(() => {
-		elements.editorContent.classList.remove("editor-focused");
-	}, 300);
-}
-
-// Handle tab key in the code editor
 function handleTabKey(e) {
 	if (e.key === "Tab") {
 		e.preventDefault();
@@ -568,103 +510,60 @@ function handleTabKey(e) {
 		const start = e.target.selectionStart;
 		const end = e.target.selectionEnd;
 
-		// Add two spaces at cursor position
 		e.target.value = e.target.value.substring(0, start) + "  " + e.target.value.substring(end);
-
-		// Move cursor position after the inserted spaces
 		e.target.selectionStart = e.target.selectionEnd = start + 2;
 	}
 }
 
-// Initialize the application
+// ================= INITIALIZATION =================
+
 function init() {
-	loadUserProgress();
 	loadUserSettings();
 	initializeModules().catch(console.error);
-	initFeedbackToggle();
 
-	// Event listeners
+	// Sidebar controls
+	elements.menuBtn.addEventListener("click", openSidebar);
+	elements.closeSidebar.addEventListener("click", closeSidebar);
+	elements.sidebarBackdrop.addEventListener("click", closeSidebar);
+
+	// Expected result toggle
+	elements.showExpectedBtn.addEventListener("click", toggleExpectedResult);
+
+	// Navigation
 	elements.prevBtn.addEventListener("click", prevLesson);
 	elements.nextBtn.addEventListener("click", nextLesson);
 	elements.runBtn.addEventListener("click", runCode);
-	elements.modalClose.addEventListener("click", closeModal);
-	elements.moduleSelectorBtn.addEventListener("click", showModuleSelector);
-	elements.resetBtn.addEventListener("click", resetProgress);
+
+	// Modals
 	elements.helpBtn.addEventListener("click", showHelp);
-	elements.codeInput.addEventListener("click", handleEditorClick);
+	elements.modalClose.addEventListener("click", closeModal);
+	elements.resetBtn.addEventListener("click", showResetConfirmation);
 
-	// Also make the editor container clickable to focus the text area
-	elements.editorContent.addEventListener("click", (e) => {
-		elements.codeInput.focus();
-	});
-
-	// Load user settings
+	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
 		state.userSettings.disableFeedbackErrors = !e.target.checked;
 		saveUserSettings();
 	});
 
-	// Add tab key handler for the code input
+	// Editor interactions
 	elements.codeInput.addEventListener("keydown", handleTabKey);
+	elements.editorContent?.addEventListener("click", () => {
+		elements.codeInput.focus();
+	});
 
-	// Handle keyboard shortcuts
+	// Keyboard shortcuts
 	document.addEventListener("keydown", (e) => {
 		// Ctrl+Enter to run code
 		if (e.ctrlKey && e.key === "Enter") {
 			runCode();
 			e.preventDefault();
 		}
-	});
 
-	// Add this to your app.js file
-
-	// Mobile Menu Functionality
-	document.addEventListener("DOMContentLoaded", function () {
-		// Create hamburger menu button
-		const hamburger = document.createElement("button");
-		hamburger.className = "hamburger";
-		hamburger.setAttribute("aria-label", "Toggle menu");
-		hamburger.innerHTML = `
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line"></span>
-  `;
-
-		// Get the header and nav elements
-		const header = document.querySelector(".header");
-		const logo = document.querySelector(".logo");
-		const nav = document.querySelector(".main-nav");
-
-		// Insert hamburger button after the logo
-		header.insertBefore(hamburger, logo.nextSibling);
-
-		// Toggle menu on hamburger click
-		hamburger.addEventListener("click", function () {
-			nav.classList.toggle("open");
-			hamburger.classList.toggle("open");
-
-			// Set aria-expanded attribute for accessibility
-			const isExpanded = nav.classList.contains("open");
-			hamburger.setAttribute("aria-expanded", isExpanded);
-		});
-
-		// Close menu when clicking outside
-		document.addEventListener("click", function (event) {
-			if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains("open")) {
-				nav.classList.remove("open");
-				hamburger.classList.remove("open");
-				hamburger.setAttribute("aria-expanded", false);
-			}
-		});
-
-		// Close menu when window is resized to desktop size
-		window.addEventListener("resize", function () {
-			if (window.innerWidth > 768 && nav.classList.contains("open")) {
-				nav.classList.remove("open");
-				hamburger.classList.remove("open");
-				hamburger.setAttribute("aria-expanded", false);
-			}
-		});
+		// Escape to close sidebar
+		if (e.key === "Escape") {
+			closeSidebar();
+			closeModal();
+		}
 	});
 }
 

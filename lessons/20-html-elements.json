@@ -10,12 +10,12 @@
 			"id": "block-vs-inline-intro",
 			"title": "Block vs Inline Elements",
 			"description": "HTML elements fall into two main categories:<br><br><strong>Block elements</strong> (containers) start on a new line and take full width. Examples: <kbd>&lt;div&gt;</kbd>, <kbd>&lt;p&gt;</kbd>, <kbd>&lt;h1&gt;</kbd>, <kbd>&lt;section&gt;</kbd><br><br><strong>Inline elements</strong> flow within text and only take needed width. Examples: <kbd>&lt;span&gt;</kbd>, <kbd>&lt;a&gt;</kbd>, <kbd>&lt;strong&gt;</kbd>, <kbd>&lt;em&gt;</kbd>",
-			"task": "Create a paragraph with a <kbd>&lt;strong&gt;</kbd> word inside it. Notice how the paragraph is a block element (takes full width) while strong is inline (flows with text).",
+			"task": "Wrap the word <kbd>important</kbd> with <kbd>&lt;strong&gt;</kbd> tags to make it bold. Notice how the paragraph (block) takes full width while strong (inline) flows with text.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: #e3f2fd; padding: 10px; } strong { background: #ffecb3; }",
 			"sandboxCSS": "",
 			"initialCode": "<p>This is a paragraph with an important word.</p>",
-			"solutionCode": "<p>This is a paragraph with a <strong>important</strong> word.</p>",
+			"solutionCode": "<p>This is a paragraph with an <strong>important</strong> word.</p>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -26,7 +26,7 @@
 				{
 					"type": "parent_child",
 					"value": { "parent": "p", "child": "strong" },
-					"message": "Place a <strong> element inside your paragraph"
+					"message": "Wrap the word 'important' with <strong> tags"
 				}
 			]
 		},
