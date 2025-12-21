@@ -22,33 +22,59 @@ describe("Renderer Module", () => {
 		test("should render a list of modules", () => {
 			const container = document.getElementById("module-list");
 			const modules = [
-				{ id: "mod1", title: "Module 1" },
-				{ id: "mod2", title: "Module 2" }
+				{ id: "mod1", title: "Module 1", lessons: [{ title: "Lesson 1" }] },
+				{ id: "mod2", title: "Module 2", lessons: [{ title: "Lesson 2" }] }
 			];
 			const onSelectModule = vi.fn();
+			const onSelectLesson = vi.fn();
 
-			renderModuleList(container, modules, onSelectModule);
+			renderModuleList(container, modules, onSelectModule, onSelectLesson);
 
 			// Check if heading is created
-			expect(container.innerHTML).toContain("<h3>Modules</h3>");
+			expect(container.innerHTML).toContain("<h3>Lessons</h3>");
 
-			// Check if module items are created
-			const moduleItems = container.querySelectorAll(".module-list-item");
-			expect(moduleItems.length).toBe(2);
-			expect(moduleItems[0].textContent).toBe("Module 1");
-			expect(moduleItems[1].textContent).toBe("Module 2");
+			// Check if module headers are created
+			const moduleHeaders = container.querySelectorAll(".module-header");
+			expect(moduleHeaders.length).toBe(2);
 
-			// Test click event
-			moduleItems[0].click();
-			expect(onSelectModule).toHaveBeenCalledWith("mod1");
+			// Module titles should be in the headers
+			expect(moduleHeaders[0].textContent).toContain("Module 1");
+			expect(moduleHeaders[1].textContent).toContain("Module 2");
 		});
 
 		test("should handle empty module list", () => {
 			const container = document.getElementById("module-list");
-			renderModuleList(container, [], vi.fn());
+			renderModuleList(container, [], vi.fn(), vi.fn());
 
-			expect(container.innerHTML).toContain("<h3>Modules</h3>");
-			expect(container.querySelectorAll(".module-list-item").length).toBe(0);
+			expect(container.innerHTML).toContain("<h3>Lessons</h3>");
+			expect(container.querySelectorAll(".module-header").length).toBe(0);
+		});
+
+		test("should expand module and show lessons on click", () => {
+			const container = document.getElementById("module-list");
+			const modules = [
+				{ id: "mod1", title: "Module 1", lessons: [{ title: "Lesson A" }, { title: "Lesson B" }] }
+			];
+			const onSelectLesson = vi.fn();
+
+			renderModuleList(container, modules, vi.fn(), onSelectLesson);
+
+			// Lessons should be hidden initially
+			const lessonsContainer = container.querySelector(".lessons-container");
+			expect(lessonsContainer.style.display).toBe("none");
+
+			// Click module header to expand
+			const moduleHeader = container.querySelector(".module-header");
+			moduleHeader.click();
+
+			// Lessons should now be visible
+			expect(lessonsContainer.style.display).toBe("block");
+
+			// Click a lesson
+			const lessonItems = container.querySelectorAll(".lesson-list-item");
+			expect(lessonItems.length).toBe(2);
+			lessonItems[0].click();
+			expect(onSelectLesson).toHaveBeenCalledWith("mod1", 0);
 		});
 	});
 
@@ -76,9 +102,8 @@ describe("Renderer Module", () => {
 			expect(titleEl.textContent).toBe("Test Lesson");
 			expect(descriptionEl.innerHTML).toBe("<p>Description text</p>");
 			expect(taskEl.innerHTML).toBe("<p>Task instructions</p>");
-			expect(prefixEl.textContent).toBe("body {");
+			// Note: prefix/suffix elements are no longer populated by renderLesson (handled by LessonEngine)
 			expect(inputEl.value).toBe("  color: red;");
-			expect(suffixEl.textContent).toBe("}");
 		});
 
 		test("should handle missing lesson data with defaults", () => {
@@ -97,9 +122,7 @@ describe("Renderer Module", () => {
 			expect(titleEl.textContent).toBe("Untitled Lesson");
 			expect(descriptionEl.innerHTML).toBe("");
 			expect(taskEl.innerHTML).toBe("");
-			expect(prefixEl.textContent).toBe("");
 			expect(inputEl.value).toBe("");
-			expect(suffixEl.textContent).toBe("");
 		});
 	});
 

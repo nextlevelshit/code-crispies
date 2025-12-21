@@ -367,13 +367,99 @@ footer a {
 	margin-bottom: var(--spacing-xl);
 }
 
-.preview-area {
-	background-color: var(--panel-bg);
+/* ================= PREVIEW COMPARISON ================= */
+.preview-comparison {
+	position: relative;
+	display: flex;
+	gap: var(--spacing-md);
+	min-height: 300px;
+	flex: 1;
+}
+
+.preview-pane {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 	border: 1px solid var(--border-color);
 	border-radius: var(--border-radius-md);
-	padding: var(--spacing-md);
 	overflow: hidden;
-	min-height: 300px;
+	background-color: var(--panel-bg);
+}
+
+.preview-header {
+	padding: var(--spacing-xs) var(--spacing-md);
+	background-color: var(--code-bg);
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--light-text);
+	border-bottom: 1px solid var(--border-color);
+}
+
+.preview-frame {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: var(--spacing-sm);
+	min-height: 200px;
+}
+
+/* Merge overlay when student matches expected */
+.preview-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.5s ease;
+	z-index: 10;
+	border-radius: var(--border-radius-md);
+}
+
+.preview-overlay.matched {
+	opacity: 1;
+	background: rgba(88, 184, 144, 0.15);
+}
+
+.match-celebration {
+	background: var(--success-color);
+	color: var(--white-text);
+	padding: var(--spacing-md) var(--spacing-lg);
+	border-radius: var(--border-radius-lg);
+	font-weight: 700;
+	font-size: 1.2rem;
+	box-shadow: 0 4px 20px rgba(88, 184, 144, 0.3);
+	animation: pop-in 0.4s ease-out;
+}
+
+@keyframes pop-in {
+	0% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Both previews visually "merge" at 50% opacity */
+.preview-comparison.matched .preview-pane {
+	opacity: 0.5;
+	transition: opacity 0.5s ease;
+}
+
+/* Legacy preview-area styles (now used inside preview-frame) */
+.preview-area {
+	background-color: var(--panel-bg);
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -795,9 +881,20 @@ input:checked + .toggle-slider:before {
 		flex-direction: row;
 	}
 
-	.preview-area,
+	.preview-comparison,
 	.editor-container {
 		width: 50%;
+	}
+}
+
+/* Responsive: Stack preview panes on medium screens */
+@media (max-width: 1200px) {
+	.preview-comparison {
+		flex-direction: column;
+	}
+
+	.preview-pane {
+		min-height: 150px;
 	}
 }
 
@@ -824,12 +921,12 @@ input:checked + .toggle-slider:before {
 		flex-direction: column;
 	}
 
-	.preview-area,
+	.preview-comparison,
 	.editor-container {
 		width: 100%;
 	}
 
-	.preview-area {
+	.preview-comparison {
 		min-height: 200px;
 	}
 
