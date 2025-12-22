@@ -3,70 +3,25 @@
  */
 import { EditorState, Prec } from "@codemirror/state";
 import { EditorView, keymap, placeholder } from "@codemirror/view";
-import { defaultKeymap, indentWithTab, indentMore, indentLess } from "@codemirror/commands";
+import { defaultKeymap, indentMore, indentLess } from "@codemirror/commands";
+import { oneDark } from "@codemirror/theme-one-dark";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 import { autocompletion } from "@codemirror/autocomplete";
 import { abbreviationTracker, expandAbbreviation } from "@emmetio/codemirror6-plugin";
 
-// Dark theme matching our editor
+// Custom overrides for One Dark theme
 const editorTheme = EditorView.theme({
 	"&": {
 		height: "100%",
-		fontSize: "14px",
-		backgroundColor: "#1e1e1e"
+		fontSize: "14px"
 	},
 	".cm-content": {
 		fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-		padding: "12px 0",
-		caretColor: "#fff",
-		color: "#d4d4d4"
+		padding: "12px 0"
 	},
 	".cm-line": {
 		padding: "0 12px"
-	},
-	"&.cm-focused .cm-cursor": {
-		borderLeftColor: "#fff"
-	},
-	"&.cm-focused .cm-selectionBackground, .cm-selectionBackground": {
-		backgroundColor: "#3a3d41"
-	},
-	".cm-activeLine": {
-		backgroundColor: "#2a2d2e"
-	},
-	".cm-gutters": {
-		backgroundColor: "#1e1e1e",
-		color: "#858585",
-		border: "none",
-		paddingRight: "8px"
-	},
-	".cm-activeLineGutter": {
-		backgroundColor: "#2a2d2e"
-	},
-	// Syntax highlighting
-	".cm-keyword": { color: "#569cd6" },
-	".cm-tagName": { color: "#569cd6" },
-	".cm-attributeName": { color: "#9cdcfe" },
-	".cm-attributeValue": { color: "#ce9178" },
-	".cm-string": { color: "#ce9178" },
-	".cm-comment": { color: "#6a9955" },
-	".cm-propertyName": { color: "#9cdcfe" },
-	".cm-number": { color: "#b5cea8" },
-	".cm-unit": { color: "#b5cea8" },
-	".cm-variableName": { color: "#9cdcfe" },
-	// Autocomplete
-	".cm-tooltip": {
-		backgroundColor: "#252526",
-		border: "1px solid #454545"
-	},
-	".cm-tooltip-autocomplete": {
-		"& > ul > li": {
-			padding: "4px 8px"
-		},
-		"& > ul > li[aria-selected]": {
-			backgroundColor: "#094771",
-			color: "#fff"
-		}
 	}
 }, { dark: true });
 
@@ -92,6 +47,7 @@ export class CodeEditor {
 		// Build extensions array
 		const extensions = [
 			langExtension,
+			oneDark,
 			editorTheme,
 			// Emmet abbreviation tracking
 			abbreviationTracker(),
