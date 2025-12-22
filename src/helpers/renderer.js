@@ -133,10 +133,10 @@ export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl
 	// Set task instructions
 	taskEl.innerHTML = lesson.task || "";
 
-	// Set code editor contents
-	// prefixEl.textContent = lesson.codePrefix || "";
-	inputEl.value = lesson.initialCode || "";
-	// suffixEl.textContent = lesson.codeSuffix || "";
+	// Set code editor contents (if inputEl is provided)
+	if (inputEl) {
+		inputEl.value = lesson.initialCode || "";
+	}
 
 	// Clear any existing feedback
 	clearFeedback();
