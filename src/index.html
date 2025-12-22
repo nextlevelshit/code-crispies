@@ -49,7 +49,8 @@
 								</div>
 							</div>
 							<div class="editor-content">
-								<textarea id="code-input" class="code-input" spellcheck="false"></textarea>
+								<!-- Textarea is replaced by CodeMirror; autocomplete off prevents browser form restoration -->
+								<textarea id="code-input" class="code-input" spellcheck="false" autocomplete="off" style="display: none;"></textarea>
 							</div>
 						</div>
 						<div class="hint-area" id="hint-area">
