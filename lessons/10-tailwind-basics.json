@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "tailwind-basics",
-	"title": "Tailwind CSS Basics",
+	"title": "Tailwind: Basics",
 	"description": "Learn how Tailwind CSS revolutionizes styling by replacing traditional CSS selectors with utility-first classes. Understand the philosophy behind utility classes and how they solve common CSS problems like specificity conflicts and maintenance complexity.",
 	"mode": "tailwind",
 	"difficulty": "beginner",

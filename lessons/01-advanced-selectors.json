@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-advanced-selectors",
-	"title": "Advanced Selectors",
+	"title": "CSS: Advanced Selectors",
 	"description": "Master advanced CSS selector techniques including attribute selectors, combinators, and pseudo-classes. This module builds on basic selectors to give you precise control over element targeting, enabling sophisticated styling patterns and interactive effects.",
 	"difficulty": "intermediate",
 	"lessons": [
