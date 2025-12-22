@@ -239,7 +239,8 @@ export class LessonEngine {
 	renderExpectedPreview() {
 		if (!this.currentLesson) return;
 
-		const solutionCode = this.currentLesson.solutionCode;
+		// Use 'solution' property from lesson JSON (not 'solutionCode')
+		const solutionCode = this.currentLesson.solution;
 		if (!solutionCode) {
 			// No solution code provided, hide the expected pane or show placeholder
 			const expectedContainer = document.getElementById("preview-expected");
