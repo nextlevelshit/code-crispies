@@ -34,7 +34,7 @@
 			"id": "input-constraints",
 			"title": "Input Constraints",
 			"description": "Control what users can enter:<br><br><kbd>minlength</kbd> / <kbd>maxlength</kbd> - Text length limits<br><kbd>min</kbd> / <kbd>max</kbd> - Number range<br><kbd>pattern</kbd> - Regex pattern matching<br><kbd>placeholder</kbd> - Hint text (not a label!)",
-			"task": "Add validation: password must be 8-20 characters. Add a helpful placeholder.",
+			"task": "Add validation to the password input:<br>1. Add <kbd>minlength=\"8\"</kbd> for minimum length<br>2. Add <kbd>maxlength=\"20\"</kbd> for maximum length<br>3. Add <kbd>placeholder=\"Enter password\"</kbd> as a hint",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 350px; } .form-group { margin-bottom: 15px; } label { display: block; margin-bottom: 5px; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } input:invalid:not(:placeholder-shown) { border-color: #d32f2f; } .hint { font-size: 12px; color: #666; margin-top: 4px; } button { padding: 10px 20px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; }",
 			"sandboxCSS": "",
