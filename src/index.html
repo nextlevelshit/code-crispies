@@ -136,18 +136,60 @@
 				</footer>
 			</aside>
 
-			<!-- Help Modal -->
-			<div id="modal-container" class="modal-container hidden">
-				<div class="modal">
-					<div class="modal-header">
-						<h3 id="modal-title">Modal Title</h3>
-						<button id="modal-close" class="modal-close">&times;</button>
-					</div>
-					<div class="modal-content" id="modal-content">
-						<!-- Modal content will be populated here -->
+			<!-- Help Dialog -->
+			<dialog id="help-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3>Help</h3>
+					<button id="help-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<h4>How to Use Code Crispies</h4>
+					<p>Code Crispies is an interactive platform for learning HTML, CSS, and Tailwind through practical exercises.</p>
+
+					<h4>Getting Started</h4>
+					<p>Open the menu (☰) to select a lesson module. Each module contains a series of lessons.</p>
+
+					<h4>Completing Lessons</h4>
+					<ol>
+						<li>Read the instructions on the left</li>
+						<li>Write your code in the editor</li>
+						<li>Click "Run" or press Ctrl+Enter to test</li>
+						<li>Follow the hints to fix any issues</li>
+						<li>Click "Next" when you're done</li>
+					</ol>
+
+					<h4>Tips</h4>
+					<ul>
+						<li>Click "Show Expected" to see the target result</li>
+						<li>Your progress is saved automatically</li>
+						<li>Ctrl+Enter runs your code</li>
+					</ul>
+
+					<h4>Emmet Shortcuts (HTML mode)</h4>
+					<p>Type abbreviations and press Tab to expand:</p>
+					<ul>
+						<li><kbd>div.container</kbd> → div with class</li>
+						<li><kbd>ul>li*5</kbd> → ul with 5 li children</li>
+						<li><kbd>nav>ul>li*3>a</kbd> → nested structure</li>
+						<li><kbd>p{Hello}</kbd> → p with text content</li>
+					</ul>
+				</div>
+			</dialog>
+
+			<!-- Reset Confirmation Dialog -->
+			<dialog id="reset-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3>Reset Progress</h3>
+					<button id="reset-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<p>Are you sure you want to reset all your progress? This cannot be undone.</p>
+					<div class="dialog-actions">
+						<button id="cancel-reset" class="btn">Cancel</button>
+						<button id="confirm-reset" class="btn btn-ghost">Reset All</button>
 					</div>
 				</div>
-			</div>
+			</dialog>
 		</div>
 
 		<script type="module" src="app.js"></script>

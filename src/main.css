@@ -839,32 +839,24 @@ input:checked + .toggle-slider::before {
 }
 
 
-/* ================= MODAL ================= */
-.modal-container {
-	position: fixed;
-	inset: 0;
-	background: var(--modal-bg);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 1000;
-}
-
-.modal-container.hidden {
-	display: none;
-}
-
-.modal {
-	background: var(--panel-bg);
+/* ================= DIALOG (Native HTML) ================= */
+.dialog {
+	border: none;
 	border-radius: var(--border-radius-lg);
 	box-shadow: var(--shadow-modal);
+	padding: 0;
 	width: 90%;
 	max-width: 500px;
 	max-height: 80vh;
 	overflow-y: auto;
+	background: var(--panel-bg);
 }
 
-.modal-header {
+.dialog::backdrop {
+	background: var(--modal-bg);
+}
+
+.dialog-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -872,20 +864,73 @@ input:checked + .toggle-slider::before {
 	border-bottom: 1px solid var(--border-color);
 }
 
-.modal-close {
+.dialog-header h3 {
+	margin: 0;
+}
+
+.dialog-close {
 	background: none;
 	border: none;
 	font-size: 1.5rem;
 	cursor: pointer;
 	color: var(--light-text);
+	line-height: 1;
+	padding: 0;
+	width: 28px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: all 0.2s;
 }
 
-.modal-content {
+.dialog-close:hover {
+	background: var(--primary-bg-light);
+	color: var(--primary-color);
+}
+
+.dialog-content {
 	padding: var(--spacing-lg);
 }
 
-.modal-content p {
+.dialog-content h4 {
+	margin-top: var(--spacing-md);
+	margin-bottom: var(--spacing-xs);
+	color: var(--dark-text);
+}
+
+.dialog-content h4:first-child {
+	margin-top: 0;
+}
+
+.dialog-content p {
 	margin-bottom: var(--spacing-md);
+}
+
+.dialog-content ul,
+.dialog-content ol {
+	margin: 0 0 var(--spacing-md) 0;
+	padding-left: var(--spacing-lg);
+}
+
+.dialog-content li {
+	margin-bottom: var(--spacing-xs);
+}
+
+.dialog-content kbd {
+	background: var(--code-bg);
+	padding: 2px 6px;
+	border-radius: var(--border-radius-sm);
+	font-size: 0.85em;
+	border: 1px solid var(--border-color);
+}
+
+.dialog-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--spacing-sm);
+	margin-top: var(--spacing-lg);
 }
 
 /* ================= FOOTER ================= */
