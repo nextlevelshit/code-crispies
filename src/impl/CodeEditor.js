@@ -3,7 +3,8 @@
  */
 import { EditorState, Prec } from "@codemirror/state";
 import { EditorView, keymap, placeholder } from "@codemirror/view";
-import { defaultKeymap, indentMore, indentLess } from "@codemirror/commands";
+import { defaultKeymap, historyKeymap, indentMore, indentLess, undo, redo } from "@codemirror/commands";
+import { history } from "@codemirror/commands";
 import { oneDark } from "@codemirror/theme-one-dark";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
@@ -49,6 +50,8 @@ export class CodeEditor {
 			langExtension,
 			oneDark,
 			editorTheme,
+			// History for undo/redo
+			history(),
 			// Emmet abbreviation tracking
 			abbreviationTracker(),
 			// High priority keymap for Emmet
@@ -58,8 +61,9 @@ export class CodeEditor {
 					run: expandAbbreviation
 				}
 			])),
-			// Standard keymaps
+			// Standard keymaps including history (Ctrl+Z, Ctrl+Shift+Z)
 			keymap.of([
+				...historyKeymap,
 				{ key: "Tab", run: indentMore },
 				{ key: "Shift-Tab", run: indentLess },
 				...defaultKeymap
@@ -135,6 +139,24 @@ export class CodeEditor {
 	focus() {
 		if (this.view) {
 			this.view.focus();
+		}
+	}
+
+	/**
+	 * Undo last change
+	 */
+	undo() {
+		if (this.view) {
+			undo(this.view);
+		}
+	}
+
+	/**
+	 * Redo last undone change
+	 */
+	redo() {
+		if (this.view) {
+			redo(this.view);
 		}
 	}
 

@@ -712,6 +712,27 @@ code, kbd {
 	font-size: 0.8rem;
 }
 
+.btn-icon {
+	padding: 4px 8px;
+	font-size: 1rem;
+	min-width: 32px;
+	background: transparent;
+	color: var(--light-text);
+	border: 1px solid var(--border-color);
+}
+
+.btn-icon:hover {
+	background: var(--bg-color);
+	color: var(--text-color);
+	border-color: var(--primary-color);
+}
+
+.editor-tools {
+	display: flex;
+	gap: 4px;
+	margin-right: var(--spacing-sm);
+}
+
 .btn-ghost {
 	background: transparent;
 	color: var(--light-text);

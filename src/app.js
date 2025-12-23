@@ -23,6 +23,9 @@ const elements = {
 	taskInstruction: document.getElementById("task-instruction"),
 	codeInput: document.getElementById("code-input"),
 	runBtn: document.getElementById("run-btn"),
+	undoBtn: document.getElementById("undo-btn"),
+	redoBtn: document.getElementById("redo-btn"),
+	resetCodeBtn: document.getElementById("reset-code-btn"),
 	hintArea: document.getElementById("hint-area"),
 	validationIndicators: document.querySelector(".validation-indicators-container"),
 	editorContent: document.querySelector(".editor-content"),
@@ -376,6 +379,19 @@ function prevLesson() {
 
 // ================= CODE EXECUTION =================
 
+function resetCode() {
+	// Reset editor to initial code for current lesson
+	lessonEngine.reset();
+	const engineState = lessonEngine.getCurrentState();
+	if (codeEditor && engineState.lesson) {
+		codeEditor.setValue(engineState.lesson.initialCode || "");
+	}
+	// Clear hints and success indicators
+	clearHint();
+	resetSuccessIndicators();
+	elements.validationIndicators.innerHTML = "";
+}
+
 function runCode() {
 	const userCode = codeEditor ? codeEditor.getValue() : "";
 
@@ -560,6 +576,15 @@ function init() {
 	elements.prevBtn.addEventListener("click", prevLesson);
 	elements.nextBtn.addEventListener("click", nextLesson);
 	elements.runBtn.addEventListener("click", runCode);
+
+	// Editor tools
+	elements.undoBtn.addEventListener("click", () => {
+		if (codeEditor) codeEditor.undo();
+	});
+	elements.redoBtn.addEventListener("click", () => {
+		if (codeEditor) codeEditor.redo();
+	});
+	elements.resetCodeBtn.addEventListener("click", resetCode);
 
 	// Modals
 	elements.helpBtn.addEventListener("click", showHelp);
