@@ -49,11 +49,13 @@ const elements = {
 	resetBtn: document.getElementById("reset-btn"),
 	disableFeedbackToggle: document.getElementById("disable-feedback-toggle"),
 
-	// Modal
-	modalContainer: document.getElementById("modal-container"),
-	modalTitle: document.getElementById("modal-title"),
-	modalContent: document.getElementById("modal-content"),
-	modalClose: document.getElementById("modal-close")
+	// Dialogs
+	helpDialog: document.getElementById("help-dialog"),
+	helpDialogClose: document.getElementById("help-dialog-close"),
+	resetDialog: document.getElementById("reset-dialog"),
+	resetDialogClose: document.getElementById("reset-dialog-close"),
+	cancelReset: document.getElementById("cancel-reset"),
+	confirmReset: document.getElementById("confirm-reset")
 };
 
 // Initialize the lesson engine - now the single source of truth
@@ -448,78 +450,36 @@ function runCode() {
 	}
 }
 
-// ================= MODALS =================
+// ================= DIALOGS =================
 
 function showHelp() {
-	elements.modalTitle.textContent = "Hilfe";
+	elements.helpDialog.showModal();
+}
 
-	elements.modalContent.innerHTML = `
-		<h3>So verwendest du Code Crispies</h3>
-		<p>Code Crispies ist eine interaktive Plattform zum Erlernen von HTML, CSS und Tailwind durch praktische Übungen.</p>
-
-		<h4>Erste Schritte</h4>
-		<p>Öffne das Menü (☰), um ein Lektionsmodul auszuwählen. Jedes Modul enthält eine Reihe von Lektionen.</p>
-
-		<h4>Lektionen abschließen</h4>
-		<ol>
-			<li>Lies die Anleitung auf der linken Seite</li>
-			<li>Schreibe deinen Code im Editor</li>
-			<li>Klicke auf "Ausführen" oder drücke Strg+Enter zum Testen</li>
-			<li>Folge den Hinweisen, um Probleme zu beheben</li>
-			<li>Klicke auf "Weiter", wenn du fertig bist</li>
-		</ol>
-
-		<h4>Tipps</h4>
-		<ul>
-			<li>Klicke auf "Lösung zeigen", um das Zielergebnis zu sehen</li>
-			<li>Dein Fortschritt wird automatisch gespeichert</li>
-			<li>Strg+Enter führt deinen Code aus</li>
-		</ul>
-
-		<h4>Emmet-Kürzel (HTML-Modus)</h4>
-		<p>Tippe Abkürzungen ein und drücke Tab zum Erweitern:</p>
-		<ul>
-			<li><kbd>div.container</kbd> → div mit Klasse</li>
-			<li><kbd>ul>li*5</kbd> → ul mit 5 li-Kindern</li>
-			<li><kbd>nav>ul>li*3>a</kbd> → verschachtelte Struktur</li>
-			<li><kbd>p{Hallo}</kbd> → p mit Textinhalt</li>
-		</ul>
-	`;
-
-	elements.modalContainer.classList.remove("hidden");
+function closeHelpDialog() {
+	elements.helpDialog.close();
 }
 
 function showResetConfirmation() {
-	elements.modalTitle.textContent = "Fortschritt zurücksetzen";
-
-	elements.modalContent.innerHTML = `
-		<p>Bist du sicher, dass du deinen gesamten Fortschritt zurücksetzen möchtest? Dies kann nicht rückgängig gemacht werden.</p>
-		<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
-			<button id="cancel-reset" class="btn">Abbrechen</button>
-			<button id="confirm-reset" class="btn btn-ghost">Alles zurücksetzen</button>
-		</div>
-	`;
-
-	document.getElementById("cancel-reset").addEventListener("click", closeModal);
-	document.getElementById("confirm-reset").addEventListener("click", () => {
-		lessonEngine.clearProgress();
-		closeModal();
-		closeSidebar();
-
-		// Reload first module
-		const modules = lessonEngine.modules;
-		if (modules.length > 0) {
-			selectModule(modules[0].id);
-		}
-
-		updateProgressDisplay();
-	});
-
-	elements.modalContainer.classList.remove("hidden");
+	elements.resetDialog.showModal();
 }
 
-function closeModal() {
-	elements.modalContainer.classList.add("hidden");
+function closeResetDialog() {
+	elements.resetDialog.close();
+}
+
+function handleResetConfirm() {
+	lessonEngine.clearProgress();
+	closeResetDialog();
+	closeSidebar();
+
+	// Reload first module
+	const modules = lessonEngine.modules;
+	if (modules.length > 0) {
+		selectModule(modules[0].id);
+	}
+
+	updateProgressDisplay();
 }
 
 // ================= INITIALIZATION =================
@@ -575,10 +535,13 @@ function init() {
 	});
 	elements.resetCodeBtn.addEventListener("click", resetCode);
 
-	// Modals
+	// Dialogs
 	elements.helpBtn.addEventListener("click", showHelp);
-	elements.modalClose.addEventListener("click", closeModal);
+	elements.helpDialogClose.addEventListener("click", closeHelpDialog);
 	elements.resetBtn.addEventListener("click", showResetConfirmation);
+	elements.resetDialogClose.addEventListener("click", closeResetDialog);
+	elements.cancelReset.addEventListener("click", closeResetDialog);
+	elements.confirmReset.addEventListener("click", handleResetConfirm);
 
 	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
@@ -599,10 +562,9 @@ function init() {
 			e.preventDefault();
 		}
 
-		// Escape to close sidebar
+		// Escape to close sidebar (dialogs handle Escape natively)
 		if (e.key === "Escape") {
 			closeSidebar();
-			closeModal();
 		}
 	});
 }

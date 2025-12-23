@@ -136,18 +136,60 @@
 				</footer>
 			</aside>
 
-			<!-- Hilfe-Modal -->
-			<div id="modal-container" class="modal-container hidden">
-				<div class="modal">
-					<div class="modal-header">
-						<h3 id="modal-title">Modal-Titel</h3>
-						<button id="modal-close" class="modal-close">&times;</button>
-					</div>
-					<div class="modal-content" id="modal-content">
-						<!-- Modal-Inhalt wird hier eingefügt -->
+			<!-- Hilfe-Dialog -->
+			<dialog id="help-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3>Hilfe</h3>
+					<button id="help-dialog-close" class="dialog-close" aria-label="Schließen">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<h4>So verwendest du Code Crispies</h4>
+					<p>Code Crispies ist eine interaktive Plattform zum Lernen von HTML, CSS und Tailwind durch praktische Übungen.</p>
+
+					<h4>Erste Schritte</h4>
+					<p>Öffne das Menü (☰), um ein Lektionsmodul auszuwählen. Jedes Modul enthält eine Reihe von Lektionen.</p>
+
+					<h4>Lektionen abschließen</h4>
+					<ol>
+						<li>Lies die Anleitung auf der linken Seite</li>
+						<li>Schreibe deinen Code im Editor</li>
+						<li>Klicke auf "Ausführen" oder drücke Strg+Enter zum Testen</li>
+						<li>Folge den Hinweisen, um Fehler zu beheben</li>
+						<li>Klicke auf "Weiter", wenn du fertig bist</li>
+					</ol>
+
+					<h4>Tipps</h4>
+					<ul>
+						<li>Klicke auf "Lösung zeigen", um das Zielergebnis zu sehen</li>
+						<li>Dein Fortschritt wird automatisch gespeichert</li>
+						<li>Strg+Enter führt deinen Code aus</li>
+					</ul>
+
+					<h4>Emmet-Kürzel (HTML-Modus)</h4>
+					<p>Tippe Abkürzungen und drücke Tab zum Erweitern:</p>
+					<ul>
+						<li><kbd>div.container</kbd> → div mit Klasse</li>
+						<li><kbd>ul>li*5</kbd> → ul mit 5 li-Kindern</li>
+						<li><kbd>nav>ul>li*3>a</kbd> → verschachtelte Struktur</li>
+						<li><kbd>p{Hallo}</kbd> → p mit Textinhalt</li>
+					</ul>
+				</div>
+			</dialog>
+
+			<!-- Zurücksetzen-Bestätigungsdialog -->
+			<dialog id="reset-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3>Fortschritt zurücksetzen</h3>
+					<button id="reset-dialog-close" class="dialog-close" aria-label="Schließen">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<p>Bist du sicher, dass du deinen gesamten Fortschritt zurücksetzen möchtest? Dies kann nicht rückgängig gemacht werden.</p>
+					<div class="dialog-actions">
+						<button id="cancel-reset" class="btn">Abbrechen</button>
+						<button id="confirm-reset" class="btn btn-ghost">Alles zurücksetzen</button>
 					</div>
 				</div>
-			</div>
+			</dialog>
 		</div>
 
 		<script type="module" src="app.de.js"></script>
