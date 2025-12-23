@@ -27,7 +27,6 @@ const elements = {
 	redoBtn: document.getElementById("redo-btn"),
 	resetCodeBtn: document.getElementById("reset-code-btn"),
 	hintArea: document.getElementById("hint-area"),
-	validationIndicators: document.querySelector(".validation-indicators-container"),
 	editorContent: document.querySelector(".editor-content"),
 	codeEditor: document.querySelector(".code-editor"),
 
@@ -294,9 +293,6 @@ function loadCurrentLesson() {
 		codeEditor.setValue(engineState.userCode);
 	}
 
-	// Reset validation indicators
-	elements.validationIndicators.innerHTML = "";
-
 	// Update Run button text based on completion status
 	if (engineState.isCompleted) {
 		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
@@ -389,7 +385,6 @@ function resetCode() {
 	// Clear hints and success indicators
 	clearHint();
 	resetSuccessIndicators();
-	elements.validationIndicators.innerHTML = "";
 }
 
 function runCode() {
@@ -407,12 +402,6 @@ function runCode() {
 
 	// Validate code using LessonEngine
 	const validationResult = lessonEngine.validateCode();
-
-	// Update validation indicators
-	if (validationResult.totalCases > 0) {
-		const percent = Math.round((validationResult.validCases / validationResult.totalCases) * 100);
-		elements.validationIndicators.innerHTML = `${percent}%`;
-	}
 
 	if (validationResult.isValid) {
 		// Show success hint

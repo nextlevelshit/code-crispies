@@ -810,23 +810,6 @@ input:checked + .toggle-slider::before {
 	color: var(--text-color);
 }
 
-/* ================= VALIDATION INDICATORS ================= */
-.validation-indicators-container {
-	display: flex;
-	gap: 4px;
-}
-
-.validation-success-indicator {
-	background: var(--success-color);
-	color: white;
-	width: 18px;
-	height: 18px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 10px;
-}
 
 /* ================= MODAL ================= */
 .modal-container {
