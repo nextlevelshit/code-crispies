@@ -1,0 +1,112 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-forms-validation",
+	"title": "HTML-Formulare: Validierung",
+	"description": "Lerne die eingebauten HTML5-Formular-Validierungsattribute kennen",
+	"mode": "html",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "required-fields",
+			"title": "Pflichtfelder",
+			"description": "Das <kbd>required</kbd>-Attribut verhindert das Absenden des Formulars, wenn das Feld leer ist.<br><br>Füge es zu jeder Eingabe hinzu, die ausgefüllt werden muss:<br><kbd>&lt;input type=\"text\" required&gt;</kbd><br><br>Der Browser zeigt automatisch eine Validierungsmeldung an.",
+			"task": "Mache sowohl das Name- als auch das E-Mail-Feld zu Pflichtfeldern.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 350px; } .form-group { margin-bottom: 15px; } label { display: block; margin-bottom: 5px; } label .required { color: #d32f2f; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } input:invalid { border-color: #d32f2f; } button { padding: 10px 20px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"initialCode": "<form>\n  <div class=\"form-group\">\n    <label for=\"name\">Name: <span class=\"required\">*</span></label>\n    <input type=\"text\" id=\"name\" name=\"name\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"email\">E-Mail: <span class=\"required\">*</span></label>\n    <input type=\"email\" id=\"email\" name=\"email\">\n  </div>\n  <button type=\"submit\">Absenden</button>\n</form>",
+			"solution": "<form>\n  <div class=\"form-group\">\n    <label for=\"name\">Name: <span class=\"required\">*</span></label>\n    <input type=\"text\" id=\"name\" name=\"name\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"email\">E-Mail: <span class=\"required\">*</span></label>\n    <input type=\"email\" id=\"email\" name=\"email\" required>\n  </div>\n  <button type=\"submit\">Absenden</button>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input[name='name']", "attr": "required", "value": true },
+					"message": "Füge das 'required'-Attribut zur Name-Eingabe hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input[name='email']", "attr": "required", "value": true },
+					"message": "Füge das 'required'-Attribut zur E-Mail-Eingabe hinzu"
+				}
+			]
+		},
+		{
+			"id": "input-constraints",
+			"title": "Eingabebeschränkungen",
+			"description": "Kontrolliere, was Benutzer eingeben können:<br><br><kbd>minlength</kbd> / <kbd>maxlength</kbd> - Textlängenbegrenzung<br><kbd>min</kbd> / <kbd>max</kbd> - Zahlenbereich<br><kbd>pattern</kbd> - Regex-Musterabgleich<br><kbd>placeholder</kbd> - Hinweistext (kein Label!)",
+			"task": "Füge Validierung zur Passwort-Eingabe hinzu:<br>1. Füge <kbd>minlength=\"8\"</kbd> für die Mindestlänge hinzu<br>2. Füge <kbd>maxlength=\"20\"</kbd> für die Maximallänge hinzu<br>3. Füge <kbd>placeholder=\"Passwort eingeben\"</kbd> als Hinweis hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 350px; } .form-group { margin-bottom: 15px; } label { display: block; margin-bottom: 5px; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } input:invalid:not(:placeholder-shown) { border-color: #d32f2f; } .hint { font-size: 12px; color: #666; margin-top: 4px; } button { padding: 10px 20px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"initialCode": "<form>\n  <div class=\"form-group\">\n    <label for=\"password\">Passwort:</label>\n    <input type=\"password\" id=\"password\" name=\"password\" required>\n    <div class=\"hint\">Muss 8-20 Zeichen lang sein</div>\n  </div>\n  <button type=\"submit\">Konto erstellen</button>\n</form>",
+			"solution": "<form>\n  <div class=\"form-group\">\n    <label for=\"password\">Passwort:</label>\n    <input type=\"password\" id=\"password\" name=\"password\" required minlength=\"8\" maxlength=\"20\" placeholder=\"Passwort eingeben\">\n    <div class=\"hint\">Muss 8-20 Zeichen lang sein</div>\n  </div>\n  <button type=\"submit\">Konto erstellen</button>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input[type='password']", "attr": "minlength", "value": "8" },
+					"message": "Füge minlength=\"8\" zur Passwort-Eingabe hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input[type='password']", "attr": "maxlength", "value": "20" },
+					"message": "Füge maxlength=\"20\" zur Passwort-Eingabe hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input[type='password']", "attr": "placeholder", "value": null },
+					"message": "Füge einen Placeholder hinzu, der andeutet, was einzugeben ist"
+				}
+			]
+		},
+		{
+			"id": "complete-registration",
+			"title": "Vollständiges Registrierungsformular",
+			"description": "Erstelle ein vollständiges Registrierungsformular mit allen Validierungskonzepten:<br><br>- Pflichtfelder mit * markiert<br>- E-Mail-Validierung (type=\"email\" verwenden)<br>- Passwort mit Längenbeschränkungen<br>- AGB-Checkbox (Pflichtfeld)<br>- Absende-Button",
+			"task": "Vervollständige das Registrierungsformular. Füge required-Attribute, passende Eingabetypen und Validierungsbeschränkungen hinzu.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 400px; background: #f5f5f5; padding: 25px; border-radius: 8px; } h2 { margin-top: 0; margin-bottom: 20px; } .form-group { margin-bottom: 18px; } label { display: block; margin-bottom: 5px; font-weight: 500; } .required { color: #d32f2f; } input[type='text'], input[type='email'], input[type='password'] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; } input:focus { outline: 2px solid #1976d2; border-color: transparent; } .checkbox-group { display: flex; align-items: flex-start; gap: 8px; } .checkbox-group input { width: auto; margin-top: 3px; } .checkbox-group label { margin: 0; font-weight: normal; } button { width: 100%; padding: 12px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 500; } button:hover { background: #1565c0; }",
+			"sandboxCSS": "",
+			"initialCode": "<form>\n  <h2>Konto erstellen</h2>\n  \n  <div class=\"form-group\">\n    <label for=\"fullname\">Vollständiger Name <span class=\"required\">*</span></label>\n    <input type=\"text\" id=\"fullname\" name=\"fullname\">\n  </div>\n  \n  <div class=\"form-group\">\n    <label for=\"email\">E-Mail <span class=\"required\">*</span></label>\n    <input id=\"email\" name=\"email\">\n  </div>\n  \n  <div class=\"form-group\">\n    <label for=\"password\">Passwort <span class=\"required\">*</span></label>\n    <input id=\"password\" name=\"password\">\n  </div>\n  \n  <div class=\"form-group checkbox-group\">\n    <input type=\"checkbox\" id=\"terms\" name=\"terms\">\n    <label for=\"terms\">Ich stimme den Nutzungsbedingungen zu <span class=\"required\">*</span></label>\n  </div>\n  \n  <button type=\"submit\">Registrieren</button>\n</form>",
+			"solution": "<form>\n  <h2>Konto erstellen</h2>\n  \n  <div class=\"form-group\">\n    <label for=\"fullname\">Vollständiger Name <span class=\"required\">*</span></label>\n    <input type=\"text\" id=\"fullname\" name=\"fullname\" required>\n  </div>\n  \n  <div class=\"form-group\">\n    <label for=\"email\">E-Mail <span class=\"required\">*</span></label>\n    <input type=\"email\" id=\"email\" name=\"email\" required>\n  </div>\n  \n  <div class=\"form-group\">\n    <label for=\"password\">Passwort <span class=\"required\">*</span></label>\n    <input type=\"password\" id=\"password\" name=\"password\" required minlength=\"8\">\n  </div>\n  \n  <div class=\"form-group checkbox-group\">\n    <input type=\"checkbox\" id=\"terms\" name=\"terms\" required>\n    <label for=\"terms\">Ich stimme den Nutzungsbedingungen zu <span class=\"required\">*</span></label>\n  </div>\n  \n  <button type=\"submit\">Registrieren</button>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#fullname", "attr": "required", "value": true },
+					"message": "Mache das Feld für den vollständigen Namen zum Pflichtfeld"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#email", "attr": "type", "value": "email" },
+					"message": "Setze den Eingabetyp für E-Mail auf 'email'"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#email", "attr": "required", "value": true },
+					"message": "Mache das E-Mail-Feld zum Pflichtfeld"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#password", "attr": "type", "value": "password" },
+					"message": "Setze den Eingabetyp für Passwort auf 'password'"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#password", "attr": "required", "value": true },
+					"message": "Mache das Passwort-Feld zum Pflichtfeld"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#password", "attr": "minlength", "value": "8" },
+					"message": "Füge minlength=\"8\" zum Passwort hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "#terms", "attr": "required", "value": true },
+					"message": "Mache die AGB-Checkbox zum Pflichtfeld"
+				}
+			]
+		}
+	]
+}

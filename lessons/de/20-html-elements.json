@@ -1,0 +1,97 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-elements",
+	"title": "HTML-Elemente: Block vs Inline",
+	"description": "Verstehe den grundlegenden Unterschied zwischen Container- (Block-) und Inline-Elementen",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "block-vs-inline-intro",
+			"title": "Block- vs Inline-Elemente",
+			"description": "HTML-Elemente fallen in zwei Hauptkategorien:<br><br><strong>Block-Elemente</strong> (Container) beginnen in einer neuen Zeile und nehmen die volle Breite ein. Beispiele: <kbd>&lt;div&gt;</kbd>, <kbd>&lt;p&gt;</kbd>, <kbd>&lt;h1&gt;</kbd>, <kbd>&lt;section&gt;</kbd><br><br><strong>Inline-Elemente</strong> fließen innerhalb des Textes und nehmen nur die benötigte Breite ein. Beispiele: <kbd>&lt;span&gt;</kbd>, <kbd>&lt;a&gt;</kbd>, <kbd>&lt;strong&gt;</kbd>, <kbd>&lt;em&gt;</kbd>",
+			"task": "Umschließe das Wort <kbd>wichtig</kbd> mit <kbd>&lt;strong&gt;</kbd>-Tags, um es fett zu machen. Beachte, wie der Absatz (Block) die volle Breite einnimmt, während strong (Inline) mit dem Text fließt.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: #e3f2fd; padding: 10px; } strong { background: #ffecb3; }",
+			"sandboxCSS": "",
+			"initialCode": "<p>Dies ist ein Absatz mit einem wichtig Wort.</p>",
+			"solution": "<p>Dies ist ein Absatz mit einem <strong>wichtig</strong> Wort.</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Füge ein <p> Absatz-Element hinzu"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "p", "child": "strong" },
+					"message": "Umschließe das Wort 'wichtig' mit <strong>-Tags"
+				}
+			]
+		},
+		{
+			"id": "semantic-containers",
+			"title": "Semantische Container-Elemente",
+			"description": "Modernes HTML verwendet semantische Container, die ihren Inhalt beschreiben:<br><br><kbd>&lt;header&gt;</kbd> - Kopfbereich der Seite oder eines Abschnitts<br><kbd>&lt;nav&gt;</kbd> - Navigationslinks<br><kbd>&lt;main&gt;</kbd> - Hauptinhalt<br><kbd>&lt;section&gt;</kbd> - Thematische Gruppierung<br><kbd>&lt;article&gt;</kbd> - Eigenständiger Inhalt<br><kbd>&lt;footer&gt;</kbd> - Fußbereich der Seite oder eines Abschnitts",
+			"task": "Erstelle eine einfache Seitenstruktur:<br>1. Füge ein <kbd>&lt;header&gt;</kbd> mit einem <kbd>&lt;h1&gt;</kbd> hinzu, das den Text 'Meine Webseite' enthält<br>2. Füge ein <kbd>&lt;main&gt;</kbd>-Element mit einem Absatz hinzu, der 'Willkommen auf meiner Seite!' sagt<br>3. Füge ein <kbd>&lt;footer&gt;</kbd> mit einem Absatz hinzu, der 'Copyright 2025' sagt",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle hier deine Seitenstruktur -->",
+			"solution": "<header>\n  <h1>Meine Webseite</h1>\n</header>\n<main>\n  <p>Willkommen auf meiner Seite!</p>\n</main>\n<footer>\n  <p>Copyright 2025</p>\n</footer>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "header",
+					"message": "Füge ein <header>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "main",
+					"message": "Füge ein <main>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "footer",
+					"message": "Füge ein <footer>-Element hinzu"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "header", "child": "h1" },
+					"message": "Füge eine <h1>-Überschrift in deinem Header hinzu"
+				}
+			]
+		},
+		{
+			"id": "div-vs-span",
+			"title": "Generische Container: div und span",
+			"description": "Wenn du einen Container ohne semantische Bedeutung benötigst:<br><br><kbd>&lt;div&gt;</kbd> - Generischer Block-Container (für Layout/Gruppierung)<br><kbd>&lt;span&gt;</kbd> - Generischer Inline-Container (zum Stylen von Textteilen)<br><br>Verwende semantische Elemente wenn möglich, div/span wenn kein semantisches Element passt.",
+			"task": "Umschließe das Wort 'hervorgehoben' mit einem <kbd>&lt;span&gt;</kbd>, um es anders zu gestalten. Umschließe das gesamte Zitat mit einem <kbd>&lt;div&gt;</kbd>.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: Georgia, serif; padding: 20px; } div { background: #f5f5f5; padding: 15px; border-left: 4px solid #1976d2; } span { background: #fff59d; padding: 2px 4px; }",
+			"sandboxCSS": "",
+			"initialCode": "Der hervorgehoben Moment war unvergesslich.",
+			"solution": "<div>Der <span>hervorgehoben</span> Moment war unvergesslich.</div>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "div",
+					"message": "Umschließe alles mit einem <div>-Element"
+				},
+				{
+					"type": "element_exists",
+					"value": "span",
+					"message": "Füge ein <span> um das Wort 'hervorgehoben' hinzu"
+				},
+				{
+					"type": "element_text",
+					"value": { "selector": "span", "text": "hervorgehoben" },
+					"message": "Das <span> sollte das Wort 'hervorgehoben' enthalten"
+				}
+			]
+		}
+	]
+}

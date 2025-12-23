@@ -1,0 +1,478 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "css-advanced-selectors",
+	"title": "CSS: Fortgeschrittene Selektoren",
+	"description": "Meistere fortgeschrittene CSS-Selektor-Techniken einschließlich Attribut-Selektoren, Kombinatoren und Pseudo-Klassen. Dieses Modul baut auf grundlegenden Selektoren auf und gibt dir präzise Kontrolle über die Elementauswahl, was ausgefeilte Styling-Muster und interaktive Effekte ermöglicht.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "attribute-selectors",
+			"title": "Attribut-Selektoren: Anvisieren nach HTML-Attributen",
+			"description": "Attribut-Selektoren ermöglichen es dir, Elemente basierend auf ihren HTML-Attributen und Attributwerten anzuvisieren. Sie sind unglaublich mächtig für das Styling von Formularen, Links und anderen Elementen mit spezifischen Attributen. Die grundlegende Syntax verwendet eckige Klammern: <kbd>[attribute]</kbd> wählt Elemente mit diesem Attribut, <kbd>[attribute=\"value\"]</kbd> wählt Elemente, bei denen das Attribut genau diesem Wert entspricht, und <kbd>[attribute^=\"value\"]</kbd> wählt Elemente, bei denen das Attribut mit diesem Wert beginnt. Du kannst diese ausgewählten Elemente mit Eigenschaften wie <kbd>border</kbd> stylen, um visuelle Grenzen hinzuzufügen, und <kbd>background-color</kbd>, um bestimmte Formularfelder oder Links hervorzuheben.",
+			"task": "Erstelle eine CSS-Regel mit einem Attribut-Selektor, die alle input-Elemente mit <kbd>type=\"text\"</kbd> anvisiert. Gib ihnen einen <kbd>lightblue</kbd>-Hintergrund und einen <kbd>2px solid blue</kbd>-Rahmen.",
+			"previewHTML": "<form>\n  <p><label>Name: <input type=\"text\" placeholder=\"Gib deinen Namen ein\"></label></p>\n  <p><label>E-Mail: <input type=\"email\" placeholder=\"Gib deine E-Mail ein\"></label></p>\n  <p><label>Passwort: <input type=\"password\" placeholder=\"Passwort eingeben\"></label></p>\n  <p><button type=\"submit\">Absenden</button></p>\n</form>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } form { max-width: 300px; } label { display: block; margin-bottom: 5px; } input, button { padding: 8px; margin-bottom: 10px; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere input-Elemente mit type=\"text\" mit einem Attribut-Selektor an */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^input\\[type=\"text\"\\]\\s*{",
+					"message": "Verwende <kbd>input[type=\"text\"] { … }</kbd> als deinen Attribut-Selektor",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "lightblue"
+					},
+					"message": "Setze die Hintergrundfarbe auf <kbd>lightblue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "background-color:\\s*[^;]*;",
+					"message": "Vergiss nicht, die <kbd>background-color</kbd>-Deklaration mit einem Semikolon <kbd>;</kbd> zu beenden"
+				},
+				{
+					"type": "contains",
+					"value": "border:",
+					"message": "Füge die <kbd>border</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "border",
+						"expected": "2px solid blue"
+					},
+					"message": "Setze den Rahmen auf <kbd>2px solid blue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "input\\[type=\"text\"\\]\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "attribute-partial-matching",
+			"title": "Teilweises Attribut-Matching",
+			"description": "Attribut-Selektoren unterstützen teilweise Matching-Muster, die es dir ermöglichen, Elemente basierend auf Teilen von Attributwerten anzuvisieren. Der <kbd>[attribute^=\"value\"]</kbd>-Selektor passt auf Elemente, bei denen das Attribut mit dem angegebenen Wert beginnt, <kbd>[attribute$=\"value\"]</kbd> passt, wenn es mit dem Wert endet, und <kbd>[attribute*=\"value\"]</kbd> passt, wenn der Wert irgendwo innerhalb des Attributs erscheint. Diese Muster sind besonders nützlich für das Styling externer Links, Dateitypen oder Elemente mit Klassennamen, die Namenskonventionen folgen. Beim Stylen dieser gematchten Elemente kannst du Eigenschaften wie <kbd>color</kbd> verwenden, um die Textfarbe zu ändern, und <kbd>text-decoration</kbd>, um visuelle Betonung wie Unterstreichungen hinzuzufügen.",
+			"task": "Erstelle eine CSS-Regel, die alle Anker-Elemente (<kbd>a</kbd>) mit <kbd>href</kbd>-Attributen, die mit <kbd>\"https\"</kbd> beginnen, anvisiert. Style sie mit <kbd>green</kbd>-Textfarbe und <kbd>underline</kbd>-Textdekoration.",
+			"previewHTML": "<h2>Verschiedene Arten von Links</h2>\n<ul>\n  <li><a href=\"https://example.com\">Externer HTTPS-Link</a></li>\n  <li><a href=\"http://oldsite.com\">Externer HTTP-Link</a></li>\n  <li><a href=\"#section1\">Interner Anker-Link</a></li>\n  <li><a href=\"/about\">Relativer Link</a></li>\n  <li><a href=\"https://secure-site.org\">Ein weiterer HTTPS-Link</a></li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } ul { list-style-type: none; padding: 0; } li { margin-bottom: 8px; } a { text-decoration: none; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere Anker-Elemente an, deren href mit \"https\" beginnt */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "a[href^=\"https\"] {\n  color: green;\n  text-decoration: underline;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^a\\[href\\^=\"https\"\\]\\s*{",
+					"message": "Verwende <kbd>a[href^=\"https\"] { … }</kbd> als deinen Attribut-Selektor, um HTTPS-Links anzuvisieren",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu, um die Textfarbe zu setzen"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "green"
+					},
+					"message": "Setze die Textfarbe auf <kbd>green</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "text-decoration:",
+					"message": "Füge die <kbd>text-decoration</kbd>-Eigenschaft hinzu, um das Link-Erscheinungsbild zu stylen"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-decoration",
+						"expected": "underline"
+					},
+					"message": "Setze text-decoration auf <kbd>underline</kbd>, um HTTPS-Links zu unterstreichen"
+				},
+				{
+					"type": "regex",
+					"value": "a\\[href\\^=\"https\"\\]\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "child-combinator",
+			"title": "Kind-Kombinator: Nur direkte Kinder",
+			"description": "Der Kind-Kombinator (<kbd>></kbd>) wählt Elemente aus, die direkte Kinder eines anderen Elements sind, keine Enkel oder tiefere Nachfahren. Dies ist entscheidend, wenn du verschachtelte Strukturen hast, bei denen du nur die äußere Ebene stylen möchtest. Zum Beispiel könntest du in einem Navigationsmenü mit Dropdowns möchten, dass Hauptmenüpunkte anders gestylt werden als Untermenüpunkte. Der Kind-Kombinator (<kbd>></kbd>) gibt dir chirurgische Präzision – <kbd>ul > li</kbd> visiert nur direkte Listenelemente an, während <kbd>ul li</kbd> ALLE Listenelemente einschließlich verschachtelter anvisieren würde. Dies verhindert Stil-Vererbungschaos in komplexen Layouts.",
+			"task": "Verwende den Kind-Kombinator, um nur die direkten <kbd>li</kbd>-Kinder von <kbd>.main-nav</kbd> anzuvisieren. Gib ihnen einen <kbd>cornflowerblue</kbd>-Hintergrund und <kbd>white</kbd>-Textfarbe. Beachte, wie die verschachtelten Untermenü-Elemente völlig ungestylt bleiben!",
+			"previewHTML": "<ul class=\"main-nav\">\n  <li>🏠 Startseite</li>\n  <li>📱 Produkte\n    <ul>\n      <li>💻 Laptops</li>\n      <li>📱 Handys</li>\n      <li>⌚ Uhren</li>\n    </ul>\n  </li>\n  <li>ℹ️ Über uns\n    <ul>\n      <li>👥 Team</li>\n      <li>📍 Standort</li>\n    </ul>\n  </li>\n  <li>📧 Kontakt</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 20px; background: #f5f5f5; } .main-nav { background: white; border-radius: 8px; padding: 0; margin: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); list-style: none; } .main-nav li { padding: 12px 16px; margin: 2px 0; cursor: pointer; transition: all 0.2s; } .main-nav ul { margin: 8px 0 0 20px; padding: 0; list-style: none; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere nur die direkten li-Kinder von .main-nav an (nicht verschachtelte Untermenü-Elemente) */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": ".main-nav > li {\n  background-color: cornflowerblue;\n  color: white;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^\\.main-nav\\s*>\\s*li\\s*{",
+					"message": "Verwende <kbd>.main-nav > li { … }</kbd> mit dem Kind-Kombinator, um nur direkte Kinder anzuvisieren",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu, um Hauptmenüpunkte hervorzuheben"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "cornflowerblue"
+					},
+					"message": "Setze background-color auf <kbd>cornflowerblue</kbd> für das Hauptmenü-Styling"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu, um die Textfarbe zu setzen"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "white"
+					},
+					"message": "Setze die Textfarbe auf <kbd>white</kbd> für Kontrast gegen den blauen Hintergrund"
+				},
+				{
+					"type": "regex",
+					"value": "\\.main-nav\\s*>\\s*li\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "descendant-combinator",
+			"title": "Nachfahren-Kombinator: Alle verschachtelten Elemente",
+			"description": "Der Nachfahren-Kombinator verwendet ein Leerzeichen zwischen Selektoren, um Elemente anzuvisieren, die irgendwo in anderen Elementen verschachtelt sind, unabhängig davon, wie tief verschachtelt sie sind. Zum Beispiel wählt <kbd>nav a</kbd> alle Anker-Elemente innerhalb von Navigations-Elementen aus, ob sie direkte Kinder oder mehrere Ebenen tief verschachtelt sind. Dies ist breiter als der Kind-Kombinator und nützlich für das Anwenden einheitlichen Stylings auf alle Elemente eines bestimmten Typs innerhalb eines Containers. Beim Stylen von Nachfahren kannst du Eigenschaften wie <kbd>text-decoration</kbd> verwenden, um das Link-Erscheinungsbild zu kontrollieren, und <kbd>color</kbd>, um einheitliche Textfarben in einem Abschnitt zu setzen. Der Nachfahren-Kombinator ist einer der am häufigsten verwendeten Kombinatoren in CSS.",
+			"task": "Verwende den Nachfahren-Kombinator, um alle Anker-Elemente (<kbd>a</kbd>) innerhalb des <kbd>nav</kbd>-Elements anzuvisieren. Entferne ihre Unterstreichungen mit <kbd>text-decoration: none</kbd> und mache sie <kbd>blue</kbd>.",
+			"previewHTML": "<nav>\n  <ul>\n    <li><a href=\"#\">Startseite</a></li>\n    <li><a href=\"#\">Über uns</a>\n      <ul>\n        <li><a href=\"#\">Unser Team</a></li>\n        <li><a href=\"#\">Geschichte</a></li>\n      </ul>\n    </li>\n    <li><a href=\"#\">Kontakt</a></li>\n  </ul>\n</nav>\n<p>Dieser <a href=\"#\">Link außerhalb von nav</a> sollte nicht betroffen sein.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } nav { border: 2px solid navy; padding: 15px; background-color: aliceblue; margin-bottom: 15px; } ul { list-style-type: none; padding-left: 20px; } li { margin-bottom: 5px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere alle Anker-Elemente innerhalb von nav mit dem Nachfahren-Kombinator an */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "nav a {\n  text-decoration: none;\n  color: blue;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^nav\\s+a\\s*{",
+					"message": "Verwende <kbd>nav a</kbd> mit einem Leerzeichen zwischen nav und a",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "text-decoration:",
+					"message": "Füge die <kbd>text-decoration</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-decoration",
+						"expected": "none"
+					},
+					"message": "Setze text-decoration auf <kbd>none</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "blue"
+					},
+					"message": "Setze color auf <kbd>blue</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "nav\\s+a\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "adjacent-sibling-combinator",
+			"title": "Benachbarter-Geschwister-Kombinator: Das nächste Element",
+			"description": "Der benachbarte-Geschwister-Kombinator (<kbd>+</kbd>) wählt ein Element aus, das einem anderen Element auf derselben Ebene in der HTML-Struktur unmittelbar folgt. Beide Elemente müssen denselben Elternteil haben, und es dürfen keine anderen Elemente zwischen ihnen sein. Zum Beispiel wählt <kbd>h1 + p</kbd> Absatz-Elemente aus, die direkt nach h1-Überschriften kommen. Dieser Kombinator ist besonders nützlich für das Styling von Elementen, die besondere Beziehungen haben, wie der erste Absatz nach einer Überschrift oder Labels, die Formulareingaben folgen. Beim Stylen benachbarter Geschwister kannst du Eigenschaften wie <kbd>margin-top</kbd> verwenden, um Abstände anzupassen, und <kbd>font-style</kbd>, um Betonung wie Kursivschrift hinzuzufügen, um visuelle Hierarchie zu schaffen.",
+			"task": "Verwende den benachbarten-Geschwister-Kombinator, um Absätze anzuvisieren, die unmittelbar auf <kbd>h2</kbd>-Überschriften folgen. Entferne ihren oberen Rand mit <kbd>margin-top: 0</kbd> und mache sie kursiv.",
+			"previewHTML": "<h2>Erste Überschrift</h2>\n<p>Dieser Absatz folgt direkt auf h2 (sollte betroffen sein).</p>\n<p>Dieser Absatz kommt nach einem anderen Absatz (sollte NICHT betroffen sein).</p>\n<h2>Zweite Überschrift</h2>\n<p>Dieser Absatz folgt auch direkt auf h2 (sollte betroffen sein).</p>\n<div>Dieses div kommt nach h2, ist aber kein Absatz.</div>\n<p>Dieser Absatz kommt nach einem div (sollte NICHT betroffen sein).</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } h2, p, div { margin: 15px 0; padding: 8px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere Absätze an, die unmittelbar auf h2-Überschriften folgen */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "h2 + p {\n  margin-top: 0;\n  font-style: italic;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^h2\\s*\\+\\s*p\\s*{",
+					"message": "Verwende <kbd>h2 + p</kbd> mit dem benachbarten-Geschwister-Kombinator (+)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "margin-top:",
+					"message": "Füge die <kbd>margin-top</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "margin-top",
+						"expected": "0"
+					},
+					"message": "Setze margin-top auf <kbd>0</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "font-style:",
+					"message": "Füge die <kbd>font-style</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-style",
+						"expected": "italic"
+					},
+					"message": "Setze font-style auf <kbd>italic</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "h2\\s*\\+\\s*p\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "general-sibling-combinator",
+			"title": "Allgemeiner-Geschwister-Kombinator: Alle folgenden Geschwister",
+			"description": "Der allgemeine-Geschwister-Kombinator (<kbd>~</kbd>) wählt alle Elemente aus, die einem anderen Element auf derselben Ebene folgen, nicht nur das unmittelbar benachbarte. Im Gegensatz zum benachbarten-Geschwister-Kombinator können andere Elemente zwischen den Zielelementen sein, solange sie alle denselben Elternteil haben und die ausgewählten Elemente nach dem Referenzelement kommen. Zum Beispiel wählt <kbd>h2 ~ p</kbd> alle Absatz-Elemente aus, die nach einer h2-Überschrift auf derselben Ebene erscheinen. Beim Stylen allgemeiner Geschwister kannst du Eigenschaften wie <kbd>color</kbd> verwenden, um die Textfarbe zu ändern, und <kbd>padding-left</kbd>, um visuelle Einrückung zu schaffen, was hilft, die Beziehung zwischen verwandten Inhaltsabschnitten zu zeigen.",
+			"task": "Verwende den allgemeinen-Geschwister-Kombinator, um alle Absätze anzuvisieren, die nach der <kbd>h3</kbd>-Überschrift kommen (auf derselben Ebene). Gib ihnen eine <kbd>gray</kbd>-Farbe und <kbd>20px</kbd> linkes Padding.",
+			"previewHTML": "<div>\n  <p>Dieser Absatz kommt vor h3 (sollte NICHT betroffen sein).</p>\n  <h3>Abschnittstitel</h3>\n  <p>Erster Absatz nach h3 (sollte betroffen sein).</p>\n  <div>Etwas anderer Inhalt dazwischen</div>\n  <p>Zweiter Absatz nach h3 (sollte auch betroffen sein).</p>\n  <span>Mehr Inhalt</span>\n  <p>Dritter Absatz nach h3 (sollte auch betroffen sein).</p>\n</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } h3, p, div, span { margin: 10px 0; padding: 8px; border: 1px dashed #ccc; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere alle Absätze an, die h3 folgen, mit dem allgemeinen-Geschwister-Kombinator */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "h3 ~ p {\n  color: gray;\n  padding-left: 20px;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^h3\\s*~\\s*p\\s*{",
+					"message": "Verwende <kbd>h3 ~ p</kbd> mit dem allgemeinen-Geschwister-Kombinator (~)",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "gray"
+					},
+					"message": "Setze color auf <kbd>gray</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "padding-left:",
+					"message": "Füge die <kbd>padding-left</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "padding-left",
+						"expected": "20px"
+					},
+					"message": "Setze padding-left auf <kbd>20px</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "h3\\s*~\\s*p\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "hover-pseudo-class",
+			"title": "Die :hover Pseudo-Klasse",
+			"description": "Die <kbd>:hover</kbd> Pseudo-Klasse wendet Stile an, wenn ein Benutzer mit der Maus über ein Element fährt. Dies schafft interaktives Feedback, das die Benutzererfahrung verbessert, indem es visuelle Hinweise über klickbare oder interaktive Elemente gibt. Hover-Effekte werden häufig bei Links, Buttons und anderen interaktiven Elementen verwendet, um ihre interaktive Natur anzuzeigen. Beim Erstellen von Hover-Effekten kannst du Eigenschaften wie <kbd>background-color</kbd> verwenden, um den Hintergrund beim Hover zu ändern, und <kbd>color</kbd>, um die Textfarbe zu ändern, was klares visuelles Feedback schafft. Die <kbd>:hover</kbd> Pseudo-Klasse gilt nur, während der Mauszeiger über dem Element positioniert ist, und kehrt zum normalen Zustand zurück, wenn der Zeiger sich entfernt.",
+			"task": "Erstelle einen Hover-Effekt für das Button-Element. Beim Hover ändere den Hintergrund auf <kbd>darkblue</kbd> und die Textfarbe auf <kbd>white</kbd>.",
+			"previewHTML": "<h2>Interaktiver Button</h2>\n<p>Fahre mit der Maus über den Button unten, um den Effekt zu sehen:</p>\n<button type=\"button\">Fahre über mich</button>\n<p>Der Button sollte seine Farben ändern, wenn du mit der Maus darüber fährst.</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } button { padding: 12px 24px; font-size: 16px; border: 2px solid darkblue; background-color: lightblue; color: darkblue; border-radius: 5px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Erstelle einen Hover-Effekt für den Button */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "button:hover {\n  background-color: darkblue;\n  color: white;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^button:hover\\s*{",
+					"message": "Verwende <kbd>button:hover</kbd>, um Buttons beim Hover anzuvisieren",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "background-color:",
+					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background-color",
+						"expected": "darkblue"
+					},
+					"message": "Setze background-color auf <kbd>darkblue</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "color:",
+					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "white"
+					},
+					"message": "Setze color auf <kbd>white</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "button:hover\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		},
+		{
+			"id": "first-child-pseudo-class",
+			"title": "Die :first-child Pseudo-Klasse",
+			"description": "Die <kbd>:first-child</kbd> Pseudo-Klasse wählt Elemente aus, die das erste Kind ihres Elternelements sind. Dies ist nützlich für das Anwenden spezieller Stile auf das erste Element in Listen, den ersten Absatz in Artikeln oder das erste Element in einem beliebigen Container. Zum Beispiel wählt <kbd>li:first-child</kbd> das erste Listenelement in jeder Liste aus, während <kbd>p:first-child</kbd> Absätze auswählt, die das erste Kind-Element ihres Containers sind. Beim Stylen erster Kinder kannst du Eigenschaften wie <kbd>font-weight</kbd> verwenden, um das erste Element fett zu machen, und <kbd>margin-top</kbd>, um Abstände anzupassen, was hilft, visuelle Hierarchie zu schaffen und das Layout deines Inhalts zu verbessern.",
+			"task": "Verwende die <kbd>:first-child</kbd> Pseudo-Klasse, um das erste Listenelement in jeder Liste anzuvisieren. Mache es <kbd>bold</kbd> und entferne seinen oberen Rand.",
+			"previewHTML": "<h2>Mehrere Listen</h2>\n<h3>Früchte</h3>\n<ul>\n  <li>Apfel (erstes Kind)</li>\n  <li>Banane</li>\n  <li>Orange</li>\n</ul>\n<h3>Farben</h3>\n<ul>\n  <li>Rot (erstes Kind)</li>\n  <li>Blau</li>\n  <li>Grün</li>\n</ul>",
+			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } li { margin: 8px 0; padding: 5px; border: 1px solid #ddd; border-radius: 3px; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Visiere das erste Listenelement in jeder Liste an */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "li:first-child {\n  font-weight: bold;\n  margin-top: 0;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^li:first-child\\s*{",
+					"message": "Verwende <kbd>li:first-child</kbd>, um erste Listenelemente anzuvisieren",
+					"options": {
+						"caseSensitive": true
+					}
+				},
+				{
+					"type": "contains",
+					"value": "font-weight:",
+					"message": "Füge die <kbd>font-weight</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-weight",
+						"expected": "bold"
+					},
+					"message": "Setze font-weight auf <kbd>bold</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "margin-top:",
+					"message": "Füge die <kbd>margin-top</kbd>-Eigenschaft hinzu"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "margin-top",
+						"expected": "0"
+					},
+					"message": "Setze margin-top auf <kbd>0</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "li:first-child\\s*{[^}]*}",
+					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
+					"options": {
+						"caseSensitive": true
+					}
+				}
+			]
+		}
+	]
+}

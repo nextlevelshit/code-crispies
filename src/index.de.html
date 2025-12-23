@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="./favicon.ico" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CODE CRISPIES - CSS interaktiv lernen</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<div class="app-container">
+			<!-- Minimaler Header -->
+			<header class="header">
+				<button id="menu-btn" class="menu-toggle" aria-label="Menü öffnen">
+					<span class="hamburger-line"></span>
+					<span class="hamburger-line"></span>
+					<span class="hamburger-line"></span>
+				</button>
+				<div class="logo">
+					<img src="./bowl.png" width="40" alt="CODE CRISPIES Logo" />
+					<h1>CODE<span>CRISPIES</span></h1>
+				</div>
+				<button id="help-btn" class="help-toggle" aria-label="Hilfe">?</button>
+			</header>
+
+			<!-- Hauptlayout -->
+			<main class="game-layout">
+				<!-- Linke Spalte: Anleitung + Editor -->
+				<div class="left-panel">
+					<section class="instructions">
+						<h2 id="lesson-title">Laden...</h2>
+						<div class="lesson-description" id="lesson-description">
+							Bitte wähle eine Lektion aus, um zu beginnen.
+						</div>
+						<div class="task-instruction" id="task-instruction">
+							<!-- Aufgabenanweisungen werden hier angezeigt -->
+						</div>
+					</section>
+
+					<section class="editor-section">
+						<div class="code-editor">
+							<div class="editor-header">
+								<label for="code-input" class="editor-label">CSS-Editor</label>
+								<div class="editor-actions">
+									<div class="editor-tools">
+										<button id="undo-btn" class="btn btn-icon" title="Rückgängig (Strg+Z)">↶</button>
+										<button id="redo-btn" class="btn btn-icon" title="Wiederholen (Strg+Umschalt+Z)">↷</button>
+										<button id="reset-code-btn" class="btn btn-icon" title="Auf Anfangscode zurücksetzen">⟲</button>
+									</div>
+									<button id="run-btn" class="btn btn-run">
+										<img src="./gear.svg" alt="" />Ausführen
+									</button>
+								</div>
+							</div>
+							<div class="editor-content">
+								<!-- Textarea wird durch CodeMirror ersetzt -->
+								<textarea id="code-input" class="code-input" spellcheck="false" autocomplete="off" style="display: none;"></textarea>
+							</div>
+						</div>
+						<div class="hint-area" id="hint-area">
+							<!-- Hinweise werden hier angezeigt -->
+						</div>
+					</section>
+				</div>
+
+				<!-- Rechte Spalte: Vorschau + Navigation -->
+				<div class="right-panel">
+					<div class="preview-section">
+						<div class="preview-header">
+							<span class="preview-label">Deine Ausgabe</span>
+							<button id="show-expected-btn" class="btn btn-small">Lösung zeigen</button>
+						</div>
+						<div class="preview-wrapper">
+							<div class="preview-frame" id="preview-area">
+								<!-- Vorschau-Iframe wird hier angezeigt -->
+							</div>
+							<div class="expected-overlay" id="expected-overlay">
+								<div class="expected-frame" id="preview-expected">
+									<!-- Erwartetes Ergebnis (umschaltbar) -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="game-controls">
+						<button id="prev-btn" class="btn">Zurück</button>
+						<div class="level-indicator" id="level-indicator">Lektion 0/0</div>
+						<button id="next-btn" class="btn btn-primary">Weiter</button>
+					</div>
+				</div>
+			</main>
+
+			<!-- Seitenleisten-Hintergrund -->
+			<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+			<!-- Ausklappbare Seitenleiste -->
+			<aside class="sidebar-drawer" id="sidebar-drawer">
+				<div class="sidebar-header">
+					<h3>Menü</h3>
+					<button id="close-sidebar" class="close-btn" aria-label="Menü schließen">&times;</button>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Fortschritt</h4>
+					<div class="progress-display" id="progress-display">
+						<div class="progress-bar">
+							<div class="progress-fill" id="progress-fill"></div>
+						</div>
+						<span class="progress-text" id="progress-text">0% abgeschlossen</span>
+					</div>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Lektionen</h4>
+					<div class="module-list" id="module-list">
+						<!-- Modulliste wird hier eingefügt -->
+					</div>
+				</div>
+
+				<div class="sidebar-section">
+					<h4>Einstellungen</h4>
+					<label class="toggle-switch">
+						<input type="checkbox" id="disable-feedback-toggle" checked />
+						<span class="toggle-slider"></span>
+						<span class="toggle-label">Hinweise anzeigen</span>
+					</label>
+					<button id="reset-btn" class="btn btn-text">Fortschritt zurücksetzen</button>
+				</div>
+
+				<footer class="app-footer">
+					Open Source:
+					<a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a>
+					von <a href="https://dailysh.it" title="Michael W. Czechowski">mwc</a>
+				</footer>
+			</aside>
+
+			<!-- Hilfe-Modal -->
+			<div id="modal-container" class="modal-container hidden">
+				<div class="modal">
+					<div class="modal-header">
+						<h3 id="modal-title">Modal-Titel</h3>
+						<button id="modal-close" class="modal-close">&times;</button>
+					</div>
+					<div class="modal-content" id="modal-content">
+						<!-- Modal-Inhalt wird hier eingefügt -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="module" src="app.de.js"></script>
+	</body>
+</html>
