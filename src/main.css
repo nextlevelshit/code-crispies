@@ -155,6 +155,34 @@ code, kbd {
 	color: var(--primary-color);
 }
 
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+}
+
+.lang-switch {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	border: 2px solid var(--border-color);
+	background: none;
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-decoration: none;
+	color: var(--light-text);
+	transition: all 0.2s;
+}
+
+.lang-switch:hover {
+	border-color: var(--primary-color);
+	color: var(--primary-color);
+	background: var(--primary-bg-light);
+}
+
 /* ================= GAME LAYOUT ================= */
 .game-layout {
 	display: flex;
