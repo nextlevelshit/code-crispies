@@ -407,7 +407,7 @@ function runCode() {
 
 	if (validationResult.isValid) {
 		// Show success hint
-		showSuccessHint(validationResult.message || "Great job! Your code works correctly.");
+		showSuccessHint(validationResult.message || "CRISPY! ٩(◕‿◕)۶ Your code works correctly.");
 
 		// Update Run button
 		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
