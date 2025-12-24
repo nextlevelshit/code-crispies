@@ -48,6 +48,25 @@ For Tailwind mode, user classes are injected via `{{USER_CLASSES}}` placeholder 
 
 Tests use Vitest with jsdom environment. Setup in `tests/setup.js` includes DOM testing library matchers. Test files are in `tests/unit/`.
 
+## Code Quality Standards
+
+This project adheres to the highest standards for web development:
+
+- **Semantic HTML5**: Always use semantic elements (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`, `<figure>`, etc.) over generic `<div>` containers
+- **WCAG Compliance**: Ensure accessibility - proper heading hierarchy, ARIA labels where needed, keyboard navigation support
+- **Native HTML over JavaScript**: Prefer native HTML elements and attributes (e.g., `<dialog>`, `<details>`, `required`, `pattern`) over JS-driven solutions
+- **No unnecessary classes**: Avoid presentational classes like `.form-group` or `.container` in lesson examples - teach pure semantic HTML first
+- **Progressive enhancement**: Core functionality should work without JavaScript where possible
+- **Valid HTML**: All HTML must be valid according to W3C standards
+
+### Lesson Content Guidelines
+
+When creating or editing lessons:
+- Student code examples should be minimal and semantic
+- Avoid CSS framework patterns (Bootstrap, Tailwind utility classes) in HTML lessons
+- Use native form validation attributes instead of JavaScript validation
+- Teach the platform's native capabilities first
+
 ## Git Commits
 
 - Do NOT add co-authoring lines to commit messages
