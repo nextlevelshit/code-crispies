@@ -1,0 +1,97 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-details-summary",
+	"title": "Details & Summary: Aufklapp-Elemente",
+	"description": "Erstelle aufklappbare Inhaltsbereiche ohne JavaScript",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "details-summary-basic",
+			"title": "Dein erstes Aufklapp-Element",
+			"description": "Das <kbd>&lt;details&gt;</kbd>-Element erstellt einen aufklappbaren Bereich. Das <kbd>&lt;summary&gt;</kbd> bietet die anklickbare Beschriftung.<br><br>Klicke auf die Zusammenfassung, um den versteckten Inhalt anzuzeigen - kein JavaScript nötig!",
+			"task": "Erstelle ein <kbd>&lt;details&gt;</kbd>-Element mit:<br>1. Einem <kbd>&lt;summary&gt;</kbd> mit dem Text 'Klicken zum Aufklappen'<br>2. Einem <kbd>&lt;p&gt;</kbd> mit dem Text 'Dieser Inhalt war versteckt!'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; } summary { font-weight: 600; cursor: pointer; } summary:hover { color: #1976d2; } details p { margin-top: 15px; color: #666; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle hier dein Aufklapp-Element -->",
+			"solution": "<details>\n  <summary>Klicken zum Aufklappen</summary>\n  <p>Dieser Inhalt war versteckt!</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "details",
+					"message": "Füge ein <details>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "summary",
+					"message": "Füge ein <summary> innerhalb von details hinzu"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "details", "child": "summary" },
+					"message": "Das <summary> muss innerhalb von <details> sein"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "details", "child": "p" },
+					"message": "Füge ein <p> innerhalb von <details> für den versteckten Inhalt hinzu"
+				}
+			]
+		},
+		{
+			"id": "details-open-attribute",
+			"title": "Standardmäßig geöffnet",
+			"description": "Standardmäßig ist <kbd>&lt;details&gt;</kbd> geschlossen. Füge das <kbd>open</kbd>-Attribut hinzu, um den Inhalt initial anzuzeigen.<br><br>Dies ist ein boolesches Attribut - füge einfach <kbd>open</kbd> ohne Wert hinzu.",
+			"task": "Füge das <kbd>open</kbd>-Attribut zum <kbd>&lt;details&gt;</kbd>-Element hinzu, um den Inhalt standardmäßig anzuzeigen.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9; } summary { font-weight: 600; cursor: pointer; } details p { margin-top: 15px; color: #666; }",
+			"sandboxCSS": "",
+			"initialCode": "<details>\n  <summary>FAQ: Was ist HTML5?</summary>\n  <p>HTML5 ist die neueste Version des HTML-Standards mit neuen semantischen Elementen und APIs.</p>\n</details>",
+			"solution": "<details open>\n  <summary>FAQ: Was ist HTML5?</summary>\n  <p>HTML5 ist die neueste Version des HTML-Standards mit neuen semantischen Elementen und APIs.</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "attribute_value",
+					"value": { "selector": "details", "attr": "open", "value": true },
+					"message": "Füge das 'open'-Attribut zu <details> hinzu"
+				}
+			]
+		},
+		{
+			"id": "faq-accordion",
+			"title": "FAQ-Akkordeon",
+			"description": "Mehrere <kbd>&lt;details&gt;</kbd>-Elemente erstellen ein Akkordeon-artiges FAQ. Jede Frage kann unabhängig aufgeklappt werden.<br><br>Dies ist ein häufiges Muster für FAQ-Seiten, Dokumentation und Hilfebereiche.",
+			"task": "Erstelle einen FAQ-Bereich mit:<br>1. Einer <kbd>&lt;h1&gt;</kbd> mit dem Text 'Häufig gestellte Fragen'<br>2. Drei <kbd>&lt;details&gt;</kbd>-Elementen, jeweils mit einer Frage im <kbd>&lt;summary&gt;</kbd> und einer Antwort im <kbd>&lt;p&gt;</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; min-height: 100vh; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0; box-sizing: border-box; } h1 { font-size: 2.5rem; color: #4a4a4a; text-align: center; margin: 0 0 30px 0; } details { background: white; border-radius: 12px; margin-bottom: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } summary { font-size: 1.3rem; font-weight: 600; color: #5c5c5c; cursor: pointer; list-style: none; } summary::before { content: '▸ '; color: #fcb69f; } details[open] summary::before { content: '▾ '; } details p { margin: 15px 0 0 0; color: #666; line-height: 1.6; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle hier deinen FAQ-Bereich -->",
+			"solution": "<h1>Häufig gestellte Fragen</h1>\n\n<details>\n  <summary>Was ist HTML5?</summary>\n  <p>HTML5 ist die neueste Version von HTML mit neuen semantischen Elementen und APIs.</p>\n</details>\n\n<details>\n  <summary>Brauche ich JavaScript?</summary>\n  <p>Viele interaktive Funktionen funktionieren mit purem HTML5, kein JavaScript nötig!</p>\n</details>\n\n<details>\n  <summary>Ist das barrierefrei?</summary>\n  <p>Ja! Native HTML-Elemente haben eingebaute Tastatur- und Screenreader-Unterstützung.</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h1",
+					"message": "Füge eine <h1>-Überschrift für den FAQ-Titel hinzu"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "details", "min": 3 },
+					"message": "Erstelle mindestens 3 <details>-Elemente für das FAQ"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "summary", "min": 3 },
+					"message": "Jedes <details> braucht ein <summary> für die Frage"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "details p", "min": 3 },
+					"message": "Jedes <details> braucht ein <p> für die Antwort"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,78 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-datalist",
+	"title": "Datalist: Autovervollständigung",
+	"description": "Biete Vorschläge für Texteingaben ohne JavaScript",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "datalist-basic",
+			"title": "Eingabe mit Vorschlägen",
+			"description": "Das <kbd>&lt;datalist&gt;</kbd>-Element bietet Autovervollständigungs-Vorschläge für Eingabefelder. Verbinde es mit dem <kbd>list</kbd>-Attribut am Input, das zur <kbd>id</kbd> der Datalist passt.<br><br>Benutzer können trotzdem frei tippen - Vorschläge sind nur Hilfen!",
+			"task": "Erstelle eine Browser-Auswahl:<br>1. Füge ein <kbd>&lt;label&gt;</kbd> mit 'Browser:' hinzu<br>2. Füge ein <kbd>&lt;input&gt;</kbd> mit <kbd>list=\"browsers\"</kbd> hinzu<br>3. Füge eine <kbd>&lt;datalist id=\"browsers\"&gt;</kbd> mit Optionen für Chrome, Firefox und Safari hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; } input:focus { outline: 2px solid #1976d2; border-color: transparent; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle eine Eingabe mit Datalist-Vorschlägen -->",
+			"solution": "<label for=\"browser\">Browser:</label>\n<input type=\"text\" id=\"browser\" list=\"browsers\">\n<datalist id=\"browsers\">\n  <option value=\"Chrome\">\n  <option value=\"Firefox\">\n  <option value=\"Safari\">\n</datalist>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "datalist",
+					"message": "Füge ein <datalist>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input", "attr": "list", "value": "browsers" },
+					"message": "Verbinde das Input mit der Datalist über list=\"browsers\""
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "option", "min": 3 },
+					"message": "Füge mindestens 3 <option>-Elemente in die Datalist ein"
+				},
+				{
+					"type": "element_exists",
+					"value": "label",
+					"message": "Füge ein <label> für die Eingabe hinzu"
+				}
+			]
+		},
+		{
+			"id": "datalist-countries",
+			"title": "Länderauswahl",
+			"description": "Datalists funktionieren super für lange Listen wie Länder. Benutzer können tippen, um Vorschläge sofort zu filtern.<br><br>Das <kbd>value</kbd>-Attribut ist das, was eingegeben wird, und du kannst Anzeigetext dahinter hinzufügen.",
+			"task": "Erstelle eine Länder-Eingabe:<br>1. Füge ein <kbd>&lt;label&gt;</kbd> mit 'Land:' hinzu<br>2. Füge ein <kbd>&lt;input&gt;</kbd> mit <kbd>list=\"countries\"</kbd> hinzu<br>3. Füge eine <kbd>&lt;datalist id=\"countries\"&gt;</kbd> mit mindestens 4 Länder-Optionen hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 30px; background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } label { display: block; margin-bottom: 10px; font-weight: 600; color: #00695c; } input { width: 100%; padding: 12px 15px; border: 2px solid #26a69a; border-radius: 8px; font-size: 16px; background: white; } input:focus { outline: none; border-color: #00695c; box-shadow: 0 0 0 3px rgba(38,166,154,0.2); }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle eine Länderauswahl mit Datalist -->",
+			"solution": "<label for=\"country\">Land:</label>\n<input type=\"text\" id=\"country\" list=\"countries\" placeholder=\"Tippen zum Suchen...\">\n<datalist id=\"countries\">\n  <option value=\"Deutschland\">\n  <option value=\"Frankreich\">\n  <option value=\"Spanien\">\n  <option value=\"Italien\">\n</datalist>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "datalist",
+					"message": "Füge ein <datalist>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "datalist", "attr": "id", "value": "countries" },
+					"message": "Setze id=\"countries\" bei der Datalist"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "input", "attr": "list", "value": "countries" },
+					"message": "Verbinde das Input über list=\"countries\""
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "option", "min": 4 },
+					"message": "Füge mindestens 4 Länder-Optionen hinzu"
+				}
+			]
+		}
+	]
+}

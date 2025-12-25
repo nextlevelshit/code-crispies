@@ -1,0 +1,127 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "html-forms-fieldset",
+	"title": "Forms with Fieldsets",
+	"description": "Group form controls with fieldset and legend elements",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "fieldset-basic",
+			"title": "Grouping with Fieldset",
+			"description": "The <kbd>&lt;fieldset&gt;</kbd> element groups related form controls together. Add a <kbd>&lt;legend&gt;</kbd> as the first child to give the group a title.<br><br>This helps with accessibility and visual organization of complex forms.",
+			"task": "Create a form with a fieldset:<br>1. A <kbd>&lt;form&gt;</kbd> element<br>2. A <kbd>&lt;fieldset&gt;</kbd> inside<br>3. A <kbd>&lt;legend&gt;</kbd> saying 'Personal Info'<br>4. Two labeled inputs for name and email",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f0f4f8; } form { max-width: 400px; } fieldset { border: 2px solid #3498db; border-radius: 10px; padding: 20px; background: white; } legend { color: #3498db; font-weight: 600; padding: 0 10px; font-size: 1.1rem; } label { display: block; margin: 15px 0 5px; color: #333; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; } input:focus { outline: 2px solid #3498db; border-color: transparent; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a form with a fieldset group -->",
+			"solution": "<form>\n  <fieldset>\n    <legend>Personal Info</legend>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\">\n    <label for=\"email\">Email:</label>\n    <input type=\"email\" id=\"email\" name=\"email\">\n  </fieldset>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "form",
+					"message": "Add a <form> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "fieldset",
+					"message": "Add a <fieldset> inside the form"
+				},
+				{
+					"type": "element_exists",
+					"value": "legend",
+					"message": "Add a <legend> to title your fieldset"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "label", "min": 2 },
+					"message": "Add at least 2 labels"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "input", "min": 2 },
+					"message": "Add at least 2 input fields"
+				}
+			]
+		},
+		{
+			"id": "fieldset-textarea",
+			"title": "Adding Textarea",
+			"description": "The <kbd>&lt;textarea&gt;</kbd> element creates a multi-line text input, perfect for longer content like messages or descriptions.<br><br>Use <kbd>rows</kbd> and <kbd>cols</kbd> attributes to set default size.",
+			"task": "Create a contact form:<br>1. A <kbd>&lt;fieldset&gt;</kbd> with <kbd>&lt;legend&gt;</kbd> 'Contact Us'<br>2. A labeled <kbd>&lt;input&gt;</kbd> for email<br>3. A labeled <kbd>&lt;textarea&gt;</kbd> for the message<br>4. A submit <kbd>&lt;button&gt;</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } form { max-width: 450px; margin: 0 auto; } fieldset { border: none; border-radius: 15px; padding: 30px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.2); } legend { color: #667eea; font-weight: 700; padding: 0; font-size: 1.5rem; margin-bottom: 10px; } label { display: block; margin: 20px 0 8px; color: #333; font-weight: 500; } input, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: none; border-color: #667eea; } textarea { resize: vertical; min-height: 100px; } button { margin-top: 20px; width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; } button:hover { opacity: 0.9; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a contact form with textarea -->",
+			"solution": "<form>\n  <fieldset>\n    <legend>Contact Us</legend>\n    <label for=\"email\">Email:</label>\n    <input type=\"email\" id=\"email\" name=\"email\">\n    <label for=\"message\">Message:</label>\n    <textarea id=\"message\" name=\"message\" rows=\"4\"></textarea>\n    <button type=\"submit\">Send Message</button>\n  </fieldset>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "fieldset",
+					"message": "Add a <fieldset> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "legend",
+					"message": "Add a <legend> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "textarea",
+					"message": "Add a <textarea> for the message"
+				},
+				{
+					"type": "element_exists",
+					"value": "button",
+					"message": "Add a submit button"
+				},
+				{
+					"type": "element_exists",
+					"value": "input",
+					"message": "Add an input field for email"
+				}
+			]
+		},
+		{
+			"id": "fieldset-multiple",
+			"title": "Multiple Fieldsets",
+			"description": "Complex forms can use multiple <kbd>&lt;fieldset&gt;</kbd> elements to organize different sections.<br><br>This improves usability for long forms like registration or checkout pages.",
+			"task": "Create a registration form with 2 fieldsets:<br>1. 'Account Info' with username and password inputs<br>2. 'Preferences' with a textarea for bio<br>3. A submit button outside the fieldsets",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #fafafa; } form { max-width: 500px; } fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background: white; } legend { color: #2c3e50; font-weight: 600; padding: 0 10px; } label { display: block; margin: 15px 0 5px; color: #555; } input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: 2px solid #3498db; border-color: transparent; } textarea { resize: vertical; min-height: 80px; } button { width: 100%; padding: 14px; background: #2c3e50; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; } button:hover { background: #34495e; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a form with multiple fieldsets -->",
+			"solution": "<form>\n  <fieldset>\n    <legend>Account Info</legend>\n    <label for=\"username\">Username:</label>\n    <input type=\"text\" id=\"username\" name=\"username\">\n    <label for=\"password\">Password:</label>\n    <input type=\"password\" id=\"password\" name=\"password\">\n  </fieldset>\n  <fieldset>\n    <legend>Preferences</legend>\n    <label for=\"bio\">Bio:</label>\n    <textarea id=\"bio\" name=\"bio\"></textarea>\n  </fieldset>\n  <button type=\"submit\">Register</button>\n</form>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_count",
+					"value": { "selector": "fieldset", "min": 2 },
+					"message": "Create at least 2 fieldsets"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "legend", "min": 2 },
+					"message": "Add a legend to each fieldset"
+				},
+				{
+					"type": "element_exists",
+					"value": "textarea",
+					"message": "Add a textarea for the bio"
+				},
+				{
+					"type": "element_exists",
+					"value": "button",
+					"message": "Add a submit button"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "input", "min": 2 },
+					"message": "Add at least 2 input fields"
+				}
+			]
+		}
+	]
+}

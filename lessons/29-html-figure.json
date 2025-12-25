@@ -1,0 +1,102 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "html-figure",
+	"title": "Figure & Figcaption",
+	"description": "Create self-contained content with captions",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "figure-basic",
+			"title": "Image with Caption",
+			"description": "The <kbd>&lt;figure&gt;</kbd> element wraps self-contained content like images, diagrams, or code. Add <kbd>&lt;figcaption&gt;</kbd> to provide a caption.<br><br>This semantic structure helps screen readers and search engines understand your content.",
+			"task": "Create a figure with:<br>1. A <kbd>&lt;figure&gt;</kbd> element<br>2. An <kbd>&lt;img&gt;</kbd> inside (use placeholder URL)<br>3. A <kbd>&lt;figcaption&gt;</kbd> describing the image",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; } figure { margin: 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 400px; } figure img { width: 100%; height: 200px; object-fit: cover; display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); } figcaption { padding: 15px 20px; color: #555; font-size: 0.95rem; border-top: 1px solid #eee; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a figure with an image and caption -->",
+			"solution": "<figure>\n  <img src=\"https://picsum.photos/400/200\" alt=\"A beautiful landscape\">\n  <figcaption>A beautiful mountain landscape at sunset.</figcaption>\n</figure>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "figure",
+					"message": "Add a <figure> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "figure img",
+					"message": "Add an <img> inside the figure"
+				},
+				{
+					"type": "element_exists",
+					"value": "figcaption",
+					"message": "Add a <figcaption> for the caption"
+				}
+			]
+		},
+		{
+			"id": "figure-code",
+			"title": "Code Figure",
+			"description": "Figures aren't just for images! You can use them for code snippets, quotes, or any self-contained content.<br><br>Combine <kbd>&lt;figure&gt;</kbd> with <kbd>&lt;pre&gt;</kbd> and <kbd>&lt;code&gt;</kbd> for code examples.",
+			"task": "Create a code figure:<br>1. A <kbd>&lt;figure&gt;</kbd> element<br>2. A <kbd>&lt;pre&gt;</kbd> containing <kbd>&lt;code&gt;</kbd> with some code<br>3. A <kbd>&lt;figcaption&gt;</kbd> describing the code",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #1e1e1e; } figure { margin: 0; background: #2d2d2d; border-radius: 10px; overflow: hidden; max-width: 500px; } pre { margin: 0; padding: 20px; overflow-x: auto; } code { color: #9cdcfe; font-family: 'Fira Code', 'Consolas', monospace; font-size: 14px; line-height: 1.5; } figcaption { padding: 12px 20px; color: #888; font-size: 0.85rem; background: #252525; border-top: 1px solid #3d3d3d; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a figure with a code snippet -->",
+			"solution": "<figure>\n  <pre><code>function greet(name) {\n  return `Hello, ${name}!`;\n}</code></pre>\n  <figcaption>A simple greeting function in JavaScript</figcaption>\n</figure>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "figure",
+					"message": "Add a <figure> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "pre",
+					"message": "Add a <pre> element for preformatted text"
+				},
+				{
+					"type": "element_exists",
+					"value": "code",
+					"message": "Add a <code> element for the code"
+				},
+				{
+					"type": "element_exists",
+					"value": "figcaption",
+					"message": "Add a <figcaption> describing the code"
+				}
+			]
+		},
+		{
+			"id": "figure-gallery",
+			"title": "Image Gallery",
+			"description": "You can put multiple images inside a single <kbd>&lt;figure&gt;</kbd> to create a gallery or comparison.<br><br>The figcaption describes the entire group.",
+			"task": "Create a gallery figure:<br>1. A <kbd>&lt;figure&gt;</kbd> element<br>2. At least 2 <kbd>&lt;img&gt;</kbd> elements<br>3. A <kbd>&lt;figcaption&gt;</kbd> describing the gallery",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } figure { margin: 0; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); max-width: 500px; padding: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; } figure img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; background: linear-gradient(45deg, #ff6b6b, #feca57); } figcaption { grid-column: 1 / -1; padding: 10px 5px 5px; color: #666; font-size: 0.9rem; text-align: center; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a gallery with multiple images -->",
+			"solution": "<figure>\n  <img src=\"https://picsum.photos/200/120?1\" alt=\"Photo 1\">\n  <img src=\"https://picsum.photos/200/120?2\" alt=\"Photo 2\">\n  <img src=\"https://picsum.photos/200/120?3\" alt=\"Photo 3\">\n  <img src=\"https://picsum.photos/200/120?4\" alt=\"Photo 4\">\n  <figcaption>My vacation photo gallery</figcaption>\n</figure>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "figure",
+					"message": "Add a <figure> element"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "figure img", "min": 2 },
+					"message": "Add at least 2 images inside the figure"
+				},
+				{
+					"type": "element_exists",
+					"value": "figcaption",
+					"message": "Add a <figcaption> for the gallery"
+				}
+			]
+		}
+	]
+}

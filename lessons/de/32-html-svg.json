@@ -1,0 +1,102 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-svg",
+	"title": "SVG Grundlagen",
+	"description": "Zeichne skalierbare Vektorgrafiken direkt in HTML",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "svg-circle",
+			"title": "Kreise zeichnen",
+			"description": "SVG (Scalable Vector Graphics) ermöglicht es, Formen direkt in HTML zu zeichnen. Das <kbd>&lt;svg&gt;</kbd>-Element ist der Container mit <kbd>width</kbd> und <kbd>height</kbd> Attributen.<br><br>Verwende <kbd>&lt;circle&gt;</kbd> mit <kbd>cx</kbd>, <kbd>cy</kbd> (Mittelpunkt) und <kbd>r</kbd> (Radius) zum Zeichnen von Kreisen.",
+			"task": "Erstelle ein SVG mit einem Kreis:<br>1. Ein <kbd>&lt;svg&gt;</kbd> mit width=\"200\" und height=\"200\"<br>2. Ein <kbd>&lt;circle&gt;</kbd> zentriert bei (100,100) mit Radius 50<br>3. Füge eine <kbd>fill</kbd>-Farbe hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; display: flex; justify-content: center; } svg { background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Zeichne einen Kreis mit SVG -->",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"50\" fill=\"#3498db\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Füge ein <svg>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "circle",
+					"message": "Füge ein <circle>-Element in das SVG ein"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "circle", "attr": "cx", "value": "100" },
+					"message": "Setze cx=\"100\" für das horizontale Zentrum"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "circle", "attr": "cy", "value": "100" },
+					"message": "Setze cy=\"100\" für das vertikale Zentrum"
+				}
+			]
+		},
+		{
+			"id": "svg-rect-line",
+			"title": "Rechtecke & Linien",
+			"description": "Zeichne Rechtecke mit <kbd>&lt;rect&gt;</kbd> mit <kbd>x</kbd>, <kbd>y</kbd>, <kbd>width</kbd>, <kbd>height</kbd>.<br><br>Zeichne Linien mit <kbd>&lt;line&gt;</kbd> mit <kbd>x1</kbd>, <kbd>y1</kbd> (Start) und <kbd>x2</kbd>, <kbd>y2</kbd> (Ende). Linien brauchen eine <kbd>stroke</kbd>-Farbe!",
+			"task": "Erstelle ein SVG mit:<br>1. Einem <kbd>&lt;svg&gt;</kbd> (200x150)<br>2. Einem <kbd>&lt;rect&gt;</kbd> an Position (20,20) mit Größe 80x60<br>3. Einer <kbd>&lt;line&gt;</kbd> von (120,30) nach (180,90) mit Strichfarbe",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Zeichne ein Rechteck und eine Linie -->",
+			"solution": "<svg width=\"200\" height=\"150\">\n  <rect x=\"20\" y=\"20\" width=\"80\" height=\"60\" fill=\"#e74c3c\" />\n  <line x1=\"120\" y1=\"30\" x2=\"180\" y2=\"90\" stroke=\"#2c3e50\" stroke-width=\"3\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Füge ein <svg>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "rect",
+					"message": "Füge ein <rect>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "line",
+					"message": "Füge ein <line>-Element hinzu"
+				}
+			]
+		},
+		{
+			"id": "svg-shapes",
+			"title": "Mehrere Formen",
+			"description": "Kombiniere Formen, um einfache Grafiken zu erstellen! Füge <kbd>stroke</kbd> für Umrisse und <kbd>stroke-width</kbd> für die Dicke hinzu.<br><br>Verwende <kbd>fill=\"none\"</kbd> für hohle Formen. Formen stapeln sich in Reihenfolge - spätere Elemente erscheinen oben.",
+			"task": "Erstelle ein einfaches Gesicht:<br>1. Ein <kbd>&lt;svg&gt;</kbd> (200x200)<br>2. Einen großen <kbd>&lt;circle&gt;</kbd> für das Gesicht<br>3. Zwei kleine <kbd>&lt;circle&gt;</kbd>-Elemente für Augen<br>4. Eine <kbd>&lt;line&gt;</kbd> für das Lächeln",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 250px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Zeichne ein einfaches Smiley-Gesicht -->",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#f1c40f\" stroke=\"#e67e22\" stroke-width=\"4\" />\n  <circle cx=\"70\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <circle cx=\"130\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <line x1=\"60\" y1=\"130\" x2=\"140\" y2=\"130\" stroke=\"#2c3e50\" stroke-width=\"4\" stroke-linecap=\"round\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Füge ein <svg>-Element hinzu"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "circle", "min": 3 },
+					"message": "Füge mindestens 3 Kreise hinzu (1 Gesicht + 2 Augen)"
+				},
+				{
+					"type": "element_exists",
+					"value": "line",
+					"message": "Füge eine <line> für das Lächeln hinzu"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,68 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "html-data-attributes",
+	"title": "Custom Data Attributes",
+	"description": "Store custom data on HTML elements with data-* attributes",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "data-attributes-intro",
+			"title": "Adding Data Attributes",
+			"description": "Custom <kbd>data-*</kbd> attributes let you store extra information on any HTML element. The attribute name starts with <kbd>data-</kbd> followed by your custom name.<br><br>Examples: <kbd>data-id</kbd>, <kbd>data-category</kbd>, <kbd>data-price</kbd>",
+			"task": "Create two product cards using <kbd>&lt;article&gt;</kbd> elements. Each should have:<br>1. A <kbd>data-category</kbd> attribute (e.g., 'electronics' or 'clothing')<br>2. A <kbd>data-price</kbd> attribute with a number<br>3. An <kbd>&lt;h2&gt;</kbd> with the product name",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; display: grid; gap: 15px; } article { padding: 20px; border-radius: 10px; background: #f5f5f5; border-left: 4px solid #ccc; } article[data-category='electronics'] { border-left-color: #2196f3; background: #e3f2fd; } article[data-category='clothing'] { border-left-color: #e91e63; background: #fce4ec; } h2 { margin: 0 0 10px 0; } article::after { content: '€' attr(data-price); display: block; font-weight: bold; color: #4caf50; margin-top: 10px; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create product cards with data attributes -->",
+			"solution": "<article data-category=\"electronics\" data-price=\"299\">\n  <h2>Laptop</h2>\n  <p>A powerful laptop for work and play.</p>\n</article>\n\n<article data-category=\"clothing\" data-price=\"49\">\n  <h2>T-Shirt</h2>\n  <p>A comfortable cotton t-shirt.</p>\n</article>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_count",
+					"value": { "selector": "article[data-category]", "min": 2 },
+					"message": "Create at least 2 articles with data-category attributes"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "article[data-price]", "min": 2 },
+					"message": "Add data-price attribute to your articles"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "article h2", "min": 2 },
+					"message": "Add an <h2> inside each article"
+				}
+			]
+		},
+		{
+			"id": "data-attributes-css",
+			"title": "Styling with Data Attributes",
+			"description": "CSS can select elements by their data attributes using <kbd>[data-*]</kbd> selectors. You can even match specific values!<br><br>The preview CSS uses <kbd>[data-status='active']</kbd> to style active items differently.",
+			"task": "Create a task list with 3 <kbd>&lt;li&gt;</kbd> items. Give each a <kbd>data-status</kbd> attribute:<br>1. One with <kbd>data-status=\"completed\"</kbd><br>2. One with <kbd>data-status=\"active\"</kbd><br>3. One with <kbd>data-status=\"pending\"</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } ul { list-style: none; padding: 0; } li { padding: 15px; margin: 8px 0; border-radius: 8px; background: #f5f5f5; } li[data-status='completed'] { background: #c8e6c9; text-decoration: line-through; color: #388e3c; } li[data-status='active'] { background: #fff3e0; border-left: 4px solid #ff9800; font-weight: 600; } li[data-status='pending'] { background: #e3f2fd; color: #1976d2; }",
+			"sandboxCSS": "",
+			"initialCode": "<ul>\n  <!-- Add list items with data-status attributes -->\n</ul>",
+			"solution": "<ul>\n  <li data-status=\"completed\">Buy groceries</li>\n  <li data-status=\"active\">Finish homework</li>\n  <li data-status=\"pending\">Call mom</li>\n</ul>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "li[data-status='completed']",
+					"message": "Add an item with data-status=\"completed\""
+				},
+				{
+					"type": "element_exists",
+					"value": "li[data-status='active']",
+					"message": "Add an item with data-status=\"active\""
+				},
+				{
+					"type": "element_exists",
+					"value": "li[data-status='pending']",
+					"message": "Add an item with data-status=\"pending\""
+				}
+			]
+		}
+	]
+}

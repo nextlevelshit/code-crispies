@@ -1,0 +1,68 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-data-attributes",
+	"title": "Benutzerdefinierte Data-Attribute",
+	"description": "Speichere eigene Daten auf HTML-Elementen mit data-* Attributen",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "data-attributes-intro",
+			"title": "Data-Attribute hinzufügen",
+			"description": "Benutzerdefinierte <kbd>data-*</kbd>-Attribute ermöglichen es, zusätzliche Informationen auf jedem HTML-Element zu speichern. Der Attributname beginnt mit <kbd>data-</kbd> gefolgt von deinem eigenen Namen.<br><br>Beispiele: <kbd>data-id</kbd>, <kbd>data-category</kbd>, <kbd>data-price</kbd>",
+			"task": "Erstelle zwei Produkt-Karten mit <kbd>&lt;article&gt;</kbd>-Elementen. Jede sollte haben:<br>1. Ein <kbd>data-category</kbd>-Attribut (z.B. 'electronics' oder 'clothing')<br>2. Ein <kbd>data-price</kbd>-Attribut mit einer Zahl<br>3. Ein <kbd>&lt;h2&gt;</kbd> mit dem Produktnamen",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; display: grid; gap: 15px; } article { padding: 20px; border-radius: 10px; background: #f5f5f5; border-left: 4px solid #ccc; } article[data-category='electronics'] { border-left-color: #2196f3; background: #e3f2fd; } article[data-category='clothing'] { border-left-color: #e91e63; background: #fce4ec; } h2 { margin: 0 0 10px 0; } article::after { content: '€' attr(data-price); display: block; font-weight: bold; color: #4caf50; margin-top: 10px; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle Produkt-Karten mit Data-Attributen -->",
+			"solution": "<article data-category=\"electronics\" data-price=\"299\">\n  <h2>Laptop</h2>\n  <p>Ein leistungsstarker Laptop für Arbeit und Freizeit.</p>\n</article>\n\n<article data-category=\"clothing\" data-price=\"49\">\n  <h2>T-Shirt</h2>\n  <p>Ein bequemes Baumwoll-T-Shirt.</p>\n</article>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_count",
+					"value": { "selector": "article[data-category]", "min": 2 },
+					"message": "Erstelle mindestens 2 Articles mit data-category-Attributen"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "article[data-price]", "min": 2 },
+					"message": "Füge data-price-Attribute zu deinen Articles hinzu"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "article h2", "min": 2 },
+					"message": "Füge ein <h2> in jeden Article ein"
+				}
+			]
+		},
+		{
+			"id": "data-attributes-css",
+			"title": "Styling mit Data-Attributen",
+			"description": "CSS kann Elemente über ihre Data-Attribute mit <kbd>[data-*]</kbd>-Selektoren auswählen. Du kannst sogar bestimmte Werte abgleichen!<br><br>Das Vorschau-CSS verwendet <kbd>[data-status='active']</kbd>, um aktive Elemente anders zu stylen.",
+			"task": "Erstelle eine Aufgabenliste mit 3 <kbd>&lt;li&gt;</kbd>-Elementen. Gib jedem ein <kbd>data-status</kbd>-Attribut:<br>1. Eines mit <kbd>data-status=\"completed\"</kbd><br>2. Eines mit <kbd>data-status=\"active\"</kbd><br>3. Eines mit <kbd>data-status=\"pending\"</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } ul { list-style: none; padding: 0; } li { padding: 15px; margin: 8px 0; border-radius: 8px; background: #f5f5f5; } li[data-status='completed'] { background: #c8e6c9; text-decoration: line-through; color: #388e3c; } li[data-status='active'] { background: #fff3e0; border-left: 4px solid #ff9800; font-weight: 600; } li[data-status='pending'] { background: #e3f2fd; color: #1976d2; }",
+			"sandboxCSS": "",
+			"initialCode": "<ul>\n  <!-- Füge Listenelemente mit data-status-Attributen hinzu -->\n</ul>",
+			"solution": "<ul>\n  <li data-status=\"completed\">Einkaufen gehen</li>\n  <li data-status=\"active\">Hausaufgaben fertig machen</li>\n  <li data-status=\"pending\">Mama anrufen</li>\n</ul>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "li[data-status='completed']",
+					"message": "Füge ein Element mit data-status=\"completed\" hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "li[data-status='active']",
+					"message": "Füge ein Element mit data-status=\"active\" hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "li[data-status='pending']",
+					"message": "Füge ein Element mit data-status=\"pending\" hinzu"
+				}
+			]
+		}
+	]
+}

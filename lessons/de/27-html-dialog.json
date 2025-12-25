@@ -1,0 +1,83 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-dialog",
+	"title": "Natives Dialog-Element",
+	"description": "Erstelle modale Dialoge ohne JavaScript-Bibliotheken",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "dialog-basic",
+			"title": "Dialog öffnen",
+			"description": "Das <kbd>&lt;dialog&gt;</kbd>-Element erstellt ein natives Modal. Füge das <kbd>open</kbd>-Attribut hinzu, um es anzuzeigen.<br><br>Verwende <kbd>&lt;form method=\"dialog\"&gt;</kbd> darin, um es beim Absenden des Formulars zu schließen - kein JavaScript nötig!",
+			"task": "Erstelle einen Dialog mit:<br>1. Dem <kbd>open</kbd>-Attribut, um ihn anzuzeigen<br>2. Einem <kbd>&lt;h2&gt;</kbd> mit 'Willkommen!'<br>3. Einem <kbd>&lt;p&gt;</kbd> mit einer Begrüßungsnachricht<br>4. Einem <kbd>&lt;form method=\"dialog\"&gt;</kbd> mit einem Schließen-Button",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: #f5f5f5; } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 400px; } dialog::backdrop { background: rgba(0,0,0,0.5); } dialog h2 { margin: 0 0 15px 0; color: #1976d2; } dialog p { color: #666; margin: 0 0 20px 0; } dialog button { background: #1976d2; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; } dialog button:hover { background: #1565c0; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle einen Dialog mit dem open-Attribut -->",
+			"solution": "<dialog open>\n  <h2>Willkommen!</h2>\n  <p>Dies ist ein natives HTML-Dialog-Element.</p>\n  <form method=\"dialog\">\n    <button>Schließen</button>\n  </form>\n</dialog>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "dialog",
+					"message": "Füge ein <dialog>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "dialog", "attr": "open", "value": true },
+					"message": "Füge das 'open'-Attribut hinzu, um den Dialog anzuzeigen"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog h2",
+					"message": "Füge eine <h2>-Überschrift im Dialog hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "form[method='dialog']",
+					"message": "Füge ein <form method=\"dialog\"> zum Schließen hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog button",
+					"message": "Füge einen Schließen-Button im Formular hinzu"
+				}
+			]
+		},
+		{
+			"id": "dialog-form",
+			"title": "Dialog mit Formular",
+			"description": "Dialoge können vollständige Formulare enthalten. Das <kbd>method=\"dialog\"</kbd> lässt das Formular den Dialog beim Absenden schließen, anstatt Daten zu senden.<br><br>Dieses Muster ist perfekt für Bestätigungsdialoge, schnelle Eingaben oder Einstellungspanels.",
+			"task": "Erstelle einen Bestätigungsdialog:<br>1. Füge <kbd>open</kbd> hinzu, um ihn anzuzeigen<br>2. Ein <kbd>&lt;h2&gt;</kbd> mit 'Löschen bestätigen'<br>3. Ein <kbd>&lt;p&gt;</kbd> mit 'Bist du sicher?'<br>4. Ein <kbd>&lt;form method=\"dialog\"&gt;</kbd> mit Abbrechen- und Löschen-Buttons",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 350px; text-align: center; } dialog h2 { margin: 0 0 10px 0; color: #c62828; } dialog p { color: #666; margin: 0 0 20px 0; } dialog form { display: flex; gap: 10px; justify-content: center; } dialog button { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; border: none; } dialog button:first-child { background: #e0e0e0; color: #333; } dialog button:last-child { background: #c62828; color: white; } dialog button:hover { opacity: 0.9; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle einen Bestätigungsdialog -->",
+			"solution": "<dialog open>\n  <h2>Löschen bestätigen</h2>\n  <p>Bist du sicher, dass du dieses Element löschen möchtest?</p>\n  <form method=\"dialog\">\n    <button value=\"cancel\">Abbrechen</button>\n    <button value=\"delete\">Löschen</button>\n  </form>\n</dialog>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "dialog[open]",
+					"message": "Füge ein <dialog> mit dem open-Attribut hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog h2",
+					"message": "Füge eine Überschrift zum Dialog hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "form[method='dialog']",
+					"message": "Füge ein <form method=\"dialog\"> für die Buttons hinzu"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "dialog button", "min": 2 },
+					"message": "Füge mindestens 2 Buttons hinzu (Abbrechen und Bestätigen)"
+				}
+			]
+		}
+	]
+}
