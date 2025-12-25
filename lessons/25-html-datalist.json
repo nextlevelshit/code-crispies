@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <datalist> element"
+					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "browsers" },
-					"message": "Connect the input to datalist using list=\"browsers\""
+					"message": "Connect the input to datalist using <kbd>list=</kbd>\"browsers\""
 				},
 				{
 					"type": "element_count",
@@ -36,7 +36,7 @@
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <label> for the input"
+					"message": "Add a <kbd>&lt;label&gt;</kbd> for the input"
 				}
 			]
 		},
@@ -55,17 +55,17 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <datalist> element"
+					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "datalist", "attr": "id", "value": "countries" },
-					"message": "Set id=\"countries\" on the datalist"
+					"message": "Set <kbd>id=</kbd>\"countries\" on the datalist"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "countries" },
-					"message": "Connect the input using list=\"countries\""
+					"message": "Connect the input using <kbd>list=</kbd>\"countries\""
 				},
 				{
 					"type": "element_count",

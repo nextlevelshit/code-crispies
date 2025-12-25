@@ -21,22 +21,22 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Füge ein <progress>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;progress&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "value", "value": "70" },
-					"message": "Setze value=\"70\" beim Progress-Element"
+					"message": "Setze <kbd>value=</kbd>\"70\" beim Progress-Element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "max", "value": "100" },
-					"message": "Setze max=\"100\" beim Progress-Element"
+					"message": "Setze <kbd>max=</kbd>\"100\" beim Progress-Element"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Füge ein <label> für den Fortschrittsbalken hinzu"
+					"message": "Füge ein <kbd>&lt;label&gt;</kbd> für den Fortschrittsbalken hinzu"
 				}
 			]
 		},
@@ -55,12 +55,12 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Füge ein <progress>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;progress&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "p",
-					"message": "Füge ein <p> mit Ladetext hinzu"
+					"message": "Füge ein <kbd>&lt;p&gt;</kbd> mit Ladetext hinzu"
 				}
 			]
 		},
@@ -79,22 +79,22 @@
 				{
 					"type": "element_exists",
 					"value": "meter",
-					"message": "Füge ein <meter>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;meter&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "value", "value": "0.8" },
-					"message": "Setze value=\"0.8\" beim Meter"
+					"message": "Setze <kbd>value=</kbd>\"0.8\" beim Meter"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "low", "value": "0.2" },
-					"message": "Setze low=\"0.2\", um den niedrigen Schwellenwert zu definieren"
+					"message": "Setze <kbd>low=</kbd>\"0.2\", um den niedrigen Schwellenwert zu definieren"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Füge ein <label> für das Meter hinzu"
+					"message": "Füge ein <kbd>&lt;label&gt;</kbd> für das Meter hinzu"
 				}
 			]
 		}

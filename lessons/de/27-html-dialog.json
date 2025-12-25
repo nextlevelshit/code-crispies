@@ -21,17 +21,17 @@
 				{
 					"type": "element_exists",
 					"value": "dialog",
-					"message": "Füge ein <dialog>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;dialog&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "dialog", "attr": "open", "value": true },
-					"message": "Füge das 'open'-Attribut hinzu, um den Dialog anzuzeigen"
+					"message": "Füge das <kbd>open</kbd>-Attribut hinzu, um den Dialog anzuzeigen"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Füge eine <h2>-Überschrift im Dialog hinzu"
+					"message": "Füge eine <kbd>&lt;h2&gt;</kbd>-Überschrift im Dialog hinzu"
 				},
 				{
 					"type": "element_exists",
@@ -60,7 +60,7 @@
 				{
 					"type": "element_exists",
 					"value": "dialog[open]",
-					"message": "Füge ein <dialog> mit dem open-Attribut hinzu"
+					"message": "Füge ein <kbd>&lt;dialog&gt;</kbd> mit dem open-Attribut hinzu"
 				},
 				{
 					"type": "element_exists",

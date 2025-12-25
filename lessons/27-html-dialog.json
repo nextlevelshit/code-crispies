@@ -21,17 +21,17 @@
 				{
 					"type": "element_exists",
 					"value": "dialog",
-					"message": "Add a <dialog> element"
+					"message": "Add a <kbd>&lt;dialog&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "dialog", "attr": "open", "value": true },
-					"message": "Add the 'open' attribute to show the dialog"
+					"message": "Add the <kbd>open</kbd> attribute to show the dialog"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add an <h2> heading inside the dialog"
+					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading inside the dialog"
 				},
 				{
 					"type": "element_exists",
@@ -60,7 +60,7 @@
 				{
 					"type": "element_exists",
 					"value": "dialog[open]",
-					"message": "Add a <dialog> with the open attribute"
+					"message": "Add a <kbd>&lt;dialog&gt;</kbd> with the open attribute"
 				},
 				{
 					"type": "element_exists",

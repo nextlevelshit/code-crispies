@@ -21,7 +21,7 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Füge ein <marquee>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu"
 				}
 			]
 		},
@@ -40,12 +40,12 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Füge ein <marquee>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "behavior", "value": "alternate" },
-					"message": "Füge behavior=\"alternate\" zum Springen hinzu"
+					"message": "Füge <kbd>behavior=</kbd>\"alternate\" zum Springen hinzu"
 				}
 			]
 		},
@@ -64,17 +64,17 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Füge ein <marquee>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "direction", "value": "left" },
-					"message": "Füge direction=\"left\" für horizontales Scrollen hinzu"
+					"message": "Füge <kbd>direction=</kbd>\"left\" für horizontales Scrollen hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "scrollamount", "value": "5" },
-					"message": "Füge scrollamount=\"5\" für flüssige Geschwindigkeit hinzu"
+					"message": "Füge <kbd>scrollamount=</kbd>\"5\" für flüssige Geschwindigkeit hinzu"
 				}
 			]
 		}

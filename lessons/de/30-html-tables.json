@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Füge ein <table>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;table&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Füge eine <caption> als Tabellentitel hinzu"
+					"message": "Füge eine <kbd>&lt;caption&gt;</kbd> als Tabellentitel hinzu"
 				},
 				{
 					"type": "element_count",
@@ -55,22 +55,22 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Füge ein <table>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;table&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Füge ein <caption>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;caption&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "thead",
-					"message": "Füge ein <thead> für den Kopfbereich hinzu"
+					"message": "Füge ein <kbd>&lt;thead&gt;</kbd> für den Kopfbereich hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "tbody",
-					"message": "Füge ein <tbody> für die Datenzeilen hinzu"
+					"message": "Füge ein <kbd>&lt;tbody&gt;</kbd> für die Datenzeilen hinzu"
 				},
 				{
 					"type": "element_count",
@@ -94,27 +94,27 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Füge ein <table>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;table&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Füge ein <caption>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;caption&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "thead",
-					"message": "Füge einen <thead>-Abschnitt hinzu"
+					"message": "Füge einen <kbd>&lt;thead&gt;</kbd>-Abschnitt hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "tbody",
-					"message": "Füge einen <tbody>-Abschnitt hinzu"
+					"message": "Füge einen <kbd>&lt;tbody&gt;</kbd>-Abschnitt hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "tfoot",
-					"message": "Füge einen <tfoot>-Abschnitt für die Summe hinzu"
+					"message": "Füge einen <kbd>&lt;tfoot&gt;</kbd>-Abschnitt für die Summe hinzu"
 				},
 				{
 					"type": "element_count",

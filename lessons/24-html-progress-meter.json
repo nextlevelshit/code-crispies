@@ -21,22 +21,22 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Add a <progress> element"
+					"message": "Add a <kbd>&lt;progress&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "value", "value": "70" },
-					"message": "Set value=\"70\" on the progress element"
+					"message": "Set <kbd>value=</kbd>\"70\" on the progress element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "max", "value": "100" },
-					"message": "Set max=\"100\" on the progress element"
+					"message": "Set <kbd>max=</kbd>\"100\" on the progress element"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <label> for the progress bar"
+					"message": "Add a <kbd>&lt;label&gt;</kbd> for the progress bar"
 				}
 			]
 		},
@@ -55,12 +55,12 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Add a <progress> element"
+					"message": "Add a <kbd>&lt;progress&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "p",
-					"message": "Add a <p> with loading text"
+					"message": "Add a <kbd>&lt;p&gt;</kbd> with loading text"
 				}
 			]
 		},
@@ -79,22 +79,22 @@
 				{
 					"type": "element_exists",
 					"value": "meter",
-					"message": "Add a <meter> element"
+					"message": "Add a <kbd>&lt;meter&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "value", "value": "0.8" },
-					"message": "Set value=\"0.8\" on the meter"
+					"message": "Set <kbd>value=</kbd>\"0.8\" on the meter"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "low", "value": "0.2" },
-					"message": "Set low=\"0.2\" to define the low threshold"
+					"message": "Set <kbd>low=</kbd>\"0.2\" to define the low threshold"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <label> for the meter"
+					"message": "Add a <kbd>&lt;label&gt;</kbd> for the meter"
 				}
 			]
 		}

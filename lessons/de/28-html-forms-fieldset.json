@@ -15,23 +15,23 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f0f4f8; } form { max-width: 400px; } fieldset { border: 2px solid #3498db; border-radius: 10px; padding: 20px; background: white; } legend { color: #3498db; font-weight: 600; padding: 0 10px; font-size: 1.1rem; } label { display: block; margin: 15px 0 5px; color: #333; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; } input:focus { outline: 2px solid #3498db; border-color: transparent; }",
 			"sandboxCSS": "",
 			"initialCode": "<!-- Erstelle ein Formular mit einer Fieldset-Gruppe -->",
-			"solution": "<form>\n  <fieldset>\n    <legend>Persönliche Daten</legend>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\">\n    <label for=\"email\">E-Mail:</label>\n    <input type=\"email\" id=\"email\" name=\"email\">\n  </fieldset>\n</form>",
+			"solution": "<form>\n  <fieldset>\n    <legend>Persönliche Daten</legend>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\">\n    <label for=\"email\">E-Mail:</label>\n    <input type=<kbd>\"email\"</kbd> id=\"email\" name=\"email\">\n  </fieldset>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "form",
-					"message": "Füge ein <form>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;form&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "fieldset",
-					"message": "Füge ein <fieldset> im Formular hinzu"
+					"message": "Füge ein <kbd>&lt;fieldset&gt;</kbd> im Formular hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "legend",
-					"message": "Füge ein <legend> für den Titel hinzu"
+					"message": "Füge ein <kbd>&lt;legend&gt;</kbd> für den Titel hinzu"
 				},
 				{
 					"type": "element_count",
@@ -54,23 +54,23 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } form { max-width: 450px; margin: 0 auto; } fieldset { border: none; border-radius: 15px; padding: 30px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.2); } legend { color: #667eea; font-weight: 700; padding: 0; font-size: 1.5rem; margin-bottom: 10px; } label { display: block; margin: 20px 0 8px; color: #333; font-weight: 500; } input, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: none; border-color: #667eea; } textarea { resize: vertical; min-height: 100px; } button { margin-top: 20px; width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; } button:hover { opacity: 0.9; }",
 			"sandboxCSS": "",
 			"initialCode": "<!-- Erstelle ein Kontaktformular mit Textarea -->",
-			"solution": "<form>\n  <fieldset>\n    <legend>Kontaktiere uns</legend>\n    <label for=\"email\">E-Mail:</label>\n    <input type=\"email\" id=\"email\" name=\"email\">\n    <label for=\"message\">Nachricht:</label>\n    <textarea id=\"message\" name=\"message\" rows=\"4\"></textarea>\n    <button type=\"submit\">Nachricht senden</button>\n  </fieldset>\n</form>",
+			"solution": "<form>\n  <fieldset>\n    <legend>Kontaktiere uns</legend>\n    <label for=\"email\">E-Mail:</label>\n    <input type=<kbd>\"email\"</kbd> id=\"email\" name=\"email\">\n    <label for=\"message\">Nachricht:</label>\n    <textarea id=\"message\" name=\"message\" rows=\"4\"></textarea>\n    <button type=\"submit\">Nachricht senden</button>\n  </fieldset>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "fieldset",
-					"message": "Füge ein <fieldset>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;fieldset&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "legend",
-					"message": "Füge ein <legend>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;legend&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "textarea",
-					"message": "Füge eine <textarea> für die Nachricht hinzu"
+					"message": "Füge eine <kbd>&lt;textarea&gt;</kbd> für die Nachricht hinzu"
 				},
 				{
 					"type": "element_exists",
@@ -93,7 +93,7 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #fafafa; } form { max-width: 500px; } fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background: white; } legend { color: #2c3e50; font-weight: 600; padding: 0 10px; } label { display: block; margin: 15px 0 5px; color: #555; } input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: 2px solid #3498db; border-color: transparent; } textarea { resize: vertical; min-height: 80px; } button { width: 100%; padding: 14px; background: #2c3e50; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; } button:hover { background: #34495e; }",
 			"sandboxCSS": "",
 			"initialCode": "<!-- Erstelle ein Formular mit mehreren Fieldsets -->",
-			"solution": "<form>\n  <fieldset>\n    <legend>Kontodaten</legend>\n    <label for=\"username\">Benutzername:</label>\n    <input type=\"text\" id=\"username\" name=\"username\">\n    <label for=\"password\">Passwort:</label>\n    <input type=\"password\" id=\"password\" name=\"password\">\n  </fieldset>\n  <fieldset>\n    <legend>Einstellungen</legend>\n    <label for=\"bio\">Bio:</label>\n    <textarea id=\"bio\" name=\"bio\"></textarea>\n  </fieldset>\n  <button type=\"submit\">Registrieren</button>\n</form>",
+			"solution": "<form>\n  <fieldset>\n    <legend>Kontodaten</legend>\n    <label for=\"username\">Benutzername:</label>\n    <input type=\"text\" id=\"username\" name=\"username\">\n    <label for=\"password\">Passwort:</label>\n    <input type=<kbd>\"password\"</kbd> id=\"password\" name=\"password\">\n  </fieldset>\n  <fieldset>\n    <legend>Einstellungen</legend>\n    <label for=\"bio\">Bio:</label>\n    <textarea id=\"bio\" name=\"bio\"></textarea>\n  </fieldset>\n  <button type=\"submit\">Registrieren</button>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{

@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "p",
-					"message": "Füge ein <p> Absatz-Element hinzu"
+					"message": "Füge ein <kbd>&lt;p&gt;</kbd> Absatz-Element hinzu"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "p", "child": "strong" },
-					"message": "Umschließe das Wort 'wichtigen' mit <strong>-Tags"
+					"message": "Umschließe das Wort 'wichtigen' mit <kbd>&lt;strong&gt;</kbd>-Tags"
 				}
 			]
 		},
@@ -45,22 +45,22 @@
 				{
 					"type": "element_exists",
 					"value": "header",
-					"message": "Füge ein <header>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;header&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "main",
-					"message": "Füge ein <main>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;main&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "footer",
-					"message": "Füge ein <footer>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;footer&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "header", "child": "h1" },
-					"message": "Füge eine <h1>-Überschrift in deinem Header hinzu"
+					"message": "Füge eine <kbd>&lt;h1&gt;</kbd>-Überschrift in deinem Header hinzu"
 				}
 			]
 		},
@@ -79,17 +79,17 @@
 				{
 					"type": "element_exists",
 					"value": "div",
-					"message": "Umschließe alles mit einem <div>-Element"
+					"message": "Umschließe alles mit einem <kbd>&lt;div&gt;</kbd>-Element"
 				},
 				{
 					"type": "element_exists",
 					"value": "span",
-					"message": "Füge ein <span> um das Wort 'hervorgehoben' hinzu"
+					"message": "Füge ein <kbd>&lt;span&gt;</kbd> um das Wort 'hervorgehoben' hinzu"
 				},
 				{
 					"type": "element_text",
 					"value": { "selector": "span", "text": "hervorgehoben" },
-					"message": "Das <span> sollte das Wort 'hervorgehoben' enthalten"
+					"message": "Das <kbd>&lt;span&gt;</kbd> sollte das Wort 'hervorgehoben' enthalten"
 				}
 			]
 		}
