@@ -988,6 +988,14 @@ input:checked + .toggle-slider::before {
 		max-height: 30vh;
 	}
 
+	.editor-section {
+		min-height: 200px;
+	}
+
+	.editor-content {
+		min-height: 150px;
+	}
+
 	.preview-wrapper {
 		margin: var(--spacing-sm);
 	}
