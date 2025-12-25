@@ -101,19 +101,49 @@ export class LessonEngine {
 	}
 
 	/**
-	 * Move to the next lesson
+	 * Move to the next lesson (crosses module boundaries)
 	 * @returns {boolean} Whether the operation was successful
 	 */
 	nextLesson() {
-		return this.setLessonByIndex(this.currentLessonIndex + 1);
+		// Try next lesson in current module
+		if (this.setLessonByIndex(this.currentLessonIndex + 1)) {
+			return true;
+		}
+
+		// At end of module, try next module
+		const currentModuleIndex = this.modules.findIndex((m) => m.id === this.currentModule?.id);
+		if (currentModuleIndex >= 0 && currentModuleIndex < this.modules.length - 1) {
+			const nextModule = this.modules[currentModuleIndex + 1];
+			this.setModule(nextModule);
+			this.setLessonByIndex(0); // Start at first lesson
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
-	 * Move to the previous lesson
+	 * Move to the previous lesson (crosses module boundaries)
 	 * @returns {boolean} Whether the operation was successful
 	 */
 	previousLesson() {
-		return this.setLessonByIndex(this.currentLessonIndex - 1);
+		// Try previous lesson in current module
+		if (this.setLessonByIndex(this.currentLessonIndex - 1)) {
+			return true;
+		}
+
+		// At start of module, try previous module
+		const currentModuleIndex = this.modules.findIndex((m) => m.id === this.currentModule?.id);
+		if (currentModuleIndex > 0) {
+			const prevModule = this.modules[currentModuleIndex - 1];
+			this.setModule(prevModule);
+			// Go to last lesson of previous module
+			const lastIndex = prevModule.lessons.length - 1;
+			this.setLessonByIndex(lastIndex);
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -400,6 +430,12 @@ export class LessonEngine {
 	 * @returns {Object} The current lesson state
 	 */
 	getCurrentState() {
+		const currentModuleIndex = this.modules.findIndex((m) => m.id === this.currentModule?.id);
+		const isLastLesson = this.currentLessonIndex >= (this.currentModule ? this.currentModule.lessons.length - 1 : 0);
+		const isFirstLesson = this.currentLessonIndex === 0;
+		const isLastModule = currentModuleIndex >= this.modules.length - 1;
+		const isFirstModule = currentModuleIndex <= 0;
+
 		return {
 			module: this.currentModule,
 			lesson: this.currentLesson,
@@ -407,8 +443,8 @@ export class LessonEngine {
 			userCode: this.userCode,
 			totalLessons: this.currentModule ? this.currentModule.lessons.length : 0,
 			isCompleted: this.isCurrentLessonCompleted(),
-			canGoNext: this.currentLessonIndex < (this.currentModule ? this.currentModule.lessons.length - 1 : 0),
-			canGoPrev: this.currentLessonIndex > 0
+			canGoNext: !isLastLesson || !isLastModule,
+			canGoPrev: !isFirstLesson || !isFirstModule
 		};
 	}
 
