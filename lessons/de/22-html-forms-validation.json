@@ -21,12 +21,12 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input[name='name']", "attr": "required", "value": true },
-					"message": "Füge das 'required'-Attribut zur Name-Eingabe hinzu"
+					"message": "Füge required zum Namensfeld hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input[name='email']", "attr": "required", "value": true },
-					"message": "Füge das 'required'-Attribut zur E-Mail-Eingabe hinzu"
+					"message": "Füge required zum E-Mail-Feld hinzu"
 				}
 			]
 		},
@@ -45,12 +45,12 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input[type='password']", "attr": "minlength", "value": "8" },
-					"message": "Füge minlength=\"8\" zur Passwort-Eingabe hinzu"
+					"message": "Füge minlength=\"8\" zum Passwort hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input[type='password']", "attr": "maxlength", "value": "20" },
-					"message": "Füge maxlength=\"20\" zur Passwort-Eingabe hinzu"
+					"message": "Füge maxlength=\"20\" zum Passwort hinzu"
 				},
 				{
 					"type": "attribute_value",

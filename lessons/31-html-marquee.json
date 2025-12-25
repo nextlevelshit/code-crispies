@@ -14,7 +14,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2rem; color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; font-family: 'Courier New', monospace; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Create a scrolling marquee -->",
+			"initialCode": "",
 			"solution": "<marquee>Welcome to my website!</marquee>",
 			"previewContainer": "preview-area",
 			"validations": [
@@ -33,7 +33,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2.5rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-weight: bold; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Create a bouncing marquee -->",
+			"initialCode": "",
 			"solution": "<marquee behavior=\"alternate\">Bounce! Bounce! Bounce!</marquee>",
 			"previewContainer": "preview-area",
 			"validations": [
@@ -57,7 +57,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 0; margin: 0; background: #1a1a2e; } marquee { background: linear-gradient(90deg, #c0392b 0%, #e74c3c 50%, #c0392b 100%); padding: 15px 0; font-size: 1.3rem; color: white; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-top: 3px solid #f1c40f; border-bottom: 3px solid #f1c40f; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Create a retro news ticker -->",
+			"initialCode": "",
 			"solution": "<marquee direction=\"left\" scrollamount=\"5\">BREAKING NEWS: Marquee element still works in browsers!</marquee>",
 			"previewContainer": "preview-area",
 			"validations": [

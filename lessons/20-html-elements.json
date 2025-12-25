@@ -38,7 +38,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Create your page structure here -->",
+			"initialCode": "",
 			"solution": "<header>\n  <h1>My Website</h1>\n</header>\n<main>\n  <p>Welcome to my site!</p>\n</main>\n<footer>\n  <p>Copyright 2025</p>\n</footer>",
 			"previewContainer": "preview-area",
 			"validations": [

@@ -10,12 +10,12 @@
 			"id": "block-vs-inline-intro",
 			"title": "Block- vs Inline-Elemente",
 			"description": "HTML-Elemente fallen in zwei Hauptkategorien:<br><br><strong>Block-Elemente</strong> (Container) beginnen in einer neuen Zeile und nehmen die volle Breite ein. Beispiele: <kbd>&lt;div&gt;</kbd>, <kbd>&lt;p&gt;</kbd>, <kbd>&lt;h1&gt;</kbd>, <kbd>&lt;section&gt;</kbd><br><br><strong>Inline-Elemente</strong> fließen innerhalb des Textes und nehmen nur die benötigte Breite ein. Beispiele: <kbd>&lt;span&gt;</kbd>, <kbd>&lt;a&gt;</kbd>, <kbd>&lt;strong&gt;</kbd>, <kbd>&lt;em&gt;</kbd>",
-			"task": "Umschließe das Wort <kbd>wichtig</kbd> mit <kbd>&lt;strong&gt;</kbd>-Tags, um es fett zu machen. Beachte, wie der Absatz (Block) die volle Breite einnimmt, während strong (Inline) mit dem Text fließt.",
+			"task": "Umschließe das Wort <kbd>wichtigen</kbd> mit <kbd>&lt;strong&gt;</kbd>-Tags, um es fett zu machen. Beachte, wie der Absatz (Block) die volle Breite einnimmt, während strong (Inline) mit dem Text fließt.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: #e3f2fd; padding: 10px; } strong { background: #ffecb3; }",
 			"sandboxCSS": "",
-			"initialCode": "<p>Dies ist ein Absatz mit einem wichtig Wort.</p>",
-			"solution": "<p>Dies ist ein Absatz mit einem <strong>wichtig</strong> Wort.</p>",
+			"initialCode": "<p>Dies ist ein Absatz mit einem wichtigen Wort.</p>",
+			"solution": "<p>Dies ist ein Absatz mit einem <strong>wichtigen</strong> Wort.</p>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -26,7 +26,7 @@
 				{
 					"type": "parent_child",
 					"value": { "parent": "p", "child": "strong" },
-					"message": "Umschließe das Wort 'wichtig' mit <strong>-Tags"
+					"message": "Umschließe das Wort 'wichtigen' mit <strong>-Tags"
 				}
 			]
 		},
@@ -38,7 +38,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Erstelle hier deine Seitenstruktur -->",
+			"initialCode": "",
 			"solution": "<header>\n  <h1>Meine Webseite</h1>\n</header>\n<main>\n  <p>Willkommen auf meiner Seite!</p>\n</main>\n<footer>\n  <p>Copyright 2025</p>\n</footer>",
 			"previewContainer": "preview-area",
 			"validations": [
