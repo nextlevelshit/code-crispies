@@ -48,24 +48,24 @@
 		{
 			"id": "input-types",
 			"title": "Eingabetypen",
-			"description": "Verschiedene Eingabetypen bieten passende Tastaturen und Validierung:<br><br><kbd>type=\"text\"</kbd> - Allgemeiner Text<br><kbd>type=<kbd>\"email\"</kbd></kbd> - E-Mail mit @-Validierung<br><kbd>type=<kbd>\"password\"</kbd></kbd> - Versteckte Zeichen<br><kbd>type=\"number\"</kbd> - Numerische Tastatur<br><kbd>type=\"tel\"</kbd> - Telefon-Tastatur",
-			"task": "Erstelle ein Anmeldeformular mit zwei Feldern:<br>1. Ein E-Mail-Feld: <kbd>&lt;label for=\"email\"&gt;E-Mail:&lt;/label&gt;</kbd> und <kbd>&lt;input type=<kbd>\"email\"</kbd> id=\"email\"&gt;</kbd><br>2. Ein Passwort-Feld: <kbd>&lt;label for=\"password\"&gt;Passwort:&lt;/label&gt;</kbd> und <kbd>&lt;input type=<kbd>\"password\"</kbd> id=\"password\"&gt;</kbd>",
+			"description": "Verschiedene Eingabetypen bieten passende Tastaturen und Validierung:<br><br><kbd>type=\"text\"</kbd> - Allgemeiner Text<br><kbd>type=\"email\"</kbd> - E-Mail mit @-Validierung<br><kbd>type=\"password\"</kbd> - Versteckte Zeichen<br><kbd>type=\"number\"</kbd> - Numerische Tastatur<br><kbd>type=\"tel\"</kbd> - Telefon-Tastatur",
+			"task": "Erstelle ein Anmeldeformular mit zwei Feldern:<br>1. Ein E-Mail-Feld: <kbd>&lt;label for=\"email\"&gt;E-Mail:&lt;/label&gt;</kbd> und <kbd>&lt;input type=\"email\" id=\"email\"&gt;</kbd><br>2. Ein Passwort-Feld: <kbd>&lt;label for=\"password\"&gt;Passwort:&lt;/label&gt;</kbd> und <kbd>&lt;input type=\"password\" id=\"password\"&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }",
 			"sandboxCSS": "",
 			"initialCode": "<form>\n  <!-- Füge E-Mail- und Passwort-Eingaben hinzu -->\n</form>",
-			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=<kbd>\"email\"</kbd> id=\"email\" name=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=<kbd>\"password\"</kbd> id=\"password\" name=\"password\">\n</form>",
+			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\" name=\"password\">\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "input[type='email']",
-					"message": "Füge eine Eingabe mit type=<kbd>\"email\"</kbd> hinzu"
+					"message": "Füge eine Eingabe mit type=\"email\" hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "input[type='password']",
-					"message": "Füge eine Eingabe mit type=<kbd>\"password\"</kbd> hinzu"
+					"message": "Füge eine Eingabe mit type=\"password\" hinzu"
 				},
 				{
 					"type": "element_count",
@@ -82,8 +82,8 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } button { width: 100%; margin-top: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
-			"initialCode": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=<kbd>\"email\"</kbd> id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=<kbd>\"password\"</kbd> id=\"password\">\n  \n  <!-- Füge Absende-Button hinzu -->\n</form>",
-			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=<kbd>\"email\"</kbd> id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=<kbd>\"password\"</kbd> id=\"password\">\n  \n  <button type=\"submit\">Anmelden</button>\n</form>",
+			"initialCode": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <!-- Füge Absende-Button hinzu -->\n</form>",
+			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <button type=\"submit\">Anmelden</button>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
