@@ -18,6 +18,7 @@ const elements = {
 	helpBtn: document.getElementById("help-btn"),
 
 	// Left panel
+	modulePill: document.getElementById("module-pill"),
 	lessonTitle: document.getElementById("lesson-title"),
 	lessonDescription: document.getElementById("lesson-description"),
 	taskInstruction: document.getElementById("task-instruction"),
@@ -266,6 +267,11 @@ function loadCurrentLesson() {
 	// Update UI based on mode
 	updateEditorForMode(mode);
 
+	// Update module pill with category name
+	if (elements.modulePill && engineState.module) {
+		elements.modulePill.textContent = engineState.module.title;
+	}
+
 	// Reset any success indicators
 	resetSuccessIndicators();
 
@@ -362,17 +368,37 @@ function updateNavigationButtons() {
 }
 
 function nextLesson() {
+	const prevModuleId = lessonEngine.getCurrentState().module?.id;
 	const success = lessonEngine.nextLesson();
 	if (success) {
+		const newModuleId = lessonEngine.getCurrentState().module?.id;
+		if (newModuleId !== prevModuleId) {
+			updateModuleHighlight(newModuleId);
+		}
 		loadCurrentLesson();
 	}
 }
 
 function prevLesson() {
+	const prevModuleId = lessonEngine.getCurrentState().module?.id;
 	const success = lessonEngine.previousLesson();
 	if (success) {
+		const newModuleId = lessonEngine.getCurrentState().module?.id;
+		if (newModuleId !== prevModuleId) {
+			updateModuleHighlight(newModuleId);
+		}
 		loadCurrentLesson();
 	}
+}
+
+function updateModuleHighlight(moduleId) {
+	const moduleItems = elements.moduleList.querySelectorAll(".module-header");
+	moduleItems.forEach((item) => {
+		item.classList.remove("active");
+		if (item.dataset.moduleId === moduleId) {
+			item.classList.add("active");
+		}
+	});
 }
 
 // ================= CODE EXECUTION =================
