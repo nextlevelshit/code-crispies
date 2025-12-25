@@ -21,17 +21,17 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Add a <figure> element"
+					"message": "Add a <kbd>&lt;figure&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "figure img",
-					"message": "Add an <img> inside the figure"
+					"message": "Add an <kbd>&lt;img&gt;</kbd> inside the figure"
 				},
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Add a <figcaption> for the caption"
+					"message": "Add a <kbd>&lt;figcaption&gt;</kbd> for the caption"
 				}
 			]
 		},
@@ -50,22 +50,22 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Add a <figure> element"
+					"message": "Add a <kbd>&lt;figure&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "pre",
-					"message": "Add a <pre> element for preformatted text"
+					"message": "Add a <kbd>&lt;pre&gt;</kbd> element for preformatted text"
 				},
 				{
 					"type": "element_exists",
 					"value": "code",
-					"message": "Add a <code> element for the code"
+					"message": "Add a <kbd>&lt;code&gt;</kbd> element for the code"
 				},
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Add a <figcaption> describing the code"
+					"message": "Add a <kbd>&lt;figcaption&gt;</kbd> describing the code"
 				}
 			]
 		},
@@ -84,7 +84,7 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Add a <figure> element"
+					"message": "Add a <kbd>&lt;figure&gt;</kbd> element"
 				},
 				{
 					"type": "element_count",
@@ -94,7 +94,7 @@
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Add a <figcaption> for the gallery"
+					"message": "Add a <kbd>&lt;figcaption&gt;</kbd> for the gallery"
 				}
 			]
 		}

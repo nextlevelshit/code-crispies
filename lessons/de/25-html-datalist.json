@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Füge ein <datalist>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;datalist&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "browsers" },
-					"message": "Verbinde das Eingabefeld mit der Datalist über list=\"browsers\""
+					"message": "Verbinde das Eingabefeld mit der Datalist über <kbd>list=</kbd>\"browsers\""
 				},
 				{
 					"type": "element_count",
@@ -36,7 +36,7 @@
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Füge ein <label> für die Eingabe hinzu"
+					"message": "Füge ein <kbd>&lt;label&gt;</kbd> für die Eingabe hinzu"
 				}
 			]
 		},
@@ -55,17 +55,17 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Füge ein <datalist>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;datalist&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "datalist", "attr": "id", "value": "countries" },
-					"message": "Setze id=\"countries\" bei der Datalist"
+					"message": "Setze <kbd>id=</kbd>\"countries\" bei der Datalist"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "countries" },
-					"message": "Verbinde das Eingabefeld über list=\"countries\""
+					"message": "Verbinde das Eingabefeld über <kbd>list=</kbd>\"countries\""
 				},
 				{
 					"type": "element_count",

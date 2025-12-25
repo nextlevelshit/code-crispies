@@ -21,7 +21,7 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Add a <marquee> element"
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
 				}
 			]
 		},
@@ -40,12 +40,12 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Add a <marquee> element"
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "behavior", "value": "alternate" },
-					"message": "Add behavior=\"alternate\" to make it bounce"
+					"message": "Add <kbd>behavior=</kbd>\"alternate\" to make it bounce"
 				}
 			]
 		},
@@ -64,17 +64,17 @@
 				{
 					"type": "element_exists",
 					"value": "marquee",
-					"message": "Add a <marquee> element"
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "direction", "value": "left" },
-					"message": "Add direction=\"left\" for horizontal scrolling"
+					"message": "Add <kbd>direction=</kbd>\"left\" for horizontal scrolling"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "marquee", "attr": "scrollamount", "value": "5" },
-					"message": "Add scrollamount=\"5\" for smooth speed"
+					"message": "Add <kbd>scrollamount=</kbd>\"5\" for smooth speed"
 				}
 			]
 		}

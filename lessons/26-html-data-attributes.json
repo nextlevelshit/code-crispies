@@ -31,7 +31,7 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "article h2", "min": 2 },
-					"message": "Add an <h2> inside each article"
+					"message": "Add an <kbd>&lt;h2&gt;</kbd> inside each article"
 				}
 			]
 		},

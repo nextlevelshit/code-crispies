@@ -21,22 +21,22 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Add an <svg> element"
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "circle",
-					"message": "Add a <circle> element inside the SVG"
+					"message": "Add a <kbd>&lt;circle&gt;</kbd> element inside the SVG"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cx", "value": "100" },
-					"message": "Set cx=\"100\" for the circle's horizontal center"
+					"message": "Set <kbd>cx=</kbd>\"100\" for the circle's horizontal center"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cy", "value": "100" },
-					"message": "Set cy=\"100\" for the circle's vertical center"
+					"message": "Set <kbd>cy=</kbd>\"100\" for the circle's vertical center"
 				}
 			]
 		},
@@ -55,17 +55,17 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Add an <svg> element"
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "rect",
-					"message": "Add a <rect> element"
+					"message": "Add a <kbd>&lt;rect&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "line",
-					"message": "Add a <line> element"
+					"message": "Add a <kbd>&lt;line&gt;</kbd> element"
 				}
 			]
 		},
@@ -84,7 +84,7 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Add an <svg> element"
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
 				},
 				{
 					"type": "element_count",
@@ -94,7 +94,7 @@
 				{
 					"type": "element_exists",
 					"value": "line",
-					"message": "Add a <line> for the smile"
+					"message": "Add a <kbd>&lt;line&gt;</kbd> for the smile"
 				}
 			]
 		}

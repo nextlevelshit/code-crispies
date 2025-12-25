@@ -21,22 +21,22 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Füge ein <svg>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;svg&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "circle",
-					"message": "Füge ein <circle>-Element in das SVG ein"
+					"message": "Füge ein <kbd>&lt;circle&gt;</kbd>-Element in das SVG ein"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cx", "value": "100" },
-					"message": "Setze cx=\"100\" für das horizontale Zentrum"
+					"message": "Setze <kbd>cx=</kbd>\"100\" für das horizontale Zentrum"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cy", "value": "100" },
-					"message": "Setze cy=\"100\" für das vertikale Zentrum"
+					"message": "Setze <kbd>cy=</kbd>\"100\" für das vertikale Zentrum"
 				}
 			]
 		},
@@ -55,17 +55,17 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Füge ein <svg>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;svg&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "rect",
-					"message": "Füge ein <rect>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;rect&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "line",
-					"message": "Füge ein <line>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;line&gt;</kbd>-Element hinzu"
 				}
 			]
 		},
@@ -84,7 +84,7 @@
 				{
 					"type": "element_exists",
 					"value": "svg",
-					"message": "Füge ein <svg>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;svg&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_count",
@@ -94,7 +94,7 @@
 				{
 					"type": "element_exists",
 					"value": "line",
-					"message": "Füge eine <line> für das Lächeln hinzu"
+					"message": "Füge eine <kbd>&lt;line&gt;</kbd> für das Lächeln hinzu"
 				}
 			]
 		}

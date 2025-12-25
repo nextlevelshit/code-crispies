@@ -21,22 +21,22 @@
 				{
 					"type": "element_exists",
 					"value": "details",
-					"message": "Add a <details> element"
+					"message": "Add a <kbd>&lt;details&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "summary",
-					"message": "Add a <summary> inside the details"
+					"message": "Add a <kbd>&lt;summary&gt;</kbd> inside the details"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "summary" },
-					"message": "The <summary> must be inside <details>"
+					"message": "The <kbd>&lt;summary&gt;</kbd> must be inside <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "p" },
-					"message": "Add a <p> inside <details> for the hidden content"
+					"message": "Add a <kbd>&lt;p&gt;</kbd> inside <kbd>&lt;details&gt;</kbd> for the hidden content"
 				}
 			]
 		},
@@ -55,7 +55,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Add the 'open' attribute to <details>"
+					"message": "Add the <kbd>open</kbd> attribute to <details>"
 				}
 			]
 		},
@@ -74,7 +74,7 @@
 				{
 					"type": "element_exists",
 					"value": "h1",
-					"message": "Add an <h1> heading for the FAQ title"
+					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading for the FAQ title"
 				},
 				{
 					"type": "element_count",
@@ -84,12 +84,12 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "summary", "min": 3 },
-					"message": "Each <details> needs a <summary> for the question"
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <summary> for the question"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details p", "min": 3 },
-					"message": "Each <details> needs a <p> for the answer"
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <p> for the answer"
 				}
 			]
 		}

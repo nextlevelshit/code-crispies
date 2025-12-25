@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "p",
-					"message": "Add a <p> paragraph element"
+					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph element"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "p", "child": "strong" },
-					"message": "Wrap the word 'important' with <strong> tags"
+					"message": "Wrap the word 'important' with <kbd>&lt;strong&gt;</kbd> tags"
 				}
 			]
 		},
@@ -45,22 +45,22 @@
 				{
 					"type": "element_exists",
 					"value": "header",
-					"message": "Add a <header> element"
+					"message": "Add a <kbd>&lt;header&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "main",
-					"message": "Add a <main> element"
+					"message": "Add a <kbd>&lt;main&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "footer",
-					"message": "Add a <footer> element"
+					"message": "Add a <kbd>&lt;footer&gt;</kbd> element"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "header", "child": "h1" },
-					"message": "Add an <h1> heading inside your header"
+					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading inside your header"
 				}
 			]
 		},
@@ -79,17 +79,17 @@
 				{
 					"type": "element_exists",
 					"value": "div",
-					"message": "Wrap everything in a <div> element"
+					"message": "Wrap everything in a <kbd>&lt;div&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "span",
-					"message": "Add a <span> around the word 'highlighted'"
+					"message": "Add a <kbd>&lt;span&gt;</kbd> around the word 'highlighted'"
 				},
 				{
 					"type": "element_text",
 					"value": { "selector": "span", "text": "highlighted" },
-					"message": "The <span> should contain the word 'highlighted'"
+					"message": "The <kbd>&lt;span&gt;</kbd> should contain the word 'highlighted'"
 				}
 			]
 		}

@@ -976,24 +976,32 @@ input:checked + .toggle-slider::before {
 	.left-panel,
 	.right-panel {
 		width: 100%;
-		min-height: 50vh;
+		flex-shrink: 0;
 		border-right: none;
 	}
 
 	.left-panel {
+		min-height: 80vh;
 		border-bottom: 1px solid var(--border-color);
 	}
 
+	.right-panel {
+		min-height: 50vh;
+	}
+
 	.instructions {
-		max-height: 30vh;
+		max-height: 25vh;
+		overflow-y: auto;
 	}
 
 	.editor-section {
+		flex: 1;
 		min-height: 50vh;
 	}
 
 	.editor-content {
-		min-height: 40vh;
+		flex: 1;
+		min-height: 45vh;
 	}
 
 	.preview-wrapper {

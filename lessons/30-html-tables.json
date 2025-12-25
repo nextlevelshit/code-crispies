@@ -21,12 +21,12 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Add a <table> element"
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Add a <caption> for the table title"
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> for the table title"
 				},
 				{
 					"type": "element_count",
@@ -55,22 +55,22 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Add a <table> element"
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Add a <caption> element"
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "thead",
-					"message": "Add a <thead> for the header section"
+					"message": "Add a <kbd>&lt;thead&gt;</kbd> for the header section"
 				},
 				{
 					"type": "element_exists",
 					"value": "tbody",
-					"message": "Add a <tbody> for the data rows"
+					"message": "Add a <kbd>&lt;tbody&gt;</kbd> for the data rows"
 				},
 				{
 					"type": "element_count",
@@ -94,27 +94,27 @@
 				{
 					"type": "element_exists",
 					"value": "table",
-					"message": "Add a <table> element"
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "caption",
-					"message": "Add a <caption> element"
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> element"
 				},
 				{
 					"type": "element_exists",
 					"value": "thead",
-					"message": "Add a <thead> section"
+					"message": "Add a <kbd>&lt;thead&gt;</kbd> section"
 				},
 				{
 					"type": "element_exists",
 					"value": "tbody",
-					"message": "Add a <tbody> section"
+					"message": "Add a <kbd>&lt;tbody&gt;</kbd> section"
 				},
 				{
 					"type": "element_exists",
 					"value": "tfoot",
-					"message": "Add a <tfoot> section for the total"
+					"message": "Add a <kbd>&lt;tfoot&gt;</kbd> section for the total"
 				},
 				{
 					"type": "element_count",

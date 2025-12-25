@@ -21,17 +21,17 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Füge ein <figure>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;figure&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "figure img",
-					"message": "Füge ein <img> in die Figure ein"
+					"message": "Füge ein <kbd>&lt;img&gt;</kbd> in die Figure ein"
 				},
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <figcaption> für die Beschriftung hinzu"
+					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> für die Beschriftung hinzu"
 				}
 			]
 		},
@@ -50,22 +50,22 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Füge ein <figure>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;figure&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "pre",
-					"message": "Füge ein <pre>-Element für formatierten Text hinzu"
+					"message": "Füge ein <kbd>&lt;pre&gt;</kbd>-Element für formatierten Text hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "code",
-					"message": "Füge ein <code>-Element für den Code hinzu"
+					"message": "Füge ein <kbd>&lt;code&gt;</kbd>-Element für den Code hinzu"
 				},
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <figcaption> hinzu, das den Code beschreibt"
+					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> hinzu, das den Code beschreibt"
 				}
 			]
 		},
@@ -84,7 +84,7 @@
 				{
 					"type": "element_exists",
 					"value": "figure",
-					"message": "Füge ein <figure>-Element hinzu"
+					"message": "Füge ein <kbd>&lt;figure&gt;</kbd>-Element hinzu"
 				},
 				{
 					"type": "element_count",
@@ -94,7 +94,7 @@
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <figcaption> für die Galerie hinzu"
+					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> für die Galerie hinzu"
 				}
 			]
 		}
