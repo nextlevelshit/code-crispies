@@ -1,0 +1,82 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-marquee",
+	"title": "Das Marquee-Element",
+	"description": "Erstelle Lauftext mit dem klassischen (veralteten aber lustigen!) Marquee-Element",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "marquee-basic",
+			"title": "Lauftext",
+			"description": "Das <kbd>&lt;marquee&gt;</kbd>-Element erstellt Lauftext - ein Klassiker aus dem frühen Web! Obwohl veraltet, funktioniert es noch in den meisten Browsern.<br><br>Hinweis: Für produktive Seiten nutze CSS-Animationen. Aber zum Lernen und Spaß haben ist Marquee super!",
+			"task": "Erstelle ein einfaches Marquee:<br>1. Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu<br>2. Schreibe Text hinein wie 'Willkommen auf meiner Website!'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2rem; color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; font-family: 'Courier New', monospace; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle ein scrollendes Marquee -->",
+			"solution": "<marquee>Willkommen auf meiner Website!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Füge ein <marquee>-Element hinzu"
+				}
+			]
+		},
+		{
+			"id": "marquee-direction",
+			"title": "Richtung & Verhalten",
+			"description": "Steuere das Marquee mit Attributen:<br>• <kbd>direction</kbd>: left, right, up, down<br>• <kbd>behavior</kbd>: scroll (Standard), slide (stoppt am Rand), alternate (springt zurück)<br>• <kbd>scrollamount</kbd>: Geschwindigkeit (Standard ist 6)",
+			"task": "Erstelle ein springendes Marquee:<br>1. Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu<br>2. Setze <kbd>behavior=\"alternate\"</kbd> zum Springen<br>3. Füge lustigen Text hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2.5rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-weight: bold; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle ein springendes Marquee -->",
+			"solution": "<marquee behavior=\"alternate\">Hüpf! Hüpf! Hüpf!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Füge ein <marquee>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "behavior", "value": "alternate" },
+					"message": "Füge behavior=\"alternate\" zum Springen hinzu"
+				}
+			]
+		},
+		{
+			"id": "marquee-retro",
+			"title": "Retro-Nachrichtenticker",
+			"description": "Kombiniere mehrere Marquee-Attribute für einen klassischen Nachrichtenticker-Effekt. Du kannst sogar mehrere Elemente hineinpacken!<br><br>Denke daran: Das ist veraltetes HTML. Moderne Seiten nutzen CSS-Animationen, aber Marquee ist toll, um Web-Geschichte zu verstehen.",
+			"task": "Erstelle einen Nachrichtenticker:<br>1. Ein <kbd>&lt;marquee&gt;</kbd> mit <kbd>direction=\"left\"</kbd><br>2. Setze <kbd>scrollamount=\"5\"</kbd> für flüssiges Scrollen<br>3. Füge eine Eilmeldung hinein",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 0; margin: 0; background: #1a1a2e; } marquee { background: linear-gradient(90deg, #c0392b 0%, #e74c3c 50%, #c0392b 100%); padding: 15px 0; font-size: 1.3rem; color: white; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-top: 3px solid #f1c40f; border-bottom: 3px solid #f1c40f; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle einen Retro-Nachrichtenticker -->",
+			"solution": "<marquee direction=\"left\" scrollamount=\"5\">EILMELDUNG: Das Marquee-Element funktioniert noch in Browsern!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Füge ein <marquee>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "direction", "value": "left" },
+					"message": "Füge direction=\"left\" für horizontales Scrollen hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "scrollamount", "value": "5" },
+					"message": "Füge scrollamount=\"5\" für flüssige Geschwindigkeit hinzu"
+				}
+			]
+		}
+	]
+}

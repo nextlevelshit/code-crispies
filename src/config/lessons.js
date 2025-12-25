@@ -10,12 +10,32 @@ import tailwindConfig from "../../lessons/10-tailwind-basics.json";
 import htmlElementsConfig from "../../lessons/20-html-elements.json";
 import htmlFormsBasicConfig from "../../lessons/21-html-forms-basic.json";
 import htmlFormsValidationConfig from "../../lessons/22-html-forms-validation.json";
+import htmlDetailsSummaryConfig from "../../lessons/23-html-details-summary.json";
+import htmlProgressMeterConfig from "../../lessons/24-html-progress-meter.json";
+import htmlDatalistConfig from "../../lessons/25-html-datalist.json";
+import htmlDataAttributesConfig from "../../lessons/26-html-data-attributes.json";
+import htmlDialogConfig from "../../lessons/27-html-dialog.json";
+import htmlFormsFieldsetConfig from "../../lessons/28-html-forms-fieldset.json";
+import htmlFigureConfig from "../../lessons/29-html-figure.json";
+import htmlTablesConfig from "../../lessons/30-html-tables.json";
+import htmlMarqueeConfig from "../../lessons/31-html-marquee.json";
+import htmlSvgConfig from "../../lessons/32-html-svg.json";
 
 // Module store
 const moduleStore = [
 	htmlElementsConfig,
 	htmlFormsBasicConfig,
 	htmlFormsValidationConfig,
+	htmlDetailsSummaryConfig,
+	htmlProgressMeterConfig,
+	htmlDatalistConfig,
+	htmlDataAttributesConfig,
+	htmlDialogConfig,
+	htmlFormsFieldsetConfig,
+	htmlFigureConfig,
+	htmlTablesConfig,
+	htmlMarqueeConfig,
+	htmlSvgConfig,
 	basicSelectorsConfig,
 	advancedSelectorsConfig,
 	tailwindConfig

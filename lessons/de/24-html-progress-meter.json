@@ -1,0 +1,102 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-progress-meter",
+	"title": "Progress & Meter Elemente",
+	"description": "Zeige Fortschritt und Messwerte nativ an",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "progress-basic",
+			"title": "Fortschrittsbalken",
+			"description": "Das <kbd>&lt;progress&gt;</kbd>-Element zeigt den Aufgabenfortschritt. Verwende <kbd>value</kbd> für den aktuellen Stand und <kbd>max</kbd> für das Maximum.<br><br>Der Text darin ist ein Fallback für ältere Browser.",
+			"task": "Erstelle einen Fortschrittsbalken mit 70% Fortschritt:<br>1. Füge ein <kbd>&lt;label&gt;</kbd> mit 'Download:' hinzu<br>2. Füge ein <kbd>&lt;progress&gt;</kbd> mit <kbd>value=\"70\"</kbd> und <kbd>max=\"100\"</kbd> hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } progress { width: 100%; height: 20px; border-radius: 10px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 10px; } progress::-webkit-progress-value { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; } progress::-moz-progress-bar { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle hier einen Fortschrittsbalken -->",
+			"solution": "<label for=\"download\">Download:</label>\n<progress id=\"download\" value=\"70\" max=\"100\">70%</progress>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "progress",
+					"message": "Füge ein <progress>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "progress", "attr": "value", "value": "70" },
+					"message": "Setze value=\"70\" beim Progress-Element"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "progress", "attr": "max", "value": "100" },
+					"message": "Setze max=\"100\" beim Progress-Element"
+				},
+				{
+					"type": "element_exists",
+					"value": "label",
+					"message": "Füge ein <label> für den Fortschrittsbalken hinzu"
+				}
+			]
+		},
+		{
+			"id": "progress-indeterminate",
+			"title": "Unbestimmter Fortschritt",
+			"description": "Wenn der Fortschritt unbekannt ist (wie beim Laden), lasse das <kbd>value</kbd>-Attribut weg. Dies erstellt einen animierten unbestimmten Zustand.<br><br>Nützlich für Netzwerkanfragen oder Prozesse mit unbekannter Dauer.",
+			"task": "Erstelle eine Ladeanzeige:<br>1. Füge ein <kbd>&lt;p&gt;</kbd> mit 'Lädt...' hinzu<br>2. Füge ein <kbd>&lt;progress&gt;</kbd> ohne value-Attribut hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } p { margin-bottom: 10px; color: #666; } progress { width: 100%; height: 8px; border-radius: 4px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle eine unbestimmte Ladeanzeige -->",
+			"solution": "<p>Lädt...</p>\n<progress></progress>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "progress",
+					"message": "Füge ein <progress>-Element hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Füge ein <p> mit Ladetext hinzu"
+				}
+			]
+		},
+		{
+			"id": "meter-gauge",
+			"title": "Meter-Anzeigen",
+			"description": "Das <kbd>&lt;meter&gt;</kbd>-Element zeigt einen Skalarwert innerhalb eines Bereichs. Verwende es für Messungen wie Speicherplatz, Akku oder Bewertungen.<br><br>Setze <kbd>low</kbd>, <kbd>high</kbd> und <kbd>optimum</kbd>, um gute/schlechte Bereiche zu definieren - der Browser färbt es entsprechend ein!",
+			"task": "Erstelle eine Akku-Anzeige:<br>1. Füge ein <kbd>&lt;label&gt;</kbd> mit 'Akku:' hinzu<br>2. Füge ein <kbd>&lt;meter&gt;</kbd> hinzu mit:<br>   - <kbd>value=\"0.8\"</kbd><br>   - <kbd>min=\"0\"</kbd> und <kbd>max=\"1\"</kbd><br>   - <kbd>low=\"0.2\"</kbd> und <kbd>high=\"0.8\"</kbd><br>   - <kbd>optimum=\"1\"</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } meter { width: 100%; height: 25px; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Erstelle hier eine Akku-Anzeige -->",
+			"solution": "<label for=\"battery\">Akku:</label>\n<meter id=\"battery\" value=\"0.8\" min=\"0\" max=\"1\" low=\"0.2\" high=\"0.8\" optimum=\"1\">80%</meter>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "meter",
+					"message": "Füge ein <meter>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "value", "value": "0.8" },
+					"message": "Setze value=\"0.8\" beim Meter"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "low", "value": "0.2" },
+					"message": "Setze low=\"0.2\", um den niedrigen Schwellenwert zu definieren"
+				},
+				{
+					"type": "element_exists",
+					"value": "label",
+					"message": "Füge ein <label> für das Meter hinzu"
+				}
+			]
+		}
+	]
+}

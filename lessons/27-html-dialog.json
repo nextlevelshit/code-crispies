@@ -1,0 +1,83 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "html-dialog",
+	"title": "Native Dialog Element",
+	"description": "Create modal dialogs without JavaScript libraries",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "dialog-basic",
+			"title": "Open Dialog",
+			"description": "The <kbd>&lt;dialog&gt;</kbd> element creates a native modal. Add the <kbd>open</kbd> attribute to show it.<br><br>Use <kbd>&lt;form method=\"dialog\"&gt;</kbd> inside to close it when the form submits - no JavaScript needed!",
+			"task": "Create a dialog with:<br>1. The <kbd>open</kbd> attribute to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying 'Welcome!'<br>3. A <kbd>&lt;p&gt;</kbd> with a greeting message<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with a close button",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: #f5f5f5; } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 400px; } dialog::backdrop { background: rgba(0,0,0,0.5); } dialog h2 { margin: 0 0 15px 0; color: #1976d2; } dialog p { color: #666; margin: 0 0 20px 0; } dialog button { background: #1976d2; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; } dialog button:hover { background: #1565c0; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a dialog with the open attribute -->",
+			"solution": "<dialog open>\n  <h2>Welcome!</h2>\n  <p>This is a native HTML dialog element.</p>\n  <form method=\"dialog\">\n    <button>Close</button>\n  </form>\n</dialog>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "dialog",
+					"message": "Add a <dialog> element"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "dialog", "attr": "open", "value": true },
+					"message": "Add the 'open' attribute to show the dialog"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog h2",
+					"message": "Add an <h2> heading inside the dialog"
+				},
+				{
+					"type": "element_exists",
+					"value": "form[method='dialog']",
+					"message": "Add a <form method=\"dialog\"> for closing"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog button",
+					"message": "Add a close button inside the form"
+				}
+			]
+		},
+		{
+			"id": "dialog-form",
+			"title": "Dialog with Form",
+			"description": "Dialogs can contain full forms. The <kbd>method=\"dialog\"</kbd> makes the form close the dialog on submit instead of sending data.<br><br>This pattern is perfect for confirmation dialogs, quick inputs, or settings panels.",
+			"task": "Create a confirmation dialog:<br>1. Add <kbd>open</kbd> to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying 'Confirm Delete'<br>3. A <kbd>&lt;p&gt;</kbd> asking 'Are you sure?'<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with Cancel and Delete buttons",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 350px; text-align: center; } dialog h2 { margin: 0 0 10px 0; color: #c62828; } dialog p { color: #666; margin: 0 0 20px 0; } dialog form { display: flex; gap: 10px; justify-content: center; } dialog button { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; border: none; } dialog button:first-child { background: #e0e0e0; color: #333; } dialog button:last-child { background: #c62828; color: white; } dialog button:hover { opacity: 0.9; }",
+			"sandboxCSS": "",
+			"initialCode": "<!-- Create a confirmation dialog -->",
+			"solution": "<dialog open>\n  <h2>Confirm Delete</h2>\n  <p>Are you sure you want to delete this item?</p>\n  <form method=\"dialog\">\n    <button value=\"cancel\">Cancel</button>\n    <button value=\"delete\">Delete</button>\n  </form>\n</dialog>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "dialog[open]",
+					"message": "Add a <dialog> with the open attribute"
+				},
+				{
+					"type": "element_exists",
+					"value": "dialog h2",
+					"message": "Add a heading to the dialog"
+				},
+				{
+					"type": "element_exists",
+					"value": "form[method='dialog']",
+					"message": "Add a <form method=\"dialog\"> for the buttons"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "dialog button", "min": 2 },
+					"message": "Add at least 2 buttons (Cancel and Confirm)"
+				}
+			]
+		}
+	]
+}
