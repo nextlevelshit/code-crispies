@@ -989,11 +989,11 @@ input:checked + .toggle-slider::before {
 	}
 
 	.editor-section {
-		min-height: 200px;
+		min-height: 50vh;
 	}
 
 	.editor-content {
-		min-height: 150px;
+		min-height: 40vh;
 	}
 
 	.preview-wrapper {
