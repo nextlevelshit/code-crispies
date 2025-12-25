@@ -26,7 +26,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "browsers" },
-					"message": "Verbinde das Input mit der Datalist über list=\"browsers\""
+					"message": "Verbinde das Eingabefeld mit der Datalist über list=\"browsers\""
 				},
 				{
 					"type": "element_count",
@@ -65,7 +65,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "countries" },
-					"message": "Verbinde das Input über list=\"countries\""
+					"message": "Verbinde das Eingabefeld über list=\"countries\""
 				},
 				{
 					"type": "element_count",
