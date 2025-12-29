@@ -7,17 +7,19 @@ describe("Lessons Config Module", () => {
 			const modules = await loadModules();
 
 			expect(Array.isArray(modules)).toBe(true);
-			expect(modules.length).toBe(6);
+			expect(modules.length).toBeGreaterThanOrEqual(6);
 
 			// Check if modules have the right structure
 			const moduleIds = modules.map((m) => m.id);
-			// HTML modules (first)
+			// HTML modules
 			expect(moduleIds).toContain("html-elements");
 			expect(moduleIds).toContain("html-forms-basic");
 			expect(moduleIds).toContain("html-forms-validation");
 			// CSS modules
 			expect(moduleIds).toContain("css-basic-selectors");
 			expect(moduleIds).toContain("css-advanced-selectors");
+			expect(moduleIds).toContain("box-model");
+			expect(moduleIds).toContain("flexbox");
 			// Tailwind
 			expect(moduleIds).toContain("tailwind-basics");
 		});

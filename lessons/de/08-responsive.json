@@ -1,0 +1,117 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "responsive-design",
+	"title": "Responsive Design & Media Queries",
+	"description": "Passe deine Layouts an verschiedene Bildschirmgrößen an mit Media Queries und flüssigen Design-Techniken.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "responsive-1",
+			"title": "Einführung in Media Queries",
+			"description": "Verstehe die Syntax und Anwendungsfälle für CSS Media Queries, um Stile bedingt basierend auf Viewport-Eigenschaften anzuwenden.",
+			"task": "Schreibe eine Media Query, die gilt, wenn der Viewport maximal 600px breit ist, und ändere den Hintergrund von '.responsive-box' auf lightcoral.",
+			"previewHTML": "<div class=\"responsive-box\">Ändere die Fenstergröße</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .responsive-box { padding: 1rem; background: lightblue; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Füge deine Media Query unten ein */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "@media\\s*\\(max-width:\\s*600px\\)",
+					"message": "Verwende eine Media Query für max-width: 600px",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": ".responsive-box",
+					"message": "Adressiere '.responsive-box' innerhalb der Media Query",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "background", "message": "Ändere die 'background' Eigenschaft", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "background", "expected": "lightcoral" },
+					"message": "Setze background auf 'lightcoral'",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "responsive-2",
+			"title": "Flüssige Typografie",
+			"description": "Verwende relative Einheiten wie vw, damit Schriftgrößen mit der Viewport-Breite skalieren.",
+			"task": "Setze die font-size von '.fluid-text' auf 5vw, damit sie sich mit dem Viewport ändert.",
+			"previewHTML": "<p class=\"fluid-text\">Flüssige Typografie</p>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Wende flüssige Schriftgröße an */\n.fluid-text {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "font-size", "message": "Verwende die 'font-size' Eigenschaft", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "vw", "message": "Verwende 'vw' Einheit für flüssige Größe", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "font-size", "expected": "5vw" }, "message": "Setze font-size auf '5vw'" }
+			]
+		},
+		{
+			"id": "responsive-3",
+			"title": "Flexible Raster",
+			"description": "Kombiniere CSS Grid mit auto-fit oder auto-fill für responsive Spaltenlayouts.",
+			"task": "Definiere '.grid-responsive' mit grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); und einem gap von 1rem.",
+			"previewHTML": "<div class=\"grid-responsive\"><div>1</div><div>2</div><div>3</div><div>4</div></div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .grid-responsive > div { background: #d1c4e9; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Erstelle ein responsives Raster */\n.grid-responsive {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "grid-template-columns",
+					"message": "Definiere 'grid-template-columns'",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "repeat\\(auto-fit,\\s*minmax\\(200px,\\s*1fr\\)\\)",
+					"message": "Verwende repeat(auto-fit, minmax(200px, 1fr))",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "gap", "message": "Verwende die 'gap' Eigenschaft", "options": { "caseSensitive": false } }
+			]
+		},
+		{
+			"id": "responsive-4",
+			"title": "Mobile-First Media Queries",
+			"description": "Verfolge einen Mobile-First-Ansatz: Schreibe Basis-Stile für kleine Bildschirme und erweitere für größere Viewports.",
+			"task": "Schreibe eine Media Query für min-width 768px, die die Breite von '.sidebar' auf 250px setzt.",
+			"previewHTML": "<aside class=\"sidebar\">Seitenleiste</aside>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .sidebar { background: #c8e6c9; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Füge Mobile-First-Erweiterung hinzu */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "@media\\s*\\(min-width:\\s*768px\\)",
+					"message": "Verwende eine Media Query für min-width: 768px",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": ".sidebar", "message": "Adressiere '.sidebar' in der Media Query", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "width", "expected": "250px" },
+					"message": "Setze width auf '250px'",
+					"options": { "exact": false }
+				}
+			]
+		}
+	]
+}

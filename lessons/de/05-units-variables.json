@@ -1,0 +1,98 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "units-variables",
+	"title": "Einheiten, var() und calc()",
+	"description": "Verstehe die Vielfalt der CSS-Maßeinheiten und wie du Custom Properties für wartbare Stile definierst und verwendest.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "units-1",
+			"title": "Absolute vs. Relative Einheiten",
+			"description": "Lerne den Unterschied zwischen px, rem, em, % und vw/vh für flexible, responsive Layouts.",
+			"task": "Setze die Breite von '.unit-box' auf 80% und max-width auf 37.5rem.",
+			"previewHTML": "<div class=\"unit-box\">Ändere meine Größe!</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .unit-box { background: #f5f5f5; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Setze flexible Größen */\n.unit-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "width", "message": "Verwende die 'width' Eigenschaft", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Setze width auf '80%'" },
+				{ "type": "contains", "value": "max-width", "message": "Verwende die 'max-width' Eigenschaft", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "max-width", "expected": "37.5rem" }, "message": "Setze max-width auf '37.5rem'" }
+			]
+		},
+		{
+			"id": "units-2",
+			"title": "CSS Custom Properties",
+			"description": "Definiere und verwende Variablen (--custom properties) wieder, um deine Theme-Werte zu zentralisieren.",
+			"task": "Erstelle eine <code>--main-color</code> Variable in :root mit #6200ee und wende sie als Rahmenfarbe auf '.var-box' an.",
+			"previewHTML": "<div class=\"var-box\">Variablen-Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .var-box { padding: 1rem; border: 0.125rem solid #ddd; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Definiere und verwende eine CSS-Variable */\n:root {",
+			"initialCode": "",
+			"codeSuffix": "}\n.var-box { }",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "--main-color", "message": "Definiere '--main-color' in :root", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "var(--main-color)", "message": "Verwende var(--main-color)", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "border", "expected": "var(--main-color)" },
+					"message": "Wende die Variable auf die Rahmenfarbe an",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "units-3",
+			"title": "Einheiten-Berechnungen (calc)",
+			"description": "Verwende die <code>calc()</code> Funktion, um verschiedene Einheiten in einem Ausdruck zu kombinieren.",
+			"task": "Setze die Breite von '.calc-box' auf calc(100% - 2rem) und min-height auf calc(10vh + 1rem).",
+			"previewHTML": "<div class=\"calc-box\">Calc Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .calc-box { background: #e8f5e9; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Verwende calc für dynamische Größen */\n.calc-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "calc", "message": "Verwende die 'calc()' Funktion", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "width:\\s*calc\\(100% - 2rem\\)",
+					"message": "Width sollte calc(100% - 2rem) sein",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "min-height:\\s*calc\\(10vh \\+ 1rem\\)",
+					"message": "Min-height sollte calc(10vh + 1rem) sein",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "units-4",
+			"title": "Viewport & Responsive Einheiten",
+			"description": "Steuere Layouts relativ zur Viewport-Größe mit vw, vh und vmin/vmax Einheiten.",
+			"task": "Gib '.viewport-box' eine Breite von 50vw und Höhe von 20vh.",
+			"previewHTML": "<div class=\"viewport-box\">Viewport-Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .viewport-box { background: #ffe0b2; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Verwende Viewport-Einheiten */\n.viewport-box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "vw", "message": "Verwende 'vw' Einheit", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "vh", "message": "Verwende 'vh' Einheit", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Setze width auf '50vw'" },
+				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Setze height auf '20vh'" }
+			]
+		}
+	]
+}

@@ -6,6 +6,12 @@
 import basicSelectorsConfig from "../../lessons/de/00-basic-selectors.json";
 import advancedSelectorsConfig from "../../lessons/de/01-advanced-selectors.json";
 import tailwindConfig from "../../lessons/de/10-tailwind-basics.json";
+// CSS lessons
+import boxModelConfig from "../../lessons/de/01-box-model.json";
+import flexboxConfig from "../../lessons/de/flexbox.json";
+import responsiveConfig from "../../lessons/de/08-responsive.json";
+import unitsVariablesConfig from "../../lessons/de/05-units-variables.json";
+import transitionsAnimationsConfig from "../../lessons/de/06-transitions-animations.json";
 // HTML lessons
 import htmlElementsConfig from "../../lessons/de/20-html-elements.json";
 import htmlFormsBasicConfig from "../../lessons/de/21-html-forms-basic.json";
@@ -36,6 +42,11 @@ const moduleStore = [
 	htmlTablesConfig,
 	htmlMarqueeConfig,
 	htmlSvgConfig,
+	boxModelConfig,
+	flexboxConfig,
+	responsiveConfig,
+	unitsVariablesConfig,
+	transitionsAnimationsConfig,
 	basicSelectorsConfig,
 	advancedSelectorsConfig,
 	tailwindConfig

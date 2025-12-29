@@ -1,0 +1,207 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "flexbox",
+	"title": "CSS Flexbox",
+	"description": "Beherrsche das flexible Box-Layout-Modell für moderne responsive Designs",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "flexbox-1",
+			"title": "Flexbox Container Grundlagen",
+			"description": "Lerne, wie du einen Flex-Container erstellst und die Haupt- und Querachse verstehst.",
+			"task": "Wandle das übergeordnete div in einen Flex-Container um und stelle es auf Reihenanzeige (Standard).",
+			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; }",
+			"codePrefix": "/* Wandle den Container in Flexbox um */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".flex-container",
+					"message": "Verwende den '.flex-container' Klassenselektor",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "display",
+					"message": "Verwende die 'display' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "display", "expected": "flex" },
+					"message": "Setze display auf 'flex'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "flexbox-2",
+			"title": "Flex-Richtung und Umbruch",
+			"description": "Steuere die Richtung und den Umbruch von Flex-Elementen innerhalb eines Containers.",
+			"task": "Stelle den Flex-Container auf Spaltenanzeige ein und erlaube bei Bedarf Umbrüche.",
+			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div><div class='box'>4</div><div class='box'>5</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; height: 20rem; display: flex; }",
+			"codePrefix": "/* Setze flex-direction auf column und aktiviere Umbruch */\n.flex-container {\n  /* Füge deinen Code unten ein */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "flex-direction",
+					"message": "Verwende die 'flex-direction' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "flex-wrap",
+					"message": "Verwende die 'flex-wrap' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "flex-direction", "expected": "column" },
+					"message": "Setze flex-direction auf 'column'",
+					"options": { "exact": true }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "flex-wrap", "expected": "wrap" },
+					"message": "Setze flex-wrap auf 'wrap'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "flexbox-3",
+			"title": "Justify Content",
+			"description": "Lerne, wie du Flex-Elemente entlang der Hauptachse des Containers ausrichtest.",
+			"task": "Verteile die Flex-Elemente gleichmäßig entlang der Hauptachse mit Abstand dazwischen.",
+			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; }",
+			"codePrefix": "/* Verteile die Elemente mit Abstand dazwischen */\n.flex-container {\n  /* Füge deinen Code unten ein */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "justify-content",
+					"message": "Verwende die 'justify-content' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "justify-content", "expected": "space-between" },
+					"message": "Setze justify-content auf 'space-between'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "flexbox-4",
+			"title": "Align Items",
+			"description": "Steuere, wie Flex-Elemente entlang der Querachse des Containers ausgerichtet werden.",
+			"task": "Zentriere die Flex-Elemente vertikal entlang der Querachse.",
+			"previewHTML": "<div class='flex-container'><div class='box tall'>1</div><div class='box'>2</div><div class='box short'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; display: flex; justify-content: center; } .tall { height: 8rem; align-items: flex-start; } .short { height: 3rem; align-items: flex-start; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; height: 12rem; }",
+			"codePrefix": "/* Zentriere die Elemente vertikal */\n.flex-container {\n  /* Füge deinen Code unten ein */\n",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "align-items",
+					"message": "Verwende die 'align-items' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "align-items", "expected": "center" },
+					"message": "Setze align-items auf 'center'",
+					"options": { "exact": true }
+				}
+			]
+		},
+		{
+			"id": "flexbox-5",
+			"title": "Flex-Element Eigenschaften",
+			"description": "Steuere, wie einzelne Flex-Elemente wachsen, schrumpfen und ihre Basisgröße festlegen.",
+			"task": "Lass die zweite Box doppelt so stark wachsen wie die anderen und verhindere, dass die dritte Box schrumpft.",
+			"previewHTML": "<div class='flex-container'><div class='box box1'>1</div><div class='box box2'>2</div><div class='box box3'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; height: 3rem; display: flex; align-items: center; justify-content: center; } .box1 { background-color: #e74c3c; } .box2 { background-color: #2ecc71; } .box3 { background-color: #f39c12; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; width: 100%; }",
+			"codePrefix": "/* Lass box2 mehr wachsen und verhindere das Schrumpfen von box3 */\n",
+			"initialCode": ".box1 {\n  flex: 1;\n}\n\n.box2 {\n  /* Diese soll doppelt so stark wachsen */\n}\n\n.box3 {\n  flex: 1;\n  /* Verhindere das Schrumpfen */\n}",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".box2",
+					"message": "Style das '.box2' Element",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": ".box3",
+					"message": "Style das '.box3' Element",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": ".box2\\s*{[^}]*flex:\\s*2",
+					"message": "Setze flex auf '2' für box2",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": ".box3\\s*{[^}]*flex-shrink:\\s*0",
+					"message": "Setze flex-shrink auf '0' für box3",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "flexbox-6",
+			"title": "Einzelne Elemente ausrichten",
+			"description": "Lerne, wie du die Container-Ausrichtung für einzelne Flex-Elemente überschreiben kannst.",
+			"task": "Setze 'align-self' auf das mittlere Element, um es am Anfang der Querachse auszurichten.",
+			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box middle'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; } .middle { background-color: #2ecc71; }",
+			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; height: 15rem; align-items: center; }",
+			"codePrefix": "/* Richte das mittlere Element am Anfang aus */\n",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": ".middle",
+					"message": "Verwende den '.middle' Klassenselektor",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "align-self",
+					"message": "Verwende die 'align-self' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "align-self", "expected": "flex-start" },
+					"message": "Setze align-self auf 'flex-start'",
+					"options": { "exact": true }
+				}
+			]
+		}
+	]
+}
