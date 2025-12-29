@@ -1,0 +1,131 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "transitions-animations",
+	"title": "Transitions & Animationen",
+	"description": "Bringe Interaktivität in dein UI durch sanfte Eigenschaftsübergänge und Keyframe-gesteuerte Animationen.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "transitions-1",
+			"title": "Einfache Transitions",
+			"description": "Lerne, wie du <code>transition</code> auf Eigenschaften anwendest für sanfte Änderungen bei Zustandswechseln.",
+			"task": "Füge eine Hover-Transition auf einen Button hinzu, sodass seine Hintergrundfarbe über 0.3s überblendet.",
+			"previewHTML": "<button class=\"btn\">Hover mich</button>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: #6200ee; color: white; padding: 0.5rem 1rem; border: none; } .btn:hover { background: #3700b3; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Füge Transition hinzu */\n.btn {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "transition", "message": "Verwende die 'transition' Eigenschaft", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "transition:\\s*background-color\\s*0\\.3s",
+					"message": "Transition background-color über 0.3s",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "transitions-2",
+			"title": "Transition Timing-Funktionen",
+			"description": "Erkunde Easing-Funktionen wie ease, linear, ease-in, ease-out, um das Animationstempo zu steuern.",
+			"task": "Ändere den Button, um 'ease-in-out' Timing für seine Transition zu verwenden.",
+			"previewHTML": "<button class=\"btn\">Timing</button>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: #6200ee; color: white; padding: 0.5rem 1rem; border: none; transition: background-color 0.3s; } .btn:hover { background: #03dac6; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Setze Timing-Funktion */\n.btn {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "transition-timing-function",
+					"message": "Verwende 'transition-timing-function'",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "transition-timing-function", "expected": "ease-in-out" },
+					"message": "Setze Timing auf 'ease-in-out'"
+				}
+			]
+		},
+		{
+			"id": "transitions-3",
+			"title": "Keyframe-Animationen Grundlagen",
+			"description": "Erstelle benannte Animationen mit <code>@keyframes</code> und wende sie mit der <code>animation</code> Kurzschreibweise an.",
+			"task": "Definiere ein Keyframe namens 'bounce', das ein Element bei 50% um 20px nach oben bewegt, und wende es auf '.ball' über 1s infinite an.",
+			"previewHTML": "<div class=\"ball\"></div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .ball { width: 50px; height: 50px; background: #ff0266; border-radius: 50%; margin: 2rem auto; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Definiere Keyframes und wende Animation an */\n@keyframes bounce {",
+			"initialCode": "",
+			"codeSuffix": "}\n.ball { }",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "@keyframes bounce", "message": "Definiere '@keyframes bounce'", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "50%.*transform: translateY\\(-20px\\)",
+					"message": "Bei 50%, bewege um 20px nach oben",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "animation", "message": "Verwende 'animation' Eigenschaft auf .ball", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "animation:.*bounce.*1s.*infinite",
+					"message": "Wende 'bounce 1s infinite' an",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "transitions-4",
+			"title": "Animations-Eigenschaften im Detail",
+			"description": "Verfeinere Animationen mit delay, iteration-count, direction und fill-mode.",
+			"task": "Animiere '.box' mit einem 'fade' Keyframe über 2s, Verzögerung 1s, zweimalige Ausführung und bleibe danach sichtbar.",
+			"previewHTML": "<div class=\"box\">Fade Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .box { width: 100px; height: 100px; background: #4caf50; margin: 2rem auto; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Definiere fade und setze Eigenschaften */\n@keyframes fade { from { opacity: 0; } to { opacity: 1; } }\n.box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "animation-delay",
+					"message": "Verwende 'animation-delay' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "animation-iteration-count",
+					"message": "Verwende 'animation-iteration-count' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "animation-fill-mode",
+					"message": "Verwende 'animation-fill-mode' Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "property_value", "value": { "property": "animation-duration", "expected": "2s" }, "message": "Duration sollte 2s sein" },
+				{ "type": "property_value", "value": { "property": "animation-delay", "expected": "1s" }, "message": "Delay sollte 1s sein" },
+				{
+					"type": "property_value",
+					"value": { "property": "animation-iteration-count", "expected": "2" },
+					"message": "Iteration-count sollte 2 sein"
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "animation-fill-mode", "expected": "forwards" },
+					"message": "Fill-mode sollte forwards sein"
+				}
+			]
+		}
+	]
+}
