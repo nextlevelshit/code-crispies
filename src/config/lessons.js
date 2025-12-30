@@ -5,22 +5,15 @@
 
 // English lesson imports
 import basicSelectorsEN from "../../lessons/00-basic-selectors.json";
-import advancedSelectorsEN from "../../lessons/01-advanced-selectors.json";
 import boxModelEN from "../../lessons/01-box-model.json";
 import unitsVariablesEN from "../../lessons/05-units-variables.json";
 import transitionsAnimationsEN from "../../lessons/06-transitions-animations.json";
 import responsiveEN from "../../lessons/08-responsive.json";
-import tailwindEN from "../../lessons/10-tailwind-basics.json";
 import htmlElementsEN from "../../lessons/20-html-elements.json";
 import htmlFormsBasicEN from "../../lessons/21-html-forms-basic.json";
 import htmlFormsValidationEN from "../../lessons/22-html-forms-validation.json";
 import htmlDetailsSummaryEN from "../../lessons/23-html-details-summary.json";
 import htmlProgressMeterEN from "../../lessons/24-html-progress-meter.json";
-import htmlDatalistEN from "../../lessons/25-html-datalist.json";
-import htmlDataAttributesEN from "../../lessons/26-html-data-attributes.json";
-import htmlDialogEN from "../../lessons/27-html-dialog.json";
-import htmlFormsFieldsetEN from "../../lessons/28-html-forms-fieldset.json";
-import htmlFigureEN from "../../lessons/29-html-figure.json";
 import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlMarqueeEN from "../../lessons/31-html-marquee.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
@@ -28,22 +21,15 @@ import flexboxEN from "../../lessons/flexbox.json";
 
 // German lesson imports
 import basicSelectorsDE from "../../lessons/de/00-basic-selectors.json";
-import advancedSelectorsDE from "../../lessons/de/01-advanced-selectors.json";
 import boxModelDE from "../../lessons/de/01-box-model.json";
 import unitsVariablesDE from "../../lessons/de/05-units-variables.json";
 import transitionsAnimationsDE from "../../lessons/de/06-transitions-animations.json";
 import responsiveDE from "../../lessons/de/08-responsive.json";
-import tailwindDE from "../../lessons/de/10-tailwind-basics.json";
 import htmlElementsDE from "../../lessons/de/20-html-elements.json";
 import htmlFormsBasicDE from "../../lessons/de/21-html-forms-basic.json";
 import htmlFormsValidationDE from "../../lessons/de/22-html-forms-validation.json";
 import htmlDetailsSummaryDE from "../../lessons/de/23-html-details-summary.json";
 import htmlProgressMeterDE from "../../lessons/de/24-html-progress-meter.json";
-import htmlDatalistDE from "../../lessons/de/25-html-datalist.json";
-import htmlDataAttributesDE from "../../lessons/de/26-html-data-attributes.json";
-import htmlDialogDE from "../../lessons/de/27-html-dialog.json";
-import htmlFormsFieldsetDE from "../../lessons/de/28-html-forms-fieldset.json";
-import htmlFigureDE from "../../lessons/de/29-html-figure.json";
 import htmlTablesDE from "../../lessons/de/30-html-tables.json";
 import htmlMarqueeDE from "../../lessons/de/31-html-marquee.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
@@ -55,15 +41,10 @@ const moduleStoreEN = [
 	htmlElementsEN,
 	htmlFormsBasicEN,
 	htmlFormsValidationEN,
-	htmlFormsFieldsetEN,
-	htmlDatalistEN,
 	// HTML Interaktiv
 	htmlDetailsSummaryEN,
 	htmlProgressMeterEN,
-	htmlDialogEN,
-	htmlDataAttributesEN,
 	// HTML Weitere
-	htmlFigureEN,
 	htmlTablesEN,
 	htmlSvgEN,
 	htmlMarqueeEN,
@@ -74,11 +55,8 @@ const moduleStoreEN = [
 	// CSS Layouts
 	flexboxEN,
 	responsiveEN,
-	// CSS Fortgeschritten
-	advancedSelectorsEN,
-	transitionsAnimationsEN,
-	// Tailwind
-	tailwindEN
+	// CSS Animationen
+	transitionsAnimationsEN
 ];
 
 // German module store - ordered by learning path
@@ -87,15 +65,10 @@ const moduleStoreDE = [
 	htmlElementsDE,
 	htmlFormsBasicDE,
 	htmlFormsValidationDE,
-	htmlFormsFieldsetDE,
-	htmlDatalistDE,
 	// HTML Interaktiv
 	htmlDetailsSummaryDE,
 	htmlProgressMeterDE,
-	htmlDialogDE,
-	htmlDataAttributesDE,
 	// HTML Weitere
-	htmlFigureDE,
 	htmlTablesDE,
 	htmlSvgDE,
 	htmlMarqueeDE,
@@ -106,11 +79,8 @@ const moduleStoreDE = [
 	// CSS Layouts
 	flexboxDE,
 	responsiveDE,
-	// CSS Fortgeschritten
-	advancedSelectorsDE,
-	transitionsAnimationsDE,
-	// Tailwind
-	tailwindDE
+	// CSS Animationen
+	transitionsAnimationsDE
 ];
 
 /**
