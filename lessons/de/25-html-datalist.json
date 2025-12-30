@@ -31,7 +31,7 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 3 },
-					"message": "Füge mindestens 3 <option>-Elemente in die Datalist ein"
+					"message": "Füge mindestens 3 <kbd>&lt;option&gt;</kbd>-Elemente in die <kbd>&lt;datalist&gt;</kbd> ein"
 				},
 				{
 					"type": "element_exists",

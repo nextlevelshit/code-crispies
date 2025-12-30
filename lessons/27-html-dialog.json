@@ -36,7 +36,7 @@
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <form method=\"dialog\"> for closing"
+					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for closing"
 				},
 				{
 					"type": "element_exists",
@@ -70,7 +70,7 @@
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <form method=\"dialog\"> for the buttons"
+					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for the buttons"
 				},
 				{
 					"type": "element_count",

@@ -31,7 +31,7 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 3 },
-					"message": "Add at least 3 <option> elements inside datalist"
+					"message": "Add at least 3 <kbd>&lt;option&gt;</kbd> elements inside <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
