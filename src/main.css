@@ -225,8 +225,6 @@ code, kbd {
 
 .instructions {
 	padding: var(--spacing-md);
-	overflow-y: auto;
-	max-height: 45%;
 	border-bottom: 1px solid var(--border-color);
 }
 
@@ -1057,8 +1055,8 @@ input:checked + .toggle-slider::before {
 	}
 
 	.instructions {
-		max-height: 25vh;
-		overflow-y: auto;
+		max-height: none;
+		overflow-y: visible;
 	}
 
 	.editor-section {
