@@ -44,7 +44,7 @@ Code Crispies is a web-based learning platform designed to help users master CSS
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/nextlevelshit/code-crispies.git
+   git clone https://git.librete.ch/libretech/code-crispies.git
    cd code-crispies
    ```
 
