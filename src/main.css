@@ -1148,6 +1148,14 @@ input:checked + .toggle-slider::before {
 		min-height: 50vh;
 	}
 
+	.preview-section .preview-header {
+		order: 1;
+	}
+
+	.preview-section .preview-wrapper {
+		order: 2;
+	}
+
 	.editor-section {
 		order: 4;
 		display: flex;
