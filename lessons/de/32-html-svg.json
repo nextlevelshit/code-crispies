@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-svg",
-	"title": "SVG Grundlagen",
+	"title": "HTML SVG",
 	"description": "Zeichne skalierbare Vektorgrafiken direkt in HTML",
 	"mode": "html",
 	"difficulty": "beginner",

@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-tables",
-	"title": "HTML-Tabellen",
+	"title": "HTML Tabellen",
 	"description": "Erstelle strukturierte Datentabellen mit Überschriften und Beschriftungen",
 	"mode": "html",
 	"difficulty": "beginner",

@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "responsive-design",
-	"title": "Responsive Design & Media Queries",
+	"title": "CSS Responsive Design",
 	"description": "Passe deine Layouts an verschiedene Bildschirmgrößen an mit Media Queries und flüssigen Design-Techniken.",
 	"difficulty": "intermediate",
 	"lessons": [

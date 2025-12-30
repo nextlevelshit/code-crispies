@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-marquee",
-	"title": "Das Marquee-Element",
+	"title": "HTML Marquee",
 	"description": "Erstelle Lauftext mit dem klassischen (veralteten aber lustigen!) Marquee-Element",
 	"mode": "html",
 	"difficulty": "beginner",

@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
-	"title": "Details & Summary: Aufklapp-Elemente",
+	"title": "HTML Details & Summary",
 	"description": "Erstelle aufklappbare Inhaltsbereiche ohne JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",

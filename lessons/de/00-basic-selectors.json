@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
-	"title": "CSS: Grundlegende Selektoren",
+	"title": "CSS Selektoren",
 	"description": "CSS-Selektoren sind die Grundlage für das Stylen von Webseiten und ermöglichen es dir, bestimmte HTML-Elemente für die Gestaltung auszuwählen. Dieses Modul stellt grundlegende Selektortypen vor, einschließlich Element-Typ-Selektoren, Klassen-Selektoren, ID-Selektoren und des universellen Selektors.",
 	"difficulty": "beginner",
 	"lessons": [

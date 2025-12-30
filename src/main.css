@@ -259,6 +259,20 @@ code, kbd {
 	margin-bottom: var(--spacing-sm);
 }
 
+.completion-badge {
+	display: inline-block;
+	margin-left: 0.5rem;
+	padding: 0.15rem 0.5rem;
+	background: var(--success-color);
+	color: white;
+	font-size: 0.7rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	border-radius: var(--border-radius-sm);
+	vertical-align: middle;
+}
+
 .lesson-description {
 	font-size: 0.95rem;
 	line-height: 1.6;
@@ -643,6 +657,13 @@ code, kbd {
 
 .sidebar-section:last-child {
 	border-bottom: none;
+}
+
+/* Make the lessons nav section fill available space */
+nav.sidebar-section {
+	flex: 1;
+	overflow-y: auto;
+	min-height: 0;
 }
 
 .sidebar-section h4 {

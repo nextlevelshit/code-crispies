@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "transitions-animations",
-	"title": "Transitions & Animationen",
+	"title": "CSS Animationen",
 	"description": "Bringe Interaktivität in dein UI durch sanfte Eigenschaftsübergänge und Keyframe-gesteuerte Animationen.",
 	"difficulty": "beginner",
 	"lessons": [
