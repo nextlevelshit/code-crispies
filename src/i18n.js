@@ -76,6 +76,11 @@ const translations = {
 		emmetNested: "<kbd>form>input+button</kbd> → nested structure",
 		emmetContent: "<kbd>p{Hello}</kbd> → p with text content",
 
+		// More Projects
+		moreProjectsTitle: "More Projects",
+		htmlOverJsDesc: " - Learn to leverage native HTML elements instead of custom JavaScript solutions",
+		mandalaDesc: " - Interactive visualization of JavaScript technologies organized by complexity",
+
 		// Contact
 		contactTitle: "Contact & Links",
 		contactText: "Code Crispies is developed by librete.ch",
@@ -169,6 +174,11 @@ const translations = {
 		emmetChildren: "<kbd>ul>li*3</kbd> → ul mit 3 li-Kindern",
 		emmetNested: "<kbd>form>input+button</kbd> → verschachtelte Struktur",
 		emmetContent: "<kbd>p{Hallo}</kbd> → p mit Textinhalt",
+
+		// More Projects
+		moreProjectsTitle: "Weitere Projekte",
+		htmlOverJsDesc: " - Lerne, native HTML-Elemente statt eigener JavaScript-Lösungen zu nutzen",
+		mandalaDesc: " - Interaktive Visualisierung von JavaScript-Technologien nach Komplexität geordnet",
 
 		// Contact
 		contactTitle: "Kontakt & Links",
