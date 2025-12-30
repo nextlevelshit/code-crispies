@@ -21,6 +21,7 @@ const elements = {
 	helpBtn: document.getElementById("help-btn"),
 
 	// Left panel
+	instructionsSection: document.querySelector(".instructions"),
 	editorSection: document.querySelector(".editor-section"),
 	modulePill: document.getElementById("module-pill"),
 	moduleName: document.querySelector(".module-name"),
@@ -384,6 +385,16 @@ function loadCurrentLesson() {
 
 	const lesson = engineState.lesson;
 	const mode = lesson.mode || engineState.module?.mode || "css";
+	const isPlayground = engineState.module.id === "playground";
+
+	// Handle playground mode - hide instructions, full height editor
+	if (isPlayground) {
+		elements.instructionsSection?.classList.add("hidden");
+		elements.editorSection?.classList.add("playground-mode");
+	} else {
+		elements.instructionsSection?.classList.remove("hidden");
+		elements.editorSection?.classList.remove("playground-mode");
+	}
 
 	// Add transition class for smooth content swap
 	elements.editorSection?.classList.add("transitioning");

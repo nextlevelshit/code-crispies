@@ -395,6 +395,12 @@ code, kbd {
 	position: relative;
 }
 
+/* Playground mode - full height editor */
+.editor-section.playground-mode {
+	flex: 1;
+	min-height: 0;
+}
+
 .code-editor {
 	flex: 1;
 	display: flex;
