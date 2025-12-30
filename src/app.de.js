@@ -312,7 +312,7 @@ function loadCurrentLesson() {
 
 	// Update Run button text based on completion status
 	if (engineState.isCompleted) {
-		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Erneut';
+		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Erneut anwenden';
 
 		// Add completion badge if not present
 		if (!document.querySelector(".completion-badge")) {
@@ -425,7 +425,7 @@ function runCode() {
 		showSuccessHint(validationResult.message || "CRISPY! ٩(◕‿◕)۶ Dein Code funktioniert.");
 
 		// Update Run button
-		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Erneut';
+		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Erneut anwenden';
 		elements.runBtn.classList.add("success");
 
 		// Add completion badge
