@@ -67,6 +67,38 @@ When creating or editing lessons:
 - Use native form validation attributes instead of JavaScript validation
 - Teach the platform's native capabilities first
 
+### Lesson Design Best Practices
+
+**Clear Task Instructions:**
+- Always state the selector AND the property explicitly in the task
+- Good: "Add `display: flex` to `.flex-container`"
+- Bad: "Use flexbox to align the items" (unclear what selector to use)
+
+**Use `codePrefix` for Context:**
+- Include the selector in `codePrefix` so students know where to write
+- Example: `"codePrefix": ".flex-container {\n  "` with `"codeSuffix": "\n}"`
+- This shows students exactly which rule they're editing
+
+**Simple, Human-Friendly Values:**
+- Use round numbers: `1rem` not `1.25rem`, `8px` not `0.5rem`
+- Avoid tiny values: `2px` not `0.125rem`
+- Students should focus on learning concepts, not deciphering odd numbers
+
+**Named CSS Colors:**
+- Use descriptive color names: `steelblue`, `coral`, `mediumseagreen`, `gold`
+- Avoid hex codes: `#3498db` is less memorable than `steelblue`
+- Named colors make lessons more engaging and easier to remember
+
+**Focused Validations:**
+- When `codePrefix` includes the selector, validations only need to check the property value
+- Use `property_value` type for direct checks: `{ "property": "display", "expected": "flex" }`
+- Avoid redundant `contains` checks when `property_value` already validates the same thing
+
+**Semantic HTML in Examples:**
+- Never use non-semantic wrapper classes like `.form-group` or `.container`
+- Use semantic HTML elements that match the context
+- Keep `previewHTML` clean and focused on the lesson objective
+
 ## Git Commits
 
 - Do NOT add co-authoring lines to commit messages
