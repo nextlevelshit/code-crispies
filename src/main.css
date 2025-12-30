@@ -943,6 +943,21 @@ button.lesson-list-item {
 	color: var(--danger-color);
 }
 
+#reset-btn {
+	background: var(--danger-color);
+	color: white;
+	text-decoration: none;
+	padding: var(--spacing-sm) var(--spacing-md);
+	border-radius: var(--border-radius-sm);
+	font-weight: 600;
+	margin-top: var(--spacing-sm);
+}
+
+#reset-btn:hover {
+	background: #dc2626;
+	color: white;
+}
+
 /* ================= TOGGLE SWITCH ================= */
 .toggle-switch {
 	display: flex;
