@@ -18,7 +18,12 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "transition", "message": "Verwende die <kbd>transition</kbd> Eigenschaft", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "transition",
+					"message": "Verwende die <kbd>transition</kbd> Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "transition:\\s*background-color\\s*0\\.3s",
@@ -66,14 +71,24 @@
 			"codeSuffix": "}\n.ball { }",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "@keyframes bounce", "message": "Definiere <kbd>@keyframes bounce</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "@keyframes bounce",
+					"message": "Definiere <kbd>@keyframes bounce</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "50%.*transform: translateY\\(-20px\\)",
 					"message": "Bei <kbd>50%</kbd>, setze <kbd>transform: translateY(-20px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "contains", "value": "animation", "message": "Verwende <kbd>animation</kbd> Eigenschaft auf <kbd>.ball</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "animation",
+					"message": "Verwende <kbd>animation</kbd> Eigenschaft auf <kbd>.ball</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "animation:.*bounce.*1s.*infinite",
@@ -113,8 +128,16 @@
 					"message": "Verwende <kbd>animation-fill-mode</kbd>",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "property_value", "value": { "property": "animation-duration", "expected": "2s" }, "message": "Setze <kbd>animation-duration: 2s</kbd>" },
-				{ "type": "property_value", "value": { "property": "animation-delay", "expected": "1s" }, "message": "Setze <kbd>animation-delay: 1s</kbd>" },
+				{
+					"type": "property_value",
+					"value": { "property": "animation-duration", "expected": "2s" },
+					"message": "Setze <kbd>animation-duration: 2s</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "animation-delay", "expected": "1s" },
+					"message": "Setze <kbd>animation-delay: 1s</kbd>"
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "animation-iteration-count", "expected": "2" },

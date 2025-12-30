@@ -83,7 +83,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Contact & Links",
-		contactText: "Code Crispies is developed by librete.ch",
+		contactText: "Code Crispies is developed by <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
 
 		// Reset dialog
 		resetDialogTitle: "Reset Progress",
@@ -182,7 +182,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Kontakt & Links",
-		contactText: "Code Crispies wird von librete.ch entwickelt",
+		contactText: "Code Crispies wird von <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> entwickelt",
 
 		// Reset dialog
 		resetDialogTitle: "Fortschritt zurücksetzen",
