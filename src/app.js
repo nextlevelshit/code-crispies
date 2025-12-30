@@ -603,7 +603,7 @@ function runCode() {
 		elements.previewWrapper?.classList.add("matched");
 		setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
-		}, 10000);
+		}, 5000);
 
 		updateNavigationButtons();
 		updateProgressDisplay();
