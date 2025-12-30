@@ -10,11 +10,11 @@ export default defineConfig((env) => ({
 		sourcemap: true
 	},
 	server: {
-		port: 1312,
+		port: 1234,
 		open: false
 	},
 	preview: {
-		port: 1312,
+		port: 1234,
 		open: false
 	}
 }));
