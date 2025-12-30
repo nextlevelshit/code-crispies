@@ -3,7 +3,7 @@
 	"id": "playground",
 	"title": "Playground",
 	"description": "Free-form HTML & CSS playground",
-	"mode": "html",
+	"mode": "playground",
 	"difficulty": "beginner",
 	"lessons": [
 		{
@@ -12,9 +12,9 @@
 			"description": "",
 			"task": "",
 			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; }",
+			"previewBaseCSS": "",
 			"sandboxCSS": "",
-			"initialCode": "",
+			"initialCode": "<style>\n  body {\n    font-family: system-ui, sans-serif;\n    padding: 20px;\n  }\n</style>\n\n<h1>Hello World</h1>\n<p>Start coding!</p>",
 			"solution": "",
 			"previewContainer": "preview-area",
 			"validations": []

@@ -363,6 +363,11 @@ function updateEditorForMode(mode) {
 			placeholder: "Enter your CSS code here...",
 			label: "CSS Editor",
 			cmMode: "css"
+		},
+		playground: {
+			placeholder: "<style>\n  /* CSS here */\n</style>\n\n<!-- HTML here -->",
+			label: "HTML & CSS",
+			cmMode: "html"
 		}
 	};
 
@@ -575,6 +580,8 @@ function resetCode() {
 
 function runCode() {
 	const userCode = codeEditor ? codeEditor.getValue() : "";
+	const engineState = lessonEngine.getCurrentState();
+	const isPlayground = engineState.module?.id === "playground";
 
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
@@ -585,6 +592,11 @@ function runCode() {
 
 	// Apply the code to the preview via LessonEngine
 	lessonEngine.applyUserCode(userCode, true);
+
+	// Skip validation for playground mode
+	if (isPlayground) {
+		return;
+	}
 
 	// Validate code using LessonEngine
 	const validationResult = lessonEngine.validateCode();
