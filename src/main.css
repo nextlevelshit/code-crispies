@@ -733,8 +733,7 @@ nav.sidebar-section {
 
 /* Module List in Sidebar */
 .module-list {
-	max-height: 40vh;
-	overflow-y: auto;
+	/* No max-height - parent nav.sidebar-section handles overflow */
 }
 
 .module-container {
