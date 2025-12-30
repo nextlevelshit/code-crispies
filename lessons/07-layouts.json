@@ -1,13 +1,13 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "layouts",
-	"title": "Flexbox & Grid",
+	"title": "Layouts",
 	"description": "Master modern CSS layout techniques with Flexbox and Grid for responsive, powerful designs.",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "layouts-1",
-			"title": "Flexbox Fundamentals",
+			"title": "Flex Basics",
 			"description": "Learn the core properties of Flexbox to align, distribute space, and order items in a container.",
 			"task": "Set .flex-container to display: flex, and center its children both horizontally and vertically.",
 			"previewHTML": "<div class=\"flex-container\"><div>1</div><div>2</div><div>3</div></div>",
@@ -25,7 +25,7 @@
 		},
 		{
 			"id": "layouts-2",
-			"title": "Flexbox Advanced Features",
+			"title": "Flex Advanced",
 			"description": "Control wrapping, ordering, and flexible growth/shrink of items in a flex container.",
 			"task": "Allow items to wrap and set .flex-item to flex: 1 1 100px.",
 			"previewHTML": "<div class=\"flex-container\"><div class=\"flex-item\">A</div><div class=\"flex-item\">B</div><div class=\"flex-item\">C</div></div>",
@@ -47,7 +47,7 @@
 		},
 		{
 			"id": "layouts-3",
-			"title": "Grid Layout Basics",
+			"title": "Grid Basics",
 			"description": "Define grid containers, set rows and columns, and place items in a structured grid.",
 			"task": "Set .grid-container to display: grid with three equal columns and a 1rem gap.",
 			"previewHTML": "<div class=\"grid-container\"><div>1</div><div>2</div><div>3</div><div>4</div></div>",
@@ -76,7 +76,7 @@
 		},
 		{
 			"id": "layouts-4",
-			"title": "Grid Item Placement",
+			"title": "Grid Placement",
 			"description": "Control the span and position of grid items with grid-column and grid-row.",
 			"task": "Span the first grid item across 2 columns using grid-column: 1 / span 2.",
 			"previewHTML": "<div class=\"grid-container\"><div class=\"item1\">Featured</div><div>2</div><div>3</div><div>4</div></div>",

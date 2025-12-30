@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-data-attributes",
-	"title": "Custom Data Attributes",
+	"title": "Data Attrs",
 	"description": "Store custom data on HTML elements with data-* attributes",
 	"mode": "html",
 	"difficulty": "beginner",
