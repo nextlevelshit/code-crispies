@@ -22,7 +22,11 @@
 				{ "type": "contains", "value": "width", "message": "Use <kbd>width</kbd> property", "options": { "caseSensitive": false } },
 				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Set width to <kbd>80%</kbd>" },
 				{ "type": "contains", "value": "max-width", "message": "Use <kbd>max-width</kbd> property", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "max-width", "expected": "37.5rem" }, "message": "Set max-width to <kbd>37.5rem</kbd>" }
+				{
+					"type": "property_value",
+					"value": { "property": "max-width", "expected": "37.5rem" },
+					"message": "Set max-width to <kbd>37.5rem</kbd>"
+				}
 			]
 		},
 		{
@@ -39,8 +43,18 @@
 			"solution": "  --main-color: #6200ee;\n}\n.var-box {\n  border-color: var(--main-color);",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "--main-color", "message": "Define <kbd>--main-color</kbd> in :root", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "var(--main-color)", "message": "Use <kbd>var(--main-color)</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "--main-color",
+					"message": "Define <kbd>--main-color</kbd> in :root",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "var(--main-color)",
+					"message": "Use <kbd>var(--main-color)</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "border", "expected": "var(--main-color)" },
