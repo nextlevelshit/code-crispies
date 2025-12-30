@@ -124,8 +124,8 @@ const translations = {
 		rerun: "Erneut anwenden",
 
 		// Preview
-		yourOutput: "Deine Ausgabe",
-		showExpected: "Lösung zeigen",
+		yourOutput: "Dein Ergebnis",
+		showExpected: "Lösung einblenden",
 		hideExpected: "Lösung ausblenden",
 		previous: "Zurück",
 		next: "Weiter",
@@ -163,7 +163,7 @@ const translations = {
 		editorToolsTitle: "Editor-Werkzeuge",
 		editorToolUndo: "<strong>↶ Rückgängig</strong> / <strong>↷ Wiederholen</strong> - Bearbeitungsverlauf navigieren",
 		editorToolReset: "<strong>⟲ Zurücksetzen</strong> - Ursprünglichen Code wiederherstellen",
-		editorToolExpected: "<strong>Lösung zeigen</strong> - Zielergebnis ein-/ausblenden",
+		editorToolExpected: "<strong>Lösung einblenden</strong> - Zielergebnis ein-/ausblenden",
 		keyboardShortcutsTitle: "Tastenkürzel",
 		shortcutRun: "<kbd>Strg+Enter</kbd> - Sofort validieren",
 		shortcutUndo: "<kbd>Strg+Z</kbd> - Rückgängig",
