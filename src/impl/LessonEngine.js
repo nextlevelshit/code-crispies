@@ -213,6 +213,7 @@ export class LessonEngine {
       <!DOCTYPE html>
       <html>
         <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS || ""}</style>
           <style>${sandboxCSS || ""}</style>
         </head>
@@ -229,6 +230,7 @@ export class LessonEngine {
       <html>
         <head>
           <script src="https://cdn.tailwindcss.com"></script>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS}</style>
           <style>${sandboxCSS}</style>
         </head>
@@ -244,6 +246,7 @@ export class LessonEngine {
       <!DOCTYPE html>
       <html>
         <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS}</style>
           <style>${userCssWithWrapper}</style>
           <style>${sandboxCSS}</style>
@@ -304,6 +307,7 @@ export class LessonEngine {
       <!DOCTYPE html>
       <html>
         <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS || ""}</style>
           <style>${sandboxCSS || ""}</style>
         </head>
@@ -320,6 +324,7 @@ export class LessonEngine {
       <html>
         <head>
           <script src="https://cdn.tailwindcss.com"></script>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS}</style>
           <style>${sandboxCSS}</style>
         </head>
@@ -336,6 +341,7 @@ export class LessonEngine {
       <!DOCTYPE html>
       <html>
         <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
           <style>${previewBaseCSS}</style>
           <style>${solutionCss}</style>
           <style>${sandboxCSS}</style>
