@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-basic",
-	"title": "Form Inputs",
+	"title": "HTML Forms",
 	"description": "Learn to create forms with various input types",
 	"mode": "html",
 	"difficulty": "beginner",

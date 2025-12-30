@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "units-variables",
-	"title": "Units & Vars",
+	"title": "CSS Units & Variables",
 	"description": "Understand the variety of CSS measurement units and how to define and use custom properties for maintainable styles.",
 	"difficulty": "beginner",
 	"lessons": [

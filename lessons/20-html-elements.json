@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-elements",
-	"title": "HTML Elements",
+	"title": "HTML Block & Inline",
 	"description": "Understanding the fundamental difference between container (block) and inline elements",
 	"mode": "html",
 	"difficulty": "beginner",

@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
-	"title": "Selectors",
+	"title": "CSS Selectors",
 	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector.",
 	"difficulty": "beginner",
 	"lessons": [

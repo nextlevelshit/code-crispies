@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "flexbox",
-	"title": "Flexbox",
+	"title": "CSS Flexbox",
 	"description": "Master the flexible box layout model for modern responsive designs",
 	"difficulty": "intermediate",
 	"lessons": [
