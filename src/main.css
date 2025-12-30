@@ -231,16 +231,26 @@ code, kbd {
 }
 
 .module-pill {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
 	background: var(--primary-bg-medium);
 	color: var(--primary-color);
-	padding: 2px 10px;
-	border-radius: 12px;
-	font-size: 0.75rem;
+	padding: 4px 12px;
+	border-radius: 16px;
+	font-size: 0.8rem;
 	font-weight: 600;
-	margin-bottom: var(--spacing-xs);
+}
+
+.module-name {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
+}
+
+.module-pill .level-indicator {
+	color: var(--primary-dark);
+	font-weight: 500;
+	opacity: 0.8;
 }
 
 #lesson-title {
@@ -552,12 +562,6 @@ code, kbd {
 	padding: var(--spacing-md);
 	background: var(--panel-bg);
 	border-top: 1px solid var(--border-color);
-}
-
-.level-indicator {
-	font-size: 0.9rem;
-	color: var(--light-text);
-	font-weight: 500;
 }
 
 /* ================= SIDEBAR ================= */
