@@ -2,6 +2,7 @@ import { LessonEngine } from "./impl/LessonEngine.js";
 import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
+import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
@@ -15,6 +16,7 @@ const state = {
 const elements = {
 	// Header
 	menuBtn: document.getElementById("menu-btn"),
+	langBtn: document.getElementById("lang-btn"),
 	helpBtn: document.getElementById("help-btn"),
 
 	// Left panel
@@ -100,12 +102,27 @@ function toggleExpectedResult() {
 
 	if (state.showExpected) {
 		elements.expectedOverlay.classList.add("visible");
-		elements.showExpectedBtn.textContent = "Hide Expected";
+		elements.showExpectedBtn.textContent = t("hideExpected");
 		elements.showExpectedBtn.classList.add("btn-primary");
 	} else {
 		elements.expectedOverlay.classList.remove("visible");
-		elements.showExpectedBtn.textContent = "Show Expected";
+		elements.showExpectedBtn.textContent = t("showExpected");
 		elements.showExpectedBtn.classList.remove("btn-primary");
+	}
+}
+
+// ================= LANGUAGE TOGGLE =================
+
+function toggleLanguage() {
+	const currentLang = getLanguage();
+	const newLang = currentLang === "en" ? "de" : "en";
+	setLanguage(newLang);
+	applyTranslations();
+	updateProgressDisplay();
+	// Reload current lesson to update any dynamic text
+	const engineState = lessonEngine.getCurrentState();
+	if (engineState.lesson) {
+		loadCurrentLesson();
 	}
 }
 
@@ -139,7 +156,11 @@ function showSuccessHint(message) {
 function updateProgressDisplay() {
 	const stats = lessonEngine.getProgressStats();
 	elements.progressFill.style.width = `${stats.percentComplete}%`;
-	elements.progressText.textContent = `${stats.percentComplete}% Complete (${stats.totalCompleted}/${stats.totalLessons})`;
+	elements.progressText.textContent = t("progressText", {
+		percent: stats.percentComplete,
+		completed: stats.totalCompleted,
+		total: stats.totalLessons
+	});
 }
 
 // ================= USER SETTINGS =================
@@ -184,7 +205,7 @@ async function initializeModules() {
 		updateProgressDisplay();
 	} catch (error) {
 		console.error("Failed to load modules:", error);
-		elements.lessonDescription.textContent = "Failed to load modules. Please refresh the page.";
+		elements.lessonDescription.textContent = t("failedToLoad");
 	}
 }
 
@@ -248,7 +269,7 @@ function updateEditorForMode(mode) {
 			cmMode: "html"
 		},
 		tailwind: {
-			placeholder: "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)",
+			placeholder: t("tailwindPlaceholder"),
 			label: "Tailwind Classes",
 			cmMode: "css"
 		},
@@ -318,17 +339,17 @@ function loadCurrentLesson() {
 
 	// Update Run button text based on completion status
 	if (engineState.isCompleted) {
-		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
+		elements.runBtn.querySelector("span").textContent = t("rerun");
 
 		// Add completion badge if not present
 		if (!document.querySelector(".completion-badge")) {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
-			badge.textContent = "Completed";
+			badge.textContent = t("completed");
 			elements.lessonTitle.appendChild(badge);
 		}
 	} else {
-		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Run';
+		elements.runBtn.querySelector("span").textContent = t("run");
 
 		// Remove completion badge if exists
 		const badge = document.querySelector(".completion-badge");
@@ -448,17 +469,17 @@ function runCode() {
 
 	if (validationResult.isValid) {
 		// Show success hint
-		showSuccessHint(validationResult.message || "CRISPY! ٩(◕‿◕)۶ Your code works correctly.");
+		showSuccessHint(validationResult.message || t("successMessage"));
 
 		// Update Run button
-		elements.runBtn.innerHTML = '<img src="./gear.svg" alt="" />Re-run';
+		elements.runBtn.querySelector("span").textContent = t("rerun");
 		elements.runBtn.classList.add("success");
 
 		// Add completion badge
 		if (!document.querySelector(".completion-badge")) {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
-			badge.textContent = "Completed";
+			badge.textContent = t("completed");
 			elements.lessonTitle.appendChild(badge);
 		}
 
@@ -486,7 +507,7 @@ function runCode() {
 
 		// Only show hints if enabled
 		if (!state.userSettings.disableFeedbackErrors) {
-			showHint(validationResult.message || "Keep trying!", step, total);
+			showHint(validationResult.message || t("keepTrying"), step, total);
 		}
 	}
 }
@@ -546,6 +567,9 @@ function initCodeEditor() {
 }
 
 function init() {
+	// Initialize i18n before anything else
+	initI18n();
+
 	loadUserSettings();
 
 	// Initialize CodeMirror editor
@@ -558,6 +582,9 @@ function init() {
 	elements.menuBtn.addEventListener("click", openSidebar);
 	elements.closeSidebar.addEventListener("click", closeSidebar);
 	elements.sidebarBackdrop.addEventListener("click", closeSidebar);
+
+	// Language toggle
+	elements.langBtn.addEventListener("click", toggleLanguage);
 
 	// Expected result toggle
 	elements.showExpectedBtn.addEventListener("click", toggleExpectedResult);
