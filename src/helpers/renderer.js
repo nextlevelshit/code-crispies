@@ -15,7 +15,7 @@ let feedbackTimeout = null;
  */
 export function renderModuleList(container, modules, onSelectModule, onSelectLesson) {
 	// Clear the container
-	container.innerHTML = "<h3>Lessons</h3>";
+	container.innerHTML = "";
 
 	// Get user progress from localStorage
 	const progressData = localStorage.getItem("codeCrispies.progress");
