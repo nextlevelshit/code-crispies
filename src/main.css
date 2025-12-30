@@ -438,7 +438,7 @@ code, kbd {
 	align-items: center;
 	padding: var(--spacing-xs) var(--spacing-md);
 	background: var(--panel-bg);
-	border-bottom: 1px solid var(--border-color);
+	border-top: 1px solid var(--border-color);
 }
 
 .preview-label {
