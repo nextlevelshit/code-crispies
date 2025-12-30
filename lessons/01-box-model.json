@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "box-model",
-	"title": "WIP: Padding, Borders, and Margins",
+	"title": "Box Model",
 	"description": "Master the fundamental principles of space management in web design through the CSS box model. This module explores how content, padding, borders, and margins combine to create layout structures that are both visually appealing and structurally sound.",
 	"difficulty": "beginner",
 	"lessons": [
@@ -9,19 +9,20 @@
 			"id": "box-model-1",
 			"title": "Box Model Components",
 			"description": "The CSS box model consists of four concentric layers: content area (innermost), padding, border, and margin (outermost). Understanding how these components interact is essential for precise layout control.",
-			"task": "Add <code>padding: 1rem</code> to <code>.box</code> to create space between its content and border.",
+			"task": "Add <kbd>padding: 1rem</kbd> to <kbd>.box</kbd> to create space between its content and border.",
 			"previewHTML": "<div class=\"box\">Box Model Components</div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: lavender; border: 2px dashed slategray; }",
 			"sandboxCSS": "",
 			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "padding: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Set padding to '1rem'"
+					"message": "Set <kbd>padding: 1rem</kbd>"
 				}
 			]
 		},
@@ -29,19 +30,20 @@
 			"id": "box-model-2",
 			"title": "Adding Borders",
 			"description": "Borders outline an element, creating visual separation from surrounding content. The border shorthand accepts three values: width, style, and color.",
-			"task": "Add <code>border: 2px solid darkslategray</code> to <code>.box</code>.",
+			"task": "Add <kbd>border: 2px solid darkslategray</kbd> to <kbd>.box</kbd>.",
 			"previewHTML": "<div class=\"box\">This box needs a border</div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: mintcream; padding: 1rem; }",
 			"sandboxCSS": "",
 			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "border: 2px solid darkslategray;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
 					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
-					"message": "Set border to '2px solid darkslategray'",
+					"message": "Set <kbd>border: 2px solid darkslategray</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -50,39 +52,41 @@
 			"id": "box-model-3",
 			"title": "Adding Margins",
 			"description": "Margins create space between elements, controlling how they relate to one another within a layout. Unlike padding (which affects internal spacing), margins exist outside the element's border.",
-			"task": "Add <code>margin: 1rem</code> to <code>.margin-box</code> to create space between it and the adjacent element.",
+			"task": "Add <kbd>margin: 1rem</kbd> to <kbd>.margin-box</kbd> to create space between it and the adjacent element.",
 			"previewHTML": "<div class=\"container\"><div class=\"margin-box\">This box needs margins</div><div class=\"neighbor\">Adjacent element</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .margin-box { background-color: plum; padding: 1rem; border: 2px solid orchid; } .neighbor { background-color: lightblue; padding: 1rem; border: 2px solid steelblue; }",
 			"sandboxCSS": "",
 			"codePrefix": ".margin-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "margin", "expected": "1rem" },
-					"message": "Set margin to '1rem'"
+					"message": "Set <kbd>margin: 1rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-4",
 			"title": "Box Sizing: Border-Box",
-			"description": "The box-sizing property determines how element dimensions are calculated. The default 'content-box' excludes padding and border from width/height, while 'border-box' includes them, making layout calculations more intuitive.",
-			"task": "Add <code>box-sizing: border-box</code> to <code>.border-box</code> so padding and border are included in its width.",
+			"description": "The <kbd>box-sizing</kbd> property determines how element dimensions are calculated. The default <kbd>content-box</kbd> excludes padding and border from width/height, while <kbd>border-box</kbd> includes them, making layout calculations more intuitive.",
+			"task": "Add <kbd>box-sizing: border-box</kbd> to <kbd>.border-box</kbd> so padding and border are included in its width.",
 			"previewHTML": "<div class=\"sizing-demo\"><div class=\"box content-box\">Content-box (default)</div><div class=\"box border-box\">Border-box</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 4px solid teal; background: lightcyan; } .content-box { box-sizing: content-box; }",
 			"sandboxCSS": "",
 			"codePrefix": ".border-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "box-sizing: border-box;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Set box-sizing to 'border-box'"
+					"message": "Set <kbd>box-sizing: border-box</kbd>"
 				}
 			]
 		},
@@ -90,19 +94,20 @@
 			"id": "box-model-5",
 			"title": "Margin Collapse",
 			"description": "When two vertical margins meet, they collapse to the larger value instead of adding up. Understanding this behavior is crucial for consistent vertical spacing.",
-			"task": "Add <code>margin-bottom: 2rem</code> to <code>.first</code>. Notice the space between paragraphs equals 2rem (not 3rem) due to margin collapse.",
+			"task": "Add <kbd>margin-bottom: 2rem</kbd> to <kbd>.first</kbd>. Notice the space between paragraphs equals 2rem (not 3rem) due to margin collapse.",
 			"previewHTML": "<div class=\"collapse-demo\"><p class=\"first\">This paragraph has a bottom margin.</p><p class=\"second\">This paragraph has a top margin of 1rem.</p></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .collapse-demo { border: 1px solid silver; padding: 8px; background: ghostwhite; } .second { margin-top: 1rem; background: linen; }",
 			"sandboxCSS": "",
 			"codePrefix": ".first {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin-bottom: 2rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "2rem" },
-					"message": "Set margin-bottom to '2rem'"
+					"message": "Set <kbd>margin-bottom: 2rem</kbd>"
 				}
 			]
 		},
@@ -110,19 +115,20 @@
 			"id": "box-model-6",
 			"title": "Margin Shorthand Notation",
 			"description": "The margin shorthand can set all four sides at once. Two values set vertical (top/bottom) and horizontal (left/right) margins respectively.",
-			"task": "Add <code>margin: 1rem 2rem</code> to <code>.shorthand-box</code> for 1rem top/bottom and 2rem left/right.",
+			"task": "Add <kbd>margin: 1rem 2rem</kbd> to <kbd>.shorthand-box</kbd> for 1rem top/bottom and 2rem left/right.",
 			"previewHTML": "<div class=\"container\"><div class=\"shorthand-box\">This box needs margins: 1rem top/bottom, 2rem left/right</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .shorthand-box { background-color: honeydew; border: 2px solid mediumseagreen; padding: 1rem; }",
 			"sandboxCSS": "",
 			"codePrefix": ".shorthand-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin: 1rem 2rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
 					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Set margin to '1rem 2rem'",
+					"message": "Set <kbd>margin: 1rem 2rem</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -131,39 +137,41 @@
 			"id": "box-model-7",
 			"title": "Padding Shorthand Notation",
 			"description": "Like margin, padding shorthand allows setting all sides at once. A single value applies to all four sides equally.",
-			"task": "Add <code>padding: 1.5rem</code> to <code>.padding-box</code> to add equal padding on all sides.",
+			"task": "Add <kbd>padding: 1.5rem</kbd> to <kbd>.padding-box</kbd> to add equal padding on all sides.",
 			"previewHTML": "<div class=\"padding-box\">This box needs equal padding on all sides</div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .padding-box { background-color: papayawhip; border: 2px solid orange; }",
 			"sandboxCSS": "",
 			"codePrefix": ".padding-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "padding: 1.5rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1.5rem" },
-					"message": "Set padding to '1.5rem'"
+					"message": "Set <kbd>padding: 1.5rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-8",
 			"title": "Border on Specific Sides",
-			"description": "For granular control, you can target specific sides with border-top, border-right, border-bottom, or border-left.",
-			"task": "Add <code>border-bottom: 4px solid dodgerblue</code> to <code>.border-demo</code>.",
+			"description": "For granular control, you can target specific sides with <kbd>border-top</kbd>, <kbd>border-right</kbd>, <kbd>border-bottom</kbd>, or <kbd>border-left</kbd>.",
+			"task": "Add <kbd>border-bottom: 4px solid dodgerblue</kbd> to <kbd>.border-demo</kbd>.",
 			"previewHTML": "<div class=\"border-demo\">This element needs only a bottom border</div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .border-demo { padding: 1rem; background-color: aliceblue; }",
 			"sandboxCSS": "",
 			"codePrefix": ".border-demo {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "border-bottom: 4px solid dodgerblue;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
 					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
-					"message": "Set border-bottom to '4px solid dodgerblue'",
+					"message": "Set <kbd>border-bottom: 4px solid dodgerblue</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
