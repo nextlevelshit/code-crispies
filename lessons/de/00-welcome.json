@@ -33,8 +33,8 @@
 			"previewHTML": "<p>Hello World! 🌍</p><p>Hallo Welt!</p><p>Bonjour le monde!</p><p>¡Hola Mundo!</p><p>Ciao Mondo!</p><p>こんにちは世界!</p><p>Привет мир!</p><p>مرحبا بالعالم!</p>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 16px; } p { margin: 8px 0; padding: 8px 16px; border-radius: 8px; font-weight: 600; } p:nth-child(1) { background: #fef3c7; color: #92400e; font-size: 1.4em; } p:nth-child(2) { background: #dcfce7; color: #166534; font-size: 1.2em; } p:nth-child(3) { background: #dbeafe; color: #1e40af; font-size: 1.1em; } p:nth-child(4) { background: #fce7f3; color: #9d174d; } p:nth-child(5) { background: #e0e7ff; color: #4338ca; font-size: 1.3em; } p:nth-child(6) { background: #fef9c3; color: #854d0e; } p:nth-child(7) { background: #fee2e2; color: #991b1b; font-size: 1.1em; } p:nth-child(8) { background: #f3e8ff; color: #7c3aed; }",
 			"sandboxCSS": "",
-			"initialCode": "",
-			"solution": "<button>Los geht's!</button>",
+			"initialCode": "<p>Hello World! 🌍</p>\n<p>Hallo Welt!</p>\n<p>Bonjour le monde!</p>\n<p>¡Hola Mundo!</p>\n<p>Ciao Mondo!</p>\n<p>こんにちは世界!</p>\n<p>Привет мир!</p>\n<p>مرحبا بالعالم!</p>",
+			"solution": "<p>Hello World! 🌍</p>\n<p>Hallo Welt!</p>\n<p>Bonjour le monde!</p>\n<p>¡Hola Mundo!</p>\n<p>Ciao Mondo!</p>\n<p>こんにちは世界!</p>\n<p>Привет мир!</p>\n<p>مرحبا بالعالم!</p>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
