@@ -205,6 +205,31 @@ function saveUserSettings() {
 	localStorage.setItem("codeCrispies.settings", JSON.stringify(state.userSettings));
 }
 
+// ================= LESSON CACHE =================
+
+function restoreLessonCache() {
+	try {
+		const cached = localStorage.getItem("codeCrispies.lessonCache");
+		if (cached) {
+			const data = JSON.parse(cached);
+			if (data.moduleTitle && elements.moduleName) {
+				elements.moduleName.textContent = data.moduleTitle;
+			}
+			if (data.lessonTitle && elements.lessonTitle) {
+				elements.lessonTitle.textContent = data.lessonTitle;
+			}
+			if (data.lessonDescription && elements.lessonDescription) {
+				elements.lessonDescription.innerHTML = data.lessonDescription;
+			}
+			if (data.taskInstruction && elements.taskInstruction) {
+				elements.taskInstruction.innerHTML = data.taskInstruction;
+			}
+		}
+	} catch (e) {
+		// Ignore cache errors
+	}
+}
+
 // ================= MODULE INITIALIZATION =================
 
 async function initializeModules() {
@@ -406,6 +431,21 @@ function loadCurrentLesson() {
 	requestAnimationFrame(() => {
 		elements.editorSection?.classList.remove("transitioning");
 	});
+
+	// Cache lesson display data for instant restore on reload
+	try {
+		localStorage.setItem(
+			"codeCrispies.lessonCache",
+			JSON.stringify({
+				moduleTitle: engineState.module?.title,
+				lessonTitle: lesson.title,
+				lessonDescription: lesson.description,
+				taskInstruction: lesson.task
+			})
+		);
+	} catch (e) {
+		// Ignore storage errors
+	}
 }
 
 // ================= LIVE PREVIEW =================
@@ -602,6 +642,9 @@ function init() {
 	initI18n();
 
 	loadUserSettings();
+
+	// Restore cached lesson content immediately to avoid "Loading..." flash
+	restoreLessonCache();
 
 	// Initialize CodeMirror editor
 	initCodeEditor();
