@@ -14,7 +14,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; display: grid; gap: 15px; } article { padding: 20px; border-radius: 10px; background: #f5f5f5; border-left: 4px solid #ccc; } article[data-category='electronics'] { border-left-color: #2196f3; background: #e3f2fd; } article[data-category='clothing'] { border-left-color: #e91e63; background: #fce4ec; } h2 { margin: 0 0 10px 0; } article::after { content: '€' attr(data-price); display: block; font-weight: bold; color: #4caf50; margin-top: 10px; }",
 			"sandboxCSS": "",
-			"initialCode": "<!-- Create product cards with data attributes -->",
+			"initialCode": "",
 			"solution": "<article data-category=\"electronics\" data-price=\"299\">\n  <h2>Laptop</h2>\n  <p>A powerful laptop for work and play.</p>\n</article>\n\n<article data-category=\"clothing\" data-price=\"49\">\n  <h2>T-Shirt</h2>\n  <p>A comfortable cotton t-shirt.</p>\n</article>",
 			"previewContainer": "preview-area",
 			"validations": [
@@ -43,7 +43,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } ul { list-style: none; padding: 0; } li { padding: 15px; margin: 8px 0; border-radius: 8px; background: #f5f5f5; } li[data-status='completed'] { background: #c8e6c9; text-decoration: line-through; color: #388e3c; } li[data-status='active'] { background: #fff3e0; border-left: 4px solid #ff9800; font-weight: 600; } li[data-status='pending'] { background: #e3f2fd; color: #1976d2; }",
 			"sandboxCSS": "",
-			"initialCode": "<ul>\n  <!-- Add list items with data-status attributes -->\n</ul>",
+			"initialCode": "<ul>\n  \n</ul>",
 			"solution": "<ul>\n  <li data-status=\"completed\">Buy groceries</li>\n  <li data-status=\"active\">Finish homework</li>\n  <li data-status=\"pending\">Call mom</li>\n</ul>",
 			"previewContainer": "preview-area",
 			"validations": [
