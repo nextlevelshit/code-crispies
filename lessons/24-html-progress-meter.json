@@ -9,7 +9,7 @@
 		{
 			"id": "progress-basic",
 			"title": "Progress Bars",
-			"description": "The <kbd>&lt;progress&gt;</kbd> element shows task completion. Use <kbd>value</kbd> for current progress and <kbd>max</kbd> for the total.<br><br>The text inside is fallback for older browsers.",
+			"description": "The <kbd>&lt;progress&gt;</kbd> element shows task completion. Use <kbd>value</kbd> for current progress and <kbd>max</kbd> for the total.<br><br><b>Note:</b> This is not a self-closing tag! Write <kbd>&lt;progress&gt;...&lt;/progress&gt;</kbd> with fallback text inside for older browsers.",
 			"task": "Create a progress bar showing 70% completion:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying 'Download:'<br>2. Add a <kbd>&lt;progress&gt;</kbd> with <kbd>value=\"70\"</kbd> and <kbd>max=\"100\"</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } progress { width: 100%; height: 20px; border-radius: 10px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 10px; } progress::-webkit-progress-value { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; } progress::-moz-progress-bar { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; }",

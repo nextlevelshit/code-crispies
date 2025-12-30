@@ -9,7 +9,7 @@
 		{
 			"id": "progress-basic",
 			"title": "Fortschrittsbalken",
-			"description": "Das <kbd>&lt;progress&gt;</kbd>-Element zeigt den Aufgabenfortschritt. Verwende <kbd>value</kbd> für den aktuellen Stand und <kbd>max</kbd> für das Maximum.<br><br>Der Text darin ist ein Fallback für ältere Browser.",
+			"description": "Das <kbd>&lt;progress&gt;</kbd>-Element zeigt den Aufgabenfortschritt. Verwende <kbd>value</kbd> für den aktuellen Stand und <kbd>max</kbd> für das Maximum.<br><br><b>Wichtig:</b> Dies ist kein selbstschließendes Tag! Schreibe <kbd>&lt;progress&gt;...&lt;/progress&gt;</kbd> mit einem Fallback-Text dazwischen für ältere Browser.",
 			"task": "Erstelle einen Fortschrittsbalken mit 70% Fortschritt:<br>1. Füge ein <kbd>&lt;label&gt;</kbd> mit 'Download:' hinzu<br>2. Füge ein <kbd>&lt;progress&gt;</kbd> mit <kbd>value=\"70\"</kbd> und <kbd>max=\"100\"</kbd> hinzu",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } progress { width: 100%; height: 20px; border-radius: 10px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 10px; } progress::-webkit-progress-value { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; } progress::-moz-progress-bar { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; }",
