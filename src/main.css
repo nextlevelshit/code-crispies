@@ -587,14 +587,14 @@ code, kbd {
 }
 
 .preview-wrapper.matched::after {
-	content: "CRISPY! ٩(◕‿◕)۶";
+	content: "CRISPY ٩( ◕‿◕ )۶";
 	position: absolute;
-	background: var(--success-color);
+	background: var(--success-color-dark);
 	color: white;
 	padding: var(--spacing-sm) var(--spacing-lg);
 	border-radius: var(--border-radius-lg);
 	font-weight: bold;
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	animation: dvd-bounce 8s ease-in-out infinite;
 	z-index: 10;
 	white-space: nowrap;
