@@ -238,6 +238,8 @@ code, kbd {
 	border-radius: 16px;
 	font-size: 0.8rem;
 	font-weight: 600;
+	min-width: 0;
+	flex-shrink: 1;
 }
 
 .module-name {
@@ -246,7 +248,7 @@ code, kbd {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	max-width: 150px;
+	max-width: 120px;
 }
 
 .module-pill .level-indicator {
@@ -1084,7 +1086,7 @@ input:checked + .toggle-slider::before {
 	}
 
 	.module-name {
-		max-width: 100px;
+		max-width: 80px;
 	}
 
 	.level-label {
