@@ -241,6 +241,23 @@ code, kbd {
 	opacity: 0.3;
 }
 
+/* Loading fallback notice */
+.loading-fallback {
+	text-align: center;
+	padding: 3rem 1rem;
+	color: var(--light-text);
+	animation: fadeIn 0.5s ease;
+}
+
+.loading-fallback p {
+	margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
 .module-pill {
 	display: inline-flex;
 	align-items: center;

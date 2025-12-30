@@ -238,6 +238,29 @@ function restoreLessonCache() {
 
 // ================= MODULE INITIALIZATION =================
 
+let loadingTimeout = null;
+
+function showLoadingFallback() {
+	// Only show if no lesson is loaded yet
+	if (!elements.lessonTitle.textContent) {
+		elements.lessonDescription.innerHTML = `
+			<div class="loading-fallback">
+				<p>${t("loadingFallbackText")}</p>
+				<button class="btn btn-text" onclick="document.getElementById('help-btn').click()">
+					${t("help")}
+				</button>
+			</div>
+		`;
+	}
+}
+
+function clearLoadingTimeout() {
+	if (loadingTimeout) {
+		clearTimeout(loadingTimeout);
+		loadingTimeout = null;
+	}
+}
+
 async function initializeModules() {
 	try {
 		const modules = await loadModules(getLanguage());
@@ -257,9 +280,10 @@ async function initializeModules() {
 		}
 
 		updateProgressDisplay();
+		clearLoadingTimeout();
 	} catch (error) {
 		console.error("Failed to load modules:", error);
-		elements.lessonDescription.textContent = t("failedToLoad");
+		showLoadingFallback();
 	}
 }
 
@@ -655,6 +679,9 @@ function init() {
 
 	// Initialize CodeMirror editor
 	initCodeEditor();
+
+	// Set timeout to show fallback if loading takes too long
+	loadingTimeout = setTimeout(showLoadingFallback, 3000);
 
 	// Load modules after editor is ready
 	initializeModules().catch(console.error);
