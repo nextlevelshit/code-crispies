@@ -31,6 +31,7 @@ const translations = {
 		previous: "Previous",
 		next: "Next",
 		levelIndicator: "Lesson {current} of {total}",
+		lessonLabel: "Lesson",
 
 		// Sidebar
 		menu: "Menu",
@@ -119,6 +120,7 @@ const translations = {
 		previous: "Zurück",
 		next: "Weiter",
 		levelIndicator: "Lektion {current} von {total}",
+		lessonLabel: "Lektion",
 
 		// Sidebar
 		menu: "Menü",
