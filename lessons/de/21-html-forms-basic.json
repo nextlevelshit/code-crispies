@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-basic",
-	"title": "HTML-Formulare: Grundlegende Eingaben",
+	"title": "HTML Formulare",
 	"description": "Lerne, Formulare mit verschiedenen Eingabetypen zu erstellen",
 	"mode": "html",
 	"difficulty": "beginner",

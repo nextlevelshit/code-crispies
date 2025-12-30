@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "box-model",
-	"title": "Padding, Borders und Margins",
+	"title": "CSS Box Model",
 	"description": "Beherrsche die Grundprinzipien der Raumverwaltung im Webdesign durch das CSS Box-Modell.",
 	"difficulty": "beginner",
 	"lessons": [

@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-validation",
-	"title": "HTML-Formulare: Validierung",
+	"title": "HTML Validierung",
 	"description": "Lerne die eingebauten HTML5-Formular-Validierungsattribute kennen",
 	"mode": "html",
 	"difficulty": "intermediate",

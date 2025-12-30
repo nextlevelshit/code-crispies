@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-elements",
-	"title": "HTML-Elemente: Block vs Inline",
+	"title": "HTML Block & Inline",
 	"description": "Verstehe den grundlegenden Unterschied zwischen Container- (Block-) und Inline-Elementen",
 	"mode": "html",
 	"difficulty": "beginner",

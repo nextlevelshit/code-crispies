@@ -1,7 +1,7 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "units-variables",
-	"title": "Einheiten, var() und calc()",
+	"title": "CSS Einheiten & Variablen",
 	"description": "Verstehe die Vielfalt der CSS-Maßeinheiten und wie du Custom Properties für wartbare Stile definierst und verwendest.",
 	"difficulty": "beginner",
 	"lessons": [
