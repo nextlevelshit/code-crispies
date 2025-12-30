@@ -153,9 +153,21 @@ code, kbd {
 	font-weight: 800;
 	color: var(--text-color);
 	line-height: 1;
+	display: flex;
+	align-items: center;
+	gap: 0.15rem;
 }
 
-.logo h1 span {
+.logo h1 .code-text {
+	background: var(--primary-color);
+	color: white;
+	padding: 0.15rem 0.35rem;
+	border-radius: 4px;
+	letter-spacing: 0.05em;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.logo h1 span:last-child {
 	color: var(--primary-color);
 }
 
