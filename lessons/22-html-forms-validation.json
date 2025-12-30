@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-validation",
-	"title": "Validation",
+	"title": "HTML Validation",
 	"description": "Learn HTML5 built-in form validation attributes",
 	"mode": "html",
 	"difficulty": "intermediate",

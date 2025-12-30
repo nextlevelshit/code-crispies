@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-marquee",
-	"title": "Marquee",
+	"title": "HTML Marquee",
 	"description": "Create scrolling text with the classic (deprecated but fun!) marquee element",
 	"mode": "html",
 	"difficulty": "beginner",

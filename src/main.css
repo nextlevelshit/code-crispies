@@ -228,6 +228,19 @@ code, kbd {
 	border-bottom: 1px solid var(--border-color);
 }
 
+/* Smooth lesson transition */
+#lesson-title,
+.lesson-description,
+.task-instruction {
+	transition: opacity 0.1s ease;
+}
+
+.editor-section.transitioning #lesson-title,
+.editor-section.transitioning .lesson-description,
+.editor-section.transitioning .task-instruction {
+	opacity: 0.3;
+}
+
 .module-pill {
 	display: inline-flex;
 	align-items: center;

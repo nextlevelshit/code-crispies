@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-tables",
-	"title": "Tables",
+	"title": "HTML Tables",
 	"description": "Create structured data tables with headers and captions",
 	"mode": "html",
 	"difficulty": "beginner",

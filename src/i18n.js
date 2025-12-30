@@ -76,6 +76,10 @@ const translations = {
 		emmetNested: "<kbd>form>input+button</kbd> → nested structure",
 		emmetContent: "<kbd>p{Hello}</kbd> → p with text content",
 
+		// Contact
+		contactTitle: "Contact & Links",
+		contactText: "Code Crispies is developed by librete.ch",
+
 		// Reset dialog
 		resetDialogTitle: "Reset Progress",
 		resetDialogText: "Are you sure you want to reset all your progress? This cannot be undone.",
@@ -164,6 +168,10 @@ const translations = {
 		emmetChildren: "<kbd>ul>li*3</kbd> → ul mit 3 li-Kindern",
 		emmetNested: "<kbd>form>input+button</kbd> → verschachtelte Struktur",
 		emmetContent: "<kbd>p{Hallo}</kbd> → p mit Textinhalt",
+
+		// Contact
+		contactTitle: "Kontakt & Links",
+		contactText: "Code Crispies wird von librete.ch entwickelt",
 
 		// Reset dialog
 		resetDialogTitle: "Fortschritt zurücksetzen",

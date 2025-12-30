@@ -20,6 +20,7 @@ const elements = {
 	helpBtn: document.getElementById("help-btn"),
 
 	// Left panel
+	editorSection: document.querySelector(".editor-section"),
 	modulePill: document.getElementById("module-pill"),
 	moduleName: document.querySelector(".module-name"),
 	lessonTitle: document.getElementById("lesson-title"),
@@ -313,6 +314,9 @@ function loadCurrentLesson() {
 	const lesson = engineState.lesson;
 	const mode = lesson.mode || engineState.module?.mode || "css";
 
+	// Add transition class for smooth content swap
+	elements.editorSection?.classList.add("transitioning");
+
 	// Update UI based on mode
 	updateEditorForMode(mode);
 
@@ -388,6 +392,11 @@ function loadCurrentLesson() {
 
 	// Render the expected/solution preview
 	lessonEngine.renderExpectedPreview();
+
+	// Remove transition class after content is updated
+	requestAnimationFrame(() => {
+		elements.editorSection?.classList.remove("transitioning");
+	});
 }
 
 // ================= LIVE PREVIEW =================

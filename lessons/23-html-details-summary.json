@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
-	"title": "Disclosure",
+	"title": "HTML Details & Summary",
 	"description": "Create expandable content sections without JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",

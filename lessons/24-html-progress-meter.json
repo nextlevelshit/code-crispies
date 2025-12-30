@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-progress-meter",
-	"title": "Progress/Meter",
+	"title": "HTML Progress & Meter",
 	"description": "Display completion status and scalar measurements natively",
 	"mode": "html",
 	"difficulty": "beginner",
