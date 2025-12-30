@@ -1,6 +1,7 @@
 /**
  * Renderer - Handles UI updates for the CSS learning platform
  */
+import { t } from "../i18n.js";
 
 // Feedback elements cache
 let feedbackElement = null;
@@ -77,7 +78,7 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 			lessonItem.classList.add("lesson-list-item");
 			lessonItem.dataset.moduleId = module.id;
 			lessonItem.dataset.lessonIndex = index;
-			lessonItem.textContent = lesson.title || `Lesson ${index + 1}`;
+			lessonItem.textContent = lesson.title || t("lessonFallback", { index: index + 1 });
 
 			// Mark lesson as completed if in progress data
 			if (progress[module.id] && progress[module.id].completed.includes(index)) {
@@ -137,7 +138,7 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
  */
 export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl, inputEl, suffixEl, lesson) {
 	// Set lesson title and description
-	titleEl.textContent = lesson.title || "Untitled Lesson";
+	titleEl.textContent = lesson.title || t("untitledLesson");
 	descriptionEl.innerHTML = lesson.description || "";
 
 	// Set task instructions
@@ -162,7 +163,7 @@ export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl
  * @param {number} total - The total number of levels
  */
 export function renderLevelIndicator(element, current, total) {
-	element.textContent = `Lesson ${current} of ${total}`;
+	element.textContent = t("levelIndicator", { current, total });
 }
 
 /**
