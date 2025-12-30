@@ -108,7 +108,12 @@
 					"message": "Use <kbd>@media (min-width: 768px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "contains", "value": ".sidebar", "message": "Target <kbd>.sidebar</kbd> inside media query", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": ".sidebar",
+					"message": "Target <kbd>.sidebar</kbd> inside media query",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "width", "expected": "250px" },

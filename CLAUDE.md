@@ -69,14 +69,20 @@ When creating or editing lessons:
 
 ### Lesson Design Best Practices
 
+**Short Class Names:**
+- Class names students type should be short: 1-2 syllables maximum
+- Good: `.wrap`, `.flex`, `.grid`, `.box`, `.card`, `.item`, `.btn`
+- Bad: `.flex-container`, `.grid-layout`, `.button-primary` (too long, compound names)
+- Single-word names are easier to type and remember
+
 **Clear Task Instructions:**
 - Always state the selector AND the property explicitly in the task
-- Good: "Add `display: flex` to `.flex-container`"
+- Good: "Add `display: flex` to `.wrap`"
 - Bad: "Use flexbox to align the items" (unclear what selector to use)
 
 **Use `codePrefix` for Context:**
 - Include the selector in `codePrefix` so students know where to write
-- Example: `"codePrefix": ".flex-container {\n  "` with `"codeSuffix": "\n}"`
+- Example: `"codePrefix": ".wrap {\n  "` with `"codeSuffix": "\n}"`
 - This shows students exactly which rule they're editing
 
 **Simple, Human-Friendly Values:**

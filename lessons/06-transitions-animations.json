@@ -19,7 +19,12 @@
 			"solution": "  transition: background-color 0.3s;",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "transition", "message": "Use the <kbd>transition</kbd> property", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "transition",
+					"message": "Use the <kbd>transition</kbd> property",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "transition:\\s*background-color\\s*0\\.3s",
@@ -69,14 +74,24 @@
 			"solution": "  50% { transform: translateY(-20px); }\n}\n.ball {\n  animation: bounce 1s infinite;",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "@keyframes bounce", "message": "Define <kbd>@keyframes bounce</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "@keyframes bounce",
+					"message": "Define <kbd>@keyframes bounce</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "50%.*transform: translateY\\(-20px\\)",
 					"message": "At <kbd>50%</kbd>, use <kbd>transform: translateY(-20px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "contains", "value": "animation", "message": "Use <kbd>animation</kbd> property on <kbd>.ball</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "animation",
+					"message": "Use <kbd>animation</kbd> property on <kbd>.ball</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "animation:.*bounce.*1s.*infinite",
