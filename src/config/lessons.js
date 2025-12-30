@@ -49,53 +49,67 @@ import htmlMarqueeDE from "../../lessons/de/31-html-marquee.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
 import flexboxDE from "../../lessons/de/flexbox.json";
 
-// English module store
+// English module store - ordered by learning path
 const moduleStoreEN = [
+	// HTML Grundlagen
 	htmlElementsEN,
 	htmlFormsBasicEN,
 	htmlFormsValidationEN,
+	htmlFormsFieldsetEN,
+	htmlDatalistEN,
+	// HTML Interaktiv
 	htmlDetailsSummaryEN,
 	htmlProgressMeterEN,
-	htmlDatalistEN,
-	htmlDataAttributesEN,
 	htmlDialogEN,
-	htmlFormsFieldsetEN,
+	htmlDataAttributesEN,
+	// HTML Weitere
 	htmlFigureEN,
 	htmlTablesEN,
-	htmlMarqueeEN,
 	htmlSvgEN,
+	htmlMarqueeEN,
+	// CSS Grundlagen
+	basicSelectorsEN,
 	boxModelEN,
+	unitsVariablesEN,
+	// CSS Layouts
 	flexboxEN,
 	responsiveEN,
-	unitsVariablesEN,
-	transitionsAnimationsEN,
-	basicSelectorsEN,
+	// CSS Fortgeschritten
 	advancedSelectorsEN,
+	transitionsAnimationsEN,
+	// Tailwind
 	tailwindEN
 ];
 
-// German module store
+// German module store - ordered by learning path
 const moduleStoreDE = [
+	// HTML Grundlagen
 	htmlElementsDE,
 	htmlFormsBasicDE,
 	htmlFormsValidationDE,
+	htmlFormsFieldsetDE,
+	htmlDatalistDE,
+	// HTML Interaktiv
 	htmlDetailsSummaryDE,
 	htmlProgressMeterDE,
-	htmlDatalistDE,
-	htmlDataAttributesDE,
 	htmlDialogDE,
-	htmlFormsFieldsetDE,
+	htmlDataAttributesDE,
+	// HTML Weitere
 	htmlFigureDE,
 	htmlTablesDE,
-	htmlMarqueeDE,
 	htmlSvgDE,
+	htmlMarqueeDE,
+	// CSS Grundlagen
+	basicSelectorsDE,
 	boxModelDE,
+	unitsVariablesDE,
+	// CSS Layouts
 	flexboxDE,
 	responsiveDE,
-	unitsVariablesDE,
-	transitionsAnimationsDE,
-	basicSelectorsDE,
+	// CSS Fortgeschritten
 	advancedSelectorsDE,
+	transitionsAnimationsDE,
+	// Tailwind
 	tailwindDE
 ];
 
