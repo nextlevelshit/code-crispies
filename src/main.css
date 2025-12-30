@@ -68,6 +68,27 @@
 	box-sizing: border-box;
 }
 
+/* ================= ACCESSIBILITY ================= */
+.skip-link {
+	position: absolute;
+	top: -100%;
+	left: 16px;
+	padding: 8px 16px;
+	background: var(--primary-dark);
+	color: var(--white-text);
+	text-decoration: none;
+	border-radius: var(--border-radius-sm);
+	z-index: 10000;
+	transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+	top: 8px;
+}
+
+/* Focus styles - let browser defaults handle most cases */
+/* Only enhance for our interactive elements */
+
 /* ================= BASE STYLES ================= */
 body {
 	font-family: var(--font-main);
@@ -189,6 +210,7 @@ code, kbd {
 	flex: 1;
 	min-height: 0;
 	overflow: hidden;
+	transition: transform 0.3s ease;
 }
 
 /* ================= LEFT PANEL ================= */
@@ -234,7 +256,8 @@ code, kbd {
 	margin-bottom: var(--spacing-md);
 }
 
-.lesson-description kbd {
+.lesson-description kbd,
+.lesson-description code {
 	background: var(--primary-bg-medium);
 	padding: 2px 6px;
 	border-radius: 3px;
@@ -259,11 +282,13 @@ code, kbd {
 	line-height: 1.6;
 }
 
-.task-instruction kbd {
-	background: rgba(255, 255, 255, 0.2);
-	padding: 2px 6px;
-	border-radius: 3px;
-	font-size: 0.85rem;
+.task-instruction kbd,
+.task-instruction code {
+	background: rgba(255, 255, 255, 0.25);
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 0.9em;
+	font-weight: 500;
 }
 
 /* ================= EDITOR SECTION ================= */
@@ -373,7 +398,8 @@ code, kbd {
 	color: var(--text-color);
 }
 
-.hint-message kbd {
+.hint-message kbd,
+.hint-message code {
 	background: var(--primary-bg-medium);
 	padding: 2px 6px;
 	border-radius: 3px;
@@ -559,6 +585,11 @@ code, kbd {
 	left: 0;
 }
 
+/* Shift main content when sidebar is open */
+.app-container:has(.sidebar-drawer.open) .game-layout {
+	transform: translateX(calc(var(--sidebar-width) * 0.8));
+}
+
 .sidebar-header {
 	display: flex;
 	justify-content: space-between;
@@ -698,6 +729,23 @@ code, kbd {
 	content: "✓";
 	margin-right: 6px;
 	color: var(--success-color);
+}
+
+/* Sidebar focus styles - enhance visibility without overriding defaults */
+.module-header:focus,
+.lesson-list-item:focus {
+	background: var(--primary-bg-light);
+}
+
+/* Button reset for sidebar items (when converted to buttons) */
+button.module-header,
+button.lesson-list-item {
+	border: none;
+	background: none;
+	text-align: left;
+	width: 100%;
+	font-family: inherit;
+	color: inherit;
 }
 
 /* ================= BUTTONS ================= */
@@ -863,6 +911,11 @@ input:checked + .toggle-slider::before {
 	max-height: 80vh;
 	overflow-y: auto;
 	background: var(--panel-bg);
+	/* Ensure centering - native dialog should center, but explicit for safety */
+	margin: auto;
+	position: fixed;
+	inset: 0;
+	height: fit-content;
 }
 
 .dialog::backdrop {
