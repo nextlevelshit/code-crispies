@@ -5,7 +5,7 @@
 const translations = {
 	en: {
 		// Page
-		pageTitle: "CODE CRISPIES - Learn CSS Interactively",
+		pageTitle: "Code Crispies - Learn HTML & CSS Interactively",
 		skipLink: "Skip to main content",
 
 		// Header
@@ -104,7 +104,7 @@ const translations = {
 
 	de: {
 		// Page
-		pageTitle: "CODE CRISPIES - CSS interaktiv lernen",
+		pageTitle: "Code Crispies - HTML & CSS interaktiv lernen",
 		skipLink: "Zum Hauptinhalt springen",
 
 		// Header
