@@ -354,7 +354,7 @@
 				{
 					"type": "regex",
 					"value": "^p#special\\s*{",
-					"message": "Verwende <kbd>p#special</kbd>, um Absätze mit ID 'special' anzuvisieren",
+					"message": "Verwende <kbd>p#special</kbd>, um Absätze mit ID <kbd>special</kbd> anzuvisieren",
 					"options": {
 						"caseSensitive": true
 					}

@@ -354,7 +354,7 @@
 				{
 					"type": "regex",
 					"value": "^p#special\\s*{",
-					"message": "Use <kbd>p#special</kbd> to target paragraphs with ID 'special'",
+					"message": "Use <kbd>p#special</kbd> to target paragraphs with ID <kbd>special</kbd>",
 					"options": {
 						"caseSensitive": true
 					}

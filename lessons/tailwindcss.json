@@ -21,12 +21,12 @@
 				{
 					"type": "contains",
 					"value": "font-bold",
-					"message": "Add 'font-bold' to the heading"
+					"message": "Add <kbd>font-bold</kbd> to the heading"
 				},
 				{
 					"type": "contains",
 					"value": "text-gray-600",
-					"message": "Add 'text-gray-600' to the paragraph"
+					"message": "Add <kbd>text-gray-600</kbd> to the paragraph"
 				}
 			]
 		},
@@ -46,12 +46,12 @@
 				{
 					"type": "contains",
 					"value": "bg-red-400",
-					"message": "Use 'bg-red-400' to set the background color"
+					"message": "Use <kbd>bg-red-400</kbd> to set the background color"
 				},
 				{
 					"type": "contains",
 					"value": "text-white",
-					"message": "Use 'text-white' for the text color"
+					"message": "Use <kbd>text-white</kbd> for the text color"
 				}
 			]
 		},
@@ -71,12 +71,12 @@
 				{
 					"type": "contains",
 					"value": "m-2",
-					"message": "Add 'm-2' to add spacing between the buttons"
+					"message": "Add <kbd>m-2</kbd> to add spacing between the buttons"
 				},
 				{
 					"type": "contains",
 					"value": "p-2",
-					"message": "Add 'p-2' for internal button padding"
+					"message": "Add <kbd>p-2</kbd> for internal button padding"
 				}
 			]
 		},
@@ -96,7 +96,7 @@
 				{
 					"type": "contains",
 					"value": "hover:bg-green-500",
-					"message": "Add 'hover:bg-green-500' to change background color on hover"
+					"message": "Add <kbd>hover:bg-green-500</kbd> to change background color on hover"
 				}
 			]
 		},
@@ -116,27 +116,27 @@
 				{
 					"type": "contains",
 					"value": "bg-white",
-					"message": "Use 'bg-white' for background color"
+					"message": "Use <kbd>bg-white</kbd> for background color"
 				},
 				{
 					"type": "contains",
 					"value": "shadow",
-					"message": "Use 'shadow' to add a shadow"
+					"message": "Use <kbd>shadow</kbd> to add a shadow"
 				},
 				{
 					"type": "contains",
 					"value": "rounded",
-					"message": "Use 'rounded' to add rounded corners"
+					"message": "Use <kbd>rounded</kbd> to add rounded corners"
 				},
 				{
 					"type": "contains",
 					"value": "p-4",
-					"message": "Use 'p-4' for padding"
+					"message": "Use <kbd>p-4</kbd> for padding"
 				},
 				{
 					"type": "contains",
 					"value": "text-center",
-					"message": "Use 'text-center' to center the text"
+					"message": "Use <kbd>text-center</kbd> to center the text"
 				}
 			]
 		}

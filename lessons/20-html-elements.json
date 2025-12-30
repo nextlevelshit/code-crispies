@@ -26,7 +26,7 @@
 				{
 					"type": "parent_child",
 					"value": { "parent": "p", "child": "strong" },
-					"message": "Wrap the word 'important' with <kbd>&lt;strong&gt;</kbd> tags"
+					"message": "Wrap the word <kbd>important</kbd> with <kbd>&lt;strong&gt;</kbd> tags"
 				}
 			]
 		},
@@ -84,12 +84,12 @@
 				{
 					"type": "element_exists",
 					"value": "span",
-					"message": "Add a <kbd>&lt;span&gt;</kbd> around the word 'highlighted'"
+					"message": "Add a <kbd>&lt;span&gt;</kbd> around the word <kbd>highlighted</kbd>"
 				},
 				{
 					"type": "element_text",
 					"value": { "selector": "span", "text": "highlighted" },
-					"message": "The <kbd>&lt;span&gt;</kbd> should contain the word 'highlighted'"
+					"message": "The <kbd>&lt;span&gt;</kbd> should contain the word <kbd>highlighted</kbd>"
 				}
 			]
 		}

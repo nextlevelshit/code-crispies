@@ -18,12 +18,12 @@
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "p {", "message": "Use the element selector 'p'", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "color", "message": "Include the 'color' property", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "p {", "message": "Use the element selector <kbd>p</kbd>", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "color", "message": "Include the <kbd>color</kbd> property", "options": { "caseSensitive": false } },
 				{
 					"type": "property_value",
 					"value": { "property": "color", "expected": "darkgray" },
-					"message": "Set color to 'darkgray'",
+					"message": "Set color to <kbd>darkgray</kbd>",
 					"options": { "exact": false }
 				}
 			]
@@ -41,11 +41,16 @@
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": ".title", "message": "Use the '.title' class selector", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": ".title",
+					"message": "Use the <kbd>.title</kbd> class selector",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "color", "expected": "blueviolet" },
-					"message": "Set color to 'blueviolet'",
+					"message": "Set color to <kbd>blueviolet</kbd>",
 					"options": { "exact": false }
 				}
 			]
@@ -66,13 +71,13 @@
 				{
 					"type": "contains",
 					"value": "#description",
-					"message": "Use the '#description' ID selector",
+					"message": "Use the <kbd>#description</kbd> ID selector",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "color", "expected": "orangered" },
-					"message": "Set color to 'orangered'",
+					"message": "Set color to <kbd>orangered</kbd>",
 					"options": { "exact": false }
 				}
 			]
@@ -90,11 +95,16 @@
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "div.note", "message": "Use the 'div.note' combined selector", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "div.note",
+					"message": "Use the <kbd>div.note</kbd> combined selector",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "background-color", "expected": "yellow" },
-					"message": "Set background-color to 'yellow'",
+					"message": "Set background-color to <kbd>yellow</kbd>",
 					"options": { "exact": false }
 				}
 			]

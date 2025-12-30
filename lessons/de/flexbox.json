@@ -21,7 +21,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "display", "expected": "flex" },
-					"message": "Setze display auf 'flex'"
+					"message": "Setze display auf <kbd>flex</kbd>"
 				}
 			]
 		},
@@ -41,12 +41,12 @@
 				{
 					"type": "property_value",
 					"value": { "property": "flex-direction", "expected": "column" },
-					"message": "Setze flex-direction auf 'column'"
+					"message": "Setze flex-direction auf <kbd>column</kbd>"
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "flex-wrap", "expected": "wrap" },
-					"message": "Setze flex-wrap auf 'wrap'"
+					"message": "Setze flex-wrap auf <kbd>wrap</kbd>"
 				}
 			]
 		},
@@ -66,7 +66,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "justify-content", "expected": "space-between" },
-					"message": "Setze justify-content auf 'space-between'"
+					"message": "Setze justify-content auf <kbd>space-between</kbd>"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "align-items", "expected": "center" },
-					"message": "Setze align-items auf 'center'"
+					"message": "Setze align-items auf <kbd>center</kbd>"
 				}
 			]
 		},
@@ -106,7 +106,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "flex", "expected": "2" },
-					"message": "Setze flex auf '2'"
+					"message": "Setze flex auf <kbd>2</kbd>"
 				}
 			]
 		},
@@ -126,7 +126,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "align-self", "expected": "flex-start" },
-					"message": "Setze align-self auf 'flex-start'"
+					"message": "Setze align-self auf <kbd>flex-start</kbd>"
 				}
 			]
 		}

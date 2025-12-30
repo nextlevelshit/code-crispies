@@ -18,17 +18,17 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": ".colorbox", "message": "Select '.colorbox'", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": ".colorbox", "message": "Select <kbd>.colorbox</kbd>", "options": { "caseSensitive": false } },
 				{
 					"type": "contains",
 					"value": "background-color",
-					"message": "Use 'background-color' property",
+					"message": "Use <kbd>background-color</kbd> property",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "background-color", "expected": "#e0f7fa" },
-					"message": "Set background-color to '#e0f7fa'",
+					"message": "Set background-color to <kbd>#e0f7fa</kbd>",
 					"options": { "exact": true }
 				}
 			]
@@ -46,12 +46,12 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": ".colorbox", "message": "Select '.colorbox'", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "color", "message": "Use the 'color' property", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": ".colorbox", "message": "Select <kbd>.colorbox</kbd>", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "color", "message": "Use the <kbd>color</kbd> property", "options": { "caseSensitive": false } },
 				{
 					"type": "property_value",
 					"value": { "property": "color", "expected": "#01579b" },
-					"message": "Set color to '#01579b'",
+					"message": "Set color to <kbd>#01579b</kbd>",
 					"options": { "exact": true }
 				}
 			]
@@ -69,17 +69,17 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": ".gradient-box", "message": "Select '.gradient-box'", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": ".gradient-box", "message": "Select <kbd>.gradient-box</kbd>", "options": { "caseSensitive": false } },
 				{
 					"type": "contains",
 					"value": "background-image",
-					"message": "Use 'background-image' property",
+					"message": "Use <kbd>background-image</kbd> property",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "regex",
 					"value": "linear-gradient\\(.*#ff9a9e.*,.*#fad0c4.*\\)",
-					"message": "Use linear-gradient from #ff9a9e to #fad0c4",
+					"message": "Use <kbd>linear-gradient</kbd> from <kbd>#ff9a9e</kbd> to <kbd>#fad0c4</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -100,19 +100,19 @@
 				{
 					"type": "contains",
 					"value": "background-image",
-					"message": "Use 'background-image' property",
+					"message": "Use <kbd>background-image</kbd> property",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
 					"value": "background-position: center",
-					"message": "Center the background image",
+					"message": "Center the background image with <kbd>background-position: center</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
 					"value": "background-repeat: no-repeat",
-					"message": "Prevent image tiling",
+					"message": "Prevent image tiling with <kbd>background-repeat: no-repeat</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]

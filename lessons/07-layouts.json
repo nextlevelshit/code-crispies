@@ -18,9 +18,14 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "display", "message": "Use 'display: flex'", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "justify-content", "message": "Use 'justify-content: center'", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "align-items", "message": "Use 'align-items: center'", "options": { "caseSensitive": false } }
+				{ "type": "contains", "value": "display", "message": "Use <kbd>display: flex</kbd>", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "justify-content",
+					"message": "Use <kbd>justify-content: center</kbd>",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "contains", "value": "align-items", "message": "Use <kbd>align-items: center</kbd>", "options": { "caseSensitive": false } }
 			]
 		},
 		{
@@ -36,11 +41,16 @@
 			"codeSuffix": "}\n.item { }",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "flex-wrap: wrap", "message": "Use 'flex-wrap: wrap'", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "flex-wrap: wrap",
+					"message": "Use <kbd>flex-wrap: wrap</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": ".item.*flex:\\s*1\\s+1\\s+100px",
-					"message": "Set flex: 1 1 100px on items",
+					"message": "Set <kbd>flex: 1 1 100px</kbd> on items",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -58,20 +68,20 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "display: grid", "message": "Use 'display: grid'", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "display: grid", "message": "Use <kbd>display: grid</kbd>", "options": { "caseSensitive": false } },
 				{
 					"type": "contains",
 					"value": "grid-template-columns",
-					"message": "Define 'grid-template-columns'",
+					"message": "Define <kbd>grid-template-columns</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "regex",
 					"value": "grid-template-columns:\\s*repeat\\(3,\\s*1fr\\)\\s*",
-					"message": "Create three equal columns",
+					"message": "Create three equal columns with <kbd>repeat(3, 1fr)</kbd>",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "contains", "value": "gap", "message": "Use 'gap' property", "options": { "caseSensitive": false } }
+				{ "type": "contains", "value": "gap", "message": "Use <kbd>gap</kbd> property", "options": { "caseSensitive": false } }
 			]
 		},
 		{
@@ -87,11 +97,16 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "grid-column", "message": "Use 'grid-column' property", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "grid-column",
+					"message": "Use <kbd>grid-column</kbd> property",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "grid-column", "expected": "1 / span 2" },
-					"message": "Span across 2 columns",
+					"message": "Span across 2 columns with <kbd>grid-column: 1 / span 2</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
