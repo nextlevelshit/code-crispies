@@ -414,15 +414,17 @@ code, kbd {
 
 .hint-message {
 	font-size: 0.9rem;
-	color: var(--text-color);
+	color: var(--editor-text);
 }
 
 .hint-message kbd,
 .hint-message code {
-	background: var(--primary-bg-medium);
+	background: rgba(255, 255, 255, 0.15);
+	color: #fff;
 	padding: 2px 6px;
 	border-radius: 3px;
-	font-size: 0.8rem;
+	font-size: 0.85rem;
+	font-family: var(--font-code);
 }
 
 .hint-success {
