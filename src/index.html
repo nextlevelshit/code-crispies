@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<div class="app-container">
 			<!-- Minimal Header -->
 			<header class="header">
@@ -27,7 +28,7 @@
 			</header>
 
 			<!-- Main Game Layout -->
-			<main class="game-layout">
+			<main class="game-layout" id="main-content">
 				<!-- Left Panel: Instructions + Editor -->
 				<div class="left-panel">
 					<section class="instructions">
@@ -97,7 +98,7 @@
 			<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
 			<!-- Slide-out Sidebar -->
-			<aside class="sidebar-drawer" id="sidebar-drawer">
+			<aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Navigation menu">
 				<div class="sidebar-header">
 					<h3>Menu</h3>
 					<button id="close-sidebar" class="close-btn" aria-label="Close menu">&times;</button>
@@ -113,12 +114,12 @@
 					</div>
 				</div>
 
-				<div class="sidebar-section">
-					<h4>Lessons</h4>
-					<div class="module-list" id="module-list">
+				<nav class="sidebar-section" aria-label="Lesson navigation">
+					<h4 id="lessons-heading">Lessons</h4>
+					<div class="module-list" id="module-list" role="tree" aria-labelledby="lessons-heading">
 						<!-- Module list will be populated here -->
 					</div>
-				</div>
+				</nav>
 
 				<div class="sidebar-section">
 					<h4>Settings</h4>

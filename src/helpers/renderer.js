@@ -33,11 +33,15 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		// Create module container
 		const moduleContainer = document.createElement("div");
 		moduleContainer.classList.add("module-container");
+		moduleContainer.setAttribute("role", "treeitem");
 
 		// Create module header item (clickable to expand/collapse)
-		const moduleHeader = document.createElement("div");
+		const moduleHeader = document.createElement("button");
+		moduleHeader.type = "button";
 		moduleHeader.classList.add("module-list-item", "module-header");
 		moduleHeader.dataset.moduleId = module.id;
+		moduleHeader.setAttribute("aria-expanded", "false");
+		moduleHeader.setAttribute("aria-controls", `lessons-${module.id}`);
 
 		// Create module title with expand/collapse indicator
 		const moduleTitle = document.createElement("span");
@@ -47,6 +51,7 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		// Create expand/collapse icon
 		const expandIcon = document.createElement("span");
 		expandIcon.classList.add("expand-icon");
+		expandIcon.setAttribute("aria-hidden", "true");
 		expandIcon.innerHTML = "▶"; // Right-pointing triangle
 
 		moduleHeader.appendChild(expandIcon);
@@ -60,11 +65,15 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		// Lessons container (initially hidden)
 		const lessonsContainer = document.createElement("div");
 		lessonsContainer.classList.add("lessons-container");
+		lessonsContainer.id = `lessons-${module.id}`;
+		lessonsContainer.setAttribute("role", "group");
+		lessonsContainer.setAttribute("aria-label", `${module.title} lessons`);
 		lessonsContainer.style.display = "none"; // Initially collapsed
 
 		// Create list items for each lesson in this module
 		module.lessons.forEach((lesson, index) => {
-			const lessonItem = document.createElement("div");
+			const lessonItem = document.createElement("button");
+			lessonItem.type = "button";
 			lessonItem.classList.add("lesson-list-item");
 			lessonItem.dataset.moduleId = module.id;
 			lessonItem.dataset.lessonIndex = index;
@@ -101,8 +110,9 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 			const isExpanded = lessonsContainer.style.display !== "none";
 			lessonsContainer.style.display = isExpanded ? "none" : "block";
 
-			// Update expand/collapse icon
+			// Update expand/collapse icon and ARIA state
 			expandIcon.innerHTML = isExpanded ? "▶" : "▼";
+			moduleHeader.setAttribute("aria-expanded", String(!isExpanded));
 		});
 
 		// Add module header and lessons container to module container
@@ -226,9 +236,10 @@ export function updateActiveLessonInSidebar(moduleId, lessonIndex) {
 		if (parentLessonsContainer && parentLessonsContainer.classList.contains("lessons-container")) {
 			parentLessonsContainer.style.display = "block";
 
-			// Update expand icon
+			// Update expand icon and ARIA state
 			const moduleHeader = parentLessonsContainer.previousElementSibling;
 			if (moduleHeader) {
+				moduleHeader.setAttribute("aria-expanded", "true");
 				const expandIcon = moduleHeader.querySelector(".expand-icon");
 				if (expandIcon) {
 					expandIcon.innerHTML = "▼"; // Down arrow when expanded

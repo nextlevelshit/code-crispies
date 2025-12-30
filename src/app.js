@@ -68,14 +68,29 @@ let currentMode = "css";
 
 // ================= SIDEBAR FUNCTIONS =================
 
+// Track element that opened sidebar for focus return
+let sidebarTrigger = null;
+
 function openSidebar() {
+	// Store trigger element for focus return
+	sidebarTrigger = document.activeElement;
+
 	elements.sidebarDrawer.classList.add("open");
 	elements.sidebarBackdrop.classList.add("visible");
+
+	// Move focus to close button for keyboard users
+	elements.closeSidebar.focus();
 }
 
 function closeSidebar() {
 	elements.sidebarDrawer.classList.remove("open");
 	elements.sidebarBackdrop.classList.remove("visible");
+
+	// Return focus to trigger element
+	if (sidebarTrigger && typeof sidebarTrigger.focus === "function") {
+		sidebarTrigger.focus();
+		sidebarTrigger = null;
+	}
 }
 
 // ================= EXPECTED RESULT TOGGLE =================

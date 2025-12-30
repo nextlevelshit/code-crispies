@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
+		<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 		<div class="app-container">
 			<!-- Minimaler Header -->
 			<header class="header">
@@ -27,7 +28,7 @@
 			</header>
 
 			<!-- Hauptlayout -->
-			<main class="game-layout">
+			<main class="game-layout" id="main-content">
 				<!-- Linke Spalte: Anleitung + Editor -->
 				<div class="left-panel">
 					<section class="instructions">
@@ -97,7 +98,7 @@
 			<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
 			<!-- Ausklappbare Seitenleiste -->
-			<aside class="sidebar-drawer" id="sidebar-drawer">
+			<aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Navigationsmenü">
 				<div class="sidebar-header">
 					<h3>Menü</h3>
 					<button id="close-sidebar" class="close-btn" aria-label="Menü schließen">&times;</button>
@@ -113,12 +114,12 @@
 					</div>
 				</div>
 
-				<div class="sidebar-section">
-					<h4>Lektionen</h4>
-					<div class="module-list" id="module-list">
+				<nav class="sidebar-section" aria-label="Lektionsnavigation">
+					<h4 id="lessons-heading">Lektionen</h4>
+					<div class="module-list" id="module-list" role="tree" aria-labelledby="lessons-heading">
 						<!-- Modulliste wird hier eingefügt -->
 					</div>
-				</div>
+				</nav>
 
 				<div class="sidebar-section">
 					<h4>Einstellungen</h4>
