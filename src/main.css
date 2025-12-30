@@ -1131,11 +1131,16 @@ input:checked + .toggle-slider::before {
 		padding: var(--spacing-sm);
 	}
 
+	.module-pill {
+		flex: 1;
+		margin: 0 var(--spacing-sm);
+		justify-content: center;
+	}
+
 	.module-name {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		max-width: 80px;
 	}
 
 	.level-label {
