@@ -1143,15 +1143,20 @@ input:checked + .toggle-slider::before {
 
 	.preview-section {
 		order: 3;
+		display: flex;
+		flex-direction: column;
+		min-height: 50vh;
 	}
 
 	.editor-section {
 		order: 4;
-		flex: 1;
+		display: flex;
+		flex-direction: column;
 		min-height: 50vh;
 	}
 
 	.preview-wrapper {
+		flex: 1;
 		margin: var(--spacing-sm);
 		min-height: 40vh;
 	}
