@@ -55,7 +55,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to <details>"
+					"message": "Add the <kbd>open</kbd> attribute to <kbd>&lt;details&gt;</kbd>"
 				}
 			]
 		},
@@ -79,17 +79,17 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "details", "min": 3 },
-					"message": "Create at least 3 <details> elements for the FAQ"
+					"message": "Create at least 3 <kbd>&lt;details&gt;</kbd> elements for the FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "summary", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <summary> for the question"
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;summary&gt;</kbd> for the question"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details p", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <p> for the answer"
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;p&gt;</kbd> for the answer"
 				}
 			]
 		}

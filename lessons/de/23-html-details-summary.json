@@ -26,17 +26,17 @@
 				{
 					"type": "element_exists",
 					"value": "summary",
-					"message": "Füge ein <kbd>&lt;summary&gt;</kbd> innerhalb von details hinzu"
+					"message": "Füge ein <kbd>&lt;summary&gt;</kbd> innerhalb von <kbd>&lt;details&gt;</kbd> hinzu"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "summary" },
-					"message": "Das <kbd>&lt;summary&gt;</kbd> muss innerhalb von <details> sein"
+					"message": "Das <kbd>&lt;summary&gt;</kbd> muss innerhalb von <kbd>&lt;details&gt;</kbd> sein"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "p" },
-					"message": "Füge ein <kbd>&lt;p&gt;</kbd> innerhalb von <details> für den versteckten Inhalt hinzu"
+					"message": "Füge ein <kbd>&lt;p&gt;</kbd> innerhalb von <kbd>&lt;details&gt;</kbd> für den versteckten Inhalt hinzu"
 				}
 			]
 		},
@@ -55,7 +55,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Füge das <kbd>open</kbd>-Attribut zu <details> hinzu"
+					"message": "Füge das <kbd>open</kbd>-Attribut zu <kbd>&lt;details&gt;</kbd> hinzu"
 				}
 			]
 		},
@@ -79,7 +79,7 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "details", "min": 3 },
-					"message": "Erstelle mindestens 3 <details>-Elemente für das FAQ"
+					"message": "Erstelle mindestens 3 <kbd>&lt;details&gt;</kbd>-Elemente für das FAQ"
 				},
 				{
 					"type": "element_count",
