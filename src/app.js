@@ -227,6 +227,9 @@ function restoreLessonCache() {
 			if (data.taskInstruction && elements.taskInstruction) {
 				elements.taskInstruction.innerHTML = data.taskInstruction;
 			}
+			if (data.levelIndicator && elements.levelIndicator) {
+				elements.levelIndicator.innerHTML = data.levelIndicator;
+			}
 		}
 	} catch (e) {
 		// Ignore cache errors
@@ -443,7 +446,8 @@ function loadCurrentLesson() {
 				moduleTitle: engineState.module?.title,
 				lessonTitle: lesson.title,
 				lessonDescription: lesson.description,
-				taskInstruction: lesson.task
+				taskInstruction: lesson.task,
+				levelIndicator: elements.levelIndicator?.innerHTML
 			})
 		);
 	} catch (e) {
