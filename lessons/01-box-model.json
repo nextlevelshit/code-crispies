@@ -8,58 +8,40 @@
 		{
 			"id": "box-model-1",
 			"title": "Box Model Components",
-			"description": "The CSS box model consists of four concentric layers that build an element's total dimensions: content area (innermost), padding, border, and margin (outermost). Understanding how these components interact is essential for precise layout control.",
-			"task": "Add padding of '1.25rem' to the box to create space between its content and border. Padding is the space between an element's content and its border, giving content room to breathe.",
+			"description": "The CSS box model consists of four concentric layers: content area (innermost), padding, border, and margin (outermost). Understanding how these components interact is essential for precise layout control.",
+			"task": "Add <code>padding: 1rem</code> to <code>.box</code> to create space between its content and border.",
 			"previewHTML": "<div class=\"box\">Box Model Components</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .box { background-color: #f0f0f0; border: 0.125rem dashed #aaa; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: lavender; border: 2px dashed slategray; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add padding to the box element */\n.box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "padding",
-					"message": "Use the 'padding' property",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "property_value",
-					"value": { "property": "padding", "expected": "1.25rem" },
-					"message": "Set padding to exactly '1.25rem'"
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Set padding to '1rem'"
 				}
 			]
 		},
 		{
 			"id": "box-model-2",
 			"title": "Adding Borders",
-			"description": "Borders outline an element, creating visual separation from surrounding content. CSS allows you to control border thickness, style (solid, dashed, dotted, etc.), and color independently or through shorthand notation.",
-			"task": "Add a solid border with thickness '0.125rem' and color '#333' to the box element. The border property accepts three values: width, style, and color.",
+			"description": "Borders outline an element, creating visual separation from surrounding content. The border shorthand accepts three values: width, style, and color.",
+			"task": "Add <code>border: 2px solid darkslategray</code> to <code>.box</code>.",
 			"previewHTML": "<div class=\"box\">This box needs a border</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .box { background-color: #f0f0f0; padding: 1.25rem; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: mintcream; padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add a border to the box */\n.box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "border",
-					"message": "Use the 'border' property",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
-					"value": "border:\\s*0.125rem\\s+solid\\s+#333",
-					"message": "Set border to '0.125rem solid #333'",
-					"options": { "caseSensitive": false }
-				},
-				{
-					"type": "contains",
-					"value": "solid",
-					"message": "Include 'solid' as the border style",
+					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
+					"message": "Set border to '2px solid darkslategray'",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -67,22 +49,16 @@
 		{
 			"id": "box-model-3",
 			"title": "Adding Margins",
-			"description": "Margins create space between elements, controlling how they relate to one another within a layout. Unlike padding (which affects internal spacing), margins exist outside the element's border and create separation from adjacent elements.",
-			"task": "Add margin of '1rem' to the box element to create space between it and surrounding elements. The margin property sets space outside an element's border.",
+			"description": "Margins create space between elements, controlling how they relate to one another within a layout. Unlike padding (which affects internal spacing), margins exist outside the element's border.",
+			"task": "Add <code>margin: 1rem</code> to <code>.margin-box</code> to create space between it and the adjacent element.",
 			"previewHTML": "<div class=\"container\"><div class=\"margin-box\">This box needs margins</div><div class=\"neighbor\">Adjacent element</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .container { background-color: #f8f8f8; padding: 0.5rem; } .margin-box { background-color: #d1c4e9; padding: 1rem; border: 0.125rem solid #7e57c2; } .neighbor { background-color: #bbdefb; padding: 1rem; border: 0.125rem solid #42a5f5; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .margin-box { background-color: plum; padding: 1rem; border: 2px solid orchid; } .neighbor { background-color: lightblue; padding: 1rem; border: 2px solid steelblue; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add margin to the box */\n.margin-box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".margin-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "margin",
-					"message": "Use the 'margin' property",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "margin", "expected": "1rem" },
@@ -92,23 +68,17 @@
 		},
 		{
 			"id": "box-model-4",
-			"title": "Box Sizing: Content-Box vs. Border-Box",
-			"description": "The box-sizing property determines how element dimensions are calculated. The default 'content-box' model excludes padding and border from width/height values, while 'border-box' includes them, making layout calculations more intuitive.",
-			"task": "Set the box-sizing property to 'border-box' for the element. This makes padding and border included in the element's specified width and height.",
+			"title": "Box Sizing: Border-Box",
+			"description": "The box-sizing property determines how element dimensions are calculated. The default 'content-box' excludes padding and border from width/height, while 'border-box' includes them, making layout calculations more intuitive.",
+			"task": "Add <code>box-sizing: border-box</code> to <code>.border-box</code> so padding and border are included in its width.",
 			"previewHTML": "<div class=\"sizing-demo\"><div class=\"box content-box\">Content-box (default)</div><div class=\"box border-box\">Border-box</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 0.25rem solid #333; background: #f5f5f5; } .content-box { box-sizing: content-box; } .border-box { /* Your code will go here */ }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 4px solid teal; background: lightcyan; } .content-box { box-sizing: content-box; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Set box-sizing property */\n.border-box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".border-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "box-sizing",
-					"message": "Use the 'box-sizing' property",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
@@ -119,22 +89,16 @@
 		{
 			"id": "box-model-5",
 			"title": "Margin Collapse",
-			"description": "An important behavior of the CSS box model is vertical margin collapse: when two vertical margins meet, they don't add up but instead collapse to the larger of the two values. Understanding this behavior is crucial for consistent vertical spacing.",
-			"task": "Add a bottom margin of '2rem' to the first paragraph. You'll observe that the space between paragraphs equals 2rem (not 3rem), demonstrating margin collapse.",
+			"description": "When two vertical margins meet, they collapse to the larger value instead of adding up. Understanding this behavior is crucial for consistent vertical spacing.",
+			"task": "Add <code>margin-bottom: 2rem</code> to <code>.first</code>. Notice the space between paragraphs equals 2rem (not 3rem) due to margin collapse.",
 			"previewHTML": "<div class=\"collapse-demo\"><p class=\"first\">This paragraph has a bottom margin.</p><p class=\"second\">This paragraph has a top margin of 1rem.</p></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .collapse-demo { border: 0.0625rem solid #ddd; padding: 0.5rem; background: #f9f9f9; } .second { margin-top: 1rem; background: #f0f0f0; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .collapse-demo { border: 1px solid silver; padding: 8px; background: ghostwhite; } .second { margin-top: 1rem; background: linen; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add margin to observe margin collapse */\n.first {\n  /* Add your code below */\n  ",
+			"codePrefix": ".first {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "margin-bottom",
-					"message": "Use the 'margin-bottom' property",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "2rem" },
@@ -145,26 +109,20 @@
 		{
 			"id": "box-model-6",
 			"title": "Margin Shorthand Notation",
-			"description": "CSS offers shorthand notations to concisely set multiple properties at once. The margin shorthand can set all four sides (top, right, bottom, left) with values specified in clockwise order. Understanding shorthand syntax improves coding efficiency.",
-			"task": "Use margin shorthand syntax to set the top and bottom margins to '1rem' and the left and right margins to '2rem' simultaneously.",
+			"description": "The margin shorthand can set all four sides at once. Two values set vertical (top/bottom) and horizontal (left/right) margins respectively.",
+			"task": "Add <code>margin: 1rem 2rem</code> to <code>.shorthand-box</code> for 1rem top/bottom and 2rem left/right.",
 			"previewHTML": "<div class=\"container\"><div class=\"shorthand-box\">This box needs margins: 1rem top/bottom, 2rem left/right</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .container { background-color: #f5f5f5; padding: 0.5rem; } .shorthand-box { background-color: #e8f5e9; border: 0.125rem solid #66bb6a; padding: 1rem; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .shorthand-box { background-color: honeydew; border: 2px solid mediumseagreen; padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Use margin shorthand notation */\n.shorthand-box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".shorthand-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "margin",
-					"message": "Use the 'margin' property",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
 					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Use 'margin: 1rem 2rem' to set vertical and horizontal margins",
+					"message": "Set margin to '1rem 2rem'",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -172,52 +130,40 @@
 		{
 			"id": "box-model-7",
 			"title": "Padding Shorthand Notation",
-			"description": "Similar to margin shorthand, padding shorthand allows setting all four sides of padding concisely. The syntax follows the same clockwise pattern: top, right, bottom, left (or TRouBLe). When fewer values are specified, CSS applies specific rules to determine missing sides.",
-			"task": "Use padding shorthand notation to set all sides to '1.5rem' in a single declaration. When a single value is provided, it applies to all four sides.",
+			"description": "Like margin, padding shorthand allows setting all sides at once. A single value applies to all four sides equally.",
+			"task": "Add <code>padding: 1.5rem</code> to <code>.padding-box</code> to add equal padding on all sides.",
 			"previewHTML": "<div class=\"padding-box\">This box needs equal padding on all sides</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .padding-box { background-color: #fff3e0; border: 0.125rem solid #ff9800; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .padding-box { background-color: papayawhip; border: 2px solid orange; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Use padding shorthand notation */\n.padding-box {\n  /* Add your code below */\n  ",
+			"codePrefix": ".padding-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "padding",
-					"message": "Use the 'padding' property",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1.5rem" },
-					"message": "Set padding to '1.5rem' on all sides"
+					"message": "Set padding to '1.5rem'"
 				}
 			]
 		},
 		{
 			"id": "box-model-8",
-			"title": "Border Shorthand and Individual Properties",
-			"description": "Border properties can be set individually (border-width, border-style, border-color) or using the border shorthand. For even more granular control, you can target specific sides (border-top, border-right, etc.) with their own values.",
-			"task": "Set only the bottom border of the element to '0.25rem solid #2196f3'. Use the specific border-bottom property rather than the general border property.",
+			"title": "Border on Specific Sides",
+			"description": "For granular control, you can target specific sides with border-top, border-right, border-bottom, or border-left.",
+			"task": "Add <code>border-bottom: 4px solid dodgerblue</code> to <code>.border-demo</code>.",
 			"previewHTML": "<div class=\"border-demo\">This element needs only a bottom border</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .border-demo { padding: 1rem; background-color: #e3f2fd; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .border-demo { padding: 1rem; background-color: aliceblue; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Add a bottom border only */\n.border-demo {\n  /* Add your code below */\n  ",
+			"codePrefix": ".border-demo {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "border-bottom",
-					"message": "Use the 'border-bottom' property",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
-					"value": "border-bottom:\\s*0.25rem\\s+solid\\s+#2196f3",
-					"message": "Set border-bottom to '0.25rem solid #2196f3'",
+					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
+					"message": "Set border-bottom to '4px solid dodgerblue'",
 					"options": { "caseSensitive": false }
 				}
 			]
