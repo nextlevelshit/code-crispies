@@ -8,11 +8,10 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<a href="#main-content" class="skip-link" data-i18n="skipLink">Skip to main content</a>
 		<div class="app-container">
-			<!-- Minimal Header -->
 			<header class="header">
-				<button id="menu-btn" class="menu-toggle" aria-label="Open menu">
+				<button id="menu-btn" class="menu-toggle" data-i18n-aria-label="menuOpen" aria-label="Open menu">
 					<span class="hamburger-line"></span>
 					<span class="hamburger-line"></span>
 					<span class="hamburger-line"></span>
@@ -22,49 +21,43 @@
 					<h1>CODE<span>CRISPIES</span></h1>
 				</div>
 				<div class="header-actions">
-					<a href="./index.de.html" class="lang-switch" aria-label="Sprache wechseln: Deutsch">DE</a>
-					<button id="help-btn" class="help-toggle" aria-label="Help">?</button>
+					<button id="lang-btn" class="lang-switch" data-i18n-aria-label="langSwitchLabel" data-i18n="langSwitch" aria-label="Sprache wechseln: Deutsch">DE</button>
+					<button id="help-btn" class="help-toggle" data-i18n-aria-label="help" aria-label="Help">?</button>
 				</div>
 			</header>
 
-			<!-- Main Game Layout -->
 			<main class="game-layout" id="main-content">
 				<!-- Left Panel: Instructions + Editor -->
 				<div class="left-panel">
 					<section class="instructions">
-						<span class="module-pill" id="module-pill">Loading...</span>
-						<h2 id="lesson-title">Loading...</h2>
-						<div class="lesson-description" id="lesson-description">
+						<span class="module-pill" id="module-pill" data-i18n="loading">Loading...</span>
+						<h2 id="lesson-title" data-i18n="loading">Loading...</h2>
+						<div class="lesson-description" id="lesson-description" data-i18n="selectLesson">
 							Please select a lesson to begin.
 						</div>
-						<div class="task-instruction" id="task-instruction">
-							<!-- Task instructions will be shown here -->
-						</div>
+						<div class="task-instruction" id="task-instruction"></div>
 					</section>
 
 					<section class="editor-section">
 						<div class="code-editor">
 							<div class="editor-header">
-								<label for="code-input" class="editor-label">CSS Editor</label>
+								<label for="code-input" class="editor-label" data-i18n="editorLabel">CSS Editor</label>
 								<div class="editor-actions">
 									<div class="editor-tools">
-										<button id="undo-btn" class="btn btn-icon" title="Undo (Ctrl+Z)">↶</button>
-										<button id="redo-btn" class="btn btn-icon" title="Redo (Ctrl+Shift+Z)">↷</button>
-										<button id="reset-code-btn" class="btn btn-icon" title="Reset to initial code">⟲</button>
+										<button id="undo-btn" class="btn btn-icon" data-i18n-title="undoTitle" title="Undo (Ctrl+Z)">↶</button>
+										<button id="redo-btn" class="btn btn-icon" data-i18n-title="redoTitle" title="Redo (Ctrl+Shift+Z)">↷</button>
+										<button id="reset-code-btn" class="btn btn-icon" data-i18n-title="resetCodeTitle" title="Reset to initial code">⟲</button>
 									</div>
 									<button id="run-btn" class="btn btn-run">
-										<img src="./gear.svg" alt="" />Run
+										<img src="./gear.svg" alt="" /><span data-i18n="run">Run</span>
 									</button>
 								</div>
 							</div>
 							<div class="editor-content">
-								<!-- Textarea is replaced by CodeMirror; autocomplete off prevents browser form restoration -->
 								<textarea id="code-input" class="code-input" spellcheck="false" autocomplete="off" style="display: none;"></textarea>
 							</div>
 						</div>
-						<div class="hint-area" id="hint-area">
-							<!-- Hints displayed inline here -->
-						</div>
+						<div class="hint-area" id="hint-area"></div>
 					</section>
 				</div>
 
@@ -72,24 +65,20 @@
 				<div class="right-panel">
 					<div class="preview-section">
 						<div class="preview-header">
-							<span class="preview-label">Your Output</span>
-							<button id="show-expected-btn" class="btn btn-small">Show Expected</button>
+							<span class="preview-label" data-i18n="yourOutput">Your Output</span>
+							<button id="show-expected-btn" class="btn btn-small" data-i18n="showExpected">Show Expected</button>
 						</div>
 						<div class="preview-wrapper">
-							<div class="preview-frame" id="preview-area">
-								<!-- User's preview iframe will be shown here -->
-							</div>
+							<div class="preview-frame" id="preview-area"></div>
 							<div class="expected-overlay" id="expected-overlay">
-								<div class="expected-frame" id="preview-expected">
-									<!-- Expected result iframe (toggleable) -->
-								</div>
+								<div class="expected-frame" id="preview-expected"></div>
 							</div>
 						</div>
 					</div>
 					<div class="game-controls">
-						<button id="prev-btn" class="btn">Previous</button>
+						<button id="prev-btn" class="btn" data-i18n="previous">Previous</button>
 						<div class="level-indicator" id="level-indicator">Level 0/0</div>
-						<button id="next-btn" class="btn btn-primary">Next</button>
+						<button id="next-btn" class="btn btn-primary" data-i18n="next">Next</button>
 					</div>
 				</div>
 			</main>
@@ -98,14 +87,14 @@
 			<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
 			<!-- Slide-out Sidebar -->
-			<aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Navigation menu">
+			<aside class="sidebar-drawer" id="sidebar-drawer" data-i18n-aria-label="menu" aria-label="Menu">
 				<div class="sidebar-header">
-					<h3>Menu</h3>
-					<button id="close-sidebar" class="close-btn" aria-label="Close menu">&times;</button>
+					<h3 data-i18n="menu">Menu</h3>
+					<button id="close-sidebar" class="close-btn" data-i18n-aria-label="closeMenu" aria-label="Close menu">&times;</button>
 				</div>
 
 				<div class="sidebar-section">
-					<h4>Progress</h4>
+					<h4 data-i18n="progress">Progress</h4>
 					<div class="progress-display" id="progress-display">
 						<div class="progress-bar">
 							<div class="progress-fill" id="progress-fill"></div>
@@ -115,79 +104,77 @@
 				</div>
 
 				<nav class="sidebar-section" aria-label="Lesson navigation">
-					<h4 id="lessons-heading">Lessons</h4>
-					<div class="module-list" id="module-list" role="tree" aria-labelledby="lessons-heading">
-						<!-- Module list will be populated here -->
-					</div>
+					<h4 id="lessons-heading" data-i18n="lessons">Lessons</h4>
+					<div class="module-list" id="module-list" role="tree" aria-labelledby="lessons-heading"></div>
 				</nav>
 
 				<div class="sidebar-section">
-					<h4>Settings</h4>
+					<h4 data-i18n="settings">Settings</h4>
 					<label class="toggle-switch">
 						<input type="checkbox" id="disable-feedback-toggle" checked />
 						<span class="toggle-slider"></span>
-						<span class="toggle-label">Show Hints</span>
+						<span class="toggle-label" data-i18n="showHints">Show Hints</span>
 					</label>
-					<button id="reset-btn" class="btn btn-text">Reset All Progress</button>
+					<button id="reset-btn" class="btn btn-text" data-i18n="resetAllProgress">Reset All Progress</button>
 				</div>
 
 				<footer class="app-footer">
-					Open Source:
+					<span data-i18n="openSource">Open Source:</span>
 					<a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a>
-					by <a href="https://dailysh.it" title="Michael W. Czechowski">mwc</a>
+					<span data-i18n="by">by</span> <a href="https://dailysh.it" title="Michael W. Czechowski">mwc</a>
 				</footer>
 			</aside>
 
 			<!-- Help Dialog -->
 			<dialog id="help-dialog" class="dialog">
 				<div class="dialog-header">
-					<h3>Help</h3>
+					<h3 data-i18n="helpTitle">Help</h3>
 					<button id="help-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
 				</div>
 				<div class="dialog-content">
-					<h4>About Code Crispies</h4>
-					<p>Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!</p>
+					<h4 data-i18n="aboutTitle">About Code Crispies</h4>
+					<p data-i18n="aboutText">Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!</p>
 
-					<h4>Learning Modes</h4>
+					<h4 data-i18n="learningModesTitle">Learning Modes</h4>
 					<ul>
-						<li><strong>CSS</strong> - Write CSS rules to style elements</li>
-						<li><strong>Tailwind</strong> - Apply utility classes directly in HTML</li>
-						<li><strong>HTML</strong> - Practice semantic markup and native elements</li>
+						<li data-i18n-html="modeCss"><strong>CSS</strong> - Write CSS rules to style elements</li>
+						<li data-i18n-html="modeTailwind"><strong>Tailwind</strong> - Apply utility classes directly in HTML</li>
+						<li data-i18n-html="modeHtml"><strong>HTML</strong> - Practice semantic markup and native elements</li>
 					</ul>
 
-					<h4>Getting Started</h4>
-					<p>Open the menu (☰) to browse lesson modules. Each module covers a specific topic with progressive exercises.</p>
+					<h4 data-i18n="gettingStartedTitle">Getting Started</h4>
+					<p data-i18n="gettingStartedText">Open the menu (☰) to browse lesson modules. Each module covers a specific topic with progressive exercises.</p>
 
-					<h4>Completing Lessons</h4>
+					<h4 data-i18n="completingLessonsTitle">Completing Lessons</h4>
 					<ol>
-						<li>Read the task instructions on the left</li>
-						<li>Write your code in the editor</li>
-						<li>Click <strong>Run</strong> or press <kbd>Ctrl+Enter</kbd> to test</li>
-						<li>Follow hints to fix any issues</li>
-						<li>Click <strong>Next</strong> when complete</li>
+						<li data-i18n="completingStep1">Read the task instructions on the left</li>
+						<li data-i18n="completingStep2">Write your code in the editor</li>
+						<li data-i18n-html="completingStep3">Click <strong>Run</strong> or press <kbd>Ctrl+Enter</kbd> to test</li>
+						<li data-i18n="completingStep4">Follow hints to fix any issues</li>
+						<li data-i18n-html="completingStep5">Click <strong>Next</strong> when complete</li>
 					</ol>
 
-					<h4>Editor Tools</h4>
+					<h4 data-i18n="editorToolsTitle">Editor Tools</h4>
 					<ul>
-						<li><strong>↶ Undo</strong> / <strong>↷ Redo</strong> - Navigate edit history</li>
-						<li><strong>⟲ Reset</strong> - Restore initial code for current lesson</li>
-						<li><strong>Show Expected</strong> - Toggle the target result overlay</li>
+						<li data-i18n-html="editorToolUndo"><strong>↶ Undo</strong> / <strong>↷ Redo</strong> - Navigate edit history</li>
+						<li data-i18n-html="editorToolReset"><strong>⟲ Reset</strong> - Restore initial code for current lesson</li>
+						<li data-i18n-html="editorToolExpected"><strong>Show Expected</strong> - Toggle the target result overlay</li>
 					</ul>
 
-					<h4>Keyboard Shortcuts</h4>
+					<h4 data-i18n="keyboardShortcutsTitle">Keyboard Shortcuts</h4>
 					<ul>
-						<li><kbd>Ctrl+Enter</kbd> - Run your code</li>
-						<li><kbd>Ctrl+Z</kbd> - Undo</li>
-						<li><kbd>Ctrl+Shift+Z</kbd> - Redo</li>
+						<li data-i18n-html="shortcutRun"><kbd>Ctrl+Enter</kbd> - Run your code</li>
+						<li data-i18n-html="shortcutUndo"><kbd>Ctrl+Z</kbd> - Undo</li>
+						<li data-i18n-html="shortcutRedo"><kbd>Ctrl+Shift+Z</kbd> - Redo</li>
 					</ul>
 
-					<h4>Emmet Shortcuts (HTML mode)</h4>
-					<p>Type abbreviations and press <kbd>Tab</kbd> to expand:</p>
+					<h4 data-i18n="emmetTitle">Emmet Shortcuts (HTML mode)</h4>
+					<p data-i18n-html="emmetText">Type abbreviations and press <kbd>Tab</kbd> to expand:</p>
 					<ul>
-						<li><kbd>div.box</kbd> → div with class</li>
-						<li><kbd>ul>li*3</kbd> → ul with 3 li children</li>
-						<li><kbd>form>input+button</kbd> → nested structure</li>
-						<li><kbd>p{Hello}</kbd> → p with text content</li>
+						<li data-i18n-html="emmetClass"><kbd>div.box</kbd> → div with class</li>
+						<li data-i18n-html="emmetChildren"><kbd>ul>li*3</kbd> → ul with 3 li children</li>
+						<li data-i18n-html="emmetNested"><kbd>form>input+button</kbd> → nested structure</li>
+						<li data-i18n-html="emmetContent"><kbd>p{Hello}</kbd> → p with text content</li>
 					</ul>
 				</div>
 			</dialog>
@@ -195,14 +182,14 @@
 			<!-- Reset Confirmation Dialog -->
 			<dialog id="reset-dialog" class="dialog">
 				<div class="dialog-header">
-					<h3>Reset Progress</h3>
+					<h3 data-i18n="resetDialogTitle">Reset Progress</h3>
 					<button id="reset-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
 				</div>
 				<div class="dialog-content">
-					<p>Are you sure you want to reset all your progress? This cannot be undone.</p>
+					<p data-i18n="resetDialogText">Are you sure you want to reset all your progress? This cannot be undone.</p>
 					<div class="dialog-actions">
-						<button id="cancel-reset" class="btn">Cancel</button>
-						<button id="confirm-reset" class="btn btn-ghost">Reset All</button>
+						<button id="cancel-reset" class="btn" data-i18n="cancel">Cancel</button>
+						<button id="confirm-reset" class="btn btn-ghost" data-i18n="resetAll">Reset All</button>
 					</div>
 				</div>
 			</dialog>
