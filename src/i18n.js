@@ -121,7 +121,7 @@ const translations = {
 		redoTitle: "Wiederholen (Strg+Umschalt+Z)",
 		resetCodeTitle: "Auf Anfangscode zurücksetzen",
 		run: "Ausführen",
-		rerun: "Erneut anwenden",
+		rerun: "Erneut ausführen",
 
 		// Preview
 		yourOutput: "Dein Ergebnis",
