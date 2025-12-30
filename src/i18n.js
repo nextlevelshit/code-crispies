@@ -87,6 +87,7 @@ const translations = {
 		resetAll: "Reset All",
 
 		// Dynamic content
+		loadingFallbackText: "Could not load lesson. Please select one from the menu or check the help.",
 		completed: "Completed",
 		successMessage: "CRISPY! ٩(◕‿◕)۶ Your code works correctly.",
 		keepTrying: "Keep trying!",
@@ -180,6 +181,7 @@ const translations = {
 		resetAll: "Alles zurücksetzen",
 
 		// Dynamic content
+		loadingFallbackText: "Lektion konnte nicht geladen werden. Bitte wähle eine aus dem Menü oder prüfe die Hilfe.",
 		completed: "Erledigt",
 		successMessage: "CRISPY! ٩(◕‿◕)۶ Dein Code funktioniert.",
 		keepTrying: "Weiter versuchen!",
