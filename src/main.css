@@ -496,7 +496,6 @@ code, kbd {
 	display: flex;
 	flex-direction: column;
 	min-height: 0;
-	box-shadow: inset 0 -40px 30px -30px rgba(0, 0, 0, 0.08);
 }
 
 .preview-header {
@@ -608,6 +607,7 @@ code, kbd {
 	padding: var(--spacing-md);
 	background: var(--panel-bg);
 	border-bottom: 1px solid var(--border-color);
+	box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.08);
 }
 
 /* ================= SIDEBAR ================= */

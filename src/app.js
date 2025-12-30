@@ -207,6 +207,8 @@ function saveUserSettings() {
 
 // ================= LESSON CACHE =================
 
+let cachedUserCode = null;
+
 function restoreLessonCache() {
 	try {
 		const cached = localStorage.getItem("codeCrispies.lessonCache");
@@ -229,6 +231,10 @@ function restoreLessonCache() {
 			}
 			if (data.levelIndicator && elements.levelIndicator) {
 				elements.levelIndicator.innerHTML = data.levelIndicator;
+			}
+			// Store userCode to apply after editor init
+			if (data.userCode) {
+				cachedUserCode = data.userCode;
 			}
 		}
 	} catch (e) {
@@ -471,7 +477,9 @@ function loadCurrentLesson() {
 				lessonTitle: lesson.title,
 				lessonDescription: lesson.description,
 				taskInstruction: lesson.task,
-				levelIndicator: elements.levelIndicator?.innerHTML
+				levelIndicator: elements.levelIndicator?.innerHTML,
+				userCode: engineState.userCode,
+				mode: mode
 			})
 		);
 	} catch (e) {
