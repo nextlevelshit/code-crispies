@@ -30,10 +30,7 @@ describe("Renderer Module", () => {
 
 			renderModuleList(container, modules, onSelectModule, onSelectLesson);
 
-			// Check if heading is created
-			expect(container.innerHTML).toContain("<h3>Lessons</h3>");
-
-			// Check if module headers are created
+			// Check if module headers are created (heading is now in HTML, not added by renderer)
 			const moduleHeaders = container.querySelectorAll(".module-header");
 			expect(moduleHeaders.length).toBe(2);
 
@@ -46,7 +43,8 @@ describe("Renderer Module", () => {
 			const container = document.getElementById("module-list");
 			renderModuleList(container, [], vi.fn(), vi.fn());
 
-			expect(container.innerHTML).toContain("<h3>Lessons</h3>");
+			// Container should be empty (heading is now in HTML, not added by renderer)
+			expect(container.innerHTML).toBe("");
 			expect(container.querySelectorAll(".module-header").length).toBe(0);
 		});
 
