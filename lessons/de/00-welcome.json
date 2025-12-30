@@ -7,8 +7,8 @@
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "welcome",
-			"title": "Willkommen!",
+			"id": "get-started",
+			"title": "Los geht's",
 			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich!<br><br><strong>Was du lernst:</strong><br>• <strong>HTML</strong> - Semantische Elemente, Formulare, Tabellen, SVG (<em>HTML Block & Inline</em>, <em>HTML Formulare</em>, <em>HTML Tabellen</em>)<br>• <strong>CSS</strong> - Selektoren, Box-Model, Flexbox, Animationen (<em>CSS Selektoren</em>, <em>CSS Box-Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media Queries und Mobile-First Layouts<br><br><strong>So funktioniert's:</strong><br>1. Lies die Aufgabe im linken Bereich<br>2. Schreibe Code im Editor<br>3. Sieh Live-Ergebnisse in der Vorschau<br>4. Bekomme sofortiges Feedback mit Hinweisen<br><br><strong>Tastenkürzel:</strong> <kbd>Strg+Z</kbd> rückgängig, <kbd>Strg+Umschalt+Z</kbd> wiederholen<br><br><strong>Weitere Ressourcen:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript-Lösungen<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript Technologie-Roadmap",
 			"task": "Hallo Welt",
 			"previewHTML": "",
@@ -26,8 +26,8 @@
 			]
 		},
 		{
-			"id": "get-started",
-			"title": "Viel Erfolg!",
+			"id": "overview",
+			"title": "Übersicht",
 			"description": "<strong>Du bist bereit!</strong> Öffne das Menü (☰) um alle Module zu erkunden.<br><br><strong>Empfohlener Lernpfad:</strong><br>1. <em>HTML Block & Inline</em> - Container vs Inline-Elemente verstehen<br>2. <em>HTML Formulare</em> - Interaktive Formulare mit Validierung erstellen<br>3. <em>CSS Selektoren</em> - Elemente präzise ansprechen<br>4. <em>CSS Box-Model</em> - Padding, Margin, Borders meistern<br>5. <em>CSS Flexbox</em> - Flexible Layouts erstellen<br>6. <em>CSS Animationen</em> - Bewegung und Übergänge hinzufügen<br><br><strong>Tipps:</strong><br>• Nutze <em>Lösung einblenden</em> um das Zielergebnis zu sehen<br>• Dein Fortschritt wird automatisch gespeichert<br>• Probiere Emmet im HTML-Modus: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea (Source)</a> · <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub (Mirror)</a><br>• Entwickelt von <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">Michael Czechowski</a>",
 			"task": "Klicke auf Weiter",
 			"previewHTML": "<p>Hello World! 🌍</p><p>Hallo Welt!</p><p>Bonjour le monde!</p><p>¡Hola Mundo!</p><p>Ciao Mondo!</p><p>Olá Mundo!</p><p>こんにちは世界!</p><p>你好世界!</p><p>안녕 세상!</p><p>Привет мир!</p><p dir=\"rtl\">שלום עולם!</p><p dir=\"rtl\">مرحبا بالعالم!</p>",
@@ -43,6 +43,20 @@
 					"message": "Klicke auf Weiter"
 				}
 			]
+		},
+		{
+			"id": "playground",
+			"title": "Playground",
+			"mode": "playground",
+			"description": "",
+			"task": "",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "<style>\n  body {\n    font-family: system-ui, sans-serif;\n    padding: 20px;\n  }\n</style>\n\n<h1>Hallo Welt</h1>\n<p>Los geht's!</p>",
+			"solution": "",
+			"previewContainer": "preview-area",
+			"validations": []
 		}
 	]
 }

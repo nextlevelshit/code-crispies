@@ -390,7 +390,7 @@ function loadCurrentLesson() {
 
 	const lesson = engineState.lesson;
 	const mode = lesson.mode || engineState.module?.mode || "css";
-	const isPlayground = engineState.module.id === "playground";
+	const isPlayground = lesson.mode === "playground";
 
 	// Handle playground mode - hide instructions, full height editor
 	if (isPlayground) {
@@ -581,7 +581,7 @@ function resetCode() {
 function runCode() {
 	const userCode = codeEditor ? codeEditor.getValue() : "";
 	const engineState = lessonEngine.getCurrentState();
-	const isPlayground = engineState.module?.id === "playground";
+	const isPlayground = engineState.lesson?.mode === "playground";
 
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");

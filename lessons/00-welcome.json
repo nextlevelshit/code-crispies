@@ -7,8 +7,8 @@
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "welcome",
-			"title": "Welcome!",
+			"id": "get-started",
+			"title": "Get Started",
 			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises. No account required!<br><br><strong>What you'll learn:</strong><br>• <strong>HTML</strong> - Semantic elements, forms, tables, SVG (<em>HTML Block & Inline</em>, <em>HTML Forms</em>, <em>HTML Tables</em>)<br>• <strong>CSS</strong> - Selectors, box model, flexbox, animations (<em>CSS Selectors</em>, <em>CSS Box Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media queries and mobile-first layouts<br><br><strong>How it works:</strong><br>1. Read the task in the left panel<br>2. Write code in the editor<br>3. See live results in the preview<br>4. Get instant feedback with hints<br><br><strong>Keyboard shortcuts:</strong> <kbd>Ctrl+Z</kbd> to undo, <kbd>Ctrl+Shift+Z</kbd> to redo<br><br><strong>More resources:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript solutions<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript technology roadmap",
 			"task": "Hello World",
 			"previewHTML": "",
@@ -26,8 +26,8 @@
 			]
 		},
 		{
-			"id": "get-started",
-			"title": "Good Luck!",
+			"id": "overview",
+			"title": "Overview",
 			"description": "<strong>You're ready!</strong> Open the menu (☰) to explore all modules.<br><br><strong>Recommended learning path:</strong><br>1. <em>HTML Block & Inline</em> - Understand container vs inline elements<br>2. <em>HTML Forms</em> - Build interactive forms with validation<br>3. <em>CSS Selectors</em> - Target elements precisely<br>4. <em>CSS Box Model</em> - Master padding, margin, borders<br>5. <em>CSS Flexbox</em> - Create flexible layouts<br>6. <em>CSS Animations</em> - Add motion and transitions<br><br><strong>Tips:</strong><br>• Use <em>Show Expected</em> to see the target result<br>• Your progress is saved automatically<br>• Try Emmet in HTML mode: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea (Source)</a> · <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub (Mirror)</a><br>• Made by <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">Michael Czechowski</a>",
 			"task": "Click Next to continue",
 			"previewHTML": "<p>Hello World! 🌍</p><p>Hallo Welt!</p><p>Bonjour le monde!</p><p>¡Hola Mundo!</p><p>Ciao Mondo!</p><p>Olá Mundo!</p><p>こんにちは世界!</p><p>你好世界!</p><p>안녕 세상!</p><p>Привет мир!</p><p dir=\"rtl\">שלום עולם!</p><p dir=\"rtl\">مرحبا بالعالم!</p>",
@@ -43,6 +43,20 @@
 					"message": "Click Next to continue"
 				}
 			]
+		},
+		{
+			"id": "playground",
+			"title": "Playground",
+			"mode": "playground",
+			"description": "",
+			"task": "",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "<style>\n  body {\n    font-family: system-ui, sans-serif;\n    padding: 20px;\n  }\n</style>\n\n<h1>Hello World</h1>\n<p>Start coding!</p>",
+			"solution": "",
+			"previewContainer": "preview-area",
+			"validations": []
 		}
 	]
 }

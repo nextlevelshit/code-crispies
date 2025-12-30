@@ -19,7 +19,6 @@ import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlMarqueeEN from "../../lessons/31-html-marquee.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
 import flexboxEN from "../../lessons/flexbox.json";
-import playgroundEN from "../../lessons/99-playground.json";
 
 // German lesson imports
 import welcomeDE from "../../lessons/de/00-welcome.json";
@@ -37,7 +36,6 @@ import htmlTablesDE from "../../lessons/de/30-html-tables.json";
 import htmlMarqueeDE from "../../lessons/de/31-html-marquee.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
 import flexboxDE from "../../lessons/de/flexbox.json";
-import playgroundDE from "../../lessons/de/99-playground.json";
 
 // English module store - ordered by learning path
 const moduleStoreEN = [
@@ -62,9 +60,7 @@ const moduleStoreEN = [
 	flexboxEN,
 	responsiveEN,
 	// CSS Animationen
-	transitionsAnimationsEN,
-	// Playground
-	playgroundEN
+	transitionsAnimationsEN
 ];
 
 // German module store - ordered by learning path
@@ -90,9 +86,7 @@ const moduleStoreDE = [
 	flexboxDE,
 	responsiveDE,
 	// CSS Animationen
-	transitionsAnimationsDE,
-	// Playground
-	playgroundDE
+	transitionsAnimationsDE
 ];
 
 /**
