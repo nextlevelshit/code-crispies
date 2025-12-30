@@ -907,7 +907,7 @@ input:checked + .toggle-slider::before {
 	box-shadow: var(--shadow-modal);
 	padding: 0;
 	width: 90%;
-	max-width: 500px;
+	max-width: 600px;
 	max-height: 80vh;
 	overflow-y: auto;
 	background: var(--panel-bg);
