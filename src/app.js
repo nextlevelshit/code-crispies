@@ -113,17 +113,29 @@ function toggleExpectedResult() {
 
 // ================= LANGUAGE TOGGLE =================
 
-function toggleLanguage() {
+async function toggleLanguage() {
 	const currentLang = getLanguage();
 	const newLang = currentLang === "en" ? "de" : "en";
 	setLanguage(newLang);
 	applyTranslations();
-	updateProgressDisplay();
-	// Reload current lesson to update any dynamic text
+
+	// Reload lessons in new language
 	const engineState = lessonEngine.getCurrentState();
-	if (engineState.lesson) {
+	const currentModuleId = engineState.module?.id;
+	const currentLessonIndex = engineState.lessonIndex;
+
+	const modules = await loadModules(newLang);
+	lessonEngine.setModules(modules);
+	renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
+
+	// Restore position in current module/lesson
+	if (currentModuleId) {
+		lessonEngine.setModuleById(currentModuleId);
+		lessonEngine.setLessonByIndex(currentLessonIndex);
 		loadCurrentLesson();
 	}
+
+	updateProgressDisplay();
 }
 
 // ================= HINT SYSTEM =================
@@ -186,7 +198,7 @@ function saveUserSettings() {
 
 async function initializeModules() {
 	try {
-		const modules = await loadModules();
+		const modules = await loadModules(getLanguage());
 		lessonEngine.setModules(modules);
 
 		// Use the new renderModuleList function with both callbacks
@@ -317,7 +329,7 @@ function loadCurrentLesson() {
 	// Hide expected overlay
 	state.showExpected = false;
 	elements.expectedOverlay.classList.remove("visible");
-	elements.showExpectedBtn.textContent = "Show Expected";
+	elements.showExpectedBtn.textContent = t("showExpected");
 	elements.showExpectedBtn.classList.remove("btn-primary");
 
 	// Update UI
