@@ -118,6 +118,10 @@ function toggleExpectedResult() {
 async function toggleLanguage() {
 	const currentLang = getLanguage();
 	const newLang = currentLang === "en" ? "de" : "en";
+
+	// Add transition class before any updates
+	elements.editorSection?.classList.add("transitioning");
+
 	setLanguage(newLang);
 	applyTranslations();
 
@@ -138,6 +142,11 @@ async function toggleLanguage() {
 	}
 
 	updateProgressDisplay();
+
+	// Remove transition class after all updates
+	requestAnimationFrame(() => {
+		elements.editorSection?.classList.remove("transitioning");
+	});
 }
 
 // ================= HINT SYSTEM =================
