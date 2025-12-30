@@ -9,7 +9,7 @@ Code Crispies is an interactive CSS/Tailwind learning platform built with pure J
 ## Commands
 
 ```bash
-npm start          # Start dev server at http://localhost:1312
+npm start          # Start dev server at http://localhost:1234
 npm run build      # Production build to dist/
 npm run test       # Run tests once
 npm run test.watch # Run tests in watch mode
