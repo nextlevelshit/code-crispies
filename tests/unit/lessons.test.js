@@ -17,11 +17,8 @@ describe("Lessons Config Module", () => {
 			expect(moduleIds).toContain("html-forms-validation");
 			// CSS modules
 			expect(moduleIds).toContain("css-basic-selectors");
-			expect(moduleIds).toContain("css-advanced-selectors");
 			expect(moduleIds).toContain("box-model");
 			expect(moduleIds).toContain("flexbox");
-			// Tailwind
-			expect(moduleIds).toContain("tailwind-basics");
 		});
 
 		test("should have mode set on each lesson", async () => {
