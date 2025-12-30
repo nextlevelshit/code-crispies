@@ -1,16 +1,16 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "welcome",
-	"title": "Welcome",
-	"description": "Learn how to use Code Crispies and get started with interactive web development lessons",
+	"title": "Code Crispies",
+	"description": "Welcome to Code Crispies - your interactive web development learning platform",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "what-is-code-crispies",
-			"title": "What is Code Crispies?",
-			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises.<br><br>You'll learn:<br>- <strong>HTML</strong> - Semantic markup and native elements<br>- <strong>CSS</strong> - Styling and layout techniques<br>- <strong>Tailwind</strong> - Utility-first CSS framework<br><br>No account required - just start coding!",
-			"task": "Try it out! Type <kbd>&lt;h1&gt;Hello World&lt;/h1&gt;</kbd> in the editor below and watch the preview update.",
+			"id": "welcome",
+			"title": "Welcome!",
+			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises. No account required!<br><br><strong>What you'll learn:</strong><br>• <strong>HTML</strong> - Semantic elements, forms, tables, SVG (<em>HTML Block & Inline</em>, <em>HTML Forms</em>, <em>HTML Tables</em>)<br>• <strong>CSS</strong> - Selectors, box model, flexbox, animations (<em>CSS Selectors</em>, <em>CSS Box Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media queries and mobile-first layouts<br><br><strong>How it works:</strong><br>1. Read the task in the left panel<br>2. Write code in the editor<br>3. See live results in the preview<br>4. Get instant feedback with hints<br><br><strong>Keyboard shortcuts:</strong> <kbd>Ctrl+Enter</kbd> to run, <kbd>Ctrl+Z</kbd> to undo<br><br><strong>More resources:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript solutions<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript technology roadmap",
+			"task": "Create a heading with <kbd>&lt;h1&gt;Hello World&lt;/h1&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
 			"sandboxCSS": "",
@@ -31,39 +31,15 @@
 			]
 		},
 		{
-			"id": "how-lessons-work",
-			"title": "How Lessons Work",
-			"description": "Each lesson has:<br><br><strong>1. Instructions</strong> - Read the task on the left<br><strong>2. Editor</strong> - Write your code below the instructions<br><strong>3. Preview</strong> - See results instantly on the right<br><strong>4. Hints</strong> - Get feedback when you run your code<br><br>When all validations pass, you'll see a success message!",
-			"task": "Create a paragraph with the text 'I am learning!' using <kbd>&lt;p&gt;</kbd> tags.",
+			"id": "get-started",
+			"title": "Get Started!",
+			"description": "<strong>You're ready!</strong> Open the menu (☰) to explore all modules.<br><br><strong>Recommended learning path:</strong><br>1. <em>HTML Block & Inline</em> - Understand container vs inline elements<br>2. <em>HTML Forms</em> - Build interactive forms with validation<br>3. <em>CSS Selectors</em> - Target elements precisely<br>4. <em>CSS Box Model</em> - Master padding, margin, borders<br>5. <em>CSS Flexbox</em> - Create flexible layouts<br>6. <em>CSS Animations</em> - Add motion and transitions<br><br><strong>Tips:</strong><br>• Use <em>Show Expected</em> to see the target result<br>• Your progress is saved automatically<br>• Try Emmet in HTML mode: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub</a> · <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea</a><br>• Made by <a href=\"https://librete.ch\" target=\"_blank\">librete.ch</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">LinkedIn</a>",
+			"task": "Create a button with <kbd>&lt;button&gt;Let's go!&lt;/button&gt;</kbd>",
 			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; font-size: 1.2em; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1.1em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); } button:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4); }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<p>I am learning!</p>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "p",
-					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph element"
-				},
-				{
-					"type": "contains",
-					"value": "learning",
-					"message": "Include the word 'learning' in your paragraph"
-				}
-			]
-		},
-		{
-			"id": "navigation-tips",
-			"title": "Navigation Tips",
-			"description": "Use these controls to navigate:<br><br><strong>Menu button (top left)</strong> - Browse all lesson modules<br><strong>Previous / Next buttons</strong> - Move between lessons<br><strong>Show Expected</strong> - See the target result<br><strong>Reset button</strong> - Start the lesson over<br><br><strong>Keyboard shortcuts:</strong><br><kbd>Ctrl+Enter</kbd> - Run your code<br><kbd>Ctrl+Z</kbd> - Undo<br><kbd>Ctrl+Shift+Z</kbd> - Redo",
-			"task": "Create a button element with the text 'Click me!' using <kbd>&lt;button&gt;</kbd> tags.",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1em; cursor: pointer; transition: transform 0.2s; } button:hover { transform: scale(1.05); }",
-			"sandboxCSS": "",
-			"initialCode": "",
-			"solution": "<button>Click me!</button>",
+			"solution": "<button>Let's go!</button>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -73,37 +49,8 @@
 				},
 				{
 					"type": "contains",
-					"value": "Click",
-					"message": "Add the text 'Click me!' inside the button"
-				}
-			]
-		},
-		{
-			"id": "ready-to-learn",
-			"title": "Ready to Learn!",
-			"description": "You're all set! Here's what to explore next:<br><br><strong>HTML Modules</strong> - Learn semantic elements, forms, tables<br><strong>CSS Modules</strong> - Master selectors, box model, flexbox<br><strong>Advanced Topics</strong> - Animations, responsive design<br><br>Open the menu to browse all available modules. Your progress is saved automatically!",
-			"task": "Create a simple card with a heading and paragraph:<br>1. Add <kbd>&lt;h2&gt;</kbd> with 'Ready!'<br>2. Add <kbd>&lt;p&gt;</kbd> with 'Let's start learning.'",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } h2, p { background: white; margin: 0; } h2 { color: #6366f1; padding: 20px 20px 10px; border-radius: 8px 8px 0 0; border: 2px solid #e5e7eb; border-bottom: none; } p { padding: 10px 20px 20px; border-radius: 0 0 8px 8px; border: 2px solid #e5e7eb; border-top: none; color: #4b5563; }",
-			"sandboxCSS": "",
-			"initialCode": "",
-			"solution": "<h2>Ready!</h2>\n<p>Let's start learning.</p>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "h2",
-					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading"
-				},
-				{
-					"type": "element_exists",
-					"value": "p",
-					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph"
-				},
-				{
-					"type": "contains",
-					"value": "Ready",
-					"message": "Include 'Ready!' in your heading"
+					"value": "go",
+					"message": "Add the text 'Let's go!' inside the button"
 				}
 			]
 		}

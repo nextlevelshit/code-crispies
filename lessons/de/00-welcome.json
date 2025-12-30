@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "welcome",
-	"title": "Willkommen",
-	"description": "Lerne, wie du Code Crispies nutzt und starte mit interaktiven Webentwicklungs-Lektionen",
+	"title": "Code Crispies",
+	"description": "Willkommen bei Code Crispies - deine interaktive Lernplattform für Webentwicklung",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "what-is-code-crispies",
-			"title": "Was ist Code Crispies?",
-			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen.<br><br>Du lernst:<br>- <strong>HTML</strong> - Semantisches Markup und native Elemente<br>- <strong>CSS</strong> - Styling und Layout-Techniken<br>- <strong>Tailwind</strong> - Utility-First CSS Framework<br><br>Kein Konto erforderlich - einfach loslegen!",
-			"task": "Probiere es aus! Tippe <kbd>&lt;h1&gt;Hallo Welt&lt;/h1&gt;</kbd> in den Editor und beobachte die Vorschau.",
+			"id": "welcome",
+			"title": "Willkommen!",
+			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich!<br><br><strong>Was du lernst:</strong><br>• <strong>HTML</strong> - Semantische Elemente, Formulare, Tabellen, SVG (<em>HTML Block & Inline</em>, <em>HTML Formulare</em>, <em>HTML Tabellen</em>)<br>• <strong>CSS</strong> - Selektoren, Box-Model, Flexbox, Animationen (<em>CSS Selektoren</em>, <em>CSS Box-Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media Queries und Mobile-First Layouts<br><br><strong>So funktioniert's:</strong><br>1. Lies die Aufgabe im linken Bereich<br>2. Schreibe Code im Editor<br>3. Sieh Live-Ergebnisse in der Vorschau<br>4. Bekomme sofortiges Feedback mit Hinweisen<br><br><strong>Tastenkürzel:</strong> <kbd>Strg+Enter</kbd> ausführen, <kbd>Strg+Z</kbd> rückgängig<br><br><strong>Weitere Ressourcen:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript-Lösungen<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript Technologie-Roadmap",
+			"task": "Erstelle eine Überschrift mit <kbd>&lt;h1&gt;Hallo Welt&lt;/h1&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
 			"sandboxCSS": "",
@@ -31,39 +31,15 @@
 			]
 		},
 		{
-			"id": "how-lessons-work",
-			"title": "Wie Lektionen funktionieren",
-			"description": "Jede Lektion hat:<br><br><strong>1. Anweisungen</strong> - Lies die Aufgabe links<br><strong>2. Editor</strong> - Schreibe deinen Code unter den Anweisungen<br><strong>3. Vorschau</strong> - Sieh Ergebnisse sofort rechts<br><strong>4. Hinweise</strong> - Bekomme Feedback beim Ausführen<br><br>Wenn alle Validierungen bestanden sind, siehst du eine Erfolgsmeldung!",
-			"task": "Erstelle einen Absatz mit dem Text 'Ich lerne!' mit <kbd>&lt;p&gt;</kbd> Tags.",
+			"id": "get-started",
+			"title": "Los geht's!",
+			"description": "<strong>Du bist bereit!</strong> Öffne das Menü (☰) um alle Module zu erkunden.<br><br><strong>Empfohlener Lernpfad:</strong><br>1. <em>HTML Block & Inline</em> - Container vs Inline-Elemente verstehen<br>2. <em>HTML Formulare</em> - Interaktive Formulare mit Validierung erstellen<br>3. <em>CSS Selektoren</em> - Elemente präzise ansprechen<br>4. <em>CSS Box-Model</em> - Padding, Margin, Borders meistern<br>5. <em>CSS Flexbox</em> - Flexible Layouts erstellen<br>6. <em>CSS Animationen</em> - Bewegung und Übergänge hinzufügen<br><br><strong>Tipps:</strong><br>• Nutze <em>Lösung zeigen</em> um das Zielergebnis zu sehen<br>• Dein Fortschritt wird automatisch gespeichert<br>• Probiere Emmet im HTML-Modus: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub</a> · <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea</a><br>• Entwickelt von <a href=\"https://librete.ch\" target=\"_blank\">librete.ch</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">LinkedIn</a>",
+			"task": "Erstelle einen Button mit <kbd>&lt;button&gt;Los geht's!&lt;/button&gt;</kbd>",
 			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; font-size: 1.2em; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1.1em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); } button:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4); }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<p>Ich lerne!</p>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "p",
-					"message": "Füge ein <kbd>&lt;p&gt;</kbd> Absatz-Element hinzu"
-				},
-				{
-					"type": "contains",
-					"value": "lerne",
-					"message": "Füge das Wort 'lerne' in deinen Absatz ein"
-				}
-			]
-		},
-		{
-			"id": "navigation-tips",
-			"title": "Navigations-Tipps",
-			"description": "Nutze diese Steuerungen zur Navigation:<br><br><strong>Menü-Button (oben links)</strong> - Alle Lektionsmodule durchsuchen<br><strong>Zurück / Weiter Buttons</strong> - Zwischen Lektionen wechseln<br><strong>Lösung zeigen</strong> - Das Zielergebnis anzeigen<br><strong>Zurücksetzen</strong> - Lektion neu starten<br><br><strong>Tastenkürzel:</strong><br><kbd>Strg+Enter</kbd> - Code ausführen<br><kbd>Strg+Z</kbd> - Rückgängig<br><kbd>Strg+Umschalt+Z</kbd> - Wiederholen",
-			"task": "Erstelle ein Button-Element mit dem Text 'Klick mich!' mit <kbd>&lt;button&gt;</kbd> Tags.",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1em; cursor: pointer; transition: transform 0.2s; } button:hover { transform: scale(1.05); }",
-			"sandboxCSS": "",
-			"initialCode": "",
-			"solution": "<button>Klick mich!</button>",
+			"solution": "<button>Los geht's!</button>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -73,37 +49,8 @@
 				},
 				{
 					"type": "contains",
-					"value": "Klick",
-					"message": "Füge den Text 'Klick mich!' in den Button ein"
-				}
-			]
-		},
-		{
-			"id": "ready-to-learn",
-			"title": "Bereit zum Lernen!",
-			"description": "Du bist startklar! Hier ist, was du als nächstes erkunden kannst:<br><br><strong>HTML Module</strong> - Lerne semantische Elemente, Formulare, Tabellen<br><strong>CSS Module</strong> - Meistere Selektoren, Box-Model, Flexbox<br><strong>Fortgeschrittene Themen</strong> - Animationen, Responsives Design<br><br>Öffne das Menü, um alle verfügbaren Module zu durchsuchen. Dein Fortschritt wird automatisch gespeichert!",
-			"task": "Erstelle eine einfache Karte mit Überschrift und Absatz:<br>1. Füge <kbd>&lt;h2&gt;</kbd> mit 'Fertig!' hinzu<br>2. Füge <kbd>&lt;p&gt;</kbd> mit 'Los geht's!' hinzu",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } h2, p { background: white; margin: 0; } h2 { color: #6366f1; padding: 20px 20px 10px; border-radius: 8px 8px 0 0; border: 2px solid #e5e7eb; border-bottom: none; } p { padding: 10px 20px 20px; border-radius: 0 0 8px 8px; border: 2px solid #e5e7eb; border-top: none; color: #4b5563; }",
-			"sandboxCSS": "",
-			"initialCode": "",
-			"solution": "<h2>Fertig!</h2>\n<p>Los geht's!</p>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "h2",
-					"message": "Füge eine <kbd>&lt;h2&gt;</kbd> Überschrift hinzu"
-				},
-				{
-					"type": "element_exists",
-					"value": "p",
-					"message": "Füge einen <kbd>&lt;p&gt;</kbd> Absatz hinzu"
-				},
-				{
-					"type": "contains",
-					"value": "Fertig",
-					"message": "Füge 'Fertig!' in deine Überschrift ein"
+					"value": "geht",
+					"message": "Füge den Text 'Los geht's!' in den Button ein"
 				}
 			]
 		}
