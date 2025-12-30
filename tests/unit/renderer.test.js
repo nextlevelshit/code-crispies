@@ -129,10 +129,10 @@ describe("Renderer Module", () => {
 			const element = document.getElementById("level-indicator");
 
 			renderLevelIndicator(element, 3, 10);
-			expect(element.textContent).toBe("Lesson 3 of 10");
+			expect(element.textContent).toBe("Lesson 3 / 10");
 
 			renderLevelIndicator(element, 1, 5);
-			expect(element.textContent).toBe("Lesson 1 of 5");
+			expect(element.textContent).toBe("Lesson 1 / 5");
 		});
 	});
 

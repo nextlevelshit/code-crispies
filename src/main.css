@@ -243,6 +243,10 @@ code, kbd {
 .module-name {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 150px;
 }
 
 .module-pill .level-indicator {
@@ -1077,6 +1081,14 @@ input:checked + .toggle-slider::before {
 
 	.game-controls {
 		padding: var(--spacing-sm);
+	}
+
+	.module-name {
+		max-width: 100px;
+	}
+
+	.level-label {
+		display: none;
 	}
 
 	.btn {

@@ -163,7 +163,8 @@ export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl
  * @param {number} total - The total number of levels
  */
 export function renderLevelIndicator(element, current, total) {
-	element.textContent = t("levelIndicator", { current, total });
+	const label = t("lessonLabel");
+	element.innerHTML = `<span class="level-label">${label}</span> ${current} / ${total}`;
 }
 
 /**
