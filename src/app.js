@@ -599,11 +599,11 @@ function runCode() {
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
 
-		// Show match animation
+		// Show match animation (DVD-style bouncing)
 		elements.previewWrapper?.classList.add("matched");
 		setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
-		}, 2500);
+		}, 10000);
 
 		updateNavigationButtons();
 		updateProgressDisplay();

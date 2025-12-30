@@ -1,0 +1,111 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "welcome",
+	"title": "Willkommen",
+	"description": "Lerne, wie du Code Crispies nutzt und starte mit interaktiven Webentwicklungs-Lektionen",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "what-is-code-crispies",
+			"title": "Was ist Code Crispies?",
+			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen.<br><br>Du lernst:<br>- <strong>HTML</strong> - Semantisches Markup und native Elemente<br>- <strong>CSS</strong> - Styling und Layout-Techniken<br>- <strong>Tailwind</strong> - Utility-First CSS Framework<br><br>Kein Konto erforderlich - einfach loslegen!",
+			"task": "Probiere es aus! Tippe <kbd>&lt;h1&gt;Hallo Welt&lt;/h1&gt;</kbd> in den Editor und beobachte die Vorschau.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<h1>Hallo Welt</h1>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h1",
+					"message": "Füge ein <kbd>&lt;h1&gt;</kbd> Überschrift-Element hinzu"
+				},
+				{
+					"type": "contains",
+					"value": "Hallo",
+					"message": "Füge den Text 'Hallo' in deine Überschrift ein"
+				}
+			]
+		},
+		{
+			"id": "how-lessons-work",
+			"title": "Wie Lektionen funktionieren",
+			"description": "Jede Lektion hat:<br><br><strong>1. Anweisungen</strong> - Lies die Aufgabe links<br><strong>2. Editor</strong> - Schreibe deinen Code unter den Anweisungen<br><strong>3. Vorschau</strong> - Sieh Ergebnisse sofort rechts<br><strong>4. Hinweise</strong> - Bekomme Feedback beim Ausführen<br><br>Wenn alle Validierungen bestanden sind, siehst du eine Erfolgsmeldung!",
+			"task": "Erstelle einen Absatz mit dem Text 'Ich lerne!' mit <kbd>&lt;p&gt;</kbd> Tags.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; font-size: 1.2em; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<p>Ich lerne!</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Füge ein <kbd>&lt;p&gt;</kbd> Absatz-Element hinzu"
+				},
+				{
+					"type": "contains",
+					"value": "lerne",
+					"message": "Füge das Wort 'lerne' in deinen Absatz ein"
+				}
+			]
+		},
+		{
+			"id": "navigation-tips",
+			"title": "Navigations-Tipps",
+			"description": "Nutze diese Steuerungen zur Navigation:<br><br><strong>Menü-Button (oben links)</strong> - Alle Lektionsmodule durchsuchen<br><strong>Zurück / Weiter Buttons</strong> - Zwischen Lektionen wechseln<br><strong>Lösung zeigen</strong> - Das Zielergebnis anzeigen<br><strong>Zurücksetzen</strong> - Lektion neu starten<br><br><strong>Tastenkürzel:</strong><br><kbd>Strg+Enter</kbd> - Code ausführen<br><kbd>Strg+Z</kbd> - Rückgängig<br><kbd>Strg+Umschalt+Z</kbd> - Wiederholen",
+			"task": "Erstelle ein Button-Element mit dem Text 'Klick mich!' mit <kbd>&lt;button&gt;</kbd> Tags.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1em; cursor: pointer; transition: transform 0.2s; } button:hover { transform: scale(1.05); }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<button>Klick mich!</button>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "button",
+					"message": "Füge ein <kbd>&lt;button&gt;</kbd> Element hinzu"
+				},
+				{
+					"type": "contains",
+					"value": "Klick",
+					"message": "Füge den Text 'Klick mich!' in den Button ein"
+				}
+			]
+		},
+		{
+			"id": "ready-to-learn",
+			"title": "Bereit zum Lernen!",
+			"description": "Du bist startklar! Hier ist, was du als nächstes erkunden kannst:<br><br><strong>HTML Module</strong> - Lerne semantische Elemente, Formulare, Tabellen<br><strong>CSS Module</strong> - Meistere Selektoren, Box-Model, Flexbox<br><strong>Fortgeschrittene Themen</strong> - Animationen, Responsives Design<br><br>Öffne das Menü, um alle verfügbaren Module zu durchsuchen. Dein Fortschritt wird automatisch gespeichert!",
+			"task": "Erstelle eine einfache Karte mit Überschrift und Absatz:<br>1. Füge <kbd>&lt;h2&gt;</kbd> mit 'Fertig!' hinzu<br>2. Füge <kbd>&lt;p&gt;</kbd> mit 'Los geht's!' hinzu",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } h2, p { background: white; margin: 0; } h2 { color: #6366f1; padding: 20px 20px 10px; border-radius: 8px 8px 0 0; border: 2px solid #e5e7eb; border-bottom: none; } p { padding: 10px 20px 20px; border-radius: 0 0 8px 8px; border: 2px solid #e5e7eb; border-top: none; color: #4b5563; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<h2>Fertig!</h2>\n<p>Los geht's!</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h2",
+					"message": "Füge eine <kbd>&lt;h2&gt;</kbd> Überschrift hinzu"
+				},
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Füge einen <kbd>&lt;p&gt;</kbd> Absatz hinzu"
+				},
+				{
+					"type": "contains",
+					"value": "Fertig",
+					"message": "Füge 'Fertig!' in deine Überschrift ein"
+				}
+			]
+		}
+	]
+}

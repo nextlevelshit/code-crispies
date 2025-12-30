@@ -4,6 +4,7 @@
  */
 
 // English lesson imports
+import welcomeEN from "../../lessons/00-welcome.json";
 import basicSelectorsEN from "../../lessons/00-basic-selectors.json";
 import boxModelEN from "../../lessons/01-box-model.json";
 import unitsVariablesEN from "../../lessons/05-units-variables.json";
@@ -20,6 +21,7 @@ import htmlSvgEN from "../../lessons/32-html-svg.json";
 import flexboxEN from "../../lessons/flexbox.json";
 
 // German lesson imports
+import welcomeDE from "../../lessons/de/00-welcome.json";
 import basicSelectorsDE from "../../lessons/de/00-basic-selectors.json";
 import boxModelDE from "../../lessons/de/01-box-model.json";
 import unitsVariablesDE from "../../lessons/de/05-units-variables.json";
@@ -37,6 +39,8 @@ import flexboxDE from "../../lessons/de/flexbox.json";
 
 // English module store - ordered by learning path
 const moduleStoreEN = [
+	// Welcome
+	welcomeEN,
 	// HTML Grundlagen
 	htmlElementsEN,
 	htmlFormsBasicEN,
@@ -61,6 +65,8 @@ const moduleStoreEN = [
 
 // German module store - ordered by learning path
 const moduleStoreDE = [
+	// Welcome
+	welcomeDE,
 	// HTML Grundlagen
 	htmlElementsDE,
 	htmlFormsBasicDE,
