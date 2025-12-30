@@ -595,7 +595,7 @@ code, kbd {
 	border-radius: var(--border-radius-lg);
 	font-weight: bold;
 	font-size: 1.1rem;
-	animation: dvd-bounce 8s ease-in-out infinite;
+	animation: dvd-bounce 4s ease-in-out infinite;
 	z-index: 10;
 	white-space: nowrap;
 }
