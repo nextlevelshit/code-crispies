@@ -595,7 +595,7 @@ code, kbd {
 	border-radius: var(--border-radius-lg);
 	font-weight: bold;
 	font-size: 1.1rem;
-	animation: dvd-bounce 4s ease-in-out infinite;
+	animation: dvd-bounce 8s ease-in-out infinite;
 	z-index: 10;
 	white-space: nowrap;
 }
@@ -914,7 +914,6 @@ button.lesson-list-item {
 .editor-tools {
 	display: flex;
 	gap: 4px;
-	margin-right: var(--spacing-sm);
 }
 
 .btn-ghost {
@@ -952,6 +951,11 @@ button.lesson-list-item {
 #reset-code-btn:hover {
 	background: var(--primary-dark);
 	border-color: var(--primary-dark);
+}
+
+/* Hide Run button - live preview is stable */
+#run-btn {
+	display: none;
 }
 
 /* ================= TOGGLE SWITCH ================= */
@@ -1103,6 +1107,45 @@ input:checked + .toggle-slider::before {
 	justify-content: flex-end;
 	gap: var(--spacing-sm);
 	margin-top: var(--spacing-lg);
+}
+
+/* Project Cards in Help Dialog */
+.project-cards {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	margin-bottom: var(--spacing-md);
+}
+
+.project-card {
+	display: block;
+	padding: var(--spacing-md);
+	background: var(--primary-bg-light);
+	border-radius: var(--border-radius-md);
+	border: 1px solid var(--primary-bg-medium);
+	text-decoration: none;
+	color: var(--text-color);
+	transition: all 0.2s ease;
+}
+
+.project-card:hover {
+	background: var(--primary-bg-medium);
+	border-color: var(--primary-color);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(94, 75, 139, 0.15);
+}
+
+.project-card strong {
+	display: block;
+	color: var(--primary-color);
+	font-size: 1rem;
+	margin-bottom: 4px;
+}
+
+.project-card span {
+	font-size: 0.9rem;
+	color: var(--light-text);
+	line-height: 1.4;
 }
 
 /* ================= FOOTER ================= */
