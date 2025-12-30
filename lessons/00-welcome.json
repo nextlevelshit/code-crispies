@@ -1,0 +1,111 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "welcome",
+	"title": "Welcome",
+	"description": "Learn how to use Code Crispies and get started with interactive web development lessons",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "what-is-code-crispies",
+			"title": "What is Code Crispies?",
+			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises.<br><br>You'll learn:<br>- <strong>HTML</strong> - Semantic markup and native elements<br>- <strong>CSS</strong> - Styling and layout techniques<br>- <strong>Tailwind</strong> - Utility-first CSS framework<br><br>No account required - just start coding!",
+			"task": "Try it out! Type <kbd>&lt;h1&gt;Hello World&lt;/h1&gt;</kbd> in the editor below and watch the preview update.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<h1>Hello World</h1>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h1",
+					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading element"
+				},
+				{
+					"type": "contains",
+					"value": "Hello",
+					"message": "Add the text 'Hello' inside your heading"
+				}
+			]
+		},
+		{
+			"id": "how-lessons-work",
+			"title": "How Lessons Work",
+			"description": "Each lesson has:<br><br><strong>1. Instructions</strong> - Read the task on the left<br><strong>2. Editor</strong> - Write your code below the instructions<br><strong>3. Preview</strong> - See results instantly on the right<br><strong>4. Hints</strong> - Get feedback when you run your code<br><br>When all validations pass, you'll see a success message!",
+			"task": "Create a paragraph with the text 'I am learning!' using <kbd>&lt;p&gt;</kbd> tags.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; font-size: 1.2em; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<p>I am learning!</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph element"
+				},
+				{
+					"type": "contains",
+					"value": "learning",
+					"message": "Include the word 'learning' in your paragraph"
+				}
+			]
+		},
+		{
+			"id": "navigation-tips",
+			"title": "Navigation Tips",
+			"description": "Use these controls to navigate:<br><br><strong>Menu button (top left)</strong> - Browse all lesson modules<br><strong>Previous / Next buttons</strong> - Move between lessons<br><strong>Show Expected</strong> - See the target result<br><strong>Reset button</strong> - Start the lesson over<br><br><strong>Keyboard shortcuts:</strong><br><kbd>Ctrl+Enter</kbd> - Run your code<br><kbd>Ctrl+Z</kbd> - Undo<br><kbd>Ctrl+Shift+Z</kbd> - Redo",
+			"task": "Create a button element with the text 'Click me!' using <kbd>&lt;button&gt;</kbd> tags.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 80px; } button { background: #6366f1; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1em; cursor: pointer; transition: transform 0.2s; } button:hover { transform: scale(1.05); }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<button>Click me!</button>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "button",
+					"message": "Add a <kbd>&lt;button&gt;</kbd> element"
+				},
+				{
+					"type": "contains",
+					"value": "Click",
+					"message": "Add the text 'Click me!' inside the button"
+				}
+			]
+		},
+		{
+			"id": "ready-to-learn",
+			"title": "Ready to Learn!",
+			"description": "You're all set! Here's what to explore next:<br><br><strong>HTML Modules</strong> - Learn semantic elements, forms, tables<br><strong>CSS Modules</strong> - Master selectors, box model, flexbox<br><strong>Advanced Topics</strong> - Animations, responsive design<br><br>Open the menu to browse all available modules. Your progress is saved automatically!",
+			"task": "Create a simple card with a heading and paragraph:<br>1. Add <kbd>&lt;h2&gt;</kbd> with 'Ready!'<br>2. Add <kbd>&lt;p&gt;</kbd> with 'Let's start learning.'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } h2, p { background: white; margin: 0; } h2 { color: #6366f1; padding: 20px 20px 10px; border-radius: 8px 8px 0 0; border: 2px solid #e5e7eb; border-bottom: none; } p { padding: 10px 20px 20px; border-radius: 0 0 8px 8px; border: 2px solid #e5e7eb; border-top: none; color: #4b5563; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<h2>Ready!</h2>\n<p>Let's start learning.</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h2",
+					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading"
+				},
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph"
+				},
+				{
+					"type": "contains",
+					"value": "Ready",
+					"message": "Include 'Ready!' in your heading"
+				}
+			]
+		}
+	]
+}
