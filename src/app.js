@@ -16,6 +16,7 @@ const state = {
 const elements = {
 	// Header
 	menuBtn: document.getElementById("menu-btn"),
+	logoLink: document.getElementById("logo-link"),
 	langBtn: document.getElementById("lang-btn"),
 	helpBtn: document.getElementById("help-btn"),
 
@@ -698,6 +699,13 @@ function init() {
 	elements.menuBtn.addEventListener("click", openSidebar);
 	elements.closeSidebar.addEventListener("click", closeSidebar);
 	elements.sidebarBackdrop.addEventListener("click", closeSidebar);
+
+	// Logo click - navigate to welcome
+	elements.logoLink.addEventListener("click", (e) => {
+		e.preventDefault();
+		lessonEngine.setModuleById("welcome");
+		loadCurrentLesson();
+	});
 
 	// Language toggle
 	elements.langBtn.addEventListener("click", toggleLanguage);
