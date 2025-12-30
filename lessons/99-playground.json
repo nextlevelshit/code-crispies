@@ -1,0 +1,23 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "playground",
+	"title": "Playground",
+	"description": "Free-form HTML & CSS playground",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "playground",
+			"title": "Playground",
+			"description": "",
+			"task": "",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "",
+			"previewContainer": "preview-area",
+			"validations": []
+		}
+	]
+}
