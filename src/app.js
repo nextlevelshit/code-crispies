@@ -21,6 +21,7 @@ const elements = {
 
 	// Left panel
 	modulePill: document.getElementById("module-pill"),
+	moduleName: document.querySelector(".module-name"),
 	lessonTitle: document.getElementById("lesson-title"),
 	lessonDescription: document.getElementById("lesson-description"),
 	taskInstruction: document.getElementById("task-instruction"),
@@ -315,9 +316,9 @@ function loadCurrentLesson() {
 	// Update UI based on mode
 	updateEditorForMode(mode);
 
-	// Update module pill with category name
-	if (elements.modulePill && engineState.module) {
-		elements.modulePill.textContent = engineState.module.title;
+	// Update module name in pill
+	if (elements.moduleName && engineState.module) {
+		elements.moduleName.textContent = engineState.module.title;
 	}
 
 	// Reset any success indicators
