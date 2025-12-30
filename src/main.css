@@ -245,10 +245,6 @@ code, kbd {
 .module-name {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	max-width: 120px;
 }
 
 .module-pill .level-indicator {
@@ -1086,6 +1082,9 @@ input:checked + .toggle-slider::before {
 	}
 
 	.module-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		max-width: 80px;
 	}
 
