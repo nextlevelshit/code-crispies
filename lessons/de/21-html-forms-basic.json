@@ -53,7 +53,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }",
 			"sandboxCSS": "",
-			"initialCode": "<form>\n  <!-- Füge E-Mail- und Passwort-Eingaben hinzu -->\n</form>",
+			"initialCode": "<form>\n  \n</form>",
 			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\" name=\"password\">\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
@@ -82,7 +82,7 @@
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } button { width: 100%; margin-top: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
-			"initialCode": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <!-- Füge Absende-Button hinzu -->\n</form>",
+			"initialCode": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\">\n  \n</form>",
 			"solution": "<form>\n  <label for=\"email\">E-Mail:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Passwort:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <button type=\"submit\">Anmelden</button>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
