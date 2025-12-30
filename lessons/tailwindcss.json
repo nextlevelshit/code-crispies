@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "tailwindcss-basics",
-	"title": "Tailwind CSS Basics",
+	"title": "TW Basics",
 	"description": "Learn how to use Tailwind CSS utility classes to quickly style your HTML elements",
 	"difficulty": "beginner",
 	"lessons": [

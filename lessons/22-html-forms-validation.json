@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-validation",
-	"title": "HTML Forms: Validation",
+	"title": "Validation",
 	"description": "Learn HTML5 built-in form validation attributes",
 	"mode": "html",
 	"difficulty": "intermediate",
@@ -32,7 +32,7 @@
 		},
 		{
 			"id": "input-constraints",
-			"title": "Input Constraints",
+			"title": "Constraints",
 			"description": "Control what users can enter:<br><br><kbd>minlength</kbd> / <kbd>maxlength</kbd> - Text length limits<br><kbd>min</kbd> / <kbd>max</kbd> - Number range<br><kbd>pattern</kbd> - Regex pattern matching<br><kbd>placeholder</kbd> - Hint text (not a label!)",
 			"task": "Add validation to the password input:<br>1. Add <kbd>minlength=\"8\"</kbd> for minimum length<br>2. Add <kbd>maxlength=\"20\"</kbd> for maximum length<br>3. Add <kbd>placeholder=\"Enter password\"</kbd> as a hint",
 			"previewHTML": "",
@@ -61,7 +61,7 @@
 		},
 		{
 			"id": "complete-registration",
-			"title": "Complete Registration Form",
+			"title": "Full Form",
 			"description": "Build a complete registration form with all validation concepts:<br><br>- Required fields marked with *<br>- Email validation (use type=\"email\")<br>- Password with length constraints<br>- Terms checkbox (required)<br>- Submit button",
 			"task": "Complete the registration form. Add required attributes, proper input types, and validation constraints.",
 			"previewHTML": "",

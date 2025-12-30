@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-fieldset",
-	"title": "Forms with Fieldsets",
+	"title": "Fieldsets",
 	"description": "Group form controls with fieldset and legend elements",
 	"mode": "html",
 	"difficulty": "beginner",

@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-dialog",
-	"title": "Native Dialog Element",
+	"title": "Dialogs",
 	"description": "Create modal dialogs without JavaScript libraries",
 	"mode": "html",
 	"difficulty": "beginner",
@@ -47,7 +47,7 @@
 		},
 		{
 			"id": "dialog-form",
-			"title": "Dialog with Form",
+			"title": "Dialog + Form",
 			"description": "Dialogs can contain full forms. The <kbd>method=\"dialog\"</kbd> makes the form close the dialog on submit instead of sending data.<br><br>This pattern is perfect for confirmation dialogs, quick inputs, or settings panels.",
 			"task": "Create a confirmation dialog:<br>1. Add <kbd>open</kbd> to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying 'Confirm Delete'<br>3. A <kbd>&lt;p&gt;</kbd> asking 'Are you sure?'<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with Cancel and Delete buttons",
 			"previewHTML": "",

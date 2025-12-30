@@ -1,13 +1,13 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-fundamentals",
-	"title": "101 Rules and Selectors",
+	"title": "CSS 101",
 	"description": "Cascading Style Sheets (CSS) form the cornerstone of modern web presentation. This module provides a comprehensive introduction to CSS syntax, selectors, properties, and core design concepts. You'll develop a deep understanding of how CSS empowers web developers to control visual aesthetics, layout, and responsive behavior across digital interfaces. Throughout these lessons, we'll build a robust foundation that prepares you for more advanced web engineering topics.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "css-syntax-structure",
-			"title": "CSS Syntax: The Building Blocks",
+			"title": "Syntax Basics",
 			"description": "CSS (Cascading Style Sheets) follows a structured syntax that consists of selectors targeting HTML elements and declaration blocks defining their styling. A declaration block contains one or more declarations separated by semicolons, with each declaration consisting of a property and value pair. This fundamental structure forms the basis of all CSS rules and allows for precise control over web page presentation. Understanding this syntax is critical for effectively implementing any styling on the web.<br><br><pre>/* Element selector */\np {\n  color: orangered;\n  /* │       └─── Indicates the value of the expression\n     │                                                     \n     └─────────── Indicates the property of the expression */\n}</pre>",
 			"task": "Complete the CSS rule by providing a valid selector that targets all paragraph elements (p). This selector should apply to every paragraph on the page. Notice how the declaration block is already structured with the property-value pair 'color: blue;'.",
 			"previewHTML": "<p>This paragraph should be blue.</p><p>This paragraph should also be blue.</p><div>This div element should remain unchanged.</div>",
@@ -30,7 +30,7 @@
 		},
 		{
 			"id": "css-selectors-element",
-			"title": "Element Selectors: Targeting HTML Elements",
+			"title": "Type Selectors",
 			"description": "Element selectors target HTML elements directly by their tag name. For example, 'p' selects all paragraph elements, 'h1' selects all first-level headings, and 'div' selects all division elements. Element selectors are powerful for applying consistent styling to all instances of a particular HTML element throughout your document. They form the foundation of CSS selection and are often combined with other selectors to create more specific targeting patterns.",
 			"task": "Write an element selector to target all heading level 2 elements (h2). Then complete the code to give them a red text color and an underline. This will make them stand out clearly on the page.",
 			"previewHTML": "<h2>This is a heading that needs styling</h2><p>This is a paragraph that should remain unchanged.</p><h2>This is another heading that needs the same styling</h2>",
@@ -53,7 +53,7 @@
 		},
 		{
 			"id": "css-selectors-class",
-			"title": "Class Selectors: Targeting Specific Element Groups",
+			"title": "Class Selectors",
 			"description": "Class selectors target HTML elements that share the same class attribute value. They begin with a dot (.) followed by the class name. Classes provide a flexible way to apply styles to groups of elements that may not share the same HTML tag. A single element can have multiple classes, and a class can be applied to multiple elements, making class selectors a powerful tool for organizing and applying styles efficiently across your website.",
 			"task": "Write a class selector to target elements with the class 'important-text'. Set their color to 'red' and give them a yellow background. Begin with a dot (.) followed by the class name to create a proper class selector.",
 			"previewHTML": "<p class='important-text'>This text should be red with yellow background.</p><p>This text remains unchanged.</p><span class='important-text'>This span should also be red with yellow background.</span>",
@@ -76,7 +76,7 @@
 		},
 		{
 			"id": "css-selectors-id",
-			"title": "ID Selectors: Targeting Unique Elements",
+			"title": "ID Selectors",
 			"description": "ID selectors target a single, unique HTML element that has a specific id attribute value. They begin with a hash symbol (#) followed by the ID name. Unlike classes, an ID should be unique within a page—it should only be used once. ID selectors have higher specificity than class selectors, which means they override class and element selectors when specificity conflicts arise. Because of their uniqueness constraint, IDs are ideal for styling one-of-a-kind elements.",
 			"task": "Write an ID selector to target the element with the ID 'header-title'. Set its font-weight to 'bold'. Begin with a hash symbol (#) followed by the ID name.",
 			"previewHTML": "<h1 id='header-title'>This heading needs to be bold</h1><h2>This heading should remain unchanged</h2>",
@@ -99,7 +99,7 @@
 		},
 		{
 			"id": "css-pseudo-classes-hover",
-			"title": "Pseudo-classes: Interactive States with :hover",
+			"title": ":hover State",
 			"description": "Pseudo-classes select elements based on states that aren't explicitly part of the document tree, such as user interaction states. The :hover pseudo-class is triggered when a user hovers their cursor over an element. This provides a powerful way to create interactive elements that respond to user actions without requiring JavaScript. Other common pseudo-classes include :focus, :active, and :visited, each representing different interaction states.",
 			"task": "Add the :hover pseudo-class to the button selector to create an interactive effect when users hover over buttons. This will change the background color to 'green' when a user's cursor is positioned over any button element.",
 			"previewHTML": "<button>Hover over me!</button><p>Try hovering over the button to see the effect.</p>",
@@ -122,7 +122,7 @@
 		},
 		{
 			"id": "css-box-model-padding",
-			"title": "CSS Box Model: Understanding Padding",
+			"title": "Padding",
 			"description": "The CSS box model represents how elements are rendered in the browser. Every element is effectively a box with content at its core, surrounded by padding, border, and margin areas. Padding creates space between an element's content and its border, providing visual breathing room. You can control padding on all sides at once with the 'padding' property, or target specific sides with 'padding-top', 'padding-right', 'padding-bottom', and 'padding-left'. Proper padding is essential for visual hierarchy and readability.",
 			"task": "Add padding to the content-box element. Set the padding to '20px' to create adequate space between the content and the element's border. This will improve readability and visual appeal.",
 			"previewHTML": "<div class='content-box'><p>This paragraph needs proper padding around it to improve readability and aesthetic appeal.</p><p>Without padding, text would touch the edges of the box, making it harder to read.</p></div>",
@@ -156,7 +156,7 @@
 		},
 		{
 			"id": "css-box-model-margin",
-			"title": "CSS Box Model: Understanding Margin",
+			"title": "Margin",
 			"description": "Margin is the outermost layer of the CSS box model, creating space between an element and its neighboring elements. Unlike padding which affects the internal spacing, margins define the external spacing relationships between elements. Margins can be set for all sides with the 'margin' property or individually with 'margin-top', 'margin-right', 'margin-bottom', and 'margin-left'. Margins can also accept negative values to create overlapping effects, and they collapse in certain situations—an important behavior to understand for precise layout control.",
 			"task": "Add a bottom margin to the section-title element. Set margin-bottom to '30px' to create appropriate spacing between the title and subsequent content. This helps establish visual hierarchy in the document flow.",
 			"previewHTML": "<h2 class='section-title'>Important Section</h2><p>This paragraph should have space above it, separating it from the heading.</p>",
@@ -190,7 +190,7 @@
 		},
 		{
 			"id": "css-box-model-border",
-			"title": "CSS Box Model: Working with Borders",
+			"title": "Borders",
 			"description": "Borders define the perimeter of an element in the CSS box model, positioned between the padding and margin areas. The 'border' property is shorthand that combines border-width, border-style, and border-color properties. You can apply borders to all sides of an element or target specific sides with 'border-top', 'border-right', 'border-bottom', and 'border-left'. Borders serve both functional and aesthetic purposes: they visually separate elements, highlight interactive components, and can become integral parts of your design language.",
 			"task": "Add a border to the card element. Set the border property to '2px solid blue' to create a defined boundary with a distinctive color. This will help the card stand out visually from surrounding content.",
 			"previewHTML": "<div class='card'><h3>Card Title</h3><p>This card element needs a defined border to enhance its visibility.</p></div>",
@@ -221,7 +221,7 @@
 		},
 		{
 			"id": "css-centering-techniques",
-			"title": "Horizontal and Vertical Centering",
+			"title": "Centering",
 			"description": "Centering elements in CSS has historically been challenging, but modern approaches have simplified this task. For horizontal centering, we can use 'margin: 0 auto' for block elements with a defined width, or 'text-align: center' for inline elements. Vertical centering often employs flexbox or grid layouts. Flexbox, in particular, offers a straightforward solution with 'display: flex', 'justify-content: center' (horizontal centering), and 'align-items: center' (vertical centering). Understanding centering techniques is crucial for creating balanced and visually appealing layouts.",
 			"task": "Center the button both horizontally and vertically within its container by adding the correct flexbox properties. The container is already set to 'display: flex', so you need to add both 'justify-content: center' and 'align-items: center' properties.",
 			"previewHTML": "<div class='button-container'><button>Centered Button</button></div>",
@@ -274,7 +274,7 @@
 		},
 		{
 			"id": "css-colors-hex-rgb",
-			"title": "Color Systems: Hexadecimal and Named Colors",
+			"title": "Color Values",
 			"description": "CSS supports multiple color representation systems. Hexadecimal notation uses a pound sign (#) followed by 3 or 6 characters representing RGB values in base-16 format (e.g., #f00 or #ff0000 for red). CSS also provides named colors like 'red', 'blue', and 'orange' for common colors. Named colors are easier to remember, while hex colors provide more precise control. Understanding different color systems is essential for controlling the visual appearance of your web elements.",
 			"task": "Set the background color of the element to 'orange' using a named color. Named colors are more readable in code than hexadecimal values and are perfect for common colors.",
 			"previewHTML": "<div class='color-block'>This element needs an orange background color</div>",
@@ -305,7 +305,7 @@
 		},
 		{
 			"id": "css-typography-font-family",
-			"title": "Typography: Font Family and Font Stacks",
+			"title": "Font Family",
 			"description": "The font-family property defines the typeface used for text content. Best practice dictates providing a 'font stack'—a comma-separated list of fonts in descending order of preference. If the first font isn't available on the user's system, the browser moves to the next font in the stack. The stack typically ends with a generic font family (serif, sans-serif, monospace, etc.) as a reliable fallback. Well-designed font stacks ensure consistent typographic appearance across different operating systems and devices.",
 			"task": "Set the font family of the element to use 'Courier, monospace'. This creates a font stack where 'Courier' is the first choice and 'monospace' ensures a final generic fallback option is available, creating a typewriter-like effect for the text.",
 			"previewHTML": "<p class='styled-text'>This text needs a monospace font applied to it. Notice how each character takes up the same width in monospace fonts.</p>",
@@ -336,7 +336,7 @@
 		},
 		{
 			"id": "css-units-relative-absolute",
-			"title": "CSS Units: Comparing Relative and Absolute Measurements",
+			"title": "Units",
 			"description": "CSS offers various measurement units, categorized as either relative or absolute. Relative units (like %, em, rem, vh, vw) scale based on other factors and are essential for responsive design. For instance, 'rem' units scale relative to the root element's font size, while '%' units are proportional to parent element dimensions. Absolute units (like px, pt, cm, in) maintain fixed dimensions regardless of context. Modern web development favors relative units for their adaptability across different screen sizes and user preferences, especially for accessible design.",
 			"task": "Set the width of the responsive element to '80%' of its parent container and its font-size to '18px'. Percentage width enables the element to adapt to different screen sizes, while pixel units provide precise control for font sizes.",
 			"previewHTML": "<div class='container'><div class='responsive-element'>This element should have responsive width and font size.</div></div>",
@@ -389,7 +389,7 @@
 		},
 		{
 			"id": "css-specificity",
-			"title": "CSS Specificity: Understanding Rule Precedence",
+			"title": "Specificity",
 			"description": "CSS specificity determines which styles are applied when multiple conflicting rules target the same element. Specificity follows a hierarchical system: inline styles have the highest specificity, followed by ID selectors, then class/attribute/pseudo-class selectors, and finally element/pseudo-element selectors. The specificity value can be conceptualized as a four-part score (inline, ID, class, element). Understanding specificity is crucial for predictable styling and debugging CSS conflicts.",
 			"task": "Look at the two rules targeting paragraph text. Based on CSS specificity, determine which text color will be applied to the paragraph with class 'highlight' by completing the rule using either '#ff0000' (red) or '#0000ff' (blue).",
 			"previewHTML": "<p class='highlight'>Which color will this paragraph have?</p>",
@@ -412,7 +412,7 @@
 		},
 		{
 			"id": "css-layout-display-property",
-			"title": "CSS Layout: The Display Property",
+			"title": "Display",
 			"description": "The 'display' property defines how an element behaves in the document flow and in relation to other elements. Common values include 'block', 'inline', 'inline-block', 'flex', 'grid', and 'none'. Block elements start on a new line and take up the full width available, inline elements flow within the text and only take up as much width as necessary, and inline-block elements combine aspects of both. The display property is fundamental to controlling layout in CSS and serves as the foundation for more complex positioning techniques.",
 			"task": "Change the display property of the span element to 'block' to make it behave like a block-level element rather than an inline element. This will make it start on a new line and take up the full width available.",
 			"previewHTML": "<p>This is a paragraph with <span class='block-me'>a span that should become</span> a block element.</p>",
@@ -446,7 +446,7 @@
 		},
 		{
 			"id": "css-flexbox-basics",
-			"title": "CSS Flexbox: Container and Items",
+			"title": "Flex Basics",
 			"description": "Flexbox is a powerful layout model that makes it easier to design flexible responsive layouts. It consists of flex containers and flex items. The container is the parent element with 'display: flex' or 'display: inline-flex' set, while items are the direct children within. Flexbox provides properties for controlling direction, alignment, order, and proportions of items. With flexbox, complex layouts that would require tricky positioning and floats can be achieved with much cleaner and more maintainable code.",
 			"task": "Create a basic flexbox container by adding 'display: flex' to the parent element. Then set flex-direction to 'row' to make the items display horizontally (this is the default behavior, but it's good to specify it explicitly).",
 			"previewHTML": "<div class='flex-container'><div class='flex-item'>Item 1</div><div class='flex-item'>Item 2</div><div class='flex-item'>Item 3</div></div>",

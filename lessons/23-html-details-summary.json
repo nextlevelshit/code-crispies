@@ -1,14 +1,14 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
-	"title": "Details & Summary: Disclosure Widgets",
+	"title": "Disclosure",
 	"description": "Create expandable content sections without JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "details-summary-basic",
-			"title": "Your First Disclosure Widget",
+			"title": "First Widget",
 			"description": "The <kbd>&lt;details&gt;</kbd> element creates a collapsible section. The <kbd>&lt;summary&gt;</kbd> provides the clickable label.<br><br>Click the summary to toggle the hidden content - no JavaScript needed!",
 			"task": "Create a <kbd>&lt;details&gt;</kbd> element with:<br>1. A <kbd>&lt;summary&gt;</kbd> saying 'Click to reveal'<br>2. A <kbd>&lt;p&gt;</kbd> with the text 'This content was hidden!'",
 			"previewHTML": "",

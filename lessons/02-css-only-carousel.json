@@ -1,13 +1,13 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-carousels",
-	"title": "CSS Carousels",
+	"title": "Carousels",
 	"description": "Learn to create modern, accessible carousels using pure CSS with scroll snapping, scroll buttons, and scroll markers. This module covers advanced CSS features that enable interactive carousel components without JavaScript, focusing on responsive design and user accessibility.",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "basic-horizontal-scroll",
-			"title": "Creating a Basic Horizontal Scroll Container",
+			"title": "Scroll Container",
 			"description": "Before building carousels, we need to understand how to create horizontally scrolling containers. A scroll container is created by setting the <kbd>overflow-x</kbd> property to <kbd>scroll</kbd> on a container element. This allows content that exceeds the container's width to be scrolled horizontally instead of breaking to new lines or being hidden.",
 			"task": "Create a horizontal scroll container by setting <kbd>overflow-x: scroll</kbd> on the <kbd>.container</kbd> element. This will allow the wide content inside to scroll horizontally.",
 			"previewHTML": "<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n</div>",
@@ -41,7 +41,7 @@
 		},
 		{
 			"id": "scroll-snap-introduction",
-			"title": "Adding Scroll Snap Behavior",
+			"title": "Scroll Snap",
 			"description": "Scroll snapping makes carousels feel more polished by ensuring that items align properly after scrolling. The <kbd>scroll-snap-type</kbd> property is applied to the scroll container, while <kbd>scroll-snap-align</kbd> is applied to the items inside. The <kbd>x mandatory</kbd> value means horizontal snapping is required.",
 			"task": "Add scroll snapping to the container by setting <kbd>scroll-snap-type: x mandatory</kbd>. Then add <kbd>scroll-snap-align: center</kbd> to the items so they snap to the center of the container.",
 			"previewHTML": "<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n</div>\n<p>Try scrolling in the container above - items should snap into place!</p>",
@@ -77,7 +77,7 @@
 		},
 		{
 			"id": "flexbox-carousel-layout",
-			"title": "Building a Full-Width Item Carousel with Flexbox",
+			"title": "Full-Width Items",
 			"description": "For carousels where each item takes the full width (like image slideshows), we use flexbox with <kbd>flex: 0 0 100%</kbd> on each item. This means: no grow (0), no shrink (0), and take 100% of the container width. Combined with a horizontal gap, this creates distinct pages.",
 			"task": "Create a full-width carousel layout using flexbox. Set <kbd>display: flex</kbd> and <kbd>gap: 20px</kbd> on the container, then <kbd>flex: 0 0 100%</kbd> on the items.",
 			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
@@ -113,7 +113,7 @@
 		},
 		{
 			"id": "scroll-buttons-basic",
-			"title": "Adding Scroll Buttons",
+			"title": "Scroll Buttons",
 			"description": "CSS scroll buttons are created using the <kbd>::scroll-button()</kbd> pseudo-element. You specify the direction (left, right, up, down) and set content to make them visible. The browser automatically handles the scrolling behavior and disables buttons when they can't scroll further.",
 			"task": "Add scroll buttons by creating <kbd>::scroll-button(left)</kbd> and <kbd>::scroll-button(right)</kbd> pseudo-elements. Set their <kbd>content</kbd> to arrow symbols and style them with a font size and color.",
 			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
@@ -154,7 +154,7 @@
 		},
 		{
 			"id": "scroll-markers-introduction",
-			"title": "Creating Scroll Markers",
+			"title": "Scroll Markers",
 			"description": "Scroll markers are navigation dots that show your position in the carousel and allow jumping to specific slides. They're created using <kbd>::scroll-marker</kbd> pseudo-elements on the slide items, and collected in a <kbd>::scroll-marker-group</kbd>. The <kbd>scroll-marker-group</kbd> property must be set to <kbd>after</kbd> or <kbd>before</kbd> to enable them.",
 			"task": "Enable scroll markers by setting <kbd>scroll-marker-group: after</kbd> on the carousel. Then style the markers using <kbd>::scroll-marker</kbd> pseudo-elements with circular appearance.",
 			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>",
@@ -195,7 +195,7 @@
 		},
 		{
 			"id": "active-marker-styling",
-			"title": "Highlighting the Active Marker",
+			"title": "Active Marker",
 			"description": "The <kbd>:target-current</kbd> pseudo-class automatically selects the scroll marker that corresponds to the currently visible slide. This is essential for user experience as it shows which slide is active. You can style it differently to indicate the current position.",
 			"task": "Use the <kbd>:target-current</kbd> pseudo-class to highlight the active scroll marker. Change its background color to make it stand out from inactive markers.",
 			"previewHTML": "<div class=\"carousel\">\n  <div class=\"slide\">Slide 1</div>\n  <div class=\"slide\">Slide 2</div>\n  <div class=\"slide\">Slide 3</div>\n  <div class=\"slide\">Slide 4</div>\n</div>\n<p>Scroll or click markers to see the active state change!</p>",
@@ -226,7 +226,7 @@
 		},
 		{
 			"id": "multi-column-carousel",
-			"title": "Multi-Item Carousel with CSS Columns",
+			"title": "Multi-Item",
 			"description": "For responsive carousels showing multiple items per page, CSS multi-column layout is ideal. Using <kbd>columns: 1</kbd> creates full-width columns, and items flow naturally into each column. The <kbd>::column</kbd> pseudo-element represents each generated column and can have scroll-snap alignment.",
 			"task": "Create a multi-item carousel using <kbd>columns: 1</kbd> for the layout and <kbd>scroll-snap-align: center</kbd> on the <kbd>::column</kbd> pseudo-elements to snap to each column.",
 			"previewHTML": "<div class=\"multi-carousel\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n  <div class=\"item\">Item 4</div>\n  <div class=\"item\">Item 5</div>\n  <div class=\"item\">Item 6</div>\n  <div class=\"item\">Item 7</div>\n  <div class=\"item\">Item 8</div>\n</div>",
@@ -262,7 +262,7 @@
 		},
 		{
 			"id": "complete-carousel-styling",
-			"title": "Creating a Complete Styled Carousel",
+			"title": "Complete Carousel",
 			"description": "A professional carousel combines all the features we've learned: scroll snapping, scroll buttons, scroll markers, and proper styling for different states. This includes hover effects, disabled states for buttons, and positioning for optimal user experience.",
 			"task": "Complete the carousel by adding hover effects to buttons using <kbd>:hover</kbd>, styling disabled buttons with <kbd>:disabled</kbd>, and ensuring the marker group has proper flexbox layout.",
 			"previewHTML": "<div class=\"complete-carousel\">\n  <div class=\"slide\">🌅 Slide 1</div>\n  <div class=\"slide\">🌄 Slide 2</div>\n  <div class=\"slide\">🏔️ Slide 3</div>\n  <div class=\"slide\">🌊 Slide 4</div>\n  <div class=\"slide\">🌆 Slide 5</div>\n</div>",

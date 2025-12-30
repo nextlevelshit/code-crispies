@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-figure",
-	"title": "Figure & Figcaption",
+	"title": "Figure",
 	"description": "Create self-contained content with captions",
 	"mode": "html",
 	"difficulty": "beginner",

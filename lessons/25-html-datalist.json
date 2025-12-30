@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-datalist",
-	"title": "Datalist: Autocomplete Inputs",
+	"title": "Datalist",
 	"description": "Provide suggestions for text inputs without JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
