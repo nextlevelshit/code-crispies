@@ -115,7 +115,7 @@ function toggleExpectedResult() {
 
 // ================= LANGUAGE TOGGLE =================
 
-async function toggleLanguage() {
+function toggleLanguage() {
 	const currentLang = getLanguage();
 	const newLang = currentLang === "en" ? "de" : "en";
 
@@ -130,7 +130,7 @@ async function toggleLanguage() {
 	const currentModuleId = engineState.module?.id;
 	const currentLessonIndex = engineState.lessonIndex;
 
-	const modules = await loadModules(newLang);
+	const modules = loadModules(newLang);
 	lessonEngine.setModules(modules);
 	renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
 
@@ -261,9 +261,9 @@ function clearLoadingTimeout() {
 	}
 }
 
-async function initializeModules() {
+function initializeModules() {
 	try {
-		const modules = await loadModules(getLanguage());
+		const modules = loadModules(getLanguage());
 		lessonEngine.setModules(modules);
 
 		// Use the new renderModuleList function with both callbacks
@@ -684,7 +684,7 @@ function init() {
 	loadingTimeout = setTimeout(showLoadingFallback, 3000);
 
 	// Load modules after editor is ready
-	initializeModules().catch(console.error);
+	initializeModules();
 
 	// Sidebar controls
 	elements.menuBtn.addEventListener("click", openSidebar);

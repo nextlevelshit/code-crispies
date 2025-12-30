@@ -86,9 +86,9 @@ const moduleStoreDE = [
 /**
  * Load all available modules for a given language
  * @param {string} language - Language code ('en' or 'de')
- * @returns {Promise<Array>} Promise resolving to array of modules
+ * @returns {Array} Array of modules
  */
-export async function loadModules(language = "en") {
+export function loadModules(language = "en") {
 	const store = language === "de" ? moduleStoreDE : moduleStoreEN;
 	return store.map((module) => ({
 		...module,
