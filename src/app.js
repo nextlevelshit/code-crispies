@@ -579,8 +579,14 @@ function init() {
 	// Dialogs
 	elements.helpBtn.addEventListener("click", showHelp);
 	elements.helpDialogClose.addEventListener("click", closeHelpDialog);
+	elements.helpDialog.addEventListener("click", (e) => {
+		if (e.target === elements.helpDialog) closeHelpDialog();
+	});
 	elements.resetBtn.addEventListener("click", showResetConfirmation);
 	elements.resetDialogClose.addEventListener("click", closeResetDialog);
+	elements.resetDialog.addEventListener("click", (e) => {
+		if (e.target === elements.resetDialog) closeResetDialog();
+	});
 	elements.cancelReset.addEventListener("click", closeResetDialog);
 	elements.confirmReset.addEventListener("click", handleResetConfirm);
 
