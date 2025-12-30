@@ -94,7 +94,7 @@
 				{
 					"type": "element_text",
 					"value": { "selector": "button", "text": "Sign In" },
-					"message": "The button should say 'Sign In'"
+					"message": "The button should say <kbd>Sign In</kbd>"
 				}
 			]
 		}

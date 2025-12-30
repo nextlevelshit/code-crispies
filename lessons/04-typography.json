@@ -18,11 +18,16 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "font-family", "message": "Use the 'font-family' property", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "font-family",
+					"message": "Use the <kbd>font-family</kbd> property",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "regex",
 					"value": "Georgia, serif",
-					"message": "Include 'Georgia, serif' in the font stack",
+					"message": "Include <kbd>Georgia, serif</kbd> in the font stack",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -40,10 +45,23 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "font-size", "message": "Use 'font-size' property", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "font-size", "expected": "1.5rem" }, "message": "Set font-size to '1.5rem'" },
-				{ "type": "contains", "value": "line-height", "message": "Use 'line-height' property", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "line-height", "expected": "1.5" }, "message": "Set line-height to '1.5'" }
+				{ "type": "contains", "value": "font-size", "message": "Use <kbd>font-size</kbd> property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "font-size", "expected": "1.5rem" },
+					"message": "Set font-size to <kbd>1.5rem</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "line-height",
+					"message": "Use <kbd>line-height</kbd> property",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "line-height", "expected": "1.5" },
+					"message": "Set line-height to <kbd>1.5</kbd>"
+				}
 			]
 		},
 		{
@@ -59,10 +77,23 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "font-style", "message": "Use 'font-style' property", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "font-style", "expected": "italic" }, "message": "Set font-style to 'italic'" },
-				{ "type": "contains", "value": "font-weight", "message": "Use 'font-weight' property", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "font-weight", "expected": "bold" }, "message": "Set font-weight to 'bold'" }
+				{ "type": "contains", "value": "font-style", "message": "Use <kbd>font-style</kbd> property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "font-style", "expected": "italic" },
+					"message": "Set font-style to <kbd>italic</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "font-weight",
+					"message": "Use <kbd>font-weight</kbd> property",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "font-weight", "expected": "bold" },
+					"message": "Set font-weight to <kbd>bold</kbd>"
+				}
 			]
 		},
 		{
@@ -81,10 +112,15 @@
 				{
 					"type": "contains",
 					"value": "text-decoration",
-					"message": "Use 'text-decoration' property",
+					"message": "Use <kbd>text-decoration</kbd> property",
 					"options": { "caseSensitive": false }
 				},
-				{ "type": "contains", "value": "text-shadow", "message": "Use 'text-shadow' property", "options": { "caseSensitive": false } }
+				{
+					"type": "contains",
+					"value": "text-shadow",
+					"message": "Use <kbd>text-shadow</kbd> property",
+					"options": { "caseSensitive": false }
+				}
 			]
 		}
 	]

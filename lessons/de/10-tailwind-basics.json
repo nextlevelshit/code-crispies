@@ -20,7 +20,7 @@
 				{
 					"type": "contains_class",
 					"value": "bg-blue-500",
-					"message": "Füge die 'bg-blue-500'-Klasse für einen blauen Hintergrund hinzu."
+					"message": "Füge die <kbd>bg-blue-500</kbd>-Klasse für einen blauen Hintergrund hinzu."
 				}
 			]
 		},

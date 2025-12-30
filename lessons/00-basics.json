@@ -21,7 +21,7 @@
 				{
 					"type": "regex",
 					"value": "^\\s*p\\s*$",
-					"message": "Use the 'p' selector to target all paragraph elements",
+					"message": "Use the <kbd>p</kbd> selector to target all paragraph elements",
 					"options": {
 						"caseSensitive": false
 					}
@@ -44,7 +44,7 @@
 				{
 					"type": "regex",
 					"value": "^\\s*h2\\s*$",
-					"message": "Use the 'h2' element selector to target all level 2 headings",
+					"message": "Use the <kbd>h2</kbd> element selector to target all level 2 headings",
 					"options": {
 						"caseSensitive": false
 					}
@@ -67,7 +67,7 @@
 				{
 					"type": "contains",
 					"value": ".important-text",
-					"message": "Use the '.important-text' class selector",
+					"message": "Use the <kbd>.important-text</kbd> class selector",
 					"options": {
 						"caseSensitive": true
 					}
@@ -90,7 +90,7 @@
 				{
 					"type": "contains",
 					"value": "#header-title",
-					"message": "Use the '#header-title' ID selector",
+					"message": "Use the <kbd>#header-title</kbd> ID selector",
 					"options": {
 						"caseSensitive": true
 					}
@@ -113,7 +113,7 @@
 				{
 					"type": "contains",
 					"value": ":hover",
-					"message": "Add the ':hover' pseudo-class after the button selector",
+					"message": "Add the <kbd>:hover</kbd> pseudo-class after the button selector",
 					"options": {
 						"caseSensitive": true
 					}
@@ -136,7 +136,7 @@
 				{
 					"type": "contains",
 					"value": "padding",
-					"message": "Use the 'padding' property to add space around the content",
+					"message": "Use the <kbd>padding</kbd> property to add space around the content",
 					"options": {
 						"caseSensitive": false
 					}
@@ -147,7 +147,7 @@
 						"property": "padding",
 						"expected": "20px"
 					},
-					"message": "Set the padding value to '20px'",
+					"message": "Set the padding value to <kbd>20px</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -170,7 +170,7 @@
 				{
 					"type": "contains",
 					"value": "margin-bottom",
-					"message": "Use the 'margin-bottom' property to add space after the title",
+					"message": "Use the <kbd>margin-bottom</kbd> property to add space after the title",
 					"options": {
 						"caseSensitive": false
 					}
@@ -181,7 +181,7 @@
 						"property": "margin-bottom",
 						"expected": "30px"
 					},
-					"message": "Set the margin-bottom value to '30px'",
+					"message": "Set the margin-bottom value to <kbd>30px</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -204,7 +204,7 @@
 				{
 					"type": "contains",
 					"value": "border",
-					"message": "Use the 'border' property to add a border around the card",
+					"message": "Use the <kbd>border</kbd> property to add a border around the card",
 					"options": {
 						"caseSensitive": false
 					}
@@ -212,7 +212,7 @@
 				{
 					"type": "regex",
 					"value": "border:\\s*2px\\s+solid\\s+blue",
-					"message": "Set the border to '2px solid blue'",
+					"message": "Set the border to <kbd>2px solid blue</kbd>",
 					"options": {
 						"caseSensitive": false
 					}
@@ -235,7 +235,7 @@
 				{
 					"type": "contains",
 					"value": "justify-content",
-					"message": "Use 'justify-content' property for horizontal centering",
+					"message": "Use <kbd>justify-content</kbd> property for horizontal centering",
 					"options": {
 						"caseSensitive": false
 					}
@@ -246,7 +246,7 @@
 						"property": "justify-content",
 						"expected": "center"
 					},
-					"message": "Set 'justify-content' to 'center'",
+					"message": "Set <kbd>justify-content</kbd> to <kbd>center</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -254,7 +254,7 @@
 				{
 					"type": "contains",
 					"value": "align-items",
-					"message": "Use 'align-items' property for vertical centering",
+					"message": "Use <kbd>align-items</kbd> property for vertical centering",
 					"options": {
 						"caseSensitive": false
 					}
@@ -265,7 +265,7 @@
 						"property": "align-items",
 						"expected": "center"
 					},
-					"message": "Set 'align-items' to 'center'",
+					"message": "Set <kbd>align-items</kbd> to <kbd>center</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -288,7 +288,7 @@
 				{
 					"type": "contains",
 					"value": "background",
-					"message": "Use the 'background' or 'background-color' property",
+					"message": "Use the <kbd>background</kbd> or <kbd>background-color</kbd> property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -296,7 +296,7 @@
 				{
 					"type": "regex",
 					"value": "background(-color)?:\\s*orange",
-					"message": "Set the background/background-color to 'orange'",
+					"message": "Set the background/background-color to <kbd>orange</kbd>",
 					"options": {
 						"caseSensitive": false
 					}
@@ -319,7 +319,7 @@
 				{
 					"type": "contains",
 					"value": "font-family",
-					"message": "Use the 'font-family' property",
+					"message": "Use the <kbd>font-family</kbd> property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -327,7 +327,7 @@
 				{
 					"type": "regex",
 					"value": "font-family:\\s*Courier,\\s*monospace",
-					"message": "Set the font-family to 'Courier, monospace'",
+					"message": "Set the font-family to <kbd>Courier, monospace</kbd>",
 					"options": {
 						"caseSensitive": false
 					}
@@ -350,7 +350,7 @@
 				{
 					"type": "contains",
 					"value": "width",
-					"message": "Use the 'width' property",
+					"message": "Use the <kbd>width</kbd> property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -361,7 +361,7 @@
 						"property": "width",
 						"expected": "80%"
 					},
-					"message": "Set the width to '80%'",
+					"message": "Set the width to <kbd>80%</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -369,7 +369,7 @@
 				{
 					"type": "contains",
 					"value": "font-size",
-					"message": "Use the 'font-size' property",
+					"message": "Use the <kbd>font-size</kbd> property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -380,7 +380,7 @@
 						"property": "font-size",
 						"expected": "18px"
 					},
-					"message": "Set the font-size to '18px'",
+					"message": "Set the font-size to <kbd>18px</kbd>",
 					"options": {
 						"exact": true
 					}
@@ -426,7 +426,7 @@
 				{
 					"type": "contains",
 					"value": "display",
-					"message": "Use the 'display' property",
+					"message": "Use the <kbd>display</kbd> property",
 					"options": {
 						"caseSensitive": false
 					}
@@ -437,7 +437,7 @@
 						"property": "display",
 						"expected": "block"
 					},
-					"message": "Set the display value to 'block'",
+					"message": "Set the display value to <kbd>block</kbd>",
 					"options": {
 						"exact": true
 					}

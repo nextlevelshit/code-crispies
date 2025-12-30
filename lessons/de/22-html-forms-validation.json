@@ -79,7 +79,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "#email", "attr": "type", "value": "email" },
-					"message": "Setze den Eingabetyp für E-Mail auf 'email'"
+					"message": "Setze den Eingabetyp für E-Mail auf <kbd>email</kbd>"
 				},
 				{
 					"type": "attribute_value",
@@ -89,7 +89,7 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "#password", "attr": "type", "value": "password" },
-					"message": "Setze den Eingabetyp für Passwort auf 'password'"
+					"message": "Setze den Eingabetyp für Passwort auf <kbd>password</kbd>"
 				},
 				{
 					"type": "attribute_value",

@@ -21,7 +21,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Setze padding auf '1rem'"
+					"message": "Setze <kbd>padding: 1rem</kbd>"
 				}
 			]
 		},
@@ -41,7 +41,7 @@
 				{
 					"type": "regex",
 					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
-					"message": "Setze border auf '2px solid darkslategray'",
+					"message": "Setze <kbd>border: 2px solid darkslategray</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -62,7 +62,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin", "expected": "1rem" },
-					"message": "Setze margin auf '1rem'"
+					"message": "Setze <kbd>margin: 1rem</kbd>"
 				}
 			]
 		},
@@ -82,7 +82,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Setze box-sizing auf 'border-box'"
+					"message": "Setze <kbd>box-sizing: border-box</kbd>"
 				}
 			]
 		},
@@ -102,7 +102,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "2rem" },
-					"message": "Setze margin-bottom auf '2rem'"
+					"message": "Setze <kbd>margin-bottom: 2rem</kbd>"
 				}
 			]
 		},
@@ -122,7 +122,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Setze margin auf '1rem 2rem'",
+					"message": "Setze <kbd>margin: 1rem 2rem</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -143,7 +143,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1.5rem" },
-					"message": "Setze padding auf '1.5rem'"
+					"message": "Setze <kbd>padding: 1.5rem</kbd>"
 				}
 			]
 		},
@@ -163,7 +163,7 @@
 				{
 					"type": "regex",
 					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
-					"message": "Setze border-bottom auf '4px solid dodgerblue'",
+					"message": "Setze <kbd>border-bottom: 4px solid dodgerblue</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]

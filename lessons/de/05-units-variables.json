@@ -9,7 +9,7 @@
 			"id": "units-1",
 			"title": "Absolute vs. Relative Einheiten",
 			"description": "Lerne den Unterschied zwischen px, rem, em, % und vw/vh für flexible, responsive Layouts.",
-			"task": "Setze die Breite von '.unit-box' auf 80% und max-width auf 37.5rem.",
+			"task": "Setze die Breite von <kbd>.unit-box</kbd> auf <kbd>80%</kbd> und max-width auf <kbd>37.5rem</kbd>.",
 			"previewHTML": "<div class=\"unit-box\">Ändere meine Größe!</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .unit-box { background: #f5f5f5; padding: 1rem; }",
 			"sandboxCSS": "",
@@ -18,17 +18,31 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "width", "message": "Verwende die 'width' Eigenschaft", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Setze width auf '80%'" },
-				{ "type": "contains", "value": "max-width", "message": "Verwende die 'max-width' Eigenschaft", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "max-width", "expected": "37.5rem" }, "message": "Setze max-width auf '37.5rem'" }
+				{
+					"type": "contains",
+					"value": "width",
+					"message": "Verwende die <kbd>width</kbd> Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Setze width auf <kbd>80%</kbd>" },
+				{
+					"type": "contains",
+					"value": "max-width",
+					"message": "Verwende die <kbd>max-width</kbd> Eigenschaft",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "max-width", "expected": "37.5rem" },
+					"message": "Setze max-width auf <kbd>37.5rem</kbd>"
+				}
 			]
 		},
 		{
 			"id": "units-2",
 			"title": "CSS Custom Properties",
 			"description": "Definiere und verwende Variablen (--custom properties) wieder, um deine Theme-Werte zu zentralisieren.",
-			"task": "Erstelle eine <code>--main-color</code> Variable in :root mit #6200ee und wende sie als Rahmenfarbe auf '.var-box' an.",
+			"task": "Erstelle eine <code>--main-color</code> Variable in :root mit <kbd>#6200ee</kbd> und wende sie als Rahmenfarbe auf <kbd>.var-box</kbd> an.",
 			"previewHTML": "<div class=\"var-box\">Variablen-Box</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .var-box { padding: 1rem; border: 0.125rem solid #ddd; }",
 			"sandboxCSS": "",
@@ -37,8 +51,18 @@
 			"codeSuffix": "}\n.var-box { }",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "--main-color", "message": "Definiere '--main-color' in :root", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "var(--main-color)", "message": "Verwende var(--main-color)", "options": { "caseSensitive": false } },
+				{
+					"type": "contains",
+					"value": "--main-color",
+					"message": "Definiere <kbd>--main-color</kbd> in :root",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "var(--main-color)",
+					"message": "Verwende <kbd>var(--main-color)</kbd>",
+					"options": { "caseSensitive": false }
+				},
 				{
 					"type": "property_value",
 					"value": { "property": "border", "expected": "var(--main-color)" },
@@ -51,7 +75,7 @@
 			"id": "units-3",
 			"title": "Einheiten-Berechnungen (calc)",
 			"description": "Verwende die <code>calc()</code> Funktion, um verschiedene Einheiten in einem Ausdruck zu kombinieren.",
-			"task": "Setze die Breite von '.calc-box' auf calc(100% - 2rem) und min-height auf calc(10vh + 1rem).",
+			"task": "Setze die Breite von <kbd>.calc-box</kbd> auf <kbd>calc(100% - 2rem)</kbd> und min-height auf <kbd>calc(10vh + 1rem)</kbd>.",
 			"previewHTML": "<div class=\"calc-box\">Calc Demo</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .calc-box { background: #e8f5e9; padding: 1rem; }",
 			"sandboxCSS": "",
@@ -60,7 +84,7 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "calc", "message": "Verwende die 'calc()' Funktion", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "calc", "message": "Verwende die <kbd>calc()</kbd> Funktion", "options": { "caseSensitive": false } },
 				{
 					"type": "regex",
 					"value": "width:\\s*calc\\(100% - 2rem\\)",
@@ -79,7 +103,7 @@
 			"id": "units-4",
 			"title": "Viewport & Responsive Einheiten",
 			"description": "Steuere Layouts relativ zur Viewport-Größe mit vw, vh und vmin/vmax Einheiten.",
-			"task": "Gib '.viewport-box' eine Breite von 50vw und Höhe von 20vh.",
+			"task": "Gib <kbd>.viewport-box</kbd> eine Breite von <kbd>50vw</kbd> und Höhe von <kbd>20vh</kbd>.",
 			"previewHTML": "<div class=\"viewport-box\">Viewport-Box</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .viewport-box { background: #ffe0b2; }",
 			"sandboxCSS": "",
@@ -88,10 +112,10 @@
 			"codeSuffix": "}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "vw", "message": "Verwende 'vw' Einheit", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "vh", "message": "Verwende 'vh' Einheit", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Setze width auf '50vw'" },
-				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Setze height auf '20vh'" }
+				{ "type": "contains", "value": "vw", "message": "Verwende <kbd>vw</kbd> Einheit", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "vh", "message": "Verwende <kbd>vh</kbd> Einheit", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Setze width auf <kbd>50vw</kbd>" },
+				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Setze height auf <kbd>20vh</kbd>" }
 			]
 		}
 	]
