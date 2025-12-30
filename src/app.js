@@ -214,9 +214,12 @@ function restoreLessonCache() {
 			const data = JSON.parse(cached);
 			if (data.moduleTitle && elements.moduleName) {
 				elements.moduleName.textContent = data.moduleTitle;
+				// Remove data-i18n so applyTranslations won't overwrite
+				elements.moduleName.removeAttribute("data-i18n");
 			}
 			if (data.lessonTitle && elements.lessonTitle) {
 				elements.lessonTitle.textContent = data.lessonTitle;
+				elements.lessonTitle.removeAttribute("data-i18n");
 			}
 			if (data.lessonDescription && elements.lessonDescription) {
 				elements.lessonDescription.innerHTML = data.lessonDescription;
