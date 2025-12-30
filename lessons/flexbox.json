@@ -9,41 +9,22 @@
 			"id": "flexbox-1",
 			"title": "Flexbox Container Basics",
 			"description": "Learn how to create a flex container and understand the main and cross axes.",
-			"task": "Convert the parent div into a flex container and set it to display items in a row (which is the default).",
+			"task": "Add <code>display: flex</code> to <code>.flex-container</code> to create a flexbox layout.",
 			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; }",
-			"codePrefix": "/* Convert the container to use flexbox */\n",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; }",
+			"codePrefix": ".flex-container {\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": ".flex-container",
-					"message": "Use the '.flex-container' class selector",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "display",
-					"message": "Use the 'display' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
 				{
 					"type": "property_value",
 					"value": {
 						"property": "display",
 						"expected": "flex"
 					},
-					"message": "Set the display property to 'flex'",
-					"options": {
-						"exact": true
-					}
+					"message": "Set display to 'flex'"
 				}
 			]
 		},
@@ -51,11 +32,11 @@
 			"id": "flexbox-2",
 			"title": "Flex Direction and Wrap",
 			"description": "Control the direction and wrapping of flex items within a container.",
-			"task": "Set the flex container to display items in a column and allow them to wrap if needed.",
+			"task": "Add <code>flex-direction: column</code> and <code>flex-wrap: wrap</code> to <code>.flex-container</code>.",
 			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div><div class='box'>4</div><div class='box'>5</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; height: 20rem; display: flex; }",
-			"codePrefix": "/* Set the flex direction to column and enable wrapping */\n.flex-container {\n  /* Add your code below */\n",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; height: 16rem; display: flex; }",
+			"codePrefix": ".flex-container {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -104,11 +85,11 @@
 			"id": "flexbox-3",
 			"title": "Justify Content",
 			"description": "Learn how to align flex items along the main axis of the flex container.",
-			"task": "Distribute the flex items evenly along the main axis with space between them.",
+			"task": "Add <code>justify-content: space-between</code> to <code>.flex-container</code> to distribute the boxes evenly.",
 			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; }",
-			"codePrefix": "/* Distribute the items with space between them */\n.flex-container {\n  /* Add your code below */\n",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
+			"codePrefix": ".flex-container {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -138,11 +119,11 @@
 			"id": "flexbox-4",
 			"title": "Align Items",
 			"description": "Control how flex items are aligned along the cross axis of the flex container.",
-			"task": "Center the flex items vertically along the cross axis.",
+			"task": "Add <code>align-items: center</code> to <code>.flex-container</code> to vertically center the boxes.",
 			"previewHTML": "<div class='flex-container'><div class='box tall'>1</div><div class='box'>2</div><div class='box short'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; display: flex; justify-content: center; } .tall { height: 8rem; align-items: flex-start; } .short { height: 3rem; align-items: flex-start; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; height: 12rem; }",
-			"codePrefix": "/* Center the items vertically */\n.flex-container {\n  /* Add your code below */\n",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; display: flex; justify-content: center; } .tall { height: 6rem; } .short { height: 3rem; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 10rem; }",
+			"codePrefix": ".flex-container {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
@@ -170,90 +151,47 @@
 		},
 		{
 			"id": "flexbox-5",
-			"title": "Flex Item Properties",
-			"description": "Control how individual flex items grow, shrink, and establish their base size.",
-			"task": "Make the second box grow twice as much as the others and prevent the third box from shrinking.",
+			"title": "Flex Grow",
+			"description": "The <code>flex</code> property controls how much an item grows relative to others.",
+			"task": "Add <code>flex: 2</code> to <code>.box2</code> to make it grow twice as wide.",
 			"previewHTML": "<div class='flex-container'><div class='box box1'>1</div><div class='box box2'>2</div><div class='box box3'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; height: 3rem; display: flex; align-items: center; justify-content: center; } .box1 { background-color: #e74c3c; } .box2 { background-color: #2ecc71; } .box3 { background-color: #f39c12; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; width: 100%; }",
-			"codePrefix": "/* Make box2 grow more and prevent box3 from shrinking */\n",
-			"initialCode": ".box1 {\n  flex: 1;\n}\n\n.box2 {\n  /* Make this grow twice as much as the others */\n}\n\n.box3 {\n  flex: 1;\n  /* Prevent this from shrinking */\n}",
-			"codeSuffix": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; } .box1 { background: coral; flex: 1; } .box2 { background: mediumseagreen; } .box3 { background: gold; flex: 1; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
+			"codePrefix": ".box2 {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": ".box2",
-					"message": "Style the '.box2' element",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": ".box3",
-					"message": "Style the '.box3' element",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "regex",
-					"value": ".box2\\s*{[^}]*flex:\\s*2",
-					"message": "Set flex to '2' for box2",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "regex",
-					"value": ".box3\\s*{[^}]*flex-shrink:\\s*0",
-					"message": "Set flex-shrink to '0' for box3",
-					"options": {
-						"caseSensitive": false
-					}
+					"type": "property_value",
+					"value": {
+						"property": "flex",
+						"expected": "2"
+					},
+					"message": "Set flex to '2'"
 				}
 			]
 		},
 		{
 			"id": "flexbox-6",
-			"title": "Aligning Individual Items",
-			"description": "Learn how to override the container's alignment for individual flex items.",
-			"task": "Set 'align-self' on the middle item to align it to the start of the cross axis.",
+			"title": "Align Self",
+			"description": "Use <code>align-self</code> to override alignment for a single flex item.",
+			"task": "Add <code>align-self: flex-start</code> to <code>.middle</code> to move it to the top.",
 			"previewHTML": "<div class='flex-container'><div class='box'>1</div><div class='box middle'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .box { background-color: #3498db; color: white; padding: 1.25rem; margin: 0.5rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; } .middle { background-color: #2ecc71; }",
-			"sandboxCSS": ".flex-container { border: 0.125rem dashed #ccc; padding: 1rem; display: flex; height: 15rem; align-items: center; }",
-			"codePrefix": "/* Align the middle item to the start */\n",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; } .middle { background: mediumseagreen; }",
+			"sandboxCSS": ".flex-container { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 12rem; align-items: center; }",
+			"codePrefix": ".middle {\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": ".middle",
-					"message": "Use the '.middle' class selector",
-					"options": {
-						"caseSensitive": false
-					}
-				},
-				{
-					"type": "contains",
-					"value": "align-self",
-					"message": "Use the 'align-self' property",
-					"options": {
-						"caseSensitive": false
-					}
-				},
 				{
 					"type": "property_value",
 					"value": {
 						"property": "align-self",
 						"expected": "flex-start"
 					},
-					"message": "Set align-self to 'flex-start'",
-					"options": {
-						"exact": true
-					}
+					"message": "Set align-self to 'flex-start'"
 				}
 			]
 		}

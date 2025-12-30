@@ -9,57 +9,39 @@
 			"id": "box-model-1",
 			"title": "Box-Modell Komponenten",
 			"description": "Das CSS Box-Modell besteht aus vier konzentrischen Schichten: Inhalt (innerste), Padding, Border und Margin (äußerste). Zu verstehen, wie diese Komponenten zusammenwirken, ist essentiell für präzise Layout-Kontrolle.",
-			"task": "Füge dem Box-Element ein Padding von '1.25rem' hinzu, um Abstand zwischen Inhalt und Rahmen zu schaffen.",
+			"task": "Füge <code>padding: 1rem</code> zu <code>.box</code> hinzu, um Abstand zwischen Inhalt und Rahmen zu schaffen.",
 			"previewHTML": "<div class=\"box\">Box-Modell Komponenten</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .box { background-color: #f0f0f0; border: 0.125rem dashed #aaa; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: lavender; border: 2px dashed slategray; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Füge Padding zum Box-Element hinzu */\n.box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "padding",
-					"message": "Verwende die 'padding' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "property_value",
-					"value": { "property": "padding", "expected": "1.25rem" },
-					"message": "Setze padding auf genau '1.25rem'"
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Setze padding auf '1rem'"
 				}
 			]
 		},
 		{
 			"id": "box-model-2",
 			"title": "Rahmen hinzufügen",
-			"description": "Rahmen umranden ein Element und schaffen visuelle Trennung. CSS erlaubt die Kontrolle von Dicke, Stil (solid, dashed, dotted, etc.) und Farbe.",
-			"task": "Füge einen durchgezogenen Rahmen mit Dicke '0.125rem' und Farbe '#333' hinzu. Die border-Eigenschaft akzeptiert drei Werte: Breite, Stil und Farbe.",
+			"description": "Rahmen umranden ein Element und schaffen visuelle Trennung. Die border-Kurzschreibweise akzeptiert drei Werte: Breite, Stil und Farbe.",
+			"task": "Füge <code>border: 2px solid darkslategray</code> zu <code>.box</code> hinzu.",
 			"previewHTML": "<div class=\"box\">Diese Box braucht einen Rahmen</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .box { background-color: #f0f0f0; padding: 1.25rem; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: mintcream; padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Füge einen Rahmen zur Box hinzu */\n.box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "border",
-					"message": "Verwende die 'border' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
-					"value": "border:\\s*0.125rem\\s+solid\\s+#333",
-					"message": "Setze border auf '0.125rem solid #333'",
-					"options": { "caseSensitive": false }
-				},
-				{
-					"type": "contains",
-					"value": "solid",
-					"message": "Verwende 'solid' als Rahmenstil",
+					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
+					"message": "Setze border auf '2px solid darkslategray'",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -68,21 +50,15 @@
 			"id": "box-model-3",
 			"title": "Außenabstände hinzufügen",
 			"description": "Margins schaffen Abstand zwischen Elementen. Anders als Padding (das den inneren Abstand beeinflusst) existiert Margin außerhalb des Rahmens.",
-			"task": "Füge dem Box-Element einen Margin von '1rem' hinzu, um Abstand zu benachbarten Elementen zu schaffen.",
+			"task": "Füge <code>margin: 1rem</code> zu <code>.margin-box</code> hinzu, um Abstand zum benachbarten Element zu schaffen.",
 			"previewHTML": "<div class=\"container\"><div class=\"margin-box\">Diese Box braucht Margins</div><div class=\"neighbor\">Benachbartes Element</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .container { background-color: #f8f8f8; padding: 0.5rem; } .margin-box { background-color: #d1c4e9; padding: 1rem; border: 0.125rem solid #7e57c2; } .neighbor { background-color: #bbdefb; padding: 1rem; border: 0.125rem solid #42a5f5; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .margin-box { background-color: plum; padding: 1rem; border: 2px solid orchid; } .neighbor { background-color: lightblue; padding: 1rem; border: 2px solid steelblue; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Füge Margin zur Box hinzu */\n.margin-box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".margin-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "margin",
-					"message": "Verwende die 'margin' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "margin", "expected": "1rem" },
@@ -92,23 +68,17 @@
 		},
 		{
 			"id": "box-model-4",
-			"title": "Box-Sizing: Content-Box vs. Border-Box",
+			"title": "Box-Sizing: Border-Box",
 			"description": "Die box-sizing Eigenschaft bestimmt, wie Elementdimensionen berechnet werden. 'content-box' (Standard) schließt Padding und Border aus, während 'border-box' sie einschließt.",
-			"task": "Setze box-sizing auf 'border-box'. Dadurch werden Padding und Border in die angegebene Breite und Höhe einbezogen.",
+			"task": "Füge <code>box-sizing: border-box</code> zu <code>.border-box</code> hinzu, damit Padding und Border in die Breite einbezogen werden.",
 			"previewHTML": "<div class=\"sizing-demo\"><div class=\"box content-box\">Content-box (Standard)</div><div class=\"box border-box\">Border-box</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 0.25rem solid #333; background: #f5f5f5; } .content-box { box-sizing: content-box; } .border-box { /* Dein Code hier */ }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 4px solid teal; background: lightcyan; } .content-box { box-sizing: content-box; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Setze die box-sizing Eigenschaft */\n.border-box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".border-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "box-sizing",
-					"message": "Verwende die 'box-sizing' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
@@ -119,22 +89,16 @@
 		{
 			"id": "box-model-5",
 			"title": "Margin-Kollaps",
-			"description": "Ein wichtiges Verhalten des Box-Modells: Wenn zwei vertikale Margins aufeinandertreffen, kollabieren sie zum größeren der beiden Werte.",
-			"task": "Füge dem ersten Absatz einen bottom-margin von '2rem' hinzu. Der Abstand zwischen den Absätzen beträgt 2rem (nicht 3rem) - das ist Margin-Kollaps.",
+			"description": "Wenn zwei vertikale Margins aufeinandertreffen, kollabieren sie zum größeren der beiden Werte statt zu addieren.",
+			"task": "Füge <code>margin-bottom: 2rem</code> zu <code>.first</code> hinzu. Der Abstand zwischen den Absätzen beträgt 2rem (nicht 3rem) durch Margin-Kollaps.",
 			"previewHTML": "<div class=\"collapse-demo\"><p class=\"first\">Dieser Absatz hat einen Bottom-Margin.</p><p class=\"second\">Dieser Absatz hat einen Top-Margin von 1rem.</p></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .collapse-demo { border: 0.0625rem solid #ddd; padding: 0.5rem; background: #f9f9f9; } .second { margin-top: 1rem; background: #f0f0f0; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .collapse-demo { border: 1px solid silver; padding: 8px; background: ghostwhite; } .second { margin-top: 1rem; background: linen; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Füge Margin hinzu, um Margin-Kollaps zu beobachten */\n.first {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".first {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
-				{
-					"type": "contains",
-					"value": "margin-bottom",
-					"message": "Verwende die 'margin-bottom' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "2rem" },
@@ -145,26 +109,20 @@
 		{
 			"id": "box-model-6",
 			"title": "Margin-Kurzschreibweise",
-			"description": "CSS bietet Kurzschreibweisen, um mehrere Eigenschaften gleichzeitig zu setzen. Die Margin-Kurzschreibweise setzt alle vier Seiten (oben, rechts, unten, links) im Uhrzeigersinn.",
-			"task": "Verwende die Margin-Kurzschreibweise, um Top/Bottom auf '1rem' und Left/Right auf '2rem' zu setzen.",
+			"description": "Die Margin-Kurzschreibweise kann alle vier Seiten setzen. Zwei Werte setzen vertikale (oben/unten) und horizontale (links/rechts) Margins.",
+			"task": "Füge <code>margin: 1rem 2rem</code> zu <code>.shorthand-box</code> hinzu für 1rem oben/unten und 2rem links/rechts.",
 			"previewHTML": "<div class=\"container\"><div class=\"shorthand-box\">Diese Box braucht Margins: 1rem oben/unten, 2rem links/rechts</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .container { background-color: #f5f5f5; padding: 0.5rem; } .shorthand-box { background-color: #e8f5e9; border: 0.125rem solid #66bb6a; padding: 1rem; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .shorthand-box { background-color: honeydew; border: 2px solid mediumseagreen; padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Verwende die Margin-Kurzschreibweise */\n.shorthand-box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".shorthand-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "margin",
-					"message": "Verwende die 'margin' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
 					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Verwende 'margin: 1rem 2rem' für vertikale und horizontale Margins",
+					"message": "Setze margin auf '1rem 2rem'",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -172,52 +130,40 @@
 		{
 			"id": "box-model-7",
 			"title": "Padding-Kurzschreibweise",
-			"description": "Ähnlich wie Margin erlaubt Padding-Kurzschreibweise das Setzen aller vier Seiten. Die Syntax folgt dem gleichen Muster: oben, rechts, unten, links (TRouBLe).",
-			"task": "Verwende Padding-Kurzschreibweise, um alle Seiten auf '1.5rem' zu setzen. Ein einzelner Wert gilt für alle vier Seiten.",
+			"description": "Wie Margin erlaubt Padding-Kurzschreibweise das Setzen aller Seiten. Ein einzelner Wert gilt für alle vier Seiten.",
+			"task": "Füge <code>padding: 1.5rem</code> zu <code>.padding-box</code> hinzu für gleichmäßiges Padding.",
 			"previewHTML": "<div class=\"padding-box\">Diese Box braucht gleichmäßiges Padding</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .padding-box { background-color: #fff3e0; border: 0.125rem solid #ff9800; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .padding-box { background-color: papayawhip; border: 2px solid orange; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Verwende die Padding-Kurzschreibweise */\n.padding-box {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".padding-box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "padding",
-					"message": "Verwende die 'padding' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1.5rem" },
-					"message": "Setze padding auf '1.5rem' für alle Seiten"
+					"message": "Setze padding auf '1.5rem'"
 				}
 			]
 		},
 		{
 			"id": "box-model-8",
-			"title": "Border-Kurzschreibweise und Einzeleigenschaften",
-			"description": "Border-Eigenschaften können einzeln (border-width, border-style, border-color) oder als Kurzschreibweise gesetzt werden. Für noch mehr Kontrolle können einzelne Seiten angesprochen werden.",
-			"task": "Setze nur den unteren Rahmen auf '0.25rem solid #2196f3'. Verwende border-bottom statt der allgemeinen border-Eigenschaft.",
+			"title": "Rahmen auf einzelnen Seiten",
+			"description": "Für feinere Kontrolle können einzelne Seiten mit border-top, border-right, border-bottom oder border-left angesprochen werden.",
+			"task": "Füge <code>border-bottom: 4px solid dodgerblue</code> zu <code>.border-demo</code> hinzu.",
 			"previewHTML": "<div class=\"border-demo\">Dieses Element braucht nur einen unteren Rahmen</div>",
-			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1rem; } .border-demo { padding: 1rem; background-color: #e3f2fd; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .border-demo { padding: 1rem; background-color: aliceblue; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Füge nur einen unteren Rahmen hinzu */\n.border-demo {\n  /* Füge deinen Code unten ein */\n  ",
+			"codePrefix": ".border-demo {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "border-bottom",
-					"message": "Verwende die 'border-bottom' Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "regex",
-					"value": "border-bottom:\\s*0.25rem\\s+solid\\s+#2196f3",
-					"message": "Setze border-bottom auf '0.25rem solid #2196f3'",
+					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
+					"message": "Setze border-bottom auf '4px solid dodgerblue'",
 					"options": { "caseSensitive": false }
 				}
 			]
