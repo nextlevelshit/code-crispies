@@ -1363,11 +1363,24 @@ input:checked + .toggle-slider::before {
 	margin-right: 0;
 }
 
-/* RTL: Text alignment */
+/* RTL: Content areas - use auto direction for mixed content */
 [dir="rtl"] .lesson-description,
-[dir="rtl"] .task-instruction,
-[dir="rtl"] #lesson-title {
-	text-align: right;
+[dir="rtl"] .task-instruction {
+	direction: auto;
+	unicode-bidi: plaintext;
+}
+
+/* RTL: Code editor always LTR */
+[dir="rtl"] .editor-content,
+[dir="rtl"] .CodeMirror {
+	direction: ltr;
+	text-align: left;
+}
+
+/* RTL: Preview always LTR (code output) */
+[dir="rtl"] .preview-wrapper,
+[dir="rtl"] #preview-area {
+	direction: ltr;
 }
 
 /* RTL: Dialog close button */
