@@ -1,0 +1,97 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-details-summary",
+	"title": "HTML Details & Summary",
+	"description": "Create expandable content sections without JavaScript",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "details-summary-basic",
+			"title": "First Widget",
+			"description": "The <kbd>&lt;details&gt;</kbd> element creates a collapsible section. The <kbd>&lt;summary&gt;</kbd> provides the clickable label.<br><br>Click the summary to toggle the hidden content - no JavaScript needed!",
+			"task": "Create a <kbd>&lt;details&gt;</kbd> element with:<br>1. A <kbd>&lt;summary&gt;</kbd> saying 'Click to reveal'<br>2. A <kbd>&lt;p&gt;</kbd> with the text 'This content was hidden!'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; } summary { font-weight: 600; cursor: pointer; } summary:hover { color: #1976d2; } details p { margin-top: 15px; color: #666; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<details>\n  <summary>Click to reveal</summary>\n  <p>This content was hidden!</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "details",
+					"message": "Add a <kbd>&lt;details&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "summary",
+					"message": "Add a <kbd>&lt;summary&gt;</kbd> inside the details"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "details", "child": "summary" },
+					"message": "The <kbd>&lt;summary&gt;</kbd> must be inside <kbd>&lt;details&gt;</kbd>"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "details", "child": "p" },
+					"message": "Add a <kbd>&lt;p&gt;</kbd> inside <kbd>&lt;details&gt;</kbd> for the hidden content"
+				}
+			]
+		},
+		{
+			"id": "details-open-attribute",
+			"title": "Pre-expanded Details",
+			"description": "By default, <kbd>&lt;details&gt;</kbd> is closed. Add the <kbd>open</kbd> attribute to show the content initially.<br><br>This is a boolean attribute - just add <kbd>open</kbd> without a value.",
+			"task": "Add the <kbd>open</kbd> attribute to the <kbd>&lt;details&gt;</kbd> element to show the content by default.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9; } summary { font-weight: 600; cursor: pointer; } details p { margin-top: 15px; color: #666; }",
+			"sandboxCSS": "",
+			"initialCode": "<details>\n  <summary>FAQ: What is HTML5?</summary>\n  <p>HTML5 is the latest version of the HTML standard with new semantic elements and APIs.</p>\n</details>",
+			"solution": "<details open>\n  <summary>FAQ: What is HTML5?</summary>\n  <p>HTML5 is the latest version of the HTML standard with new semantic elements and APIs.</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "attribute_value",
+					"value": { "selector": "details", "attr": "open", "value": true },
+					"message": "Add the <kbd>open</kbd> attribute to <kbd>&lt;details&gt;</kbd>"
+				}
+			]
+		},
+		{
+			"id": "faq-accordion",
+			"title": "FAQ Accordion",
+			"description": "Multiple <kbd>&lt;details&gt;</kbd> elements create an accordion-style FAQ. Each question can be expanded independently.<br><br><b>Pro tip:</b> Type <kbd>details*3&gt;summary+p</kbd> and press Tab for Emmet expansion. <kbd>*3</kbd> creates 3 elements, <kbd>&gt;</kbd> nests inside, <kbd>+</kbd> adds siblings.",
+			"task": "Create an FAQ section with:<br>1. An <kbd>&lt;h1&gt;</kbd> saying 'Frequently Asked Questions'<br>2. Three <kbd>&lt;details&gt;</kbd> elements, each with a question in <kbd>&lt;summary&gt;</kbd> and an answer in <kbd>&lt;p&gt;</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; min-height: 100vh; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0; box-sizing: border-box; } h1 { font-size: 2.5rem; color: #4a4a4a; text-align: center; margin: 0 0 30px 0; } details { background: white; border-radius: 12px; margin-bottom: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } summary { font-size: 1.3rem; font-weight: 600; color: #5c5c5c; cursor: pointer; list-style: none; } summary::before { content: '▸ '; color: #fcb69f; } details[open] summary::before { content: '▾ '; } details p { margin: 15px 0 0 0; color: #666; line-height: 1.6; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<h1>Frequently Asked Questions</h1>\n\n<details>\n  <summary>What is HTML5?</summary>\n  <p>HTML5 is the latest version of HTML with new semantic elements and APIs.</p>\n</details>\n\n<details>\n  <summary>Do I need JavaScript?</summary>\n  <p>Many interactive features work with pure HTML5, no JavaScript required!</p>\n</details>\n\n<details>\n  <summary>Is this accessible?</summary>\n  <p>Yes! Native HTML elements have built-in keyboard and screen reader support.</p>\n</details>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "h1",
+					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading for the FAQ title"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "details", "min": 3 },
+					"message": "Create at least 3 <kbd>&lt;details&gt;</kbd> elements for the FAQ"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "summary", "min": 3 },
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;summary&gt;</kbd> for the question"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "details p", "min": 3 },
+					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;p&gt;</kbd> for the answer"
+				}
+			]
+		}
+	]
+}

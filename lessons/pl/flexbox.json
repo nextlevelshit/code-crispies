@@ -1,0 +1,173 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "flexbox",
+	"title": "CSS Flexbox",
+	"description": "Master the flexible box layout model for modern responsive designs",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "flexbox-1",
+			"title": "Container",
+			"description": "Learn how to create a flex container and understand the main and cross axes.",
+			"task": "Add <kbd>display: flex</kbd> to <kbd>.wrap</kbd> to create a flexbox layout.",
+			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; }",
+			"codePrefix": ".wrap {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "display: flex;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "display",
+						"expected": "flex"
+					},
+					"message": "Set <kbd>display: flex</kbd>"
+				}
+			]
+		},
+		{
+			"id": "flexbox-2",
+			"title": "Direction & Wrap",
+			"description": "Control the direction and wrapping of flex items within a container.",
+			"task": "Add <kbd>flex-direction: column</kbd> and <kbd>flex-wrap: wrap</kbd> to <kbd>.wrap</kbd>.",
+			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div><div class='box'>4</div><div class='box'>5</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; height: 16rem; display: flex; }",
+			"codePrefix": ".wrap {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "flex-direction: column;\n  flex-wrap: wrap;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "flex-direction",
+						"expected": "column"
+					},
+					"message": "Set <kbd>flex-direction: column</kbd>",
+					"options": {
+						"exact": true
+					}
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "flex-wrap",
+						"expected": "wrap"
+					},
+					"message": "Set <kbd>flex-wrap: wrap</kbd>",
+					"options": {
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "flexbox-3",
+			"title": "Justify Content",
+			"description": "Learn how to align flex items along the main axis of the flex container.",
+			"task": "Add <kbd>justify-content: space-between</kbd> to <kbd>.wrap</kbd> to distribute the boxes evenly.",
+			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
+			"codePrefix": ".wrap {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "justify-content: space-between;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "justify-content",
+						"expected": "space-between"
+					},
+					"message": "Set <kbd>justify-content: space-between</kbd>",
+					"options": {
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "flexbox-4",
+			"title": "Align Items",
+			"description": "Control how flex items are aligned along the cross axis of the flex container.",
+			"task": "Add <kbd>align-items: center</kbd> to <kbd>.wrap</kbd> to vertically center the boxes.",
+			"previewHTML": "<div class='wrap'><div class='box tall'>1</div><div class='box'>2</div><div class='box short'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; display: flex; justify-content: center; } .tall { height: 6rem; } .short { height: 3rem; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 10rem; }",
+			"codePrefix": ".wrap {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "align-items: center;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "align-items",
+						"expected": "center"
+					},
+					"message": "Set <kbd>align-items: center</kbd>",
+					"options": {
+						"exact": true
+					}
+				}
+			]
+		},
+		{
+			"id": "flexbox-5",
+			"title": "Flex Grow",
+			"description": "The <kbd>flex</kbd> property controls how much an item grows relative to others.",
+			"task": "Add <kbd>flex: 2</kbd> to <kbd>.box2</kbd> to make it grow twice as wide.",
+			"previewHTML": "<div class='wrap'><div class='box box1'>1</div><div class='box box2'>2</div><div class='box box3'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; } .box1 { background: coral; flex: 1; } .box2 { background: mediumseagreen; } .box3 { background: gold; flex: 1; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
+			"codePrefix": ".box2 {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "flex: 2;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "flex",
+						"expected": "2"
+					},
+					"message": "Set <kbd>flex: 2</kbd>"
+				}
+			]
+		},
+		{
+			"id": "flexbox-6",
+			"title": "Align Self",
+			"description": "Use <kbd>align-self</kbd> to override alignment for a single flex item.",
+			"task": "Add <kbd>align-self: flex-start</kbd> to <kbd>.middle</kbd> to move it to the top.",
+			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box middle'>2</div><div class='box'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; } .middle { background: mediumseagreen; }",
+			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 12rem; align-items: center; }",
+			"codePrefix": ".middle {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "align-self: flex-start;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "align-self",
+						"expected": "flex-start"
+					},
+					"message": "Set <kbd>align-self: flex-start</kbd>"
+				}
+			]
+		}
+	]
+}

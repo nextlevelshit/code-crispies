@@ -1,0 +1,102 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-svg",
+	"title": "HTML SVG",
+	"description": "Draw scalable vector graphics directly in HTML",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "svg-circle",
+			"title": "Drawing Circles",
+			"description": "SVG (Scalable Vector Graphics) lets you draw shapes directly in HTML. The <kbd>&lt;svg&gt;</kbd> element is the container, with <kbd>width</kbd> and <kbd>height</kbd> attributes.<br><br>Use <kbd>&lt;circle&gt;</kbd> with <kbd>cx</kbd>, <kbd>cy</kbd> (center) and <kbd>r</kbd> (radius) to draw circles.",
+			"task": "Create an SVG with a circle:<br>1. An <kbd>&lt;svg&gt;</kbd> with width=\"200\" and height=\"200\"<br>2. A <kbd>&lt;circle&gt;</kbd> centered at (100,100) with radius 50<br>3. Add a <kbd>fill</kbd> color",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; display: flex; justify-content: center; } svg { background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"50\" fill=\"#3498db\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "circle",
+					"message": "Add a <kbd>&lt;circle&gt;</kbd> element inside the SVG"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "circle", "attr": "cx", "value": "100" },
+					"message": "Set <kbd>cx=</kbd>\"100\" for the circle's horizontal center"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "circle", "attr": "cy", "value": "100" },
+					"message": "Set <kbd>cy=</kbd>\"100\" for the circle's vertical center"
+				}
+			]
+		},
+		{
+			"id": "svg-rect-line",
+			"title": "Rectangles & Lines",
+			"description": "Draw rectangles with <kbd>&lt;rect&gt;</kbd> using <kbd>x</kbd>, <kbd>y</kbd>, <kbd>width</kbd>, <kbd>height</kbd>.<br><br>Draw lines with <kbd>&lt;line&gt;</kbd> using <kbd>x1</kbd>, <kbd>y1</kbd> (start) and <kbd>x2</kbd>, <kbd>y2</kbd> (end). Lines need a <kbd>stroke</kbd> color!",
+			"task": "Create an SVG with:<br>1. An <kbd>&lt;svg&gt;</kbd> (200x150)<br>2. A <kbd>&lt;rect&gt;</kbd> at position (20,20) with size 80x60<br>3. A <kbd>&lt;line&gt;</kbd> from (120,30) to (180,90) with a stroke color",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<svg width=\"200\" height=\"150\">\n  <rect x=\"20\" y=\"20\" width=\"80\" height=\"60\" fill=\"#e74c3c\" />\n  <line x1=\"120\" y1=\"30\" x2=\"180\" y2=\"90\" stroke=\"#2c3e50\" stroke-width=\"3\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "rect",
+					"message": "Add a <kbd>&lt;rect&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "line",
+					"message": "Add a <kbd>&lt;line&gt;</kbd> element"
+				}
+			]
+		},
+		{
+			"id": "svg-shapes",
+			"title": "Multiple Shapes",
+			"description": "Combine shapes to create simple graphics! Add <kbd>stroke</kbd> for outlines and <kbd>stroke-width</kbd> for thickness.<br><br>Use <kbd>fill=\"none\"</kbd> for hollow shapes. Shapes stack in order - later elements appear on top.",
+			"task": "Create a simple face:<br>1. An <kbd>&lt;svg&gt;</kbd> (200x200)<br>2. A large <kbd>&lt;circle&gt;</kbd> for the face<br>3. Two small <kbd>&lt;circle&gt;</kbd> elements for eyes<br>4. A <kbd>&lt;line&gt;</kbd> for the smile",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 250px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#f1c40f\" stroke=\"#e67e22\" stroke-width=\"4\" />\n  <circle cx=\"70\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <circle cx=\"130\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <line x1=\"60\" y1=\"130\" x2=\"140\" y2=\"130\" stroke=\"#2c3e50\" stroke-width=\"4\" stroke-linecap=\"round\" />\n</svg>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "svg",
+					"message": "Add an <kbd>&lt;svg&gt;</kbd> element"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "circle", "min": 3 },
+					"message": "Add at least 3 circles (1 face + 2 eyes)"
+				},
+				{
+					"type": "element_exists",
+					"value": "line",
+					"message": "Add a <kbd>&lt;line&gt;</kbd> for the smile"
+				}
+			]
+		}
+	]
+}
