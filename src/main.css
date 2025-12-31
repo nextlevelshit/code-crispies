@@ -1359,6 +1359,12 @@ input:checked + .toggle-slider::before {
 [dir="rtl"] .hint {
 	flex-direction: row-reverse;
 	text-align: right;
+	border-left: none;
+	border-right: 3px solid var(--primary-light);
+}
+
+[dir="rtl"] .hint-success {
+	border-right-color: var(--success-color);
 }
 
 /* RTL: Module list items */
@@ -1405,4 +1411,53 @@ input:checked + .toggle-slider::before {
 /* RTL: Keep logo in LTR order */
 [dir="rtl"] .logo {
 	direction: ltr;
+}
+
+/* RTL: Swap left/right panels */
+[dir="rtl"] .game-layout {
+	flex-direction: row-reverse;
+}
+
+/* RTL: Left panel border flips to left side */
+[dir="rtl"] .left-panel {
+	border-right: none;
+	border-left: 1px solid var(--border-color);
+}
+
+/* RTL: Lessons container indentation flips */
+[dir="rtl"] .lessons-container {
+	margin-left: 0;
+	margin-right: 16px;
+	border-left: none;
+	border-right: 2px solid var(--border-color);
+	padding-left: 0;
+	padding-right: 8px;
+}
+
+/* RTL: Module expand icon */
+[dir="rtl"] .module-header .expand-icon {
+	margin-left: 6px;
+	margin-right: 0;
+}
+
+/* RTL: Lesson checkmark position */
+[dir="rtl"] .lesson-list-item::before {
+	margin-left: 6px;
+	margin-right: 0;
+}
+
+/* RTL: Toggle switch slider */
+[dir="rtl"] .toggle-slider {
+	margin-right: 0;
+	margin-left: 8px;
+}
+
+/* RTL: Setting row */
+[dir="rtl"] .setting-row {
+	flex-direction: row-reverse;
+}
+
+/* RTL: Preview controls */
+[dir="rtl"] .preview-controls {
+	flex-direction: row-reverse;
 }
