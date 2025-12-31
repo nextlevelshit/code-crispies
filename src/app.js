@@ -2,7 +2,7 @@ import { LessonEngine } from "./impl/LessonEngine.js";
 import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
-import { initI18n, t, getLanguage, setLanguage, getNextLanguage, applyTranslations } from "./i18n.js";
+import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
@@ -17,7 +17,7 @@ const elements = {
 	// Header
 	menuBtn: document.getElementById("menu-btn"),
 	logoLink: document.getElementById("logo-link"),
-	langBtn: document.getElementById("lang-btn"),
+	langSelect: document.getElementById("lang-select"),
 	helpBtn: document.getElementById("help-btn"),
 
 	// Left panel
@@ -117,10 +117,7 @@ function toggleExpectedResult() {
 
 // ================= LANGUAGE TOGGLE =================
 
-function toggleLanguage() {
-	const currentLang = getLanguage();
-	const newLang = getNextLanguage(currentLang);
-
+function changeLanguage(newLang) {
 	// Add transition class before any updates
 	elements.editorSection?.classList.add("transitioning");
 
@@ -730,8 +727,9 @@ function init() {
 		loadCurrentLesson();
 	});
 
-	// Language toggle
-	elements.langBtn.addEventListener("click", toggleLanguage);
+	// Language select
+	elements.langSelect.value = getLanguage();
+	elements.langSelect.addEventListener("change", (e) => changeLanguage(e.target.value));
 
 	// Expected result toggle
 	elements.showExpectedBtn.addEventListener("click", toggleExpectedResult);

@@ -220,28 +220,6 @@ code, kbd {
 	gap: var(--spacing-sm);
 }
 
-.lang-switch {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
-	border: 2px solid var(--border-color);
-	background: none;
-	font-size: 0.7rem;
-	font-weight: 700;
-	text-decoration: none;
-	color: var(--light-text);
-	transition: all 0.2s;
-}
-
-.lang-switch:hover {
-	border-color: var(--primary-color);
-	color: var(--primary-color);
-	background: var(--primary-bg-light);
-}
-
 /* ================= GAME LAYOUT ================= */
 .game-layout {
 	display: flex;
@@ -991,6 +969,41 @@ button.lesson-list-item {
 }
 
 /* ================= TOGGLE SWITCH ================= */
+/* Setting row (for label + control) */
+.setting-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var(--spacing-sm);
+}
+
+.setting-label {
+	font-size: 0.9rem;
+	color: var(--text-color);
+}
+
+/* Language select */
+.lang-select {
+	padding: 6px 10px;
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius-sm);
+	background: var(--panel-bg);
+	color: var(--text-color);
+	font-size: 0.85rem;
+	cursor: pointer;
+	min-width: 120px;
+}
+
+.lang-select:hover {
+	border-color: var(--primary-color);
+}
+
+.lang-select:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
 .toggle-switch {
 	display: flex;
 	align-items: center;

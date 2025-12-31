@@ -36,6 +36,7 @@ const translations = {
 		// Sidebar
 		menu: "Menu",
 		closeMenu: "Close menu",
+		language: "Language",
 		progress: "Progress",
 		progressText: "{percent}% Complete ({completed}/{total})",
 		lessons: "Lessons",
@@ -135,6 +136,7 @@ const translations = {
 		// Sidebar
 		menu: "Menü",
 		closeMenu: "Menü schließen",
+		language: "Sprache",
 		progress: "Fortschritt",
 		progressText: "{percent}% abgeschlossen ({completed}/{total})",
 		lessons: "Lektionen",
@@ -235,6 +237,7 @@ const translations = {
 		// Sidebar
 		menu: "Menu",
 		closeMenu: "Zamknij menu",
+		language: "Język",
 		progress: "Postęp",
 		progressText: "{percent}% ukończone ({completed}/{total})",
 		lessons: "Lekcje",
@@ -335,6 +338,7 @@ const translations = {
 		// Sidebar
 		menu: "Menú",
 		closeMenu: "Cerrar menú",
+		language: "Idioma",
 		progress: "Progreso",
 		progressText: "{percent}% completado ({completed}/{total})",
 		lessons: "Lecciones",
@@ -435,6 +439,7 @@ const translations = {
 		// Sidebar
 		menu: "القائمة",
 		closeMenu: "إغلاق القائمة",
+		language: "اللغة",
 		progress: "التقدم",
 		progressText: "{percent}% مكتمل ({completed}/{total})",
 		lessons: "الدروس",
@@ -535,6 +540,7 @@ const translations = {
 		// Sidebar
 		menu: "Меню",
 		closeMenu: "Закрити меню",
+		language: "Мова",
 		progress: "Прогрес",
 		progressText: "{percent}% завершено ({completed}/{total})",
 		lessons: "Уроки",

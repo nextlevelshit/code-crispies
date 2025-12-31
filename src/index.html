@@ -20,7 +20,6 @@
 					<h1><span class="code-text">CODE</span><span>CRISPIES</span></h1>
 				</a>
 				<div class="header-actions">
-					<button id="lang-btn" class="lang-switch" data-i18n-aria-label="langSwitchLabel" data-i18n="langSwitch" aria-label="Sprache wechseln: Deutsch">DE</button>
 					<button id="help-btn" class="help-toggle" data-i18n-aria-label="help" aria-label="Help">?</button>
 				</div>
 			</header>
@@ -109,6 +108,17 @@
 
 				<div class="sidebar-section">
 					<h4 data-i18n="settings">Settings</h4>
+					<label class="setting-row">
+						<span class="setting-label" data-i18n="language">Language</span>
+						<select id="lang-select" class="lang-select">
+							<option value="en">English</option>
+							<option value="de">Deutsch</option>
+							<option value="pl">Polski</option>
+							<option value="es">Español</option>
+							<option value="ar">العربية</option>
+							<option value="uk">Українська</option>
+						</select>
+					</label>
 					<label class="toggle-switch">
 						<input type="checkbox" id="disable-feedback-toggle" checked />
 						<span class="toggle-slider"></span>
