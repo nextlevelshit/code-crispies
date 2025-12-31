@@ -1,0 +1,82 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-marquee",
+	"title": "HTML Marquee",
+	"description": "Create scrolling text with the classic (deprecated but fun!) marquee element",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "marquee-basic",
+			"title": "Scrolling Text",
+			"description": "The <kbd>&lt;marquee&gt;</kbd> element creates scrolling text - a classic from the early web! While deprecated, it still works in most browsers.<br><br>Note: For production, use CSS animations instead. But for learning and fun, marquee is great!",
+			"task": "Create a simple marquee:<br>1. Add a <kbd>&lt;marquee&gt;</kbd> element<br>2. Put some text inside like 'Welcome to my website!'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2rem; color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; font-family: 'Courier New', monospace; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<marquee>Welcome to my website!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
+				}
+			]
+		},
+		{
+			"id": "marquee-direction",
+			"title": "Direction & Behavior",
+			"description": "Control the marquee with attributes:<br>• <kbd>direction</kbd>: left, right, up, down<br>• <kbd>behavior</kbd>: scroll (default), slide (stops at edge), alternate (bounces)<br>• <kbd>scrollamount</kbd>: speed (default is 6)",
+			"task": "Create a bouncing marquee:<br>1. Add a <kbd>&lt;marquee&gt;</kbd> element<br>2. Set <kbd>behavior=\"alternate\"</kbd> to make it bounce<br>3. Add some fun text",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2.5rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-weight: bold; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<marquee behavior=\"alternate\">Bounce! Bounce! Bounce!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "behavior", "value": "alternate" },
+					"message": "Add <kbd>behavior=</kbd>\"alternate\" to make it bounce"
+				}
+			]
+		},
+		{
+			"id": "marquee-retro",
+			"title": "Retro News Ticker",
+			"description": "Combine multiple marquee attributes for a classic news ticker effect. You can even put multiple elements inside!<br><br>Remember: This is deprecated HTML. Modern sites use CSS animations, but marquee is great for understanding web history.",
+			"task": "Create a news ticker:<br>1. A <kbd>&lt;marquee&gt;</kbd> with <kbd>direction=\"left\"</kbd><br>2. Set <kbd>scrollamount=\"5\"</kbd> for smooth scrolling<br>3. Add a breaking news headline inside",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 0; margin: 0; background: #1a1a2e; } marquee { background: linear-gradient(90deg, #c0392b 0%, #e74c3c 50%, #c0392b 100%); padding: 15px 0; font-size: 1.3rem; color: white; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border-top: 3px solid #f1c40f; border-bottom: 3px solid #f1c40f; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<marquee direction=\"left\" scrollamount=\"5\">BREAKING NEWS: Marquee element still works in browsers!</marquee>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "marquee",
+					"message": "Add a <kbd>&lt;marquee&gt;</kbd> element"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "direction", "value": "left" },
+					"message": "Add <kbd>direction=</kbd>\"left\" for horizontal scrolling"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "marquee", "attr": "scrollamount", "value": "5" },
+					"message": "Add <kbd>scrollamount=</kbd>\"5\" for smooth speed"
+				}
+			]
+		}
+	]
+}

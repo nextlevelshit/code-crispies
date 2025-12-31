@@ -1,0 +1,127 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-tables",
+	"title": "HTML Tables",
+	"description": "Create structured data tables with headers and captions",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "table-basic",
+			"title": "Basic Table Structure",
+			"description": "Tables use <kbd>&lt;table&gt;</kbd> with <kbd>&lt;tr&gt;</kbd> for rows. Inside rows, use <kbd>&lt;th&gt;</kbd> for headers and <kbd>&lt;td&gt;</kbd> for data cells.<br><br>The <kbd>&lt;caption&gt;</kbd> element provides an accessible title for the table.",
+			"task": "Create a simple table with:<br>1. A <kbd>&lt;caption&gt;</kbd> saying 'Fruit Prices'<br>2. A header row with 'Fruit' and 'Price' columns<br>3. At least 2 data rows",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; } table { border-collapse: collapse; width: 100%; max-width: 400px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } caption { padding: 15px; font-weight: 600; font-size: 1.2rem; color: #333; background: #f8f9fa; } th, td { padding: 12px 20px; text-align: left; border-bottom: 1px solid #eee; } th { background: #3498db; color: white; font-weight: 500; } tr:hover { background: #f8f9fa; } tr:last-child td { border-bottom: none; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<table>\n  <caption>Fruit Prices</caption>\n  <tr>\n    <th>Fruit</th>\n    <th>Price</th>\n  </tr>\n  <tr>\n    <td>Apple</td>\n    <td>$1.50</td>\n  </tr>\n  <tr>\n    <td>Banana</td>\n    <td>$0.75</td>\n  </tr>\n</table>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "table",
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "caption",
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> for the table title"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "th", "min": 2 },
+					"message": "Add at least 2 header cells (th)"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "tr", "min": 3 },
+					"message": "Add at least 3 rows (1 header + 2 data rows)"
+				}
+			]
+		},
+		{
+			"id": "table-thead-tbody",
+			"title": "Table Head & Body",
+			"description": "Use <kbd>&lt;thead&gt;</kbd> to group header rows and <kbd>&lt;tbody&gt;</kbd> to group data rows. This helps browsers and assistive technology understand the table structure.<br><br>You can also use <kbd>&lt;tfoot&gt;</kbd> for footer rows like totals.",
+			"task": "Create a structured table:<br>1. A <kbd>&lt;caption&gt;</kbd> with 'Monthly Sales'<br>2. A <kbd>&lt;thead&gt;</kbd> with Month and Revenue headers<br>3. A <kbd>&lt;tbody&gt;</kbd> with at least 2 data rows",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } table { border-collapse: collapse; width: 100%; max-width: 450px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); } caption { padding: 20px; font-weight: 700; font-size: 1.3rem; color: white; background: transparent; text-shadow: 0 2px 4px rgba(0,0,0,0.2); caption-side: top; } thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); } th { padding: 15px 20px; text-align: left; color: white; font-weight: 500; } tbody tr { border-bottom: 1px solid #eee; } tbody tr:hover { background: #f8f9fa; } td { padding: 15px 20px; color: #333; } tbody tr:last-child { border-bottom: none; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<table>\n  <caption>Monthly Sales</caption>\n  <thead>\n    <tr>\n      <th>Month</th>\n      <th>Revenue</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>January</td>\n      <td>$12,500</td>\n    </tr>\n    <tr>\n      <td>February</td>\n      <td>$14,200</td>\n    </tr>\n  </tbody>\n</table>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "table",
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "caption",
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "thead",
+					"message": "Add a <kbd>&lt;thead&gt;</kbd> for the header section"
+				},
+				{
+					"type": "element_exists",
+					"value": "tbody",
+					"message": "Add a <kbd>&lt;tbody&gt;</kbd> for the data rows"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "tbody tr", "min": 2 },
+					"message": "Add at least 2 data rows in tbody"
+				}
+			]
+		},
+		{
+			"id": "table-complete",
+			"title": "Complete Table with Footer",
+			"description": "Add <kbd>&lt;tfoot&gt;</kbd> to create a footer section for totals or summary data. The footer stays at the bottom even if tbody has many rows.<br><br>Combine all sections for a fully structured, accessible table.",
+			"task": "Create a complete table:<br>1. A <kbd>&lt;caption&gt;</kbd> with 'Order Summary'<br>2. A <kbd>&lt;thead&gt;</kbd> with Item and Price headers<br>3. A <kbd>&lt;tbody&gt;</kbd> with 2 items<br>4. A <kbd>&lt;tfoot&gt;</kbd> with a Total row",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #fafafa; } table { border-collapse: collapse; width: 100%; max-width: 400px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } caption { padding: 15px 20px; font-weight: 600; font-size: 1.1rem; color: #333; text-align: left; background: #f8f9fa; border-bottom: 2px solid #eee; } th, td { padding: 12px 20px; text-align: left; } thead th { background: #2c3e50; color: white; } tbody td { border-bottom: 1px solid #eee; } tbody tr:hover { background: #f8f9fa; } tfoot { background: #ecf0f1; font-weight: 600; } tfoot td { border-top: 2px solid #2c3e50; color: #2c3e50; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<table>\n  <caption>Order Summary</caption>\n  <thead>\n    <tr>\n      <th>Item</th>\n      <th>Price</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Widget</td>\n      <td>$25.00</td>\n    </tr>\n    <tr>\n      <td>Gadget</td>\n      <td>$35.00</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td>Total</td>\n      <td>$60.00</td>\n    </tr>\n  </tfoot>\n</table>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "table",
+					"message": "Add a <kbd>&lt;table&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "caption",
+					"message": "Add a <kbd>&lt;caption&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "thead",
+					"message": "Add a <kbd>&lt;thead&gt;</kbd> section"
+				},
+				{
+					"type": "element_exists",
+					"value": "tbody",
+					"message": "Add a <kbd>&lt;tbody&gt;</kbd> section"
+				},
+				{
+					"type": "element_exists",
+					"value": "tfoot",
+					"message": "Add a <kbd>&lt;tfoot&gt;</kbd> section for the total"
+				},
+				{
+					"type": "element_count",
+					"value": { "selector": "tbody tr", "min": 2 },
+					"message": "Add at least 2 item rows in tbody"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,97 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "html-elements",
+	"title": "HTML Block & Inline",
+	"description": "Understanding the fundamental difference between container (block) and inline elements",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "block-vs-inline-intro",
+			"title": "Block vs Inline Elements",
+			"description": "HTML elements fall into two main categories:<br><br><strong>Block elements</strong> (containers) start on a new line and take full width. Examples: <kbd>&lt;div&gt;</kbd>, <kbd>&lt;p&gt;</kbd>, <kbd>&lt;h1&gt;</kbd>, <kbd>&lt;section&gt;</kbd><br><br><strong>Inline elements</strong> flow within text and only take needed width. Examples: <kbd>&lt;span&gt;</kbd>, <kbd>&lt;a&gt;</kbd>, <kbd>&lt;strong&gt;</kbd>, <kbd>&lt;em&gt;</kbd>",
+			"task": "Wrap the word <kbd>important</kbd> with <kbd>&lt;strong&gt;</kbd> tags to make it bold. Notice how the paragraph (block) takes full width while strong (inline) flows with text.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } p { background: #e3f2fd; padding: 10px; } strong { background: #ffecb3; }",
+			"sandboxCSS": "",
+			"initialCode": "<p>This is a paragraph with an important word.</p>",
+			"solution": "<p>This is a paragraph with an <strong>important</strong> word.</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "p",
+					"message": "Add a <kbd>&lt;p&gt;</kbd> paragraph element"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "p", "child": "strong" },
+					"message": "Wrap the word <kbd>important</kbd> with <kbd>&lt;strong&gt;</kbd> tags"
+				}
+			]
+		},
+		{
+			"id": "semantic-containers",
+			"title": "Semantic Tags",
+			"description": "Modern HTML uses semantic containers that describe their content:<br><br><kbd>&lt;header&gt;</kbd> - Page or section header<br><kbd>&lt;nav&gt;</kbd> - Navigation links<br><kbd>&lt;main&gt;</kbd> - Main content area<br><kbd>&lt;section&gt;</kbd> - Thematic grouping<br><kbd>&lt;article&gt;</kbd> - Self-contained content<br><kbd>&lt;footer&gt;</kbd> - Page or section footer",
+			"task": "Create a basic page structure:<br>1. Add a <kbd>&lt;header&gt;</kbd> with an <kbd>&lt;h1&gt;</kbd> containing the text 'My Website'<br>2. Add a <kbd>&lt;main&gt;</kbd> element with a paragraph saying 'Welcome to my site!'<br>3. Add a <kbd>&lt;footer&gt;</kbd> with a paragraph saying 'Copyright 2025'",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<header>\n  <h1>My Website</h1>\n</header>\n<main>\n  <p>Welcome to my site!</p>\n</main>\n<footer>\n  <p>Copyright 2025</p>\n</footer>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "header",
+					"message": "Add a <kbd>&lt;header&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "main",
+					"message": "Add a <kbd>&lt;main&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "footer",
+					"message": "Add a <kbd>&lt;footer&gt;</kbd> element"
+				},
+				{
+					"type": "parent_child",
+					"value": { "parent": "header", "child": "h1" },
+					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading inside your header"
+				}
+			]
+		},
+		{
+			"id": "div-vs-span",
+			"title": "div & span",
+			"description": "When you need a container without semantic meaning:<br><br><kbd>&lt;div&gt;</kbd> - Generic block container (for layout/grouping)<br><kbd>&lt;span&gt;</kbd> - Generic inline container (for styling text portions)<br><br>Use semantic elements when possible, div/span when no semantic element fits.",
+			"task": "Wrap the word 'highlighted' in a <kbd>&lt;span&gt;</kbd> to style it differently. Wrap the whole quote in a <kbd>&lt;div&gt;</kbd>.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: Georgia, serif; padding: 20px; } div { background: #f5f5f5; padding: 15px; border-left: 4px solid #1976d2; } span { background: #fff59d; padding: 2px 4px; }",
+			"sandboxCSS": "",
+			"initialCode": "The most highlighted moment was unforgettable.",
+			"solution": "<div>The most <span>highlighted</span> moment was unforgettable.</div>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "element_exists",
+					"value": "div",
+					"message": "Wrap everything in a <kbd>&lt;div&gt;</kbd> element"
+				},
+				{
+					"type": "element_exists",
+					"value": "span",
+					"message": "Add a <kbd>&lt;span&gt;</kbd> around the word <kbd>highlighted</kbd>"
+				},
+				{
+					"type": "element_text",
+					"value": { "selector": "span", "text": "highlighted" },
+					"message": "The <kbd>&lt;span&gt;</kbd> should contain the word <kbd>highlighted</kbd>"
+				}
+			]
+		}
+	]
+}

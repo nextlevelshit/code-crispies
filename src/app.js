@@ -2,7 +2,7 @@ import { LessonEngine } from "./impl/LessonEngine.js";
 import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
-import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
+import { initI18n, t, getLanguage, setLanguage, getNextLanguage, applyTranslations } from "./i18n.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
@@ -119,7 +119,7 @@ function toggleExpectedResult() {
 
 function toggleLanguage() {
 	const currentLang = getLanguage();
-	const newLang = currentLang === "en" ? "de" : "en";
+	const newLang = getNextLanguage(currentLang);
 
 	// Add transition class before any updates
 	elements.editorSection?.classList.add("transitioning");

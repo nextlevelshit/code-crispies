@@ -1,0 +1,116 @@
+{
+	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"id": "units-variables",
+	"title": "CSS Units & Variables",
+	"description": "Understand the variety of CSS measurement units and how to define and use custom properties for maintainable styles.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "units-1",
+			"title": "Absolute vs. Relative Units",
+			"description": "Learn the difference between px, rem, em, %, and vw/vh for flexible, responsive layouts.",
+			"task": "Set the <kbd>width</kbd> of <kbd>.box</kbd> to <kbd>80%</kbd> and <kbd>max-width</kbd> to <kbd>37.5rem</kbd>.",
+			"previewHTML": "<div class=\"box\">Resize me!</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .box { background: #f5f5f5; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Set flexible sizing */\n.box {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"solution": "  width: 80%;\n  max-width: 37.5rem;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "width", "message": "Use <kbd>width</kbd> property", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Set width to <kbd>80%</kbd>" },
+				{ "type": "contains", "value": "max-width", "message": "Use <kbd>max-width</kbd> property", "options": { "caseSensitive": false } },
+				{
+					"type": "property_value",
+					"value": { "property": "max-width", "expected": "37.5rem" },
+					"message": "Set max-width to <kbd>37.5rem</kbd>"
+				}
+			]
+		},
+		{
+			"id": "units-2",
+			"title": "CSS Custom Properties",
+			"description": "Define and reuse variables (--custom properties) to centralize your theme values.",
+			"task": "Create a <kbd>--main-color</kbd> variable in <kbd>:root</kbd> with <kbd>#6200ee</kbd> and apply it as the border color on <kbd>.themed</kbd>.",
+			"previewHTML": "<div class=\"themed\">Variable Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .themed { padding: 1rem; border: 0.125rem solid #ddd; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Define and use a CSS variable */\n:root {",
+			"initialCode": "",
+			"codeSuffix": "}\n.themed { }",
+			"solution": "  --main-color: #6200ee;\n}\n.themed {\n  border-color: var(--main-color);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "--main-color",
+					"message": "Define <kbd>--main-color</kbd> in :root",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "contains",
+					"value": "var(--main-color)",
+					"message": "Use <kbd>var(--main-color)</kbd>",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "border", "expected": "var(--main-color)" },
+					"message": "Apply variable to border color",
+					"options": { "exact": false }
+				}
+			]
+		},
+		{
+			"id": "units-3",
+			"title": "Unit Calculations (calc)",
+			"description": "Use the <kbd>calc()</kbd> function to combine different units in one expression.",
+			"task": "Set the <kbd>width</kbd> of <kbd>.sized</kbd> to <kbd>calc(100% - 2rem)</kbd> and <kbd>min-height</kbd> to <kbd>calc(10vh + 1rem)</kbd>.",
+			"previewHTML": "<div class=\"sized\">Calc Demo</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .sized { background: #e8f5e9; padding: 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Use calc for dynamic sizing */\n.sized {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"solution": "  width: calc(100% - 2rem);\n  min-height: calc(10vh + 1rem);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "calc", "message": "Use <kbd>calc()</kbd> function", "options": { "caseSensitive": false } },
+				{
+					"type": "regex",
+					"value": "width:\\s*calc\\(100% - 2rem\\)",
+					"message": "Width should be <kbd>calc(100% - 2rem)</kbd>",
+					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "regex",
+					"value": "min-height:\\s*calc\\(10vh \\+ 1rem\\)",
+					"message": "Min-height should be <kbd>calc(10vh + 1rem)</kbd>",
+					"options": { "caseSensitive": false }
+				}
+			]
+		},
+		{
+			"id": "units-4",
+			"title": "Viewport & Responsive Units",
+			"description": "Control layouts relative to viewport size with vw, vh, and vmin/vmax units.",
+			"task": "Give <kbd>.view</kbd> a <kbd>width</kbd> of <kbd>50vw</kbd> and <kbd>height</kbd> of <kbd>20vh</kbd>.",
+			"previewHTML": "<div class=\"view\">Viewport Box</div>",
+			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .view { background: #ffe0b2; }",
+			"sandboxCSS": "",
+			"codePrefix": "/* Use viewport units */\n.view {",
+			"initialCode": "",
+			"codeSuffix": "}",
+			"solution": "  width: 50vw;\n  height: 20vh;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{ "type": "contains", "value": "vw", "message": "Use <kbd>vw</kbd> unit", "options": { "caseSensitive": false } },
+				{ "type": "contains", "value": "vh", "message": "Use <kbd>vh</kbd> unit", "options": { "caseSensitive": false } },
+				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Set width to <kbd>50vw</kbd>" },
+				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Set height to <kbd>20vh</kbd>" }
+			]
+		}
+	]
+}
