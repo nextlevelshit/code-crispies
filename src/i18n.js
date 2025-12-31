@@ -10,8 +10,8 @@ const translations = {
 
 		// Header
 		menuOpen: "Open menu",
-		langSwitch: "DE",
-		langSwitchLabel: "Switch language: Deutsch",
+		langSwitch: "EN",
+		langSwitchLabel: "Switch language",
 		help: "Help",
 
 		// Instructions
@@ -109,8 +109,8 @@ const translations = {
 
 		// Header
 		menuOpen: "Menü öffnen",
-		langSwitch: "PL",
-		langSwitchLabel: "Zmień język: Polski",
+		langSwitch: "DE",
+		langSwitchLabel: "Sprache wechseln",
 		help: "Hilfe",
 
 		// Instructions
@@ -209,8 +209,8 @@ const translations = {
 
 		// Header
 		menuOpen: "Otwórz menu",
-		langSwitch: "ES",
-		langSwitchLabel: "Cambiar idioma: Español",
+		langSwitch: "PL",
+		langSwitchLabel: "Zmień język",
 		help: "Pomoc",
 
 		// Instructions
@@ -309,8 +309,8 @@ const translations = {
 
 		// Header
 		menuOpen: "Abrir menú",
-		langSwitch: "AR",
-		langSwitchLabel: "تغيير اللغة: العربية",
+		langSwitch: "ES",
+		langSwitchLabel: "Cambiar idioma",
 		help: "Ayuda",
 
 		// Instructions
@@ -409,8 +409,8 @@ const translations = {
 
 		// Header
 		menuOpen: "افتح القائمة",
-		langSwitch: "UK",
-		langSwitchLabel: "Змінити мову: Українська",
+		langSwitch: "AR",
+		langSwitchLabel: "تغيير اللغة",
 		help: "مساعدة",
 
 		// Instructions
@@ -509,8 +509,8 @@ const translations = {
 
 		// Header
 		menuOpen: "Відкрити меню",
-		langSwitch: "EN",
-		langSwitchLabel: "Switch language: English",
+		langSwitch: "UK",
+		langSwitchLabel: "Змінити мову",
 		help: "Допомога",
 
 		// Instructions
@@ -654,6 +654,9 @@ export function getLanguage() {
 /**
  * Set language and persist to localStorage
  */
+// RTL languages
+const rtlLanguages = ["ar"];
+
 export function setLanguage(lang) {
 	if (!translations[lang]) {
 		console.warn(`Language "${lang}" not supported, falling back to English`);
@@ -662,6 +665,9 @@ export function setLanguage(lang) {
 	currentLang = lang;
 	localStorage.setItem("codeCrispies.language", lang);
 	document.documentElement.lang = lang;
+
+	// Set text direction for RTL languages
+	document.documentElement.dir = rtlLanguages.includes(lang) ? "rtl" : "ltr";
 }
 
 /**

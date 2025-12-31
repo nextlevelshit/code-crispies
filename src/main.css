@@ -1307,3 +1307,71 @@ input:checked + .toggle-slider::before {
 		font-size: 13px;
 	}
 }
+
+/* ================== RTL SUPPORT ================== */
+
+/* RTL: Sidebar slides from right */
+[dir="rtl"] .sidebar-drawer {
+	left: auto;
+	right: calc(-1 * var(--sidebar-width));
+	transition: right 0.3s ease;
+}
+
+[dir="rtl"] .sidebar-drawer.open {
+	right: 0;
+}
+
+/* RTL: Content shifts to left when sidebar opens */
+[dir="rtl"] .app-container:has(.sidebar-drawer.open) .game-layout {
+	transform: translateX(calc(-1 * var(--sidebar-width) * 0.8));
+}
+
+/* RTL: Flip horizontal layouts */
+[dir="rtl"] .header-left,
+[dir="rtl"] .header-right {
+	flex-direction: row-reverse;
+}
+
+/* RTL: Editor tools */
+[dir="rtl"] .editor-tools {
+	flex-direction: row-reverse;
+}
+
+/* RTL: Navigation buttons */
+[dir="rtl"] .nav-controls {
+	flex-direction: row-reverse;
+}
+
+/* RTL: Hint layout */
+[dir="rtl"] .hint {
+	flex-direction: row-reverse;
+	text-align: right;
+}
+
+/* RTL: Module list items */
+[dir="rtl"] .module-header {
+	flex-direction: row-reverse;
+}
+
+[dir="rtl"] .lesson-list button {
+	text-align: right;
+}
+
+/* RTL: Lesson progress indicator */
+[dir="rtl"] .lesson-list button::before {
+	margin-left: var(--spacing-sm);
+	margin-right: 0;
+}
+
+/* RTL: Text alignment */
+[dir="rtl"] .lesson-description,
+[dir="rtl"] .task-instruction,
+[dir="rtl"] #lesson-title {
+	text-align: right;
+}
+
+/* RTL: Dialog close button */
+[dir="rtl"] .dialog-close {
+	left: var(--spacing-sm);
+	right: auto;
+}
