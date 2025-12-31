@@ -1375,3 +1375,8 @@ input:checked + .toggle-slider::before {
 	left: var(--spacing-sm);
 	right: auto;
 }
+
+/* RTL: Keep logo in LTR order */
+[dir="rtl"] .logo {
+	direction: ltr;
+}
