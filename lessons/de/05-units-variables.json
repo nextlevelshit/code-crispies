@@ -16,6 +16,7 @@
 			"codePrefix": "/* Setze flexible Größen */\n.box {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  width: 80%;\n  max-width: 37.5rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -49,6 +50,7 @@
 			"codePrefix": "/* Definiere und verwende eine CSS-Variable */\n:root {",
 			"initialCode": "",
 			"codeSuffix": "}\n.themed { }",
+			"solution": "  --main-color: #6200ee;\n}\n.themed {\n  border-color: var(--main-color);",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -82,6 +84,7 @@
 			"codePrefix": "/* Verwende calc für dynamische Größen */\n.sized {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  width: calc(100% - 2rem);\n  min-height: calc(10vh + 1rem);",
 			"previewContainer": "preview-area",
 			"validations": [
 				{ "type": "contains", "value": "calc", "message": "Verwende die <kbd>calc()</kbd> Funktion", "options": { "caseSensitive": false } },
@@ -110,6 +113,7 @@
 			"codePrefix": "/* Verwende Viewport-Einheiten */\n.view {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  width: 50vw;\n  height: 20vh;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{ "type": "contains", "value": "vw", "message": "Verwende <kbd>vw</kbd> Einheit", "options": { "caseSensitive": false } },

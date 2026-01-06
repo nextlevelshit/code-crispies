@@ -16,6 +16,7 @@
 			"codePrefix": "/* Füge deine Media Query unten ein */\n",
 			"initialCode": "",
 			"codeSuffix": "",
+			"solution": "@media (max-width: 600px) {\n  .panel {\n    background: lightcoral;\n  }\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -55,6 +56,7 @@
 			"codePrefix": "/* Wende flüssige Schriftgröße an */\n.text {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  font-size: 5vw;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -83,6 +85,7 @@
 			"codePrefix": "/* Erstelle ein responsives Raster */\n.cards {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -111,6 +114,7 @@
 			"codePrefix": "/* Füge Mobile-First-Erweiterung hinzu */\n",
 			"initialCode": "",
 			"codeSuffix": "",
+			"solution": "@media (min-width: 768px) {\n  .sidebar {\n    width: 250px;\n  }\n}",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
