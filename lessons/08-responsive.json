@@ -8,7 +8,7 @@
 		{
 			"id": "responsive-1",
 			"title": "Media Queries",
-			"description": "Understand the syntax and use cases for CSS media queries to apply styles conditionally based on viewport characteristics.",
+			"description": "Understand the syntax and use cases for CSS media queries to apply styles conditionally based on viewport characteristics.<br><br><pre>@media (max-width: 600px) {\n  .element {\n    background: lightcoral;\n  }\n}</pre>",
 			"task": "Write a media query with <kbd>@media (max-width: 600px)</kbd> that changes <kbd>.panel</kbd> background to <kbd>lightcoral</kbd>.",
 			"previewHTML": "<div class=\"panel\">Resize the window</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .panel { padding: 1rem; background: lightblue; }",

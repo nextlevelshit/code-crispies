@@ -1,0 +1,67 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "goodbye",
+	"title": "What's Next?",
+	"description": "Congratulations on completing your learning journey!",
+	"mode": "html",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "congratulations",
+			"title": "Well Done!",
+			"description": "<strong>Congratulations!</strong> You've made it through Code Crispies!<br><br>You've learned:<br>• <strong>HTML</strong> - Semantic elements, forms, tables, and more<br>• <strong>CSS</strong> - Selectors, box model, flexbox, grid, animations<br>• <strong>Responsive Design</strong> - Media queries and mobile-first layouts<br><br>These are the building blocks of every website on the internet. Keep practicing and building!",
+			"task": "Type <code>Thank you!</code>",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } p { font-size: 1.5rem; color: #6366f1; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "<p>Thank you!</p>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "Thank you",
+					"message": "Type <code>Thank you!</code>"
+				}
+			]
+		},
+		{
+			"id": "contribute",
+			"title": "Contribute",
+			"description": "<strong>Help others learn!</strong><br><br>Code Crispies is open source and always looking for new lessons. You can contribute by:<br><br>• <strong>Writing new lessons</strong> - Share your knowledge on topics we haven't covered<br>• <strong>Translating lessons</strong> - Help make Code Crispies accessible in more languages<br>• <strong>Fixing bugs</strong> - Found something broken? Help us fix it!<br>• <strong>Improving content</strong> - Make existing lessons clearer and better<br><br><strong>Get started:</strong><br>• <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea Repository</a> - Main source code<br>• <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub Mirror</a> - Alternative access<br><br>Lessons are simple JSON files in the <code>lessons/</code> folder. Check existing lessons for the format!",
+			"task": "Click Next to continue",
+			"previewHTML": "<div class=\"card\"><h2>Your First Lesson</h2><p>Create a JSON file in <code>lessons/</code></p><pre>{\n  \"id\": \"my-lesson\",\n  \"title\": \"My Lesson\",\n  \"lessons\": [...]\n}</pre></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; } .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; } h2 { color: #6366f1; margin-top: 0; } pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 4px; overflow-x: auto; }",
+			"sandboxCSS": "",
+			"initialCode": "<div class=\"card\">\n  <h2>Your First Lesson</h2>\n  <p>Create a JSON file in <code>lessons/</code></p>\n  <pre>{\n  \"id\": \"my-lesson\",\n  \"title\": \"My Lesson\",\n  \"lessons\": [...]\n}</pre>\n</div>",
+			"solution": "<div class=\"card\">\n  <h2>Your First Lesson</h2>\n  <p>Create a JSON file in <code>lessons/</code></p>\n  <pre>{\n  \"id\": \"my-lesson\",\n  \"title\": \"My Lesson\",\n  \"lessons\": [...]\n}</pre>\n</div>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "card",
+					"message": "Click Next to continue"
+				}
+			]
+		},
+		{
+			"id": "keep-learning",
+			"title": "Keep Learning",
+			"description": "<strong>Your journey continues!</strong><br><br><strong>Recommended resources:</strong><br>• <a href=\"https://developer.mozilla.org/en-US/docs/Web\" target=\"_blank\">MDN Web Docs</a> - The definitive web development reference<br>• <a href=\"https://css-tricks.com\" target=\"_blank\">CSS-Tricks</a> - Practical CSS techniques and tutorials<br>• <a href=\"https://web.dev\" target=\"_blank\">web.dev</a> - Modern web development best practices<br><br><strong>Practice projects:</strong><br>• Build your personal portfolio website<br>• Recreate your favorite website's layout<br>• Create a responsive landing page<br>• Build a CSS-only interactive component<br><br><strong>Remember:</strong> The best way to learn is by building. Start small, iterate, and have fun!<br><br><em>Thank you for learning with Code Crispies!</em>",
+			"task": "Explore the Playground",
+			"previewHTML": "<div class=\"message\"><span class=\"emoji\">🎉</span><h1>Happy Coding!</h1><p>See you in the code!</p></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); } .message { text-align: center; color: white; } .emoji { font-size: 4rem; display: block; margin-bottom: 1rem; } h1 { margin: 0 0 0.5rem; } p { margin: 0; opacity: 0.9; }",
+			"sandboxCSS": "",
+			"initialCode": "<div class=\"message\">\n  <span class=\"emoji\">🎉</span>\n  <h1>Happy Coding!</h1>\n  <p>See you in the code!</p>\n</div>",
+			"solution": "<div class=\"message\">\n  <span class=\"emoji\">🎉</span>\n  <h1>Happy Coding!</h1>\n  <p>See you in the code!</p>\n</div>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "message",
+					"message": "Explore the Playground"
+				}
+			]
+		}
+	]
+}

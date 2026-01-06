@@ -8,7 +8,7 @@
 		{
 			"id": "grid-1",
 			"title": "Grid Container Basics",
-			"description": "Learn how to create a grid container and define basic grid structures.",
+			"description": "Learn how to create a grid container and define basic grid structures.<br><br><pre>.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}</pre>",
 			"task": "Create a <kbd>.grid</kbd> with <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(3, 1fr)</kbd>, and <kbd>gap: 1rem</kbd>.",
 			"previewHTML": "<div class='grid'><div class='item'>1</div><div class='item'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; }",

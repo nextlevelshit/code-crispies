@@ -8,7 +8,7 @@
 		{
 			"id": "flexbox-1",
 			"title": "Container",
-			"description": "Learn how to create a flex container and understand the main and cross axes.",
+			"description": "Learn how to create a flex container and understand the main and cross axes.<br><br><pre>.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}</pre>",
 			"task": "Add <kbd>display: flex</kbd> to <kbd>.wrap</kbd> to create a flexbox layout.",
 			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; }",
