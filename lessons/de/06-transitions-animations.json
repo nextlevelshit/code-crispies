@@ -16,6 +16,7 @@
 			"codePrefix": "/* Füge Transition hinzu */\n.btn {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  transition: background-color 0.3s;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -43,6 +44,7 @@
 			"codePrefix": "/* Setze Timing-Funktion */\n.btn {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  transition-timing-function: ease-in-out;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -69,6 +71,7 @@
 			"codePrefix": "/* Definiere Keyframes und wende Animation an */\n@keyframes bounce {",
 			"initialCode": "",
 			"codeSuffix": "}\n.ball { }",
+			"solution": "  50% { transform: translateY(-20px); }\n}\n.ball {\n  animation: bounce 1s infinite;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -108,6 +111,7 @@
 			"codePrefix": "/* Definiere fade und setze Eigenschaften */\n@keyframes fade { from { opacity: 0; } to { opacity: 1; } }\n.box {",
 			"initialCode": "",
 			"codeSuffix": "}",
+			"solution": "  animation-name: fade;\n  animation-duration: 2s;\n  animation-delay: 1s;\n  animation-iteration-count: 2;\n  animation-fill-mode: forwards;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{

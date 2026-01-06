@@ -16,6 +16,7 @@
 			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "padding: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -36,6 +37,7 @@
 			"codePrefix": ".box {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "border: 2px solid darkslategray;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -57,6 +59,7 @@
 			"codePrefix": ".outer {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -77,6 +80,7 @@
 			"codePrefix": ".sized {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "box-sizing: border-box;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -97,6 +101,7 @@
 			"codePrefix": ".first {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin-bottom: 2rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -117,6 +122,7 @@
 			"codePrefix": ".spaced {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "margin: 1rem 2rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -138,6 +144,7 @@
 			"codePrefix": ".padded {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "padding: 1.5rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -158,6 +165,7 @@
 			"codePrefix": ".line {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "border-bottom: 4px solid dodgerblue;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{

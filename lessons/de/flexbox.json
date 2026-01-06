@@ -16,12 +16,13 @@
 			"codePrefix": ".wrap {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "display: flex;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "display", "expected": "flex" },
-					"message": "Setze display auf <kbd>flex</kbd>"
+					"message": "Setze <kbd>display: flex</kbd>"
 				}
 			]
 		},
@@ -36,17 +37,20 @@
 			"codePrefix": ".wrap {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "flex-direction: column;\n  flex-wrap: wrap;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "flex-direction", "expected": "column" },
-					"message": "Setze flex-direction auf <kbd>column</kbd>"
+					"message": "Setze <kbd>flex-direction: column</kbd>",
+					"options": { "exact": true }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "flex-wrap", "expected": "wrap" },
-					"message": "Setze flex-wrap auf <kbd>wrap</kbd>"
+					"message": "Setze <kbd>flex-wrap: wrap</kbd>",
+					"options": { "exact": true }
 				}
 			]
 		},
@@ -61,12 +65,14 @@
 			"codePrefix": ".wrap {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "justify-content: space-between;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "justify-content", "expected": "space-between" },
-					"message": "Setze justify-content auf <kbd>space-between</kbd>"
+					"message": "Setze <kbd>justify-content: space-between</kbd>",
+					"options": { "exact": true }
 				}
 			]
 		},
@@ -81,12 +87,14 @@
 			"codePrefix": ".wrap {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "align-items: center;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "align-items", "expected": "center" },
-					"message": "Setze align-items auf <kbd>center</kbd>"
+					"message": "Setze <kbd>align-items: center</kbd>",
+					"options": { "exact": true }
 				}
 			]
 		},
@@ -94,19 +102,20 @@
 			"id": "flexbox-5",
 			"title": "Flex Grow",
 			"description": "Die <kbd>flex</kbd>-Eigenschaft ist eine Kurzform für <kbd>flex-grow</kbd>, <kbd>flex-shrink</kbd> und <kbd>flex-basis</kbd>. Ein höherer Wert bedeutet, dass das Element mehr vom verfügbaren Platz einnimmt. <kbd>flex: 2</kbd> wächst doppelt so schnell wie <kbd>flex: 1</kbd>.",
-			"task": "Füge <kbd>flex: 2</kbd> zu <kbd>.green</kbd> hinzu.",
-			"previewHTML": "<div class='wrap'><div class='box red'>1</div><div class='box green'>2</div><div class='box yellow'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; } .red { background: coral; flex: 1; } .green { background: mediumseagreen; } .yellow { background: gold; flex: 1; }",
+			"task": "Füge <kbd>flex: 2</kbd> zu <kbd>.box2</kbd> hinzu.",
+			"previewHTML": "<div class='wrap'><div class='box box1'>1</div><div class='box box2'>2</div><div class='box box3'>3</div></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; } .box1 { background: coral; flex: 1; } .box2 { background: mediumseagreen; } .box3 { background: gold; flex: 1; }",
 			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
-			"codePrefix": ".green {\n  ",
+			"codePrefix": ".box2 {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "flex: 2;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "flex", "expected": "2" },
-					"message": "Setze flex auf <kbd>2</kbd>"
+					"message": "Setze <kbd>flex: 2</kbd>"
 				}
 			]
 		},
@@ -121,12 +130,13 @@
 			"codePrefix": ".middle {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
+			"solution": "align-self: flex-start;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "align-self", "expected": "flex-start" },
-					"message": "Setze align-self auf <kbd>flex-start</kbd>"
+					"message": "Setze <kbd>align-self: flex-start</kbd>"
 				}
 			]
 		}
