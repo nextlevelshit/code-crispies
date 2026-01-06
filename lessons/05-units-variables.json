@@ -32,7 +32,7 @@
 		{
 			"id": "units-2",
 			"title": "CSS Custom Properties",
-			"description": "Define and reuse variables (--custom properties) to centralize your theme values.",
+			"description": "Define and reuse variables (--custom properties) to centralize your theme values.<br><br><pre>:root {\n  --main-color: #6200ee;\n}\n.element {\n  color: var(--main-color);\n}</pre>",
 			"task": "Create a <kbd>--main-color</kbd> variable in <kbd>:root</kbd> with <kbd>#6200ee</kbd> and apply it as the border color on <kbd>.themed</kbd>.",
 			"previewHTML": "<div class=\"themed\">Variable Box</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .themed { padding: 1rem; border: 0.125rem solid #ddd; }",
@@ -66,7 +66,7 @@
 		{
 			"id": "units-3",
 			"title": "Unit Calculations (calc)",
-			"description": "Use the <kbd>calc()</kbd> function to combine different units in one expression.",
+			"description": "Use the <kbd>calc()</kbd> function to combine different units in one expression.<br><br><pre>.element {\n  width: calc(100% - 2rem);\n  height: calc(50vh + 1rem);\n}</pre>",
 			"task": "Set the <kbd>width</kbd> of <kbd>.sized</kbd> to <kbd>calc(100% - 2rem)</kbd> and <kbd>min-height</kbd> to <kbd>calc(10vh + 1rem)</kbd>.",
 			"previewHTML": "<div class=\"sized\">Calc Demo</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .sized { background: #e8f5e9; padding: 1rem; }",

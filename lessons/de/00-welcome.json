@@ -12,10 +12,10 @@
 			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich!<br><br><strong>Was du lernst:</strong><br>• <strong>HTML</strong> - Semantische Elemente, Formulare, Tabellen, SVG (<em>HTML Block & Inline</em>, <em>HTML Formulare</em>, <em>HTML Tabellen</em>)<br>• <strong>CSS</strong> - Selektoren, Box-Model, Flexbox, Animationen (<em>CSS Selektoren</em>, <em>CSS Box-Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media Queries und Mobile-First Layouts<br><br><strong>So funktioniert's:</strong><br>1. Lies die Aufgabe im linken Bereich<br>2. Schreibe Code im Editor<br>3. Sieh Live-Ergebnisse in der Vorschau<br>4. Bekomme sofortiges Feedback mit Hinweisen<br><br><strong>Tastenkürzel:</strong> <kbd>Strg+Z</kbd> rückgängig, <kbd>Strg+Umschalt+Z</kbd> wiederholen<br><br><strong>Weitere Ressourcen:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript-Lösungen<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript Technologie-Roadmap",
 			"task": "Schreibe <code>Hello World</code>",
 			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; font-size: 2rem; color: #6366f1; font-weight: bold; }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<h1>Hello World</h1>",
+			"solution": "Hello World",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
