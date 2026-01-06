@@ -1,5 +1,5 @@
 {
-	"$schema": "../schemas/code-crispies-module-schema.json",
+	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-datalist",
 	"title": "Datalist",
 	"description": "Provide suggestions for text inputs without JavaScript",

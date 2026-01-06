@@ -34,7 +34,7 @@
 			"id": "semantic-containers",
 			"title": "Semantische Container-Elemente",
 			"description": "Modernes HTML verwendet semantische Container, die ihren Inhalt beschreiben:<br><br><kbd>&lt;header&gt;</kbd> - Kopfbereich der Seite oder eines Abschnitts<br><kbd>&lt;nav&gt;</kbd> - Navigationslinks<br><kbd>&lt;main&gt;</kbd> - Hauptinhalt<br><kbd>&lt;section&gt;</kbd> - Thematische Gruppierung<br><kbd>&lt;article&gt;</kbd> - Eigenständiger Inhalt<br><kbd>&lt;footer&gt;</kbd> - Fußbereich der Seite oder eines Abschnitts",
-			"task": "Erstelle eine einfache Seitenstruktur:<br>1. Füge ein <kbd>&lt;header&gt;</kbd> mit einem <kbd>&lt;h1&gt;</kbd> hinzu, das den Text 'Meine Webseite' enthält<br>2. Füge ein <kbd>&lt;main&gt;</kbd>-Element mit einem Absatz hinzu, der 'Willkommen auf meiner Seite!' sagt<br>3. Füge ein <kbd>&lt;footer&gt;</kbd> mit einem Absatz hinzu, der 'Copyright 2025' sagt",
+			"task": "Erstelle eine einfache Seitenstruktur:<br>1. Füge ein <kbd>&lt;header&gt;</kbd> mit einem <kbd>&lt;h1&gt;</kbd> hinzu, das den Text <code>Meine Webseite</code> enthält<br>2. Füge ein <kbd>&lt;main&gt;</kbd>-Element mit einem Absatz hinzu, der <code>Willkommen auf meiner Seite!</code> sagt<br>3. Füge ein <kbd>&lt;footer&gt;</kbd> mit einem Absatz hinzu, der <code>Copyright 2025</code> sagt",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
 			"sandboxCSS": "",

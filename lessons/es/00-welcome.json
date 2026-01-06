@@ -10,7 +10,7 @@
 			"id": "get-started",
 			"title": "Get Started",
 			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises. No account required!<br><br><strong>What you'll learn:</strong><br>• <strong>HTML</strong> - Semantic elements, forms, tables, SVG (<em>HTML Block & Inline</em>, <em>HTML Forms</em>, <em>HTML Tables</em>)<br>• <strong>CSS</strong> - Selectors, box model, flexbox, animations (<em>CSS Selectors</em>, <em>CSS Box Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media queries and mobile-first layouts<br><br><strong>How it works:</strong><br>1. Read the task in the left panel<br>2. Write code in the editor<br>3. See live results in the preview<br>4. Get instant feedback with hints<br><br><strong>Keyboard shortcuts:</strong> <kbd>Ctrl+Z</kbd> to undo, <kbd>Ctrl+Shift+Z</kbd> to redo<br><br><strong>More resources:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript solutions<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript technology roadmap",
-			"task": "Hello World",
+			"task": "Write <code>Hello World</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; } h1 { color: #6366f1; }",
 			"sandboxCSS": "",
@@ -20,8 +20,8 @@
 			"validations": [
 				{
 					"type": "contains",
-					"value": "Hello",
-					"message": "Write 'Hello World'"
+					"value": "Hello World",
+					"message": "Write <code>Hello World</code>"
 				}
 			]
 		},
@@ -39,7 +39,7 @@
 			"validations": [
 				{
 					"type": "contains",
-					"value": "Hello",
+					"value": "Hello World",
 					"message": "Click Next to continue"
 				}
 			]
