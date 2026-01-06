@@ -34,7 +34,7 @@
 			"id": "semantic-containers",
 			"title": "Semantic Tags",
 			"description": "Modern HTML uses semantic containers that describe their content:<br><br><kbd>&lt;header&gt;</kbd> - Page or section header<br><kbd>&lt;nav&gt;</kbd> - Navigation links<br><kbd>&lt;main&gt;</kbd> - Main content area<br><kbd>&lt;section&gt;</kbd> - Thematic grouping<br><kbd>&lt;article&gt;</kbd> - Self-contained content<br><kbd>&lt;footer&gt;</kbd> - Page or section footer",
-			"task": "Create a basic page structure:<br>1. Add a <kbd>&lt;header&gt;</kbd> with an <kbd>&lt;h1&gt;</kbd> containing the text 'My Website'<br>2. Add a <kbd>&lt;main&gt;</kbd> element with a paragraph saying 'Welcome to my site!'<br>3. Add a <kbd>&lt;footer&gt;</kbd> with a paragraph saying 'Copyright 2025'",
+			"task": "Create a basic page structure:<br>1. Add a <kbd>&lt;header&gt;</kbd> with an <kbd>&lt;h1&gt;</kbd> containing the text <code>My Website</code><br>2. Add a <kbd>&lt;main&gt;</kbd> element with a paragraph saying <code>Welcome to my site!</code><br>3. Add a <kbd>&lt;footer&gt;</kbd> with a paragraph saying <code>Copyright 2025</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; margin: 0; } header { background: #1976d2; color: white; padding: 15px; } main { padding: 20px; min-height: 100px; } footer { background: #424242; color: white; padding: 10px; text-align: center; }",
 			"sandboxCSS": "",

@@ -10,7 +10,7 @@
 			"id": "form-structure",
 			"title": "Formularstruktur",
 			"description": "Jedes Formular benötigt einen <kbd>&lt;form&gt;</kbd>-Wrapper. Innerhalb verwendest du <kbd>&lt;label&gt;</kbd> zur Beschreibung der Eingaben und <kbd>&lt;input&gt;</kbd> für die Dateneingabe.<br><br>Das <kbd>for</kbd>-Attribut bei Labels sollte mit der <kbd>id</kbd> der Eingaben übereinstimmen für bessere Zugänglichkeit.",
-			"task": "Erstelle ein Formular mit:<br>1. Einem <kbd>&lt;label&gt;</kbd> mit dem Text 'Name:' und dem <kbd>for=\"name\"</kbd>-Attribut<br>2. Einem Text-<kbd>&lt;input&gt;</kbd> mit <kbd>id=\"name\"</kbd> und <kbd>name=\"name\"</kbd>-Attributen",
+			"task": "Erstelle ein Formular mit:<br>1. Einem <kbd>&lt;label&gt;</kbd> mit dem Text <code>Name:</code> und dem <kbd>for=\"name\"</kbd>-Attribut<br>2. Einem Text-<kbd>&lt;input&gt;</kbd> mit <kbd>id=\"name\"</kbd> und <kbd>name=\"name\"</kbd>-Attributen",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-bottom: 5px; font-weight: 500; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }",
 			"sandboxCSS": "",
@@ -77,8 +77,8 @@
 		{
 			"id": "submit-button",
 			"title": "Absende-Button",
-			"description": "Formulare benötigen eine Möglichkeit zum Absenden. Verwende:<br><br><kbd>&lt;button type=\"submit\"&gt;</kbd> - Bevorzugt, flexibler Inhalt<br><kbd>&lt;input type=\"submit\"&gt;</kbd> - Einfacher Text-Button<br><br>Der Button-Text sollte handlungsorientiert sein (z.B. 'Anmelden', 'Registrieren', 'Senden').",
-			"task": "Füge dem Formular einen Absende-Button mit dem Text 'Anmelden' hinzu.",
+			"description": "Formulare benötigen eine Möglichkeit zum Absenden. Verwende:<br><br><kbd>&lt;button type=\"submit\"&gt;</kbd> - Bevorzugt, flexibler Inhalt<br><kbd>&lt;input type=\"submit\"&gt;</kbd> - Einfacher Text-Button<br><br>Der Button-Text sollte handlungsorientiert sein (z.B. <code>Anmelden</code>, 'Registrieren', 'Senden').",
+			"task": "Füge dem Formular einen Absende-Button mit dem Text <code>Anmelden</code> hinzu.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } button { width: 100%; margin-top: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
@@ -94,7 +94,7 @@
 				{
 					"type": "element_text",
 					"value": { "selector": "button", "text": "Anmelden" },
-					"message": "Der Button sollte 'Anmelden' anzeigen"
+					"message": "Der Button sollte <code>Anmelden</code> anzeigen"
 				}
 			]
 		}

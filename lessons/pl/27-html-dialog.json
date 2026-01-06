@@ -1,5 +1,5 @@
 {
-	"$schema": "../schemas/code-crispies-module-schema.json",
+	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-dialog",
 	"title": "Dialogs",
 	"description": "Create modal dialogs without JavaScript libraries",

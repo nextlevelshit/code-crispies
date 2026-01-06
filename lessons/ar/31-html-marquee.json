@@ -10,7 +10,7 @@
 			"id": "marquee-basic",
 			"title": "Scrolling Text",
 			"description": "The <kbd>&lt;marquee&gt;</kbd> element creates scrolling text - a classic from the early web! While deprecated, it still works in most browsers.<br><br>Note: For production, use CSS animations instead. But for learning and fun, marquee is great!",
-			"task": "Create a simple marquee:<br>1. Add a <kbd>&lt;marquee&gt;</kbd> element<br>2. Put some text inside like 'Welcome to my website!'",
+			"task": "Create a simple marquee:<br>1. Add a <kbd>&lt;marquee&gt;</kbd> element<br>2. Put some text inside like <code>Welcome to my website!</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2rem; color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; font-family: 'Courier New', monospace; }",
 			"sandboxCSS": "",

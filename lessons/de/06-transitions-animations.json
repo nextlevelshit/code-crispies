@@ -8,7 +8,7 @@
 		{
 			"id": "transitions-1",
 			"title": "Einfache Transitions",
-			"description": "Lerne, wie du <code>transition</code> auf Eigenschaften anwendest für sanfte Änderungen bei Zustandswechseln.",
+			"description": "Lerne, wie du <kbd>transition</kbd> auf Eigenschaften anwendest für sanfte Änderungen bei Zustandswechseln.<br><br><pre>.element {\n  transition: property duration;\n  /* z.B. transition: background-color 0.3s; */\n}</pre>",
 			"task": "Füge <kbd>transition: background-color 0.3s</kbd> zu <kbd>.btn</kbd> hinzu, damit die Farbe beim Hover sanft überblendet.",
 			"previewHTML": "<button class=\"btn\">Hover mich</button>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: #6200ee; color: white; padding: 0.5rem 1rem; border: none; } .btn:hover { background: #3700b3; }",
@@ -63,7 +63,7 @@
 		{
 			"id": "transitions-3",
 			"title": "Keyframe-Animationen Grundlagen",
-			"description": "Erstelle benannte Animationen mit <code>@keyframes</code> und wende sie mit der <code>animation</code> Kurzschreibweise an.",
+			"description": "Erstelle benannte Animationen mit <kbd>@keyframes</kbd> und wende sie mit der <kbd>animation</kbd> Kurzschreibweise an.<br><br><pre>@keyframes name {\n  0%   { transform: scale(1); }\n  50%  { transform: scale(1.2); }\n  100% { transform: scale(1); }\n}\n.element {\n  animation: name 1s infinite;\n}</pre>",
 			"task": "Definiere bei <kbd>50%</kbd> ein <kbd>transform: translateY(-20px)</kbd> und wende <kbd>animation: bounce 1s infinite</kbd> auf <kbd>.ball</kbd> an.",
 			"previewHTML": "<div class=\"ball\"></div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .ball { width: 50px; height: 50px; background: #ff0266; border-radius: 50%; margin: 2rem auto; }",

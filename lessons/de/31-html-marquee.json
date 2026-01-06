@@ -10,7 +10,7 @@
 			"id": "marquee-basic",
 			"title": "Lauftext",
 			"description": "Das <kbd>&lt;marquee&gt;</kbd>-Element erstellt Lauftext - ein Klassiker aus dem frühen Web! Obwohl veraltet, funktioniert es noch in den meisten Browsern.<br><br>Hinweis: Für produktive Seiten nutze CSS-Animationen. Aber zum Lernen und Spaß haben ist Marquee super!",
-			"task": "Erstelle ein einfaches Marquee:<br>1. Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu<br>2. Schreibe Text hinein wie 'Willkommen auf meiner Website!'",
+			"task": "Erstelle ein einfaches Marquee:<br>1. Füge ein <kbd>&lt;marquee&gt;</kbd>-Element hinzu<br>2. Schreibe Text hinein wie <code>Willkommen auf meiner Website!</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); min-height: 150px; display: flex; align-items: center; } marquee { font-size: 2rem; color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; font-family: 'Courier New', monospace; }",
 			"sandboxCSS": "",
