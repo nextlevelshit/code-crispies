@@ -3,12 +3,12 @@
 	"id": "transitions-animations",
 	"title": "CSS Animations",
 	"description": "Bring interactivity to your UI by smoothly transitioning properties and creating keyframe-driven animations.",
-	"difficulty": "beginner",
+	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "transitions-1",
 			"title": "Transitions",
-			"description": "Learn how to apply <kbd>transition</kbd> to properties for smooth changes on state changes.<br><br><pre>.element {\n  transition: property duration;\n  /* e.g. transition: background-color 0.3s; */\n}</pre>",
+			"description": "Learn how to apply <kbd>transition</kbd> to properties for smooth changes on state changes.<br><br><pre>transition: property duration;\n/* e.g. transition: background-color 0.3s; */</pre>",
 			"task": "Add <kbd>transition: background-color 0.3s</kbd> to <kbd>.btn</kbd> so the color fades smoothly on hover.",
 			"previewHTML": "<button class=\"btn\">Hover Me</button>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: black; color: white; padding: 0.5rem 1rem; border: none; cursor: pointer; } .btn:hover { background: white; color: black; }",
@@ -63,7 +63,7 @@
 		{
 			"id": "transitions-3",
 			"title": "Keyframes",
-			"description": "Create named animations using <kbd>@keyframes</kbd> and apply them via the <kbd>animation</kbd> shorthand.<br><br><pre>@keyframes name {\n  0%   { transform: scale(1); }\n  50%  { transform: scale(1.2); }\n  100% { transform: scale(1); }\n}\n.element {\n  animation: name 1s infinite;\n}</pre>",
+			"description": "Create named animations using <kbd>@keyframes</kbd> and apply them via the <kbd>animation</kbd> shorthand.<br><br><pre>@keyframes bounce {\n  50% { transform: translateY(-20px); }\n}\n.ball {\n  animation: bounce 1s infinite;\n}</pre>",
 			"task": "Define a keyframe at <kbd>50%</kbd> with <kbd>transform: translateY(-20px)</kbd> and apply <kbd>animation: bounce 1s infinite</kbd> to <kbd>.ball</kbd>.",
 			"previewHTML": "<div class=\"ball\"></div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .ball { width: 50px; height: 50px; background: crimson; border-radius: 50%; margin: 2rem auto; }",
@@ -102,7 +102,7 @@
 		},
 		{
 			"id": "transitions-4",
-			"title": "Anim Properties",
+			"title": "Animation Properties",
 			"description": "Fine-tune animations with <kbd>animation-delay</kbd>, <kbd>animation-iteration-count</kbd>, <kbd>animation-direction</kbd>, and <kbd>animation-fill-mode</kbd>.",
 			"task": "Apply the <kbd>pulse</kbd> animation to <kbd>.box</kbd> with <kbd>animation-name: pulse</kbd>, <kbd>animation-duration: 2s</kbd>, <kbd>animation-delay: 1s</kbd>, <kbd>animation-iteration-count: 2</kbd>, and <kbd>animation-fill-mode: forwards</kbd>.",
 			"previewHTML": "<div class=\"box\">Pulse</div>",
