@@ -1,0 +1,29 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(git add:*)",
+			"Bash(git commit:*)",
+			"Bash(git push:*)",
+			"Bash(npm run build:*)",
+			"Bash(grep:*)",
+			"Bash(npm run format.lessons:*)",
+			"Bash(xargs:*)",
+			"Bash(cat:*)",
+			"Bash(prettier --write:*)"
+		],
+		"deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"]
+	},
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Write(lessons/**/*.json)",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "npm run format.lessons 2>/dev/null || true"
+					}
+				]
+			}
+		]
+	}
+}
