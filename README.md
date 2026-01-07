@@ -217,7 +217,19 @@ npm run preview
 
 ## 🌐 Internationalization
 
-The project supports multilingual documentation in the `docs/` directory:
+The project supports multiple languages:
+
+### Localized Lessons
+Lessons are available in the `lessons/` directory with language-specific subdirectories:
+- English (default): `lessons/*.json`
+- Arabic: `lessons/ar/`
+- German: `lessons/de/`
+- Spanish: `lessons/es/`
+- Polish: `lessons/pl/`
+- Ukrainian: `lessons/uk/`
+
+### Documentation
+Multilingual documentation in the `docs/` directory:
 - English documentation (`en-*.md`)
 - German documentation (`de-*.md`)
 
@@ -244,4 +256,4 @@ When adding new lessons:
 
 ## 📄 License
 
-Copyright (c) 2025 Michael Czechowski. Licensed under the [./LICENSE](WTFPL).
+Copyright (c) 2026 Michael Czechowski. Licensed under the [./LICENSE](WTFPL).
