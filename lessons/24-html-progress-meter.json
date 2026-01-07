@@ -88,8 +88,28 @@
 				},
 				{
 					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "min", "value": "0" },
+					"message": "Set <kbd>min=</kbd>\"0\" on the meter"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "max", "value": "1" },
+					"message": "Set <kbd>max=</kbd>\"1\" on the meter"
+				},
+				{
+					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "low", "value": "0.2" },
 					"message": "Set <kbd>low=</kbd>\"0.2\" to define the low threshold"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "high", "value": "0.8" },
+					"message": "Set <kbd>high=</kbd>\"0.8\" to define the high threshold"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "optimum", "value": "1" },
+					"message": "Set <kbd>optimum=</kbd>\"1\" to indicate the optimal value"
 				},
 				{
 					"type": "element_exists",

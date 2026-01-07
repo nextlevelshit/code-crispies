@@ -186,7 +186,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": ".card.featured { border-color: gold; background-color: lemonchiffon }",
+			"solution": ".card.featured { border-color: gold; background-color: lemonchiffon; }",
 			"validations": [
 				{
 					"type": "regex",
@@ -394,7 +394,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": "p.note,\nli.important,\n#summary {\n  background-color: lightyellow;\n  border-left: 3px solid gold;\n  padding-left: 10px\n}",
+			"solution": "p.note,\nli.important,\n#summary {\n  background-color: lightyellow;\n  border-left: 3px solid gold;\n  padding-left: 10px;\n}",
 			"validations": [
 				{
 					"type": "contains",
@@ -542,7 +542,7 @@
 				{
 					"type": "contains",
 					"value": "green",
-					"message": ""
+					"message": "Set the color to <kbd>green</kbd>"
 				}
 			]
 		}
