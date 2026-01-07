@@ -232,9 +232,7 @@ describe("HTML Validator", () => {
 			const userHtml = "<p>Hello world</p>";
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_exists", value: "p", message: "Add a paragraph" }
-				]
+				validations: [{ type: "element_exists", value: "p", message: "Add a paragraph" }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -242,9 +240,7 @@ describe("HTML Validator", () => {
 
 			const failResult = validateUserCode(userHtml, {
 				mode: "html",
-				validations: [
-					{ type: "element_exists", value: "div", message: "Add a div" }
-				]
+				validations: [{ type: "element_exists", value: "div", message: "Add a div" }]
 			});
 			expect(failResult.isValid).toBe(false);
 			expect(failResult.message).toBe("Add a div");
@@ -254,9 +250,7 @@ describe("HTML Validator", () => {
 			const userHtml = "<ul><li>One</li><li>Two</li><li>Three</li></ul>";
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_count", value: { selector: "li", count: 3 }, message: "Need 3 items" }
-				]
+				validations: [{ type: "element_count", value: { selector: "li", count: 3 }, message: "Need 3 items" }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -264,9 +258,7 @@ describe("HTML Validator", () => {
 
 			const failLesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_count", value: { selector: "li", count: 5 }, message: "Need 5 items" }
-				]
+				validations: [{ type: "element_count", value: { selector: "li", count: 5 }, message: "Need 5 items" }]
 			};
 			const failResult = validateUserCode(userHtml, failLesson);
 			expect(failResult.isValid).toBe(false);
@@ -276,9 +268,7 @@ describe("HTML Validator", () => {
 			const userHtml = "<div><span>A</span><span>B</span></div>";
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_count", value: { selector: "span", min: 2 }, message: "Need at least 2 spans" }
-				]
+				validations: [{ type: "element_count", value: { selector: "span", min: 2 }, message: "Need at least 2 spans" }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -289,9 +279,7 @@ describe("HTML Validator", () => {
 			const userHtml = '<input type="email" required>';
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "attribute_value", value: { selector: "input", attr: "type", value: "email" } }
-				]
+				validations: [{ type: "attribute_value", value: { selector: "input", attr: "type", value: "email" } }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -300,9 +288,7 @@ describe("HTML Validator", () => {
 			// Test boolean attribute (required)
 			const boolLesson = {
 				mode: "html",
-				validations: [
-					{ type: "attribute_value", value: { selector: "input", attr: "required", value: true } }
-				]
+				validations: [{ type: "attribute_value", value: { selector: "input", attr: "required", value: true } }]
 			};
 			const boolResult = validateUserCode(userHtml, boolLesson);
 			expect(boolResult.isValid).toBe(true);
@@ -312,9 +298,7 @@ describe("HTML Validator", () => {
 			const userHtml = "<form><label>Name</label><input></form>";
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "parent_child", value: { parent: "form", child: "input" }, message: "Input should be inside form" }
-				]
+				validations: [{ type: "parent_child", value: { parent: "form", child: "input" }, message: "Input should be inside form" }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -329,9 +313,7 @@ describe("HTML Validator", () => {
 			const userHtml = "<button>Submit</button>";
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_text", value: { selector: "button", text: "Submit" } }
-				]
+				validations: [{ type: "element_text", value: { selector: "button", text: "Submit" } }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);
@@ -339,9 +321,7 @@ describe("HTML Validator", () => {
 
 			const failLesson = {
 				mode: "html",
-				validations: [
-					{ type: "element_text", value: { selector: "button", text: "Cancel" }, message: "Button should say Cancel" }
-				]
+				validations: [{ type: "element_text", value: { selector: "button", text: "Cancel" }, message: "Button should say Cancel" }]
 			};
 			const failResult = validateUserCode(userHtml, failLesson);
 			expect(failResult.isValid).toBe(false);
@@ -351,9 +331,7 @@ describe("HTML Validator", () => {
 			const userHtml = '<div class="container">Content</div>';
 			const lesson = {
 				mode: "html",
-				validations: [
-					{ type: "contains", value: "container" }
-				]
+				validations: [{ type: "contains", value: "container" }]
 			};
 
 			const result = validateUserCode(userHtml, lesson);

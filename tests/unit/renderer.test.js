@@ -50,9 +50,7 @@ describe("Renderer Module", () => {
 
 		test("should expand module and show lessons on click", () => {
 			const container = document.getElementById("module-list");
-			const modules = [
-				{ id: "mod1", title: "Module 1", lessons: [{ title: "Lesson A" }, { title: "Lesson B" }] }
-			];
+			const modules = [{ id: "mod1", title: "Module 1", lessons: [{ title: "Lesson A" }, { title: "Lesson B" }] }];
 			const onSelectLesson = vi.fn();
 
 			renderModuleList(container, modules, vi.fn(), onSelectLesson);
