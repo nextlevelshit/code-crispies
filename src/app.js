@@ -7,7 +7,8 @@ import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
-		disableFeedbackErrors: false
+		disableFeedbackErrors: false,
+		skipResetCodeConfirmation: false
 	},
 	showExpected: false
 };
@@ -62,7 +63,12 @@ const elements = {
 	resetDialog: document.getElementById("reset-dialog"),
 	resetDialogClose: document.getElementById("reset-dialog-close"),
 	cancelReset: document.getElementById("cancel-reset"),
-	confirmReset: document.getElementById("confirm-reset")
+	confirmReset: document.getElementById("confirm-reset"),
+	resetCodeDialog: document.getElementById("reset-code-dialog"),
+	resetCodeDialogClose: document.getElementById("reset-code-dialog-close"),
+	cancelResetCode: document.getElementById("cancel-reset-code"),
+	confirmResetCode: document.getElementById("confirm-reset-code"),
+	resetCodeDontShow: document.getElementById("reset-code-dont-show")
 };
 
 // Initialize the lesson engine - now the single source of truth
@@ -675,6 +681,35 @@ function handleResetConfirm() {
 	updateProgressDisplay();
 }
 
+function showResetCodeConfirmation() {
+	// Reset the checkbox state each time dialog is shown
+	elements.resetCodeDontShow.checked = false;
+	elements.resetCodeDialog.showModal();
+}
+
+function closeResetCodeDialog() {
+	elements.resetCodeDialog.close();
+}
+
+function handleResetCodeConfirm() {
+	// Save preference if checkbox is checked
+	if (elements.resetCodeDontShow.checked) {
+		state.userSettings.skipResetCodeConfirmation = true;
+		saveUserSettings();
+	}
+
+	closeResetCodeDialog();
+	resetCode();
+}
+
+function handleResetCodeClick() {
+	if (state.userSettings.skipResetCodeConfirmation) {
+		resetCode();
+	} else {
+		showResetCodeConfirmation();
+	}
+}
+
 // ================= INITIALIZATION =================
 
 function initCodeEditor() {
@@ -746,7 +781,7 @@ function init() {
 	elements.redoBtn.addEventListener("click", () => {
 		if (codeEditor) codeEditor.redo();
 	});
-	elements.resetCodeBtn.addEventListener("click", resetCode);
+	elements.resetCodeBtn.addEventListener("click", handleResetCodeClick);
 
 	// Dialogs
 	elements.helpBtn.addEventListener("click", showHelp);
@@ -761,6 +796,12 @@ function init() {
 	});
 	elements.cancelReset.addEventListener("click", closeResetDialog);
 	elements.confirmReset.addEventListener("click", handleResetConfirm);
+	elements.resetCodeDialogClose.addEventListener("click", closeResetCodeDialog);
+	elements.resetCodeDialog.addEventListener("click", (e) => {
+		if (e.target === elements.resetCodeDialog) closeResetCodeDialog();
+	});
+	elements.cancelResetCode.addEventListener("click", closeResetCodeDialog);
+	elements.confirmResetCode.addEventListener("click", handleResetCodeConfirm);
 
 	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
