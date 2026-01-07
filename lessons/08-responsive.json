@@ -8,7 +8,7 @@
 		{
 			"id": "responsive-1",
 			"title": "Media Queries",
-			"description": "Understand the syntax and use cases for CSS media queries to apply styles conditionally based on viewport characteristics.<br><br><pre>@media (max-width: 600px) {\n  .element {\n    background: lightcoral;\n  }\n}</pre>",
+			"description": "Understand the syntax and use cases for CSS media queries to apply styles conditionally based on viewport characteristics.<br><br><pre>@media (max-width: 600px) {\n  .panel {\n    background: lightcoral;\n  }\n}</pre>",
 			"task": "Write a media query with <kbd>@media (max-width: 600px)</kbd> that changes <kbd>.panel</kbd> background to <kbd>lightcoral</kbd>.",
 			"previewHTML": "<div class=\"panel\">Resize the window</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .panel { padding: 1rem; background: lightblue; }",
@@ -58,7 +58,7 @@
 		},
 		{
 			"id": "responsive-3",
-			"title": "Flex Grids",
+			"title": "Responsive Grid",
 			"description": "Combine CSS Grid with <kbd>auto-fit</kbd> or <kbd>auto-fill</kbd> for responsive column layouts.",
 			"task": "Add <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</kbd>, and <kbd>gap: 1rem</kbd> to <kbd>.cards</kbd>.",
 			"previewHTML": "<div class=\"cards\"><div>1</div><div>2</div><div>3</div><div>4</div></div>",
