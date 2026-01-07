@@ -12,7 +12,7 @@
 		"test.watch": "vitest watch",
 		"test.coverage": "vitest run --coverage",
 		"format": "prettier --write src/ tests/ schemas/ package.json vite.config.js vitest.config.js",
-		"format.lessons": "prettier --write lessons/*.json"
+		"format.lessons": "prettier --write 'lessons/**/*.json'"
 	},
 	"keywords": [
 		"css",
@@ -22,7 +22,7 @@
 		"education"
 	],
 	"author": "Michael Czechowski <mail@dailysh.it>",
-	"license": "Copyright 2025 (c) Michael Czechowski",
+	"license": "Copyright 2026 (c) Michael Czechowski",
 	"devDependencies": {
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/jest-dom": "^6.6.3",
