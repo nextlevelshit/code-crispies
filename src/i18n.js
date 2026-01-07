@@ -49,7 +49,8 @@ const translations = {
 		// Help dialog
 		helpTitle: "Help",
 		aboutTitle: "About Code Crispies",
-		aboutText: "Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!",
+		aboutText:
+			"Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!",
 		learningModesTitle: "Learning Modes",
 		modeCss: "<strong>CSS</strong> - Write CSS rules to style elements",
 		modeTailwind: "<strong>Tailwind</strong> - Apply utility classes directly in HTML",
@@ -84,13 +85,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "Contact & Links",
-		contactText: "Code Crispies is developed by <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
+		contactText: 'Code Crispies is developed by <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Reset Progress",
 		resetDialogText: "Are you sure you want to reset all your progress? This cannot be undone.",
 		cancel: "Cancel",
 		resetAll: "Reset All",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "Reset Code",
+		resetCodeDialogText: "Reset your code to the initial state for this lesson?",
+		dontShowAgain: "Don't show this again",
+		reset: "Reset",
 
 		// Dynamic content
 		loadingFallbackText: "Could not load lesson. Please select one from the menu or check the help.",
@@ -149,13 +156,15 @@ const translations = {
 		// Help dialog
 		helpTitle: "Hilfe",
 		aboutTitle: "Über Code Crispies",
-		aboutText: "Code Crispies ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich - einfach loslegen!",
+		aboutText:
+			"Code Crispies ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich - einfach loslegen!",
 		learningModesTitle: "Lernmodi",
 		modeCss: "<strong>CSS</strong> - Schreibe CSS-Regeln zum Stylen von Elementen",
 		modeTailwind: "<strong>Tailwind</strong> - Wende Utility-Klassen direkt im HTML an",
 		modeHtml: "<strong>HTML</strong> - Übe semantisches Markup und native Elemente",
 		gettingStartedTitle: "Erste Schritte",
-		gettingStartedText: "Öffne das Menü (☰), um Lektionsmodule zu durchsuchen. Jedes Modul behandelt ein Thema mit aufeinander aufbauenden Übungen.",
+		gettingStartedText:
+			"Öffne das Menü (☰), um Lektionsmodule zu durchsuchen. Jedes Modul behandelt ein Thema mit aufeinander aufbauenden Übungen.",
 		completingLessonsTitle: "Lektionen abschließen",
 		completingStep1: "Lies die Aufgabenstellung auf der linken Seite",
 		completingStep2: "Schreibe deinen Code im Editor",
@@ -184,13 +193,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "Kontakt & Links",
-		contactText: "Code Crispies wird von <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> entwickelt",
+		contactText: 'Code Crispies wird von <a href="https://librete.ch" target="_blank">LibreTECH</a> entwickelt',
 
 		// Reset dialog
 		resetDialogTitle: "Fortschritt zurücksetzen",
 		resetDialogText: "Bist du sicher, dass du deinen gesamten Fortschritt zurücksetzen möchtest? Dies kann nicht rückgängig gemacht werden.",
 		cancel: "Abbrechen",
 		resetAll: "Alles zurücksetzen",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "Code zurücksetzen",
+		resetCodeDialogText: "Code auf den Anfangszustand dieser Lektion zurücksetzen?",
+		dontShowAgain: "Nicht mehr anzeigen",
+		reset: "Zurücksetzen",
 
 		// Dynamic content
 		loadingFallbackText: "Lektion konnte nicht geladen werden. Bitte wähle eine aus dem Menü oder prüfe die Hilfe.",
@@ -250,7 +265,8 @@ const translations = {
 		// Help dialog
 		helpTitle: "Pomoc",
 		aboutTitle: "O Code Crispies",
-		aboutText: "Code Crispies to darmowa platforma open-source do nauki tworzenia stron internetowych poprzez praktyczne ćwiczenia. Nie wymaga konta - po prostu zacznij kodować!",
+		aboutText:
+			"Code Crispies to darmowa platforma open-source do nauki tworzenia stron internetowych poprzez praktyczne ćwiczenia. Nie wymaga konta - po prostu zacznij kodować!",
 		learningModesTitle: "Tryby nauki",
 		modeCss: "<strong>CSS</strong> - Pisz reguły CSS do stylizowania elementów",
 		modeTailwind: "<strong>Tailwind</strong> - Stosuj klasy utility bezpośrednio w HTML",
@@ -285,13 +301,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "Kontakt i linki",
-		contactText: "Code Crispies jest rozwijany przez <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
+		contactText: 'Code Crispies jest rozwijany przez <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Resetuj postęp",
 		resetDialogText: "Czy na pewno chcesz zresetować cały postęp? Tej operacji nie można cofnąć.",
 		cancel: "Anuluj",
 		resetAll: "Resetuj wszystko",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "Resetuj kod",
+		resetCodeDialogText: "Przywrócić kod do stanu początkowego tej lekcji?",
+		dontShowAgain: "Nie pokazuj ponownie",
+		reset: "Resetuj",
 
 		// Dynamic content
 		loadingFallbackText: "Nie można załadować lekcji. Wybierz jedną z menu lub sprawdź pomoc.",
@@ -351,13 +373,15 @@ const translations = {
 		// Help dialog
 		helpTitle: "Ayuda",
 		aboutTitle: "Acerca de Code Crispies",
-		aboutText: "Code Crispies es una plataforma gratuita de código abierto para aprender desarrollo web a través de ejercicios prácticos. No se requiere cuenta, ¡solo empieza a programar!",
+		aboutText:
+			"Code Crispies es una plataforma gratuita de código abierto para aprender desarrollo web a través de ejercicios prácticos. No se requiere cuenta, ¡solo empieza a programar!",
 		learningModesTitle: "Modos de aprendizaje",
 		modeCss: "<strong>CSS</strong> - Escribe reglas CSS para estilizar elementos",
 		modeTailwind: "<strong>Tailwind</strong> - Aplica clases de utilidad directamente en HTML",
 		modeHtml: "<strong>HTML</strong> - Practica marcado semántico y elementos nativos",
 		gettingStartedTitle: "Primeros pasos",
-		gettingStartedText: "Abre el menú (☰) para explorar los módulos de lecciones. Cada módulo cubre un tema específico con ejercicios progresivos.",
+		gettingStartedText:
+			"Abre el menú (☰) para explorar los módulos de lecciones. Cada módulo cubre un tema específico con ejercicios progresivos.",
 		completingLessonsTitle: "Completar lecciones",
 		completingStep1: "Lee las instrucciones de la tarea a la izquierda",
 		completingStep2: "Escribe tu código en el editor",
@@ -386,13 +410,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "Contacto y enlaces",
-		contactText: "Code Crispies es desarrollado por <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
+		contactText: 'Code Crispies es desarrollado por <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Reiniciar progreso",
 		resetDialogText: "¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.",
 		cancel: "Cancelar",
 		resetAll: "Reiniciar todo",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "Reiniciar código",
+		resetCodeDialogText: "¿Restaurar el código al estado inicial de esta lección?",
+		dontShowAgain: "No mostrar de nuevo",
+		reset: "Reiniciar",
 
 		// Dynamic content
 		loadingFallbackText: "No se pudo cargar la lección. Selecciona una del menú o consulta la ayuda.",
@@ -487,13 +517,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "التواصل والروابط",
-		contactText: "Code Crispies تم تطويره بواسطة <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
+		contactText: 'Code Crispies تم تطويره بواسطة <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "إعادة تعيين التقدم",
 		resetDialogText: "هل أنت متأكد أنك تريد إعادة تعيين كل تقدمك؟ لا يمكن التراجع عن هذا الإجراء.",
 		cancel: "إلغاء",
 		resetAll: "إعادة تعيين الكل",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "إعادة تعيين الكود",
+		resetCodeDialogText: "استعادة الكود إلى الحالة الأولية لهذا الدرس؟",
+		dontShowAgain: "لا تظهر هذا مرة أخرى",
+		reset: "إعادة تعيين",
 
 		// Dynamic content
 		loadingFallbackText: "تعذر تحميل الدرس. اختر واحدًا من القائمة أو تحقق من المساعدة.",
@@ -553,7 +589,8 @@ const translations = {
 		// Help dialog
 		helpTitle: "Допомога",
 		aboutTitle: "Про Code Crispies",
-		aboutText: "Code Crispies — це безкоштовна платформа з відкритим кодом для вивчення веб-розробки через практичні вправи. Обліковий запис не потрібен — просто починайте кодувати!",
+		aboutText:
+			"Code Crispies — це безкоштовна платформа з відкритим кодом для вивчення веб-розробки через практичні вправи. Обліковий запис не потрібен — просто починайте кодувати!",
 		learningModesTitle: "Режими навчання",
 		modeCss: "<strong>CSS</strong> - Пишіть правила CSS для стилізації елементів",
 		modeTailwind: "<strong>Tailwind</strong> - Застосовуйте утилітарні класи безпосередньо в HTML",
@@ -588,13 +625,19 @@ const translations = {
 
 		// Contact
 		contactTitle: "Контакти та посилання",
-		contactText: "Code Crispies розроблено <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a>",
+		contactText: 'Code Crispies розроблено <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Скинути прогрес",
 		resetDialogText: "Ви впевнені, що хочете скинути весь свій прогрес? Цю дію неможливо скасувати.",
 		cancel: "Скасувати",
 		resetAll: "Скинути все",
+
+		// Reset code dialog
+		resetCodeDialogTitle: "Скинути код",
+		resetCodeDialogText: "Відновити код до початкового стану цього уроку?",
+		dontShowAgain: "Більше не показувати",
+		reset: "Скинути",
 
 		// Dynamic content
 		loadingFallbackText: "Не вдалося завантажити урок. Виберіть один з меню або перевірте допомогу.",

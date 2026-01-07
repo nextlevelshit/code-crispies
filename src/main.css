@@ -98,7 +98,8 @@ body {
 	overflow: hidden;
 }
 
-code, kbd {
+code,
+kbd {
 	font-family: var(--font-code);
 }
 
@@ -272,8 +273,12 @@ code, kbd {
 }
 
 @keyframes fadeIn {
-	from { opacity: 0; }
-	to { opacity: 1; }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .module-pill {
@@ -656,7 +661,9 @@ code, kbd {
 	background: rgba(0, 0, 0, 0.4);
 	opacity: 0;
 	visibility: hidden;
-	transition: opacity 0.3s, visibility 0.3s;
+	transition:
+		opacity 0.3s,
+		visibility 0.3s;
 	z-index: 199;
 }
 
@@ -1053,7 +1060,6 @@ input:checked + .toggle-slider::before {
 	font-size: 0.9rem;
 	color: var(--text-color);
 }
-
 
 /* ================= DIALOG (Native HTML) ================= */
 .dialog {

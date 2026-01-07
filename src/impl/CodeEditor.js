@@ -12,19 +12,22 @@ import { autocompletion } from "@codemirror/autocomplete";
 import { abbreviationTracker, expandAbbreviation } from "@emmetio/codemirror6-plugin";
 
 // Custom overrides for One Dark theme
-const editorTheme = EditorView.theme({
-	"&": {
-		height: "100%",
-		fontSize: "14px"
+const editorTheme = EditorView.theme(
+	{
+		"&": {
+			height: "100%",
+			fontSize: "14px"
+		},
+		".cm-content": {
+			fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+			padding: "12px 0"
+		},
+		".cm-line": {
+			padding: "0 12px"
+		}
 	},
-	".cm-content": {
-		fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-		padding: "12px 0"
-	},
-	".cm-line": {
-		padding: "0 12px"
-	}
-}, { dark: true });
+	{ dark: true }
+);
 
 export class CodeEditor {
 	constructor(container, options = {}) {
@@ -55,19 +58,16 @@ export class CodeEditor {
 			// Emmet abbreviation tracking
 			abbreviationTracker(),
 			// High priority keymap for Emmet
-			Prec.highest(keymap.of([
-				{
-					key: "Tab",
-					run: expandAbbreviation
-				}
-			])),
+			Prec.highest(
+				keymap.of([
+					{
+						key: "Tab",
+						run: expandAbbreviation
+					}
+				])
+			),
 			// Standard keymaps including history (Ctrl+Z, Ctrl+Shift+Z)
-			keymap.of([
-				...historyKeymap,
-				{ key: "Tab", run: indentMore },
-				{ key: "Shift-Tab", run: indentLess },
-				...defaultKeymap
-			]),
+			keymap.of([...historyKeymap, { key: "Tab", run: indentMore }, { key: "Shift-Tab", run: indentLess }, ...defaultKeymap]),
 			autocompletion({
 				activateOnTyping: true,
 				maxRenderedOptions: 10

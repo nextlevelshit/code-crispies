@@ -19,6 +19,7 @@ import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlMarqueeEN from "../../lessons/31-html-marquee.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
 import flexboxEN from "../../lessons/flexbox.json";
+import goodbyeEN from "../../lessons/99-goodbye.json";
 
 // German lesson imports
 import welcomeDE from "../../lessons/de/00-welcome.json";
@@ -128,7 +129,9 @@ const moduleStoreEN = [
 	flexboxEN,
 	responsiveEN,
 	// CSS Animationen
-	transitionsAnimationsEN
+	transitionsAnimationsEN,
+	// Goodbye
+	goodbyeEN
 ];
 
 // German module store - ordered by learning path
@@ -154,7 +157,9 @@ const moduleStoreDE = [
 	flexboxDE,
 	responsiveDE,
 	// CSS Animationen
-	transitionsAnimationsDE
+	transitionsAnimationsDE,
+	// Goodbye
+	goodbyeEN
 ];
 
 // Polish module store - ordered by learning path
@@ -173,7 +178,8 @@ const moduleStorePL = [
 	unitsVariablesPL,
 	flexboxPL,
 	responsivePL,
-	transitionsAnimationsPL
+	transitionsAnimationsPL,
+	goodbyeEN
 ];
 
 // Spanish module store - ordered by learning path
@@ -192,7 +198,8 @@ const moduleStoreES = [
 	unitsVariablesES,
 	flexboxES,
 	responsiveES,
-	transitionsAnimationsES
+	transitionsAnimationsES,
+	goodbyeEN
 ];
 
 // Arabic module store - ordered by learning path
@@ -211,7 +218,8 @@ const moduleStoreAR = [
 	unitsVariablesAR,
 	flexboxAR,
 	responsiveAR,
-	transitionsAnimationsAR
+	transitionsAnimationsAR,
+	goodbyeEN
 ];
 
 // Ukrainian module store - ordered by learning path
@@ -230,7 +238,8 @@ const moduleStoreUK = [
 	unitsVariablesUK,
 	flexboxUK,
 	responsiveUK,
-	transitionsAnimationsUK
+	transitionsAnimationsUK,
+	goodbyeEN
 ];
 
 // Map of language codes to module stores

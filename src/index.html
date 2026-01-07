@@ -4,7 +4,10 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Code Crispies - Free, open-source platform for learning HTML and CSS through hands-on exercises. Master semantic markup, selectors, flexbox, animations and more." />
+		<meta
+			name="description"
+			content="Code Crispies - Free, open-source platform for learning HTML and CSS through hands-on exercises. Master semantic markup, selectors, flexbox, animations and more."
+		/>
 		<title>Code Crispies - Learn HTML & CSS Interactively</title>
 		<link rel="stylesheet" href="main.css" />
 	</head>
@@ -41,15 +44,20 @@
 									<div class="editor-tools">
 										<button id="undo-btn" class="btn btn-icon" data-i18n-title="undoTitle" title="Undo (Ctrl+Z)">↶</button>
 										<button id="redo-btn" class="btn btn-icon" data-i18n-title="redoTitle" title="Redo (Ctrl+Shift+Z)">↷</button>
-										<button id="reset-code-btn" class="btn btn-icon" data-i18n-title="resetCodeTitle" title="Reset to initial code">⟲</button>
+										<button
+											id="reset-code-btn"
+											class="btn btn-icon"
+											data-i18n-title="resetCodeTitle"
+											title="Reset to initial code"
+										>
+											⟲
+										</button>
 									</div>
-									<button id="run-btn" class="btn btn-run">
-										<img src="./gear.svg" alt="" /><span data-i18n="run">Run</span>
-									</button>
+									<button id="run-btn" class="btn btn-run"><img src="./gear.svg" alt="" /><span data-i18n="run">Run</span></button>
 								</div>
 							</div>
 							<div class="editor-content">
-								<textarea id="code-input" class="code-input" spellcheck="false" autocomplete="off" style="display: none;"></textarea>
+								<textarea id="code-input" class="code-input" spellcheck="false" autocomplete="off" style="display: none"></textarea>
 							</div>
 						</div>
 						<div class="hint-area" id="hint-area"></div>
@@ -142,7 +150,10 @@
 				</div>
 				<div class="dialog-content">
 					<h4 data-i18n="aboutTitle">About Code Crispies</h4>
-					<p data-i18n="aboutText">Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!</p>
+					<p data-i18n="aboutText">
+						Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required -
+						just start coding!
+					</p>
 
 					<h4 data-i18n="learningModesTitle">Learning Modes</h4>
 					<ul>
@@ -152,7 +163,9 @@
 					</ul>
 
 					<h4 data-i18n="gettingStartedTitle">Getting Started</h4>
-					<p data-i18n="gettingStartedText">Open the menu (☰) to browse lesson modules. Each module covers a specific topic with progressive exercises.</p>
+					<p data-i18n="gettingStartedText">
+						Open the menu (☰) to browse lesson modules. Each module covers a specific topic with progressive exercises.
+					</p>
 
 					<h4 data-i18n="completingLessonsTitle">Completing Lessons</h4>
 					<ol>
@@ -204,6 +217,26 @@
 						<li><a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a> – Public mirror</li>
 						<li><a href="https://www.linkedin.com/in/michael-werner-czechowski" target="_blank">LinkedIn</a> – Michael Czechowski</li>
 					</ul>
+				</div>
+			</dialog>
+
+			<!-- Reset Code Confirmation Dialog -->
+			<dialog id="reset-code-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3 data-i18n="resetCodeDialogTitle">Reset Code</h3>
+					<button id="reset-code-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<p data-i18n="resetCodeDialogText">Reset your code to the initial state for this lesson?</p>
+					<label class="toggle-switch" style="margin: 1rem 0">
+						<input type="checkbox" id="reset-code-dont-show" />
+						<span class="toggle-slider"></span>
+						<span class="toggle-label" data-i18n="dontShowAgain">Don't show this again</span>
+					</label>
+					<div class="dialog-actions">
+						<button id="cancel-reset-code" class="btn" data-i18n="cancel">Cancel</button>
+						<button id="confirm-reset-code" class="btn btn-ghost" data-i18n="reset">Reset</button>
+					</div>
 				</div>
 			</dialog>
 
