@@ -3,3 +3,6 @@
 node_modules
 dist
 coverage
+
+# Claude Code local settings (user-specific)
+.claude/settings.local.json
