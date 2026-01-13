@@ -1,15 +1,15 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "grid",
-	"title": "Grid",
+	"title": "CSS Grid",
 	"description": "Master the grid layout system for complex two-dimensional layouts",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "grid-1",
-			"title": "Grid Container Basics",
-			"description": "Learn how to create a grid container and define basic grid structures.<br><br><pre>.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}</pre>",
-			"task": "Create a <kbd>.grid</kbd> with <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(3, 1fr)</kbd>, and <kbd>gap: 1rem</kbd>.",
+			"title": "Grid Container",
+			"description": "CSS Grid is a two-dimensional layout system, meaning it can handle both columns AND rows simultaneously. While Flexbox excels at one-dimensional layouts (a single row or column), Grid shines when you need precise control over both dimensions.<br><br><strong>How it works:</strong> Set <kbd>display: grid</kbd> on a container. Then define your column structure with <kbd>grid-template-columns</kbd>. The <kbd>fr</kbd> unit represents a fraction of available space.<br><br><strong>Key properties:</strong><br>• <kbd>grid-template-columns</kbd> – Defines column sizes<br>• <kbd>repeat(3, 1fr)</kbd> – Creates 3 equal columns<br>• <kbd>gap</kbd> – Adds spacing between grid cells<br><br><pre>.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}</pre>",
+			"task": "Add <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(3, 1fr)</kbd>, and <kbd>gap: 1rem</kbd> to <kbd>.grid</kbd>.",
 			"previewHTML": "<div class='grid'><div class='item'>1</div><div class='item'>2</div><div class='item'>3</div><div class='item'>4</div><div class='item'>5</div><div class='item'>6</div></div>",
 			"previewBaseCSS": "body { font-family: system-ui, -apple-system, sans-serif; padding: 1.25rem; } .item { background-color: #9b59b6; color: white; padding: 1.25rem; text-align: center; font-weight: bold; }",
 			"sandboxCSS": ".grid { border: 0.125rem dashed #ccc; padding: 1rem; }",

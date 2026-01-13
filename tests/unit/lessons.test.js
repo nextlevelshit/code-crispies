@@ -27,7 +27,7 @@ describe("Lessons Config Module", () => {
 			modules.forEach((module) => {
 				module.lessons.forEach((lesson) => {
 					expect(lesson.mode).toBeDefined();
-					expect(["html", "css", "tailwind"]).toContain(lesson.mode);
+					expect(["html", "css", "tailwind", "playground"]).toContain(lesson.mode);
 				});
 			});
 		});
