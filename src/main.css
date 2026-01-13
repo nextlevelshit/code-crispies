@@ -550,13 +550,13 @@ kbd {
 	box-shadow: var(--shadow);
 	overflow: hidden;
 	min-height: 0;
-	border: 4px solid transparent;
+	border: 6px solid transparent;
 }
 
 .preview-frame {
 	width: 100%;
 	height: 100%;
-	padding: var(--spacing-sm);
+	padding: var(--spacing-xs);
 }
 
 .preview-frame iframe {
@@ -606,7 +606,7 @@ kbd {
 
 .preview-wrapper.matched {
 	--border-angle: 0deg;
-	border: 4px solid transparent;
+	border: 6px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
 		conic-gradient(
@@ -620,12 +620,12 @@ kbd {
 	animation: spin-border 2.5s linear forwards;
 }
 
-/* Glow effect layer */
+/* Colorful glow effect layer */
 .preview-wrapper.matched::before {
 	content: "";
 	position: absolute;
-	inset: -8px;
-	border-radius: calc(var(--border-radius-md) + 8px);
+	inset: -12px;
+	border-radius: calc(var(--border-radius-md) + 12px);
 	background: conic-gradient(
 		from var(--border-angle),
 		#9b59b6,
@@ -635,7 +635,7 @@ kbd {
 		#9b59b6
 	);
 	z-index: -1;
-	filter: blur(12px);
+	filter: blur(20px);
 	opacity: 0;
 	animation: spin-glow 2.5s linear forwards;
 }
@@ -656,11 +656,11 @@ kbd {
 @keyframes spin-glow {
 	0% {
 		--border-angle: 0deg;
-		opacity: 0.6;
+		opacity: 0.8;
 	}
 	80% {
 		--border-angle: -288deg;
-		opacity: 0.4;
+		opacity: 0.6;
 	}
 	100% {
 		--border-angle: -360deg;
