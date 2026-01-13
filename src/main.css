@@ -550,6 +550,7 @@ kbd {
 	box-shadow: var(--shadow);
 	overflow: hidden;
 	min-height: 0;
+	border: 4px solid transparent;
 }
 
 .preview-frame {
@@ -605,7 +606,7 @@ kbd {
 
 .preview-wrapper.matched {
 	--border-angle: 0deg;
-	border: 3px solid transparent;
+	border: 4px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
 		conic-gradient(
@@ -623,8 +624,8 @@ kbd {
 .preview-wrapper.matched::before {
 	content: "";
 	position: absolute;
-	inset: -6px;
-	border-radius: calc(var(--border-radius-md) + 6px);
+	inset: -8px;
+	border-radius: calc(var(--border-radius-md) + 8px);
 	background: conic-gradient(
 		from var(--border-angle),
 		#9b59b6,
