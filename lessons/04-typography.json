@@ -13,10 +13,11 @@
 			"previewHTML": "<p class=\"text\">This text shows the chosen font family.</p>",
 			"previewBaseCSS": "body { padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Set font family */\n.text {",
+			"codePrefix": ".text {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
+			"solution": "font-family: Georgia, serif;",
 			"validations": [
 				{
 					"type": "contains",
@@ -40,10 +41,11 @@
 			"previewHTML": "<h2 class=\"heading\">Readable Heading</h2>",
 			"previewBaseCSS": "body { padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Set size and line height */\n.heading {",
+			"codePrefix": ".heading {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
+			"solution": "font-size: 1.5rem;\n  line-height: 1.5;",
 			"validations": [
 				{ "type": "contains", "value": "font-size", "message": "Use <kbd>font-size</kbd> property", "options": { "caseSensitive": false } },
 				{
@@ -72,10 +74,11 @@
 			"previewHTML": "<p class=\"emphasis\">This text should stand out.</p>",
 			"previewBaseCSS": "body { padding: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Emphasize text */\n.emphasis {",
+			"codePrefix": ".emphasis {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
+			"solution": "font-style: italic;\n  font-weight: bold;",
 			"validations": [
 				{ "type": "contains", "value": "font-style", "message": "Use <kbd>font-style</kbd> property", "options": { "caseSensitive": false } },
 				{
@@ -104,10 +107,11 @@
 			"previewHTML": "<p class=\"fancy\">Fancy text effect!</p>",
 			"previewBaseCSS": "body { padding: 1rem; } .fancy { font-size: 1.25rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Decorate text */\n.fancy {",
+			"codePrefix": ".fancy {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
+			"solution": "text-decoration: underline;\n  text-shadow: 1px 1px 2px gray;",
 			"validations": [
 				{
 					"type": "contains",

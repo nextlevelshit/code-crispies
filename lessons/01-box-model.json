@@ -7,13 +7,13 @@
 	"lessons": [
 		{
 			"id": "box-model-1",
-			"title": "Box Model Components",
-			"description": "The CSS box model consists of four concentric layers: content area (innermost), padding, border, and margin (outermost). Understanding how these components interact is essential for precise layout control.",
-			"task": "Set <kbd>padding</kbd> to <kbd>1rem</kbd> to create space between the content and border.",
-			"previewHTML": "<div class=\"box\">Box Model Components</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: lavender; border: 2px dashed slategray; }",
+			"title": "Padding",
+			"description": "Every element in CSS is a box with four layers: content, padding, border, and margin. <strong>Padding</strong> creates breathing room between your content and the box's edge.<br><br>Without padding, text presses against borders awkwardly. Padding makes content readable and visually balanced.<br><br><pre>.card {\n  padding: 1rem;\n}</pre>",
+			"task": "This profile card looks cramped. Add <kbd>padding: 1rem</kbd> to <kbd>.card</kbd> so the text has room to breathe.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".box {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "padding: 1rem;",
@@ -28,56 +28,56 @@
 		},
 		{
 			"id": "box-model-2",
-			"title": "Adding Borders",
-			"description": "Borders outline an element, creating visual separation from surrounding content. The border shorthand accepts three values: width, style, and color.",
-			"task": "Set <kbd>border</kbd> to <kbd>2px solid darkslategray</kbd>.",
-			"previewHTML": "<div class=\"box\">This box needs a border</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: mintcream; padding: 1rem; }",
+			"title": "Borders",
+			"description": "Borders create visual boundaries around elements. The <kbd>border</kbd> shorthand takes three values: width, style, and color.<br><br>Common styles: <kbd>solid</kbd>, <kbd>dashed</kbd>, <kbd>dotted</kbd>, <kbd>none</kbd>",
+			"task": "Add a subtle left accent to the card with <kbd>border-left: 4px solid steelblue</kbd>.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".box {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "border: 2px solid darkslategray;",
+			"solution": "border-left: 4px solid steelblue;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
-					"message": "Set <kbd>border: 2px solid darkslategray</kbd>",
+					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
+					"message": "Set <kbd>border-left: 4px solid steelblue</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-3",
-			"title": "Adding Margins",
-			"description": "Margins create space between elements, controlling how they relate to one another within a layout. Unlike padding (which affects internal spacing), margins exist outside the element's border.",
-			"task": "Set <kbd>margin</kbd> to <kbd>1rem</kbd> to create space between this element and its neighbors.",
-			"previewHTML": "<div class=\"container\"><div class=\"outer\">This box needs margins</div><div class=\"neighbor\">Adjacent element</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .outer { background-color: plum; padding: 1rem; border: 2px solid orchid; } .neighbor { background-color: lightblue; padding: 1rem; border: 2px solid steelblue; }",
+			"title": "Margins",
+			"description": "Margins create space <em>outside</em> the element, separating it from neighbors. While padding pushes content inward, margins push other elements away.",
+			"task": "Add space between these two profile cards with <kbd>margin-bottom: 1rem</kbd> on <kbd>.card</kbd>.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article><article class=\"card\"><h3>Alex Rivera</h3><p>UX Designer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; border-left: 4px solid steelblue; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".outer {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin: 1rem;",
+			"solution": "margin-bottom: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": { "property": "margin", "expected": "1rem" },
-					"message": "Set <kbd>margin: 1rem</kbd>"
+					"value": { "property": "margin-bottom", "expected": "1rem" },
+					"message": "Set <kbd>margin-bottom: 1rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-4",
-			"title": "Box Sizing: Border-Box",
-			"description": "The <kbd>box-sizing</kbd> property determines how element dimensions are calculated. The default <kbd>content-box</kbd> excludes padding and border from width/height, while <kbd>border-box</kbd> includes them, making layout calculations more intuitive.",
-			"task": "Set <kbd>box-sizing</kbd> to <kbd>border-box</kbd> so padding and border are included in the width.",
-			"previewHTML": "<div class=\"sizing-demo\"><div class=\"box default\">Content-box (default)</div><div class=\"box sized\">Border-box</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 4px solid teal; background: lightcyan; } .default { box-sizing: content-box; }",
+			"title": "Box Sizing",
+			"description": "By default, <kbd>width</kbd> only sets the content width. Padding and borders add to the total. This causes layout headaches.<br><br><kbd>box-sizing: border-box</kbd> includes padding and border in the width, making sizing predictable. Most developers apply this to all elements.",
+			"task": "Both cards have <kbd>width: 200px</kbd>. The left uses default sizing (content-box), making it wider than expected. Fix the right card with <kbd>box-sizing: border-box</kbd>.",
+			"previewHTML": "<div class=\"demo\"><article class=\"card\">Content-box</article><article class=\"card fix\">Border-box</article></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .demo { display: flex; gap: 1rem; } .card { width: 200px; padding: 1rem; border: 4px solid steelblue; background: white; border-radius: 8px; }",
 			"sandboxCSS": "",
-			"codePrefix": ".sized {\n  ",
+			"codePrefix": ".fix {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "box-sizing: border-box;",
@@ -92,87 +92,98 @@
 		},
 		{
 			"id": "box-model-5",
-			"title": "Margin Collapse",
-			"description": "When two vertical margins meet, they collapse to the larger value instead of adding up. Understanding this behavior is crucial for consistent vertical spacing.",
-			"task": "Set <kbd>margin-bottom</kbd> to <kbd>2rem</kbd>. Notice the space between paragraphs equals 2rem (not 3rem) due to margin collapse.",
-			"previewHTML": "<div class=\"collapse-demo\"><p class=\"first\">This paragraph has a bottom margin.</p><p class=\"second\">This paragraph has a top margin of 1rem.</p></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .collapse-demo { border: 1px solid silver; padding: 8px; background: ghostwhite; } .second { margin-top: 1rem; background: linen; }",
+			"title": "Padding Shorthand",
+			"description": "Padding accepts 1-4 values:<br>• 1 value: all sides<br>• 2 values: vertical | horizontal<br>• 4 values: top | right | bottom | left",
+			"task": "This button needs more horizontal space than vertical. Set <kbd>padding: 8px 1rem</kbd> (8px top/bottom, 1rem left/right).",
+			"previewHTML": "<button class=\"btn\">Follow</button>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .btn { background: steelblue; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": ".first {\n  ",
+			"codePrefix": ".btn {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin-bottom: 2rem;",
+			"solution": "padding: 8px 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "margin-bottom", "expected": "2rem" },
-					"message": "Set <kbd>margin-bottom: 2rem</kbd>"
+					"type": "regex",
+					"value": "padding:\\s*8px\\s+1rem",
+					"message": "Set <kbd>padding: 8px 1rem</kbd>",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-6",
-			"title": "Margin Shorthand Notation",
-			"description": "The margin shorthand can set all four sides at once. Two values set vertical (top/bottom) and horizontal (left/right) margins respectively.",
-			"task": "Set <kbd>margin</kbd> to <kbd>1rem 2rem</kbd> for 1rem top/bottom and 2rem left/right.",
-			"previewHTML": "<div class=\"container\"><div class=\"spaced\">This box needs margins: 1rem top/bottom, 2rem left/right</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .spaced { background-color: honeydew; border: 2px solid mediumseagreen; padding: 1rem; }",
+			"title": "Margin Shorthand",
+			"description": "Margin uses the same shorthand pattern as padding. A common pattern is centering block elements horizontally with <kbd>margin: 0 auto</kbd>.",
+			"task": "Center this card horizontally. Set <kbd>margin: 0 auto</kbd> to auto-calculate equal left/right margins.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { width: 250px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; border-left: 4px solid steelblue; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".spaced {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin: 1rem 2rem;",
+			"solution": "margin: 0 auto;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Set <kbd>margin: 1rem 2rem</kbd>",
+					"value": "margin:\\s*0\\s+auto",
+					"message": "Set <kbd>margin: 0 auto</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-7",
-			"title": "Padding Shorthand Notation",
-			"description": "Like margin, padding shorthand allows setting all sides at once. A single value applies to all four sides equally.",
-			"task": "Set <kbd>padding</kbd> to <kbd>2rem</kbd> to add equal padding on all sides.",
-			"previewHTML": "<div class=\"padded\">This box needs equal padding on all sides</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .padded { background-color: papayawhip; border: 2px solid orange; }",
+			"title": "Border Radius",
+			"description": "While not part of the classic box model, <kbd>border-radius</kbd> rounds the corners of an element's border box. Use <kbd>50%</kbd> on a square element to create a circle.",
+			"task": "Make the avatar image circular with <kbd>border-radius: 50%</kbd>.",
+			"previewHTML": "<article class=\"card\"><img class=\"avatar\" src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='25' fill='%23666'/%3E%3Ccircle cx='50' cy='90' r='40' fill='%23666'/%3E%3C/svg%3E\" alt=\"Avatar\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; text-align: center; } .avatar { width: 80px; height: 80px; background: #ddd; margin-bottom: 8px; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".padded {\n  ",
+			"codePrefix": ".avatar {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "padding: 2rem;",
+			"solution": "border-radius: 50%;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": { "property": "padding", "expected": "2rem" },
-					"message": "Set <kbd>padding: 2rem</kbd>"
+					"value": { "property": "border-radius", "expected": "50%" },
+					"message": "Set <kbd>border-radius: 50%</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-8",
-			"title": "Border on Specific Sides",
-			"description": "For granular control, you can target specific sides with <kbd>border-top</kbd>, <kbd>border-right</kbd>, <kbd>border-bottom</kbd>, or <kbd>border-left</kbd>.",
-			"task": "Set <kbd>border-bottom</kbd> to <kbd>4px solid dodgerblue</kbd>.",
-			"previewHTML": "<div class=\"line\">This element needs only a bottom border</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .line { padding: 1rem; background-color: aliceblue; }",
+			"title": "Complete Card",
+			"description": "Let's combine everything. This notification card needs styling to look polished.",
+			"task": "Style the notification: add <kbd>padding: 1rem</kbd>, <kbd>border-left: 4px solid coral</kbd>, and <kbd>border-radius: 4px</kbd>.",
+			"previewHTML": "<div class=\"alert\"><strong>New message</strong><p>You have 3 unread notifications</p></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .alert { background: seashell; } .alert strong { color: coral; } .alert p { margin: 4px 0 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".line {\n  ",
+			"codePrefix": ".alert {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "border-bottom: 4px solid dodgerblue;",
+			"solution": "padding: 1rem;\n  border-left: 4px solid coral;\n  border-radius: 4px;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
+					"type": "property_value",
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Set <kbd>padding: 1rem</kbd>"
+				},
+				{
 					"type": "regex",
-					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
-					"message": "Set <kbd>border-bottom: 4px solid dodgerblue</kbd>",
+					"value": "border-left:\\s*4px\\s+solid\\s+coral",
+					"message": "Set <kbd>border-left: 4px solid coral</kbd>",
 					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "border-radius", "expected": "4px" },
+					"message": "Set <kbd>border-radius: 4px</kbd>"
 				}
 			]
 		}

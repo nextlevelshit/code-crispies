@@ -17,7 +17,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue\n}",
+			"solution": "input[type=\"text\"] {\n  background-color: lightblue;\n  border: 2px solid blue;\n}",
 			"validations": [
 				{
 					"type": "regex",
