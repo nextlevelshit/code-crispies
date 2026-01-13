@@ -596,50 +596,73 @@ kbd {
 	border-radius: var(--border-radius-sm);
 }
 
-/* Success Match Animation - Gemini-style rotating gradient border */
-.preview-wrapper.matched {
-	overflow: visible;
-	isolation: isolate;
+/* Success Match Animation - Rotating gradient border */
+@property --border-angle {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
 }
 
-/* Rotating gradient border with glow */
-.preview-wrapper.matched::after {
+.preview-wrapper.matched {
+	--border-angle: 0deg;
+	border: 3px solid transparent;
+	background:
+		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
+		conic-gradient(
+			from var(--border-angle),
+			#9b59b6,
+			#e040fb,
+			#00bcd4,
+			#7c4dff,
+			#9b59b6
+		) border-box;
+	animation: spin-border 2.5s linear forwards;
+}
+
+/* Glow effect layer */
+.preview-wrapper.matched::before {
 	content: "";
 	position: absolute;
-	inset: -3px;
-	border-radius: calc(var(--border-radius-md) + 3px);
+	inset: -6px;
+	border-radius: calc(var(--border-radius-md) + 6px);
 	background: conic-gradient(
-		from 0deg,
+		from var(--border-angle),
 		#9b59b6,
 		#e040fb,
 		#00bcd4,
 		#7c4dff,
 		#9b59b6
 	);
-	z-index: 10;
-	-webkit-mask:
-		linear-gradient(#fff 0 0) content-box,
-		linear-gradient(#fff 0 0);
-	-webkit-mask-composite: xor;
-	mask-composite: exclude;
-	padding: 3px;
+	z-index: -1;
+	filter: blur(12px);
 	opacity: 0;
-	pointer-events: none;
-	filter: drop-shadow(0 0 8px rgba(155, 89, 182, 0.8))
-		drop-shadow(0 0 15px rgba(124, 77, 255, 0.5));
-	animation: rotate-border 2.5s linear forwards;
+	animation: spin-glow 2.5s linear forwards;
 }
 
-@keyframes rotate-border {
+@keyframes spin-border {
 	0% {
-		transform: rotate(0deg);
-		opacity: 1;
+		--border-angle: 0deg;
 	}
 	80% {
-		opacity: 1;
+		--border-angle: -288deg;
 	}
 	100% {
-		transform: rotate(-360deg);
+		--border-angle: -360deg;
+		border-color: transparent;
+	}
+}
+
+@keyframes spin-glow {
+	0% {
+		--border-angle: 0deg;
+		opacity: 0.6;
+	}
+	80% {
+		--border-angle: -288deg;
+		opacity: 0.4;
+	}
+	100% {
+		--border-angle: -360deg;
 		opacity: 0;
 	}
 }
