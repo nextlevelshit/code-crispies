@@ -596,47 +596,81 @@ kbd {
 	border-radius: var(--border-radius-sm);
 }
 
-/* Success Match Animation - Gemini-style glowing border */
+/* Success Match Animation - Gemini-style rotating gradient border */
 .preview-wrapper.matched {
-	animation: glow-cycle 2.5s ease-out forwards;
+	overflow: visible;
 }
 
-@keyframes glow-cycle {
+/* Glow layer (blurred, behind) */
+.preview-wrapper.matched::before {
+	content: "";
+	position: absolute;
+	inset: -4px;
+	border-radius: calc(var(--border-radius-md) + 4px);
+	background: conic-gradient(
+		from 0deg,
+		#9b59b6,
+		#e040fb,
+		#00bcd4,
+		#7c4dff,
+		#9b59b6
+	);
+	z-index: -2;
+	filter: blur(12px);
+	opacity: 0;
+	animation: rotate-glow 2.5s linear forwards;
+}
+
+/* Border layer (crisp rotating gradient) */
+.preview-wrapper.matched::after {
+	content: "";
+	position: absolute;
+	inset: -3px;
+	border-radius: calc(var(--border-radius-md) + 3px);
+	background: conic-gradient(
+		from 0deg,
+		#9b59b6,
+		#e040fb,
+		#00bcd4,
+		#7c4dff,
+		#9b59b6
+	);
+	z-index: -1;
+	-webkit-mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	padding: 3px;
+	opacity: 0;
+	animation: rotate-border 2.5s linear forwards;
+}
+
+@keyframes rotate-border {
 	0% {
-		box-shadow:
-			0 0 0 3px #9b59b6,
-			0 0 15px 5px rgba(155, 89, 182, 0.6),
-			0 0 30px 10px rgba(155, 89, 182, 0.3);
+		transform: rotate(0deg);
+		opacity: 1;
 	}
-	25% {
-		box-shadow:
-			0 0 0 3px #e040fb,
-			0 0 15px 5px rgba(224, 64, 251, 0.6),
-			0 0 30px 10px rgba(224, 64, 251, 0.3);
-	}
-	50% {
-		box-shadow:
-			0 0 0 3px #00bcd4,
-			0 0 15px 5px rgba(0, 188, 212, 0.6),
-			0 0 30px 10px rgba(0, 188, 212, 0.3);
-	}
-	75% {
-		box-shadow:
-			0 0 0 3px #7c4dff,
-			0 0 15px 5px rgba(124, 77, 255, 0.6),
-			0 0 30px 10px rgba(124, 77, 255, 0.3);
-	}
-	90% {
-		box-shadow:
-			0 0 0 3px #9b59b6,
-			0 0 15px 5px rgba(155, 89, 182, 0.4),
-			0 0 30px 10px rgba(155, 89, 182, 0.2);
+	80% {
+		opacity: 1;
 	}
 	100% {
-		box-shadow:
-			0 0 0 0px transparent,
-			0 0 0px 0px transparent,
-			0 0 0px 0px transparent;
+		transform: rotate(-360deg);
+		opacity: 0;
+	}
+}
+
+@keyframes rotate-glow {
+	0% {
+		transform: rotate(0deg);
+		opacity: 0.6;
+	}
+	80% {
+		opacity: 0.4;
+	}
+	100% {
+		transform: rotate(-360deg);
+		opacity: 0;
 	}
 }
 
