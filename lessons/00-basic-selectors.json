@@ -129,6 +129,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": ".highlight {\n  background-color: yellow;\n  font-weight: bold;\n}",
 			"validations": [
 				{
 					"type": "regex",
@@ -249,6 +250,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "span.highlight {\n  background-color: orange;\n}",
 			"validations": [
 				{
 					"type": "regex",
@@ -293,6 +295,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "#main-title {\n  color: purple;\n  text-decoration: underline;\n}",
 			"validations": [
 				{
 					"type": "regex",
@@ -350,6 +353,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "p#special {\n  font-style: italic;\n}",
 			"validations": [
 				{
 					"type": "regex",
@@ -481,6 +485,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "div.container * {\n  margin: 0;\n}",
 			"validations": [
 				{
 					"type": "regex",
@@ -525,6 +530,7 @@
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": ".content p {\n  color: green;\n}",
 			"validations": [
 				{
 					"type": "regex",

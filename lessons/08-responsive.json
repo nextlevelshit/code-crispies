@@ -59,15 +59,15 @@
 		{
 			"id": "responsive-3",
 			"title": "Responsive Grid",
-			"description": "Combine CSS Grid with <kbd>auto-fit</kbd> or <kbd>auto-fill</kbd> for responsive column layouts.",
-			"task": "Add <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</kbd>, and <kbd>gap: 1rem</kbd> to <kbd>.cards</kbd>.",
-			"previewHTML": "<div class=\"cards\"><div>1</div><div>2</div><div>3</div><div>4</div></div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .cards > div { background: #d1c4e9; padding: 1rem; }",
+			"description": "Combine CSS Grid with <kbd>auto-fit</kbd> or <kbd>auto-fill</kbd> for responsive column layouts that automatically adjust the number of columns based on available space.",
+			"task": "Add <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</kbd>, and <kbd>gap: 1rem</kbd> to <kbd>.features</kbd>.",
+			"previewHTML": "<section class=\"features\"><article class=\"feature\"><h3>Fast</h3><p>Lightning quick load times</p></article><article class=\"feature\"><h3>Secure</h3><p>Enterprise-grade security</p></article><article class=\"feature\"><h3>Reliable</h3><p>99.9% uptime guaranteed</p></article><article class=\"feature\"><h3>Support</h3><p>24/7 customer service</p></article></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .feature { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .feature h3 { margin: 0 0 8px; color: steelblue; } .feature p { margin: 0; color: #666; font-size: 0.9rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Create a responsive grid */\n.cards {",
+			"codePrefix": ".features {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
-			"solution": "  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 1rem;",
+			"codeSuffix": "\n}",
+			"solution": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
