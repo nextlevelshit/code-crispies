@@ -6,7 +6,10 @@
 // English lesson imports
 import welcomeEN from "../../lessons/00-welcome.json";
 import basicSelectorsEN from "../../lessons/00-basic-selectors.json";
+import advancedSelectorsEN from "../../lessons/01-advanced-selectors.json";
 import boxModelEN from "../../lessons/01-box-model.json";
+import colorsEN from "../../lessons/03-colors.json";
+import typographyEN from "../../lessons/04-typography.json";
 import unitsVariablesEN from "../../lessons/05-units-variables.json";
 import transitionsAnimationsEN from "../../lessons/06-transitions-animations.json";
 import responsiveEN from "../../lessons/08-responsive.json";
@@ -16,9 +19,9 @@ import htmlFormsValidationEN from "../../lessons/22-html-forms-validation.json";
 import htmlDetailsSummaryEN from "../../lessons/23-html-details-summary.json";
 import htmlProgressMeterEN from "../../lessons/24-html-progress-meter.json";
 import htmlTablesEN from "../../lessons/30-html-tables.json";
-import htmlMarqueeEN from "../../lessons/31-html-marquee.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
 import flexboxEN from "../../lessons/flexbox.json";
+import gridEN from "../../lessons/grid.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
 // German lesson imports
@@ -34,7 +37,6 @@ import htmlFormsValidationDE from "../../lessons/de/22-html-forms-validation.jso
 import htmlDetailsSummaryDE from "../../lessons/de/23-html-details-summary.json";
 import htmlProgressMeterDE from "../../lessons/de/24-html-progress-meter.json";
 import htmlTablesDE from "../../lessons/de/30-html-tables.json";
-import htmlMarqueeDE from "../../lessons/de/31-html-marquee.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
 import flexboxDE from "../../lessons/de/flexbox.json";
 
@@ -51,7 +53,6 @@ import htmlFormsValidationPL from "../../lessons/pl/22-html-forms-validation.jso
 import htmlDetailsSummaryPL from "../../lessons/pl/23-html-details-summary.json";
 import htmlProgressMeterPL from "../../lessons/pl/24-html-progress-meter.json";
 import htmlTablesPL from "../../lessons/pl/30-html-tables.json";
-import htmlMarqueePL from "../../lessons/pl/31-html-marquee.json";
 import htmlSvgPL from "../../lessons/pl/32-html-svg.json";
 import flexboxPL from "../../lessons/pl/flexbox.json";
 
@@ -68,7 +69,6 @@ import htmlFormsValidationES from "../../lessons/es/22-html-forms-validation.jso
 import htmlDetailsSummaryES from "../../lessons/es/23-html-details-summary.json";
 import htmlProgressMeterES from "../../lessons/es/24-html-progress-meter.json";
 import htmlTablesES from "../../lessons/es/30-html-tables.json";
-import htmlMarqueeES from "../../lessons/es/31-html-marquee.json";
 import htmlSvgES from "../../lessons/es/32-html-svg.json";
 import flexboxES from "../../lessons/es/flexbox.json";
 
@@ -85,7 +85,6 @@ import htmlFormsValidationAR from "../../lessons/ar/22-html-forms-validation.jso
 import htmlDetailsSummaryAR from "../../lessons/ar/23-html-details-summary.json";
 import htmlProgressMeterAR from "../../lessons/ar/24-html-progress-meter.json";
 import htmlTablesAR from "../../lessons/ar/30-html-tables.json";
-import htmlMarqueeAR from "../../lessons/ar/31-html-marquee.json";
 import htmlSvgAR from "../../lessons/ar/32-html-svg.json";
 import flexboxAR from "../../lessons/ar/flexbox.json";
 
@@ -102,7 +101,6 @@ import htmlFormsValidationUK from "../../lessons/uk/22-html-forms-validation.jso
 import htmlDetailsSummaryUK from "../../lessons/uk/23-html-details-summary.json";
 import htmlProgressMeterUK from "../../lessons/uk/24-html-progress-meter.json";
 import htmlTablesUK from "../../lessons/uk/30-html-tables.json";
-import htmlMarqueeUK from "../../lessons/uk/31-html-marquee.json";
 import htmlSvgUK from "../../lessons/uk/32-html-svg.json";
 import flexboxUK from "../../lessons/uk/flexbox.json";
 
@@ -110,25 +108,29 @@ import flexboxUK from "../../lessons/uk/flexbox.json";
 const moduleStoreEN = [
 	// Welcome
 	welcomeEN,
-	// HTML Grundlagen
+	// HTML Fundamentals
 	htmlElementsEN,
 	htmlFormsBasicEN,
 	htmlFormsValidationEN,
-	// HTML Interaktiv
+	// HTML Interactive
 	htmlDetailsSummaryEN,
 	htmlProgressMeterEN,
-	// HTML Weitere
+	// HTML Data
 	htmlTablesEN,
-	htmlSvgEN,
-	htmlMarqueeEN,
-	// CSS Grundlagen
+	// CSS Fundamentals
 	basicSelectorsEN,
+	advancedSelectorsEN,
+	colorsEN,
+	typographyEN,
 	boxModelEN,
 	unitsVariablesEN,
+	// CSS Graphics
+	htmlSvgEN,
 	// CSS Layouts
 	flexboxEN,
+	gridEN,
 	responsiveEN,
-	// CSS Animationen
+	// CSS Animation
 	transitionsAnimationsEN,
 	// Goodbye
 	goodbyeEN
@@ -138,25 +140,29 @@ const moduleStoreEN = [
 const moduleStoreDE = [
 	// Welcome
 	welcomeDE,
-	// HTML Grundlagen
+	// HTML Fundamentals
 	htmlElementsDE,
 	htmlFormsBasicDE,
 	htmlFormsValidationDE,
-	// HTML Interaktiv
+	// HTML Interactive
 	htmlDetailsSummaryDE,
 	htmlProgressMeterDE,
-	// HTML Weitere
+	// HTML Data
 	htmlTablesDE,
-	htmlSvgDE,
-	htmlMarqueeDE,
-	// CSS Grundlagen
+	// CSS Fundamentals
 	basicSelectorsDE,
+	advancedSelectorsEN, // Using EN fallback until translated
+	colorsEN, // Using EN fallback until translated
+	typographyEN, // Using EN fallback until translated
 	boxModelDE,
 	unitsVariablesDE,
+	// CSS Graphics
+	htmlSvgDE,
 	// CSS Layouts
 	flexboxDE,
+	gridEN, // Using EN fallback until translated
 	responsiveDE,
-	// CSS Animationen
+	// CSS Animation
 	transitionsAnimationsDE,
 	// Goodbye
 	goodbyeEN
@@ -164,81 +170,129 @@ const moduleStoreDE = [
 
 // Polish module store - ordered by learning path
 const moduleStorePL = [
+	// Welcome
 	welcomePL,
+	// HTML Fundamentals
 	htmlElementsPL,
 	htmlFormsBasicPL,
 	htmlFormsValidationPL,
+	// HTML Interactive
 	htmlDetailsSummaryPL,
 	htmlProgressMeterPL,
+	// HTML Data
 	htmlTablesPL,
-	htmlSvgPL,
-	htmlMarqueePL,
+	// CSS Fundamentals
 	basicSelectorsPL,
+	advancedSelectorsEN, // Using EN fallback until translated
+	colorsEN, // Using EN fallback until translated
+	typographyEN, // Using EN fallback until translated
 	boxModelPL,
 	unitsVariablesPL,
+	// CSS Graphics
+	htmlSvgPL,
+	// CSS Layouts
 	flexboxPL,
+	gridEN, // Using EN fallback until translated
 	responsivePL,
+	// CSS Animation
 	transitionsAnimationsPL,
+	// Goodbye
 	goodbyeEN
 ];
 
 // Spanish module store - ordered by learning path
 const moduleStoreES = [
+	// Welcome
 	welcomeES,
+	// HTML Fundamentals
 	htmlElementsES,
 	htmlFormsBasicES,
 	htmlFormsValidationES,
+	// HTML Interactive
 	htmlDetailsSummaryES,
 	htmlProgressMeterES,
+	// HTML Data
 	htmlTablesES,
-	htmlSvgES,
-	htmlMarqueeES,
+	// CSS Fundamentals
 	basicSelectorsES,
+	advancedSelectorsEN, // Using EN fallback until translated
+	colorsEN, // Using EN fallback until translated
+	typographyEN, // Using EN fallback until translated
 	boxModelES,
 	unitsVariablesES,
+	// CSS Graphics
+	htmlSvgES,
+	// CSS Layouts
 	flexboxES,
+	gridEN, // Using EN fallback until translated
 	responsiveES,
+	// CSS Animation
 	transitionsAnimationsES,
+	// Goodbye
 	goodbyeEN
 ];
 
 // Arabic module store - ordered by learning path
 const moduleStoreAR = [
+	// Welcome
 	welcomeAR,
+	// HTML Fundamentals
 	htmlElementsAR,
 	htmlFormsBasicAR,
 	htmlFormsValidationAR,
+	// HTML Interactive
 	htmlDetailsSummaryAR,
 	htmlProgressMeterAR,
+	// HTML Data
 	htmlTablesAR,
-	htmlSvgAR,
-	htmlMarqueeAR,
+	// CSS Fundamentals
 	basicSelectorsAR,
+	advancedSelectorsEN, // Using EN fallback until translated
+	colorsEN, // Using EN fallback until translated
+	typographyEN, // Using EN fallback until translated
 	boxModelAR,
 	unitsVariablesAR,
+	// CSS Graphics
+	htmlSvgAR,
+	// CSS Layouts
 	flexboxAR,
+	gridEN, // Using EN fallback until translated
 	responsiveAR,
+	// CSS Animation
 	transitionsAnimationsAR,
+	// Goodbye
 	goodbyeEN
 ];
 
 // Ukrainian module store - ordered by learning path
 const moduleStoreUK = [
+	// Welcome
 	welcomeUK,
+	// HTML Fundamentals
 	htmlElementsUK,
 	htmlFormsBasicUK,
 	htmlFormsValidationUK,
+	// HTML Interactive
 	htmlDetailsSummaryUK,
 	htmlProgressMeterUK,
+	// HTML Data
 	htmlTablesUK,
-	htmlSvgUK,
-	htmlMarqueeUK,
+	// CSS Fundamentals
 	basicSelectorsUK,
+	advancedSelectorsEN, // Using EN fallback until translated
+	colorsEN, // Using EN fallback until translated
+	typographyEN, // Using EN fallback until translated
 	boxModelUK,
 	unitsVariablesUK,
+	// CSS Graphics
+	htmlSvgUK,
+	// CSS Layouts
 	flexboxUK,
+	gridEN, // Using EN fallback until translated
 	responsiveUK,
+	// CSS Animation
 	transitionsAnimationsUK,
+	// Goodbye
 	goodbyeEN
 ];
 

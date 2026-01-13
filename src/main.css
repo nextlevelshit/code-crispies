@@ -186,16 +186,16 @@ kbd {
 }
 
 .logo h1 .code-text {
+	color: var(--primary-color);
+}
+
+.logo h1 .crispies-text {
 	background: var(--primary-color);
 	color: white;
 	padding: 0.15rem 0.35rem;
 	border-radius: 4px;
 	letter-spacing: 0.05em;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.logo h1 span:last-child {
-	color: var(--primary-color);
 }
 
 .help-toggle {
