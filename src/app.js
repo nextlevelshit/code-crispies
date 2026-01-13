@@ -626,11 +626,11 @@ function runCode() {
 		elements.nextBtn.classList.add("success");
 		elements.taskInstruction.classList.add("success-instruction");
 
-		// Show match animation (DVD-style bouncing)
+		// Show match animation (rotating gradient glow)
 		elements.previewWrapper?.classList.add("matched");
 		setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
-		}, 10000);
+		}, 3000);
 
 		updateNavigationButtons();
 		updateProgressDisplay();
