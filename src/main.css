@@ -756,17 +756,17 @@ kbd {
 @keyframes crispy-bounce {
 	0% {
 		top: 100%;
-		transform: translateX(-50%) translateY(0) scale(0.5);
+		transform: translateX(-50%) translateY(0) scale(0.2);
 		opacity: 0;
 	}
 	20% {
 		top: 45%;
-		transform: translateX(-50%) translateY(-50%) scale(1.1);
+		transform: translateX(-50%) translateY(-50%) scale(1.4);
 		opacity: 1;
 	}
 	28% {
 		top: 52%;
-		transform: translateX(-50%) translateY(-50%) scale(0.95);
+		transform: translateX(-50%) translateY(-50%) scale(0.9);
 		opacity: 1;
 	}
 	35% {
@@ -781,7 +781,7 @@ kbd {
 	}
 	100% {
 		top: 100%;
-		transform: translateX(-50%) translateY(0) scale(0.5);
+		transform: translateX(-50%) translateY(0) scale(0.3);
 		opacity: 0;
 	}
 }
