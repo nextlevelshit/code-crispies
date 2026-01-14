@@ -713,7 +713,12 @@ kbd {
 }
 
 /* Bowl smiley peek animation from bottom right corner */
-.preview-wrapper.matched::before {
+.preview-wrapper.matched .preview-frame {
+	position: relative;
+	overflow: hidden;
+}
+
+.preview-wrapper.matched .preview-frame::before {
 	content: "";
 	position: absolute;
 	bottom: 0;
