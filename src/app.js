@@ -642,7 +642,10 @@ function runCode() {
 			"Perfect!",
 			"Well done!",
 			"Awesome!",
-			"Nice work!"
+			"Nice work!",
+			"00000001",
+			"0b00000001",
+			"00101011 00110001"
 		];
 		const randomQuote = crispyQuotes[Math.floor(Math.random() * crispyQuotes.length)];
 		elements.previewWrapper?.style.setProperty("--crispy-quote", `"${randomQuote}"`);
