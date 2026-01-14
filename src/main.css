@@ -723,33 +723,32 @@ kbd {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	margin-left: -100px;
-	width: 200px;
-	height: 200px;
+	width: max(200px, 33.33%);
+	aspect-ratio: 1;
 	background: url("/bowl.png") center/contain no-repeat;
 	z-index: 5;
 	pointer-events: none;
 	animation: bowl-peek 3s ease-in-out forwards;
-	transform: translateY(100%);
+	transform: translateX(-50%) translateY(100%);
 }
 
 @keyframes bowl-peek {
 	0% {
-		transform: translateY(100%);
+		transform: translateX(-50%) translateY(100%);
 		opacity: 0;
 	}
 	20% {
-		transform: translateY(25%);
+		transform: translateX(-50%) translateY(25%);
 		opacity: 1;
 	}
 	35% {
-		transform: translateY(30%);
+		transform: translateX(-50%) translateY(30%);
 	}
 	65% {
-		transform: translateY(28%);
+		transform: translateX(-50%) translateY(28%);
 	}
 	100% {
-		transform: translateY(100%);
+		transform: translateX(-50%) translateY(100%);
 		opacity: 0;
 	}
 }
