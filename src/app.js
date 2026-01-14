@@ -43,6 +43,7 @@ const elements = {
 	showExpectedBtn: document.getElementById("show-expected-btn"),
 	expectedOverlay: document.getElementById("expected-overlay"),
 	previewWrapper: document.querySelector(".preview-wrapper"),
+	previewSection: document.querySelector(".preview-section"),
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
 	levelIndicator: document.getElementById("level-indicator"),
@@ -346,6 +347,8 @@ function resetSuccessIndicators() {
 	elements.taskInstruction.classList.remove("success-instruction");
 	elements.runBtn.classList.remove("success");
 	elements.previewWrapper?.classList.remove("matched");
+	elements.previewWrapper?.classList.remove("completed-glow");
+	elements.previewSection?.classList.remove("matched");
 }
 
 function updateEditorForMode(mode) {
@@ -455,6 +458,9 @@ function loadCurrentLesson() {
 			badge.textContent = t("completed");
 			elements.lessonTitle.appendChild(badge);
 		}
+
+		// Show gradient border for completed lessons
+		elements.previewWrapper?.classList.add("completed-glow");
 	} else {
 		elements.runBtn.querySelector("span").textContent = t("run");
 
@@ -627,9 +633,25 @@ function runCode() {
 		elements.taskInstruction.classList.add("success-instruction");
 
 		// Show match animation (rotating gradient glow)
+		const crispyQuotes = [
+			"Crispyyyyyy!",
+			"You did it!",
+			"Good job!",
+			"Nailed it!",
+			"Perfect!",
+			"Well done!",
+			"Awesome!",
+			"Nice work!"
+		];
+		const randomQuote = crispyQuotes[Math.floor(Math.random() * crispyQuotes.length)];
+		elements.previewWrapper?.style.setProperty("--crispy-quote", `"${randomQuote}"`);
 		elements.previewWrapper?.classList.add("matched");
+		elements.previewSection?.classList.add("matched");
 		setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
+			elements.previewSection?.classList.remove("matched");
+			// Keep the gradient border visible after animation
+			elements.previewWrapper?.classList.add("completed-glow");
 		}, 3500);
 
 		updateNavigationButtons();
