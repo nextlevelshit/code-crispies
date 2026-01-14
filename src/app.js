@@ -464,9 +464,10 @@ function loadCurrentLesson() {
 	} else {
 		elements.runBtn.querySelector("span").textContent = t("run");
 
-		// Remove completion badge if exists
+		// Remove completion badge and border if exists
 		const badge = document.querySelector(".completion-badge");
 		if (badge) badge.remove();
+		elements.previewWrapper?.classList.remove("completed-glow");
 	}
 
 	// Update level indicator
