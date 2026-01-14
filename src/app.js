@@ -647,7 +647,7 @@ function runCode() {
 
 		// Show match animation (rotating gradient glow)
 		const crispyQuotes = [
-			"Crispyyyyyy!",
+			"Crissssssssspy!",
 			"You did it!",
 			"Good job!",
 			"Nailed it!",
@@ -655,7 +655,8 @@ function runCode() {
 			"Well done!",
 			"Awesome!",
 			"Nice work!",
-			"0x2B 0x31"
+			//"0x2B 0x31",
+			"+1"
 		];
 		const randomQuote = crispyQuotes[Math.floor(Math.random() * crispyQuotes.length)];
 		elements.previewWrapper?.style.setProperty("--crispy-quote", `"${randomQuote}"`);
