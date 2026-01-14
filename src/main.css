@@ -992,31 +992,11 @@ details.module-container {
 }
 
 summary.module-header {
-	list-style: none;
-	list-style-type: none;
 	cursor: pointer;
 }
 
-summary.module-header::-webkit-details-marker,
 summary.module-header::marker {
-	display: none;
-	content: "";
-}
-
-summary.module-header::before {
-	content: "";
-	display: block;
-	flex-shrink: 0;
-	width: 6px;
-	height: 10px;
-	margin-right: 8px;
-	background: var(--text-muted);
-	clip-path: polygon(0 0, 100% 50%, 0 100%);
-	transition: transform 0.2s;
-}
-
-details.module-container[open] > summary.module-header::before {
-	transform: rotate(90deg);
+	color: var(--text-muted);
 }
 
 .module-header.completed::after {
@@ -1652,16 +1632,6 @@ input:checked + .toggle-slider::before {
 	padding-right: 8px;
 }
 
-/* RTL: Module expand icon */
-[dir="rtl"] summary.module-header::before {
-	margin-left: 8px;
-	margin-right: 0;
-	clip-path: polygon(100% 0, 0 50%, 100% 100%);
-}
-
-[dir="rtl"] details.module-container[open] > summary.module-header::before {
-	transform: rotate(-90deg);
-}
 
 /* RTL: Module completed checkmark position (::after) */
 [dir="rtl"] .module-header.completed::after {
