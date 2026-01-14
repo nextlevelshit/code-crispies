@@ -992,11 +992,29 @@ details.module-container {
 }
 
 summary.module-header {
+	list-style: none;
 	cursor: pointer;
 }
 
-summary.module-header::marker {
-	color: var(--text-muted);
+summary.module-header::-webkit-details-marker {
+	display: none;
+}
+
+summary.module-header::before {
+	content: "";
+	display: block;
+	flex-shrink: 0;
+	width: 10px;
+	height: 10px;
+	margin-right: 8px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3 1 L7 5 L3 9' stroke='%23666' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition: transform 0.2s;
+}
+
+details.module-container[open] > summary.module-header::before {
+	transform: rotate(90deg);
 }
 
 .module-header.completed::after {
@@ -1611,6 +1629,16 @@ input:checked + .toggle-slider::before {
 	direction: ltr;
 }
 
+/* RTL: Header - swap burger and pill positions */
+[dir="rtl"] .header-left {
+	flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header-level-pill {
+	margin-left: 0;
+	margin-right: var(--spacing-sm);
+}
+
 /* RTL: Swap left/right panels */
 [dir="rtl"] .game-layout {
 	flex-direction: row-reverse;
@@ -1632,6 +1660,26 @@ input:checked + .toggle-slider::before {
 	padding-right: 8px;
 }
 
+/* RTL: Module header - chevron on right, text right-aligned */
+[dir="rtl"] summary.module-header {
+	flex-direction: row-reverse;
+	text-align: right;
+}
+
+[dir="rtl"] summary.module-header::before {
+	margin-left: 0;
+	margin-right: 8px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M7 1 L3 5 L7 9' stroke='%23666' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[dir="rtl"] details.module-container[open] > summary.module-header::before {
+	transform: rotate(-90deg);
+}
+
+/* RTL: Lesson items - text right-aligned */
+[dir="rtl"] .lesson-list-item {
+	text-align: right;
+}
 
 /* RTL: Module completed checkmark position (::after) */
 [dir="rtl"] .module-header.completed::after {
@@ -1670,4 +1718,29 @@ input:checked + .toggle-slider::before {
 /* RTL: Preview controls */
 [dir="rtl"] .preview-controls {
 	flex-direction: row-reverse;
+}
+
+/* RTL: Completion badge spacing */
+[dir="rtl"] .completion-badge {
+	margin-left: 0;
+	margin-right: 0.5rem;
+}
+
+/* RTL: Lists - bullets/numbers on right side */
+[dir="rtl"] .lesson-description ul,
+[dir="rtl"] .lesson-description ol {
+	padding-left: 0;
+	padding-right: 1.5em;
+}
+
+[dir="rtl"] .lesson-description li {
+	text-align: right;
+}
+
+/* RTL: Pre/code blocks stay LTR */
+[dir="rtl"] pre,
+[dir="rtl"] code,
+[dir="rtl"] kbd {
+	direction: ltr;
+	text-align: left;
 }
