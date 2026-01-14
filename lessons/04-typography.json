@@ -2,96 +2,70 @@
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "typography-fonts",
 	"title": "Typography",
-	"description": "Learn how to control text appearance through font selection, sizing, spacing, and decorative effects.",
+	"description": "Learn how to control text appearance through font selection, sizing, spacing, and styling.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "typography-1",
-			"title": "Font Family & Fallbacks",
-			"description": "Specify custom fonts and reliable fallback stacks for consistent typography across devices.",
-			"task": "Set the <code>font-family</code> of the '.text' element to 'Georgia, serif' with serif fallback.",
-			"previewHTML": "<p class=\"text\">This text shows the chosen font family.</p>",
-			"previewBaseCSS": "body { padding: 1rem; }",
+			"id": "monospace-font",
+			"title": "Monospace Fonts",
+			"description": "Different font families create different visual impressions. <kbd>monospace</kbd> fonts have equal-width characters, making them perfect for displaying code, data, or keyboard shortcuts.<br><br>Every computer has a monospace font built in, so <kbd>font-family: monospace</kbd> always works. This makes it a safe choice for inline code in any web project.",
+			"task": "Style the inline code with a monospace font. Add <kbd>font-family: monospace</kbd>.",
+			"previewHTML": "<article>\n  <h3>Quick Tip</h3>\n  <p>Press <span class=\"code\">Ctrl + S</span> to save your work, or <span class=\"code\">Ctrl + Z</span> to undo.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } h3 { margin: 0 0 0.5rem; } p { margin: 0; color: #555; line-height: 1.6; } .code { background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 4px; }",
 			"sandboxCSS": "",
-			"codePrefix": ".text {\n  ",
+			"codePrefix": ".code {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
-			"solution": "font-family: Georgia, serif;",
+			"solution": "font-family: monospace;",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "font-family",
-					"message": "Use the <kbd>font-family</kbd> property",
-					"options": { "caseSensitive": false }
-				},
-				{
-					"type": "regex",
-					"value": "Georgia, serif",
-					"message": "Include <kbd>Georgia, serif</kbd> in the font stack",
-					"options": { "caseSensitive": false }
+					"type": "property_value",
+					"value": { "property": "font-family", "expected": "monospace" },
+					"message": "Set font-family to <kbd>monospace</kbd>"
 				}
 			]
 		},
 		{
-			"id": "typography-2",
-			"title": "Font Size & Line Height",
-			"description": "Control text scale and readability by adjusting size and line heights.",
-			"task": "Set the heading '.heading' to 1.5rem font-size and 1.5 line-height.",
-			"previewHTML": "<h2 class=\"heading\">Readable Heading</h2>",
-			"previewBaseCSS": "body { padding: 1rem; }",
+			"id": "font-size-line-height",
+			"title": "Readable Body Text",
+			"description": "Good typography is invisible—readers focus on content, not struggling to read it. Two properties work together for readability:<br><br><kbd>font-size</kbd> controls how big the text appears. For body text, <kbd>1rem</kbd> (16px by default) is a comfortable starting point.<br><br><kbd>line-height</kbd> sets the space between lines. A value of <kbd>1.6</kbd> means the line height is 1.6 times the font size—giving text room to breathe.",
+			"task": "Make the text comfortable to read. Add <kbd>font-size: 1rem</kbd> and <kbd>line-height: 1.6</kbd>.",
+			"previewHTML": "<article>\n  <h2>The Art of Coffee</h2>\n  <p>Great coffee starts with quality beans. The roast level affects flavor—light roasts are fruity and acidic, while dark roasts are bold and smoky.</p>\n  <p>Water temperature matters too. Brew between 90-96°C for optimal extraction. Too hot burns the coffee; too cold leaves it weak.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } h2 { margin: 0 0 1rem; color: #333; } p { margin: 0 0 1rem; color: #444; } p:last-child { margin-bottom: 0; }",
 			"sandboxCSS": "",
-			"codePrefix": ".heading {\n  ",
+			"codePrefix": "article {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
-			"solution": "font-size: 1.5rem;\n  line-height: 1.5;",
+			"solution": "font-size: 1rem;\n  line-height: 1.6;",
 			"validations": [
-				{ "type": "contains", "value": "font-size", "message": "Use <kbd>font-size</kbd> property", "options": { "caseSensitive": false } },
 				{
 					"type": "property_value",
-					"value": { "property": "font-size", "expected": "1.5rem" },
-					"message": "Set font-size to <kbd>1.5rem</kbd>"
-				},
-				{
-					"type": "contains",
-					"value": "line-height",
-					"message": "Use <kbd>line-height</kbd> property",
-					"options": { "caseSensitive": false }
+					"value": { "property": "font-size", "expected": "1rem" },
+					"message": "Set font-size to <kbd>1rem</kbd>"
 				},
 				{
 					"type": "property_value",
-					"value": { "property": "line-height", "expected": "1.5" },
-					"message": "Set line-height to <kbd>1.5</kbd>"
+					"value": { "property": "line-height", "expected": "1.6" },
+					"message": "Set line-height to <kbd>1.6</kbd>"
 				}
 			]
 		},
 		{
-			"id": "typography-3",
-			"title": "Font Weight & Style",
-			"description": "Apply weight and style variations like bold, light, italic to emphasize text.",
-			"task": "Make the paragraph '.emphasis' italic and bold using <code>font-style</code> and <code>font-weight</code>.",
-			"previewHTML": "<p class=\"emphasis\">This text should stand out.</p>",
-			"previewBaseCSS": "body { padding: 1rem; }",
+			"id": "font-weight",
+			"title": "Bold Headings",
+			"description": "Font weight controls how thick or thin text appears. Common values include:<br><br>• <kbd>normal</kbd> (400) — default body text<br>• <kbd>bold</kbd> (700) — strong emphasis<br>• <kbd>lighter</kbd> / <kbd>bolder</kbd> — relative to parent<br><br>Card titles and headings often use bold text to create visual hierarchy and draw attention to key information.",
+			"task": "Make the card title stand out. Add <kbd>font-weight: bold</kbd>.",
+			"previewHTML": "<article class=\"card\">\n  <span class=\"title\">Weekend Special</span>\n  <p>Fresh pastries and artisan coffee, 20% off all items this Saturday and Sunday.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; max-width: 320px; } .title { display: block; font-size: 1.25rem; color: steelblue; margin-bottom: 0.5rem; font-weight: normal; } p { margin: 0; color: #555; line-height: 1.5; }",
 			"sandboxCSS": "",
-			"codePrefix": ".emphasis {\n  ",
+			"codePrefix": ".title {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
-			"solution": "font-style: italic;\n  font-weight: bold;",
+			"solution": "font-weight: bold;",
 			"validations": [
-				{ "type": "contains", "value": "font-style", "message": "Use <kbd>font-style</kbd> property", "options": { "caseSensitive": false } },
-				{
-					"type": "property_value",
-					"value": { "property": "font-style", "expected": "italic" },
-					"message": "Set font-style to <kbd>italic</kbd>"
-				},
-				{
-					"type": "contains",
-					"value": "font-weight",
-					"message": "Use <kbd>font-weight</kbd> property",
-					"options": { "caseSensitive": false }
-				},
 				{
 					"type": "property_value",
 					"value": { "property": "font-weight", "expected": "bold" },
@@ -100,30 +74,28 @@
 			]
 		},
 		{
-			"id": "typography-4",
-			"title": "Text Decoration & Shadow",
-			"description": "Add decorative underlines, overlines, line-throughs and subtle shadows to text.",
-			"task": "Apply an underline with <code>text-decoration</code> and a light shadow using <code>text-shadow</code> on '.fancy'.",
-			"previewHTML": "<p class=\"fancy\">Fancy text effect!</p>",
-			"previewBaseCSS": "body { padding: 1rem; } .fancy { font-size: 1.25rem; }",
+			"id": "text-transform",
+			"title": "Uppercase Labels",
+			"description": "The <kbd>text-transform</kbd> property changes text capitalization without editing the HTML. This keeps content semantic while styling it differently:<br><br>• <kbd>uppercase</kbd> — ALL CAPS (great for labels, buttons)<br>• <kbd>lowercase</kbd> — all lowercase<br>• <kbd>capitalize</kbd> — First Letter Of Each Word<br><br>Combined with <kbd>letter-spacing</kbd>, uppercase text creates a clean, modern label style often used in UI design.",
+			"task": "Style the tag labels. Add <kbd>text-transform: uppercase</kbd> and <kbd>letter-spacing: 1px</kbd>.",
+			"previewHTML": "<article>\n  <div class=\"tags\">\n    <span class=\"tag\">Design</span>\n    <span class=\"tag\">CSS</span>\n    <span class=\"tag\">Tutorial</span>\n  </div>\n  <h3>Getting Started with Typography</h3>\n  <p>Learn the fundamentals of web typography in this beginner-friendly guide.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; } .tag { background: #e8f4f8; color: steelblue; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; } h3 { margin: 0 0 0.5rem; } p { margin: 0; color: #555; line-height: 1.5; }",
 			"sandboxCSS": "",
-			"codePrefix": ".fancy {\n  ",
+			"codePrefix": ".tag {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
-			"solution": "text-decoration: underline;\n  text-shadow: 1px 1px 2px gray;",
+			"solution": "text-transform: uppercase;\n  letter-spacing: 1px;",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "text-decoration",
-					"message": "Use <kbd>text-decoration</kbd> property",
-					"options": { "caseSensitive": false }
+					"type": "property_value",
+					"value": { "property": "text-transform", "expected": "uppercase" },
+					"message": "Set text-transform to <kbd>uppercase</kbd>"
 				},
 				{
-					"type": "contains",
-					"value": "text-shadow",
-					"message": "Use <kbd>text-shadow</kbd> property",
-					"options": { "caseSensitive": false }
+					"type": "property_value",
+					"value": { "property": "letter-spacing", "expected": "1px" },
+					"message": "Set letter-spacing to <kbd>1px</kbd>"
 				}
 			]
 		}
