@@ -34,7 +34,15 @@
 				<!-- Left Panel: Instructions + Editor -->
 				<div class="left-panel">
 					<section class="instructions">
-						<h2 id="lesson-title"></h2>
+						<div class="lesson-title-row">
+							<h2 id="lesson-title"></h2>
+							<button id="share-btn" class="share-btn" data-i18n-title="shareTitle" title="Share lesson" aria-label="Share lesson">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+									<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+								</svg>
+							</button>
+						</div>
 						<div class="task-instruction" id="task-instruction"></div>
 						<div class="lesson-description" id="lesson-description"></div>
 					</section>
@@ -255,6 +263,22 @@
 						<button id="cancel-reset" class="btn" data-i18n="cancel">Cancel</button>
 						<button id="confirm-reset" class="btn btn-ghost" data-i18n="resetAll">Reset All</button>
 					</div>
+				</div>
+			</dialog>
+
+			<!-- Share Dialog -->
+			<dialog id="share-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3 data-i18n="shareDialogTitle">Share Lesson</h3>
+					<button id="share-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<p data-i18n="shareDialogText">Copy this URL to share the current lesson:</p>
+					<div class="share-url-container">
+						<input type="text" id="share-url-input" class="share-url-input" readonly />
+						<button id="copy-url-btn" class="btn btn-primary" data-i18n="copyUrl">Copy</button>
+					</div>
+					<p id="copy-feedback" class="copy-feedback" data-i18n="urlCopied" hidden>URL copied to clipboard!</p>
 				</div>
 			</dialog>
 		</div>
