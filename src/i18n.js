@@ -99,6 +99,13 @@ const translations = {
 		dontShowAgain: "Don't show this again",
 		reset: "Reset",
 
+		// Share dialog
+		shareDialogTitle: "Share Lesson",
+		shareDialogText: "Copy this URL to share the current lesson:",
+		shareTitle: "Share lesson",
+		copyUrl: "Copy",
+		urlCopied: "URL copied to clipboard!",
+
 		// Dynamic content
 		loadingFallbackText: "Could not load lesson. Please select one from the menu or check the help.",
 		completed: "Completed",
@@ -207,6 +214,13 @@ const translations = {
 		dontShowAgain: "Nicht mehr anzeigen",
 		reset: "Zurücksetzen",
 
+		// Share dialog
+		shareDialogTitle: "Lektion teilen",
+		shareDialogText: "Kopiere diese URL, um die aktuelle Lektion zu teilen:",
+		shareTitle: "Lektion teilen",
+		copyUrl: "Kopieren",
+		urlCopied: "URL in die Zwischenablage kopiert!",
+
 		// Dynamic content
 		loadingFallbackText: "Lektion konnte nicht geladen werden. Bitte wähle eine aus dem Menü oder prüfe die Hilfe.",
 		completed: "Erledigt",
@@ -314,6 +328,13 @@ const translations = {
 		resetCodeDialogText: "Przywrócić kod do stanu początkowego tej lekcji?",
 		dontShowAgain: "Nie pokazuj ponownie",
 		reset: "Resetuj",
+
+		// Share dialog
+		shareDialogTitle: "Udostępnij lekcję",
+		shareDialogText: "Skopiuj ten URL, aby udostępnić bieżącą lekcję:",
+		shareTitle: "Udostępnij lekcję",
+		copyUrl: "Kopiuj",
+		urlCopied: "URL skopiowany do schowka!",
 
 		// Dynamic content
 		loadingFallbackText: "Nie można załadować lekcji. Wybierz jedną z menu lub sprawdź pomoc.",
@@ -424,6 +445,13 @@ const translations = {
 		dontShowAgain: "No mostrar de nuevo",
 		reset: "Reiniciar",
 
+		// Share dialog
+		shareDialogTitle: "Compartir lección",
+		shareDialogText: "Copia esta URL para compartir la lección actual:",
+		shareTitle: "Compartir lección",
+		copyUrl: "Copiar",
+		urlCopied: "¡URL copiada al portapapeles!",
+
 		// Dynamic content
 		loadingFallbackText: "No se pudo cargar la lección. Selecciona una del menú o consulta la ayuda.",
 		completed: "Completado",
@@ -530,6 +558,13 @@ const translations = {
 		resetCodeDialogText: "استعادة الكود إلى الحالة الأولية لهذا الدرس؟",
 		dontShowAgain: "لا تظهر هذا مرة أخرى",
 		reset: "إعادة تعيين",
+
+		// Share dialog
+		shareDialogTitle: "مشاركة الدرس",
+		shareDialogText: "انسخ هذا الرابط لمشاركة الدرس الحالي:",
+		shareTitle: "مشاركة الدرس",
+		copyUrl: "نسخ",
+		urlCopied: "تم نسخ الرابط إلى الحافظة!",
 
 		// Dynamic content
 		loadingFallbackText: "تعذر تحميل الدرس. اختر واحدًا من القائمة أو تحقق من المساعدة.",
@@ -638,6 +673,13 @@ const translations = {
 		resetCodeDialogText: "Відновити код до початкового стану цього уроку?",
 		dontShowAgain: "Більше не показувати",
 		reset: "Скинути",
+
+		// Share dialog
+		shareDialogTitle: "Поділитися уроком",
+		shareDialogText: "Скопіюйте цю URL-адресу, щоб поділитися поточним уроком:",
+		shareTitle: "Поділитися уроком",
+		copyUrl: "Копіювати",
+		urlCopied: "URL-адресу скопійовано до буфера обміну!",
 
 		// Dynamic content
 		loadingFallbackText: "Не вдалося завантажити урок. Виберіть один з меню або перевірте допомогу.",

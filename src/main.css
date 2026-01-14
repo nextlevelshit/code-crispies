@@ -257,7 +257,9 @@ kbd {
 	font-weight: bold;
 	cursor: pointer;
 	color: var(--light-text);
-	transition: color 0.2s, border-color 0.2s;
+	transition:
+		color 0.2s,
+		border-color 0.2s;
 }
 
 .help-toggle:hover {
@@ -356,15 +358,47 @@ kbd {
 	opacity: 0.8;
 }
 
+.lesson-title-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: var(--spacing-sm);
+	flex-wrap: wrap;
+}
+
 #lesson-title {
 	font-size: 1.25rem;
 	color: var(--primary-dark);
-	margin-bottom: var(--spacing-sm);
+	margin: 0;
+}
+
+.share-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--light-text);
+	border-radius: var(--border-radius-sm);
+	transition: color 0.2s, background 0.2s;
+}
+
+.share-btn:hover {
+	color: var(--primary-color);
+	background: var(--primary-bg-light);
+}
+
+.share-btn svg {
+	width: 16px;
+	height: 16px;
 }
 
 .completion-badge {
 	display: inline-block;
-	margin-left: 0.5rem;
 	padding: 0.15rem 0.5rem;
 	background: linear-gradient(135deg, #9b59b6, #e040fb, #00bcd4, #7c4dff);
 	color: white;
@@ -584,14 +618,7 @@ kbd {
 	position: absolute;
 	inset: var(--spacing-md);
 	border-radius: var(--border-radius-md);
-	background: conic-gradient(
-		from var(--border-angle),
-		#9b59b6,
-		#e040fb,
-		#00bcd4,
-		#7c4dff,
-		#9b59b6
-	);
+	background: conic-gradient(from var(--border-angle), #9b59b6, #e040fb, #00bcd4, #7c4dff, #9b59b6);
 	filter: blur(30px);
 	opacity: 0;
 	animation: spin-glow 3s ease-out forwards;
@@ -681,14 +708,7 @@ kbd {
 	border: 6px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-		conic-gradient(
-			from 0deg,
-			#9b59b6,
-			#e040fb,
-			#00bcd4,
-			#7c4dff,
-			#9b59b6
-		) border-box;
+		conic-gradient(from 0deg, #9b59b6, #e040fb, #00bcd4, #7c4dff, #9b59b6) border-box;
 }
 
 .preview-wrapper.matched {
@@ -696,18 +716,10 @@ kbd {
 	border: 6px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-		conic-gradient(
-			from var(--border-angle),
-			#9b59b6,
-			#e040fb,
-			#00bcd4,
-			#7c4dff,
-			#9b59b6
-		) border-box;
+		conic-gradient(from var(--border-angle), #9b59b6, #e040fb, #00bcd4, #7c4dff, #9b59b6) border-box;
 	animation: spin-border 3s ease-out forwards;
 	overflow: visible;
 }
-
 
 /* Animated CRISPY speech bubble with SVG tail */
 .preview-wrapper.matched::after {
@@ -716,7 +728,10 @@ kbd {
 	left: 55%;
 	bottom: 0;
 	transform: translateX(-50%) translateY(100%) scale(0.5);
-	font-family: system-ui, -apple-system, sans-serif;
+	font-family:
+		system-ui,
+		-apple-system,
+		sans-serif;
 	font-size: 2rem;
 	font-weight: 800;
 	letter-spacing: 0.05em;
@@ -1080,7 +1095,10 @@ button.lesson-list-item {
 	cursor: pointer;
 	font-family: var(--font-main);
 	font-size: 0.9rem;
-	transition: background 0.2s, color 0.2s, border-color 0.2s;
+	transition:
+		background 0.2s,
+		color 0.2s,
+		border-color 0.2s;
 }
 
 .btn:hover {
@@ -1319,7 +1337,9 @@ input:checked + .toggle-slider::before {
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	transition: background 0.2s, color 0.2s;
+	transition:
+		background 0.2s,
+		color 0.2s;
 }
 
 .dialog-close:hover {
@@ -1370,6 +1390,39 @@ input:checked + .toggle-slider::before {
 	margin-top: var(--spacing-lg);
 }
 
+/* Share Dialog */
+.share-url-container {
+	display: flex;
+	gap: var(--spacing-sm);
+	margin: var(--spacing-md) 0;
+}
+
+.share-url-input {
+	flex: 1;
+	padding: var(--spacing-sm);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-sm);
+	font-family: var(--font-code);
+	font-size: 0.85rem;
+	background: var(--code-bg);
+	color: var(--text-color);
+}
+
+.share-url-input:focus {
+	outline: none;
+	border-color: var(--primary-color);
+}
+
+.copy-feedback {
+	color: var(--success-color);
+	font-size: 0.9rem;
+	margin-top: var(--spacing-sm);
+}
+
+[dir="rtl"] .share-url-container {
+	flex-direction: row-reverse;
+}
+
 /* Project Cards in Help Dialog */
 .project-cards {
 	display: flex;
@@ -1386,7 +1439,11 @@ input:checked + .toggle-slider::before {
 	border: 1px solid var(--primary-bg-medium);
 	text-decoration: none;
 	color: var(--text-color);
-	transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+	transition:
+		background 0.2s,
+		border-color 0.2s,
+		transform 0.2s,
+		box-shadow 0.2s;
 }
 
 .project-card:hover {
@@ -1706,10 +1763,9 @@ input:checked + .toggle-slider::before {
 	flex-direction: row-reverse;
 }
 
-/* RTL: Completion badge spacing */
-[dir="rtl"] .completion-badge {
-	margin-left: 0;
-	margin-right: 0.5rem;
+/* RTL: Lesson title row */
+[dir="rtl"] .lesson-title-row {
+	flex-direction: row-reverse;
 }
 
 /* RTL: Lists - bullets/numbers on right side */

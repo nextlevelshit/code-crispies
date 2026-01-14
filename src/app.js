@@ -3,6 +3,7 @@ import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
+import { parseHash, updateHash, replaceHash, getShareableUrl } from "./helpers/router.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
@@ -28,6 +29,7 @@ const elements = {
 	modulePill: document.getElementById("module-pill"),
 	moduleName: document.querySelector(".module-name"),
 	lessonTitle: document.getElementById("lesson-title"),
+	lessonTitleRow: document.querySelector(".lesson-title-row"),
 	lessonDescription: document.getElementById("lesson-description"),
 	taskInstruction: document.getElementById("task-instruction"),
 	codeInput: document.getElementById("code-input"),
@@ -71,7 +73,15 @@ const elements = {
 	resetCodeDialogClose: document.getElementById("reset-code-dialog-close"),
 	cancelResetCode: document.getElementById("cancel-reset-code"),
 	confirmResetCode: document.getElementById("confirm-reset-code"),
-	resetCodeDontShow: document.getElementById("reset-code-dont-show")
+	resetCodeDontShow: document.getElementById("reset-code-dont-show"),
+
+	// Share dialog
+	shareBtn: document.getElementById("share-btn"),
+	shareDialog: document.getElementById("share-dialog"),
+	shareDialogClose: document.getElementById("share-dialog-close"),
+	shareUrlInput: document.getElementById("share-url-input"),
+	copyUrlBtn: document.getElementById("copy-url-btn"),
+	copyFeedback: document.getElementById("copy-feedback")
 };
 
 // Initialize the lesson engine - now the single source of truth
@@ -283,14 +293,22 @@ function initializeModules() {
 		// Use the new renderModuleList function with both callbacks
 		renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
 
-		// Load saved progress and select appropriate module
-		const progressData = lessonEngine.loadUserProgress();
-		const lastModuleId = progressData?.lastModuleId;
+		// Check URL first for shareable links
+		const urlState = parseHash();
 
-		if (lastModuleId && modules.find((m) => m.id === lastModuleId)) {
-			selectModule(lastModuleId);
-		} else if (modules.length > 0) {
-			selectModule(modules[0].id);
+		if (urlState) {
+			// URL takes priority - navigate to specified lesson
+			navigateToLesson(urlState.moduleId, urlState.lessonIndex, false);
+		} else {
+			// No URL - use saved progress (existing logic)
+			const progressData = lessonEngine.loadUserProgress();
+			const lastModuleId = progressData?.lastModuleId;
+
+			if (lastModuleId && modules.find((m) => m.id === lastModuleId)) {
+				selectModule(lastModuleId);
+			} else if (modules.length > 0) {
+				selectModule(modules[0].id);
+			}
 		}
 
 		updateProgressDisplay();
@@ -306,6 +324,10 @@ function initializeModules() {
 function selectModule(moduleId) {
 	const success = lessonEngine.setModuleById(moduleId);
 	if (!success) return;
+
+	// Update URL
+	const engineState = lessonEngine.getCurrentState();
+	updateHash(moduleId, engineState.lessonIndex);
 
 	// Update module list UI to highlight the active module
 	const moduleItems = elements.moduleList.querySelectorAll(".module-header");
@@ -332,6 +354,10 @@ function selectLesson(moduleId, lessonIndex) {
 	}
 
 	lessonEngine.setLessonByIndex(lessonIndex);
+
+	// Update URL
+	updateHash(moduleId, lessonIndex);
+
 	loadCurrentLesson();
 
 	// Close sidebar after selection on mobile
@@ -463,7 +489,7 @@ function loadCurrentLesson() {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
 			badge.textContent = t("completed");
-			elements.lessonTitle.appendChild(badge);
+			elements.lessonTitleRow.appendChild(badge);
 		}
 
 		// Show gradient border for completed lessons
@@ -556,9 +582,12 @@ function nextLesson() {
 	const prevModuleId = lessonEngine.getCurrentState().module?.id;
 	const success = lessonEngine.nextLesson();
 	if (success) {
-		const newModuleId = lessonEngine.getCurrentState().module?.id;
-		if (newModuleId !== prevModuleId) {
-			updateModuleHighlight(newModuleId);
+		const newState = lessonEngine.getCurrentState();
+		// Update URL
+		updateHash(newState.module.id, newState.lessonIndex);
+
+		if (newState.module.id !== prevModuleId) {
+			updateModuleHighlight(newState.module.id);
 		}
 		loadCurrentLesson();
 	}
@@ -568,9 +597,12 @@ function prevLesson() {
 	const prevModuleId = lessonEngine.getCurrentState().module?.id;
 	const success = lessonEngine.previousLesson();
 	if (success) {
-		const newModuleId = lessonEngine.getCurrentState().module?.id;
-		if (newModuleId !== prevModuleId) {
-			updateModuleHighlight(newModuleId);
+		const newState = lessonEngine.getCurrentState();
+		// Update URL
+		updateHash(newState.module.id, newState.lessonIndex);
+
+		if (newState.module.id !== prevModuleId) {
+			updateModuleHighlight(newState.module.id);
 		}
 		loadCurrentLesson();
 	}
@@ -636,7 +668,7 @@ function runCode() {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
 			badge.textContent = t("completed");
-			elements.lessonTitle.appendChild(badge);
+			elements.lessonTitleRow.appendChild(badge);
 		}
 
 		// Add success visual indicators
@@ -748,6 +780,93 @@ function handleResetCodeClick() {
 	}
 }
 
+// ================= SHARE DIALOG =================
+
+function showShareDialog() {
+	const engineState = lessonEngine.getCurrentState();
+	if (engineState.module && engineState.lesson !== null) {
+		const shareUrl = getShareableUrl(engineState.module.id, engineState.lessonIndex);
+		elements.shareUrlInput.value = shareUrl;
+		elements.copyFeedback.hidden = true;
+	}
+	elements.shareDialog.showModal();
+}
+
+function closeShareDialog() {
+	elements.shareDialog.close();
+}
+
+async function copyShareUrl() {
+	try {
+		await navigator.clipboard.writeText(elements.shareUrlInput.value);
+		elements.copyFeedback.hidden = false;
+		setTimeout(() => {
+			elements.copyFeedback.hidden = true;
+		}, 2000);
+	} catch (err) {
+		// Fallback for older browsers
+		elements.shareUrlInput.select();
+		document.execCommand("copy");
+		elements.copyFeedback.hidden = false;
+		setTimeout(() => {
+			elements.copyFeedback.hidden = true;
+		}, 2000);
+	}
+}
+
+// ================= URL ROUTING =================
+
+function initRouter() {
+	// Handle browser back/forward
+	window.addEventListener("popstate", handlePopState);
+}
+
+function handlePopState() {
+	const parsed = parseHash();
+	if (parsed) {
+		navigateToLesson(parsed.moduleId, parsed.lessonIndex, false);
+	}
+}
+
+function navigateToLesson(moduleId, lessonIndex, shouldUpdateUrl = true) {
+	// Validate moduleId exists
+	const module = lessonEngine.modules.find((m) => m.id === moduleId);
+	if (!module) {
+		// Invalid module - fallback to first module
+		const fallbackModule = lessonEngine.modules[0];
+		if (fallbackModule) {
+			replaceHash(fallbackModule.id, 0);
+			lessonEngine.setModuleById(fallbackModule.id);
+			lessonEngine.setLessonByIndex(0);
+			loadCurrentLesson();
+			updateModuleHighlight(fallbackModule.id);
+		}
+		return;
+	}
+
+	// Validate lessonIndex is in bounds
+	if (lessonIndex < 0 || lessonIndex >= module.lessons.length) {
+		// Invalid lesson - go to first lesson of module
+		replaceHash(moduleId, 0);
+		lessonEngine.setModuleById(moduleId);
+		lessonEngine.setLessonByIndex(0);
+		loadCurrentLesson();
+		updateModuleHighlight(moduleId);
+		return;
+	}
+
+	// Valid navigation
+	lessonEngine.setModuleById(moduleId);
+	lessonEngine.setLessonByIndex(lessonIndex);
+
+	if (shouldUpdateUrl) {
+		updateHash(moduleId, lessonIndex);
+	}
+
+	loadCurrentLesson();
+	updateModuleHighlight(moduleId);
+}
+
 // ================= INITIALIZATION =================
 
 function initCodeEditor() {
@@ -788,6 +907,9 @@ function init() {
 	// Load modules after editor is ready
 	initializeModules();
 
+	// Initialize URL router for shareable links
+	initRouter();
+
 	// Sidebar controls
 	elements.menuBtn.addEventListener("click", openSidebar);
 	elements.closeSidebar.addEventListener("click", closeSidebar);
@@ -797,7 +919,9 @@ function init() {
 	elements.logoLink.addEventListener("click", (e) => {
 		e.preventDefault();
 		lessonEngine.setModuleById("welcome");
+		updateHash("welcome", 0);
 		loadCurrentLesson();
+		updateModuleHighlight("welcome");
 	});
 
 	// Language select
@@ -820,6 +944,7 @@ function init() {
 		if (codeEditor) codeEditor.redo();
 	});
 	elements.resetCodeBtn.addEventListener("click", handleResetCodeClick);
+	elements.shareBtn.addEventListener("click", showShareDialog);
 
 	// Dialogs
 	elements.helpBtn.addEventListener("click", showHelp);
@@ -840,6 +965,13 @@ function init() {
 	});
 	elements.cancelResetCode.addEventListener("click", closeResetCodeDialog);
 	elements.confirmResetCode.addEventListener("click", handleResetCodeConfirm);
+
+	// Share dialog
+	elements.shareDialogClose.addEventListener("click", closeShareDialog);
+	elements.shareDialog.addEventListener("click", (e) => {
+		if (e.target === elements.shareDialog) closeShareDialog();
+	});
+	elements.copyUrlBtn.addEventListener("click", copyShareUrl);
 
 	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
