@@ -5,6 +5,7 @@
 	"description": "Ласкаво просимо до Code Crispies - вашої інтерактивної платформи для вивчення веб-розробки",
 	"mode": "html",
 	"difficulty": "beginner",
+	"excludeFromProgress": true,
 	"lessons": [
 		{
 			"id": "get-started",

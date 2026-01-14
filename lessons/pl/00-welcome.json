@@ -5,6 +5,7 @@
 	"description": "Witaj w Code Crispies - twojej interaktywnej platformie do nauki tworzenia stron",
 	"mode": "html",
 	"difficulty": "beginner",
+	"excludeFromProgress": true,
 	"lessons": [
 		{
 			"id": "get-started",

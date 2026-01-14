@@ -5,6 +5,7 @@
 	"description": "Willkommen bei Code Crispies - deine interaktive Lernplattform für Webentwicklung",
 	"mode": "html",
 	"difficulty": "beginner",
+	"excludeFromProgress": true,
 	"lessons": [
 		{
 			"id": "get-started",
