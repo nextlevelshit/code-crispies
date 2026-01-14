@@ -2,18 +2,18 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "box-model",
 	"title": "CSS Box Model",
-	"description": "Beherrsche die Grundprinzipien der Raumverwaltung im Webdesign durch das CSS Box-Modell.",
+	"description": "Beherrsche die Grundprinzipien der Raumverwaltung im Webdesign durch das CSS Box-Modell. Dieses Modul erkundet, wie Inhalt, Padding, Rahmen und Margins zusammenwirken, um Layout-Strukturen zu erstellen.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "box-model-1",
-			"title": "Box-Modell Komponenten",
-			"description": "Das CSS Box-Modell besteht aus vier konzentrischen Schichten: Inhalt (innerste), Padding, Border und Margin (äußerste). Zu verstehen, wie diese Komponenten zusammenwirken, ist essentiell für präzise Layout-Kontrolle.",
-			"task": "Setze <kbd>padding</kbd> auf <kbd>1rem</kbd>, um Abstand zwischen Inhalt und Rahmen zu schaffen.",
-			"previewHTML": "<div class=\"box\">Box-Modell Komponenten</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: lavender; border: 2px dashed slategray; }",
+			"title": "Padding",
+			"description": "Jedes Element in CSS ist eine Box mit vier Schichten: Inhalt, Padding, Rahmen und Margin. <strong>Padding</strong> schafft Freiraum zwischen deinem Inhalt und dem Rand der Box.<br><br>Ohne Padding drückt sich Text unangenehm gegen Rahmen. Padding macht Inhalte lesbar und visuell ausgewogen.<br><br><pre>.card {\n  padding: 1rem;\n}</pre>",
+			"task": "Diese Profilkarte sieht beengt aus. Füge <kbd>padding: 1rem</kbd> hinzu, damit der Text Platz zum Atmen hat.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".box {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "padding: 1rem;",
@@ -28,56 +28,56 @@
 		},
 		{
 			"id": "box-model-2",
-			"title": "Rahmen hinzufügen",
-			"description": "Rahmen umranden ein Element und schaffen visuelle Trennung. Die border-Kurzschreibweise akzeptiert drei Werte: Breite, Stil und Farbe.",
-			"task": "Setze <kbd>border</kbd> auf <kbd>2px solid darkslategray</kbd>.",
-			"previewHTML": "<div class=\"box\">Diese Box braucht einen Rahmen</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background-color: mintcream; padding: 1rem; }",
+			"title": "Borders",
+			"description": "Rahmen erstellen visuelle Grenzen um Elemente. Die <kbd>border</kbd>-Kurzschreibweise akzeptiert drei Werte: Breite, Stil und Farbe.<br><br>Häufige Stile: <kbd>solid</kbd>, <kbd>dashed</kbd>, <kbd>dotted</kbd>, <kbd>none</kbd>",
+			"task": "Füge der Karte einen dezenten linken Akzent hinzu mit <kbd>border-left: 4px solid steelblue</kbd>.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".box {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "border: 2px solid darkslategray;",
+			"solution": "border-left: 4px solid steelblue;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "border:\\s*2px\\s+solid\\s+darkslategray",
-					"message": "Setze <kbd>border: 2px solid darkslategray</kbd>",
+					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
+					"message": "Setze <kbd>border-left: 4px solid steelblue</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-3",
-			"title": "Außenabstände hinzufügen",
-			"description": "Margins schaffen Abstand zwischen Elementen. Anders als Padding (das den inneren Abstand beeinflusst) existiert Margin außerhalb des Rahmens.",
-			"task": "Setze <kbd>margin</kbd> auf <kbd>1rem</kbd>, um Abstand zum benachbarten Element zu schaffen.",
-			"previewHTML": "<div class=\"container\"><div class=\"outer\">Diese Box braucht Margins</div><div class=\"neighbor\">Benachbartes Element</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .outer { background-color: plum; padding: 1rem; border: 2px solid orchid; } .neighbor { background-color: lightblue; padding: 1rem; border: 2px solid steelblue; }",
+			"title": "Margins",
+			"description": "Margins schaffen Abstand <em>außerhalb</em> des Elements und trennen es von Nachbarn. Während Padding den Inhalt nach innen drückt, drücken Margins andere Elemente weg.",
+			"task": "Füge Abstand zwischen diesen beiden Profilkarten hinzu mit <kbd>margin-bottom: 1rem</kbd> auf <kbd>.card</kbd>.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article><article class=\"card\"><h3>Alex Rivera</h3><p>UX Designer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; border-left: 4px solid steelblue; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".outer {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin: 1rem;",
+			"solution": "margin-bottom: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": { "property": "margin", "expected": "1rem" },
-					"message": "Setze <kbd>margin: 1rem</kbd>"
+					"value": { "property": "margin-bottom", "expected": "1rem" },
+					"message": "Setze <kbd>margin-bottom: 1rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-4",
-			"title": "Box-Sizing: Border-Box",
-			"description": "Die box-sizing Eigenschaft bestimmt, wie Elementdimensionen berechnet werden. 'content-box' (Standard) schließt Padding und Border aus, während 'border-box' sie einschließt.",
-			"task": "Setze <kbd>box-sizing</kbd> auf <kbd>border-box</kbd>, damit Padding und Border in die Breite einbezogen werden.",
-			"previewHTML": "<div class=\"sizing-demo\"><div class=\"box default\">Content-box (Standard)</div><div class=\"box sized\">Border-box</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .sizing-demo { display: flex; gap: 1rem; } .box { width: 200px; padding: 1rem; border: 4px solid teal; background: lightcyan; } .default { box-sizing: content-box; }",
+			"title": "Box Sizing",
+			"description": "Standardmäßig setzt <kbd>width</kbd> nur die Inhaltsbreite. Padding und Rahmen werden addiert. Das verursacht Layout-Probleme.<br><br><kbd>box-sizing: border-box</kbd> bezieht Padding und Rahmen in die Breite ein, was das Sizing vorhersehbar macht. Die meisten Entwickler wenden dies auf alle Elemente an.",
+			"task": "Beide Karten haben <kbd>width: 200px</kbd>. Die linke nutzt Standard-Sizing (content-box) und wird breiter als erwartet. Korrigiere die rechte Karte mit <kbd>box-sizing: border-box</kbd>.",
+			"previewHTML": "<div class=\"demo\"><article class=\"card\">Content-box</article><article class=\"card fix\">Border-box</article></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .demo { display: flex; gap: 1rem; } .card { width: 200px; padding: 1rem; border: 4px solid steelblue; background: white; border-radius: 8px; }",
 			"sandboxCSS": "",
-			"codePrefix": ".sized {\n  ",
+			"codePrefix": ".fix {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "box-sizing: border-box;",
@@ -92,87 +92,98 @@
 		},
 		{
 			"id": "box-model-5",
-			"title": "Margin-Kollaps",
-			"description": "Wenn zwei vertikale Margins aufeinandertreffen, kollabieren sie zum größeren der beiden Werte statt zu addieren.",
-			"task": "Setze <kbd>margin-bottom</kbd> auf <kbd>2rem</kbd>. Der Abstand zwischen den Absätzen beträgt 2rem (nicht 3rem) durch Margin-Kollaps.",
-			"previewHTML": "<div class=\"collapse-demo\"><p class=\"first\">Dieser Absatz hat einen Bottom-Margin.</p><p class=\"second\">Dieser Absatz hat einen Top-Margin von 1rem.</p></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .collapse-demo { border: 1px solid silver; padding: 8px; background: ghostwhite; } .second { margin-top: 1rem; background: linen; }",
+			"title": "Padding Shorthand",
+			"description": "Padding akzeptiert 1-4 Werte:<br>• 1 Wert: alle Seiten<br>• 2 Werte: vertikal | horizontal<br>• 4 Werte: oben | rechts | unten | links",
+			"task": "Dieser Button braucht mehr horizontalen als vertikalen Platz. Setze <kbd>padding: 8px 1rem</kbd> (8px oben/unten, 1rem links/rechts).",
+			"previewHTML": "<button class=\"btn\">Follow</button>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .btn { background: steelblue; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }",
 			"sandboxCSS": "",
-			"codePrefix": ".first {\n  ",
+			"codePrefix": ".btn {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin-bottom: 2rem;",
+			"solution": "padding: 8px 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "margin-bottom", "expected": "2rem" },
-					"message": "Setze <kbd>margin-bottom: 2rem</kbd>"
+					"type": "regex",
+					"value": "padding:\\s*8px\\s+1rem",
+					"message": "Setze <kbd>padding: 8px 1rem</kbd>",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-6",
-			"title": "Margin-Kurzschreibweise",
-			"description": "Die Margin-Kurzschreibweise kann alle vier Seiten setzen. Zwei Werte setzen vertikale (oben/unten) und horizontale (links/rechts) Margins.",
-			"task": "Setze <kbd>margin</kbd> auf <kbd>1rem 2rem</kbd> für 1rem oben/unten und 2rem links/rechts.",
-			"previewHTML": "<div class=\"container\"><div class=\"spaced\">Diese Box braucht Margins: 1rem oben/unten, 2rem links/rechts</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .container { background-color: whitesmoke; padding: 8px; } .spaced { background-color: honeydew; border: 2px solid mediumseagreen; padding: 1rem; }",
+			"title": "Margin Shorthand",
+			"description": "Margin nutzt das gleiche Kurzschreibweisen-Muster wie Padding. Ein häufiges Muster ist das horizontale Zentrieren von Block-Elementen mit <kbd>margin: 0 auto</kbd>.",
+			"task": "Zentriere diese Karte horizontal. Setze <kbd>margin: 0 auto</kbd>, um automatisch gleiche links/rechts-Margins zu berechnen.",
+			"previewHTML": "<article class=\"card\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { width: 250px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; border-left: 4px solid steelblue; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".spaced {\n  ",
+			"codePrefix": ".card {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "margin: 1rem 2rem;",
+			"solution": "margin: 0 auto;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "margin:\\s*1rem\\s+2rem",
-					"message": "Setze <kbd>margin: 1rem 2rem</kbd>",
+					"value": "margin:\\s*0\\s+auto",
+					"message": "Setze <kbd>margin: 0 auto</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "box-model-7",
-			"title": "Padding-Kurzschreibweise",
-			"description": "Wie Margin erlaubt Padding-Kurzschreibweise das Setzen aller Seiten. Ein einzelner Wert gilt für alle vier Seiten.",
-			"task": "Setze <kbd>padding</kbd> auf <kbd>2rem</kbd> für gleichmäßiges Padding.",
-			"previewHTML": "<div class=\"padded\">Diese Box braucht gleichmäßiges Padding</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .padded { background-color: papayawhip; border: 2px solid orange; }",
+			"title": "Border Radius",
+			"description": "Obwohl nicht Teil des klassischen Box-Modells, rundet <kbd>border-radius</kbd> die Ecken der Rahmen-Box eines Elements. Verwende <kbd>50%</kbd> bei einem quadratischen Element, um einen Kreis zu erstellen.",
+			"task": "Mache das Avatar-Bild rund mit <kbd>border-radius: 50%</kbd>.",
+			"previewHTML": "<article class=\"card\"><img class=\"avatar\" src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='25' fill='%23666'/%3E%3Ccircle cx='50' cy='90' r='40' fill='%23666'/%3E%3C/svg%3E\" alt=\"Avatar\"><h3>Sarah Chen</h3><p>Frontend Developer</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; text-align: center; } .avatar { width: 80px; height: 80px; background: #ddd; margin-bottom: 8px; } .card h3 { margin: 0 0 4px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".padded {\n  ",
+			"codePrefix": ".avatar {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "padding: 2rem;",
+			"solution": "border-radius: 50%;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": { "property": "padding", "expected": "2rem" },
-					"message": "Setze <kbd>padding: 2rem</kbd>"
+					"value": { "property": "border-radius", "expected": "50%" },
+					"message": "Setze <kbd>border-radius: 50%</kbd>"
 				}
 			]
 		},
 		{
 			"id": "box-model-8",
-			"title": "Rahmen auf einzelnen Seiten",
-			"description": "Für feinere Kontrolle können einzelne Seiten mit border-top, border-right, border-bottom oder border-left angesprochen werden.",
-			"task": "Setze <kbd>border-bottom</kbd> auf <kbd>4px solid dodgerblue</kbd>.",
-			"previewHTML": "<div class=\"line\">Dieses Element braucht nur einen unteren Rahmen</div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .line { padding: 1rem; background-color: aliceblue; }",
+			"title": "Complete Card",
+			"description": "Kombinieren wir alles. Diese Benachrichtigungskarte braucht Styling, um professionell auszusehen.",
+			"task": "Style die Benachrichtigung: füge <kbd>padding: 1rem</kbd>, <kbd>border-left: 4px solid coral</kbd> und <kbd>border-radius: 4px</kbd> hinzu.",
+			"previewHTML": "<div class=\"alert\"><strong>New message</strong><p>You have 3 unread notifications</p></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .alert { background: seashell; } .alert strong { color: coral; } .alert p { margin: 4px 0 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": ".line {\n  ",
+			"codePrefix": ".alert {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "border-bottom: 4px solid dodgerblue;",
+			"solution": "padding: 1rem;\n  border-left: 4px solid coral;\n  border-radius: 4px;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
+					"type": "property_value",
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Setze <kbd>padding: 1rem</kbd>"
+				},
+				{
 					"type": "regex",
-					"value": "border-bottom:\\s*4px\\s+solid\\s+dodgerblue",
-					"message": "Setze <kbd>border-bottom: 4px solid dodgerblue</kbd>",
+					"value": "border-left:\\s*4px\\s+solid\\s+coral",
+					"message": "Setze <kbd>border-left: 4px solid coral</kbd>",
 					"options": { "caseSensitive": false }
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "border-radius", "expected": "4px" },
+					"message": "Setze <kbd>border-radius: 4px</kbd>"
 				}
 			]
 		}

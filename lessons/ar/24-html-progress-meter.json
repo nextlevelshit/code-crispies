@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-progress-meter",
 	"title": "HTML Progress & Meter",
-	"description": "Display completion status and scalar measurements natively",
+	"description": "اعرض حالة الإكمال والقياسات بشكل أصلي",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "progress-basic",
-			"title": "Progress Bars",
-			"description": "The <kbd>&lt;progress&gt;</kbd> element shows task completion. Use <kbd>value</kbd> for current progress and <kbd>max</kbd> for the total.<br><br><b>Note:</b> This is not a self-closing tag! Write <kbd>&lt;progress&gt;...&lt;/progress&gt;</kbd> with fallback text inside for older browsers.",
-			"task": "Create a progress bar showing 70% completion:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Download:</code><br>2. Add a <kbd>&lt;progress&gt;</kbd> with <kbd>value=\"70\"</kbd> and <kbd>max=\"100\"</kbd>",
+			"title": "أشرطة التقدم",
+			"description": "عنصر <kbd>&lt;progress&gt;</kbd> يُظهر إكمال المهمة. استخدم <kbd>value</kbd> للتقدم الحالي و <kbd>max</kbd> للإجمالي.<br><br><b>ملاحظة:</b> هذا ليس وسماً ذاتي الإغلاق! اكتب <kbd>&lt;progress&gt;...&lt;/progress&gt;</kbd> مع نص بديل بالداخل للمتصفحات القديمة.",
+			"task": "أنشئ شريط تقدم يُظهر 70% إكمال:<br>1. أضف <kbd>&lt;label&gt;</kbd> يقول <code>Download:</code><br>2. أضف <kbd>&lt;progress&gt;</kbd> مع <kbd>value=\"70\"</kbd> و <kbd>max=\"100\"</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } progress { width: 100%; height: 20px; border-radius: 10px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 10px; } progress::-webkit-progress-value { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; } progress::-moz-progress-bar { background: linear-gradient(90deg, #4caf50, #8bc34a); border-radius: 10px; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Add a <kbd>&lt;progress&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;progress&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "value", "value": "70" },
-					"message": "Set <kbd>value=</kbd>\"70\" on the progress element"
+					"message": "عيّن <kbd>value=</kbd>\"70\" في عنصر progress"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "progress", "attr": "max", "value": "100" },
-					"message": "Set <kbd>max=</kbd>\"100\" on the progress element"
+					"message": "عيّن <kbd>max=</kbd>\"100\" في عنصر progress"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <kbd>&lt;label&gt;</kbd> for the progress bar"
+					"message": "أضف <kbd>&lt;label&gt;</kbd> لشريط التقدم"
 				}
 			]
 		},
 		{
 			"id": "progress-indeterminate",
-			"title": "Indeterminate Progress",
-			"description": "When progress is unknown (like loading), omit the <kbd>value</kbd> attribute. This creates an animated indeterminate state.<br><br>Useful for network requests or processes with unknown duration.",
-			"task": "Create a loading indicator:<br>1. Add a <kbd>&lt;p&gt;</kbd> saying <code>Loading...</code><br>2. Add a <kbd>&lt;progress&gt;</kbd> without a value attribute",
+			"title": "تقدم غير محدد",
+			"description": "عندما يكون التقدم غير معروف (مثل التحميل)، احذف سمة <kbd>value</kbd>. هذا ينشئ حالة متحركة غير محددة.<br><br>مفيد لطلبات الشبكة أو العمليات ذات المدة غير المعروفة.",
+			"task": "أنشئ مؤشر تحميل:<br>1. أضف <kbd>&lt;p&gt;</kbd> يقول <code>Loading...</code><br>2. أضف <kbd>&lt;progress&gt;</kbd> بدون سمة value",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } p { margin-bottom: 10px; color: #666; } progress { width: 100%; height: 8px; border-radius: 4px; } progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 4px; }",
 			"sandboxCSS": "",
@@ -55,20 +55,20 @@
 				{
 					"type": "element_exists",
 					"value": "progress",
-					"message": "Add a <kbd>&lt;progress&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;progress&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "p",
-					"message": "Add a <kbd>&lt;p&gt;</kbd> with loading text"
+					"message": "أضف <kbd>&lt;p&gt;</kbd> مع نص التحميل"
 				}
 			]
 		},
 		{
 			"id": "meter-gauge",
-			"title": "Meter Gauges",
-			"description": "The <kbd>&lt;meter&gt;</kbd> element displays a scalar value within a range. Use it for measurements like disk space, battery, or ratings.<br><br>Set <kbd>low</kbd>, <kbd>high</kbd>, and <kbd>optimum</kbd> to define good/bad ranges - the browser colors it accordingly!",
-			"task": "Create a battery level meter:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Battery:</code><br>2. Add a <kbd>&lt;meter&gt;</kbd> with:<br>   - <kbd>value=\"0.8\"</kbd><br>   - <kbd>min=\"0\"</kbd> and <kbd>max=\"1\"</kbd><br>   - <kbd>low=\"0.2\"</kbd> and <kbd>high=\"0.8\"</kbd><br>   - <kbd>optimum=\"1\"</kbd>",
+			"title": "مقاييس meter",
+			"description": "عنصر <kbd>&lt;meter&gt;</kbd> يعرض قيمة قياسية ضمن نطاق. استخدمه للقياسات مثل مساحة القرص، البطارية، أو التقييمات.<br><br>عيّن <kbd>low</kbd> و <kbd>high</kbd> و <kbd>optimum</kbd> لتحديد النطاقات الجيدة/السيئة - المتصفح يلونها وفقاً لذلك!",
+			"task": "أنشئ مقياس مستوى البطارية:<br>1. أضف <kbd>&lt;label&gt;</kbd> يقول <code>Battery:</code><br>2. أضف <kbd>&lt;meter&gt;</kbd> مع:<br>   - <kbd>value=\"0.8\"</kbd><br>   - <kbd>min=\"0\"</kbd> و <kbd>max=\"1\"</kbd><br>   - <kbd>low=\"0.2\"</kbd> و <kbd>high=\"0.8\"</kbd><br>   - <kbd>optimum=\"1\"</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } meter { width: 100%; height: 25px; }",
 			"sandboxCSS": "",
@@ -79,22 +79,42 @@
 				{
 					"type": "element_exists",
 					"value": "meter",
-					"message": "Add a <kbd>&lt;meter&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;meter&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "value", "value": "0.8" },
-					"message": "Set <kbd>value=</kbd>\"0.8\" on the meter"
+					"message": "عيّن <kbd>value=</kbd>\"0.8\" في meter"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "min", "value": "0" },
+					"message": "عيّن <kbd>min=</kbd>\"0\" في meter"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "max", "value": "1" },
+					"message": "عيّن <kbd>max=</kbd>\"1\" في meter"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "meter", "attr": "low", "value": "0.2" },
-					"message": "Set <kbd>low=</kbd>\"0.2\" to define the low threshold"
+					"message": "عيّن <kbd>low=</kbd>\"0.2\" لتحديد العتبة المنخفضة"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "high", "value": "0.8" },
+					"message": "عيّن <kbd>high=</kbd>\"0.8\" لتحديد العتبة العالية"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "meter", "attr": "optimum", "value": "1" },
+					"message": "عيّن <kbd>optimum=</kbd>\"1\" للإشارة إلى القيمة المثلى"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <kbd>&lt;label&gt;</kbd> for the meter"
+					"message": "أضف <kbd>&lt;label&gt;</kbd> للـ meter"
 				}
 			]
 		}

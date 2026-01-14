@@ -2,14 +2,14 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "responsive-design",
 	"title": "CSS Responsive Design",
-	"description": "Make your layouts adapt to different screen sizes using media queries and fluid design techniques.",
+	"description": "Dostosuj swoje layouty do różnych rozmiarów ekranów używając media queries i technik płynnego designu.",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "responsive-1",
 			"title": "Media Queries",
-			"description": "Understand the syntax and use cases for CSS media queries to apply styles conditionally based on viewport characteristics.",
-			"task": "Write a media query with <kbd>@media (max-width: 600px)</kbd> that changes <kbd>.panel</kbd> background to <kbd>lightcoral</kbd>.",
+			"description": "Poznaj składnię i przypadki użycia CSS media queries do warunkowego stosowania stylów na podstawie cech viewport.<br><br><pre>@media (max-width: 600px) {\n  .panel {\n    background: lightcoral;\n  }\n}</pre>",
+			"task": "Napisz media query z <kbd>@media (max-width: 600px)</kbd>, która zmienia tło <kbd>.panel</kbd> na <kbd>lightcoral</kbd>.",
 			"previewHTML": "<div class=\"panel\">Resize the window</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .panel { padding: 1rem; background: lightblue; }",
 			"sandboxCSS": "",
@@ -22,19 +22,19 @@
 				{
 					"type": "regex",
 					"value": "@media\\s*\\(max-width:\\s*600px\\)",
-					"message": "Use <kbd>@media (max-width: 600px)</kbd>",
+					"message": "Użyj <kbd>@media (max-width: 600px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
 					"value": ".panel",
-					"message": "Target <kbd>.panel</kbd> inside the media query",
+					"message": "Zaadresuj <kbd>.panel</kbd> wewnątrz media query",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "background", "expected": "lightcoral" },
-					"message": "Set <kbd>background: lightcoral</kbd>",
+					"message": "Ustaw <kbd>background: lightcoral</kbd>",
 					"options": { "exact": false }
 				}
 			]
@@ -42,8 +42,8 @@
 		{
 			"id": "responsive-2",
 			"title": "Fluid Type",
-			"description": "Use relative units like <kbd>vw</kbd> to make font sizes scale with the viewport width.",
-			"task": "Set <kbd>font-size: 5vw</kbd> on <kbd>.text</kbd> so it scales as the viewport changes.",
+			"description": "Używaj jednostek względnych jak <kbd>vw</kbd>, aby rozmiary czcionek skalowały się z szerokością viewport.",
+			"task": "Ustaw <kbd>font-size: 5vw</kbd>, aby skalowała się ze zmianą viewport.",
 			"previewHTML": "<p class=\"text\">Fluid Typography</p>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; }",
 			"sandboxCSS": "",
@@ -53,46 +53,46 @@
 			"solution": "  font-size: 5vw;",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "property_value", "value": { "property": "font-size", "expected": "5vw" }, "message": "Set <kbd>font-size: 5vw</kbd>" }
+				{ "type": "property_value", "value": { "property": "font-size", "expected": "5vw" }, "message": "Ustaw <kbd>font-size: 5vw</kbd>" }
 			]
 		},
 		{
 			"id": "responsive-3",
-			"title": "Flex Grids",
-			"description": "Combine CSS Grid with <kbd>auto-fit</kbd> or <kbd>auto-fill</kbd> for responsive column layouts.",
-			"task": "Add <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</kbd>, and <kbd>gap: 1rem</kbd> to <kbd>.cards</kbd>.",
-			"previewHTML": "<div class=\"cards\"><div>1</div><div>2</div><div>3</div><div>4</div></div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .cards > div { background: #d1c4e9; padding: 1rem; }",
+			"title": "Responsive Grid",
+			"description": "Połącz CSS Grid z <kbd>auto-fit</kbd> lub <kbd>auto-fill</kbd> dla responsywnych układów kolumnowych, które automatycznie dostosowują liczbę kolumn na podstawie dostępnej przestrzeni.",
+			"task": "Dodaj <kbd>display: grid</kbd>, <kbd>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</kbd> i <kbd>gap: 1rem</kbd>.",
+			"previewHTML": "<section class=\"features\"><article class=\"feature\"><h3>Fast</h3><p>Lightning quick load times</p></article><article class=\"feature\"><h3>Secure</h3><p>Enterprise-grade security</p></article><article class=\"feature\"><h3>Reliable</h3><p>99.9% uptime guaranteed</p></article><article class=\"feature\"><h3>Support</h3><p>24/7 customer service</p></article></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .feature { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .feature h3 { margin: 0 0 8px; color: steelblue; } .feature p { margin: 0; color: #666; font-size: 0.9rem; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Create a responsive grid */\n.cards {",
+			"codePrefix": ".features {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
-			"solution": "  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 1rem;",
+			"codeSuffix": "\n}",
+			"solution": "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
 					"value": { "property": "display", "expected": "grid" },
-					"message": "Set <kbd>display: grid</kbd>"
+					"message": "Ustaw <kbd>display: grid</kbd>"
 				},
 				{
 					"type": "regex",
 					"value": "repeat\\(auto-fit,\\s*minmax\\(200px,\\s*1fr\\)\\)",
-					"message": "Use <kbd>repeat(auto-fit, minmax(200px, 1fr))</kbd>",
+					"message": "Użyj <kbd>repeat(auto-fit, minmax(200px, 1fr))</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "gap", "expected": "1rem" },
-					"message": "Set <kbd>gap: 1rem</kbd>"
+					"message": "Ustaw <kbd>gap: 1rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "responsive-4",
 			"title": "Mobile-First",
-			"description": "Adopt a mobile-first approach by writing base styles for small screens and enhancing for larger viewports.",
-			"task": "Write a media query with <kbd>@media (min-width: 768px)</kbd> that sets <kbd>.sidebar</kbd> width to <kbd>250px</kbd>.",
+			"description": "Zastosuj podejście mobile-first: pisz bazowe style dla małych ekranów i rozszerzaj dla większych viewport.",
+			"task": "Napisz media query z <kbd>@media (min-width: 768px)</kbd>, która ustawia szerokość <kbd>.sidebar</kbd> na <kbd>250px</kbd>.",
 			"previewHTML": "<aside class=\"sidebar\">Sidebar</aside>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .sidebar { background: #c8e6c9; padding: 1rem; }",
 			"sandboxCSS": "",
@@ -105,19 +105,19 @@
 				{
 					"type": "regex",
 					"value": "@media\\s*\\(min-width:\\s*768px\\)",
-					"message": "Use <kbd>@media (min-width: 768px)</kbd>",
+					"message": "Użyj <kbd>@media (min-width: 768px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
 					"value": ".sidebar",
-					"message": "Target <kbd>.sidebar</kbd> inside media query",
+					"message": "Zaadresuj <kbd>.sidebar</kbd> w media query",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "width", "expected": "250px" },
-					"message": "Set <kbd>width: 250px</kbd>",
+					"message": "Ustaw <kbd>width: 250px</kbd>",
 					"options": { "exact": false }
 				}
 			]

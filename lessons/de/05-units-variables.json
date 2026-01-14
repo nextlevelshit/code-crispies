@@ -7,119 +7,94 @@
 	"lessons": [
 		{
 			"id": "units-1",
-			"title": "Absolute vs. Relative Einheiten",
-			"description": "Lerne den Unterschied zwischen px, rem, em, % und vw/vh für flexible, responsive Layouts.",
-			"task": "Setze die Breite von <kbd>.box</kbd> auf <kbd>80%</kbd> und max-width auf <kbd>37.5rem</kbd>.",
-			"previewHTML": "<div class=\"box\">Ändere meine Größe!</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .box { background: #f5f5f5; padding: 1rem; }",
+			"title": "Relative Units",
+			"description": "CSS bietet zwei Arten von Einheiten: <em>absolute</em> (wie <kbd>px</kbd>) und <em>relative</em> (wie <kbd>%</kbd> und <kbd>rem</kbd>). Relative Einheiten passen sich ihrem Kontext an und machen Layouts flexibel und zugänglich.<br><br><strong>Häufige relative Einheiten:</strong><br>• <kbd>%</kbd> – Relativ zum Elternelement<br>• <kbd>rem</kbd> – Relativ zur Root-Schriftgröße (typisch 16px)<br>• <kbd>em</kbd> – Relativ zur Schriftgröße des Elements<br><br>Ein häufiges Muster für lesbaren Inhalt: setze <kbd>width: 100%</kbd>, damit es den verfügbaren Platz füllt, dann <kbd>max-width: 40rem</kbd> um die Zeilenlänge für Lesbarkeit zu begrenzen.",
+			"task": "Dieser Artikeltext läuft auf großen Bildschirmen zu breit. Füge <kbd>max-width: 40rem</kbd> hinzu für optimale Lesebreite.",
+			"previewHTML": "<article class=\"article\"><h2>The Art of Typography</h2><p>Good typography is invisible. When text is set well, readers absorb information without noticing the design decisions that make it comfortable to read. Line length is crucial—too wide and eyes get lost, too narrow and reading becomes choppy.</p><p>The ideal line length is 45-75 characters per line. At typical font sizes, this works out to roughly 40rem maximum width.</p></article>",
+			"previewBaseCSS": "body { font-family: Georgia, serif; padding: 1rem; background: #f9f9f9; } .article { background: white; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); } .article h2 { margin: 0 0 1rem; color: #333; } .article p { margin: 0 0 1rem; line-height: 1.6; color: #444; } .article p:last-child { margin-bottom: 0; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Setze flexible Größen */\n.box {",
+			"codePrefix": ".article {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
-			"solution": "  width: 80%;\n  max-width: 37.5rem;",
+			"codeSuffix": "\n}",
+			"solution": "max-width: 40rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "width",
-					"message": "Verwende die <kbd>width</kbd> Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{ "type": "property_value", "value": { "property": "width", "expected": "80%" }, "message": "Setze width auf <kbd>80%</kbd>" },
-				{
-					"type": "contains",
-					"value": "max-width",
-					"message": "Verwende die <kbd>max-width</kbd> Eigenschaft",
-					"options": { "caseSensitive": false }
-				},
-				{
 					"type": "property_value",
-					"value": { "property": "max-width", "expected": "37.5rem" },
-					"message": "Setze max-width auf <kbd>37.5rem</kbd>"
+					"value": { "property": "max-width", "expected": "40rem" },
+					"message": "Setze <kbd>max-width: 40rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "units-2",
-			"title": "CSS Custom Properties",
-			"description": "Definiere und verwende Variablen (--custom properties) wieder, um deine Theme-Werte zu zentralisieren.",
-			"task": "Erstelle eine <code>--main-color</code> Variable in :root mit <kbd>#6200ee</kbd> und wende sie als Rahmenfarbe auf <kbd>.themed</kbd> an.",
-			"previewHTML": "<div class=\"themed\">Variablen-Box</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .themed { padding: 1rem; border: 0.125rem solid #ddd; }",
+			"title": "CSS Variables",
+			"description": "CSS Custom Properties (Variablen) erlauben dir, wiederverwendbare Werte zu definieren. Definiere sie mit <kbd>--name</kbd> und verwende sie mit <kbd>var(--name)</kbd>. Variablen auf <kbd>:root</kbd> sind überall verfügbar.",
+			"task": "Definiere <kbd>--brand: steelblue</kbd> in <kbd>:root</kbd>, dann verwende es als <kbd>background</kbd>-Farbe für <kbd>.btn</kbd>.",
+			"previewHTML": "<div class=\"actions\"><button class=\"btn\">Subscribe</button><button class=\"btn\">Learn More</button></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .actions { display: flex; gap: 1rem; } .btn { color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1rem; cursor: pointer; background: #ccc; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Definiere und verwende eine CSS-Variable */\n:root {",
+			"codePrefix": ":root {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}\n.themed { }",
-			"solution": "  --main-color: #6200ee;\n}\n.themed {\n  border-color: var(--main-color);",
+			"codeSuffix": "\n}\n\n.btn {\n  background: var(--brand);\n}",
+			"solution": "--brand: steelblue;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "contains",
-					"value": "--main-color",
-					"message": "Definiere <kbd>--main-color</kbd> in :root",
+					"value": "--brand",
+					"message": "Definiere die <kbd>--brand</kbd> Variable",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
-					"value": "var(--main-color)",
-					"message": "Verwende <kbd>var(--main-color)</kbd>",
+					"value": "steelblue",
+					"message": "Setze den Wert auf <kbd>steelblue</kbd>",
 					"options": { "caseSensitive": false }
-				},
-				{
-					"type": "property_value",
-					"value": { "property": "border", "expected": "var(--main-color)" },
-					"message": "Wende die Variable auf die Rahmenfarbe an",
-					"options": { "exact": false }
 				}
 			]
 		},
 		{
 			"id": "units-3",
-			"title": "Einheiten-Berechnungen (calc)",
-			"description": "Verwende die <code>calc()</code> Funktion, um verschiedene Einheiten in einem Ausdruck zu kombinieren.",
-			"task": "Setze die Breite von <kbd>.sized</kbd> auf <kbd>calc(100% - 2rem)</kbd> und min-height auf <kbd>calc(10vh + 1rem)</kbd>.",
-			"previewHTML": "<div class=\"sized\">Calc Demo</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .sized { background: #e8f5e9; padding: 1rem; }",
+			"title": "calc() Function",
+			"description": "Die <kbd>calc()</kbd> Funktion ermöglicht das Mischen verschiedener Einheiten in Berechnungen. Das ist essenziell für Layouts, die feste und flexible Größen kombinieren, wie ein Sidebar-Layout.",
+			"task": "Der Hauptinhalt soll den verbleibenden Platz nach der 200px Sidebar füllen. Setze <kbd>width: calc(100% - 200px)</kbd> auf <kbd>.main</kbd>.",
+			"previewHTML": "<div class=\"layout\"><aside class=\"sidebar\">Sidebar<br>Navigation</aside><main class=\"main\"><h2>Main Content</h2><p>This area should fill the remaining width after accounting for the fixed-width sidebar.</p></main></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .layout { display: flex; gap: 1rem; } .sidebar { width: 200px; background: #1a1a2e; color: white; padding: 1rem; border-radius: 8px; flex-shrink: 0; } .main { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .main h2 { margin: 0 0 8px; } .main p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Verwende calc für dynamische Größen */\n.sized {",
+			"codePrefix": ".main {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
-			"solution": "  width: calc(100% - 2rem);\n  min-height: calc(10vh + 1rem);",
+			"codeSuffix": "\n}",
+			"solution": "width: calc(100% - 200px);",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "calc", "message": "Verwende die <kbd>calc()</kbd> Funktion", "options": { "caseSensitive": false } },
 				{
 					"type": "regex",
-					"value": "width:\\s*calc\\(100% - 2rem\\)",
-					"message": "Width sollte calc(100% - 2rem) sein",
-					"options": { "caseSensitive": false }
-				},
-				{
-					"type": "regex",
-					"value": "min-height:\\s*calc\\(10vh \\+ 1rem\\)",
-					"message": "Min-height sollte calc(10vh + 1rem) sein",
+					"value": "width:\\s*calc\\(\\s*100%\\s*-\\s*200px\\s*\\)",
+					"message": "Setze <kbd>width: calc(100% - 200px)</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
 		},
 		{
 			"id": "units-4",
-			"title": "Viewport & Responsive Einheiten",
-			"description": "Steuere Layouts relativ zur Viewport-Größe mit vw, vh und vmin/vmax Einheiten.",
-			"task": "Gib <kbd>.view</kbd> eine Breite von <kbd>50vw</kbd> und Höhe von <kbd>20vh</kbd>.",
-			"previewHTML": "<div class=\"view\">Viewport-Box</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .view { background: #ffe0b2; }",
+			"title": "Viewport Units",
+			"description": "Viewport-Einheiten dimensionieren Elemente relativ zum Browserfenster:<br>• <kbd>vw</kbd> – 1% der Viewport-Breite<br>• <kbd>vh</kbd> – 1% der Viewport-Höhe<br><br>Diese sind perfekt für Vollbild-Sektionen wie Hero-Banner.",
+			"task": "Mache diese Hero-Sektion so hoch wie das Viewport mit <kbd>min-height: 100vh</kbd>.",
+			"previewHTML": "<section class=\"hero\"><h1>Welcome</h1><p>Scroll down to explore</p></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .hero { background: linear-gradient(135deg, #1a1a2e 0%, steelblue 100%); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; } .hero h1 { margin: 0 0 1rem; font-size: 2.5rem; } .hero p { margin: 0; opacity: 0.8; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Verwende Viewport-Einheiten */\n.view {",
+			"codePrefix": ".hero {\n  ",
 			"initialCode": "",
-			"codeSuffix": "}",
-			"solution": "  width: 50vw;\n  height: 20vh;",
+			"codeSuffix": "\n}",
+			"solution": "min-height: 100vh;",
 			"previewContainer": "preview-area",
 			"validations": [
-				{ "type": "contains", "value": "vw", "message": "Verwende <kbd>vw</kbd> Einheit", "options": { "caseSensitive": false } },
-				{ "type": "contains", "value": "vh", "message": "Verwende <kbd>vh</kbd> Einheit", "options": { "caseSensitive": false } },
-				{ "type": "property_value", "value": { "property": "width", "expected": "50vw" }, "message": "Setze width auf <kbd>50vw</kbd>" },
-				{ "type": "property_value", "value": { "property": "height", "expected": "20vh" }, "message": "Setze height auf <kbd>20vh</kbd>" }
+				{
+					"type": "property_value",
+					"value": { "property": "min-height", "expected": "100vh" },
+					"message": "Setze <kbd>min-height: 100vh</kbd>"
+				}
 			]
 		}
 	]

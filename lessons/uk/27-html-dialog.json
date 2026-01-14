@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-dialog",
-	"title": "Dialogs",
-	"description": "Create modal dialogs without JavaScript libraries",
+	"title": "Діалоги",
+	"description": "Створюйте модальні діалоги без JavaScript бібліотек",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "dialog-basic",
-			"title": "Open Dialog",
-			"description": "The <kbd>&lt;dialog&gt;</kbd> element creates a native modal. Add the <kbd>open</kbd> attribute to show it.<br><br>Use <kbd>&lt;form method=\"dialog\"&gt;</kbd> inside to close it when the form submits - no JavaScript needed!",
-			"task": "Create a dialog with:<br>1. The <kbd>open</kbd> attribute to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Welcome!</code><br>3. A <kbd>&lt;p&gt;</kbd> with a greeting message<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with a close button",
+			"title": "Відкрити діалог",
+			"description": "Елемент <kbd>&lt;dialog&gt;</kbd> створює нативне модальне вікно. Додайте атрибут <kbd>open</kbd>, щоб показати його.<br><br>Використовуйте <kbd>&lt;form method=\"dialog\"&gt;</kbd> всередині, щоб закрити його при відправці форми - без JavaScript!",
+			"task": "Створіть діалог з:<br>1. Атрибутом <kbd>open</kbd> для відображення<br>2. Елементом <kbd>&lt;h2&gt;</kbd> з текстом <code>Вітаємо!</code><br>3. Елементом <kbd>&lt;p&gt;</kbd> з привітальним повідомленням<br>4. Елементом <kbd>&lt;form method=\"dialog\"&gt;</kbd> з кнопкою закриття",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: #f5f5f5; } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 400px; } dialog::backdrop { background: rgba(0,0,0,0.5); } dialog h2 { margin: 0 0 15px 0; color: #1976d2; } dialog p { color: #666; margin: 0 0 20px 0; } dialog button { background: #1976d2; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; } dialog button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
@@ -21,35 +21,35 @@
 				{
 					"type": "element_exists",
 					"value": "dialog",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> element"
+					"message": "Додайте елемент <kbd>&lt;dialog&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "dialog", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to show the dialog"
+					"message": "Додайте атрибут <kbd>open</kbd> щоб показати діалог"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading inside the dialog"
+					"message": "Додайте заголовок <kbd>&lt;h2&gt;</kbd> всередині діалогу"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for closing"
+					"message": "Додайте <kbd>&lt;form method=\"dialog\"&gt;</kbd> для закриття"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog button",
-					"message": "Add a close button inside the form"
+					"message": "Додайте кнопку закриття всередині форми"
 				}
 			]
 		},
 		{
 			"id": "dialog-form",
-			"title": "Dialog + Form",
-			"description": "Dialogs can contain full forms. The <kbd>method=\"dialog\"</kbd> makes the form close the dialog on submit instead of sending data.<br><br>This pattern is perfect for confirmation dialogs, quick inputs, or settings panels.",
-			"task": "Create a confirmation dialog:<br>1. Add <kbd>open</kbd> to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Confirm Delete</code><br>3. A <kbd>&lt;p&gt;</kbd> asking <code>Are you sure?</code><br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with Cancel and Delete buttons",
+			"title": "Діалог + Форма",
+			"description": "Діалоги можуть містити повні форми. <kbd>method=\"dialog\"</kbd> змушує форму закривати діалог при відправці замість відправки даних.<br><br>Цей шаблон ідеальний для діалогів підтвердження, швидкого введення або панелей налаштувань.",
+			"task": "Створіть діалог підтвердження:<br>1. Додайте <kbd>open</kbd> для відображення<br>2. Елемент <kbd>&lt;h2&gt;</kbd> з текстом <code>Підтвердити видалення</code><br>3. Елемент <kbd>&lt;p&gt;</kbd> з питанням <code>Ви впевнені?</code><br>4. Елемент <kbd>&lt;form method=\"dialog\"&gt;</kbd> з кнопками Скасувати та Видалити",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 350px; text-align: center; } dialog h2 { margin: 0 0 10px 0; color: #c62828; } dialog p { color: #666; margin: 0 0 20px 0; } dialog form { display: flex; gap: 10px; justify-content: center; } dialog button { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; border: none; } dialog button:first-child { background: #e0e0e0; color: #333; } dialog button:last-child { background: #c62828; color: white; } dialog button:hover { opacity: 0.9; }",
 			"sandboxCSS": "",
@@ -60,22 +60,22 @@
 				{
 					"type": "element_exists",
 					"value": "dialog[open]",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> with the open attribute"
+					"message": "Додайте <kbd>&lt;dialog&gt;</kbd> з атрибутом open"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add a heading to the dialog"
+					"message": "Додайте заголовок до діалогу"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for the buttons"
+					"message": "Додайте <kbd>&lt;form method=\"dialog\"&gt;</kbd> для кнопок"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "dialog button", "min": 2 },
-					"message": "Add at least 2 buttons (Cancel and Confirm)"
+					"message": "Додайте принаймні 2 кнопки (Скасувати та Підтвердити)"
 				}
 			]
 		}

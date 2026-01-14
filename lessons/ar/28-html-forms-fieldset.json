@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-fieldset",
-	"title": "Fieldsets",
-	"description": "Group form controls with fieldset and legend elements",
+	"title": "مجموعة الحقول",
+	"description": "جمّع عناصر التحكم في النموذج باستخدام fieldset و legend",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "fieldset-basic",
-			"title": "Grouping with Fieldset",
-			"description": "The <kbd>&lt;fieldset&gt;</kbd> element groups related form controls together. Add a <kbd>&lt;legend&gt;</kbd> as the first child to give the group a title.<br><br>This helps with accessibility and visual organization of complex forms.",
-			"task": "Create a form with a fieldset:<br>1. A <kbd>&lt;form&gt;</kbd> element<br>2. A <kbd>&lt;fieldset&gt;</kbd> inside<br>3. A <kbd>&lt;legend&gt;</kbd> saying <code>Personal Info</code><br>4. Two labeled inputs for name and email",
+			"title": "التجميع مع Fieldset",
+			"description": "عنصر <kbd>&lt;fieldset&gt;</kbd> يجمع عناصر التحكم المرتبطة في النموذج معاً. أضف <kbd>&lt;legend&gt;</kbd> كأول عنصر فرعي لإعطاء المجموعة عنواناً.<br><br>هذا يساعد في إمكانية الوصول والتنظيم البصري للنماذج المعقدة.",
+			"task": "أنشئ نموذجاً مع fieldset:<br>1. عنصر <kbd>&lt;form&gt;</kbd><br>2. عنصر <kbd>&lt;fieldset&gt;</kbd> بداخله<br>3. عنصر <kbd>&lt;legend&gt;</kbd> يقول <code>المعلومات الشخصية</code><br>4. حقلين مُعنونين للاسم والبريد الإلكتروني",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f0f4f8; } form { max-width: 400px; } fieldset { border: 2px solid #3498db; border-radius: 10px; padding: 20px; background: white; } legend { color: #3498db; font-weight: 600; padding: 0 10px; font-size: 1.1rem; } label { display: block; margin: 15px 0 5px; color: #333; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; } input:focus { outline: 2px solid #3498db; border-color: transparent; }",
 			"sandboxCSS": "",
@@ -21,35 +21,35 @@
 				{
 					"type": "element_exists",
 					"value": "form",
-					"message": "Add a <kbd>&lt;form&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;form&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "fieldset",
-					"message": "Add a <kbd>&lt;fieldset&gt;</kbd> inside the form"
+					"message": "أضف <kbd>&lt;fieldset&gt;</kbd> داخل النموذج"
 				},
 				{
 					"type": "element_exists",
 					"value": "legend",
-					"message": "Add a <kbd>&lt;legend&gt;</kbd> to title your fieldset"
+					"message": "أضف <kbd>&lt;legend&gt;</kbd> لعنونة مجموعة الحقول"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "label", "min": 2 },
-					"message": "Add at least 2 labels"
+					"message": "أضف على الأقل عنوانين"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "input", "min": 2 },
-					"message": "Add at least 2 input fields"
+					"message": "أضف على الأقل حقلي إدخال"
 				}
 			]
 		},
 		{
 			"id": "fieldset-textarea",
-			"title": "Adding Textarea",
-			"description": "The <kbd>&lt;textarea&gt;</kbd> element creates a multi-line text input, perfect for longer content like messages or descriptions.<br><br>Use <kbd>rows</kbd> and <kbd>cols</kbd> attributes to set default size.",
-			"task": "Create a contact form:<br>1. A <kbd>&lt;fieldset&gt;</kbd> with <kbd>&lt;legend&gt;</kbd> <code>Contact Us</code><br>2. A labeled <kbd>&lt;input&gt;</kbd> for email<br>3. A labeled <kbd>&lt;textarea&gt;</kbd> for the message<br>4. A submit <kbd>&lt;button&gt;</kbd>",
+			"title": "إضافة Textarea",
+			"description": "عنصر <kbd>&lt;textarea&gt;</kbd> ينشئ حقل إدخال نص متعدد الأسطر، مثالي للمحتوى الطويل مثل الرسائل أو الأوصاف.<br><br>استخدم سمات <kbd>rows</kbd> و <kbd>cols</kbd> لتعيين الحجم الافتراضي.",
+			"task": "أنشئ نموذج اتصال:<br>1. عنصر <kbd>&lt;fieldset&gt;</kbd> مع <kbd>&lt;legend&gt;</kbd> <code>تواصل معنا</code><br>2. حقل <kbd>&lt;input&gt;</kbd> مُعنون للبريد الإلكتروني<br>3. حقل <kbd>&lt;textarea&gt;</kbd> مُعنون للرسالة<br>4. زر <kbd>&lt;button&gt;</kbd> للإرسال",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } form { max-width: 450px; margin: 0 auto; } fieldset { border: none; border-radius: 15px; padding: 30px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.2); } legend { color: #667eea; font-weight: 700; padding: 0; font-size: 1.5rem; margin-bottom: 10px; } label { display: block; margin: 20px 0 8px; color: #333; font-weight: 500; } input, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: none; border-color: #667eea; } textarea { resize: vertical; min-height: 100px; } button { margin-top: 20px; width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; } button:hover { opacity: 0.9; }",
 			"sandboxCSS": "",
@@ -60,35 +60,35 @@
 				{
 					"type": "element_exists",
 					"value": "fieldset",
-					"message": "Add a <kbd>&lt;fieldset&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;fieldset&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "legend",
-					"message": "Add a <kbd>&lt;legend&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;legend&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "textarea",
-					"message": "Add a <kbd>&lt;textarea&gt;</kbd> for the message"
+					"message": "أضف <kbd>&lt;textarea&gt;</kbd> للرسالة"
 				},
 				{
 					"type": "element_exists",
 					"value": "button",
-					"message": "Add a submit button"
+					"message": "أضف زر إرسال"
 				},
 				{
 					"type": "element_exists",
 					"value": "input",
-					"message": "Add an input field for email"
+					"message": "أضف حقل للبريد الإلكتروني"
 				}
 			]
 		},
 		{
 			"id": "fieldset-multiple",
-			"title": "Multiple Fieldsets",
-			"description": "Complex forms can use multiple <kbd>&lt;fieldset&gt;</kbd> elements to organize different sections.<br><br>This improves usability for long forms like registration or checkout pages.",
-			"task": "Create a registration form with 2 fieldsets:<br>1. <code>Account Info</code> with username and password inputs<br>2. <code>Preferences</code> with a textarea for bio<br>3. A submit button outside the fieldsets",
+			"title": "مجموعات حقول متعددة",
+			"description": "النماذج المعقدة يمكنها استخدام عناصر <kbd>&lt;fieldset&gt;</kbd> متعددة لتنظيم أقسام مختلفة.<br><br>هذا يحسن قابلية الاستخدام للنماذج الطويلة مثل التسجيل أو الدفع.",
+			"task": "أنشئ نموذج تسجيل مع 2 مجموعات حقول:<br>1. <code>معلومات الحساب</code> مع حقول اسم المستخدم وكلمة المرور<br>2. <code>التفضيلات</code> مع textarea للسيرة الذاتية<br>3. زر إرسال خارج مجموعات الحقول",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #fafafa; } form { max-width: 500px; } fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px; background: white; } legend { color: #2c3e50; font-weight: 600; padding: 0 10px; } label { display: block; margin: 15px 0 5px; color: #555; } input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; font-family: inherit; } input:focus, textarea:focus { outline: 2px solid #3498db; border-color: transparent; } textarea { resize: vertical; min-height: 80px; } button { width: 100%; padding: 14px; background: #2c3e50; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; } button:hover { background: #34495e; }",
 			"sandboxCSS": "",
@@ -99,27 +99,27 @@
 				{
 					"type": "element_count",
 					"value": { "selector": "fieldset", "min": 2 },
-					"message": "Create at least 2 fieldsets"
+					"message": "أنشئ على الأقل 2 مجموعات حقول"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "legend", "min": 2 },
-					"message": "Add a legend to each fieldset"
+					"message": "أضف legend لكل مجموعة حقول"
 				},
 				{
 					"type": "element_exists",
 					"value": "textarea",
-					"message": "Add a textarea for the bio"
+					"message": "أضف textarea للسيرة الذاتية"
 				},
 				{
 					"type": "element_exists",
 					"value": "button",
-					"message": "Add a submit button"
+					"message": "أضف زر إرسال"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "input", "min": 2 },
-					"message": "Add at least 2 input fields"
+					"message": "أضف على الأقل حقلي إدخال"
 				}
 			]
 		}

@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-datalist",
-	"title": "Datalist",
-	"description": "Provide suggestions for text inputs without JavaScript",
+	"title": "قائمة البيانات",
+	"description": "قدم اقتراحات لحقول النص بدون JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "datalist-basic",
-			"title": "Input with Suggestions",
-			"description": "The <kbd>&lt;datalist&gt;</kbd> element provides autocomplete suggestions for inputs. Connect it using the <kbd>list</kbd> attribute on the input matching the datalist's <kbd>id</kbd>.<br><br>Users can still type freely - suggestions are just helpers!",
-			"task": "Create a browser selector:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Browser:</code><br>2. Add an <kbd>&lt;input&gt;</kbd> with <kbd>list=\"browsers\"</kbd><br>3. Add a <kbd>&lt;datalist id=\"browsers\"&gt;</kbd> with options for Chrome, Firefox, and Safari",
+			"title": "حقل مع اقتراحات",
+			"description": "عنصر <kbd>&lt;datalist&gt;</kbd> يوفر اقتراحات الإكمال التلقائي للحقول. اربطه باستخدام سمة <kbd>list</kbd> في الحقل بما يتطابق مع <kbd>id</kbd> قائمة البيانات.<br><br>يمكن للمستخدمين الكتابة بحرية - الاقتراحات مجرد مساعدات!",
+			"task": "أنشئ محدد متصفح:<br>1. أضف <kbd>&lt;label&gt;</kbd> يقول <code>المتصفح:</code><br>2. أضف <kbd>&lt;input&gt;</kbd> مع <kbd>list=\"browsers\"</kbd><br>3. أضف <kbd>&lt;datalist id=\"browsers\"&gt;</kbd> مع خيارات Chrome و Firefox و Safari",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; } input:focus { outline: 2px solid #1976d2; border-color: transparent; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "browsers" },
-					"message": "Connect the input to datalist using <kbd>list=</kbd>\"browsers\""
+					"message": "اربط الحقل بقائمة البيانات باستخدام <kbd>list=</kbd>\"browsers\""
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 3 },
-					"message": "Add at least 3 <kbd>&lt;option&gt;</kbd> elements inside <kbd>&lt;datalist&gt;</kbd>"
+					"message": "أضف على الأقل 3 عناصر <kbd>&lt;option&gt;</kbd> داخل <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <kbd>&lt;label&gt;</kbd> for the input"
+					"message": "أضف <kbd>&lt;label&gt;</kbd> للحقل"
 				}
 			]
 		},
 		{
 			"id": "datalist-countries",
-			"title": "Country Selector",
-			"description": "Datalists work great for long lists like countries. Users can type to filter suggestions instantly.<br><br>The <kbd>value</kbd> attribute is what gets entered, and you can add display text after it.",
-			"task": "Create a country input:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Country:</code><br>2. Add an <kbd>&lt;input&gt;</kbd> with <kbd>list=\"countries\"</kbd><br>3. Add a <kbd>&lt;datalist id=\"countries\"&gt;</kbd> with at least 4 country options",
+			"title": "محدد الدول",
+			"description": "قوائم البيانات تعمل بشكل رائع للقوائم الطويلة مثل الدول. يمكن للمستخدمين الكتابة لتصفية الاقتراحات فوراً.<br><br>سمة <kbd>value</kbd> هي ما يتم إدخاله، ويمكنك إضافة نص عرض بعدها.",
+			"task": "أنشئ حقل دولة:<br>1. أضف <kbd>&lt;label&gt;</kbd> يقول <code>الدولة:</code><br>2. أضف <kbd>&lt;input&gt;</kbd> مع <kbd>list=\"countries\"</kbd><br>3. أضف <kbd>&lt;datalist id=\"countries\"&gt;</kbd> مع 4 خيارات دول على الأقل",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 30px; background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } label { display: block; margin-bottom: 10px; font-weight: 600; color: #00695c; } input { width: 100%; padding: 12px 15px; border: 2px solid #26a69a; border-radius: 8px; font-size: 16px; background: white; } input:focus { outline: none; border-color: #00695c; box-shadow: 0 0 0 3px rgba(38,166,154,0.2); }",
 			"sandboxCSS": "",
@@ -55,22 +55,22 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "datalist", "attr": "id", "value": "countries" },
-					"message": "Set <kbd>id=</kbd>\"countries\" on the datalist"
+					"message": "عيّن <kbd>id=</kbd>\"countries\" في قائمة البيانات"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "countries" },
-					"message": "Connect the input using <kbd>list=</kbd>\"countries\""
+					"message": "اربط الحقل باستخدام <kbd>list=</kbd>\"countries\""
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 4 },
-					"message": "Add at least 4 country options"
+					"message": "أضف على الأقل 4 خيارات دول"
 				}
 			]
 		}

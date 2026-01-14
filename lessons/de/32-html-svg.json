@@ -15,7 +15,7 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; display: flex; justify-content: center; } svg { background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"50\" fill=\"#3498db\" />\n</svg>",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"50\" fill=\"steelblue\" />\n</svg>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -30,6 +30,16 @@
 				},
 				{
 					"type": "attribute_value",
+					"value": { "selector": "svg", "attr": "width", "value": "200" },
+					"message": "Setze <kbd>width=</kbd>\"200\" beim SVG"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "svg", "attr": "height", "value": "200" },
+					"message": "Setze <kbd>height=</kbd>\"200\" beim SVG"
+				},
+				{
+					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cx", "value": "100" },
 					"message": "Setze <kbd>cx=</kbd>\"100\" für das horizontale Zentrum"
 				},
@@ -37,6 +47,11 @@
 					"type": "attribute_value",
 					"value": { "selector": "circle", "attr": "cy", "value": "100" },
 					"message": "Setze <kbd>cy=</kbd>\"100\" für das vertikale Zentrum"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "circle", "attr": "r", "value": "50" },
+					"message": "Setze <kbd>r=</kbd>\"50\" für den Radius"
 				}
 			]
 		},
@@ -49,7 +64,7 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<svg width=\"200\" height=\"150\">\n  <rect x=\"20\" y=\"20\" width=\"80\" height=\"60\" fill=\"#e74c3c\" />\n  <line x1=\"120\" y1=\"30\" x2=\"180\" y2=\"90\" stroke=\"#2c3e50\" stroke-width=\"3\" />\n</svg>",
+			"solution": "<svg width=\"200\" height=\"150\">\n  <rect x=\"20\" y=\"20\" width=\"80\" height=\"60\" fill=\"tomato\" />\n  <line x1=\"120\" y1=\"30\" x2=\"180\" y2=\"90\" stroke=\"slategray\" stroke-width=\"3\" />\n</svg>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -66,6 +81,61 @@
 					"type": "element_exists",
 					"value": "line",
 					"message": "Füge ein <kbd>&lt;line&gt;</kbd>-Element hinzu"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "svg", "attr": "width", "value": "200" },
+					"message": "Setze <kbd>width=</kbd>\"200\" beim SVG"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "svg", "attr": "height", "value": "150" },
+					"message": "Setze <kbd>height=</kbd>\"150\" beim SVG"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "rect", "attr": "x", "value": "20" },
+					"message": "Setze <kbd>x=</kbd>\"20\" beim rect"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "rect", "attr": "y", "value": "20" },
+					"message": "Setze <kbd>y=</kbd>\"20\" beim rect"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "rect", "attr": "width", "value": "80" },
+					"message": "Setze <kbd>width=</kbd>\"80\" beim rect"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "rect", "attr": "height", "value": "60" },
+					"message": "Setze <kbd>height=</kbd>\"60\" beim rect"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "line", "attr": "x1", "value": "120" },
+					"message": "Setze <kbd>x1=</kbd>\"120\" bei der line"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "line", "attr": "y1", "value": "30" },
+					"message": "Setze <kbd>y1=</kbd>\"30\" bei der line"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "line", "attr": "x2", "value": "180" },
+					"message": "Setze <kbd>x2=</kbd>\"180\" bei der line"
+				},
+				{
+					"type": "attribute_value",
+					"value": { "selector": "line", "attr": "y2", "value": "90" },
+					"message": "Setze <kbd>y2=</kbd>\"90\" bei der line"
+				},
+				{
+					"type": "contains",
+					"value": "stroke",
+					"message": "Füge eine <kbd>stroke</kbd>-Farbe zur line hinzu"
 				}
 			]
 		},
@@ -78,7 +148,7 @@
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 250px; display: flex; justify-content: center; align-items: center; } svg { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#f1c40f\" stroke=\"#e67e22\" stroke-width=\"4\" />\n  <circle cx=\"70\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <circle cx=\"130\" cy=\"80\" r=\"10\" fill=\"#2c3e50\" />\n  <line x1=\"60\" y1=\"130\" x2=\"140\" y2=\"130\" stroke=\"#2c3e50\" stroke-width=\"4\" stroke-linecap=\"round\" />\n</svg>",
+			"solution": "<svg width=\"200\" height=\"200\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"gold\" stroke=\"orange\" stroke-width=\"4\" />\n  <circle cx=\"70\" cy=\"80\" r=\"10\" fill=\"darkslategray\" />\n  <circle cx=\"130\" cy=\"80\" r=\"10\" fill=\"darkslategray\" />\n  <line x1=\"60\" y1=\"130\" x2=\"140\" y2=\"130\" stroke=\"darkslategray\" stroke-width=\"4\" stroke-linecap=\"round\" />\n</svg>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{

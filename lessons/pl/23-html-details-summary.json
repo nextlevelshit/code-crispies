@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
 	"title": "HTML Details & Summary",
-	"description": "Create expandable content sections without JavaScript",
+	"description": "Twórz rozwijane sekcje bez JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "details-summary-basic",
-			"title": "First Widget",
-			"description": "The <kbd>&lt;details&gt;</kbd> element creates a collapsible section. The <kbd>&lt;summary&gt;</kbd> provides the clickable label.<br><br>Click the summary to toggle the hidden content - no JavaScript needed!",
-			"task": "Create a <kbd>&lt;details&gt;</kbd> element with:<br>1. A <kbd>&lt;summary&gt;</kbd> saying <code>Click to reveal</code><br>2. A <kbd>&lt;p&gt;</kbd> with the text <code>This content was hidden!</code>",
+			"title": "Pierwszy widget",
+			"description": "Element <kbd>&lt;details&gt;</kbd> tworzy zwijany sekcję. Element <kbd>&lt;summary&gt;</kbd> zapewnia klikalną etykietę.<br><br>Kliknij podsumowanie, aby przełączyć ukrytą treść - bez JavaScript!",
+			"task": "Utwórz element <kbd>&lt;details&gt;</kbd> z:<br>1. Elementem <kbd>&lt;summary&gt;</kbd> z tekstem <code>Click to reveal</code><br>2. Elementem <kbd>&lt;p&gt;</kbd> z tekstem <code>This content was hidden!</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; } summary { font-weight: 600; cursor: pointer; } summary:hover { color: #1976d2; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "details",
-					"message": "Add a <kbd>&lt;details&gt;</kbd> element"
+					"message": "Dodaj element <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "summary",
-					"message": "Add a <kbd>&lt;summary&gt;</kbd> inside the details"
+					"message": "Dodaj <kbd>&lt;summary&gt;</kbd> wewnątrz details"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "summary" },
-					"message": "The <kbd>&lt;summary&gt;</kbd> must be inside <kbd>&lt;details&gt;</kbd>"
+					"message": "Element <kbd>&lt;summary&gt;</kbd> musi być wewnątrz <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "p" },
-					"message": "Add a <kbd>&lt;p&gt;</kbd> inside <kbd>&lt;details&gt;</kbd> for the hidden content"
+					"message": "Dodaj <kbd>&lt;p&gt;</kbd> wewnątrz <kbd>&lt;details&gt;</kbd> dla ukrytej treści"
 				}
 			]
 		},
 		{
 			"id": "details-open-attribute",
-			"title": "Pre-expanded Details",
-			"description": "By default, <kbd>&lt;details&gt;</kbd> is closed. Add the <kbd>open</kbd> attribute to show the content initially.<br><br>This is a boolean attribute - just add <kbd>open</kbd> without a value.",
-			"task": "Add the <kbd>open</kbd> attribute to the <kbd>&lt;details&gt;</kbd> element to show the content by default.",
+			"title": "Domyślnie rozwinięte",
+			"description": "Domyślnie <kbd>&lt;details&gt;</kbd> jest zamknięte. Dodaj atrybut <kbd>open</kbd>, aby pokazać treść na początku.<br><br>To jest atrybut logiczny - po prostu dodaj <kbd>open</kbd> bez wartości.",
+			"task": "Dodaj atrybut <kbd>open</kbd> do elementu <kbd>&lt;details&gt;</kbd>, aby domyślnie pokazać treść.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9; } summary { font-weight: 600; cursor: pointer; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -55,15 +55,15 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to <kbd>&lt;details&gt;</kbd>"
+					"message": "Dodaj atrybut <kbd>open</kbd> do <kbd>&lt;details&gt;</kbd>"
 				}
 			]
 		},
 		{
 			"id": "faq-accordion",
-			"title": "FAQ Accordion",
-			"description": "Multiple <kbd>&lt;details&gt;</kbd> elements create an accordion-style FAQ. Each question can be expanded independently.<br><br><b>Pro tip:</b> Type <kbd>details*3&gt;summary+p</kbd> and press Tab for Emmet expansion. <kbd>*3</kbd> creates 3 elements, <kbd>&gt;</kbd> nests inside, <kbd>+</kbd> adds siblings.",
-			"task": "Create an FAQ section with:<br>1. An <kbd>&lt;h1&gt;</kbd> saying <code>Frequently Asked Questions</code><br>2. Three <kbd>&lt;details&gt;</kbd> elements, each with a question in <kbd>&lt;summary&gt;</kbd> and an answer in <kbd>&lt;p&gt;</kbd>",
+			"title": "Akordeon FAQ",
+			"description": "Wiele elementów <kbd>&lt;details&gt;</kbd> tworzy FAQ w stylu akordeonu. Każde pytanie może być rozwijane niezależnie.<br><br><b>Pro tip:</b> Wpisz <kbd>details*3&gt;summary+p</kbd> i naciśnij Tab dla rozwinięcia Emmet. <kbd>*3</kbd> tworzy 3 elementy, <kbd>&gt;</kbd> zagnieżdża wewnątrz, <kbd>+</kbd> dodaje rodzeństwo.",
+			"task": "Utwórz sekcję FAQ z:<br>1. Nagłówkiem <kbd>&lt;h1&gt;</kbd> z tekstem <code>Frequently Asked Questions</code><br>2. Trzema elementami <kbd>&lt;details&gt;</kbd>, każdy z pytaniem w <kbd>&lt;summary&gt;</kbd> i odpowiedzią w <kbd>&lt;p&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; min-height: 100vh; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0; box-sizing: border-box; } h1 { font-size: 2.5rem; color: #4a4a4a; text-align: center; margin: 0 0 30px 0; } details { background: white; border-radius: 12px; margin-bottom: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } summary { font-size: 1.3rem; font-weight: 600; color: #5c5c5c; cursor: pointer; list-style: none; } summary::before { content: '▸ '; color: #fcb69f; } details[open] summary::before { content: '▾ '; } details p { margin: 15px 0 0 0; color: #666; line-height: 1.6; }",
 			"sandboxCSS": "",
@@ -74,22 +74,22 @@
 				{
 					"type": "element_exists",
 					"value": "h1",
-					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading for the FAQ title"
+					"message": "Dodaj nagłówek <kbd>&lt;h1&gt;</kbd> dla tytułu FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details", "min": 3 },
-					"message": "Create at least 3 <kbd>&lt;details&gt;</kbd> elements for the FAQ"
+					"message": "Utwórz co najmniej 3 elementy <kbd>&lt;details&gt;</kbd> dla FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "summary", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;summary&gt;</kbd> for the question"
+					"message": "Każdy <kbd>&lt;details&gt;</kbd> potrzebuje <kbd>&lt;summary&gt;</kbd> dla pytania"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details p", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;p&gt;</kbd> for the answer"
+					"message": "Każdy <kbd>&lt;details&gt;</kbd> potrzebuje <kbd>&lt;p&gt;</kbd> dla odpowiedzi"
 				}
 			]
 		}

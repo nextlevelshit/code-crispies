@@ -1,100 +1,100 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-forms-basic",
-	"title": "HTML Forms",
-	"description": "Learn to create forms with various input types",
+	"title": "Formularze HTML",
+	"description": "Naucz się tworzyć formularze z różnymi typami pól",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "form-structure",
-			"title": "Form Structure",
-			"description": "Every form needs a <kbd>&lt;form&gt;</kbd> wrapper. Inside, use <kbd>&lt;label&gt;</kbd> to describe inputs and <kbd>&lt;input&gt;</kbd> for user data entry.<br><br>The <kbd>for</kbd> attribute on labels should match the <kbd>id</kbd> on inputs for accessibility.",
-			"task": "Create a form with:<br>1. A <kbd>&lt;label&gt;</kbd> with the text <code>Name:</code> and <kbd>for=\"name\"</kbd> attribute<br>2. A text <kbd>&lt;input&gt;</kbd> with <kbd>id=\"name\"</kbd> and <kbd>name=\"name\"</kbd> attributes",
+			"title": "Struktura formularza",
+			"description": "Każdy formularz potrzebuje wrappera <kbd>&lt;form&gt;</kbd>. Wewnątrz używaj <kbd>&lt;label&gt;</kbd> do opisywania pól i <kbd>&lt;input&gt;</kbd> do wprowadzania danych.<br><br>Atrybut <kbd>for</kbd> w labelach powinien odpowiadać <kbd>id</kbd> pól dla dostępności.",
+			"task": "Stwórz formularz z:<br>1. <kbd>&lt;label&gt;</kbd> z tekstem <code>Imię:</code> i atrybutem <kbd>for=\"name\"</kbd><br>2. Tekstowym <kbd>&lt;input&gt;</kbd> z atrybutami <kbd>id=\"name\"</kbd> i <kbd>name=\"name\"</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-bottom: 5px; font-weight: 500; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<form>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n</form>",
+			"solution": "<form>\n  <label for=\"name\">Imię:</label>\n  <input type=\"text\" id=\"name\" name=\"name\">\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "form",
-					"message": "Wrap everything in a <kbd>&lt;form&gt;</kbd> element"
+					"message": "Otocz wszystko elementem <kbd>&lt;form&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <kbd>&lt;label&gt;</kbd> for your input"
+					"message": "Dodaj <kbd>&lt;label&gt;</kbd> dla swojego pola"
 				},
 				{
 					"type": "element_exists",
 					"value": "input",
-					"message": "Add an <kbd>&lt;input&gt;</kbd> element"
+					"message": "Dodaj element <kbd>&lt;input&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "label", "attr": "for", "value": null },
-					"message": "Add a <kbd>for</kbd> attribute to your label"
+					"message": "Dodaj atrybut <kbd>for</kbd> do swojego labela"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "id", "value": null },
-					"message": "Add an <kbd>id</kbd> attribute to your input"
+					"message": "Dodaj atrybut <kbd>id</kbd> do swojego pola"
 				}
 			]
 		},
 		{
 			"id": "input-types",
-			"title": "Input Types",
-			"description": "Different input types provide appropriate keyboards and validation:<br><br><kbd>type=\"text\"</kbd> - General text<br><kbd>type=\"email\"</kbd> - Email with @ validation<br><kbd>type=\"password\"</kbd> - Hidden characters<br><kbd>type=\"number\"</kbd> - Numeric keyboard<br><kbd>type=\"tel\"</kbd> - Phone keyboard",
-			"task": "Create a login form with two fields:<br>1. An email field: <kbd>&lt;label for=\"email\"&gt;Email:&lt;/label&gt;</kbd> and <kbd>&lt;input type=\"email\" id=\"email\"&gt;</kbd><br>2. A password field: <kbd>&lt;label for=\"password\"&gt;Password:&lt;/label&gt;</kbd> and <kbd>&lt;input type=\"password\" id=\"password\"&gt;</kbd>",
+			"title": "Typy pól",
+			"description": "Różne typy pól zapewniają odpowiednie klawiatury i walidację:<br><br><kbd>type=\"text\"</kbd> - Ogólny tekst<br><kbd>type=\"email\"</kbd> - Email z walidacją @<br><kbd>type=\"password\"</kbd> - Ukryte znaki<br><kbd>type=\"number\"</kbd> - Klawiatura numeryczna<br><kbd>type=\"tel\"</kbd> - Klawiatura telefoniczna",
+			"task": "Stwórz formularz logowania z dwoma polami:<br>1. Pole email: <kbd>&lt;label for=\"email\"&gt;Email:&lt;/label&gt;</kbd> i <kbd>&lt;input type=\"email\" id=\"email\"&gt;</kbd><br>2. Pole hasła: <kbd>&lt;label for=\"password\"&gt;Hasło:&lt;/label&gt;</kbd> i <kbd>&lt;input type=\"password\" id=\"password\"&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }",
 			"sandboxCSS": "",
 			"initialCode": "<form>\n  \n</form>",
-			"solution": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  \n  <label for=\"password\">Password:</label>\n  <input type=\"password\" id=\"password\" name=\"password\">\n</form>",
+			"solution": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\" name=\"email\">\n  \n  <label for=\"password\">Hasło:</label>\n  <input type=\"password\" id=\"password\" name=\"password\">\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "input[type='email']",
-					"message": "Add an input with type=\"email\""
+					"message": "Dodaj pole z type=\"email\""
 				},
 				{
 					"type": "element_exists",
 					"value": "input[type='password']",
-					"message": "Add an input with type=\"password\""
+					"message": "Dodaj pole z type=\"password\""
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "label", "min": 2 },
-					"message": "Add labels for both inputs"
+					"message": "Dodaj labele dla obu pól"
 				}
 			]
 		},
 		{
 			"id": "submit-button",
-			"title": "Submit Button",
-			"description": "Forms need a way to submit data. Use:<br><br><kbd>&lt;button type=\"submit\"&gt;</kbd> - Preferred, flexible content<br><kbd>&lt;input type=\"submit\"&gt;</kbd> - Simple text-only button<br><br>The button text should be action-oriented (e.g., <code>Sign In</code>, 'Register', 'Send').",
-			"task": "Add a submit button to the form with the text <code>Sign In</code>.",
+			"title": "Przycisk wysyłania",
+			"description": "Formularze potrzebują sposobu na wysłanie danych. Użyj:<br><br><kbd>&lt;button type=\"submit\"&gt;</kbd> - Preferowany, elastyczna zawartość<br><kbd>&lt;input type=\"submit\"&gt;</kbd> - Prosty przycisk tekstowy<br><br>Tekst przycisku powinien być zorientowany na akcję (np. <code>Zaloguj</code>, 'Zarejestruj', 'Wyślij').",
+			"task": "Dodaj przycisk wysyłania do formularza z tekstem <code>Zaloguj</code>.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } form { max-width: 300px; } label { display: block; margin-top: 15px; margin-bottom: 5px; } label:first-child { margin-top: 0; } input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; } button { width: 100%; margin-top: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
-			"initialCode": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Password:</label>\n  <input type=\"password\" id=\"password\">\n  \n</form>",
-			"solution": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Password:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <button type=\"submit\">Sign In</button>\n</form>",
+			"initialCode": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Hasło:</label>\n  <input type=\"password\" id=\"password\">\n  \n</form>",
+			"solution": "<form>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\">\n  \n  <label for=\"password\">Hasło:</label>\n  <input type=\"password\" id=\"password\">\n  \n  <button type=\"submit\">Zaloguj</button>\n</form>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "element_exists",
 					"value": "button[type='submit'], input[type='submit']",
-					"message": "Add a submit button to your form"
+					"message": "Dodaj przycisk wysyłania do formularza"
 				},
 				{
 					"type": "element_text",
-					"value": { "selector": "button", "text": "Sign In" },
-					"message": "The button should say <kbd>Sign In</kbd>"
+					"value": { "selector": "button", "text": "Zaloguj" },
+					"message": "Przycisk powinien wyświetlać <kbd>Zaloguj</kbd>"
 				}
 			]
 		}

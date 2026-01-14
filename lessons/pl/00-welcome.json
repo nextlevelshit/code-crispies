@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "welcome",
 	"title": "Code Crispies",
-	"description": "Welcome to Code Crispies - your interactive web development learning platform",
+	"description": "Witaj w Code Crispies - twojej interaktywnej platformie do nauki tworzenia stron",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "get-started",
-			"title": "Get Started",
-			"description": "<strong>Code Crispies</strong> is a free, open-source platform for learning web development through hands-on exercises. No account required!<br><br><strong>What you'll learn:</strong><br>• <strong>HTML</strong> - Semantic elements, forms, tables, SVG (<em>HTML Block & Inline</em>, <em>HTML Forms</em>, <em>HTML Tables</em>)<br>• <strong>CSS</strong> - Selectors, box model, flexbox, animations (<em>CSS Selectors</em>, <em>CSS Box Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media queries and mobile-first layouts<br><br><strong>How it works:</strong><br>1. Read the task in the left panel<br>2. Write code in the editor<br>3. See live results in the preview<br>4. Get instant feedback with hints<br><br><strong>Keyboard shortcuts:</strong> <kbd>Ctrl+Z</kbd> to undo, <kbd>Ctrl+Shift+Z</kbd> to redo<br><br><strong>More resources:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript solutions<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript technology roadmap",
-			"task": "Write <code>Hello World</code>",
+			"title": "Rozpocznij",
+			"description": "<strong>Code Crispies</strong> to darmowa platforma open-source do nauki tworzenia stron przez praktyczne ćwiczenia. Konto nie jest wymagane!<br><br><strong>Czego się nauczysz:</strong><br>• <strong>HTML</strong> - Elementy semantyczne, formularze, tabele, SVG (<em>HTML Blokowe i Liniowe</em>, <em>HTML Formularze</em>, <em>HTML Tabele</em>)<br>• <strong>CSS</strong> - Selektory, model pudełkowy, flexbox, animacje (<em>CSS Selektory</em>, <em>CSS Model pudełkowy</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media queries i układy mobile-first<br><br><strong>Jak to działa:</strong><br>1. Przeczytaj zadanie w lewym panelu<br>2. Napisz kod w edytorze<br>3. Zobacz wyniki na żywo w podglądzie<br>4. Otrzymaj natychmiastową informację zwrotną ze wskazówkami<br><br><strong>Skróty klawiszowe:</strong> <kbd>Ctrl+Z</kbd> cofnij, <kbd>Ctrl+Shift+Z</kbd> ponów<br><br><strong>Więcej zasobów:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Natywny HTML vs rozwiązania JavaScript<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - Mapa technologii JavaScript",
+			"task": "Napisz <code>Hello World</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; font-size: 2rem; color: #6366f1; font-weight: bold; }",
 			"sandboxCSS": "",
@@ -21,15 +21,15 @@
 				{
 					"type": "contains",
 					"value": "Hello World",
-					"message": "Write <code>Hello World</code>"
+					"message": "Napisz <code>Hello World</code>"
 				}
 			]
 		},
 		{
 			"id": "overview",
-			"title": "Overview",
-			"description": "<strong>You're ready!</strong> Open the menu (☰) to explore all modules.<br><br><strong>Recommended learning path:</strong><br>1. <em>HTML Block & Inline</em> - Understand container vs inline elements<br>2. <em>HTML Forms</em> - Build interactive forms with validation<br>3. <em>CSS Selectors</em> - Target elements precisely<br>4. <em>CSS Box Model</em> - Master padding, margin, borders<br>5. <em>CSS Flexbox</em> - Create flexible layouts<br>6. <em>CSS Animations</em> - Add motion and transitions<br><br><strong>Tips:</strong><br>• Use <em>Show Expected</em> to see the target result<br>• Your progress is saved automatically<br>• Try Emmet in HTML mode: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea (Source)</a> · <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub (Mirror)</a><br>• Made by <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">Michael Czechowski</a>",
-			"task": "Click Next to continue",
+			"title": "Przegląd",
+			"description": "<strong>Jesteś gotowy!</strong> Otwórz menu (☰) aby odkryć wszystkie moduły.<br><br><strong>Zalecana ścieżka nauki:</strong><br>1. <em>HTML Blokowe i Liniowe</em> - Zrozum elementy kontenerowe vs liniowe<br>2. <em>HTML Formularze</em> - Twórz interaktywne formularze z walidacją<br>3. <em>CSS Selektory</em> - Celuj w elementy precyzyjnie<br>4. <em>CSS Model pudełkowy</em> - Opanuj padding, margin, borders<br>5. <em>CSS Flexbox</em> - Twórz elastyczne układy<br>6. <em>CSS Animacje</em> - Dodaj ruch i przejścia<br><br><strong>Wskazówki:</strong><br>• Użyj <em>Pokaż oczekiwane</em> aby zobaczyć docelowy wynik<br>• Twój postęp jest zapisywany automatycznie<br>• Wypróbuj Emmet w trybie HTML: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://git.librete.ch/libretech/code-crispies\" target=\"_blank\">Gitea (Source)</a> · <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub (Mirror)</a><br>• Stworzone przez <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">Michael Czechowski</a>",
+			"task": "Kliknij Dalej aby kontynuować",
 			"previewHTML": "<p>Hello World! 🌍</p><p>Hallo Welt!</p><p>Bonjour le monde!</p><p>¡Hola Mundo!</p><p>Ciao Mondo!</p><p>Olá Mundo!</p><p>こんにちは世界!</p><p>你好世界!</p><p>안녕 세상!</p><p>Привет мир!</p><p dir=\"rtl\">שלום עולם!</p><p dir=\"rtl\">مرحبا بالعالم!</p>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 12px; } p { margin: 6px 0; padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 0.95em; } p:nth-child(1) { background: #fef3c7; color: #92400e; font-size: 1.2em; } p:nth-child(2) { background: #dcfce7; color: #166534; } p:nth-child(3) { background: #dbeafe; color: #1e40af; } p:nth-child(4) { background: #fce7f3; color: #9d174d; } p:nth-child(5) { background: #e0e7ff; color: #4338ca; } p:nth-child(6) { background: #fef9c3; color: #854d0e; } p:nth-child(7) { background: #fee2e2; color: #991b1b; } p:nth-child(8) { background: #f3e8ff; color: #7c3aed; } p:nth-child(9) { background: #ccfbf1; color: #0f766e; } p:nth-child(10) { background: #fae8ff; color: #86198f; } p:nth-child(11) { background: #fef3c7; color: #b45309; } p:nth-child(12) { background: #d1fae5; color: #047857; }",
 			"sandboxCSS": "",
@@ -39,8 +39,8 @@
 			"validations": [
 				{
 					"type": "contains",
-					"value": "Hello World",
-					"message": "Click Next to continue"
+					"value": "Hello",
+					"message": "Kliknij Dalej aby kontynuować"
 				}
 			]
 		},

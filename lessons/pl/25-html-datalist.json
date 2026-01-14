@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-datalist",
 	"title": "Datalist",
-	"description": "Provide suggestions for text inputs without JavaScript",
+	"description": "Dodaj sugestie do pól tekstowych bez JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "datalist-basic",
-			"title": "Input with Suggestions",
-			"description": "The <kbd>&lt;datalist&gt;</kbd> element provides autocomplete suggestions for inputs. Connect it using the <kbd>list</kbd> attribute on the input matching the datalist's <kbd>id</kbd>.<br><br>Users can still type freely - suggestions are just helpers!",
-			"task": "Create a browser selector:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Browser:</code><br>2. Add an <kbd>&lt;input&gt;</kbd> with <kbd>list=\"browsers\"</kbd><br>3. Add a <kbd>&lt;datalist id=\"browsers\"&gt;</kbd> with options for Chrome, Firefox, and Safari",
+			"title": "Pole z sugestiami",
+			"description": "Element <kbd>&lt;datalist&gt;</kbd> dostarcza sugestie autouzupełniania dla pól. Połącz go używając atrybutu <kbd>list</kbd> na polu, pasującego do <kbd>id</kbd> datalist.<br><br>Użytkownicy mogą nadal pisać dowolnie - sugestie to tylko pomocnicy!",
+			"task": "Utwórz selektor przeglądarki:<br>1. Dodaj <kbd>&lt;label&gt;</kbd> z tekstem <code>Przeglądarka:</code><br>2. Dodaj <kbd>&lt;input&gt;</kbd> z <kbd>list=\"browsers\"</kbd><br>3. Dodaj <kbd>&lt;datalist id=\"browsers\"&gt;</kbd> z opcjami Chrome, Firefox i Safari",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } label { display: block; margin-bottom: 8px; font-weight: 500; } input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; } input:focus { outline: 2px solid #1976d2; border-color: transparent; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
+					"message": "Dodaj element <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "browsers" },
-					"message": "Connect the input to datalist using <kbd>list=</kbd>\"browsers\""
+					"message": "Połącz pole z datalist używając <kbd>list=</kbd>\"browsers\""
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 3 },
-					"message": "Add at least 3 <kbd>&lt;option&gt;</kbd> elements inside <kbd>&lt;datalist&gt;</kbd>"
+					"message": "Dodaj co najmniej 3 elementy <kbd>&lt;option&gt;</kbd> wewnątrz <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "label",
-					"message": "Add a <kbd>&lt;label&gt;</kbd> for the input"
+					"message": "Dodaj <kbd>&lt;label&gt;</kbd> dla pola"
 				}
 			]
 		},
 		{
 			"id": "datalist-countries",
-			"title": "Country Selector",
-			"description": "Datalists work great for long lists like countries. Users can type to filter suggestions instantly.<br><br>The <kbd>value</kbd> attribute is what gets entered, and you can add display text after it.",
-			"task": "Create a country input:<br>1. Add a <kbd>&lt;label&gt;</kbd> saying <code>Country:</code><br>2. Add an <kbd>&lt;input&gt;</kbd> with <kbd>list=\"countries\"</kbd><br>3. Add a <kbd>&lt;datalist id=\"countries\"&gt;</kbd> with at least 4 country options",
+			"title": "Selektor krajów",
+			"description": "Datalist świetnie sprawdza się przy długich listach jak kraje. Użytkownicy mogą pisać, aby natychmiast filtrować sugestie.<br><br>Atrybut <kbd>value</kbd> określa, co zostanie wpisane, a po nim możesz dodać tekst wyświetlany.",
+			"task": "Utwórz pole kraju:<br>1. Dodaj <kbd>&lt;label&gt;</kbd> z tekstem <code>Kraj:</code><br>2. Dodaj <kbd>&lt;input&gt;</kbd> z <kbd>list=\"countries\"</kbd><br>3. Dodaj <kbd>&lt;datalist id=\"countries\"&gt;</kbd> z co najmniej 4 opcjami krajów",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 30px; background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } label { display: block; margin-bottom: 10px; font-weight: 600; color: #00695c; } input { width: 100%; padding: 12px 15px; border: 2px solid #26a69a; border-radius: 8px; font-size: 16px; background: white; } input:focus { outline: none; border-color: #00695c; box-shadow: 0 0 0 3px rgba(38,166,154,0.2); }",
 			"sandboxCSS": "",
@@ -55,22 +55,22 @@
 				{
 					"type": "element_exists",
 					"value": "datalist",
-					"message": "Add a <kbd>&lt;datalist&gt;</kbd> element"
+					"message": "Dodaj element <kbd>&lt;datalist&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "datalist", "attr": "id", "value": "countries" },
-					"message": "Set <kbd>id=</kbd>\"countries\" on the datalist"
+					"message": "Ustaw <kbd>id=</kbd>\"countries\" w datalist"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "input", "attr": "list", "value": "countries" },
-					"message": "Connect the input using <kbd>list=</kbd>\"countries\""
+					"message": "Połącz pole używając <kbd>list=</kbd>\"countries\""
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "option", "min": 4 },
-					"message": "Add at least 4 country options"
+					"message": "Dodaj co najmniej 4 opcje krajów"
 				}
 			]
 		}
