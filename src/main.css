@@ -763,14 +763,14 @@ kbd {
 		opacity: 0;
 	}
 	20% {
-		transform: translateX(-50%) translateY(-80%) scale(1.1);
+		transform: translateX(-50%) translateY(-180%) scale(1.1);
 		opacity: 1;
 	}
 	35% {
-		transform: translateX(-50%) translateY(-70%) scale(1);
+		transform: translateX(-50%) translateY(-170%) scale(1);
 	}
 	65% {
-		transform: translateX(-50%) translateY(-72%) scale(1);
+		transform: translateX(-50%) translateY(-172%) scale(1);
 	}
 	100% {
 		transform: translateX(-50%) translateY(100%) scale(0.5);
