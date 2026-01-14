@@ -151,6 +151,15 @@ kbd {
 	margin-left: var(--spacing-sm);
 }
 
+.header-module-name {
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.header-level {
+	margin-left: 0.5em;
+}
+
 .header-left {
 	display: flex;
 	align-items: center;
@@ -1652,10 +1661,27 @@ input:checked + .toggle-slider::before {
 	transform: rotate(-90deg);
 }
 
+/* RTL: Module completed checkmark position (::after) */
+[dir="rtl"] .module-header.completed::after {
+	margin-left: 0;
+	margin-right: 8px;
+}
+
 /* RTL: Lesson checkmark position */
-[dir="rtl"] .lesson-list-item::before {
+[dir="rtl"] .lesson-list-item.completed::before {
 	margin-left: 6px;
 	margin-right: 0;
+}
+
+/* RTL: Header level pill */
+[dir="rtl"] .header-level-pill {
+	margin-left: 0;
+	margin-right: var(--spacing-sm);
+}
+
+[dir="rtl"] .header-level {
+	margin-left: 0;
+	margin-right: 0.5em;
 }
 
 /* RTL: Toggle switch slider */

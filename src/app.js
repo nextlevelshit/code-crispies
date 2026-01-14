@@ -479,7 +479,11 @@ function loadCurrentLesson() {
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
-	renderLevelIndicator(elements.headerLevelPill, engineState.lessonIndex + 1, engineState.totalLessons);
+	// Header pill shows module name + level
+	if (elements.headerLevelPill && engineState.module) {
+		const label = t("lessonLabel");
+		elements.headerLevelPill.innerHTML = `<span class="header-module-name">${engineState.module.title}</span> <span class="header-level">${label} ${engineState.lessonIndex + 1} / ${engineState.totalLessons}</span>`;
+	}
 
 	// Update active lesson in sidebar
 	updateActiveLessonInSidebar(engineState.module.id, engineState.lessonIndex);
