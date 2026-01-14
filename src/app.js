@@ -10,7 +10,8 @@ const state = {
 		disableFeedbackErrors: false,
 		skipResetCodeConfirmation: false
 	},
-	showExpected: false
+	showExpected: false,
+	animationTimeout: null
 };
 
 // DOM elements - updated for new layout
@@ -341,6 +342,11 @@ function selectLesson(moduleId, lessonIndex) {
 // ================= LESSON LOADING =================
 
 function resetSuccessIndicators() {
+	// Clear any pending animation timeout
+	if (state.animationTimeout) {
+		clearTimeout(state.animationTimeout);
+		state.animationTimeout = null;
+	}
 	elements.codeEditor.classList.remove("success-highlight");
 	elements.lessonTitle.classList.remove("success-text");
 	elements.nextBtn.classList.remove("success");
@@ -649,11 +655,12 @@ function runCode() {
 		elements.previewWrapper?.style.setProperty("--crispy-quote", `"${randomQuote}"`);
 		elements.previewWrapper?.classList.add("matched");
 		elements.previewSection?.classList.add("matched");
-		setTimeout(() => {
+		state.animationTimeout = setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
 			elements.previewSection?.classList.remove("matched");
 			// Keep the gradient border visible after animation
 			elements.previewWrapper?.classList.add("completed-glow");
+			state.animationTimeout = null;
 		}, 3500);
 
 		updateNavigationButtons();
