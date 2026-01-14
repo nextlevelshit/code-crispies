@@ -1,10 +1,57 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
-	"title": "CSS Selectors",
-	"description": "CSS selectors are the foundation of styling web pages, allowing you to target specific HTML elements for styling. This module introduces fundamental selector types including element type selectors, class selectors, ID selectors, and the universal selector.",
+	"title": "CSS Basics",
+	"description": "Learn the fundamental building blocks of CSS: properties, values, and selectors. This module teaches you the syntax rules that every CSS declaration follows.",
 	"difficulty": "beginner",
 	"lessons": [
+		{
+			"id": "css-properties",
+			"title": "CSS Properties",
+			"description": "CSS styles elements using <strong>declarations</strong> - pairs of properties and values. Every declaration follows the same pattern:<br><br><pre>property: value;</pre><br>The <strong>property</strong> is what you want to change (like <kbd>color</kbd> or <kbd>background</kbd>). The <strong>value</strong> is what you're setting it to. A colon separates them, and a semicolon ends the line.<br><br>Values come in different types:<br>• <strong>Keywords:</strong> <kbd>red</kbd>, <kbd>bold</kbd>, <kbd>center</kbd><br>• <strong>Numbers with units:</strong> <kbd>16px</kbd>, <kbd>2rem</kbd>, <kbd>100%</kbd><br>• <strong>Colors:</strong> <kbd>steelblue</kbd>, <kbd>#ff0000</kbd>",
+			"task": "Complete the declaration by adding <kbd>color: coral;</kbd> to change the text color.",
+			"previewHTML": "<p class=\"text\">This text should turn coral.</p>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } .text { font-size: 1.25rem; }",
+			"sandboxCSS": "",
+			"codePrefix": ".text {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "color: coral;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "coral" },
+					"message": "Add <kbd>color: coral;</kbd>"
+				}
+			]
+		},
+		{
+			"id": "multiple-properties",
+			"title": "Multiple Properties",
+			"description": "A rule can have multiple declarations. Each one goes on its own line, and each needs a semicolon at the end:<br><br><pre>.box {<br>  background: gold;<br>  color: navy;<br>  padding: 1rem;<br>}</pre><br>The order usually doesn't matter - CSS applies them all. When properties conflict, the last one wins.",
+			"task": "Add two declarations: <kbd>background: lavender;</kbd> and <kbd>padding: 1rem;</kbd>",
+			"previewHTML": "<div class=\"card\">A styled card with background and padding.</div>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } .card { border-radius: 8px; }",
+			"sandboxCSS": "",
+			"codePrefix": ".card {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "background: lavender;\n  padding: 1rem;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": { "property": "background", "expected": "lavender" },
+					"message": "Add <kbd>background: lavender;</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Add <kbd>padding: 1rem;</kbd>"
+				}
+			]
+		},
 		{
 			"id": "introduction-to-selectors",
 			"title": "What's a Selector?",
