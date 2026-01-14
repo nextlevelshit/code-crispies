@@ -1629,14 +1629,10 @@ input:checked + .toggle-slider::before {
 	direction: ltr;
 }
 
-/* RTL: Header - swap burger and pill positions */
-[dir="rtl"] .header-left {
-	flex-direction: row-reverse;
-}
-
+/* RTL: Header level pill margin */
 [dir="rtl"] .header-level-pill {
-	margin-left: 0;
-	margin-right: var(--spacing-sm);
+	margin-left: var(--spacing-sm);
+	margin-right: 0;
 }
 
 /* RTL: Swap left/right panels */
