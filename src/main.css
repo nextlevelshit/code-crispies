@@ -712,6 +712,44 @@ kbd {
 	}
 }
 
+/* Bowl smiley peek animation from bottom right corner */
+.preview-section.matched::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 40px;
+	width: 80px;
+	height: 80px;
+	background: url("/bowl.png") center/contain no-repeat;
+	z-index: 20;
+	pointer-events: none;
+	animation: bowl-peek 3s ease-in-out forwards;
+	transform: translateY(100%);
+}
+
+@keyframes bowl-peek {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	15% {
+		opacity: 1;
+	}
+	30% {
+		transform: translateY(30%);
+	}
+	50% {
+		transform: translateY(30%);
+	}
+	70% {
+		transform: translateY(30%);
+	}
+	100% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+}
+
 @keyframes crispy-bounce {
 	0% {
 		top: 100%;
