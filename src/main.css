@@ -659,7 +659,7 @@ kbd {
 }
 
 
-/* Animated CRISPY speech bubble with tail */
+/* Animated CRISPY speech bubble with SVG tail */
 .preview-wrapper.matched::after {
 	content: var(--crispy-quote, "Crispyyyyyy!");
 	position: absolute;
@@ -672,32 +672,17 @@ kbd {
 	letter-spacing: 0.05em;
 	color: white;
 	background: linear-gradient(135deg, #9b59b6 0%, #e040fb 50%, #7c4dff 100%);
-	padding: 0.75rem 1.5rem;
-	border-radius: 2rem;
+	padding: 1.25rem 2rem 1.75rem;
 	z-index: 10;
 	pointer-events: none;
 	animation: crispy-bounce 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 	opacity: 0;
 	white-space: nowrap;
 	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-}
-
-/* Speech bubble tail */
-.preview-wrapper.matched .preview-frame::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-top: 20px solid #a855f7;
-	z-index: 10;
-	pointer-events: none;
-	animation: tail-bounce 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-	opacity: 0;
-	transform: translateX(-50%) rotate(-15deg);
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120' preserveAspectRatio='none'%3E%3Cpath d='M20,0 h160 a20,20 0 0 1 20,20 v60 a20,20 0 0 1 -20,20 h-65 l-15,20 l-15,-20 h-65 a20,20 0 0 1 -20,-20 v-60 a20,20 0 0 1 20,-20 z' fill='white'/%3E%3C/svg%3E");
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120' preserveAspectRatio='none'%3E%3Cpath d='M20,0 h160 a20,20 0 0 1 20,20 v60 a20,20 0 0 1 -20,20 h-65 l-15,20 l-15,-20 h-65 a20,20 0 0 1 -20,-20 v-60 a20,20 0 0 1 20,-20 z' fill='white'/%3E%3C/svg%3E");
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
 }
 
 @keyframes spin-border {
@@ -791,25 +776,6 @@ kbd {
 	100% {
 		top: 100%;
 		transform: translateX(-50%) translateY(0) scale(0.2);
-		opacity: 0;
-	}
-}
-
-@keyframes tail-bounce {
-	0% {
-		top: 100%;
-		opacity: 0;
-	}
-	20% {
-		top: 52%;
-		opacity: 1;
-	}
-	65% {
-		top: 52%;
-		opacity: 1;
-	}
-	100% {
-		top: 100%;
 		opacity: 0;
 	}
 }
