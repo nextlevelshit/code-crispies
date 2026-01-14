@@ -1558,7 +1558,7 @@ input:checked + .toggle-slider::before {
 /* RTL: Flip horizontal layouts */
 [dir="rtl"] .header-left,
 [dir="rtl"] .header-right {
-	flex-direction: row-reverse;
+	/*flex-direction: row-reverse;*/
 }
 
 /* RTL: Editor tools */
@@ -1716,10 +1716,9 @@ input:checked + .toggle-slider::before {
 
 /* RTL: Setting row */
 [dir="rtl"] .setting-row {
-	flex-direction: row-reverse;
+	/*flex-direction: row-reverse;*/
 }
 
-/* RTL: Preview controls */
 [dir="rtl"] .preview-controls {
 	flex-direction: row-reverse;
 }
