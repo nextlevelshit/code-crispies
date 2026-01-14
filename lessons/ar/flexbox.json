@@ -2,18 +2,18 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "flexbox",
 	"title": "CSS Flexbox",
-	"description": "Master the flexible box layout model for modern responsive designs",
+	"description": "أتقن نموذج تخطيط الصندوق المرن للتصاميم المتجاوبة الحديثة",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "flexbox-1",
 			"title": "Container",
-			"description": "Learn how to create a flex container and understand the main and cross axes.",
-			"task": "Add <kbd>display: flex</kbd> to <kbd>.wrap</kbd> to create a flexbox layout.",
-			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; }",
-			"codePrefix": ".wrap {\n  ",
+			"description": "قبل flexbox، كانت حتى التخطيطات البسيطة تتطلب floats أو حيل التموضع أو تخطيطات الجداول. ثورة Flexbox (تخطيط الصندوق المرن) في CSS من خلال توفير نظام تخطيط أحادي البعد مصمم خصيصاً لتوزيع المساحة ومحاذاة المحتوى.<br><br><strong>كيف يعمل:</strong> عندما تضبط <kbd>display: flex</kbd> على عنصر، يصبح <em>حاوية flex</em>. أبناؤه المباشرون يصبحون تلقائياً <em>عناصر flex</em> تتدفق على طول المحور الرئيسي (أفقياً بشكل افتراضي). هذه الخاصية الواحدة تحول العناصر الكتلية المتراصة إلى صف أفقي.<br><br><strong>المحوران:</strong><br>• <em>المحور الرئيسي</em> – الاتجاه الأساسي لتدفق العناصر (row = يسار→يمين)<br>• <em>المحور المتقاطع</em> – عمودي على الرئيسي (row = أعلى→أسفل)<br><br><pre>.nav {\n  display: flex;\n}</pre>",
+			"task": "قائمة التنقل هذه تتراص عمودياً. أضف <kbd>display: flex</kbd> لترتيب الروابط أفقياً.",
+			"previewHTML": "<nav class=\"nav\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; } .nav a:hover { background: rgba(255,255,255,0.1); }",
+			"sandboxCSS": "",
+			"codePrefix": ".nav {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "display: flex;",
@@ -21,61 +21,41 @@
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "display",
-						"expected": "flex"
-					},
-					"message": "Set <kbd>display: flex</kbd>"
+					"value": { "property": "display", "expected": "flex" },
+					"message": "اضبط <kbd>display: flex</kbd>"
 				}
 			]
 		},
 		{
 			"id": "flexbox-2",
-			"title": "Direction & Wrap",
-			"description": "Control the direction and wrapping of flex items within a container.",
-			"task": "Add <kbd>flex-direction: column</kbd> and <kbd>flex-wrap: wrap</kbd> to <kbd>.wrap</kbd>.",
-			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div><div class='box'>4</div><div class='box'>5</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; height: 16rem; display: flex; }",
-			"codePrefix": ".wrap {\n  ",
+			"title": "Gap",
+			"description": "خاصية <kbd>gap</kbd> تضيف تباعداً متسقاً بين عناصر flex بدون الحاجة إلى الهوامش. تُنشئ مساحة فقط بين العناصر، وليس على الحواف.",
+			"task": "أضف <kbd>gap: 1rem</kbd> لتوزيع روابط التنقل بالتساوي.",
+			"previewHTML": "<nav class=\"nav\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; display: flex; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; background: rgba(255,255,255,0.1); }",
+			"sandboxCSS": "",
+			"codePrefix": ".nav {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "flex-direction: column;\n  flex-wrap: wrap;",
+			"solution": "gap: 1rem;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "flex-direction",
-						"expected": "column"
-					},
-					"message": "Set <kbd>flex-direction: column</kbd>",
-					"options": {
-						"exact": true
-					}
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "flex-wrap",
-						"expected": "wrap"
-					},
-					"message": "Set <kbd>flex-wrap: wrap</kbd>",
-					"options": {
-						"exact": true
-					}
+					"value": { "property": "gap", "expected": "1rem" },
+					"message": "اضبط <kbd>gap: 1rem</kbd>"
 				}
 			]
 		},
 		{
 			"id": "flexbox-3",
 			"title": "Justify Content",
-			"description": "Learn how to align flex items along the main axis of the flex container.",
-			"task": "Add <kbd>justify-content: space-between</kbd> to <kbd>.wrap</kbd> to distribute the boxes evenly.",
-			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
-			"codePrefix": ".wrap {\n  ",
+			"description": "<kbd>justify-content</kbd> يوزع العناصر على طول المحور الرئيسي. القيم الشائعة:<br>• <kbd>flex-start</kbd> – تجميع في البداية<br>• <kbd>flex-end</kbd> – تجميع في النهاية<br>• <kbd>center</kbd> – توسيط العناصر<br>• <kbd>space-between</kbd> – مسافة متساوية بين العناصر<br>• <kbd>space-around</kbd> – مسافة متساوية حول العناصر",
+			"task": "ادفع زر \"Login\" إلى اليمين بضبط <kbd>justify-content: space-between</kbd> على التنقل.",
+			"previewHTML": "<nav class=\"nav\"><div class=\"links\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a></div><a href=\"#\" class=\"login\">Login</a></nav>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; display: flex; } .links { display: flex; gap: 8px; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; } .nav a:hover { background: rgba(255,255,255,0.1); } .login { background: steelblue; }",
+			"sandboxCSS": "",
+			"codePrefix": ".nav {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "justify-content: space-between;",
@@ -83,26 +63,20 @@
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "justify-content",
-						"expected": "space-between"
-					},
-					"message": "Set <kbd>justify-content: space-between</kbd>",
-					"options": {
-						"exact": true
-					}
+					"value": { "property": "justify-content", "expected": "space-between" },
+					"message": "اضبط <kbd>justify-content: space-between</kbd>"
 				}
 			]
 		},
 		{
 			"id": "flexbox-4",
 			"title": "Align Items",
-			"description": "Control how flex items are aligned along the cross axis of the flex container.",
-			"task": "Add <kbd>align-items: center</kbd> to <kbd>.wrap</kbd> to vertically center the boxes.",
-			"previewHTML": "<div class='wrap'><div class='box tall'>1</div><div class='box'>2</div><div class='box short'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; display: flex; justify-content: center; } .tall { height: 6rem; } .short { height: 3rem; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 10rem; }",
-			"codePrefix": ".wrap {\n  ",
+			"description": "<kbd>align-items</kbd> يتحكم في المحاذاة على المحور المتقاطع (عمودياً عندما يكون flex-direction هو row). القيم تشمل:<br>• <kbd>stretch</kbd> – تمديد للملء (افتراضي)<br>• <kbd>flex-start</kbd> – محاذاة للأعلى<br>• <kbd>flex-end</kbd> – محاذاة للأسفل<br>• <kbd>center</kbd> – توسيط عمودي",
+			"task": "الشعار وروابط التنقل لها ارتفاعات مختلفة. وسّطها عمودياً باستخدام <kbd>align-items: center</kbd>.",
+			"previewHTML": "<header class=\"header\"><div class=\"logo\">ACME</div><nav><a href=\"#\">Products</a><a href=\"#\">Pricing</a><a href=\"#\">Docs</a></nav></header>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .header { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; } .logo { font-size: 1.5rem; font-weight: bold; color: steelblue; } nav { display: flex; gap: 1rem; } nav a { color: #333; text-decoration: none; font-size: 0.9rem; }",
+			"sandboxCSS": "",
+			"codePrefix": ".header {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
 			"solution": "align-items: center;",
@@ -110,62 +84,50 @@
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "align-items",
-						"expected": "center"
-					},
-					"message": "Set <kbd>align-items: center</kbd>",
-					"options": {
-						"exact": true
-					}
+					"value": { "property": "align-items", "expected": "center" },
+					"message": "اضبط <kbd>align-items: center</kbd>"
 				}
 			]
 		},
 		{
 			"id": "flexbox-5",
-			"title": "Flex Grow",
-			"description": "The <kbd>flex</kbd> property controls how much an item grows relative to others.",
-			"task": "Add <kbd>flex: 2</kbd> to <kbd>.box2</kbd> to make it grow twice as wide.",
-			"previewHTML": "<div class='wrap'><div class='box box1'>1</div><div class='box box2'>2</div><div class='box box3'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; } .box1 { background: coral; flex: 1; } .box2 { background: mediumseagreen; } .box3 { background: gold; flex: 1; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; }",
-			"codePrefix": ".box2 {\n  ",
+			"title": "Flex Wrap",
+			"description": "بشكل افتراضي، تنضغط عناصر flex في سطر واحد. <kbd>flex-wrap: wrap</kbd> يسمح للعناصر بالتدفق إلى أسطر متعددة عندما تنفد المساحة.",
+			"task": "هذه البطاقات تتجاوز الحاوية. أضف <kbd>flex-wrap: wrap</kbd> للسماح لها بالانتقال إلى صفوف جديدة.",
+			"previewHTML": "<div class=\"cards\"><article class=\"card\">Card 1</article><article class=\"card\">Card 2</article><article class=\"card\">Card 3</article><article class=\"card\">Card 4</article><article class=\"card\">Card 5</article><article class=\"card\">Card 6</article></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .cards { display: flex; gap: 1rem; } .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 120px; text-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": ".cards {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "flex: 2;",
+			"solution": "flex-wrap: wrap;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "flex",
-						"expected": "2"
-					},
-					"message": "Set <kbd>flex: 2</kbd>"
+					"value": { "property": "flex-wrap", "expected": "wrap" },
+					"message": "اضبط <kbd>flex-wrap: wrap</kbd>"
 				}
 			]
 		},
 		{
 			"id": "flexbox-6",
-			"title": "Align Self",
-			"description": "Use <kbd>align-self</kbd> to override alignment for a single flex item.",
-			"task": "Add <kbd>align-self: flex-start</kbd> to <kbd>.middle</kbd> to move it to the top.",
-			"previewHTML": "<div class='wrap'><div class='box'>1</div><div class='box middle'>2</div><div class='box'>3</div></div>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { background: steelblue; color: white; padding: 1rem; margin: 8px; text-align: center; font-weight: bold; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; } .middle { background: mediumseagreen; }",
-			"sandboxCSS": ".wrap { border: 2px dashed #aaa; padding: 1rem; display: flex; height: 12rem; align-items: center; }",
-			"codePrefix": ".middle {\n  ",
+			"title": "Flex Grow",
+			"description": "خاصية <kbd>flex</kbd> على العناصر تتحكم في كيفية نموها وانكماشها. <kbd>flex: 1</kbd> يجعل العنصر ينمو لملء المساحة المتاحة. عناصر متعددة مع <kbd>flex: 1</kbd> تتشارك المساحة بالتساوي.",
+			"task": "اجعل حقل البحث يتوسع لملء المساحة المتاحة بضبط <kbd>flex: 1</kbd> على <kbd>.search</kbd>.",
+			"previewHTML": "<div class=\"toolbar\"><input class=\"search\" type=\"text\" placeholder=\"Search...\"><button class=\"btn\">Search</button><button class=\"btn\">Filters</button></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .toolbar { display: flex; gap: 8px; padding: 1rem; background: #f5f5f5; border-radius: 8px; } .search { padding: 8px 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; } .btn { padding: 8px 1rem; background: steelblue; color: white; border: none; border-radius: 4px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": ".search {\n  ",
 			"initialCode": "",
 			"codeSuffix": "\n}",
-			"solution": "align-self: flex-start;",
+			"solution": "flex: 1;",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
 					"type": "property_value",
-					"value": {
-						"property": "align-self",
-						"expected": "flex-start"
-					},
-					"message": "Set <kbd>align-self: flex-start</kbd>"
+					"value": { "property": "flex", "expected": "1" },
+					"message": "اضبط <kbd>flex: 1</kbd>"
 				}
 			]
 		}
