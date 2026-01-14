@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-dialog",
-	"title": "Dialogs",
-	"description": "Create modal dialogs without JavaScript libraries",
+	"title": "Dialogi",
+	"description": "Twórz okna dialogowe bez bibliotek JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "dialog-basic",
-			"title": "Open Dialog",
-			"description": "The <kbd>&lt;dialog&gt;</kbd> element creates a native modal. Add the <kbd>open</kbd> attribute to show it.<br><br>Use <kbd>&lt;form method=\"dialog\"&gt;</kbd> inside to close it when the form submits - no JavaScript needed!",
-			"task": "Create a dialog with:<br>1. The <kbd>open</kbd> attribute to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Welcome!</code><br>3. A <kbd>&lt;p&gt;</kbd> with a greeting message<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with a close button",
+			"title": "Otwórz dialog",
+			"description": "Element <kbd>&lt;dialog&gt;</kbd> tworzy natywne okno modalne. Dodaj atrybut <kbd>open</kbd>, aby je wyświetlić.<br><br>Użyj <kbd>&lt;form method=\"dialog\"&gt;</kbd> wewnątrz, aby zamknąć je przy wysłaniu formularza - bez JavaScript!",
+			"task": "Utwórz dialog z:<br>1. Atrybutem <kbd>open</kbd> aby go wyświetlić<br>2. Elementem <kbd>&lt;h2&gt;</kbd> z tekstem <code>Witaj!</code><br>3. Elementem <kbd>&lt;p&gt;</kbd> z wiadomością powitalną<br>4. Elementem <kbd>&lt;form method=\"dialog\"&gt;</kbd> z przyciskiem zamknięcia",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: #f5f5f5; } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 400px; } dialog::backdrop { background: rgba(0,0,0,0.5); } dialog h2 { margin: 0 0 15px 0; color: #1976d2; } dialog p { color: #666; margin: 0 0 20px 0; } dialog button { background: #1976d2; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; } dialog button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
@@ -21,35 +21,35 @@
 				{
 					"type": "element_exists",
 					"value": "dialog",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> element"
+					"message": "Dodaj element <kbd>&lt;dialog&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "dialog", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to show the dialog"
+					"message": "Dodaj atrybut <kbd>open</kbd> aby wyświetlić dialog"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading inside the dialog"
+					"message": "Dodaj nagłówek <kbd>&lt;h2&gt;</kbd> wewnątrz dialogu"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for closing"
+					"message": "Dodaj <kbd>&lt;form method=\"dialog\"&gt;</kbd> do zamknięcia"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog button",
-					"message": "Add a close button inside the form"
+					"message": "Dodaj przycisk zamknięcia wewnątrz formularza"
 				}
 			]
 		},
 		{
 			"id": "dialog-form",
-			"title": "Dialog + Form",
-			"description": "Dialogs can contain full forms. The <kbd>method=\"dialog\"</kbd> makes the form close the dialog on submit instead of sending data.<br><br>This pattern is perfect for confirmation dialogs, quick inputs, or settings panels.",
-			"task": "Create a confirmation dialog:<br>1. Add <kbd>open</kbd> to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Confirm Delete</code><br>3. A <kbd>&lt;p&gt;</kbd> asking <code>Are you sure?</code><br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with Cancel and Delete buttons",
+			"title": "Dialog z formularzem",
+			"description": "Dialogi mogą zawierać pełne formularze. <kbd>method=\"dialog\"</kbd> sprawia, że formularz zamyka dialog przy wysłaniu zamiast wysyłać dane.<br><br>Ten wzorzec jest idealny dla dialogów potwierdzenia, szybkich wejść lub paneli ustawień.",
+			"task": "Utwórz dialog potwierdzenia:<br>1. Dodaj <kbd>open</kbd> aby go wyświetlić<br>2. Element <kbd>&lt;h2&gt;</kbd> z tekstem <code>Potwierdź usunięcie</code><br>3. Element <kbd>&lt;p&gt;</kbd> z pytaniem <code>Czy jesteś pewien?</code><br>4. Element <kbd>&lt;form method=\"dialog\"&gt;</kbd> z przyciskami Anuluj i Usuń",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 350px; text-align: center; } dialog h2 { margin: 0 0 10px 0; color: #c62828; } dialog p { color: #666; margin: 0 0 20px 0; } dialog form { display: flex; gap: 10px; justify-content: center; } dialog button { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; border: none; } dialog button:first-child { background: #e0e0e0; color: #333; } dialog button:last-child { background: #c62828; color: white; } dialog button:hover { opacity: 0.9; }",
 			"sandboxCSS": "",
@@ -60,22 +60,22 @@
 				{
 					"type": "element_exists",
 					"value": "dialog[open]",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> with the open attribute"
+					"message": "Dodaj <kbd>&lt;dialog&gt;</kbd> z atrybutem open"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add a heading to the dialog"
+					"message": "Dodaj nagłówek do dialogu"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for the buttons"
+					"message": "Dodaj <kbd>&lt;form method=\"dialog\"&gt;</kbd> dla przycisków"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "dialog button", "min": 2 },
-					"message": "Add at least 2 buttons (Cancel and Confirm)"
+					"message": "Dodaj co najmniej 2 przyciski (Anuluj i Potwierdź)"
 				}
 			]
 		}

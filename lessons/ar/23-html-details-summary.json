@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
 	"title": "HTML Details & Summary",
-	"description": "Create expandable content sections without JavaScript",
+	"description": "أنشئ أقسام قابلة للتوسيع بدون JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "details-summary-basic",
-			"title": "First Widget",
-			"description": "The <kbd>&lt;details&gt;</kbd> element creates a collapsible section. The <kbd>&lt;summary&gt;</kbd> provides the clickable label.<br><br>Click the summary to toggle the hidden content - no JavaScript needed!",
-			"task": "Create a <kbd>&lt;details&gt;</kbd> element with:<br>1. A <kbd>&lt;summary&gt;</kbd> saying <code>Click to reveal</code><br>2. A <kbd>&lt;p&gt;</kbd> with the text <code>This content was hidden!</code>",
+			"title": "أول عنصر تفاعلي",
+			"description": "عنصر <kbd>&lt;details&gt;</kbd> ينشئ قسماً قابلاً للطي. عنصر <kbd>&lt;summary&gt;</kbd> يوفر التسمية القابلة للنقر.<br><br>انقر على الملخص لإظهار المحتوى المخفي - بدون JavaScript!",
+			"task": "أنشئ عنصر <kbd>&lt;details&gt;</kbd> مع:<br>1. عنصر <kbd>&lt;summary&gt;</kbd> يقول <code>Click to reveal</code><br>2. عنصر <kbd>&lt;p&gt;</kbd> بالنص <code>This content was hidden!</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; } summary { font-weight: 600; cursor: pointer; } summary:hover { color: #1976d2; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "details",
-					"message": "Add a <kbd>&lt;details&gt;</kbd> element"
+					"message": "أضف عنصر <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "summary",
-					"message": "Add a <kbd>&lt;summary&gt;</kbd> inside the details"
+					"message": "أضف <kbd>&lt;summary&gt;</kbd> داخل details"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "summary" },
-					"message": "The <kbd>&lt;summary&gt;</kbd> must be inside <kbd>&lt;details&gt;</kbd>"
+					"message": "يجب أن يكون <kbd>&lt;summary&gt;</kbd> داخل <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "p" },
-					"message": "Add a <kbd>&lt;p&gt;</kbd> inside <kbd>&lt;details&gt;</kbd> for the hidden content"
+					"message": "أضف <kbd>&lt;p&gt;</kbd> داخل <kbd>&lt;details&gt;</kbd> للمحتوى المخفي"
 				}
 			]
 		},
 		{
 			"id": "details-open-attribute",
-			"title": "Pre-expanded Details",
-			"description": "By default, <kbd>&lt;details&gt;</kbd> is closed. Add the <kbd>open</kbd> attribute to show the content initially.<br><br>This is a boolean attribute - just add <kbd>open</kbd> without a value.",
-			"task": "Add the <kbd>open</kbd> attribute to the <kbd>&lt;details&gt;</kbd> element to show the content by default.",
+			"title": "موسع افتراضياً",
+			"description": "افتراضياً، <kbd>&lt;details&gt;</kbd> مغلق. أضف سمة <kbd>open</kbd> لإظهار المحتوى في البداية.<br><br>هذه سمة منطقية - فقط أضف <kbd>open</kbd> بدون قيمة.",
+			"task": "أضف سمة <kbd>open</kbd> لعنصر <kbd>&lt;details&gt;</kbd> لإظهار المحتوى افتراضياً.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9; } summary { font-weight: 600; cursor: pointer; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -55,15 +55,15 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to <kbd>&lt;details&gt;</kbd>"
+					"message": "أضف سمة <kbd>open</kbd> إلى <kbd>&lt;details&gt;</kbd>"
 				}
 			]
 		},
 		{
 			"id": "faq-accordion",
-			"title": "FAQ Accordion",
-			"description": "Multiple <kbd>&lt;details&gt;</kbd> elements create an accordion-style FAQ. Each question can be expanded independently.<br><br><b>Pro tip:</b> Type <kbd>details*3&gt;summary+p</kbd> and press Tab for Emmet expansion. <kbd>*3</kbd> creates 3 elements, <kbd>&gt;</kbd> nests inside, <kbd>+</kbd> adds siblings.",
-			"task": "Create an FAQ section with:<br>1. An <kbd>&lt;h1&gt;</kbd> saying <code>Frequently Asked Questions</code><br>2. Three <kbd>&lt;details&gt;</kbd> elements, each with a question in <kbd>&lt;summary&gt;</kbd> and an answer in <kbd>&lt;p&gt;</kbd>",
+			"title": "أكورديون FAQ",
+			"description": "عناصر <kbd>&lt;details&gt;</kbd> المتعددة تنشئ FAQ بأسلوب الأكورديون. كل سؤال يمكن توسيعه بشكل مستقل.<br><br><b>نصيحة:</b> اكتب <kbd>details*3&gt;summary+p</kbd> واضغط Tab لتوسيع Emmet. <kbd>*3</kbd> ينشئ 3 عناصر، <kbd>&gt;</kbd> يضع بالداخل، <kbd>+</kbd> يضيف أشقاء.",
+			"task": "أنشئ قسم FAQ مع:<br>1. عنصر <kbd>&lt;h1&gt;</kbd> يقول <code>Frequently Asked Questions</code><br>2. ثلاثة عناصر <kbd>&lt;details&gt;</kbd>، كل واحد بسؤال في <kbd>&lt;summary&gt;</kbd> وإجابة في <kbd>&lt;p&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; min-height: 100vh; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0; box-sizing: border-box; } h1 { font-size: 2.5rem; color: #4a4a4a; text-align: center; margin: 0 0 30px 0; } details { background: white; border-radius: 12px; margin-bottom: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } summary { font-size: 1.3rem; font-weight: 600; color: #5c5c5c; cursor: pointer; list-style: none; } summary::before { content: '▸ '; color: #fcb69f; } details[open] summary::before { content: '▾ '; } details p { margin: 15px 0 0 0; color: #666; line-height: 1.6; }",
 			"sandboxCSS": "",
@@ -74,22 +74,22 @@
 				{
 					"type": "element_exists",
 					"value": "h1",
-					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading for the FAQ title"
+					"message": "أضف عنوان <kbd>&lt;h1&gt;</kbd> لعنوان FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details", "min": 3 },
-					"message": "Create at least 3 <kbd>&lt;details&gt;</kbd> elements for the FAQ"
+					"message": "أنشئ على الأقل 3 عناصر <kbd>&lt;details&gt;</kbd> للـ FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "summary", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;summary&gt;</kbd> for the question"
+					"message": "كل <kbd>&lt;details&gt;</kbd> يحتاج <kbd>&lt;summary&gt;</kbd> للسؤال"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details p", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;p&gt;</kbd> for the answer"
+					"message": "كل <kbd>&lt;details&gt;</kbd> يحتاج <kbd>&lt;p&gt;</kbd> للإجابة"
 				}
 			]
 		}

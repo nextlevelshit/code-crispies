@@ -1,15 +1,15 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "transitions-animations",
-	"title": "CSS Animations",
-	"description": "Bring interactivity to your UI by smoothly transitioning properties and creating keyframe-driven animations.",
+	"title": "CSS Анімації",
+	"description": "Додайте інтерактивність до інтерфейсу через плавні переходи властивостей та анімації на основі keyframes.",
 	"difficulty": "intermediate",
 	"lessons": [
 		{
 			"id": "transitions-1",
 			"title": "Transitions",
-			"description": "Learn how to apply <kbd>transition</kbd> to properties for smooth changes on state changes.<br><br><pre>transition: property duration;\n/* e.g. transition: background-color 0.3s; */</pre>",
-			"task": "Add <kbd>transition: background-color 0.3s</kbd> to <kbd>.btn</kbd> so the color fades smoothly on hover.",
+			"description": "Навчіться застосовувати <kbd>transition</kbd> до властивостей для плавних змін при зміні стану.<br><br><pre>transition: property duration;\n/* напр. transition: background-color 0.3s; */</pre>",
+			"task": "Додайте <kbd>transition: background-color 0.3s</kbd>, щоб колір плавно змінювався при наведенні.",
 			"previewHTML": "<button class=\"btn\">Hover Me</button>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: black; color: white; padding: 0.5rem 1rem; border: none; cursor: pointer; } .btn:hover { background: white; color: black; }",
 			"sandboxCSS": "",
@@ -22,13 +22,13 @@
 				{
 					"type": "contains",
 					"value": "transition",
-					"message": "Use the <kbd>transition</kbd> property",
+					"message": "Використайте властивість <kbd>transition</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "regex",
 					"value": "transition:\\s*background-color\\s*0\\.3s",
-					"message": "Set <kbd>transition: background-color 0.3s</kbd>",
+					"message": "Встановіть <kbd>transition: background-color 0.3s</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -36,8 +36,8 @@
 		{
 			"id": "transitions-2",
 			"title": "Timing Funcs",
-			"description": "Explore easing functions like <kbd>ease</kbd>, <kbd>linear</kbd>, <kbd>ease-in</kbd>, <kbd>ease-out</kbd> to control animation pacing.",
-			"task": "Set <kbd>transition-timing-function</kbd> to <kbd>ease-in-out</kbd> on <kbd>.btn</kbd>.",
+			"description": "Дослідіть функції пом'якшення як <kbd>ease</kbd>, <kbd>linear</kbd>, <kbd>ease-in</kbd>, <kbd>ease-out</kbd> для контролю темпу анімації.",
+			"task": "Встановіть <kbd>transition-timing-function</kbd> на <kbd>ease-in-out</kbd>.",
 			"previewHTML": "<button class=\"btn\">Timing</button>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .btn { background: navy; color: gold; padding: 0.5rem 1rem; border: none; cursor: pointer; transition: all 0.5s; } .btn:hover { background: gold; color: navy; transform: scale(1.1); }",
 			"sandboxCSS": "",
@@ -50,21 +50,21 @@
 				{
 					"type": "contains",
 					"value": "transition-timing-function",
-					"message": "Use <kbd>transition-timing-function</kbd>",
+					"message": "Використайте <kbd>transition-timing-function</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "transition-timing-function", "expected": "ease-in-out" },
-					"message": "Set timing to <kbd>ease-in-out</kbd>"
+					"message": "Встановіть timing на <kbd>ease-in-out</kbd>"
 				}
 			]
 		},
 		{
 			"id": "transitions-3",
 			"title": "Keyframes",
-			"description": "Create named animations using <kbd>@keyframes</kbd> and apply them via the <kbd>animation</kbd> shorthand.<br><br><pre>@keyframes bounce {\n  50% { transform: translateY(-20px); }\n}\n.ball {\n  animation: bounce 1s infinite;\n}</pre>",
-			"task": "Define a keyframe at <kbd>50%</kbd> with <kbd>transform: translateY(-20px)</kbd> and apply <kbd>animation: bounce 1s infinite</kbd> to <kbd>.ball</kbd>.",
+			"description": "Створюйте іменовані анімації використовуючи <kbd>@keyframes</kbd> та застосовуйте їх через скорочення <kbd>animation</kbd>.<br><br><pre>@keyframes bounce {\n  50% { transform: translateY(-20px); }\n}\n.ball {\n  animation: bounce 1s infinite;\n}</pre>",
+			"task": "Визначте keyframe при <kbd>50%</kbd> з <kbd>transform: translateY(-20px)</kbd> та застосуйте <kbd>animation: bounce 1s infinite</kbd> на <kbd>.ball</kbd>.",
 			"previewHTML": "<div class=\"ball\"></div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .ball { width: 50px; height: 50px; background: crimson; border-radius: 50%; margin: 2rem auto; }",
 			"sandboxCSS": "",
@@ -77,25 +77,25 @@
 				{
 					"type": "contains",
 					"value": "@keyframes bounce",
-					"message": "Define <kbd>@keyframes bounce</kbd>",
+					"message": "Визначте <kbd>@keyframes bounce</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "regex",
 					"value": "50%.*transform: translateY\\(-20px\\)",
-					"message": "At <kbd>50%</kbd>, use <kbd>transform: translateY(-20px)</kbd>",
+					"message": "При <kbd>50%</kbd>, використайте <kbd>transform: translateY(-20px)</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "contains",
 					"value": "animation",
-					"message": "Use <kbd>animation</kbd> property on <kbd>.ball</kbd>",
+					"message": "Використайте властивість <kbd>animation</kbd> на <kbd>.ball</kbd>",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "regex",
 					"value": "animation:.*bounce.*1s.*infinite",
-					"message": "Apply <kbd>animation: bounce 1s infinite</kbd>",
+					"message": "Застосуйте <kbd>animation: bounce 1s infinite</kbd>",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -103,8 +103,8 @@
 		{
 			"id": "transitions-4",
 			"title": "Animation Properties",
-			"description": "Fine-tune animations with <kbd>animation-delay</kbd>, <kbd>animation-iteration-count</kbd>, <kbd>animation-direction</kbd>, and <kbd>animation-fill-mode</kbd>.",
-			"task": "Apply the <kbd>pulse</kbd> animation to <kbd>.box</kbd> with <kbd>animation-name: pulse</kbd>, <kbd>animation-duration: 2s</kbd>, <kbd>animation-delay: 1s</kbd>, <kbd>animation-iteration-count: 2</kbd>, and <kbd>animation-fill-mode: forwards</kbd>.",
+			"description": "Налаштуйте анімації за допомогою <kbd>animation-delay</kbd>, <kbd>animation-iteration-count</kbd>, <kbd>animation-direction</kbd> та <kbd>animation-fill-mode</kbd>.",
+			"task": "Застосуйте анімацію <kbd>pulse</kbd> до <kbd>.box</kbd> з <kbd>animation-name: pulse</kbd>, <kbd>animation-duration: 2s</kbd>, <kbd>animation-delay: 1s</kbd>, <kbd>animation-iteration-count: 2</kbd> та <kbd>animation-fill-mode: forwards</kbd>.",
 			"previewHTML": "<div class=\"box\">Pulse</div>",
 			"previewBaseCSS": "body { font-family: sans-serif; padding: 1rem; } .box { width: 100px; height: 100px; background: black; color: white; display: flex; align-items: center; justify-content: center; margin: 2rem auto; } @keyframes pulse { 0% { background: black; color: white; transform: scale(1); } 50% { background: white; color: black; transform: scale(1.2); } 100% { background: limegreen; color: black; transform: scale(1); } }",
 			"sandboxCSS": "",
@@ -117,27 +117,27 @@
 				{
 					"type": "property_value",
 					"value": { "property": "animation-name", "expected": "pulse" },
-					"message": "Set <kbd>animation-name: pulse</kbd>"
+					"message": "Встановіть <kbd>animation-name: pulse</kbd>"
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "animation-duration", "expected": "2s" },
-					"message": "Set <kbd>animation-duration: 2s</kbd>"
+					"message": "Встановіть <kbd>animation-duration: 2s</kbd>"
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "animation-delay", "expected": "1s" },
-					"message": "Set <kbd>animation-delay: 1s</kbd>"
+					"message": "Встановіть <kbd>animation-delay: 1s</kbd>"
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "animation-iteration-count", "expected": "2" },
-					"message": "Set <kbd>animation-iteration-count: 2</kbd>"
+					"message": "Встановіть <kbd>animation-iteration-count: 2</kbd>"
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "animation-fill-mode", "expected": "forwards" },
-					"message": "Set <kbd>animation-fill-mode: forwards</kbd>"
+					"message": "Встановіть <kbd>animation-fill-mode: forwards</kbd>"
 				}
 			]
 		}

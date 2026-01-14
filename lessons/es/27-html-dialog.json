@@ -1,16 +1,16 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-dialog",
-	"title": "Dialogs",
-	"description": "Create modal dialogs without JavaScript libraries",
+	"title": "Diálogos",
+	"description": "Crea diálogos modales sin bibliotecas JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "dialog-basic",
-			"title": "Open Dialog",
-			"description": "The <kbd>&lt;dialog&gt;</kbd> element creates a native modal. Add the <kbd>open</kbd> attribute to show it.<br><br>Use <kbd>&lt;form method=\"dialog\"&gt;</kbd> inside to close it when the form submits - no JavaScript needed!",
-			"task": "Create a dialog with:<br>1. The <kbd>open</kbd> attribute to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Welcome!</code><br>3. A <kbd>&lt;p&gt;</kbd> with a greeting message<br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with a close button",
+			"title": "Abrir diálogo",
+			"description": "El elemento <kbd>&lt;dialog&gt;</kbd> crea un modal nativo. Añade el atributo <kbd>open</kbd> para mostrarlo.<br><br>¡Usa <kbd>&lt;form method=\"dialog\"&gt;</kbd> dentro para cerrarlo al enviar el formulario - sin JavaScript!",
+			"task": "Crea un diálogo con:<br>1. El atributo <kbd>open</kbd> para mostrarlo<br>2. Un <kbd>&lt;h2&gt;</kbd> que diga <code>¡Bienvenido!</code><br>3. Un <kbd>&lt;p&gt;</kbd> con un mensaje de saludo<br>4. Un <kbd>&lt;form method=\"dialog\"&gt;</kbd> con un botón de cerrar",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: #f5f5f5; } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 400px; } dialog::backdrop { background: rgba(0,0,0,0.5); } dialog h2 { margin: 0 0 15px 0; color: #1976d2; } dialog p { color: #666; margin: 0 0 20px 0; } dialog button { background: #1976d2; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; } dialog button:hover { background: #1565c0; }",
 			"sandboxCSS": "",
@@ -21,35 +21,35 @@
 				{
 					"type": "element_exists",
 					"value": "dialog",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> element"
+					"message": "Añade un elemento <kbd>&lt;dialog&gt;</kbd>"
 				},
 				{
 					"type": "attribute_value",
 					"value": { "selector": "dialog", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to show the dialog"
+					"message": "Añade el atributo <kbd>open</kbd> para mostrar el diálogo"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add an <kbd>&lt;h2&gt;</kbd> heading inside the dialog"
+					"message": "Añade un encabezado <kbd>&lt;h2&gt;</kbd> dentro del diálogo"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for closing"
+					"message": "Añade un <kbd>&lt;form method=\"dialog\"&gt;</kbd> para cerrar"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog button",
-					"message": "Add a close button inside the form"
+					"message": "Añade un botón de cerrar dentro del formulario"
 				}
 			]
 		},
 		{
 			"id": "dialog-form",
-			"title": "Dialog + Form",
-			"description": "Dialogs can contain full forms. The <kbd>method=\"dialog\"</kbd> makes the form close the dialog on submit instead of sending data.<br><br>This pattern is perfect for confirmation dialogs, quick inputs, or settings panels.",
-			"task": "Create a confirmation dialog:<br>1. Add <kbd>open</kbd> to show it<br>2. An <kbd>&lt;h2&gt;</kbd> saying <code>Confirm Delete</code><br>3. A <kbd>&lt;p&gt;</kbd> asking <code>Are you sure?</code><br>4. A <kbd>&lt;form method=\"dialog\"&gt;</kbd> with Cancel and Delete buttons",
+			"title": "Diálogo + Formulario",
+			"description": "Los diálogos pueden contener formularios completos. El <kbd>method=\"dialog\"</kbd> hace que el formulario cierre el diálogo al enviar en lugar de enviar datos.<br><br>Este patrón es perfecto para diálogos de confirmación, entradas rápidas o paneles de configuración.",
+			"task": "Crea un diálogo de confirmación:<br>1. Añade <kbd>open</kbd> para mostrarlo<br>2. Un <kbd>&lt;h2&gt;</kbd> que diga <code>Confirmar eliminación</code><br>3. Un <kbd>&lt;p&gt;</kbd> preguntando <code>¿Estás seguro?</code><br>4. Un <kbd>&lt;form method=\"dialog\"&gt;</kbd> con botones Cancelar y Eliminar",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; min-height: 200px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); } dialog { border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 25px; max-width: 350px; text-align: center; } dialog h2 { margin: 0 0 10px 0; color: #c62828; } dialog p { color: #666; margin: 0 0 20px 0; } dialog form { display: flex; gap: 10px; justify-content: center; } dialog button { padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; border: none; } dialog button:first-child { background: #e0e0e0; color: #333; } dialog button:last-child { background: #c62828; color: white; } dialog button:hover { opacity: 0.9; }",
 			"sandboxCSS": "",
@@ -60,22 +60,22 @@
 				{
 					"type": "element_exists",
 					"value": "dialog[open]",
-					"message": "Add a <kbd>&lt;dialog&gt;</kbd> with the open attribute"
+					"message": "Añade un <kbd>&lt;dialog&gt;</kbd> con el atributo open"
 				},
 				{
 					"type": "element_exists",
 					"value": "dialog h2",
-					"message": "Add a heading to the dialog"
+					"message": "Añade un encabezado al diálogo"
 				},
 				{
 					"type": "element_exists",
 					"value": "form[method='dialog']",
-					"message": "Add a <kbd>&lt;form method=\"dialog\"&gt;</kbd> for the buttons"
+					"message": "Añade un <kbd>&lt;form method=\"dialog\"&gt;</kbd> para los botones"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "dialog button", "min": 2 },
-					"message": "Add at least 2 buttons (Cancel and Confirm)"
+					"message": "Añade al menos 2 botones (Cancelar y Confirmar)"
 				}
 			]
 		}

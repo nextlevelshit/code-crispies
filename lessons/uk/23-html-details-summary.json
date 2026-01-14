@@ -2,15 +2,15 @@
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "html-details-summary",
 	"title": "HTML Details & Summary",
-	"description": "Create expandable content sections without JavaScript",
+	"description": "Створюйте розгортувані секції без JavaScript",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "details-summary-basic",
-			"title": "First Widget",
-			"description": "The <kbd>&lt;details&gt;</kbd> element creates a collapsible section. The <kbd>&lt;summary&gt;</kbd> provides the clickable label.<br><br>Click the summary to toggle the hidden content - no JavaScript needed!",
-			"task": "Create a <kbd>&lt;details&gt;</kbd> element with:<br>1. A <kbd>&lt;summary&gt;</kbd> saying <code>Click to reveal</code><br>2. A <kbd>&lt;p&gt;</kbd> with the text <code>This content was hidden!</code>",
+			"title": "Перший віджет",
+			"description": "Елемент <kbd>&lt;details&gt;</kbd> створює згортувану секцію. Елемент <kbd>&lt;summary&gt;</kbd> надає клікабельний заголовок.<br><br>Натисніть на summary, щоб показати прихований вміст - без JavaScript!",
+			"task": "Створіть елемент <kbd>&lt;details&gt;</kbd> з:<br>1. Елементом <kbd>&lt;summary&gt;</kbd> з текстом <code>Click to reveal</code><br>2. Елементом <kbd>&lt;p&gt;</kbd> з текстом <code>This content was hidden!</code>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; } summary { font-weight: 600; cursor: pointer; } summary:hover { color: #1976d2; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -21,30 +21,30 @@
 				{
 					"type": "element_exists",
 					"value": "details",
-					"message": "Add a <kbd>&lt;details&gt;</kbd> element"
+					"message": "Додайте елемент <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "element_exists",
 					"value": "summary",
-					"message": "Add a <kbd>&lt;summary&gt;</kbd> inside the details"
+					"message": "Додайте <kbd>&lt;summary&gt;</kbd> всередину details"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "summary" },
-					"message": "The <kbd>&lt;summary&gt;</kbd> must be inside <kbd>&lt;details&gt;</kbd>"
+					"message": "Елемент <kbd>&lt;summary&gt;</kbd> має бути всередині <kbd>&lt;details&gt;</kbd>"
 				},
 				{
 					"type": "parent_child",
 					"value": { "parent": "details", "child": "p" },
-					"message": "Add a <kbd>&lt;p&gt;</kbd> inside <kbd>&lt;details&gt;</kbd> for the hidden content"
+					"message": "Додайте <kbd>&lt;p&gt;</kbd> всередину <kbd>&lt;details&gt;</kbd> для прихованого вмісту"
 				}
 			]
 		},
 		{
 			"id": "details-open-attribute",
-			"title": "Pre-expanded Details",
-			"description": "By default, <kbd>&lt;details&gt;</kbd> is closed. Add the <kbd>open</kbd> attribute to show the content initially.<br><br>This is a boolean attribute - just add <kbd>open</kbd> without a value.",
-			"task": "Add the <kbd>open</kbd> attribute to the <kbd>&lt;details&gt;</kbd> element to show the content by default.",
+			"title": "Розгорнуто за замовчуванням",
+			"description": "За замовчуванням <kbd>&lt;details&gt;</kbd> закритий. Додайте атрибут <kbd>open</kbd>, щоб показати вміст спочатку.<br><br>Це булевий атрибут - просто додайте <kbd>open</kbd> без значення.",
+			"task": "Додайте атрибут <kbd>open</kbd> до елемента <kbd>&lt;details&gt;</kbd>, щоб показати вміст за замовчуванням.",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } details { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: #f9f9f9; } summary { font-weight: 600; cursor: pointer; } details p { margin-top: 15px; color: #666; }",
 			"sandboxCSS": "",
@@ -55,15 +55,15 @@
 				{
 					"type": "attribute_value",
 					"value": { "selector": "details", "attr": "open", "value": true },
-					"message": "Add the <kbd>open</kbd> attribute to <kbd>&lt;details&gt;</kbd>"
+					"message": "Додайте атрибут <kbd>open</kbd> до <kbd>&lt;details&gt;</kbd>"
 				}
 			]
 		},
 		{
 			"id": "faq-accordion",
-			"title": "FAQ Accordion",
-			"description": "Multiple <kbd>&lt;details&gt;</kbd> elements create an accordion-style FAQ. Each question can be expanded independently.<br><br><b>Pro tip:</b> Type <kbd>details*3&gt;summary+p</kbd> and press Tab for Emmet expansion. <kbd>*3</kbd> creates 3 elements, <kbd>&gt;</kbd> nests inside, <kbd>+</kbd> adds siblings.",
-			"task": "Create an FAQ section with:<br>1. An <kbd>&lt;h1&gt;</kbd> saying <code>Frequently Asked Questions</code><br>2. Three <kbd>&lt;details&gt;</kbd> elements, each with a question in <kbd>&lt;summary&gt;</kbd> and an answer in <kbd>&lt;p&gt;</kbd>",
+			"title": "FAQ акордеон",
+			"description": "Кілька елементів <kbd>&lt;details&gt;</kbd> створюють FAQ у стилі акордеону. Кожне питання можна розгортати незалежно.<br><br><b>Порада:</b> Введіть <kbd>details*3&gt;summary+p</kbd> і натисніть Tab для розгортання Emmet. <kbd>*3</kbd> створює 3 елементи, <kbd>&gt;</kbd> вкладає всередину, <kbd>+</kbd> додає сусідні.",
+			"task": "Створіть секцію FAQ з:<br>1. Заголовком <kbd>&lt;h1&gt;</kbd> з текстом <code>Frequently Asked Questions</code><br>2. Трьома елементами <kbd>&lt;details&gt;</kbd>, кожен з питанням у <kbd>&lt;summary&gt;</kbd> та відповіддю у <kbd>&lt;p&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; min-height: 100vh; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0; box-sizing: border-box; } h1 { font-size: 2.5rem; color: #4a4a4a; text-align: center; margin: 0 0 30px 0; } details { background: white; border-radius: 12px; margin-bottom: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); } summary { font-size: 1.3rem; font-weight: 600; color: #5c5c5c; cursor: pointer; list-style: none; } summary::before { content: '▸ '; color: #fcb69f; } details[open] summary::before { content: '▾ '; } details p { margin: 15px 0 0 0; color: #666; line-height: 1.6; }",
 			"sandboxCSS": "",
@@ -74,22 +74,22 @@
 				{
 					"type": "element_exists",
 					"value": "h1",
-					"message": "Add an <kbd>&lt;h1&gt;</kbd> heading for the FAQ title"
+					"message": "Додайте заголовок <kbd>&lt;h1&gt;</kbd> для назви FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details", "min": 3 },
-					"message": "Create at least 3 <kbd>&lt;details&gt;</kbd> elements for the FAQ"
+					"message": "Створіть принаймні 3 елементи <kbd>&lt;details&gt;</kbd> для FAQ"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "summary", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;summary&gt;</kbd> for the question"
+					"message": "Кожен <kbd>&lt;details&gt;</kbd> потребує <kbd>&lt;summary&gt;</kbd> для питання"
 				},
 				{
 					"type": "element_count",
 					"value": { "selector": "details p", "min": 3 },
-					"message": "Each <kbd>&lt;details&gt;</kbd> needs a <kbd>&lt;p&gt;</kbd> for the answer"
+					"message": "Кожен <kbd>&lt;details&gt;</kbd> потребує <kbd>&lt;p&gt;</kbd> для відповіді"
 				}
 			]
 		}
