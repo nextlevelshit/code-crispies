@@ -1,548 +1,257 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "css-basic-selectors",
-	"title": "CSS Selektoren",
-	"description": "CSS-Selektoren sind die Grundlage für das Stylen von Webseiten und ermöglichen es dir, bestimmte HTML-Elemente für die Gestaltung auszuwählen. Dieses Modul stellt grundlegende Selektortypen vor, einschließlich Element-Typ-Selektoren, Klassen-Selektoren, ID-Selektoren und des universellen Selektors.",
+	"title": "CSS Grundlagen",
+	"description": "Lerne die grundlegenden Bausteine von CSS: Eigenschaften, Werte und Selektoren. Dieses Modul vermittelt dir die Syntaxregeln, denen jede CSS-Deklaration folgt.",
 	"difficulty": "beginner",
 	"lessons": [
 		{
-			"id": "introduction-to-selectors",
-			"title": "Was ist ein CSS-Selektor?",
-			"description": "Ein CSS-Selektor ist der erste Teil einer CSS-Regel, der dem Browser mitteilt, welche HTML-Elemente die im Deklarationsblock definierten Stile erhalten sollen. Selektoren sind im Wesentlichen Muster, die mit Elementen in deinem HTML-Dokument übereinstimmen. Das Verstehen von Selektoren ist grundlegend, da sie bestimmen, welche Elemente von deinen CSS-Regeln betroffen sind. Das Element oder die Elemente, die von einem Selektor anvisiert werden, werden als 'Subjekt des Selektors' bezeichnet. Beim Schreiben einer CSS-Regel gibst du zuerst den Selektor an, gefolgt von geschweiften Klammern, die die Stil-Deklarationen enthalten.<br/>Um beispielsweise die Textfarbe von Elementen zu ändern, kannst du die <kbd>color</kbd>-Eigenschaft in deinem Deklarationsblock verwenden.<br><br><pre>/* Element-Selektor */\np {\n  color: orangered;\n  /* │       └─── Gibt den Wert des Ausdrucks an\n     │                                                     \n     └─────────── Gibt die Eigenschaft des Ausdrucks an */\n}</pre>",
-			"task": "Schreibe eine CSS-Regel mit einem Typ-Selektor, die alle Absatz-Elemente <kbd>p</kbd> im Dokument anvisiert. Mache den Text blau, indem du die <kbd>color</kbd>-Eigenschaft auf <kbd>blue</kbd> setzt.",
-			"previewHTML": "<h1>Einführung in CSS-Selektoren</h1>\n<p>Dieser Absatz sollte blau werden.</p>\n<div>Dieses div-Element sollte unverändert bleiben.</div>\n<p>Dieser zweite Absatz sollte ebenfalls blau werden.</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "h1, p, div { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
-			"codePrefix": "/* Schreibe einen Typ-Selektor, um alle Absatz-Elemente anzuvisieren */\n",
+			"id": "css-properties",
+			"title": "CSS-Eigenschaften",
+			"description": "CSS gestaltet Elemente mit <strong>Deklarationen</strong> - Paaren aus Eigenschaften und Werten. Jede Deklaration folgt dem gleichen Muster:<br><br><pre>property: value;</pre><br>Die <strong>Eigenschaft</strong> ist das, was du ändern möchtest (wie <kbd>color</kbd> oder <kbd>background</kbd>). Der <strong>Wert</strong> ist das, worauf du es setzt. Ein Doppelpunkt trennt sie, und ein Semikolon beendet die Zeile.<br><br>Werte gibt es in verschiedenen Typen:<br>• <strong>Schlüsselwörter:</strong> <kbd>red</kbd>, <kbd>bold</kbd>, <kbd>center</kbd><br>• <strong>Zahlen mit Einheiten:</strong> <kbd>16px</kbd>, <kbd>2rem</kbd>, <kbd>100%</kbd><br>• <strong>Farben:</strong> <kbd>steelblue</kbd>, <kbd>#ff0000</kbd>",
+			"task": "Vervollständige die Deklaration, indem du <kbd>color: coral;</kbd> hinzufügst, um die Textfarbe zu ändern.",
+			"previewHTML": "<p class=\"text\">This text should turn coral.</p>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } .text { font-size: 1.25rem; }",
+			"sandboxCSS": "",
+			"codePrefix": ".text {\n  ",
 			"initialCode": "",
-			"codeSuffix": "",
+			"codeSuffix": "\n}",
 			"previewContainer": "preview-area",
-			"solution": "p { color: blue }",
+			"solution": "color: coral;",
 			"validations": [
 				{
-					"type": "regex",
-					"value": "^p\\s*{",
-					"message": "Beginne deine Regel mit <kbd>p { … }</kbd>, um alle Absatz-Elemente auszuwählen",
-					"options": {
-						"caseSensitive": false
-					}
-				},
+					"type": "property_value",
+					"value": { "property": "color", "expected": "coral" },
+					"message": "Füge <kbd>color: coral;</kbd> hinzu"
+				}
+			]
+		},
+		{
+			"id": "multiple-properties",
+			"title": "Mehrere Eigenschaften",
+			"description": "Eine Regel kann mehrere Deklarationen enthalten. Jede steht in einer eigenen Zeile und jede benötigt ein Semikolon am Ende:<br><br><pre>.box {<br>  background: gold;<br>  color: navy;<br>  padding: 1rem;<br>}</pre><br>Die Reihenfolge spielt normalerweise keine Rolle - CSS wendet alle an. Bei Konflikten gewinnt die letzte.",
+			"task": "Füge zwei Deklarationen hinzu: <kbd>background: lavender;</kbd> und <kbd>padding: 1rem;</kbd>",
+			"previewHTML": "<div class=\"card\">A styled card with background and padding.</div>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } .card { border-radius: 8px; }",
+			"sandboxCSS": "",
+			"codePrefix": ".card {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "background: lavender;\n  padding: 1rem;",
+			"validations": [
 				{
-					"type": "contains",
-					"value": "color:",
-					"message": "Füge die <kbd>color:</kbd>-Eigenschaft in deine CSS-Regel ein"
-				},
-				{
-					"type": "contains",
-					"value": "blue",
-					"message": "Setze den Farbwert auf <kbd>blue</kbd>"
+					"type": "property_value",
+					"value": { "property": "background", "expected": "lavender" },
+					"message": "Füge <kbd>background: lavender;</kbd> hinzu"
 				},
 				{
 					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "blue"
-					},
-					"message": "Verwende <kbd>color: blue</kbd>, um die Textfarbe zu setzen"
-				},
-				{
-					"type": "regex",
-					"value": "p\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": false
-					}
+					"value": { "property": "padding", "expected": "1rem" },
+					"message": "Füge <kbd>padding: 1rem;</kbd> hinzu"
 				}
 			]
 		},
 		{
 			"id": "type-selectors",
-			"title": "Typ-Selektoren: HTML-Elemente anvisieren",
-			"description": "Typ-Selektoren (auch Tag-Name-Selektoren oder Element-Selektoren genannt) visieren HTML-Elemente basierend auf ihrem Tag-Namen an. Zum Beispiel wählt <kbd>p</kbd> alle Absatz-Elemente, <kbd>h1</kbd> alle Überschriften der ersten Ebene und <kbd>div</kbd> alle Division-Elemente aus. Typ-Selektoren sind die grundlegendste Art, Elemente auszuwählen, und wenden Stile einheitlich auf alle Instanzen eines bestimmten HTML-Elements in deinem Dokument an. Du kannst verschiedene CSS-Eigenschaften mit Typ-Selektoren definieren, wie <kbd>color</kbd> für Textfarbe, <kbd>background-color</kbd> für den Hintergrund und <kbd>font-weight</kbd> für Textbetonung. Sie bieten einen breiten Ansatz für das Styling deiner Seite und sind oft der Ausgangspunkt für spezifischeres Styling mit anderen Selektortypen.",
-			"task": "Schreibe drei separate CSS-Regeln mit Typ-Selektoren, um bestimmte HTML-Elemente anzuvisieren: mache <kbd>h2</kbd>-Überschriften <kbd>purple</kbd>, gib <kbd>span</kbd>-Elementen einen <kbd>yellow</kbd>-Hintergrund und mache <kbd>strong</kbd>-Elemente <kbd>red</kbd>.",
-			"previewHTML": "<h2>Typ-Selektoren Beispiel</h2>\n<p>Normaler Absatztext <span>mit einem hervorgehobenen Span</span>, der einen gelben Hintergrund haben sollte.</p>\n<p>Ein weiterer Absatz mit <strong>wichtigem, fetten Text</strong>, der rot sein sollte.</p>\n<h2>Eine weitere Überschrift</h2>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "h2, p, span, strong { padding: 3px; }",
-			"codePrefix": "/* Schreibe drei separate Typ-Selektoren unten */\n\n",
-			"initialCode": "/* 1. Mache h2-Überschriften lila */\n\n\n/* 2. Gib span-Elementen einen gelben Hintergrund */\n\n\n/* 3. Mache strong-Elemente rot */\n",
+			"title": "Typ-Selektoren",
+			"description": "Ein <strong>Selektor</strong> sagt dem Browser, welche Elemente gestylt werden sollen. Der einfachste Selektor ist ein <strong>Typ-Selektor</strong> — einfach der HTML-Tag-Name.<br><br><pre>p {<br>  color: steelblue;<br>}</pre><br>Diese Regel zielt auf jedes <kbd>&lt;p&gt;</kbd>-Element auf der Seite. Typ-Selektoren eignen sich hervorragend für Basis-Styles.",
+			"task": "Style alle Absätze. Schreibe eine Regel mit <kbd>p</kbd> als Selektor und setze <kbd>color: steelblue</kbd>.",
+			"previewHTML": "<article>\n  <h2>Fresh Roasted Coffee</h2>\n  <p>Our beans are sourced from small farms in Colombia and Ethiopia.</p>\n  <p>Each batch is roasted weekly to ensure peak freshness.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } h2 { margin: 0 0 1rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": "/* 1. Mache h2-Überschriften lila */\nh2 {\n  color: purple;\n}\n\n/* 2. Gib span-Elementen einen gelben Hintergrund */\nspan {\n  background-color: yellow;\n}\n\n/* 3. Mache strong-Elemente rot */\nstrong {\n  color: red;\n}",
+			"solution": "p {\n  color: steelblue;\n}",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "^h2\\s*{",
-					"message": "Füge einen <kbd>h2 { … }</kbd>-Selektor hinzu"
+					"value": "p\\s*\\{",
+					"message": "Beginne mit <kbd>p {</kbd>, um Absätze auszuwählen"
 				},
 				{
 					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "purple"
-					},
-					"message": "Setze die <kbd>color</kbd>-Eigenschaft auf <kbd>purple</kbd> für h2-Elemente"
-				},
+					"value": { "property": "color", "expected": "steelblue" },
+					"message": "Setze <kbd>color: steelblue</kbd>"
+				}
+			]
+		},
+		{
+			"id": "styling-links",
+			"title": "Links stylen",
+			"description": "Typ-Selektoren funktionieren für jedes HTML-Element. Der <kbd>a</kbd>-Selektor zielt auf alle Links einer Seite.<br><br>Links haben standardmäßig eine blaue Farbe und Unterstreichung. Du kannst beides mit CSS ändern — verwende <kbd>color</kbd> für den Text und <kbd>text-decoration: none</kbd>, um die Unterstreichung zu entfernen.",
+			"task": "Style die Navigationslinks. Schreibe eine Regel mit <kbd>a</kbd> als Selektor und setze <kbd>color: coral</kbd>.",
+			"previewHTML": "<nav>\n  <a href=\"#\">Home</a>\n  <a href=\"#\">Menu</a>\n  <a href=\"#\">About</a>\n  <a href=\"#\">Contact</a>\n</nav>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } nav { display: flex; gap: 1.5rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": "a {\n  color: coral;\n}",
+			"validations": [
 				{
 					"type": "regex",
-					"value": "h2\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine h2-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden"
-				},
-				{
-					"type": "regex",
-					"value": "^span\\s*{",
-					"message": "Füge einen <kbd>span { … }</kbd>-Selektor hinzu"
+					"value": "a\\s*\\{",
+					"message": "Beginne mit <kbd>a {</kbd>, um Links auszuwählen"
 				},
 				{
 					"type": "property_value",
-					"value": {
-						"property": "background-color",
-						"expected": "yellow"
-					},
-					"message": "Setze <kbd>background-color: yellow</kbd> für span-Elemente"
-				},
-				{
-					"type": "regex",
-					"value": "span\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine span-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden"
-				},
-				{
-					"type": "regex",
-					"value": "^strong\\s*{",
-					"message": "Füge einen <kbd>strong { … }</kbd>-Selektor hinzu"
-				},
-				{
-					"type": "regex",
-					"value": "strong\\s*{\\s*color:\\s*red;[^}]*}",
-					"message": "Setze <kbd>color: red</kbd> für strong-Elemente"
+					"value": { "property": "color", "expected": "coral" },
+					"message": "Setze <kbd>color: coral</kbd>"
 				}
 			]
 		},
 		{
 			"id": "class-selectors",
-			"title": "Klassen-Selektoren: Elementgruppen stylen",
-			"description": "Klassen-Selektoren visieren Elemente mit einem bestimmten Klassen-Attributwert an. Sie beginnen mit einem Punkt (.) gefolgt vom Klassennamen. Klassen sind mächtig, weil sie es ermöglichen, die gleichen Stile auf mehrere Elemente anzuwenden, unabhängig von ihrem Typ. Ein HTML-Element kann mehrere Klassen haben (durch Leerzeichen im class-Attribut getrennt), und eine Klasse kann auf beliebig viele Elemente angewendet werden. Bei der Verwendung von Klassen-Selektoren kannst du Eigenschaften wie <kbd>background-color</kbd> zum Setzen der Hintergrundfarbe und <kbd>font-weight</kbd> zur Kontrolle der Textdicke anwenden. Diese Flexibilität macht Klassen-Selektoren zu einer der am häufigsten verwendeten Methoden zur Anwendung von Stilen in CSS und ermöglicht modulares und wiederverwendbares Styling auf deiner gesamten Website.",
-			"task": "Erstelle eine CSS-Regel mit einem Klassen-Selektor, die Elemente mit der Klasse <kbd>highlight</kbd> anvisiert. Gib diesen Elementen einen <kbd>yellow</kbd>-Hintergrund und <kbd>bold</kbd>-Text.",
-			"previewHTML": "<h2>Verwendung von Klassen-Selektoren</h2>\n<p>Dies ist ein normaler Absatz, aber <span class=\"highlight\">dieser Span hat die highlight-Klasse</span> angewendet.</p>\n<p class=\"highlight\">Dieser gesamte Absatz hat die highlight-Klasse.</p>\n<ul>\n  <li>Normales Listenelement</li>\n  <li class=\"highlight\">Dieses Listenelement ist hervorgehoben</li>\n</ul>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "h2, p, li { padding: 5px; margin-bottom: 10px; }",
-			"codePrefix": "/* Erstelle einen Klassen-Selektor für Elemente mit der 'highlight'-Klasse */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "regex",
-					"value": "^\\.highlight\\s*{",
-					"message": "Beginne deine Regel mit <kbd>.highlight { … }</kbd>, um einen Klassen-Selektor zu erstellen",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "background-color:",
-					"message": "Füge die <kbd>background-color:</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "background-color",
-						"expected": "yellow"
-					},
-					"message": "Setze die Hintergrundfarbe auf <kbd>yellow</kbd>"
-				},
-				{
-					"type": "contains",
-					"value": "font-weight:",
-					"message": "Füge die <kbd>font-weight:</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "font-weight",
-						"expected": "bold"
-					},
-					"message": "Setze font-weight auf <kbd>bold</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "\\.highlight\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "multiple-classes",
-			"title": "Mit mehreren Klassen arbeiten",
-			"description": "HTML-Elemente können mehrere Klassen gleichzeitig haben, was komponierbare und modulare CSS-Designs ermöglicht. Wenn ein Element mehrere Klassen hat, erhält es Stile von allen passenden Klassen-Selektoren. Dieser Ansatz ermöglicht es dir, eine Bibliothek wiederverwendbarer CSS-Klassen aufzubauen, die auf verschiedene Arten kombiniert werden können. Du kannst auch Elemente anvisieren, die eine bestimmte Kombination von Klassen haben, indem du Klassen-Selektoren ohne Leerzeichen verkettst (z.B. <kbd>.class1.class2</kbd>). Beim Stylen dieser Elemente könntest du Eigenschaften wie <kbd>border-color</kbd> verwenden, um die Farbe von Element-Rahmen zu ändern, und <kbd>background-color</kbd>, um die Hintergrundfarbe von Elementen zu setzen. Diese Technik ermöglicht bedingte Stile, die nur gelten, wenn bestimmte Klassen zusammen erscheinen.",
-			"task": "Vervollständige die CSS-Regel, die Elemente mit sowohl <kbd>card</kbd> als auch <kbd>featured</kbd>-Klassen anvisiert, indem du die Selektoren verkettest. Setze border-color auf gold und background-color auf lemonchiffon, um hervorgehobene Karten hervorzuheben.",
-			"previewHTML": "<h2>Mehrfach-Klassen-Kombinationen</h2>\n<div class=\"card\">Normale Karte</div>\n<div class=\"card featured\">Hervorgehobene Karte</div>\n<div class=\"featured\">Nur hervorgehoben (keine Karte)</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .card { border: 2px solid gray; padding: 15px; margin-bottom: 10px; border-radius: 5px; }",
+			"title": "Klassen-Selektoren",
+			"description": "Typ-Selektoren stylen <em>alle</em> Elemente dieses Typs. Aber was, wenn du nur einige davon stylen möchtest?<br><br><strong>Klassen-Selektoren</strong> zielen auf Elemente mit einem bestimmten <kbd>class</kbd>-Attribut. Sie beginnen mit einem Punkt:<br><br><pre>.badge {<br>  background: coral;<br>}</pre><br>Das stylt nur Elemente mit <kbd>class=\"badge\"</kbd>.",
+			"task": "Style das Benachrichtigungs-Badge. Schreibe eine Regel mit <kbd>.badge</kbd> als Selektor und setze <kbd>background: tomato</kbd>.",
+			"previewHTML": "<header>\n  <h1>Dashboard</h1>\n  <span class=\"badge\">3</span>\n</header>\n<p>You have new notifications waiting.</p>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; } h1 { margin: 0; font-size: 1.5rem; } .badge { color: white; padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.875rem; } p { color: #555; margin: 0; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Die .card-Klasse hat bereits grundlegendes Styling */\n/* Visiere jetzt Elemente mit BEIDEN Klassen an: 'card' UND 'featured' */\n",
+			"codePrefix": "",
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
-			"solution": ".card.featured { border-color: gold; background-color: lemonchiffon }",
+			"solution": ".badge {\n  background: tomato;\n}",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "^\\.card\\.featured\\s*{",
-					"message": "Verkette die Selektoren als <kbd>.card.featured</kbd> (kein Leerzeichen dazwischen)",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "border-color:",
-					"message": "Füge die <kbd>border-color</kbd>-Eigenschaft hinzu"
+					"value": "\\.badge\\s*\\{",
+					"message": "Beginne mit <kbd>.badge {</kbd> (vergiss den Punkt nicht!)"
 				},
 				{
 					"type": "property_value",
-					"value": {
-						"property": "border-color",
-						"expected": "gold"
-					},
-					"message": "Setze die Rahmenfarbe auf <kbd>gold</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "\\.card\\.featured\\s*{[^}]*;",
-					"message": "Vergiss nicht, deine CSS-Regel mit einem Semikolon <kbd>;</kbd> zu beenden"
-				},
-				{
-					"type": "contains",
-					"value": "background-color:",
-					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "background-color",
-						"expected": "lemonchiffon"
-					},
-					"message": "Setze die Hintergrundfarbe auf <kbd>lemonchiffon</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "\\.card\\.featured\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
+					"value": { "property": "background", "expected": "tomato" },
+					"message": "Setze <kbd>background: tomato</kbd>"
 				}
 			]
 		},
 		{
-			"id": "class-with-type",
-			"title": "Typ- und Klassen-Selektoren kombinieren",
-			"description": "Du kannst Typ-Selektoren mit Klassen-Selektoren kombinieren, um bestimmte HTML-Elemente anzuvisieren, die eine bestimmte Klasse haben. Dies erstellt einen spezifischeren Selektor, der nur passt, wenn beide Bedingungen wahr sind: das Element ist vom angegebenen Typ UND es hat die angegebene Klasse. Zum Beispiel würde <kbd>p.note</kbd> Absatz-Elemente mit der Klasse <kbd>note</kbd> auswählen, aber keine divs oder spans mit derselben Klasse. Du kannst diese kombinierten Selektionen mit Eigenschaften wie <kbd>background-color</kbd> stylen, um einen farbigen Hintergrund für deine Elemente zu setzen. Dieser Ansatz ermöglicht es dir, verschiedene Stile auf dieselbe Klasse anzuwenden, wenn sie auf verschiedenen Elementtypen erscheint.",
-			"task": "Erstelle eine CSS-Regel, die speziell <kbd>&lt;span&gt;</kbd>-Elemente mit der Klasse <kbd>highlight</kbd> anvisiert. Gib diesen Elementen einen orangen Hintergrund, während andere Elemente mit der highlight-Klasse unverändert bleiben.",
-			"previewHTML": "<h2>Typ- und Klassen-Kombinationen</h2>\n<p>Dieser Absatz hat einen <span class=\"highlight\">hervorgehobenen Span</span>, der einen orangen Hintergrund haben sollte.</p>\n<p class=\"highlight\">Dieser Absatz hat die highlight-Klasse, sollte aber KEINEN orangen Hintergrund haben.</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } .highlight { font-weight: bold; }",
-			"sandboxCSS": "h2, p, span { padding: 5px; }",
-			"codePrefix": "/* Die .highlight-Klasse setzt bereits font-weight auf bold */\n/* Visiere jetzt NUR span-Elemente mit der highlight-Klasse an */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "regex",
-					"value": "^span\\.highlight\\s*{",
-					"message": "Verwende den <kbd>span.highlight</kbd>-Selektor (kein Leerzeichen zwischen Element und Klasse)",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "background-color:",
-					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "background-color",
-						"expected": "orange"
-					},
-					"message": "Setze die Hintergrundfarbe auf <kbd>orange</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "span\\.highlight\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "id-selectors",
-			"title": "ID-Selektoren: Einzigartige Elemente anvisieren",
-			"description": "ID-Selektoren visieren Elemente mit einem bestimmten id-Attribut an. Sie beginnen mit einem Raute-/Hash-Zeichen (#) gefolgt vom ID-Namen. Im Gegensatz zu Klassen müssen IDs innerhalb eines Dokuments einzigartig sein – jeder ID-Wert sollte nur einmal pro Seite verwendet werden. ID-Selektoren haben eine höhere Spezifität als Klassen- oder Element-Selektoren, was bedeutet, dass sie diese Selektoren bei Konflikten überschreiben. Beim Stylen mit ID-Selektoren kannst du Eigenschaften wie <kbd>color</kbd> verwenden, um die Textfarbe zu definieren, und <kbd>text-decoration</kbd>, um das Erscheinungsbild von Text zu kontrollieren, wie das Hinzufügen von Unterstreichungen zu Elementen. Wegen ihrer Einzigartigkeitsanforderung werden IDs am besten für einmalige Elemente wie Seitenköpfe, Hauptnavigation oder spezifische einzigartige Komponenten verwendet, die nur einmal auf einer Seite erscheinen.",
-			"task": "Erstelle eine CSS-Regel mit einem ID-Selektor, die das Element mit der ID <kbd>main-title</kbd> anvisiert. Setze seine Farbe auf purple und füge eine Unterstreichung mit <kbd>text-decoration: underline</kbd> hinzu.",
-			"previewHTML": "<h1 id=\"main-title\">Haupt-Seitentitel</h1>\n<p>Normaler Absatzinhalt.</p>\n<h2>Sekundäre Überschrift</h2>\n<p id=\"intro\">Einführungsabsatz (andere ID).</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "h1, h2, p { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
-			"codePrefix": "/* Erstelle einen ID-Selektor für das Element mit id=\"main-title\" */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "regex",
-					"value": "^#main-title\\s*{",
-					"message": "Beginne deine Regel mit <kbd>#main-title</kbd>, um einen ID-Selektor zu erstellen",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "color:",
-					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "color",
-						"expected": "purple"
-					},
-					"message": "Setze die Farbe auf <kbd>purple</kbd>"
-				},
-				{
-					"type": "contains",
-					"value": "text-decoration:",
-					"message": "Füge die <kbd>text-decoration</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "text-decoration",
-						"expected": "underline"
-					},
-					"message": "Setze text-decoration auf <kbd>underline</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "#main-title\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "id-with-type",
-			"title": "Typ- und ID-Selektoren kombinieren",
-			"description": "Ähnlich wie du Typ- und Klassen-Selektoren kombinieren kannst, kannst du auch Typ-Selektoren mit ID-Selektoren kombinieren. Zum Beispiel visiert <kbd>h1#title</kbd> ein h1-Element mit der ID 'title' an. Bei diesem kombinierten Ansatz kannst du CSS-Eigenschaften wie <kbd>font-style</kbd> anwenden, um die Neigung des Textes zu kontrollieren und ihn kursiv oder normal zu machen. Obwohl diese Selektor-Kombination spezifischer ist als die Verwendung nur des ID-Selektors, ist sie oft unnötig, da IDs bereits einzigartig im Dokument sein sollten. Diese Technik kann jedoch nützlich sein, um die Lesbarkeit des Codes zu verbessern oder wenn du betonen möchtest, dass eine bestimmte ID nur auf einem bestimmten Elementtyp erscheinen sollte.",
-			"task": "Erstelle eine CSS-Regel, die einen Typ-Selektor mit einem ID-Selektor kombiniert, um speziell ein Absatz-Element mit der ID <kbd>special</kbd> anzuvisieren. Setze seinen Schriftstil auf kursiv.",
-			"previewHTML": "<h2 id=\"special\">Überschrift mit ID \"special\" (sollte NICHT betroffen sein)</h2>\n<p id=\"special\">Absatz mit ID \"special\" (sollte kursiv werden)</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "h2, p { padding: 8px; margin-bottom: 10px; border: 1px dashed #ccc; }",
-			"codePrefix": "/* Erstelle einen kombinierten Typ+ID-Selektor für einen Absatz mit id=\"special\" */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "regex",
-					"value": "^p#special\\s*{",
-					"message": "Verwende <kbd>p#special</kbd>, um Absätze mit ID <kbd>special</kbd> anzuvisieren",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "font-style:",
-					"message": "Füge die <kbd>font-style</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "font-style",
-						"expected": "italic"
-					},
-					"message": "Setze font-style auf <kbd>italic</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "p#special\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
-				}
-			]
-		},
-		{
-			"id": "selector-lists",
-			"title": "Selektor-Listen: Gleiche Regeln auf mehrere Selektoren anwenden",
-			"description": "Wenn mehrere Elemente das gleiche Styling benötigen, kannst du sie mit einer Selektor-Liste (auch Gruppierungs-Selektoren genannt) zusammenfassen. Selektor-Listen werden erstellt, indem einzelne Selektoren durch Kommas getrennt werden. Dieser Ansatz reduziert Wiederholungen in deinem CSS und macht es wartbarer und effizienter. Zum Beispiel wendet <kbd>h1, h2, h3 { color: blue; }</kbd> die gleiche blaue Farbe auf alle drei Überschriftenebenen an. Beim Stylen mehrerer Selektoren gleichzeitig kannst du Eigenschaften wie <kbd>background-color</kbd> für den Hintergrund, <kbd>border-left</kbd> für einen linken Rahmen mit bestimmter Dicke, Stil und Farbe, und <kbd>padding-left</kbd> anwenden, um Abstand zwischen dem Inhalt und dem linken Rahmen zu schaffen. Leerzeichen um Kommas sind optional, und jeder Selektor in der Liste kann ein beliebiger gültiger Selektortyp sein – Elemente, Klassen, IDs oder sogar komplexere Selektoren.",
-			"task": "Erstelle eine Selektor-Liste, die die gleichen Stile auf drei verschiedene Elemente anwendet: Absätze mit der Klasse <kbd>note</kbd>, Listenelemente mit der Klasse <kbd>important</kbd> und das Element mit der ID <kbd>summary</kbd>. Gib ihnen einen <kbd>lightyellow</kbd>-Hintergrund, einen <kbd>gold</kbd>-linken Rahmen und etwas linkes <kbd>padding</kbd>.",
-			"previewHTML": "<p class=\"note\">Dies ist ein Notiz-Absatz.</p>\n<ul>\n  <li>Normales Listenelement</li>\n  <li class=\"important\">Wichtiges Listenelement</li>\n</ul>\n<div id=\"summary\">Zusammenfassungs-Abschnitt</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "p, li, div { padding: 8px; margin-bottom: 8px; border: 1px dashed gray; }",
-			"codePrefix": "/* Erstelle eine Selektor-Liste, um die gleichen Stile auf mehrere verschiedene Elemente anzuwenden */\n",
-			"initialCode": "",
-			"codeSuffix": "",
-			"previewContainer": "preview-area",
-			"solution": "p.note,\nli.important,\n#summary {\n  background-color: lightyellow;\n  border-left: 3px solid gold;\n  padding-left: 10px\n}",
-			"validations": [
-				{
-					"type": "contains",
-					"value": "p.note",
-					"message": "Füge <kbd>p.note</kbd> in deine Selektor-Liste ein",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "li.important",
-					"message": "Füge <kbd>li.important</kbd> in deine Selektor-Liste ein",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "#summary",
-					"message": "Füge <kbd>#summary</kbd> in deine Selektor-Liste ein",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "regex",
-					"value": "(p\\.note|li\\.important|#summary)\\s*,\\s*(p\\.note|li\\.important|#summary)\\s*,\\s*(p\\.note|li\\.important|#summary)",
-					"message": "Erstelle eine kommagetrennte Liste mit allen drei Selektoren",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "background-color:",
-					"message": "Füge die <kbd>background-color</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "background-color",
-						"expected": "lightyellow"
-					},
-					"message": "Setze die Hintergrundfarbe auf <kbd>lightyellow</kbd>"
-				},
-				{
-					"type": "contains",
-					"value": "border-left:",
-					"message": "Füge die <kbd>border-left</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "border-left",
-						"expected": "3px solid gold"
-					},
-					"message": "Verwende <kbd>border-left: 3px solid gold</kbd>, um einen linken Rahmen zu erstellen"
-				},
-				{
-					"type": "contains",
-					"value": "padding-left:",
-					"message": "Füge die <kbd>padding-left</kbd>-Eigenschaft hinzu"
-				},
-				{
-					"type": "property_value",
-					"value": {
-						"property": "padding-left",
-						"expected": "10px"
-					},
-					"message": "Verwende <kbd>padding-left: 10px</kbd>, um linkes Padding hinzuzufügen"
-				}
-			]
-		},
-		{
-			"id": "universal-selector",
-			"title": "Der universelle Selektor: Alles anvisieren",
-			"description": "Der universelle Selektor wird durch ein Sternchen (*) gekennzeichnet und passt auf jedes Element jedes Typs. Er wählt alles im Dokument aus oder, wenn er mit anderen Selektoren kombiniert wird, alles innerhalb eines bestimmten Kontexts. Zum Beispiel entfernt <kbd>* { margin: 0; }</kbd> Ränder von allen Elementen, während <kbd>article *</kbd> alle Elemente innerhalb von article-Elementen auswählt. Bei der Verwendung des universellen Selektors in Kombination mit anderen Selektoren kannst du Eigenschaften wie <kbd>margin</kbd> anwenden, um die Abstände um Elemente zu kontrollieren. Der universelle Selektor ist mächtig, sollte aber wegen seiner breiten Auswirkung vorsichtig verwendet werden. Er wird häufig in CSS-Resets verwendet, um Standard-Browser-Styling zu überschreiben, oder um alle Kinder eines bestimmten Elements anzuvisieren.",
-			"task": "Verwende den universellen Selektor, um Ränder von allen Elementen innerhalb des Container-divs zu entfernen. Erstelle eine Regel mit <kbd>div.container *</kbd> als Selektor und setze <kbd>margin: 0</kbd>.",
-			"previewHTML": "<div class=\"container\">\n  <h2>Innerhalb des Containers</h2>\n  <p>Dieser Absatz ist innerhalb des Containers.</p>\n  <ul>\n    <li>Listenelement innerhalb des Containers</li>\n  </ul>\n</div>\n<p>Dieser Absatz ist außerhalb des Containers und sollte nicht betroffen sein.</p>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; } div.container { border: 2px solid navy; padding: 15px; background-color: lavender; } h2, p, ul, li { margin: 15px 0; }",
+			"id": "button-variants",
+			"title": "Button-Varianten",
+			"description": "Elemente können mehrere Klassen haben. Wenn du Klassen-Selektoren ohne Leerzeichen verkettst, zielst du auf Elemente, die <em>alle</em> diese Klassen haben:<br><br><pre>.btn.primary {<br>  background: steelblue;<br>}</pre><br>Das zielt auf Elemente mit <kbd>class=\"btn primary\"</kbd>, nicht nur auf <kbd>.btn</kbd> oder nur <kbd>.primary</kbd>.",
+			"task": "Style den primären Button. Schreibe eine Regel mit <kbd>.btn.primary</kbd> als Selektor und setze <kbd>background: steelblue</kbd>.",
+			"previewHTML": "<div class=\"actions\">\n  <button class=\"btn\">Cancel</button>\n  <button class=\"btn primary\">Save Changes</button>\n</div>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .actions { display: flex; gap: 0.75rem; } .btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; background: #e0e0e0; color: #333; }",
 			"sandboxCSS": "",
-			"codePrefix": "/* Verwende den universellen Selektor, um alle Elemente innerhalb des Containers anzuvisieren */\n",
+			"codePrefix": "",
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": ".btn.primary {\n  background: steelblue;\n}",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "^div\\.container\\s+\\*\\s*{",
-					"message": "Verwende <kbd>div.container *</kbd>-Selektor (mit einem Leerzeichen zwischen container und *)",
-					"options": {
-						"caseSensitive": true
-					}
-				},
-				{
-					"type": "contains",
-					"value": "margin:",
-					"message": "Füge die <kbd>margin</kbd>-Eigenschaft hinzu"
+					"value": "\\.btn\\.primary\\s*\\{",
+					"message": "Verwende <kbd>.btn.primary {</kbd> (kein Leerzeichen zwischen den Klassen)"
 				},
 				{
 					"type": "property_value",
-					"value": {
-						"property": "margin",
-						"expected": "0"
-					},
-					"message": "Setze margin auf <kbd>0</kbd>"
-				},
-				{
-					"type": "regex",
-					"value": "div\\.container\\s+\\*\\s*{[^}]*}",
-					"message": "Vergiss nicht, deine CSS-Regel mit einer schließenden Klammer <kbd>}</kbd> zu beenden",
-					"options": {
-						"caseSensitive": true
-					}
+					"value": { "property": "background", "expected": "steelblue" },
+					"message": "Setze <kbd>background: steelblue</kbd>"
 				}
 			]
 		},
 		{
-			"id": "specificity-basics",
-			"title": "Selektor-Spezifität verstehen",
-			"description": "CSS-Spezifität bestimmt, welche Stile Vorrang haben, wenn mehrere widersprüchliche Regeln auf dasselbe Element abzielen. Spezifität folgt einem hierarchischen System: Inline-Stile haben die höchste Spezifität, gefolgt von ID-Selektoren, dann Klassen-/Attribut-/Pseudo-Klassen-Selektoren und schließlich Element-/Pseudo-Element-Selektoren. Dies kann als vierteilige Punktzahl (inline, ID, Klasse, Element) konzeptualisiert werden. Beim Erstellen mehrerer Regeln, die auf dieselben Elemente abzielen könnten, kannst du die <kbd>color</kbd>-Eigenschaft verwenden, um Textfarben zu setzen, und die Spezifität bestimmt, welche Farbe tatsächlich angewendet wird. Das Verstehen von Spezifität ist entscheidend für vorhersagbares Styling und das Debuggen von CSS-Konflikten. Wenn zwei Selektoren gleiche Spezifität haben, gewinnt derjenige, der zuletzt im Stylesheet kommt.",
-			"task": "Untersuche die vorhandenen CSS-Regeln und füge eine neue Regel mit höherer Spezifität hinzu, um die Textfarbe des Absatzes zu überschreiben. Erstelle eine Regel mit '.content p' als Selektor und setze color: green.",
-			"previewHTML": "<div class=\"content\">\n  <p>Welche Farbe wird dieser Absatz haben? Schau dir die CSS-Regeln und ihre Spezifität an.</p>\n</div>",
-			"previewBaseCSS": "body { font-family: sans-serif; line-height: 1.5; padding: 20px; }",
-			"sandboxCSS": "p { border: 1px dashed gray; padding: 10px; }",
-			"codePrefix": "/* Diese CSS-Regeln visieren denselben Absatz an, haben aber unterschiedliche Spezifität */\n\n/* Regel 1: Element-Selektor (niedrigste Spezifität) */\np {\n  color: red;\n}\n\n/* Regel 2: Nachfahren-Selektor (höhere Spezifität als nur 'p') */\n",
+			"id": "specific-elements",
+			"title": "Spezifische Elemente ansprechen",
+			"description": "Manchmal soll eine Klasse auf verschiedenen Elementen unterschiedlich aussehen. Kombiniere einen Typ-Selektor mit einem Klassen-Selektor (ohne Leerzeichen), um spezifischer zu sein:<br><br><pre>a.btn {<br>  text-decoration: none;<br>}</pre><br>Das stylt nur <kbd>&lt;a&gt;</kbd>-Elemente mit der <kbd>btn</kbd>-Klasse, nicht <kbd>&lt;button&gt;</kbd>-Elemente mit dieser Klasse.",
+			"task": "Entferne die Unterstreichung von Link-Buttons. Schreibe eine Regel mit <kbd>a.btn</kbd> als Selektor und setze <kbd>text-decoration: none</kbd>.",
+			"previewHTML": "<div class=\"actions\">\n  <button class=\"btn\">Regular Button</button>\n  <a href=\"#\" class=\"btn\">Link Button</a>\n</div>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .actions { display: flex; gap: 0.75rem; align-items: center; } .btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; background: steelblue; color: white; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
 			"initialCode": "",
 			"codeSuffix": "",
 			"previewContainer": "preview-area",
+			"solution": "a.btn {\n  text-decoration: none;\n}",
 			"validations": [
 				{
 					"type": "regex",
-					"value": "^\\.content\\s+p\\s*{",
-					"message": "Verwende <kbd>.content p</kbd> als deinen Selektor (beachte das Leerzeichen dazwischen)",
-					"options": {
-						"caseSensitive": true
-					}
+					"value": "a\\.btn\\s*\\{",
+					"message": "Verwende <kbd>a.btn {</kbd> (Typ + Klasse, kein Leerzeichen)"
 				},
 				{
-					"type": "contains",
-					"value": "color:",
-					"message": "Füge die <kbd>color</kbd>-Eigenschaft hinzu"
+					"type": "property_value",
+					"value": { "property": "text-decoration", "expected": "none" },
+					"message": "Setze <kbd>text-decoration: none</kbd>"
+				}
+			]
+		},
+		{
+			"id": "grouping-selectors",
+			"title": "Selektoren gruppieren",
+			"description": "Wenn mehrere Elemente die gleichen Styles brauchen, liste sie durch Kommas getrennt auf. Das hält dein CSS sauber und wartbar.<br><br><pre>h1, h2, h3 {<br>  color: steelblue;<br>}</pre><br>Das wendet die gleiche Farbe auf alle drei Überschriftenebenen in einer Regel an.",
+			"task": "Style alle Überschriften einheitlich. Füge <kbd>color: steelblue</kbd> zum gruppierten <kbd>h1, h2, h3</kbd>-Selektor hinzu.",
+			"previewHTML": "<article><h1>Main Title</h1><p>Introduction paragraph with some text.</p><h2>Section Heading</h2><p>More content here.</p><h3>Subsection</h3><p>Final paragraph.</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } article { max-width: 500px; } p { color: #555; line-height: 1.6; }",
+			"sandboxCSS": "",
+			"codePrefix": "h1, h2, h3 {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "color: steelblue;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": { "property": "color", "expected": "steelblue" },
+					"message": "Setze <kbd>color: steelblue</kbd>"
+				}
+			]
+		},
+		{
+			"id": "descendant-selectors",
+			"title": "Nachfahren-Selektoren",
+			"description": "Ziele auf Elemente innerhalb anderer Elemente mit einem Leerzeichen zwischen den Selektoren. Das ist eines der nützlichsten Muster in CSS.<br><br><pre>.nav a {<br>  color: white;<br>}</pre><br>Das stylt nur Links innerhalb von <kbd>.nav</kbd> und lässt andere Links unverändert.",
+			"task": "Style Navigationslinks anders. Schreibe eine Regel mit <kbd>.nav a</kbd> als Selektor und setze <kbd>color: white</kbd>.",
+			"previewHTML": "<nav class=\"nav\"><a href=\"#\">Home</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav><p>Read more in our <a href=\"#\">documentation</a>.</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; margin: 0; } .nav { background: steelblue; padding: 1rem; display: flex; gap: 1rem; border-radius: 8px; margin-bottom: 1rem; } .nav a { text-decoration: none; } p a { color: steelblue; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": ".nav a {\n  color: white;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\.nav\\s+a\\s*\\{",
+					"message": "Verwende <kbd>.nav a {</kbd> (Leerzeichen zwischen .nav und a)"
 				},
 				{
-					"type": "contains",
-					"value": "green",
-					"message": ""
+					"type": "property_value",
+					"value": { "property": "color", "expected": "white" },
+					"message": "Setze <kbd>color: white</kbd>"
+				}
+			]
+		},
+		{
+			"id": "nested-styling",
+			"title": "Verschachtelte Styles",
+			"description": "Nachfahren-Selektoren ermöglichen kontextabhängige Styles. Das gleiche Element kann je nach Position unterschiedlich aussehen.<br><br>Zum Beispiel könnten Absätze in einer <kbd>.card</kbd> kleiner sein als Absätze in einem <kbd>article</kbd>.",
+			"task": "Mache Absätze innerhalb der Karte kleiner. Schreibe eine Regel mit <kbd>.card p</kbd> als Selektor und setze <kbd>font-size: 0.9rem</kbd>.",
+			"previewHTML": "<article><h2>Article Title</h2><p>This is a regular article paragraph with normal-sized text for comfortable reading.</p><div class=\"card\"><strong>Quick Tip</strong><p>Card paragraphs should be slightly smaller to fit the compact design.</p></div><p>Back to regular article text here.</p></article>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } article { max-width: 500px; } h2 { color: steelblue; margin-top: 0; } p { line-height: 1.6; color: #444; } .card { background: #f0f4f8; padding: 1rem; border-radius: 8px; border-left: 4px solid steelblue; } .card strong { color: steelblue; display: block; margin-bottom: 0.5rem; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"solution": ".card p {\n  font-size: 0.9rem;\n}",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\.card\\s+p\\s*\\{",
+					"message": "Verwende <kbd>.card p {</kbd> (Leerzeichen zwischen .card und p)"
+				},
+				{
+					"type": "property_value",
+					"value": { "property": "font-size", "expected": "0.9rem" },
+					"message": "Setze <kbd>font-size: 0.9rem</kbd>"
 				}
 			]
 		}
