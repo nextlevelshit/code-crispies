@@ -463,9 +463,12 @@ export class LessonEngine {
 		let totalCompleted = 0;
 
 		this.modules.forEach((module) => {
+			// Skip modules excluded from progress (e.g., welcome, goodbye)
+			if (module.excludeFromProgress) return;
+
 			totalLessons += module.lessons.length;
 			const progress = this.userProgress[module.id];
-			if (progress && progress.completed) {
+			if (progress?.completed) {
 				totalCompleted += progress.completed.length;
 			}
 		});

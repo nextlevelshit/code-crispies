@@ -19,6 +19,11 @@
 					<button id="menu-btn" class="menu-toggle" data-i18n-aria-label="menuOpen" aria-label="Open menu">
 						<span class="hamburger-icon"></span>
 					</button>
+					<nav class="main-nav" id="main-nav" aria-label="Main sections">
+						<a href="#css" class="nav-link" data-section="css">CSS</a>
+						<a href="#html" class="nav-link" data-section="html">HTML</a>
+						<a href="#tailwind" class="nav-link" data-section="tailwind">Tailwind</a>
+					</nav>
 					<span class="header-level-pill" id="header-level-pill"></span>
 				</div>
 				<a href="#" id="logo-link" class="logo">
@@ -30,6 +35,55 @@
 				</div>
 			</header>
 
+			<!-- Landing Page (Home) -->
+			<div class="landing-page hidden" id="landing-page">
+				<div class="landing-content">
+					<section class="hero">
+						<img src="./bowl.png" width="120" alt="" class="hero-logo" />
+						<h1>Learn Web Development<br /><span class="hero-highlight">Interactively</span></h1>
+						<p class="hero-subtitle">Master HTML, CSS, and Tailwind through hands-on exercises. Free and open source.</p>
+					</section>
+
+					<section class="section-cards" id="section-cards">
+						<a href="#css" class="section-card" data-section="css">
+							<div class="section-card-icon" style="background: #264de4">CSS</div>
+							<h2>CSS</h2>
+							<p>Styling, layout, and animations</p>
+							<span class="section-card-progress" id="css-progress"></span>
+						</a>
+						<a href="#html" class="section-card" data-section="html">
+							<div class="section-card-icon" style="background: #e34c26">HTML</div>
+							<h2>HTML</h2>
+							<p>Semantic markup and native elements</p>
+							<span class="section-card-progress" id="html-progress"></span>
+						</a>
+						<a href="#tailwind" class="section-card" data-section="tailwind">
+							<div class="section-card-icon" style="background: #06b6d4">TW</div>
+							<h2>Tailwind CSS</h2>
+							<p>Utility-first CSS framework</p>
+							<span class="section-card-progress" id="tailwind-progress"></span>
+						</a>
+					</section>
+				</div>
+			</div>
+
+			<!-- Section Landing Page -->
+			<div class="section-page hidden" id="section-page">
+				<header class="section-hero">
+					<h1 id="section-title">CSS</h1>
+					<p id="section-description">Styling, layout, and animations</p>
+					<div class="section-progress-bar">
+						<div class="progress-bar">
+							<div class="progress-fill" id="section-progress-fill"></div>
+						</div>
+						<span class="progress-text" id="section-progress-text">0 of 0 lessons complete</span>
+					</div>
+				</header>
+				<div class="module-grid" id="module-grid">
+					<!-- Module cards populated dynamically -->
+				</div>
+			</div>
+
 			<main class="game-layout" id="main-content">
 				<!-- Left Panel: Instructions + Editor -->
 				<div class="left-panel">
@@ -37,9 +91,19 @@
 						<div class="lesson-title-row">
 							<h2 id="lesson-title"></h2>
 							<button id="share-btn" class="share-btn" data-i18n-title="shareTitle" title="Share lesson" aria-label="Share lesson">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-									<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+									<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
 								</svg>
 							</button>
 						</div>

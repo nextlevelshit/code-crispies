@@ -5,6 +5,7 @@
 	"description": "Congratulations on completing your learning journey!",
 	"mode": "html",
 	"difficulty": "beginner",
+	"excludeFromProgress": true,
 	"lessons": [
 		{
 			"id": "congratulations",

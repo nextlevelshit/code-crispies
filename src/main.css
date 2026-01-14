@@ -384,7 +384,9 @@ kbd {
 	cursor: pointer;
 	color: var(--light-text);
 	border-radius: var(--border-radius-sm);
-	transition: color 0.2s, background 0.2s;
+	transition:
+		color 0.2s,
+		background 0.2s;
 }
 
 .share-btn:hover {
@@ -1479,6 +1481,223 @@ input:checked + .toggle-slider::before {
 .app-footer a {
 	color: var(--primary-color);
 	text-decoration: none;
+}
+
+/* ================= MAIN NAV ================= */
+.main-nav {
+	display: none;
+	align-items: center;
+	gap: var(--spacing-xs);
+}
+
+.nav-link {
+	padding: 6px 12px;
+	border-radius: var(--border-radius-sm);
+	text-decoration: none;
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--light-text);
+	transition:
+		background 0.2s,
+		color 0.2s;
+}
+
+.nav-link:hover {
+	background: var(--primary-bg-light);
+	color: var(--text-color);
+}
+
+.nav-link.active {
+	background: var(--primary-bg-medium);
+	color: var(--primary-color);
+}
+
+@media (min-width: 769px) {
+	.main-nav {
+		display: flex;
+	}
+}
+
+/* ================= LANDING PAGE ================= */
+.landing-page {
+	flex: 1;
+	overflow-y: auto;
+	background: var(--bg-color);
+}
+
+.landing-content {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: var(--spacing-lg);
+}
+
+.hero {
+	text-align: center;
+	padding: 3rem 1rem;
+}
+
+.hero-logo {
+	margin-bottom: 1rem;
+}
+
+.hero h1 {
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: var(--text-color);
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+.hero-highlight {
+	color: var(--primary-color);
+}
+
+.hero-subtitle {
+	font-size: 1.1rem;
+	color: var(--light-text);
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+/* Section Cards */
+.section-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: var(--spacing-lg);
+	margin-top: 2rem;
+}
+
+.section-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--spacing-lg);
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--shadow);
+	text-decoration: none;
+	color: var(--text-color);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.section-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.section-card-icon {
+	width: 60px;
+	height: 60px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 800;
+	font-size: 1.2rem;
+	color: white;
+	margin-bottom: var(--spacing-md);
+}
+
+.section-card h2 {
+	font-size: 1.25rem;
+	margin-bottom: var(--spacing-xs);
+}
+
+.section-card p {
+	font-size: 0.9rem;
+	color: var(--light-text);
+	text-align: center;
+	margin-bottom: var(--spacing-sm);
+}
+
+.section-card-progress {
+	font-size: 0.8rem;
+	color: var(--primary-color);
+	font-weight: 500;
+}
+
+/* ================= SECTION PAGE ================= */
+.section-page {
+	flex: 1;
+	overflow-y: auto;
+	background: var(--bg-color);
+	padding: var(--spacing-lg);
+}
+
+.section-hero {
+	text-align: center;
+	padding: 2rem 1rem;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.section-hero h1 {
+	font-size: 2rem;
+	color: var(--primary-dark);
+	margin-bottom: var(--spacing-xs);
+}
+
+.section-hero p {
+	color: var(--light-text);
+	margin-bottom: var(--spacing-md);
+}
+
+.section-progress-bar {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.section-progress-bar .progress-bar {
+	height: 8px;
+	margin-bottom: var(--spacing-xs);
+}
+
+/* Module Grid */
+.module-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: var(--spacing-md);
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.module-card {
+	display: block;
+	padding: var(--spacing-md);
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-md);
+	box-shadow: var(--shadow);
+	text-decoration: none;
+	color: var(--text-color);
+	border-left: 4px solid var(--primary-color);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.module-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.module-card h3 {
+	font-size: 1rem;
+	color: var(--primary-dark);
+	margin-bottom: var(--spacing-xs);
+}
+
+.module-card-meta {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.8rem;
+	color: var(--light-text);
+}
+
+.module-card-progress {
+	color: var(--success-color);
+	font-weight: 500;
 }
 
 /* ================= UTILITY ================= */

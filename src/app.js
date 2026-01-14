@@ -3,7 +3,8 @@ import { CodeEditor } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
-import { parseHash, updateHash, replaceHash, getShareableUrl } from "./helpers/router.js";
+import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
+import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
@@ -22,6 +23,19 @@ const elements = {
 	logoLink: document.getElementById("logo-link"),
 	langSelect: document.getElementById("lang-select"),
 	helpBtn: document.getElementById("help-btn"),
+	mainNav: document.getElementById("main-nav"),
+
+	// Page containers
+	landingPage: document.getElementById("landing-page"),
+	sectionPage: document.getElementById("section-page"),
+	gameLayout: document.getElementById("main-content"),
+
+	// Section page elements
+	sectionTitle: document.getElementById("section-title"),
+	sectionDescription: document.getElementById("section-description"),
+	sectionProgressFill: document.getElementById("section-progress-fill"),
+	sectionProgressText: document.getElementById("section-progress-text"),
+	moduleGrid: document.getElementById("module-grid"),
 
 	// Left panel
 	instructionsSection: document.querySelector(".instructions"),
@@ -293,23 +307,8 @@ function initializeModules() {
 		// Use the new renderModuleList function with both callbacks
 		renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
 
-		// Check URL first for shareable links
-		const urlState = parseHash();
-
-		if (urlState) {
-			// URL takes priority - navigate to specified lesson
-			navigateToLesson(urlState.moduleId, urlState.lessonIndex, false);
-		} else {
-			// No URL - use saved progress (existing logic)
-			const progressData = lessonEngine.loadUserProgress();
-			const lastModuleId = progressData?.lastModuleId;
-
-			if (lastModuleId && modules.find((m) => m.id === lastModuleId)) {
-				selectModule(lastModuleId);
-			} else if (modules.length > 0) {
-				selectModule(modules[0].id);
-			}
-		}
+		// Handle route (home, section, or lesson)
+		handleRoute(false);
 
 		updateProgressDisplay();
 		clearLoadingTimeout();
@@ -324,6 +323,9 @@ function initializeModules() {
 function selectModule(moduleId) {
 	const success = lessonEngine.setModuleById(moduleId);
 	if (!success) return;
+
+	// Show lesson UI
+	showLessonUI();
 
 	// Update URL
 	const engineState = lessonEngine.getCurrentState();
@@ -354,6 +356,9 @@ function selectLesson(moduleId, lessonIndex) {
 	}
 
 	lessonEngine.setLessonByIndex(lessonIndex);
+
+	// Show lesson UI
+	showLessonUI();
 
 	// Update URL
 	updateHash(moduleId, lessonIndex);
@@ -814,7 +819,7 @@ async function copyShareUrl() {
 	}
 }
 
-// ================= URL ROUTING =================
+// ================= URL ROUTING & PAGE SWITCHING =================
 
 function initRouter() {
 	// Handle browser back/forward
@@ -822,13 +827,196 @@ function initRouter() {
 }
 
 function handlePopState() {
-	const parsed = parseHash();
-	if (parsed) {
-		navigateToLesson(parsed.moduleId, parsed.lessonIndex, false);
+	handleRoute(false);
+}
+
+/**
+ * Main route handler - switches between page types
+ */
+function handleRoute(shouldUpdateUrl = true) {
+	const route = parseHash();
+
+	if (!route) {
+		// Invalid route - go to home
+		navigateTo("");
+		showLandingPage();
+		return;
 	}
+
+	switch (route.type) {
+		case RouteType.HOME:
+			showLandingPage();
+			break;
+		case RouteType.SECTION:
+			showSectionPage(route.sectionId);
+			break;
+		case RouteType.REFERENCE:
+			// Reference pages - TODO: implement later
+			showLandingPage();
+			break;
+		case RouteType.LESSON:
+			navigateToLesson(route.moduleId, route.lessonIndex, shouldUpdateUrl);
+			break;
+		default:
+			showLandingPage();
+	}
+
+	updateNavHighlight(route);
+}
+
+/**
+ * Hide all page containers
+ */
+function hideAllPages() {
+	elements.landingPage?.classList.add("hidden");
+	elements.sectionPage?.classList.add("hidden");
+	elements.gameLayout?.classList.add("hidden");
+}
+
+/**
+ * Show home landing page
+ */
+function showLandingPage() {
+	hideAllPages();
+	elements.landingPage?.classList.remove("hidden");
+
+	// Update section progress on landing page
+	updateLandingProgress();
+}
+
+/**
+ * Update progress indicators on landing page
+ */
+function updateLandingProgress() {
+	["css", "html", "tailwind"].forEach((sectionId) => {
+		const progressEl = document.getElementById(`${sectionId}-progress`);
+		if (progressEl) {
+			const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
+			let completed = 0;
+			let total = 0;
+			sectionModules.forEach((m) => {
+				total += m.lessons.length;
+				const progress = lessonEngine.userProgress[m.id];
+				if (progress?.completed) {
+					completed += progress.completed.length;
+				}
+			});
+			if (total > 0) {
+				progressEl.textContent = `${completed}/${total} lessons`;
+			} else {
+				progressEl.textContent = "";
+			}
+		}
+	});
+}
+
+/**
+ * Show section landing page
+ */
+function showSectionPage(sectionId) {
+	hideAllPages();
+	elements.sectionPage?.classList.remove("hidden");
+
+	const section = getSection(sectionId);
+	if (!section) {
+		showLandingPage();
+		return;
+	}
+
+	// Update section header
+	if (elements.sectionTitle) elements.sectionTitle.textContent = section.title;
+	if (elements.sectionDescription) elements.sectionDescription.textContent = section.description;
+
+	// Get modules for this section
+	const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
+
+	// Calculate section progress
+	let completed = 0;
+	let total = 0;
+	sectionModules.forEach((m) => {
+		total += m.lessons.length;
+		const progress = lessonEngine.userProgress[m.id];
+		if (progress?.completed) {
+			completed += progress.completed.length;
+		}
+	});
+
+	// Update progress bar
+	const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+	if (elements.sectionProgressFill) elements.sectionProgressFill.style.width = `${percent}%`;
+	if (elements.sectionProgressText) elements.sectionProgressText.textContent = `${completed} of ${total} lessons complete`;
+
+	// Render module cards
+	renderModuleGrid(sectionModules, sectionId);
+}
+
+/**
+ * Render module cards in section page
+ */
+function renderModuleGrid(modules, sectionId) {
+	if (!elements.moduleGrid) return;
+
+	elements.moduleGrid.innerHTML = "";
+
+	modules.forEach((module) => {
+		const card = document.createElement("a");
+		card.href = `#${module.id}/0`;
+		card.className = "module-card";
+
+		// Calculate module progress
+		const progress = lessonEngine.userProgress[module.id];
+		const completed = progress?.completed?.length || 0;
+		const total = module.lessons.length;
+
+		card.innerHTML = `
+			<h3>${module.title}</h3>
+			<div class="module-card-meta">
+				<span>${total} lessons</span>
+				<span class="module-card-progress">${completed > 0 ? `${completed}/${total}` : ""}</span>
+			</div>
+		`;
+
+		elements.moduleGrid.appendChild(card);
+	});
+}
+
+/**
+ * Show lesson UI (game layout)
+ */
+function showLessonUI() {
+	hideAllPages();
+	elements.gameLayout?.classList.remove("hidden");
+}
+
+/**
+ * Update nav link highlighting
+ */
+function updateNavHighlight(route) {
+	if (!elements.mainNav) return;
+
+	const navLinks = elements.mainNav.querySelectorAll(".nav-link");
+	navLinks.forEach((link) => {
+		link.classList.remove("active");
+
+		if (route?.type === RouteType.SECTION && link.dataset.section === route.sectionId) {
+			link.classList.add("active");
+		} else if (route?.type === RouteType.LESSON) {
+			// Highlight section based on module's inferred section
+			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
+			if (module) {
+				const moduleSection = getModuleSection(module);
+				if (link.dataset.section === moduleSection) {
+					link.classList.add("active");
+				}
+			}
+		}
+	});
 }
 
 function navigateToLesson(moduleId, lessonIndex, shouldUpdateUrl = true) {
+	// Show lesson UI
+	showLessonUI();
+
 	// Validate moduleId exists
 	const module = lessonEngine.modules.find((m) => m.id === moduleId);
 	if (!module) {
@@ -915,13 +1103,11 @@ function init() {
 	elements.closeSidebar.addEventListener("click", closeSidebar);
 	elements.sidebarBackdrop.addEventListener("click", closeSidebar);
 
-	// Logo click - navigate to welcome
+	// Logo click - navigate to home landing
 	elements.logoLink.addEventListener("click", (e) => {
 		e.preventDefault();
-		lessonEngine.setModuleById("welcome");
-		updateHash("welcome", 0);
-		loadCurrentLesson();
-		updateModuleHighlight("welcome");
+		navigateTo("");
+		showLandingPage();
 	});
 
 	// Language select
