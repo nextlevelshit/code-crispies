@@ -723,7 +723,7 @@ kbd {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	width: max(200px, 33.33%);
+	width: max(200px, 50%);
 	aspect-ratio: 1;
 	background: url("/bowl.png") center/contain no-repeat;
 	z-index: 5;
