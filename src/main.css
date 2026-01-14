@@ -713,15 +713,15 @@ kbd {
 }
 
 /* Bowl smiley peek animation from bottom right corner */
-.preview-section.matched::after {
+.preview-wrapper.matched::before {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	right: 40px;
-	width: 80px;
-	height: 80px;
+	right: 20px;
+	width: 200px;
+	height: 200px;
 	background: url("/bowl.png") center/contain no-repeat;
-	z-index: 20;
+	z-index: 5;
 	pointer-events: none;
 	animation: bowl-peek 3s ease-in-out forwards;
 	transform: translateY(100%);
