@@ -140,6 +140,47 @@ kbd {
 	background: var(--primary-bg-light);
 }
 
+.header-level-pill {
+	display: none;
+	padding: 4px 12px;
+	background: var(--primary-bg-light);
+	border-radius: 16px;
+	font-size: 0.8rem;
+	color: var(--text-muted);
+	white-space: nowrap;
+	margin-left: var(--spacing-sm);
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+}
+
+@media (min-width: 769px) {
+	.header-level-pill {
+		display: block;
+	}
+
+	.header {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+	}
+
+	.header-left {
+		justify-self: start;
+	}
+
+	.header .logo {
+		justify-self: center;
+	}
+
+	.header-actions {
+		justify-self: end;
+	}
+}
+
 .hamburger-icon {
 	position: relative;
 	width: 18px;
@@ -936,16 +977,40 @@ nav.sidebar-section {
 	background: var(--primary-bg-light);
 }
 
-.module-header.completed::before {
-	content: "✓";
-	margin-right: 6px;
-	color: var(--success-color);
+/* Native details/summary styling */
+details.module-container {
+	margin: 0;
 }
 
-.expand-icon {
+summary.module-header {
+	list-style: none;
+	cursor: pointer;
+}
+
+summary.module-header::-webkit-details-marker {
+	display: none;
+}
+
+summary.module-header::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
 	margin-right: 8px;
-	font-size: 10px;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 6px solid var(--text-muted);
 	transition: transform 0.2s;
+}
+
+details.module-container[open] > summary.module-header::before {
+	transform: rotate(90deg);
+}
+
+.module-header.completed::after {
+	content: "✓";
+	margin-left: 8px;
+	color: var(--success-color);
 }
 
 .lessons-container {
@@ -1575,10 +1640,16 @@ input:checked + .toggle-slider::before {
 	padding-right: 8px;
 }
 
-/* RTL: Module expand icon */
-[dir="rtl"] .module-header .expand-icon {
-	margin-left: 6px;
+/* RTL: Module expand icon (CSS triangle) */
+[dir="rtl"] summary.module-header::before {
+	margin-left: 8px;
 	margin-right: 0;
+	border-left: none;
+	border-right: 6px solid var(--text-muted);
+}
+
+[dir="rtl"] details.module-container[open] > summary.module-header::before {
+	transform: rotate(-90deg);
 }
 
 /* RTL: Lesson checkmark position */

@@ -55,16 +55,16 @@ describe("Renderer Module", () => {
 
 			renderModuleList(container, modules, vi.fn(), onSelectLesson);
 
-			// Lessons should be hidden initially
-			const lessonsContainer = container.querySelector(".lessons-container");
-			expect(lessonsContainer.style.display).toBe("none");
+			// Module should be collapsed initially (native <details> element)
+			const detailsElement = container.querySelector("details.module-container");
+			expect(detailsElement.open).toBe(false);
 
-			// Click module header to expand
-			const moduleHeader = container.querySelector(".module-header");
+			// Click module header (summary) to expand
+			const moduleHeader = container.querySelector("summary.module-header");
 			moduleHeader.click();
 
-			// Lessons should now be visible
-			expect(lessonsContainer.style.display).toBe("block");
+			// Module should now be expanded
+			expect(detailsElement.open).toBe(true);
 
 			// Click a lesson
 			const lessonItems = container.querySelectorAll(".lesson-list-item");

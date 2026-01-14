@@ -48,6 +48,7 @@ const elements = {
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
 	levelIndicator: document.getElementById("level-indicator"),
+	headerLevelPill: document.getElementById("header-level-pill"),
 
 	// Sidebar
 	sidebarDrawer: document.getElementById("sidebar-drawer"),
@@ -478,6 +479,7 @@ function loadCurrentLesson() {
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
+	renderLevelIndicator(elements.headerLevelPill, engineState.lessonIndex + 1, engineState.totalLessons);
 
 	// Update active lesson in sidebar
 	updateActiveLessonInSidebar(engineState.module.id, engineState.lessonIndex);
