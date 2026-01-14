@@ -659,26 +659,45 @@ kbd {
 }
 
 
-/* Animated CRISPY badge with gradient colors */
+/* Animated CRISPY speech bubble with tail */
 .preview-wrapper.matched::after {
 	content: var(--crispy-quote, "Crispyyyyyy!");
 	position: absolute;
-	left: 50%;
+	left: 55%;
 	top: 100%;
-	transform: translateX(-50%) scale(0.5);
+	transform: translateX(-50%) scale(0.2);
 	font-family: system-ui, -apple-system, sans-serif;
 	font-size: 2rem;
 	font-weight: 800;
 	letter-spacing: 0.05em;
 	color: white;
 	background: linear-gradient(135deg, #9b59b6 0%, #e040fb 50%, #7c4dff 100%);
-	padding: 0.5rem 1.25rem;
-	border-radius: 8px;
+	padding: 0.75rem 1.5rem;
+	border-radius: 2rem;
 	z-index: 10;
 	pointer-events: none;
 	animation: crispy-bounce 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 	opacity: 0;
 	white-space: nowrap;
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Speech bubble tail */
+.preview-wrapper.matched .preview-frame::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 20px solid #a855f7;
+	z-index: 10;
+	pointer-events: none;
+	animation: tail-bounce 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	opacity: 0;
+	transform: translateX(-50%) rotate(-15deg);
 }
 
 @keyframes spin-border {
@@ -772,6 +791,25 @@ kbd {
 	100% {
 		top: 100%;
 		transform: translateX(-50%) translateY(0) scale(0.2);
+		opacity: 0;
+	}
+}
+
+@keyframes tail-bounce {
+	0% {
+		top: 100%;
+		opacity: 0;
+	}
+	20% {
+		top: 52%;
+		opacity: 1;
+	}
+	65% {
+		top: 52%;
+		opacity: 1;
+	}
+	100% {
+		top: 100%;
 		opacity: 0;
 	}
 }
