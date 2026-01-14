@@ -675,7 +675,7 @@ kbd {
 	padding: 1.25rem 2rem 1.75rem;
 	z-index: 10;
 	pointer-events: none;
-	animation: crispy-bounce 3.2s ease-in-out 0.3s forwards;
+	animation: crispy-bounce 2.7s ease-in-out 0.3s forwards;
 	opacity: 0;
 	white-space: nowrap;
 	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
