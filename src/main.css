@@ -1555,12 +1555,6 @@ input:checked + .toggle-slider::before {
 	transform: translateX(calc(-1 * var(--sidebar-width) * 0.8));
 }
 
-/* RTL: Flip horizontal layouts */
-[dir="rtl"] .header-left,
-[dir="rtl"] .header-right {
-	/*flex-direction: row-reverse;*/
-}
-
 /* RTL: Editor tools */
 [dir="rtl"] .editor-tools {
 	flex-direction: row-reverse;
@@ -1627,12 +1621,6 @@ input:checked + .toggle-slider::before {
 /* RTL: Keep logo in LTR order */
 [dir="rtl"] .logo {
 	direction: ltr;
-}
-
-/* RTL: Header level pill margin */
-[dir="rtl"] .header-level-pill {
-	margin-left: var(--spacing-sm);
-	margin-right: 0;
 }
 
 /* RTL: Swap left/right panels */
@@ -1712,11 +1700,6 @@ input:checked + .toggle-slider::before {
 [dir="rtl"] .toggle-slider {
 	margin-right: 0;
 	margin-left: 8px;
-}
-
-/* RTL: Setting row */
-[dir="rtl"] .setting-row {
-	/*flex-direction: row-reverse;*/
 }
 
 [dir="rtl"] .preview-controls {
