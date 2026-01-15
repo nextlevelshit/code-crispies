@@ -555,6 +555,16 @@ export class LessonEngine {
 			this.userCodeMap.delete(lessonKey);
 			this.saveUserCodeToStorage();
 
+			// Remove lesson from completed list
+			const progress = this.userProgress[this.currentModule.id];
+			if (progress?.completed) {
+				const idx = progress.completed.indexOf(this.currentLessonIndex);
+				if (idx !== -1) {
+					progress.completed.splice(idx, 1);
+					this.saveUserProgress();
+				}
+			}
+
 			this.renderPreview();
 		}
 	}
