@@ -37,6 +37,11 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		moduleContainer.classList.add("module-container");
 		moduleContainer.dataset.moduleId = module.id;
 
+		// Keep welcome and playground modules always expanded
+		if (module.id === "welcome" || module.id === "playground") {
+			moduleContainer.open = true;
+		}
+
 		// Create module header using <summary>
 		const moduleHeader = document.createElement("summary");
 		moduleHeader.classList.add("module-list-item", "module-header");
