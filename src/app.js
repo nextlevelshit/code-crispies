@@ -1828,6 +1828,90 @@ function handlePopState() {
 }
 
 /**
+ * Strip HTML tags from a string for meta descriptions
+ */
+function stripHtml(html) {
+	const tmp = document.createElement("div");
+	tmp.innerHTML = html || "";
+	return tmp.textContent || tmp.innerText || "";
+}
+
+/**
+ * Update page meta tags based on current route for SEO
+ */
+function updatePageMeta(route) {
+	const defaultTitle = "Code Crispies - Learn HTML & CSS Interactively | Free Coding Practice";
+	const defaultDesc =
+		"Master HTML, CSS, and Tailwind through hands-on coding exercises. Free, open-source learning platform with instant feedback. No account required.";
+
+	let title = defaultTitle;
+	let description = defaultDesc;
+
+	if (!route) {
+		document.title = title;
+		return;
+	}
+
+	switch (route.type) {
+		case RouteType.HOME:
+			// Use defaults
+			break;
+
+		case RouteType.SECTION: {
+			const sectionNames = { css: "CSS", html: "HTML", tailwind: "Tailwind CSS" };
+			const sectionName = sectionNames[route.sectionId] || route.sectionId;
+			title = `${sectionName} Lessons - Code Crispies | Learn ${sectionName}`;
+			description = `Learn ${sectionName} through interactive coding exercises. Hands-on practice with instant feedback.`;
+			break;
+		}
+
+		case RouteType.LESSON: {
+			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
+			const lesson = module?.lessons[route.lessonIndex];
+			if (module && lesson) {
+				title = `${lesson.title} - ${module.title} | Code Crispies`;
+				const lessonDesc = stripHtml(lesson.description || lesson.task);
+				description = lessonDesc.length > 155 ? lessonDesc.slice(0, 152) + "..." : lessonDesc || defaultDesc;
+			}
+			break;
+		}
+
+		case RouteType.REFERENCE: {
+			const refNames = {
+				css: "CSS Properties",
+				selectors: "CSS Selectors",
+				flexbox: "Flexbox",
+				grid: "CSS Grid",
+				html: "HTML Elements"
+			};
+			const refName = refNames[route.refId] || "Reference";
+			title = `${refName} Reference - Code Crispies`;
+			description = `Quick reference guide for ${refName}. Syntax, examples, and common patterns for web development.`;
+			break;
+		}
+	}
+
+	// Update document title
+	document.title = title;
+
+	// Update meta description
+	const metaDesc = document.querySelector('meta[name="description"]');
+	if (metaDesc) metaDesc.setAttribute("content", description);
+
+	// Update Open Graph tags
+	const ogTitle = document.querySelector('meta[property="og:title"]');
+	const ogDesc = document.querySelector('meta[property="og:description"]');
+	if (ogTitle) ogTitle.setAttribute("content", title.replace(" | Code Crispies", "").replace(" - Code Crispies", ""));
+	if (ogDesc) ogDesc.setAttribute("content", description);
+
+	// Update Twitter tags
+	const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+	const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+	if (twitterTitle) twitterTitle.setAttribute("content", title.replace(" | Code Crispies", "").replace(" - Code Crispies", ""));
+	if (twitterDesc) twitterDesc.setAttribute("content", description);
+}
+
+/**
  * Main route handler - switches between page types
  */
 function handleRoute(shouldUpdateUrl = true) {
@@ -1858,6 +1942,7 @@ function handleRoute(shouldUpdateUrl = true) {
 	}
 
 	updateNavHighlight(route);
+	updatePageMeta(route);
 }
 
 /**
