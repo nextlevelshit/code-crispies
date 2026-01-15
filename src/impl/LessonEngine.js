@@ -206,8 +206,8 @@ export class LessonEngine {
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
 
-		if (mode === "html") {
-			// For HTML mode, user code IS the HTML content
+		if (mode === "html" || mode === "playground") {
+			// For HTML/playground mode, user code IS the HTML content (may include <style> blocks)
 			const userHtml = this.userCode || "";
 			iframeDoc.write(`
       <!DOCTYPE html>
@@ -301,8 +301,8 @@ export class LessonEngine {
 		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 		iframeDoc.open();
 
-		if (mode === "html") {
-			// For HTML mode, solution code IS the HTML content
+		if (mode === "html" || mode === "playground") {
+			// For HTML/playground mode, solution code IS the HTML content
 			iframeDoc.write(`
       <!DOCTYPE html>
       <html>
