@@ -19,7 +19,7 @@
 					<button id="menu-btn" class="menu-toggle" data-i18n-aria-label="menuOpen" aria-label="Open menu">
 						<span class="hamburger-icon"></span>
 					</button>
-					<span class="header-level-pill" id="header-level-pill"></span>
+					<a href="#" class="header-level-pill" id="header-level-pill"></a>
 				</div>
 				<a href="#" id="logo-link" class="logo">
 					<img src="./bowl.png" width="40" alt="CODE CRISPIES Logo" />
@@ -64,24 +64,74 @@
 							<span class="section-card-progress" id="tailwind-progress"></span>
 						</a>
 					</section>
+
+					<section class="landing-about">
+						<h2>How It Works</h2>
+						<div class="about-grid">
+							<div class="about-item">
+								<span class="about-icon">1</span>
+								<h3>Write Code</h3>
+								<p>
+									Type CSS, HTML, or Tailwind directly in the browser editor. No installation, no configuration—start coding
+									immediately.
+								</p>
+							</div>
+							<div class="about-item">
+								<span class="about-icon">2</span>
+								<h3>See Results</h3>
+								<p>Watch your changes appear instantly in the live preview. Understand how each property affects the output.</p>
+							</div>
+							<div class="about-item">
+								<span class="about-icon">3</span>
+								<h3>Build Skills</h3>
+								<p>Complete focused exercises that reinforce concepts. Track your progress and return anytime to continue.</p>
+							</div>
+						</div>
+					</section>
+
+					<section class="landing-features">
+						<div class="feature-row">
+							<div class="feature-text">
+								<h3>Beginner Friendly</h3>
+								<p>
+									No prior experience required. Lessons start with fundamentals and introduce concepts gradually, with clear
+									explanations for each step.
+								</p>
+							</div>
+							<div class="feature-text">
+								<h3>Practical Focus</h3>
+								<p>
+									Every exercise teaches skills you'll use in real projects—flexbox layouts, form styling, responsive design, and
+									modern CSS techniques.
+								</p>
+							</div>
+						</div>
+					</section>
+
+					<section class="landing-cta">
+						<a href="#welcome/0" class="cta-button">Start Learning</a>
+						<p class="cta-sub">Free and open source. No account required.</p>
+					</section>
 				</div>
 			</div>
 
 			<!-- Section Landing Page -->
 			<div class="section-page hidden" id="section-page">
-				<header class="section-hero">
-					<h1 id="section-title">CSS</h1>
-					<p id="section-description">Styling, layout, and animations</p>
-					<div class="section-progress-bar">
-						<div class="progress-bar">
-							<div class="progress-fill" id="section-progress-fill"></div>
+				<article class="section-content">
+					<header class="section-hero">
+						<h1 id="section-title">CSS</h1>
+						<p id="section-description">Styling, layout, and animations</p>
+						<div class="section-progress-bar">
+							<div class="progress-bar">
+								<div class="progress-fill" id="section-progress-fill"></div>
+							</div>
+							<span class="progress-text" id="section-progress-text">0 of 0 lessons complete</span>
 						</div>
-						<span class="progress-text" id="section-progress-text">0 of 0 lessons complete</span>
-					</div>
-				</header>
-				<div class="module-grid" id="module-grid">
-					<!-- Module cards populated dynamically -->
-				</div>
+					</header>
+
+					<!-- Educational content with integrated module links -->
+					<div class="section-intro" id="section-intro"></div>
+				</article>
 			</div>
 
 			<main class="game-layout" id="main-content">
