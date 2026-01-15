@@ -1941,6 +1941,10 @@ function handleRoute(shouldUpdateUrl = true) {
 			// Switch language and redirect to home
 			setLanguage(route.lang);
 			applyTranslations();
+			// Sync language dropdown
+			if (elements.langSelect) {
+				elements.langSelect.value = route.lang;
+			}
 			// Reload modules in new language and re-render sidebar
 			const langModules = loadModules(route.lang);
 			lessonEngine.setModules(langModules);
