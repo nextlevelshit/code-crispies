@@ -1999,6 +1999,163 @@ input:checked + .toggle-slider::before {
 	font-weight: 500;
 }
 
+/* ================= REFERENCE PAGES ================= */
+.reference-page {
+	flex: 1;
+	overflow-y: auto;
+	background: var(--bg-color);
+}
+
+.reference-content {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: var(--spacing-lg);
+}
+
+.reference-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-md);
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-md);
+	margin-bottom: var(--spacing-lg);
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	box-shadow: var(--shadow);
+}
+
+.ref-nav-link {
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-sm);
+	text-decoration: none;
+	color: var(--text-color);
+	font-size: 0.9rem;
+	font-weight: 500;
+	transition: background 0.2s, color 0.2s;
+}
+
+.ref-nav-link:hover {
+	background: var(--hover-bg);
+}
+
+.ref-nav-link.active {
+	background: var(--primary-color);
+	color: white;
+}
+
+.reference-body h1 {
+	font-size: 1.75rem;
+	margin-bottom: var(--spacing-sm);
+	color: var(--primary-dark);
+}
+
+.ref-intro {
+	font-size: 1rem;
+	color: var(--light-text);
+	margin-bottom: var(--spacing-lg);
+	line-height: 1.6;
+}
+
+.ref-section {
+	margin-bottom: var(--spacing-xl);
+}
+
+.ref-section h2 {
+	font-size: 1.2rem;
+	margin-bottom: var(--spacing-md);
+	color: var(--text-color);
+	border-bottom: 2px solid var(--border-color);
+	padding-bottom: var(--spacing-xs);
+}
+
+.ref-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-md);
+	overflow: hidden;
+	box-shadow: var(--shadow);
+}
+
+.ref-table thead {
+	background: var(--hover-bg);
+}
+
+.ref-table th,
+.ref-table td {
+	padding: var(--spacing-sm) var(--spacing-md);
+	text-align: left;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.ref-table th {
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.ref-table tr:last-child td {
+	border-bottom: none;
+}
+
+.ref-table tr:hover {
+	background: var(--hover-bg);
+}
+
+.ref-table code {
+	background: var(--code-bg);
+	padding: 0.15rem 0.4rem;
+	border-radius: 4px;
+	font-size: 0.85em;
+	color: var(--primary-dark);
+}
+
+.ref-list {
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-md);
+	padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-xl);
+	box-shadow: var(--shadow);
+}
+
+.ref-list li {
+	padding: var(--spacing-xs) 0;
+	line-height: 1.6;
+}
+
+.ref-list code {
+	background: var(--code-bg);
+	padding: 0.15rem 0.4rem;
+	border-radius: 4px;
+	font-size: 0.85em;
+}
+
+/* Reference page code blocks */
+.reference-body .code-block {
+	margin: var(--spacing-md) 0;
+}
+
+/* Responsive reference tables */
+@media (max-width: 600px) {
+	.ref-table {
+		font-size: 0.8rem;
+	}
+
+	.ref-table th,
+	.ref-table td {
+		padding: var(--spacing-xs) var(--spacing-sm);
+	}
+
+	.reference-nav {
+		position: static;
+	}
+
+	.ref-nav-link {
+		font-size: 0.8rem;
+	}
+}
+
 /* ================= UTILITY ================= */
 .hidden {
 	display: none !important;
