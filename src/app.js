@@ -195,6 +195,7 @@ let currentMode = "css";
 let sidebarTrigger = null;
 
 function openSidebar() {
+	track("sidebar_open");
 	// Store trigger element for focus return
 	sidebarTrigger = document.activeElement;
 
@@ -444,6 +445,7 @@ function selectLesson(moduleId, lessonIndex) {
 	}
 
 	lessonEngine.setLessonByIndex(lessonIndex);
+	track("lesson_select", { module: moduleId, lesson: lessonIndex });
 
 	// Show lesson UI
 	showLessonUI();
@@ -687,6 +689,7 @@ function nextLesson() {
 	const success = lessonEngine.nextLesson();
 	if (success) {
 		const newState = lessonEngine.getCurrentState();
+		track("lesson_nav", { direction: "next", module: newState.module.id, lesson: newState.lessonIndex });
 		// Update URL
 		updateHash(newState.module.id, newState.lessonIndex);
 
@@ -702,6 +705,7 @@ function prevLesson() {
 	const success = lessonEngine.previousLesson();
 	if (success) {
 		const newState = lessonEngine.getCurrentState();
+		track("lesson_nav", { direction: "prev", module: newState.module.id, lesson: newState.lessonIndex });
 		// Update URL
 		updateHash(newState.module.id, newState.lessonIndex);
 
@@ -728,6 +732,7 @@ function resetCode() {
 	// Reset editor to initial code for current lesson
 	lessonEngine.reset();
 	const engineState = lessonEngine.getCurrentState();
+	track("reset_code", { module: engineState.module?.id, lesson: engineState.lessonIndex });
 	if (codeEditor && engineState.lesson) {
 		codeEditor.setValue(engineState.lesson.initialCode || "");
 	}
@@ -853,6 +858,7 @@ function runCode() {
 // ================= DIALOGS =================
 
 function showHelp() {
+	track("help_open");
 	elements.helpDialog.showModal();
 }
 
@@ -915,6 +921,7 @@ function handleResetCodeClick() {
 // ================= SHARE DIALOG =================
 
 function showShareDialog() {
+	track("share_open");
 	const engineState = lessonEngine.getCurrentState();
 	if (engineState.module && engineState.lesson !== null) {
 		const shareUrl = getShareableUrl(engineState.module.id, engineState.lessonIndex);
@@ -929,6 +936,7 @@ function closeShareDialog() {
 }
 
 async function copyShareUrl() {
+	track("share_copy");
 	try {
 		await navigator.clipboard.writeText(elements.shareUrlInput.value);
 		elements.copyFeedback.hidden = false;
@@ -1370,8 +1378,38 @@ const referenceContent = {
 					<tr><td><code>box-shadow</code></td><td>x y blur spread color</td><td><code>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</code></td></tr>
 					<tr><td><code>text-shadow</code></td><td>x y blur color</td><td><code>text-shadow: 1px 1px 2px gray;</code></td></tr>
 					<tr><td><code>transform</code></td><td>translate, rotate, scale</td><td><code>transform: translateY(-2px);</code></td></tr>
-					<tr><td><code>transition</code></td><td>property duration easing</td><td><code>transition: all 0.3s ease;</code></td></tr>
 					<tr><td><code>cursor</code></td><td>pointer, default, text, grab</td><td><code>cursor: pointer;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Transitions & Animations</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>transition</code></td><td>property duration easing</td><td><code>transition: all 0.3s ease;</code></td></tr>
+					<tr><td><code>transition-property</code></td><td>all, none, specific</td><td><code>transition-property: opacity;</code></td></tr>
+					<tr><td><code>transition-duration</code></td><td>time (s, ms)</td><td><code>transition-duration: 0.3s;</code></td></tr>
+					<tr><td><code>transition-timing-function</code></td><td>ease, linear, ease-in-out</td><td><code>transition-timing-function: ease-out;</code></td></tr>
+					<tr><td><code>animation</code></td><td>name duration timing delay</td><td><code>animation: fade 1s ease-in;</code></td></tr>
+					<tr><td><code>animation-name</code></td><td>@keyframes name</td><td><code>animation-name: slide;</code></td></tr>
+					<tr><td><code>animation-duration</code></td><td>time (s, ms)</td><td><code>animation-duration: 2s;</code></td></tr>
+					<tr><td><code>animation-iteration-count</code></td><td>number, infinite</td><td><code>animation-iteration-count: infinite;</code></td></tr>
+					<tr><td><code>animation-fill-mode</code></td><td>none, forwards, backwards, both</td><td><code>animation-fill-mode: forwards;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>CSS Variables</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>--name</code></td><td>Define custom property</td><td><code>--primary: steelblue;</code></td></tr>
+					<tr><td><code>var(--name)</code></td><td>Use custom property</td><td><code>color: var(--primary);</code></td></tr>
+					<tr><td><code>var(--name, fallback)</code></td><td>With fallback value</td><td><code>color: var(--accent, blue);</code></td></tr>
+					<tr><td><code>:root { }</code></td><td>Global scope</td><td><code>:root { --gap: 1rem; }</code></td></tr>
 				</tbody>
 			</table>
 		</section>
@@ -1733,6 +1771,21 @@ const referenceContent = {
 					<tr><td><code>&lt;tr&gt;</code></td><td>Table row</td><td>Contains cells</td></tr>
 					<tr><td><code>&lt;th&gt;</code></td><td>Header cell</td><td>scope="col" or "row"</td></tr>
 					<tr><td><code>&lt;td&gt;</code></td><td>Data cell</td><td>colspan, rowspan for spanning</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Interactive Elements</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Key Attributes</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;details&gt;</code></td><td>Expandable content</td><td>open (default expanded)</td></tr>
+					<tr><td><code>&lt;summary&gt;</code></td><td>Details toggle label</td><td>First child of details</td></tr>
+					<tr><td><code>&lt;dialog&gt;</code></td><td>Modal/popup dialog</td><td>open, use showModal()</td></tr>
+					<tr><td><code>&lt;progress&gt;</code></td><td>Progress bar</td><td>value, max</td></tr>
+					<tr><td><code>&lt;meter&gt;</code></td><td>Scalar measurement</td><td>value, min, max, low, high</td></tr>
+					<tr><td><code>&lt;datalist&gt;</code></td><td>Input suggestions</td><td>id (link via input list attr)</td></tr>
 				</tbody>
 			</table>
 		</section>
