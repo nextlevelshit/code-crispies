@@ -9,7 +9,7 @@
 	"lessons": [
 		{
 			"id": "hello",
-			"title": "Hello!",
+			"title": "Getting started!",
 			"description": "<strong>Welcome to Code Crispies!</strong> Learn CSS and HTML through hands-on exercises.<br><br><strong>How it works:</strong><br>1. Read the task on the left<br>2. Write code in the editor<br>3. See live results in the preview<br><br><strong>Tips:</strong> Use <kbd>Ctrl+Z</kbd> to undo. Open the menu (☰) to browse all modules.",
 			"task": "Write <code>Hello World</code> to get started",
 			"previewHTML": "",
