@@ -1521,6 +1521,12 @@ input:checked + .toggle-slider::before {
 	color: var(--primary-color);
 }
 
+.nav-link-ref {
+	margin-left: 0.5rem;
+	padding-left: 1rem;
+	border-left: 1px solid var(--border-color);
+}
+
 @media (min-width: 769px) {
 	.main-nav {
 		display: flex;

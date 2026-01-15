@@ -1941,6 +1941,8 @@ function updateNavHighlight(route) {
 
 		if (route?.type === RouteType.SECTION && link.dataset.section === route.sectionId) {
 			link.classList.add("active");
+		} else if (route?.type === RouteType.REFERENCE && link.dataset.section === "reference") {
+			link.classList.add("active");
 		} else if (route?.type === RouteType.LESSON) {
 			// Highlight section based on module's inferred section
 			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
