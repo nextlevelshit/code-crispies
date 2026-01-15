@@ -35,7 +35,7 @@ const elements = {
 	sectionDescription: document.getElementById("section-description"),
 	sectionProgressFill: document.getElementById("section-progress-fill"),
 	sectionProgressText: document.getElementById("section-progress-text"),
-	moduleGrid: document.getElementById("module-grid"),
+	sectionIntro: document.getElementById("section-intro"),
 
 	// Left panel
 	instructionsSection: document.querySelector(".instructions"),
@@ -510,10 +510,11 @@ function loadCurrentLesson() {
 
 	// Update level indicator
 	renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
-	// Header pill shows module name + level
+	// Header pill shows module name + level (clickable link to return to lesson)
 	if (elements.headerLevelPill && engineState.module) {
 		const label = t("lessonLabel");
 		elements.headerLevelPill.innerHTML = `<span class="header-module-name">${engineState.module.title}</span> <span class="header-level">${label} ${engineState.lessonIndex + 1} / ${engineState.totalLessons}</span>`;
+		elements.headerLevelPill.href = `#${engineState.module.id}/${engineState.lessonIndex}`;
 	}
 
 	// Update active lesson in sidebar
@@ -819,6 +820,347 @@ async function copyShareUrl() {
 	}
 }
 
+// ================= SECTION EDUCATIONAL CONTENT =================
+
+const sectionContent = {
+	css: `
+		<div class="section-overview">
+			<p><strong>CSS (Cascading Style Sheets)</strong> is a stylesheet language that controls the visual presentation of HTML documents. While HTML defines the structure and content, CSS handles colors, typography, spacing, and layout. The "cascading" in CSS means rules can override each other based on specificity—allowing you to set defaults and then refine them for specific elements.</p>
+			<p>Introduced in 1996 to separate content from presentation, CSS enables one stylesheet to style multiple HTML pages, keeping design consistent and maintainable. Modern CSS includes powerful layout systems like Flexbox and Grid, custom properties (variables), and animations—all without JavaScript.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Selectors & Properties</h2>
+				<p>CSS uses selectors to target HTML elements and apply styles. The most common selector is the class selector (<code>.classname</code>), which targets elements with a specific class attribute. You can also use element selectors (<code>p</code>, <code>div</code>), ID selectors (<code>#id</code>), and combinators to select nested elements.</p>
+				<p>Properties define what aspect of the element to style. Common properties include <code>color</code> for text color, <code>background</code> for backgrounds, <code>padding</code> for internal spacing, and <code>margin</code> for external spacing. Each property accepts specific value types like colors, lengths, or keywords.</p>
+				<a href="#css-basic-selectors/0" class="topic-link">Practice CSS Selectors</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>.button {
+  background: steelblue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background: darkslateblue;
+}</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>The Box Model</h2>
+				<p>Every HTML element is rendered as a rectangular box with four distinct layers. The <code>content</code> area holds your text or images. <code>padding</code> creates space inside the element between the content and border. The <code>border</code> wraps around the padding. Finally, <code>margin</code> creates space outside the element, separating it from neighbors.</p>
+				<p>By default, <code>width</code> only sets the content width. Adding padding and border increases the total size. Use <code>box-sizing: border-box</code> to include padding and border in the declared width, making layouts much more predictable.</p>
+				<a href="#box-model/0" class="topic-link">Learn the CSS Box Model</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>.card {
+  width: 300px;
+  padding: 1rem;
+  border: 2px solid gray;
+  margin: 1rem;
+  box-sizing: border-box;
+}
+/* Total width stays 300px */</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Flexbox Layout</h2>
+				<p>Flexbox is a one-dimensional layout system for arranging items in rows or columns. Apply <code>display: flex</code> to a container to enable it. Child elements become flex items that can grow, shrink, and align automatically.</p>
+				<p>Control alignment with <code>justify-content</code> (main axis: <code>flex-start</code>, <code>center</code>, <code>space-between</code>) and <code>align-items</code> (cross axis: <code>stretch</code>, <code>center</code>, <code>flex-end</code>). The <code>gap</code> property adds consistent spacing between items without margins.</p>
+				<a href="#flexbox/0" class="topic-link">Master CSS Flexbox Layout</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>CSS Grid</h2>
+				<p>CSS Grid is a two-dimensional layout system for creating complex row and column layouts. Enable it with <code>display: grid</code>, then define columns using <code>grid-template-columns</code>. The <code>repeat()</code> function creates multiple tracks, and <code>fr</code> units distribute available space proportionally.</p>
+				<p>Grid excels at page layouts and card grids. Use <code>grid-template-columns: repeat(3, 1fr)</code> for three equal columns, or <code>repeat(auto-fill, minmax(250px, 1fr))</code> for responsive columns that wrap automatically.</p>
+				<a href="#grid/0" class="topic-link">Explore CSS Grid Layout</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.responsive-grid {
+  grid-template-columns:
+    repeat(auto-fill, minmax(250px, 1fr));
+}</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Units & Variables</h2>
+				<p>CSS supports multiple unit types for different use cases. Use <code>px</code> for fixed sizes, <code>rem</code> for scalable typography (relative to root font size), <code>%</code> for parent-relative sizing, and <code>vh</code>/<code>vw</code> for viewport-relative dimensions. Prefer <code>rem</code> for accessibility—it respects user font preferences.</p>
+				<p>CSS custom properties (variables) store reusable values. Define them with <code>--name: value</code> in <code>:root</code> for global access, then use them anywhere with <code>var(--name)</code>. This makes themes and consistent design systems easy to maintain.</p>
+				<a href="#units-variables/0" class="topic-link">Study CSS Units & Variables</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>:root {
+  --primary: steelblue;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --radius: 8px;
+}
+
+.card {
+  background: var(--primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+}</code></pre>
+				</div>
+			</div>
+		</div>
+	`,
+
+	html: `
+		<div class="section-overview">
+			<p><strong>HTML (HyperText Markup Language)</strong> is not a programming language—it's a markup language that describes the structure and content of web documents. Invented by Tim Berners-Lee in 1989, HTML uses tags like <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, and <code>&lt;a&gt;</code> to define paragraphs, headings, and links. The browser reads this markup and renders it as a visual page.</p>
+			<p>HTML documents form a hierarchical tree called the DOM (Document Object Model). Elements have parent-child relationships: a <code>&lt;ul&gt;</code> contains <code>&lt;li&gt;</code> children, a <code>&lt;form&gt;</code> contains <code>&lt;input&gt;</code> elements. Modern HTML5 includes native interactive elements like <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code>, and form validation—features that previously required JavaScript.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Semantic Structure</h2>
+				<p>HTML5 introduced semantic elements that convey meaning about content structure. Use <code>&lt;header&gt;</code> for introductory content, <code>&lt;nav&gt;</code> for navigation links, <code>&lt;main&gt;</code> for primary content, <code>&lt;article&gt;</code> for self-contained compositions, <code>&lt;section&gt;</code> for thematic groupings, and <code>&lt;footer&gt;</code> for closing content.</p>
+				<p>Semantic markup improves accessibility—screen readers announce element roles. It also helps SEO as search engines better understand your content hierarchy. Replace generic <code>&lt;div&gt;</code> containers with appropriate semantic elements whenever possible.</p>
+				<a href="#html-elements/0" class="topic-link">Learn HTML Semantic Elements</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Article Title&lt;/h1&gt;
+    &lt;time datetime="2024-01-15"&gt;
+      January 15, 2024
+    &lt;/time&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Article content...&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;p&gt;Written by Author&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Forms & Validation</h2>
+				<p>HTML forms collect user input with elements like <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;button&gt;</code>. Always pair inputs with <code>&lt;label&gt;</code> elements using matching <code>for</code> and <code>id</code> attributes—this is crucial for accessibility and usability.</p>
+				<p>Native validation attributes eliminate JavaScript for common cases: <code>required</code> prevents empty submissions, <code>type="email"</code> validates email format, <code>minlength</code>/<code>maxlength</code> control text length, and <code>pattern</code> accepts custom regex patterns. The browser handles error messages automatically.</p>
+				<a href="#html-forms-basic/0" class="topic-link">Build HTML Forms</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;form&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email"
+         name="email" required
+         placeholder="you@example.com"&gt;
+
+  &lt;label for="phone"&gt;Phone&lt;/label&gt;
+  &lt;input type="tel" id="phone"
+         pattern="[0-9]{3}-[0-9]{4}"&gt;
+
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Interactive Elements</h2>
+				<p>Modern HTML includes powerful interactive components that work without JavaScript. The <code>&lt;details&gt;</code> element creates native accordions—click <code>&lt;summary&gt;</code> to toggle visibility. Add the <code>open</code> attribute to start expanded. Multiple details elements create FAQ-style interfaces instantly.</p>
+				<p>The <code>&lt;dialog&gt;</code> element creates accessible modal dialogs. Call <code>.showModal()</code> in JavaScript to open it with backdrop and focus trapping built-in. Use <code>&lt;datalist&gt;</code> with inputs to provide autocomplete suggestions from a predefined list.</p>
+				<a href="#html-details-summary/0" class="topic-link">Try Interactive HTML Elements</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;details&gt;
+  &lt;summary&gt;What is HTML?&lt;/summary&gt;
+  &lt;p&gt;HTML is the standard markup
+     language for web pages.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;dialog id="confirm"&gt;
+  &lt;h2&gt;Confirm Action&lt;/h2&gt;
+  &lt;p&gt;Are you sure?&lt;/p&gt;
+  &lt;button onclick="this.closest('dialog').close()"&gt;
+    Close
+  &lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Tables & Lists</h2>
+				<p>Use <code>&lt;table&gt;</code> exclusively for tabular data, never for page layout. Structure tables with <code>&lt;thead&gt;</code> for header rows, <code>&lt;tbody&gt;</code> for data rows, and optionally <code>&lt;tfoot&gt;</code> for summaries. Mark header cells with <code>&lt;th&gt;</code> (not <code>&lt;td&gt;</code>) and add <code>scope="col"</code> or <code>scope="row"</code> for accessibility.</p>
+				<p>Lists come in three flavors: <code>&lt;ul&gt;</code> for unordered bullet lists, <code>&lt;ol&gt;</code> for numbered sequences, and <code>&lt;dl&gt;</code> for definition lists (term/description pairs). Nest lists for hierarchical content like navigation menus or category trees.</p>
+				<a href="#html-tables/0" class="topic-link">Structure Data with HTML Tables</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Product&lt;/th&gt;
+      &lt;th scope="col"&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Widget&lt;/td&gt;
+      &lt;td&gt;$9.99&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+	`,
+
+	tailwind: `
+		<div class="section-overview">
+			<p><strong>Tailwind CSS</strong> is a utility-first CSS framework that takes a radically different approach to styling. Instead of writing custom CSS classes like <code>.card</code> or <code>.button</code>, you compose designs using small, single-purpose utility classes directly in your HTML: <code>class="p-4 bg-white rounded shadow"</code>.</p>
+			<p>This approach solves common CSS problems: no more specificity battles, no unused styles, no inventing class names. Tailwind's consistent spacing scale (<code>p-1</code> through <code>p-12</code>), color palette (<code>blue-500</code>, <code>gray-100</code>), and responsive prefixes (<code>md:</code>, <code>lg:</code>) make building consistent, responsive interfaces fast and predictable.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Utility-First Basics</h2>
+				<p>Tailwind CSS uses small, single-purpose utility classes applied directly in HTML. Instead of writing <code>.btn { background: blue; padding: 1rem; }</code> in a stylesheet, you write <code>class="bg-blue-500 p-4"</code> on the element. Each class does exactly one thing, making styles predictable and composable.</p>
+				<p>This approach eliminates context-switching between HTML and CSS files. Common utilities include <code>text-lg</code> for font size, <code>font-bold</code> for weight, <code>rounded</code> for border radius, and <code>shadow</code> for box shadows. Hover states use the <code>hover:</code> prefix like <code>hover:bg-blue-600</code>.</p>
+				<a href="#tailwind-basics/0" class="topic-link">Start with Tailwind CSS Basics</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;button class="bg-blue-500 text-white
+               px-4 py-2 rounded-lg
+               font-semibold shadow
+               hover:bg-blue-600
+               active:bg-blue-700"&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Spacing & Sizing</h2>
+				<p>Tailwind's spacing scale is consistent and memorable. The pattern is simple: <code>p-4</code> means padding of 1rem (16px), <code>p-2</code> is 0.5rem, <code>p-8</code> is 2rem. The same numbers work for margin (<code>m-4</code>), gap (<code>gap-4</code>), and space utilities. Use directional variants like <code>px-4</code> (horizontal) or <code>pt-2</code> (top only).</p>
+				<p>Width and height follow patterns too: <code>w-full</code> for 100%, <code>w-1/2</code> for 50%, <code>w-64</code> for fixed 16rem, <code>h-screen</code> for viewport height. Combine <code>max-w-xl</code> with <code>mx-auto</code> for centered containers with maximum widths.</p>
+				<a href="#tailwind-basics/1" class="topic-link">Learn Tailwind Spacing & Sizing</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;div class="max-w-xl mx-auto p-6"&gt;
+  &lt;div class="space-y-4"&gt;
+    &lt;div class="w-full h-32 bg-gray-200
+                rounded-lg"&gt;
+      Full width card
+    &lt;/div&gt;
+    &lt;div class="w-1/2 p-4 bg-gray-100"&gt;
+      Half width, padded
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Flexbox & Grid</h2>
+				<p>Tailwind's layout utilities map directly to CSS flexbox and grid. Enable flex with <code>flex</code>, then control direction (<code>flex-row</code>, <code>flex-col</code>), alignment (<code>items-center</code>, <code>justify-between</code>), and wrapping (<code>flex-wrap</code>). The <code>gap-4</code> utility adds consistent spacing between items.</p>
+				<p>For grid layouts, use <code>grid</code> with column definitions like <code>grid-cols-3</code> for three equal columns or <code>grid-cols-[200px_1fr]</code> for custom track sizes. The <code>col-span-2</code> utility makes items span multiple columns.</p>
+				<a href="#tailwind-basics/2" class="topic-link">Build Layouts with Tailwind</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;nav class="flex justify-between
+            items-center p-4"&gt;
+  &lt;a href="/" class="font-bold"&gt;Logo&lt;/a&gt;
+  &lt;ul class="flex gap-6"&gt;
+    &lt;li&gt;Home&lt;/li&gt;
+    &lt;li&gt;About&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;div class="grid grid-cols-3 gap-4"&gt;
+  &lt;div class="col-span-2"&gt;Wide&lt;/div&gt;
+  &lt;div&gt;Normal&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Responsive Design</h2>
+				<p>Tailwind uses mobile-first responsive prefixes. Unprefixed utilities apply to all screen sizes. Add <code>sm:</code> (640px+), <code>md:</code> (768px+), <code>lg:</code> (1024px+), or <code>xl:</code> (1280px+) prefixes to apply styles at specific breakpoints and above.</p>
+				<p>Build responsive layouts by starting with mobile styles, then adding larger-screen overrides. For example, <code>flex-col md:flex-row</code> stacks items vertically on mobile and horizontally on medium screens. Use <code>hidden md:block</code> to show/hide elements at different sizes.</p>
+				<a href="#tailwind-basics/3" class="topic-link">Tailwind Responsive Design</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>&lt;div class="flex flex-col md:flex-row
+            gap-4 p-4"&gt;
+  &lt;aside class="w-full md:w-64
+               bg-gray-100 p-4"&gt;
+    Sidebar (top on mobile)
+  &lt;/aside&gt;
+  &lt;main class="flex-1"&gt;
+    Main content
+  &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;p class="text-sm md:text-base lg:text-lg"&gt;
+  Responsive typography
+&lt;/p&gt;</code></pre>
+				</div>
+			</div>
+		</div>
+	`
+};
+
 // ================= URL ROUTING & PAGE SWITCHING =================
 
 function initRouter() {
@@ -927,7 +1269,12 @@ function showSectionPage(sectionId) {
 	if (elements.sectionTitle) elements.sectionTitle.textContent = section.title;
 	if (elements.sectionDescription) elements.sectionDescription.textContent = section.description;
 
-	// Get modules for this section
+	// Inject educational content (includes integrated module links)
+	if (elements.sectionIntro && sectionContent[sectionId]) {
+		elements.sectionIntro.innerHTML = sectionContent[sectionId];
+	}
+
+	// Get modules for this section to calculate progress
 	const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
 
 	// Calculate section progress
@@ -945,39 +1292,6 @@ function showSectionPage(sectionId) {
 	const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 	if (elements.sectionProgressFill) elements.sectionProgressFill.style.width = `${percent}%`;
 	if (elements.sectionProgressText) elements.sectionProgressText.textContent = `${completed} of ${total} lessons complete`;
-
-	// Render module cards
-	renderModuleGrid(sectionModules, sectionId);
-}
-
-/**
- * Render module cards in section page
- */
-function renderModuleGrid(modules, sectionId) {
-	if (!elements.moduleGrid) return;
-
-	elements.moduleGrid.innerHTML = "";
-
-	modules.forEach((module) => {
-		const card = document.createElement("a");
-		card.href = `#${module.id}/0`;
-		card.className = "module-card";
-
-		// Calculate module progress
-		const progress = lessonEngine.userProgress[module.id];
-		const completed = progress?.completed?.length || 0;
-		const total = module.lessons.length;
-
-		card.innerHTML = `
-			<h3>${module.title}</h3>
-			<div class="module-card-meta">
-				<span>${total} lessons</span>
-				<span class="module-card-progress">${completed > 0 ? `${completed}/${total}` : ""}</span>
-			</div>
-		`;
-
-		elements.moduleGrid.appendChild(card);
-	});
 }
 
 /**
