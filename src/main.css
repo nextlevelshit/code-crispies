@@ -1591,7 +1591,85 @@ input:checked + .toggle-slider::before {
 	font-size: 1.1rem;
 	color: var(--light-text);
 	max-width: 500px;
-	margin: 0 auto;
+	margin: 0 auto 2rem;
+}
+
+.hero .cta-button {
+	margin-top: 1rem;
+}
+
+/* Why It Works Section */
+.why-it-works {
+	padding: 3rem 1rem;
+	text-align: center;
+}
+
+.why-it-works h2 {
+	font-size: 1.75rem;
+	color: var(--primary-dark);
+	margin-bottom: 2rem;
+}
+
+.benefits-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: var(--spacing-lg);
+	text-align: left;
+}
+
+.benefit-card {
+	background: var(--panel-bg);
+	padding: var(--spacing-lg);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--shadow);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.benefit-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-icon {
+	width: 48px;
+	height: 48px;
+	color: var(--primary-color);
+	margin-bottom: var(--spacing-md);
+}
+
+.benefit-card h3 {
+	font-size: 1.1rem;
+	color: var(--primary-dark);
+	margin-bottom: var(--spacing-sm);
+}
+
+.benefit-card p {
+	color: var(--light-text);
+	line-height: 1.6;
+	font-size: 0.95rem;
+}
+
+.benefit-card a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.benefit-card a:hover {
+	text-decoration: underline;
+}
+
+/* Learning Paths Section */
+.learning-paths {
+	padding: 2rem 1rem 3rem;
+	text-align: center;
+}
+
+.learning-paths h2 {
+	font-size: 1.75rem;
+	color: var(--primary-dark);
+	margin-bottom: 0;
 }
 
 /* Section Cards */
@@ -1635,7 +1713,8 @@ input:checked + .toggle-slider::before {
 	margin-bottom: var(--spacing-md);
 }
 
-.section-card h2 {
+.section-card h2,
+.section-card h3 {
 	font-size: 1.25rem;
 	margin-bottom: var(--spacing-xs);
 }
@@ -1736,7 +1815,16 @@ input:checked + .toggle-slider::before {
 /* Landing CTA */
 .landing-cta {
 	text-align: center;
-	padding: 2rem 1rem 3rem;
+	padding: 3rem 1rem;
+	background: var(--panel-bg);
+	border-radius: var(--border-radius-lg);
+	margin-top: var(--spacing-lg);
+}
+
+.landing-cta h2 {
+	font-size: 1.5rem;
+	color: var(--primary-dark);
+	margin-bottom: var(--spacing-sm);
 }
 
 .cta-button {
@@ -2089,7 +2177,9 @@ input:checked + .toggle-slider::before {
 	color: var(--text-color);
 	font-size: 0.9rem;
 	font-weight: 500;
-	transition: background 0.2s, color 0.2s;
+	transition:
+		background 0.2s,
+		color 0.2s;
 }
 
 .ref-nav-link:hover {
