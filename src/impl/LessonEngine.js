@@ -23,6 +23,9 @@ export class LessonEngine {
 	 */
 	setModules(modules) {
 		this.modules = modules;
+		// Clear current module/lesson to force reload with new language content
+		this.currentModule = null;
+		this.currentLesson = null;
 		this.loadUserCodeFromStorage();
 	}
 
