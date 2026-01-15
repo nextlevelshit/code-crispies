@@ -114,7 +114,27 @@ const translations = {
 		failedToLoad: "Failed to load modules. Please refresh the page.",
 		tailwindPlaceholder: "Enter Tailwind classes (e.g., bg-blue-500 text-white p-4)",
 		lessonFallback: "Lesson {index}",
-		untitledLesson: "Untitled Lesson"
+		untitledLesson: "Untitled Lesson",
+
+		// Landing page
+		landingHeroTitle: "Learn Web Development",
+		landingHeroHighlight: "By Writing Real Code",
+		landingHeroSubtitle: "Master HTML, CSS, and Tailwind through hands-on exercises with instant feedback. Free and open source.",
+		landingCtaStart: "Start Learning NOW",
+		landingWhyTitle: "Why Code Crispies Works",
+		landingBenefit1Title: "Learn by Doing",
+		landingBenefit1Text: "Write real code from lesson one. No videos to watch—just you, an editor, and instant feedback on every keystroke.",
+		landingBenefit2Title: "Practice at Your Pace",
+		landingBenefit2Text: "Start with basics, fill gaps in your understanding, then accelerate. Pick up where you left off anytime.",
+		landingBenefit3Title: "Master Real Skills",
+		landingBenefit3Text: "Learn CSS, HTML, and Tailwind the way professionals use them—through hands-on exercises and reference guides.",
+		landingPathsTitle: "Explore Learning Paths",
+		landingCssDesc: "Styling, layout, and animations",
+		landingHtmlDesc: "Semantic markup and native elements",
+		landingTailwindDesc: "Utility-first CSS framework",
+		landingCtaTitle: "Start Learning Today",
+		landingCtaSub: "Free and open source. No account required. Progress saved locally.",
+		landingCtaButton: "Begin Your Journey"
 	},
 
 	de: {
@@ -229,7 +249,29 @@ const translations = {
 		failedToLoad: "Module konnten nicht geladen werden. Bitte Seite neu laden.",
 		tailwindPlaceholder: "Tailwind-Klassen eingeben (z.B. bg-blue-500 text-white p-4)",
 		lessonFallback: "Lektion {index}",
-		untitledLesson: "Unbenannte Lektion"
+		untitledLesson: "Unbenannte Lektion",
+
+		// Landing page
+		landingHeroTitle: "Webentwicklung lernen",
+		landingHeroHighlight: "Durch echten Code",
+		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
+		landingCtaStart: "Jetzt starten",
+		landingWhyTitle: "Warum Code Crispies funktioniert",
+		landingBenefit1Title: "Lernen durch Praxis",
+		landingBenefit1Text:
+			"Schreibe echten Code ab der ersten Lektion. Keine Videos – nur du, ein Editor und sofortiges Feedback bei jedem Tastendruck.",
+		landingBenefit2Title: "In deinem Tempo",
+		landingBenefit2Text:
+			"Beginne mit den Grundlagen, fülle Wissenslücken und beschleunige dann. Mach jederzeit dort weiter, wo du aufgehört hast.",
+		landingBenefit3Title: "Echte Fähigkeiten",
+		landingBenefit3Text: "Lerne CSS, HTML und Tailwind so, wie Profis sie nutzen – durch praktische Übungen und Referenzanleitungen.",
+		landingPathsTitle: "Lernpfade entdecken",
+		landingCssDesc: "Styling, Layout und Animationen",
+		landingHtmlDesc: "Semantisches Markup und native Elemente",
+		landingTailwindDesc: "Utility-first CSS-Framework",
+		landingCtaTitle: "Heute noch anfangen",
+		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
+		landingCtaButton: "Starte deine Reise"
 	},
 
 	// Polish
@@ -344,7 +386,29 @@ const translations = {
 		failedToLoad: "Nie udało się załadować modułów. Odśwież stronę.",
 		tailwindPlaceholder: "Wprowadź klasy Tailwind (np. bg-blue-500 text-white p-4)",
 		lessonFallback: "Lekcja {index}",
-		untitledLesson: "Lekcja bez tytułu"
+		untitledLesson: "Lekcja bez tytułu",
+
+		// Landing page
+		landingHeroTitle: "Naucz się tworzenia stron",
+		landingHeroHighlight: "Pisząc prawdziwy kod",
+		landingHeroSubtitle: "Opanuj HTML, CSS i Tailwind poprzez praktyczne ćwiczenia z natychmiastową informacją zwrotną. Darmowe i open source.",
+		landingCtaStart: "Zacznij TERAZ",
+		landingWhyTitle: "Dlaczego Code Crispies działa",
+		landingBenefit1Title: "Ucz się przez praktykę",
+		landingBenefit1Text:
+			"Pisz prawdziwy kod od pierwszej lekcji. Żadnych filmów – tylko ty, edytor i natychmiastowa informacja zwrotna przy każdym naciśnięciu klawisza.",
+		landingBenefit2Title: "W swoim tempie",
+		landingBenefit2Text: "Zacznij od podstaw, uzupełnij luki w wiedzy, a potem przyspiesz. Wróć w dowolnym momencie tam, gdzie skończyłeś.",
+		landingBenefit3Title: "Prawdziwe umiejętności",
+		landingBenefit3Text:
+			"Naucz się CSS, HTML i Tailwind tak, jak używają ich profesjonaliści – poprzez praktyczne ćwiczenia i przewodniki referencyjne.",
+		landingPathsTitle: "Odkryj ścieżki nauki",
+		landingCssDesc: "Stylowanie, układy i animacje",
+		landingHtmlDesc: "Semantyczne znaczniki i natywne elementy",
+		landingTailwindDesc: "Framework CSS oparty na klasach utility",
+		landingCtaTitle: "Zacznij naukę już dziś",
+		landingCtaSub: "Darmowe i open source. Bez konta. Postęp zapisywany lokalnie.",
+		landingCtaButton: "Rozpocznij swoją podróż"
 	},
 
 	// Spanish
@@ -460,7 +524,30 @@ const translations = {
 		failedToLoad: "No se pudieron cargar los módulos. Actualiza la página.",
 		tailwindPlaceholder: "Ingresa clases de Tailwind (ej. bg-blue-500 text-white p-4)",
 		lessonFallback: "Lección {index}",
-		untitledLesson: "Lección sin título"
+		untitledLesson: "Lección sin título",
+
+		// Landing page
+		landingHeroTitle: "Aprende desarrollo web",
+		landingHeroHighlight: "Escribiendo código real",
+		landingHeroSubtitle:
+			"Domina HTML, CSS y Tailwind a través de ejercicios prácticos con retroalimentación instantánea. Gratis y de código abierto.",
+		landingCtaStart: "Empieza AHORA",
+		landingWhyTitle: "Por qué funciona Code Crispies",
+		landingBenefit1Title: "Aprende haciendo",
+		landingBenefit1Text:
+			"Escribe código real desde la primera lección. Sin videos que ver—solo tú, un editor y retroalimentación instantánea en cada tecla.",
+		landingBenefit2Title: "A tu propio ritmo",
+		landingBenefit2Text:
+			"Comienza con lo básico, llena los vacíos en tu comprensión y luego acelera. Retoma donde lo dejaste en cualquier momento.",
+		landingBenefit3Title: "Habilidades reales",
+		landingBenefit3Text: "Aprende CSS, HTML y Tailwind como los usan los profesionales—a través de ejercicios prácticos y guías de referencia.",
+		landingPathsTitle: "Explora rutas de aprendizaje",
+		landingCssDesc: "Estilos, diseño y animaciones",
+		landingHtmlDesc: "Marcado semántico y elementos nativos",
+		landingTailwindDesc: "Framework CSS basado en utilidades",
+		landingCtaTitle: "Empieza a aprender hoy",
+		landingCtaSub: "Gratis y de código abierto. Sin cuenta requerida. Progreso guardado localmente.",
+		landingCtaButton: "Comienza tu viaje"
 	},
 
 	// Arabic
@@ -574,7 +661,27 @@ const translations = {
 		failedToLoad: "فشل تحميل الوحدات. قم بتحديث الصفحة.",
 		tailwindPlaceholder: "أدخل فئات Tailwind (مثل bg-blue-500 text-white p-4)",
 		lessonFallback: "درس {index}",
-		untitledLesson: "درس بدون عنوان"
+		untitledLesson: "درس بدون عنوان",
+
+		// Landing page
+		landingHeroTitle: "تعلم تطوير الويب",
+		landingHeroHighlight: "بكتابة كود حقيقي",
+		landingHeroSubtitle: "أتقن HTML و CSS و Tailwind من خلال تمارين عملية مع ملاحظات فورية. مجاني ومفتوح المصدر.",
+		landingCtaStart: "ابدأ الآن",
+		landingWhyTitle: "لماذا Code Crispies فعال",
+		landingBenefit1Title: "تعلم بالممارسة",
+		landingBenefit1Text: "اكتب كودًا حقيقيًا من الدرس الأول. لا فيديوهات للمشاهدة—فقط أنت ومحرر وملاحظات فورية مع كل ضغطة مفتاح.",
+		landingBenefit2Title: "بسرعتك الخاصة",
+		landingBenefit2Text: "ابدأ بالأساسيات، املأ الفجوات في فهمك، ثم تسارع. استأنف من حيث توقفت في أي وقت.",
+		landingBenefit3Title: "مهارات حقيقية",
+		landingBenefit3Text: "تعلم CSS و HTML و Tailwind بالطريقة التي يستخدمها المحترفون—من خلال تمارين عملية وأدلة مرجعية.",
+		landingPathsTitle: "استكشف مسارات التعلم",
+		landingCssDesc: "التنسيق والتخطيط والرسوم المتحركة",
+		landingHtmlDesc: "الترميز الدلالي والعناصر الأصلية",
+		landingTailwindDesc: "إطار CSS قائم على الأدوات",
+		landingCtaTitle: "ابدأ التعلم اليوم",
+		landingCtaSub: "مجاني ومفتوح المصدر. لا حاجة لحساب. يُحفظ التقدم محليًا.",
+		landingCtaButton: "ابدأ رحلتك"
 	},
 
 	// Ukrainian
@@ -689,7 +796,28 @@ const translations = {
 		failedToLoad: "Не вдалося завантажити модулі. Оновіть сторінку.",
 		tailwindPlaceholder: "Введіть класи Tailwind (напр. bg-blue-500 text-white p-4)",
 		lessonFallback: "Урок {index}",
-		untitledLesson: "Урок без назви"
+		untitledLesson: "Урок без назви",
+
+		// Landing page
+		landingHeroTitle: "Вивчай веб-розробку",
+		landingHeroHighlight: "Пишучи справжній код",
+		landingHeroSubtitle: "Опануй HTML, CSS та Tailwind через практичні вправи з миттєвим зворотним зв'язком. Безкоштовно та з відкритим кодом.",
+		landingCtaStart: "Почни ЗАРАЗ",
+		landingWhyTitle: "Чому Code Crispies працює",
+		landingBenefit1Title: "Вчись на практиці",
+		landingBenefit1Text:
+			"Пиши справжній код з першого уроку. Жодних відео—тільки ти, редактор і миттєвий зворотний зв'язок при кожному натисканні клавіші.",
+		landingBenefit2Title: "У своєму темпі",
+		landingBenefit2Text: "Почни з основ, заповни прогалини у розумінні, потім прискорюйся. Продовжуй з того місця, де зупинився, будь-коли.",
+		landingBenefit3Title: "Реальні навички",
+		landingBenefit3Text: "Вивчай CSS, HTML та Tailwind так, як їх використовують професіонали—через практичні вправи та довідники.",
+		landingPathsTitle: "Досліджуй шляхи навчання",
+		landingCssDesc: "Стилізація, макети та анімації",
+		landingHtmlDesc: "Семантична розмітка та нативні елементи",
+		landingTailwindDesc: "CSS-фреймворк на основі утиліт",
+		landingCtaTitle: "Почни вчитися сьогодні",
+		landingCtaSub: "Безкоштовно та з відкритим кодом. Без реєстрації. Прогрес зберігається локально.",
+		landingCtaButton: "Розпочни свою подорож"
 	}
 };
 
