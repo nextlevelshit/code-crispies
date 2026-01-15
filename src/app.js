@@ -1937,6 +1937,13 @@ function handleRoute(shouldUpdateUrl = true) {
 		case RouteType.LESSON:
 			navigateToLesson(route.moduleId, route.lessonIndex, shouldUpdateUrl);
 			break;
+		case RouteType.LANGUAGE:
+			// Switch language and redirect to home
+			setLanguage(route.lang);
+			applyTranslations();
+			history.replaceState(null, "", window.location.pathname);
+			showLandingPage();
+			return; // Skip updateNavHighlight/updatePageMeta since we're redirecting
 		default:
 			showLandingPage();
 	}

@@ -4,6 +4,7 @@
  *
  * Route formats:
  * - #              -> Home landing page
+ * - #de, #pl, #ar  -> Switch language and go to home
  * - #css           -> CSS section landing
  * - #html          -> HTML section landing
  * - #tailwind      -> Tailwind section landing
@@ -18,13 +19,19 @@ export const RouteType = {
 	HOME: "home",
 	SECTION: "section",
 	REFERENCE: "reference",
-	LESSON: "lesson"
+	LESSON: "lesson",
+	LANGUAGE: "language"
 };
 
 /**
  * Valid section IDs
  */
 const SECTIONS = ["css", "html", "tailwind"];
+
+/**
+ * Valid language codes for URL-based switching
+ */
+const LANGUAGES = ["en", "de", "pl", "es", "ar", "uk"];
 
 /**
  * Parse current URL hash into route info
@@ -43,6 +50,11 @@ export function parseHash() {
 	// Single segment routes
 	if (parts.length === 1) {
 		const segment = parts[0];
+
+		// Language switching (e.g., #de, #pl, #ar)
+		if (LANGUAGES.includes(segment)) {
+			return { type: RouteType.LANGUAGE, lang: segment };
+		}
 
 		// Section landing pages
 		if (SECTIONS.includes(segment)) {
