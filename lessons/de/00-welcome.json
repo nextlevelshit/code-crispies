@@ -1,17 +1,17 @@
 {
 	"$schema": "../../schemas/code-crispies-module-schema.json",
 	"id": "welcome",
-	"title": "Code Crispies",
-	"description": "Willkommen bei Code Crispies - deine interaktive Lernplattform für Webentwicklung",
+	"title": "Willkommen",
+	"description": "Erste Schritte mit Code Crispies",
 	"mode": "html",
 	"difficulty": "beginner",
 	"excludeFromProgress": true,
 	"lessons": [
 		{
-			"id": "get-started",
-			"title": "Los geht's",
-			"description": "<strong>Code Crispies</strong> ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich!<br><br><strong>Was du lernst:</strong><br>• <strong>HTML</strong> - Semantische Elemente, Formulare, Tabellen, SVG (<em>HTML Block & Inline</em>, <em>HTML Formulare</em>, <em>HTML Tabellen</em>)<br>• <strong>CSS</strong> - Selektoren, Box-Model, Flexbox, Animationen (<em>CSS Selektoren</em>, <em>CSS Box-Model</em>, <em>CSS Flexbox</em>)<br>• <strong>Responsive Design</strong> - Media Queries und Mobile-First Layouts<br><br><strong>So funktioniert's:</strong><br>1. Lies die Aufgabe im linken Bereich<br>2. Schreibe Code im Editor<br>3. Sieh Live-Ergebnisse in der Vorschau<br>4. Bekomme sofortiges Feedback mit Hinweisen<br><br><strong>Tastenkürzel:</strong> <kbd>Strg+Z</kbd> rückgängig, <kbd>Strg+Umschalt+Z</kbd> wiederholen<br><br><strong>Weitere Ressourcen:</strong><br>• <a href=\"https://nextlevelshit.github.io/html-over-js/\" target=\"_blank\">HTML over JS</a> - Native HTML vs JavaScript-Lösungen<br>• <a href=\"https://nextlevelshit.github.io/web-engineering-mandala/\" target=\"_blank\">Web Engineering Mandala</a> - JavaScript Technologie-Roadmap",
-			"task": "Schreibe <code>Hello World</code>",
+			"id": "hello",
+			"title": "Hallo!",
+			"description": "<strong>Willkommen bei Code Crispies!</strong> Lerne CSS und HTML durch praktische Übungen.<br><br><strong>So funktioniert's:</strong><br>1. Lies die Aufgabe links<br>2. Schreibe Code im Editor<br>3. Sieh Live-Ergebnisse in der Vorschau<br><br><strong>Tipps:</strong> Nutze <kbd>Strg+Z</kbd> zum Rückgängigmachen. Öffne das Menü (☰) um alle Module zu erkunden.",
+			"task": "Schreibe <code>Hello World</code> zum Starten",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; font-size: 2rem; color: #6366f1; font-weight: bold; }",
 			"sandboxCSS": "",
@@ -25,39 +25,6 @@
 					"message": "Schreibe <code>Hello World</code>"
 				}
 			]
-		},
-		{
-			"id": "overview",
-			"title": "Übersicht",
-			"description": "<strong>Du bist bereit!</strong> Öffne das Menü (☰) um alle Module zu erkunden.<br><br><strong>Empfohlener Lernpfad:</strong><br>1. <em>HTML Block & Inline</em> - Container vs Inline-Elemente verstehen<br>2. <em>HTML Formulare</em> - Interaktive Formulare mit Validierung erstellen<br>3. <em>CSS Selektoren</em> - Elemente präzise ansprechen<br>4. <em>CSS Box-Model</em> - Padding, Margin, Borders meistern<br>5. <em>CSS Flexbox</em> - Flexible Layouts erstellen<br>6. <em>CSS Animationen</em> - Bewegung und Übergänge hinzufügen<br><br><strong>Tipps:</strong><br>• Nutze <em>Lösung einblenden</em> um das Zielergebnis zu sehen<br>• Dein Fortschritt wird automatisch gespeichert<br>• Probiere Emmet im HTML-Modus: <kbd>ul>li*3</kbd> + Tab<br><br><strong>Open Source:</strong><br>• <a href=\"https://git.librete.ch/public/code-crispies\" target=\"_blank\">Gitea (Source)</a> · <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">GitHub (Mirror)</a><br>• Entwickelt von <a href=\"https://librete.ch\" target=\"_blank\">LibreTECH</a> · <a href=\"https://www.linkedin.com/in/michael-werner-czechowski\" target=\"_blank\">Michael Czechowski</a>",
-			"task": "Klicke auf Weiter",
-			"previewHTML": "<p>Hello World! 🌍</p><p>Hallo Welt!</p><p>Bonjour le monde!</p><p>¡Hola Mundo!</p><p>Ciao Mondo!</p><p>Olá Mundo!</p><p>こんにちは世界!</p><p>你好世界!</p><p>안녕 세상!</p><p>Привет мир!</p><p dir=\"rtl\">שלום עולם!</p><p dir=\"rtl\">مرحبا بالعالم!</p>",
-			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 12px; } p { margin: 6px 0; padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 0.95em; } p:nth-child(1) { background: #fef3c7; color: #92400e; font-size: 1.2em; } p:nth-child(2) { background: #dcfce7; color: #166534; } p:nth-child(3) { background: #dbeafe; color: #1e40af; } p:nth-child(4) { background: #fce7f3; color: #9d174d; } p:nth-child(5) { background: #e0e7ff; color: #4338ca; } p:nth-child(6) { background: #fef9c3; color: #854d0e; } p:nth-child(7) { background: #fee2e2; color: #991b1b; } p:nth-child(8) { background: #f3e8ff; color: #7c3aed; } p:nth-child(9) { background: #ccfbf1; color: #0f766e; } p:nth-child(10) { background: #fae8ff; color: #86198f; } p:nth-child(11) { background: #fef3c7; color: #b45309; } p:nth-child(12) { background: #d1fae5; color: #047857; }",
-			"sandboxCSS": "",
-			"initialCode": "<p>Hello World! 🌍</p>\n<p>Hallo Welt!</p>\n<p>Bonjour le monde!</p>\n<p>¡Hola Mundo!</p>\n<p>Ciao Mondo!</p>\n<p>Olá Mundo!</p>\n<p>こんにちは世界!</p>\n<p>你好世界!</p>\n<p>안녕 세상!</p>\n<p>Привет мир!</p>\n<p dir=\"rtl\">שלום עולם!</p>\n<p dir=\"rtl\">مرحبا بالعالم!</p>",
-			"solution": "<p>Hello World! 🌍</p>\n<p>Hallo Welt!</p>\n<p>Bonjour le monde!</p>\n<p>¡Hola Mundo!</p>\n<p>Ciao Mondo!</p>\n<p>Olá Mundo!</p>\n<p>こんにちは世界!</p>\n<p>你好世界!</p>\n<p>안녕 세상!</p>\n<p>Привет мир!</p>\n<p dir=\"rtl\">שלום עולם!</p>\n<p dir=\"rtl\">مرحبا بالعالم!</p>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "contains",
-					"value": "Hello",
-					"message": "Klicke auf Weiter"
-				}
-			]
-		},
-		{
-			"id": "playground",
-			"title": "Playground",
-			"mode": "playground",
-			"description": "",
-			"task": "",
-			"previewHTML": "",
-			"previewBaseCSS": "",
-			"sandboxCSS": "",
-			"initialCode": "<style>\n  body {\n    font-family: system-ui, sans-serif;\n    padding: 20px;\n  }\n</style>\n\n<h1>Hello World</h1>\n<p>Start coding!</p>",
-			"solution": "",
-			"previewContainer": "preview-area",
-			"validations": []
 		}
 	]
 }

@@ -1,0 +1,25 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "playground",
+	"title": "Playground",
+	"description": "Experiment freely with HTML and CSS",
+	"mode": "playground",
+	"difficulty": "beginner",
+	"excludeFromProgress": true,
+	"lessons": [
+		{
+			"id": "sandbox",
+			"title": "Free Coding",
+			"mode": "playground",
+			"description": "",
+			"task": "",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "<style>\n  body {\n    font-family: system-ui, sans-serif;\n    padding: 20px;\n  }\n  \n  h1 {\n    color: steelblue;\n  }\n</style>\n\n<h1>Hello World</h1>\n<p>Write any HTML and CSS here!</p>",
+			"solution": "",
+			"previewContainer": "preview-area",
+			"validations": []
+		}
+	]
+}

@@ -21,6 +21,7 @@ import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
 import flexboxEN from "../../lessons/flexbox.json";
 import gridEN from "../../lessons/grid.json";
+import playgroundEN from "../../lessons/98-playground.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
 // German lesson imports
@@ -123,8 +124,9 @@ const moduleStoreEN = [
 	htmlFormsBasicEN,
 	htmlFormsValidationEN,
 	htmlTablesEN,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // German module store - ordered for design students
@@ -152,8 +154,9 @@ const moduleStoreDE = [
 	htmlFormsBasicDE,
 	htmlFormsValidationDE,
 	htmlTablesDE,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // Polish module store - ordered for design students
@@ -181,8 +184,9 @@ const moduleStorePL = [
 	htmlFormsBasicPL,
 	htmlFormsValidationPL,
 	htmlTablesPL,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // Spanish module store - ordered for design students
@@ -210,8 +214,9 @@ const moduleStoreES = [
 	htmlFormsBasicES,
 	htmlFormsValidationES,
 	htmlTablesES,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // Arabic module store - ordered for design students
@@ -239,8 +244,9 @@ const moduleStoreAR = [
 	htmlFormsBasicAR,
 	htmlFormsValidationAR,
 	htmlTablesAR,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // Ukrainian module store - ordered for design students
@@ -268,8 +274,9 @@ const moduleStoreUK = [
 	htmlFormsBasicUK,
 	htmlFormsValidationUK,
 	htmlTablesUK,
-	// Goodbye
-	goodbyeEN
+	// Outro
+	goodbyeEN,
+	playgroundEN
 ];
 
 // Map of language codes to module stores
