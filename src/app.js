@@ -961,6 +961,7 @@ const sectionContent = {
 				<p>CSS uses selectors to target HTML elements and apply styles. The most common selector is the class selector (<code>.classname</code>), which targets elements with a specific class attribute. You can also use element selectors (<code>p</code>, <code>div</code>), ID selectors (<code>#id</code>), and combinators to select nested elements.</p>
 				<p>Properties define what aspect of the element to style. Common properties include <code>color</code> for text color, <code>background</code> for backgrounds, <code>padding</code> for internal spacing, and <code>margin</code> for external spacing. Each property accepts specific value types like colors, lengths, or keywords.</p>
 				<a href="#css-basic-selectors/0" class="topic-link">Practice CSS Selectors</a>
+				<a href="#reference/selectors" class="topic-ref">Selectors Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1005,6 +1006,7 @@ const sectionContent = {
 				<p>Flexbox is a one-dimensional layout system for arranging items in rows or columns. Apply <code>display: flex</code> to a container to enable it. Child elements become flex items that can grow, shrink, and align automatically.</p>
 				<p>Control alignment with <code>justify-content</code> (main axis: <code>flex-start</code>, <code>center</code>, <code>space-between</code>) and <code>align-items</code> (cross axis: <code>stretch</code>, <code>center</code>, <code>flex-end</code>). The <code>gap</code> property adds consistent spacing between items without margins.</p>
 				<a href="#flexbox/0" class="topic-link">Master CSS Flexbox Layout</a>
+				<a href="#reference/flexbox" class="topic-ref">Flexbox Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1029,6 +1031,7 @@ const sectionContent = {
 				<p>CSS Grid is a two-dimensional layout system for creating complex row and column layouts. Enable it with <code>display: grid</code>, then define columns using <code>grid-template-columns</code>. The <code>repeat()</code> function creates multiple tracks, and <code>fr</code> units distribute available space proportionally.</p>
 				<p>Grid excels at page layouts and card grids. Use <code>grid-template-columns: repeat(3, 1fr)</code> for three equal columns, or <code>repeat(auto-fill, minmax(250px, 1fr))</code> for responsive columns that wrap automatically.</p>
 				<a href="#grid/0" class="topic-link">Explore CSS Grid Layout</a>
+				<a href="#reference/grid" class="topic-ref">Grid Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1084,6 +1087,7 @@ const sectionContent = {
 				<p>HTML5 introduced semantic elements that convey meaning about content structure. Use <code>&lt;header&gt;</code> for introductory content, <code>&lt;nav&gt;</code> for navigation links, <code>&lt;main&gt;</code> for primary content, <code>&lt;article&gt;</code> for self-contained compositions, <code>&lt;section&gt;</code> for thematic groupings, and <code>&lt;footer&gt;</code> for closing content.</p>
 				<p>Semantic markup improves accessibility—screen readers announce element roles. It also helps SEO as search engines better understand your content hierarchy. Replace generic <code>&lt;div&gt;</code> containers with appropriate semantic elements whenever possible.</p>
 				<a href="#html-elements/0" class="topic-link">Learn HTML Semantic Elements</a>
+				<a href="#reference/html" class="topic-ref">HTML Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1186,6 +1190,7 @@ const sectionContent = {
 		<div class="section-overview">
 			<p><strong>Tailwind CSS</strong> is a utility-first CSS framework that takes a radically different approach to styling. Instead of writing custom CSS classes like <code>.card</code> or <code>.button</code>, you compose designs using small, single-purpose utility classes directly in your HTML: <code>class="p-4 bg-white rounded shadow"</code>.</p>
 			<p>This approach solves common CSS problems: no more specificity battles, no unused styles, no inventing class names. Tailwind's consistent spacing scale (<code>p-1</code> through <code>p-12</code>), color palette (<code>blue-500</code>, <code>gray-100</code>), and responsive prefixes (<code>md:</code>, <code>lg:</code>) make building consistent, responsive interfaces fast and predictable.</p>
+			<p class="section-see-also">For the underlying CSS concepts, see the <a href="#css">CSS Section</a> and <a href="#reference/css">CSS Reference</a>.</p>
 		</div>
 
 		<div class="topic-row">
@@ -1370,6 +1375,8 @@ const referenceContent = {
 				</tbody>
 			</table>
 		</section>
+
+		<p class="ref-see-also">See also: <a href="#reference/flexbox">Flexbox Reference</a> | <a href="#reference/grid">Grid Reference</a> | <a href="#reference/selectors">Selectors Reference</a></p>
 	`,
 
 	selectors: `
@@ -1448,6 +1455,8 @@ const referenceContent = {
 				<li><strong>Universal selector</strong> - <code>*</code> (0 points)</li>
 			</ol>
 		</section>
+
+		<p class="ref-see-also">Practice: <a href="#css-basic-selectors/0">Basic Selectors Lessons</a> | <a href="#css-advanced-selectors/0">Advanced Selectors</a></p>
 	`,
 
 	flexbox: `
@@ -1520,6 +1529,8 @@ const referenceContent = {
 .main { flex: 1; }</code></pre>
 			</div>
 		</section>
+
+		<p class="ref-see-also">Practice: <a href="#flexbox/0">Flexbox Lessons</a> | Compare: <a href="#reference/grid">CSS Grid</a></p>
 	`,
 
 	grid: `
@@ -1607,6 +1618,8 @@ const referenceContent = {
 }</code></pre>
 			</div>
 		</section>
+
+		<p class="ref-see-also">Practice: <a href="#grid/0">Grid Lessons</a> | Compare: <a href="#reference/flexbox">Flexbox</a></p>
 	`,
 
 	html: `
@@ -1723,6 +1736,8 @@ const referenceContent = {
 				</tbody>
 			</table>
 		</section>
+
+		<p class="ref-see-also">Learn: <a href="#html">HTML Section</a> | Style with: <a href="#reference/css">CSS Properties</a></p>
 	`
 };
 
