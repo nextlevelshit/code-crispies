@@ -14,6 +14,13 @@ import { oneDark } from "@codemirror/theme-one-dark";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 
+// Analytics tracking helper (Umami v2.13.2)
+function track(eventName, eventData = {}) {
+	if (typeof umami !== "undefined" && umami.track) {
+		umami.track(eventName, eventData);
+	}
+}
+
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
@@ -223,6 +230,8 @@ function toggleExpectedResult() {
 // ================= LANGUAGE TOGGLE =================
 
 function changeLanguage(newLang) {
+	track("language_change", { language: newLang });
+
 	// Add transition class before any updates
 	elements.editorSection?.classList.add("transitioning");
 
@@ -395,6 +404,8 @@ function initializeModules() {
 function selectModule(moduleId) {
 	const success = lessonEngine.setModuleById(moduleId);
 	if (!success) return;
+
+	track("module_start", { module: moduleId });
 
 	// Show lesson UI
 	showLessonUI();
@@ -734,6 +745,7 @@ function resetCode() {
 function loadRandomTemplate() {
 	const template = getRandomTemplate();
 	if (codeEditor && template) {
+		track("playground_template", { template: template.name });
 		codeEditor.setValue(template.code);
 		// Apply the code to the preview
 		lessonEngine.applyUserCode(template.code, true);
@@ -764,6 +776,12 @@ function runCode() {
 	const validationResult = lessonEngine.validateCode();
 
 	if (validationResult.isValid) {
+		// Track lesson completion
+		track("lesson_complete", {
+			module: engineState.module?.id,
+			lesson: engineState.lessonIndex
+		});
+
 		// Show success hint
 		showSuccessHint(validationResult.message || t("successMessage"));
 
@@ -846,6 +864,7 @@ function closeResetDialog() {
 }
 
 function handleResetConfirm() {
+	track("reset_progress");
 	lessonEngine.clearProgress();
 	closeResetDialog();
 	closeSidebar();
@@ -1360,6 +1379,9 @@ function updateLandingProgress() {
 function showSectionPage(sectionId) {
 	hideAllPages();
 	elements.sectionPage?.classList.remove("hidden");
+
+	// Track section page view
+	track("section_view", { section: sectionId });
 
 	const section = getSection(sectionId);
 	if (!section) {
