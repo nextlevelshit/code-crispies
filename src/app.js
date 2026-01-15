@@ -115,6 +115,11 @@ const elements = {
 	sectionProgressText: document.getElementById("section-progress-text"),
 	sectionIntro: document.getElementById("section-intro"),
 
+	// Reference page elements
+	referencePage: document.getElementById("reference-page"),
+	referenceNav: document.getElementById("reference-nav"),
+	referenceBody: document.getElementById("reference-body"),
+
 	// Left panel
 	instructionsSection: document.querySelector(".instructions"),
 	editorSection: document.querySelector(".editor-section"),
@@ -1282,6 +1287,445 @@ const sectionContent = {
 	`
 };
 
+// ================= REFERENCE CHEATSHEET CONTENT =================
+
+const referenceContent = {
+	css: `
+		<h1>CSS Properties Reference</h1>
+		<p class="ref-intro">Quick reference for commonly used CSS properties. Click any property to see syntax and examples.</p>
+
+		<section class="ref-section">
+			<h2>Colors & Backgrounds</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>color</code></td><td>named, hex, rgb(), hsl()</td><td><code>color: steelblue;</code></td></tr>
+					<tr><td><code>background</code></td><td>color, image, gradient</td><td><code>background: #f0f0f0;</code></td></tr>
+					<tr><td><code>background-color</code></td><td>color value</td><td><code>background-color: white;</code></td></tr>
+					<tr><td><code>background-image</code></td><td>url(), gradient</td><td><code>background-image: url(bg.png);</code></td></tr>
+					<tr><td><code>opacity</code></td><td>0 to 1</td><td><code>opacity: 0.8;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Typography</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>font-family</code></td><td>font name, generic</td><td><code>font-family: system-ui, sans-serif;</code></td></tr>
+					<tr><td><code>font-size</code></td><td>px, rem, em, %</td><td><code>font-size: 1rem;</code></td></tr>
+					<tr><td><code>font-weight</code></td><td>normal, bold, 100-900</td><td><code>font-weight: 600;</code></td></tr>
+					<tr><td><code>line-height</code></td><td>number, length, %</td><td><code>line-height: 1.5;</code></td></tr>
+					<tr><td><code>text-align</code></td><td>left, center, right, justify</td><td><code>text-align: center;</code></td></tr>
+					<tr><td><code>text-decoration</code></td><td>none, underline, line-through</td><td><code>text-decoration: none;</code></td></tr>
+					<tr><td><code>text-transform</code></td><td>none, uppercase, lowercase, capitalize</td><td><code>text-transform: uppercase;</code></td></tr>
+					<tr><td><code>letter-spacing</code></td><td>length</td><td><code>letter-spacing: 0.05em;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Box Model</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>width</code></td><td>length, %, auto, fit-content</td><td><code>width: 100%;</code></td></tr>
+					<tr><td><code>height</code></td><td>length, %, auto</td><td><code>height: 200px;</code></td></tr>
+					<tr><td><code>max-width</code></td><td>length, %, none</td><td><code>max-width: 600px;</code></td></tr>
+					<tr><td><code>padding</code></td><td>length (1-4 values)</td><td><code>padding: 1rem 2rem;</code></td></tr>
+					<tr><td><code>margin</code></td><td>length, auto (1-4 values)</td><td><code>margin: 0 auto;</code></td></tr>
+					<tr><td><code>border</code></td><td>width style color</td><td><code>border: 1px solid gray;</code></td></tr>
+					<tr><td><code>border-radius</code></td><td>length (1-4 values)</td><td><code>border-radius: 8px;</code></td></tr>
+					<tr><td><code>box-sizing</code></td><td>content-box, border-box</td><td><code>box-sizing: border-box;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Layout</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>display</code></td><td>block, inline, flex, grid, none</td><td><code>display: flex;</code></td></tr>
+					<tr><td><code>position</code></td><td>static, relative, absolute, fixed, sticky</td><td><code>position: relative;</code></td></tr>
+					<tr><td><code>top/right/bottom/left</code></td><td>length, %, auto</td><td><code>top: 0; left: 50%;</code></td></tr>
+					<tr><td><code>z-index</code></td><td>integer, auto</td><td><code>z-index: 10;</code></td></tr>
+					<tr><td><code>overflow</code></td><td>visible, hidden, scroll, auto</td><td><code>overflow: auto;</code></td></tr>
+					<tr><td><code>float</code></td><td>none, left, right</td><td><code>float: left;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Visual Effects</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>box-shadow</code></td><td>x y blur spread color</td><td><code>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</code></td></tr>
+					<tr><td><code>text-shadow</code></td><td>x y blur color</td><td><code>text-shadow: 1px 1px 2px gray;</code></td></tr>
+					<tr><td><code>transform</code></td><td>translate, rotate, scale</td><td><code>transform: translateY(-2px);</code></td></tr>
+					<tr><td><code>transition</code></td><td>property duration easing</td><td><code>transition: all 0.3s ease;</code></td></tr>
+					<tr><td><code>cursor</code></td><td>pointer, default, text, grab</td><td><code>cursor: pointer;</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+	`,
+
+	selectors: `
+		<h1>CSS Selectors Reference</h1>
+		<p class="ref-intro">Selectors determine which HTML elements your styles apply to. More specific selectors override less specific ones.</p>
+
+		<section class="ref-section">
+			<h2>Basic Selectors</h2>
+			<table class="ref-table">
+				<thead><tr><th>Selector</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>element</code></td><td>All elements of type</td><td><code>p { ... }</code></td></tr>
+					<tr><td><code>.class</code></td><td>Elements with class</td><td><code>.btn { ... }</code></td></tr>
+					<tr><td><code>#id</code></td><td>Element with ID</td><td><code>#header { ... }</code></td></tr>
+					<tr><td><code>*</code></td><td>All elements</td><td><code>* { box-sizing: border-box; }</code></td></tr>
+					<tr><td><code>[attr]</code></td><td>Elements with attribute</td><td><code>[disabled] { ... }</code></td></tr>
+					<tr><td><code>[attr="value"]</code></td><td>Attribute equals value</td><td><code>[type="text"] { ... }</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Combinators</h2>
+			<table class="ref-table">
+				<thead><tr><th>Selector</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>A B</code></td><td>B inside A (descendant)</td><td><code>nav a { ... }</code></td></tr>
+					<tr><td><code>A > B</code></td><td>B direct child of A</td><td><code>ul > li { ... }</code></td></tr>
+					<tr><td><code>A + B</code></td><td>B immediately after A</td><td><code>h2 + p { ... }</code></td></tr>
+					<tr><td><code>A ~ B</code></td><td>B after A (sibling)</td><td><code>h2 ~ p { ... }</code></td></tr>
+					<tr><td><code>A, B</code></td><td>A or B (grouping)</td><td><code>h1, h2, h3 { ... }</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Pseudo-classes</h2>
+			<table class="ref-table">
+				<thead><tr><th>Selector</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>:hover</code></td><td>Mouse over element</td><td><code>a:hover { color: blue; }</code></td></tr>
+					<tr><td><code>:focus</code></td><td>Element has focus</td><td><code>input:focus { outline: 2px solid; }</code></td></tr>
+					<tr><td><code>:active</code></td><td>Being clicked</td><td><code>button:active { transform: scale(0.98); }</code></td></tr>
+					<tr><td><code>:first-child</code></td><td>First child element</td><td><code>li:first-child { ... }</code></td></tr>
+					<tr><td><code>:last-child</code></td><td>Last child element</td><td><code>li:last-child { ... }</code></td></tr>
+					<tr><td><code>:nth-child(n)</code></td><td>nth child (1-based)</td><td><code>tr:nth-child(odd) { ... }</code></td></tr>
+					<tr><td><code>:not(sel)</code></td><td>Elements not matching</td><td><code>:not(.hidden) { ... }</code></td></tr>
+					<tr><td><code>:checked</code></td><td>Checked inputs</td><td><code>input:checked { ... }</code></td></tr>
+					<tr><td><code>:disabled</code></td><td>Disabled form elements</td><td><code>button:disabled { opacity: 0.5; }</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Pseudo-elements</h2>
+			<table class="ref-table">
+				<thead><tr><th>Selector</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>::before</code></td><td>Insert before content</td><td><code>.icon::before { content: "→"; }</code></td></tr>
+					<tr><td><code>::after</code></td><td>Insert after content</td><td><code>.link::after { content: "↗"; }</code></td></tr>
+					<tr><td><code>::first-letter</code></td><td>First letter of text</td><td><code>p::first-letter { font-size: 2em; }</code></td></tr>
+					<tr><td><code>::first-line</code></td><td>First line of text</td><td><code>p::first-line { font-weight: bold; }</code></td></tr>
+					<tr><td><code>::placeholder</code></td><td>Input placeholder text</td><td><code>input::placeholder { color: gray; }</code></td></tr>
+					<tr><td><code>::selection</code></td><td>Selected/highlighted text</td><td><code>::selection { background: yellow; }</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Specificity (Highest to Lowest)</h2>
+			<ol class="ref-list">
+				<li><strong>Inline styles</strong> - <code>style="..."</code> attribute (1000 points)</li>
+				<li><strong>ID selectors</strong> - <code>#id</code> (100 points)</li>
+				<li><strong>Class/pseudo-class/attribute</strong> - <code>.class</code>, <code>:hover</code>, <code>[attr]</code> (10 points)</li>
+				<li><strong>Element/pseudo-element</strong> - <code>div</code>, <code>::before</code> (1 point)</li>
+				<li><strong>Universal selector</strong> - <code>*</code> (0 points)</li>
+			</ol>
+		</section>
+	`,
+
+	flexbox: `
+		<h1>Flexbox Reference</h1>
+		<p class="ref-intro">Flexbox is a one-dimensional layout system. Apply <code>display: flex</code> to a container, and its children become flex items.</p>
+
+		<section class="ref-section">
+			<h2>Container Properties</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Description</th></tr></thead>
+				<tbody>
+					<tr><td><code>display</code></td><td>flex, inline-flex</td><td>Enable flex container</td></tr>
+					<tr><td><code>flex-direction</code></td><td>row, row-reverse, column, column-reverse</td><td>Main axis direction</td></tr>
+					<tr><td><code>flex-wrap</code></td><td>nowrap, wrap, wrap-reverse</td><td>Allow items to wrap</td></tr>
+					<tr><td><code>justify-content</code></td><td>flex-start, flex-end, center, space-between, space-around, space-evenly</td><td>Main axis alignment</td></tr>
+					<tr><td><code>align-items</code></td><td>stretch, flex-start, flex-end, center, baseline</td><td>Cross axis alignment</td></tr>
+					<tr><td><code>align-content</code></td><td>stretch, flex-start, flex-end, center, space-between, space-around</td><td>Multi-line alignment</td></tr>
+					<tr><td><code>gap</code></td><td>length</td><td>Space between items</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Item Properties</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Description</th></tr></thead>
+				<tbody>
+					<tr><td><code>flex-grow</code></td><td>number (default: 0)</td><td>How much item grows</td></tr>
+					<tr><td><code>flex-shrink</code></td><td>number (default: 1)</td><td>How much item shrinks</td></tr>
+					<tr><td><code>flex-basis</code></td><td>length, auto</td><td>Initial size before grow/shrink</td></tr>
+					<tr><td><code>flex</code></td><td>grow shrink basis</td><td>Shorthand (e.g., <code>flex: 1</code>)</td></tr>
+					<tr><td><code>align-self</code></td><td>auto, flex-start, flex-end, center, stretch</td><td>Override align-items</td></tr>
+					<tr><td><code>order</code></td><td>integer (default: 0)</td><td>Visual order of item</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Common Patterns</h2>
+			<div class="code-block">
+				<pre><code>/* Center horizontally and vertically */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Space items evenly */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Equal-width columns */
+.columns {
+  display: flex;
+  gap: 1rem;
+}
+.columns > * {
+  flex: 1;
+}
+
+/* Sticky footer */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main { flex: 1; }</code></pre>
+			</div>
+		</section>
+	`,
+
+	grid: `
+		<h1>CSS Grid Reference</h1>
+		<p class="ref-intro">CSS Grid is a two-dimensional layout system for complex row and column layouts. Apply <code>display: grid</code> to a container.</p>
+
+		<section class="ref-section">
+			<h2>Container Properties</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Description</th></tr></thead>
+				<tbody>
+					<tr><td><code>display</code></td><td>grid, inline-grid</td><td>Enable grid container</td></tr>
+					<tr><td><code>grid-template-columns</code></td><td>track sizes</td><td>Define column widths</td></tr>
+					<tr><td><code>grid-template-rows</code></td><td>track sizes</td><td>Define row heights</td></tr>
+					<tr><td><code>gap</code></td><td>length</td><td>Space between cells</td></tr>
+					<tr><td><code>justify-items</code></td><td>start, end, center, stretch</td><td>Horizontal alignment in cells</td></tr>
+					<tr><td><code>align-items</code></td><td>start, end, center, stretch</td><td>Vertical alignment in cells</td></tr>
+					<tr><td><code>justify-content</code></td><td>start, end, center, space-between, space-around</td><td>Horizontal grid alignment</td></tr>
+					<tr><td><code>align-content</code></td><td>start, end, center, space-between, space-around</td><td>Vertical grid alignment</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Track Sizing</h2>
+			<table class="ref-table">
+				<thead><tr><th>Value</th><th>Description</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>px, rem, %</code></td><td>Fixed or relative sizes</td><td><code>200px 1rem 50%</code></td></tr>
+					<tr><td><code>fr</code></td><td>Fraction of available space</td><td><code>1fr 2fr 1fr</code></td></tr>
+					<tr><td><code>auto</code></td><td>Size to content</td><td><code>auto 1fr auto</code></td></tr>
+					<tr><td><code>minmax(min, max)</code></td><td>Size range</td><td><code>minmax(100px, 1fr)</code></td></tr>
+					<tr><td><code>repeat(n, size)</code></td><td>Repeat n times</td><td><code>repeat(3, 1fr)</code></td></tr>
+					<tr><td><code>repeat(auto-fill, ...)</code></td><td>Fill available space</td><td><code>repeat(auto-fill, minmax(200px, 1fr))</code></td></tr>
+					<tr><td><code>repeat(auto-fit, ...)</code></td><td>Fill and stretch</td><td><code>repeat(auto-fit, minmax(200px, 1fr))</code></td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Item Properties</h2>
+			<table class="ref-table">
+				<thead><tr><th>Property</th><th>Values</th><th>Description</th></tr></thead>
+				<tbody>
+					<tr><td><code>grid-column</code></td><td>start / end</td><td>Column span</td></tr>
+					<tr><td><code>grid-row</code></td><td>start / end</td><td>Row span</td></tr>
+					<tr><td><code>grid-area</code></td><td>row-start / col-start / row-end / col-end</td><td>Shorthand for both</td></tr>
+					<tr><td><code>justify-self</code></td><td>start, end, center, stretch</td><td>Horizontal alignment</td></tr>
+					<tr><td><code>align-self</code></td><td>start, end, center, stretch</td><td>Vertical alignment</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Common Patterns</h2>
+			<div class="code-block">
+				<pre><code>/* 3 equal columns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Responsive auto-fill */
+.responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* Holy grail layout */
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Span multiple cells */
+.wide {
+  grid-column: 1 / -1; /* Full width */
+}
+.tall {
+  grid-row: span 2; /* 2 rows */
+}</code></pre>
+			</div>
+		</section>
+	`,
+
+	html: `
+		<h1>HTML Elements Reference</h1>
+		<p class="ref-intro">Semantic HTML elements that describe their meaning to browsers and assistive technologies.</p>
+
+		<section class="ref-section">
+			<h2>Document Structure</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;html&gt;</code></td><td>Root element</td><td><code>&lt;html lang="en"&gt;</code></td></tr>
+					<tr><td><code>&lt;head&gt;</code></td><td>Document metadata</td><td>Contains title, meta, links</td></tr>
+					<tr><td><code>&lt;body&gt;</code></td><td>Document content</td><td>All visible content</td></tr>
+					<tr><td><code>&lt;header&gt;</code></td><td>Introductory content</td><td>Logo, nav, title</td></tr>
+					<tr><td><code>&lt;nav&gt;</code></td><td>Navigation links</td><td>Main site navigation</td></tr>
+					<tr><td><code>&lt;main&gt;</code></td><td>Main content (one per page)</td><td>Primary page content</td></tr>
+					<tr><td><code>&lt;footer&gt;</code></td><td>Footer content</td><td>Copyright, links</td></tr>
+					<tr><td><code>&lt;aside&gt;</code></td><td>Sidebar/tangential content</td><td>Related links, ads</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Content Sectioning</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;article&gt;</code></td><td>Self-contained content</td><td>Blog post, comment</td></tr>
+					<tr><td><code>&lt;section&gt;</code></td><td>Thematic grouping</td><td>Chapter, tab panel</td></tr>
+					<tr><td><code>&lt;h1&gt;-&lt;h6&gt;</code></td><td>Headings (hierarchy)</td><td>One h1 per page, nest others</td></tr>
+					<tr><td><code>&lt;p&gt;</code></td><td>Paragraph</td><td>Block of text</td></tr>
+					<tr><td><code>&lt;div&gt;</code></td><td>Generic container</td><td>When no semantic element fits</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Text Content</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;a&gt;</code></td><td>Hyperlink</td><td><code>&lt;a href="url"&gt;Link&lt;/a&gt;</code></td></tr>
+					<tr><td><code>&lt;strong&gt;</code></td><td>Important text (bold)</td><td><code>&lt;strong&gt;Warning&lt;/strong&gt;</code></td></tr>
+					<tr><td><code>&lt;em&gt;</code></td><td>Emphasized text (italic)</td><td><code>&lt;em&gt;really&lt;/em&gt;</code></td></tr>
+					<tr><td><code>&lt;code&gt;</code></td><td>Inline code</td><td><code>&lt;code&gt;const x&lt;/code&gt;</code></td></tr>
+					<tr><td><code>&lt;pre&gt;</code></td><td>Preformatted text</td><td>Code blocks</td></tr>
+					<tr><td><code>&lt;span&gt;</code></td><td>Generic inline container</td><td>Styling inline text</td></tr>
+					<tr><td><code>&lt;br&gt;</code></td><td>Line break</td><td>Address, poem lines</td></tr>
+					<tr><td><code>&lt;hr&gt;</code></td><td>Thematic break</td><td>Scene change, topic shift</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Lists</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;ul&gt;</code></td><td>Unordered list</td><td>Bulleted items</td></tr>
+					<tr><td><code>&lt;ol&gt;</code></td><td>Ordered list</td><td>Numbered steps</td></tr>
+					<tr><td><code>&lt;li&gt;</code></td><td>List item</td><td>Inside ul or ol</td></tr>
+					<tr><td><code>&lt;dl&gt;</code></td><td>Description list</td><td>Term/definition pairs</td></tr>
+					<tr><td><code>&lt;dt&gt;</code></td><td>Description term</td><td>The term being defined</td></tr>
+					<tr><td><code>&lt;dd&gt;</code></td><td>Description details</td><td>Definition of the term</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Forms</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Key Attributes</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;form&gt;</code></td><td>Form container</td><td>action, method</td></tr>
+					<tr><td><code>&lt;input&gt;</code></td><td>Input field</td><td>type, name, required, placeholder</td></tr>
+					<tr><td><code>&lt;textarea&gt;</code></td><td>Multi-line text</td><td>rows, cols, name</td></tr>
+					<tr><td><code>&lt;select&gt;</code></td><td>Dropdown menu</td><td>name, multiple</td></tr>
+					<tr><td><code>&lt;option&gt;</code></td><td>Select option</td><td>value, selected</td></tr>
+					<tr><td><code>&lt;button&gt;</code></td><td>Clickable button</td><td>type (submit/button/reset)</td></tr>
+					<tr><td><code>&lt;label&gt;</code></td><td>Input label</td><td>for (matches input id)</td></tr>
+					<tr><td><code>&lt;fieldset&gt;</code></td><td>Group form controls</td><td>With legend for title</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Media</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Key Attributes</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;img&gt;</code></td><td>Image</td><td>src, alt (required), width, height</td></tr>
+					<tr><td><code>&lt;figure&gt;</code></td><td>Self-contained media</td><td>Contains img + figcaption</td></tr>
+					<tr><td><code>&lt;figcaption&gt;</code></td><td>Figure caption</td><td>Description of figure</td></tr>
+					<tr><td><code>&lt;video&gt;</code></td><td>Video player</td><td>src, controls, autoplay</td></tr>
+					<tr><td><code>&lt;audio&gt;</code></td><td>Audio player</td><td>src, controls</td></tr>
+					<tr><td><code>&lt;picture&gt;</code></td><td>Responsive images</td><td>Contains source + img</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Tables</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;table&gt;</code></td><td>Table container</td><td>For tabular data only</td></tr>
+					<tr><td><code>&lt;thead&gt;</code></td><td>Table header group</td><td>Contains header rows</td></tr>
+					<tr><td><code>&lt;tbody&gt;</code></td><td>Table body group</td><td>Contains data rows</td></tr>
+					<tr><td><code>&lt;tfoot&gt;</code></td><td>Table footer group</td><td>Summary row</td></tr>
+					<tr><td><code>&lt;tr&gt;</code></td><td>Table row</td><td>Contains cells</td></tr>
+					<tr><td><code>&lt;th&gt;</code></td><td>Header cell</td><td>scope="col" or "row"</td></tr>
+					<tr><td><code>&lt;td&gt;</code></td><td>Data cell</td><td>colspan, rowspan for spanning</td></tr>
+				</tbody>
+			</table>
+		</section>
+	`
+};
+
 // ================= URL ROUTING & PAGE SWITCHING =================
 
 function initRouter() {
@@ -1314,8 +1758,7 @@ function handleRoute(shouldUpdateUrl = true) {
 			showSectionPage(route.sectionId);
 			break;
 		case RouteType.REFERENCE:
-			// Reference pages - TODO: implement later
-			showLandingPage();
+			showReferencePage(route.refId);
 			break;
 		case RouteType.LESSON:
 			navigateToLesson(route.moduleId, route.lessonIndex, shouldUpdateUrl);
@@ -1333,6 +1776,7 @@ function handleRoute(shouldUpdateUrl = true) {
 function hideAllPages() {
 	elements.landingPage?.classList.add("hidden");
 	elements.sectionPage?.classList.add("hidden");
+	elements.referencePage?.classList.add("hidden");
 	elements.gameLayout?.classList.add("hidden");
 }
 
@@ -1418,6 +1862,63 @@ function showSectionPage(sectionId) {
 	const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 	if (elements.sectionProgressFill) elements.sectionProgressFill.style.width = `${percent}%`;
 	if (elements.sectionProgressText) elements.sectionProgressText.textContent = `${completed} of ${total} lessons complete`;
+}
+
+/**
+ * Show reference/cheatsheet page
+ */
+function showReferencePage(refId) {
+	hideAllPages();
+	elements.referencePage?.classList.remove("hidden");
+
+	// Default to CSS if no refId
+	const activeRef = refId || "css";
+
+	// Track reference page view
+	track("reference_view", { ref: activeRef });
+
+	// Update nav highlighting
+	const navLinks = elements.referenceNav?.querySelectorAll(".ref-nav-link");
+	navLinks?.forEach((link) => {
+		link.classList.toggle("active", link.dataset.ref === activeRef);
+	});
+
+	// Load reference content
+	if (elements.referenceBody && referenceContent[activeRef]) {
+		elements.referenceBody.innerHTML = referenceContent[activeRef];
+		// Highlight code blocks
+		highlightReferenceCodeBlocks();
+	} else if (elements.referenceBody) {
+		elements.referenceBody.innerHTML = `<p>Reference for "${activeRef}" coming soon...</p>`;
+	}
+}
+
+/**
+ * Highlight code blocks in reference pages with CodeMirror
+ */
+function highlightReferenceCodeBlocks() {
+	// Clean up previous views
+	sectionCodeViews.forEach((view) => view.destroy());
+	sectionCodeViews = [];
+
+	const codeBlocks = elements.referenceBody?.querySelectorAll("pre code");
+	codeBlocks?.forEach((block) => {
+		const code = block.textContent;
+		const isHtml = block.classList.contains("language-html");
+		const parent = block.parentElement;
+
+		parent.innerHTML = "";
+		parent.classList.add("cm-code-block");
+
+		const view = new EditorView({
+			state: EditorState.create({
+				doc: code,
+				extensions: [isHtml ? html() : css(), oneDark, readOnlyTheme, EditorState.readOnly.of(true), EditorView.editable.of(false)]
+			}),
+			parent
+		});
+		sectionCodeViews.push(view);
+	});
 }
 
 /**
