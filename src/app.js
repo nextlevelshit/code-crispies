@@ -459,6 +459,14 @@ function resetSuccessIndicators() {
 	elements.previewWrapper?.classList.remove("matched");
 	elements.previewWrapper?.classList.remove("completed-glow");
 	elements.previewSection?.classList.remove("matched");
+
+	// Remove completion badge if present
+	const badge = document.querySelector(".completion-badge");
+	if (badge) badge.remove();
+
+	// Reset Run button text
+	const runBtnText = elements.runBtn.querySelector("span");
+	if (runBtnText) runBtnText.textContent = t("run");
 }
 
 function updateEditorForMode(mode) {
@@ -710,6 +718,17 @@ function resetCode() {
 	// Clear hints and success indicators
 	clearHint();
 	resetSuccessIndicators();
+
+	// Update sidebar to remove completed status from this lesson
+	const sidebarItem = document.querySelector(
+		`.lesson-list-item[data-module-id="${engineState.module?.id}"][data-lesson-index="${engineState.lessonIndex}"]`
+	);
+	if (sidebarItem) {
+		sidebarItem.classList.remove("completed");
+	}
+
+	// Update progress display
+	updateProgressDisplay();
 }
 
 function loadRandomTemplate() {
