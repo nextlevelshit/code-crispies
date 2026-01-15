@@ -5,6 +5,7 @@ import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
+import { getRandomTemplate } from "./config/playground-templates.js";
 
 // CodeMirror imports for syntax highlighting
 import { EditorState } from "@codemirror/state";
@@ -121,6 +122,7 @@ const elements = {
 	undoBtn: document.getElementById("undo-btn"),
 	redoBtn: document.getElementById("redo-btn"),
 	resetCodeBtn: document.getElementById("reset-code-btn"),
+	randomTemplateBtn: document.getElementById("random-template-btn"),
 	hintArea: document.getElementById("hint-area"),
 	editorContent: document.querySelector(".editor-content"),
 	codeEditor: document.querySelector(".code-editor"),
@@ -506,13 +508,15 @@ function loadCurrentLesson() {
 	const mode = lesson.mode || engineState.module?.mode || "css";
 	const isPlayground = lesson.mode === "playground";
 
-	// Handle playground mode - hide instructions, full height editor
+	// Handle playground mode - hide instructions, full height editor, show random button
 	if (isPlayground) {
 		elements.instructionsSection?.classList.add("hidden");
 		elements.editorSection?.classList.add("playground-mode");
+		elements.randomTemplateBtn?.classList.remove("hidden");
 	} else {
 		elements.instructionsSection?.classList.remove("hidden");
 		elements.editorSection?.classList.remove("playground-mode");
+		elements.randomTemplateBtn?.classList.add("hidden");
 	}
 
 	// Add transition class for smooth content swap
@@ -706,6 +710,15 @@ function resetCode() {
 	// Clear hints and success indicators
 	clearHint();
 	resetSuccessIndicators();
+}
+
+function loadRandomTemplate() {
+	const template = getRandomTemplate();
+	if (codeEditor && template) {
+		codeEditor.setValue(template.code);
+		// Apply the code to the preview
+		lessonEngine.applyUserCode(template.code, true);
+	}
 }
 
 function runCode() {
@@ -1516,6 +1529,7 @@ function init() {
 		if (codeEditor) codeEditor.redo();
 	});
 	elements.resetCodeBtn.addEventListener("click", handleResetCodeClick);
+	elements.randomTemplateBtn.addEventListener("click", loadRandomTemplate);
 	elements.shareBtn.addEventListener("click", showShareDialog);
 
 	// Dialogs
