@@ -1345,11 +1345,14 @@ const referenceContent = {
 				<tbody>
 					<tr><td><code>width</code></td><td>length, %, auto, fit-content</td><td><code>width: 100%;</code></td></tr>
 					<tr><td><code>height</code></td><td>length, %, auto</td><td><code>height: 200px;</code></td></tr>
+					<tr><td><code>min-width</code></td><td>length, %, auto</td><td><code>min-width: 200px;</code></td></tr>
+					<tr><td><code>min-height</code></td><td>length, %, auto</td><td><code>min-height: 100vh;</code></td></tr>
 					<tr><td><code>max-width</code></td><td>length, %, none</td><td><code>max-width: 600px;</code></td></tr>
 					<tr><td><code>padding</code></td><td>length (1-4 values)</td><td><code>padding: 1rem 2rem;</code></td></tr>
 					<tr><td><code>margin</code></td><td>length, auto (1-4 values)</td><td><code>margin: 0 auto;</code></td></tr>
 					<tr><td><code>border</code></td><td>width style color</td><td><code>border: 1px solid gray;</code></td></tr>
 					<tr><td><code>border-radius</code></td><td>length (1-4 values)</td><td><code>border-radius: 8px;</code></td></tr>
+					<tr><td><code>border-collapse</code></td><td>separate, collapse</td><td><code>border-collapse: collapse;</code></td></tr>
 					<tr><td><code>box-sizing</code></td><td>content-box, border-box</td><td><code>box-sizing: border-box;</code></td></tr>
 				</tbody>
 			</table>
@@ -1705,9 +1708,28 @@ const referenceContent = {
 					<tr><td><code>&lt;em&gt;</code></td><td>Emphasized text (italic)</td><td><code>&lt;em&gt;really&lt;/em&gt;</code></td></tr>
 					<tr><td><code>&lt;code&gt;</code></td><td>Inline code</td><td><code>&lt;code&gt;const x&lt;/code&gt;</code></td></tr>
 					<tr><td><code>&lt;pre&gt;</code></td><td>Preformatted text</td><td>Code blocks</td></tr>
+					<tr><td><code>&lt;blockquote&gt;</code></td><td>Block quotation</td><td><code>&lt;blockquote cite="src"&gt;</code></td></tr>
 					<tr><td><code>&lt;span&gt;</code></td><td>Generic inline container</td><td>Styling inline text</td></tr>
 					<tr><td><code>&lt;br&gt;</code></td><td>Line break</td><td>Address, poem lines</td></tr>
 					<tr><td><code>&lt;hr&gt;</code></td><td>Thematic break</td><td>Scene change, topic shift</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Semantic Inline</h2>
+			<table class="ref-table">
+				<thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>&lt;time&gt;</code></td><td>Date/time</td><td><code>&lt;time datetime="2024-01-15"&gt;</code></td></tr>
+					<tr><td><code>&lt;mark&gt;</code></td><td>Highlighted text</td><td><code>&lt;mark&gt;important&lt;/mark&gt;</code></td></tr>
+					<tr><td><code>&lt;small&gt;</code></td><td>Fine print</td><td>Legal text, copyright</td></tr>
+					<tr><td><code>&lt;abbr&gt;</code></td><td>Abbreviation</td><td><code>&lt;abbr title="HyperText"&gt;HTML&lt;/abbr&gt;</code></td></tr>
+					<tr><td><code>&lt;kbd&gt;</code></td><td>Keyboard input</td><td><code>&lt;kbd&gt;Ctrl+C&lt;/kbd&gt;</code></td></tr>
+					<tr><td><code>&lt;sub&gt;</code></td><td>Subscript</td><td>H<sub>2</sub>O</td></tr>
+					<tr><td><code>&lt;sup&gt;</code></td><td>Superscript</td><td>x<sup>2</sup></td></tr>
+					<tr><td><code>&lt;ins&gt;</code></td><td>Inserted text</td><td>Shows additions</td></tr>
+					<tr><td><code>&lt;del&gt;</code></td><td>Deleted text</td><td>Shows removals</td></tr>
 				</tbody>
 			</table>
 		</section>

@@ -1,7 +1,7 @@
 {
 	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "playground",
-	"title": "HTML & CSS Editor",
+	"title": "Playground",
 	"description": "Experiment freely with HTML and CSS",
 	"mode": "playground",
 	"difficulty": "beginner",
@@ -9,7 +9,7 @@
 	"lessons": [
 		{
 			"id": "sandbox",
-			"title": "Editor",
+			"title": "HTML & CSS Editor",
 			"mode": "playground",
 			"description": "",
 			"task": "",
