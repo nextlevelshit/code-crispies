@@ -1394,6 +1394,25 @@ input:checked + .toggle-slider::before {
 	border: 1px solid var(--border-color);
 }
 
+.help-nav-links {
+	font-size: 0.9rem;
+	color: var(--light-text);
+	padding: var(--spacing-sm) var(--spacing-md);
+	background: var(--bg-color);
+	border-radius: var(--border-radius-sm);
+	margin-top: var(--spacing-sm);
+}
+
+.help-nav-links a {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.help-nav-links a:hover {
+	text-decoration: underline;
+}
+
 .dialog-actions {
 	display: flex;
 	justify-content: flex-end;
@@ -1894,6 +1913,36 @@ input:checked + .toggle-slider::before {
 	transform: translateX(3px);
 }
 
+/* Secondary reference link in topic sections */
+.topic-ref {
+	display: block;
+	margin-top: 0.75rem;
+	color: var(--light-text);
+	font-size: 0.9rem;
+	text-decoration: none;
+}
+
+.topic-ref:hover {
+	color: var(--primary-color);
+	text-decoration: underline;
+}
+
+/* See-also in section overviews */
+.section-see-also {
+	margin-top: var(--spacing-md);
+	font-size: 0.9rem;
+	color: var(--light-text);
+}
+
+.section-see-also a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.section-see-also a:hover {
+	text-decoration: underline;
+}
+
 /* Inline code in topic text */
 .topic-text code {
 	background: var(--primary-bg-light);
@@ -2065,7 +2114,12 @@ input:checked + .toggle-slider::before {
 }
 
 .ref-section {
+	margin-top: var(--spacing-xl);
 	margin-bottom: var(--spacing-xl);
+}
+
+.ref-section:first-of-type {
+	margin-top: 0;
 }
 
 .ref-section h2 {
@@ -2140,6 +2194,25 @@ input:checked + .toggle-slider::before {
 /* Reference page code blocks */
 .reference-body .code-block {
 	margin: var(--spacing-md) 0;
+}
+
+/* Cross-reference links in reference pages */
+.ref-see-also {
+	margin-top: var(--spacing-lg);
+	padding-top: var(--spacing-md);
+	border-top: 1px solid var(--border-color);
+	font-size: 0.9rem;
+	color: var(--light-text);
+}
+
+.ref-see-also a {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.ref-see-also a:hover {
+	text-decoration: underline;
 }
 
 /* Responsive reference tables */
