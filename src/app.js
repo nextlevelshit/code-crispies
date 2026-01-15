@@ -2061,11 +2061,56 @@ function showReferencePage(refId) {
 	// Load reference content
 	if (elements.referenceBody && referenceContent[activeRef]) {
 		elements.referenceBody.innerHTML = referenceContent[activeRef];
+		// Make large tables collapsible
+		makeTablesCollapsible();
 		// Highlight code blocks
 		highlightReferenceCodeBlocks();
 	} else if (elements.referenceBody) {
 		elements.referenceBody.innerHTML = `<p>Reference for "${activeRef}" coming soon...</p>`;
 	}
+}
+
+/**
+ * Make reference tables with more than 5 rows collapsible
+ */
+function makeTablesCollapsible() {
+	const tables = elements.referenceBody?.querySelectorAll(".ref-table");
+	const ROW_LIMIT = 5;
+
+	tables?.forEach((table) => {
+		const tbody = table.querySelector("tbody");
+		if (!tbody) return;
+
+		const rows = Array.from(tbody.querySelectorAll("tr"));
+		if (rows.length <= ROW_LIMIT) return;
+
+		// Split rows: visible (first 5) and hidden (rest)
+		const visibleRows = rows.slice(0, ROW_LIMIT);
+		const hiddenRows = rows.slice(ROW_LIMIT);
+
+		// Create new tbody with only visible rows
+		tbody.innerHTML = "";
+		visibleRows.forEach((row) => tbody.appendChild(row));
+
+		// Create details/summary for hidden rows
+		const details = document.createElement("details");
+		details.className = "ref-table-more";
+
+		const summary = document.createElement("summary");
+		summary.textContent = `Show ${hiddenRows.length} more...`;
+		details.appendChild(summary);
+
+		// Create a wrapper table for hidden rows (same structure)
+		const hiddenTable = document.createElement("table");
+		hiddenTable.className = "ref-table ref-table-continuation";
+		const hiddenTbody = document.createElement("tbody");
+		hiddenRows.forEach((row) => hiddenTbody.appendChild(row));
+		hiddenTable.appendChild(hiddenTbody);
+		details.appendChild(hiddenTable);
+
+		// Insert after the original table
+		table.parentNode.insertBefore(details, table.nextSibling);
+	});
 }
 
 /**
