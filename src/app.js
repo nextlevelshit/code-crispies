@@ -1941,6 +1941,11 @@ function handleRoute(shouldUpdateUrl = true) {
 			// Switch language and redirect to home
 			setLanguage(route.lang);
 			applyTranslations();
+			// Reload modules in new language and re-render sidebar
+			const langModules = loadModules(route.lang);
+			lessonEngine.setModules(langModules);
+			renderModuleList(elements.moduleList, langModules, selectModule, selectLesson);
+			updateProgressDisplay();
 			history.replaceState(null, "", window.location.pathname);
 			showLandingPage();
 			return; // Skip updateNavHighlight/updatePageMeta since we're redirecting
