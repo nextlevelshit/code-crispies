@@ -1911,6 +1911,7 @@ input:checked + .toggle-slider::before {
 	overflow: hidden;
 }
 
+/* Fallback styles for pre/code (before CodeMirror initializes) */
 .code-block pre {
 	margin: 0;
 	padding: 1rem;
@@ -1923,6 +1924,15 @@ input:checked + .toggle-slider::before {
 	line-height: 1.6;
 	color: #e6edf3;
 	white-space: pre;
+}
+
+/* CodeMirror styles within code blocks */
+.code-block .cm-editor {
+	background: transparent;
+}
+
+.code-block .cm-scroller {
+	overflow-x: auto;
 }
 
 .code-caption {

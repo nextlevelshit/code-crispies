@@ -6,6 +6,13 @@ import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 
+// CodeMirror imports for syntax highlighting
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { oneDark } from "@codemirror/theme-one-dark";
+import { html } from "@codemirror/lang-html";
+import { css } from "@codemirror/lang-css";
+
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
@@ -15,6 +22,69 @@ const state = {
 	showExpected: false,
 	animationTimeout: null
 };
+
+// Track CodeMirror views for cleanup
+let sectionCodeViews = [];
+
+// Read-only CodeMirror theme for code examples
+const readOnlyTheme = EditorView.theme(
+	{
+		"&": {
+			fontSize: "13px"
+		},
+		".cm-content": {
+			fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+			padding: "12px 0"
+		},
+		".cm-line": {
+			padding: "0 12px"
+		},
+		".cm-gutters": {
+			display: "none"
+		}
+	},
+	{ dark: true }
+);
+
+/**
+ * Highlight all code blocks in the section page using CodeMirror
+ */
+function highlightSectionCodeBlocks() {
+	// Clean up previous views
+	sectionCodeViews.forEach((view) => view.destroy());
+	sectionCodeViews = [];
+
+	// Find all code blocks in section page
+	const codeBlocks = elements.sectionIntro?.querySelectorAll(".code-block") || [];
+
+	codeBlocks.forEach((block) => {
+		const pre = block.querySelector("pre");
+		const code = block.querySelector("code");
+		if (!pre || !code) return;
+
+		const content = code.textContent || "";
+
+		// Detect language from content
+		const isHTML = content.includes("<") && content.includes(">");
+		const langExtension = isHTML ? html() : css();
+
+		// Create read-only CodeMirror view
+		const state = EditorState.create({
+			doc: content,
+			extensions: [langExtension, oneDark, readOnlyTheme, EditorState.readOnly.of(true), EditorView.lineWrapping]
+		});
+
+		const view = new EditorView({
+			state,
+			parent: block
+		});
+
+		// Remove original pre/code
+		pre.remove();
+
+		sectionCodeViews.push(view);
+	});
+}
 
 // DOM elements - updated for new layout
 const elements = {
@@ -1272,6 +1342,8 @@ function showSectionPage(sectionId) {
 	// Inject educational content (includes integrated module links)
 	if (elements.sectionIntro && sectionContent[sectionId]) {
 		elements.sectionIntro.innerHTML = sectionContent[sectionId];
+		// Highlight code blocks with CodeMirror
+		highlightSectionCodeBlocks();
 	}
 
 	// Get modules for this section to calculate progress
