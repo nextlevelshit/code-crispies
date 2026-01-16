@@ -345,8 +345,8 @@ const translations = {
 		untitledLesson: "Unbenannte Lektion",
 
 		// Landing page
-		landingHeroTitle: "Web Programmierung",
-		landingHeroHighlight: "Code Crispy",
+		landingHeroTitle: "Lerne Web Entwicklung",
+		landingHeroHighlight: "mit CODE CRISPIES",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
 		landingWhyTitle: "Warum CODE CRISPIES funktioniert",
