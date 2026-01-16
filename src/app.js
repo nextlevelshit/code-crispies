@@ -793,14 +793,6 @@ function nextLesson() {
 
 function prevLesson() {
 	const engineState = lessonEngine.getCurrentState();
-	const isPlayground = engineState.lesson?.mode === "playground";
-
-	// In playground mode, "Back" navigates to home
-	if (isPlayground) {
-		navigateTo("#");
-		return;
-	}
-
 	const prevModuleId = engineState.module?.id;
 	const success = lessonEngine.previousLesson();
 	if (success) {
