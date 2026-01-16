@@ -1,10 +1,52 @@
 import { t, applyTranslations } from "./i18n.js";
 
 let currentUser = null;
+let oauthHandled = false;
 let lessonEngineRef = null;
 let authModule = null;
 let progressModule = null;
 let supabaseAvailable = false;
+
+/**
+ * Check for OAuth callback tokens in URL hash BEFORE router runs.
+ * Call this before initializing the router.
+ * @returns {Promise<boolean>} true if OAuth callback was detected and handled
+ */
+export async function handleOAuthCallback() {
+  const hash = window.location.hash;
+
+  // Check if hash contains OAuth tokens (access_token, error, etc.)
+  if (!hash.includes("access_token") && !hash.includes("error_description") && !hash.includes("refresh_token")) {
+    return false;
+  }
+
+  console.log("[Auth] OAuth callback detected in URL hash");
+
+  try {
+    const supabaseModule = await import("./supabase.js");
+    if (!supabaseModule.isConfigured) {
+      return false;
+    }
+
+    // Let Supabase process the OAuth tokens
+    const { data, error } = await supabaseModule.auth.getSession();
+
+    if (error) {
+      console.error("[Auth] OAuth callback error:", error.message);
+    } else if (data?.session) {
+      console.log("[Auth] OAuth login successful:", data.session.user?.email);
+      oauthHandled = true;
+    }
+
+    // Clear the hash after processing (will be replaced by router)
+    window.history.replaceState(null, "", window.location.pathname);
+
+    return true;
+  } catch (e) {
+    console.error("[Auth] OAuth callback handling failed:", e.message);
+    return false;
+  }
+}
 
 /**
  * Initialize the auth system
@@ -33,8 +75,13 @@ export async function initAuth(engine) {
     return;
   }
 
+  // Debug: Check URL for OAuth callback params
+  console.log("[Auth] URL hash:", window.location.hash);
+  console.log("[Auth] URL search:", window.location.search);
+
   // Listen for auth changes FIRST (catches OAuth callback)
   authModule.onAuthStateChange((event, session) => {
+    console.log("[Auth] State change:", event, session?.user?.email);
     if (event === "SIGNED_IN" && session?.user) {
       handleLogin(session.user);
     } else if (event === "SIGNED_OUT") {
@@ -44,7 +91,8 @@ export async function initAuth(engine) {
 
   // Check initial session (getSession handles OAuth callback URL)
   try {
-    const { data } = await authModule.getSession();
+    const { data, error } = await authModule.getSession();
+    console.log("[Auth] Initial session check:", data?.session?.user?.email, error);
     if (data?.session?.user) handleLogin(data.session.user);
   } catch (e) {
     console.log("Auth check failed:", e.message);

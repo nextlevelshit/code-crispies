@@ -6,7 +6,7 @@ import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 import { getRandomTemplate } from "./config/playground-templates.js";
-import { initAuth } from "./auth.js";
+import { initAuth, handleOAuthCallback } from "./auth.js";
 
 // CodeMirror imports for syntax highlighting
 import { EditorState } from "@codemirror/state";
@@ -149,6 +149,7 @@ const elements = {
 	expectedOverlay: document.getElementById("expected-overlay"),
 	previewWrapper: document.querySelector(".preview-wrapper"),
 	previewSection: document.querySelector(".preview-section"),
+	backBtn: document.getElementById("back-btn"),
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
 	gameControls: document.querySelector(".game-controls"),
@@ -750,7 +751,8 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide nav buttons and center controls in playground mode
+	// Hide nav buttons and center controls in playground mode, show back button
+	elements.backBtn?.classList.toggle("hidden", !isPlayground);
 	elements.prevBtn.classList.toggle("hidden", isPlayground);
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
 	elements.gameControls?.classList.toggle("centered", isPlayground);
@@ -2456,11 +2458,14 @@ function init() {
 	// Load modules after editor is ready
 	initializeModules();
 
-	// Initialize URL router for shareable links
-	initRouter();
+	// Handle OAuth callback BEFORE router (tokens are in URL hash)
+	handleOAuthCallback().then(() => {
+		// Initialize URL router for shareable links
+		initRouter();
 
-	// Initialize authentication
-	initAuth(lessonEngine);
+		// Initialize authentication
+		initAuth(lessonEngine);
+	});
 
 	// Sidebar controls
 	elements.menuBtn.addEventListener("click", openSidebar);

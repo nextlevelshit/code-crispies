@@ -1260,7 +1260,8 @@ button.lesson-list-item {
 	border-color: var(--section-color, var(--primary-color));
 }
 
-.btn-icon img {
+.btn-icon img,
+.btn-icon svg {
 	width: 1rem;
 	height: 1rem;
 	margin: 0;
@@ -1653,6 +1654,7 @@ input:checked + .toggle-slider::before {
 	font-size: 0.875rem;
 	color: var(--primary-color);
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .auth-links .btn-text:hover {
