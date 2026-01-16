@@ -23,7 +23,6 @@ export async function handleOAuthCallback() {
   try {
     const supabaseModule = await import("./supabase.js");
     if (!supabaseModule.isConfigured) {
-      console.log("[Auth] Supabase not configured");
       return false;
     }
 
@@ -32,8 +31,6 @@ export async function handleOAuthCallback() {
     const accessToken = params.get("access_token");
     const refreshToken = params.get("refresh_token");
 
-    console.log("[Auth] Tokens found:", { accessToken: !!accessToken, refreshToken: !!refreshToken });
-
     if (accessToken && refreshToken) {
       // Explicitly set the session with tokens from URL
       const { data, error } = await supabaseModule.auth.setSession({
@@ -41,10 +38,7 @@ export async function handleOAuthCallback() {
         refresh_token: refreshToken
       });
 
-      if (error) {
-        console.error("[Auth] OAuth setSession error:", error.message);
-      } else if (data?.session) {
-        console.log("[Auth] OAuth login successful:", data.session.user?.email);
+      if (!error && data?.session) {
         oauthHandled = true;
       }
     }
@@ -93,13 +87,8 @@ export async function initAuth(engine) {
     return;
   }
 
-  // Debug: Check URL for OAuth callback params
-  console.log("[Auth] URL hash:", window.location.hash);
-  console.log("[Auth] URL search:", window.location.search);
-
-  // Listen for auth changes FIRST (catches OAuth callback)
+  // Listen for auth changes
   authModule.onAuthStateChange((event, session) => {
-    console.log("[Auth] State change:", event, session?.user?.email);
     if (event === "SIGNED_IN" && session?.user) {
       handleLogin(session.user);
     } else if (event === "SIGNED_OUT") {
@@ -107,13 +96,12 @@ export async function initAuth(engine) {
     }
   });
 
-  // Check initial session (getSession handles OAuth callback URL)
+  // Check initial session
   try {
-    const { data, error } = await authModule.getSession();
-    console.log("[Auth] Initial session check:", data?.session?.user?.email, error);
+    const { data } = await authModule.getSession();
     if (data?.session?.user) handleLogin(data.session.user);
   } catch (e) {
-    console.log("Auth check failed:", e.message);
+    // Session check failed - continue without auth
   }
 
   // Attach form handlers
