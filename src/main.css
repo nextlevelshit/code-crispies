@@ -2623,12 +2623,12 @@ input:checked + .toggle-slider::before {
 }
 
 .section-overview strong {
-	color: var(--primary-dark);
+	color: var(--section-color-dark, var(--primary-dark));
 }
 
 .section-overview code {
-	background: var(--primary-bg-light);
-	color: var(--primary-dark);
+	background: rgba(var(--section-color-rgb, 145, 99, 184), 0.1);
+	color: var(--section-color-dark, var(--primary-dark));
 	padding: 0.1rem 0.35rem;
 	border-radius: 4px;
 	font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
