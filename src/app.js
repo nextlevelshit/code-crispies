@@ -17,9 +17,9 @@ import { css } from "@codemirror/lang-css";
 function track(eventName, eventData = {}) {
 	if (typeof umami !== "undefined" && umami.track) {
 		umami.track(eventName, eventData);
-		console.log("Track:", eventName, eventData);
+		console.debug("Track:", eventName, eventData);
 	} else {
-		console.log("Track blocked (umami unavailable):", eventName, eventData);
+		console.debug("Track blocked (umami unavailable):", eventName, eventData);
 	}
 }
 
