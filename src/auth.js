@@ -52,8 +52,15 @@ export async function handleOAuthCallback() {
       }
     }
 
-    // Clear the hash after processing
-    window.history.replaceState(null, "", window.location.pathname);
+    // Restore the original route (saved before OAuth redirect)
+    const savedRoute = localStorage.getItem("codeCrispies.oauthReturnRoute");
+    if (savedRoute) {
+      localStorage.removeItem("codeCrispies.oauthReturnRoute");
+      window.history.replaceState(null, "", window.location.pathname + savedRoute);
+    } else {
+      // No saved route - just clear the hash
+      window.history.replaceState(null, "", window.location.pathname);
+    }
 
     return true;
   } catch (e) {
@@ -322,8 +329,13 @@ function setupAuthForms() {
       }
     });
 
-  // OAuth buttons
+  // OAuth buttons - save current route before redirect
   document.getElementById("google-login")?.addEventListener("click", async () => {
+    // Save current route to restore after OAuth
+    const currentHash = window.location.hash;
+    if (currentHash && !currentHash.includes("access_token")) {
+      localStorage.setItem("codeCrispies.oauthReturnRoute", currentHash);
+    }
     const { error } = await authModule?.signInWithGoogle() ?? { error: null };
     if (error) {
       showOAuthError(error.message);
@@ -331,6 +343,11 @@ function setupAuthForms() {
   });
 
   document.getElementById("github-login")?.addEventListener("click", async () => {
+    // Save current route to restore after OAuth
+    const currentHash = window.location.hash;
+    if (currentHash && !currentHash.includes("access_token")) {
+      localStorage.setItem("codeCrispies.oauthReturnRoute", currentHash);
+    }
     const { error } = await authModule?.signInWithGitHub() ?? { error: null };
     if (error) {
       showOAuthError(error.message);
