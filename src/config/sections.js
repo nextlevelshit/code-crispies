@@ -8,21 +8,21 @@ export const sections = {
 		id: "css",
 		title: "CSS",
 		description: "Styling, layout, and animations",
-		color: "#264de4",
+		color: "#7c4dff",
 		order: 1
 	},
 	html: {
 		id: "html",
 		title: "HTML",
 		description: "Semantic markup and native elements",
-		color: "#e34c26",
+		color: "#9b59b6",
 		order: 2
 	},
 	tailwind: {
 		id: "tailwind",
 		title: "Tailwind CSS",
 		description: "Utility-first CSS framework",
-		color: "#06b6d4",
+		color: "#00bcd4",
 		order: 3
 	}
 };
