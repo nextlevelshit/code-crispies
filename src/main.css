@@ -1755,7 +1755,7 @@ input:checked + .toggle-slider::before {
 
 .coming-soon-badge {
 	display: inline-block;
-	background: linear-gradient(135deg, #0891b2, #0e7490);
+	background: linear-gradient(135deg, #7c6f8a, #5e5168);
 	color: white;
 	font-size: 0.65rem;
 	font-weight: 600;
