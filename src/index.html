@@ -173,37 +173,54 @@
 						<h2 data-i18n="landingComingSoonTitle">Coming Soon</h2>
 						<div class="coming-soon-grid">
 							<article class="coming-soon-card">
-								<span class="coming-soon-icon">🔄</span>
+								<span class="coming-soon-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
+								</span>
 								<h3 data-i18n="comingSoonSyncTitle">Cloud Sync</h3>
 								<p data-i18n="comingSoonSyncText">Sync your progress across all devices. Start on desktop, continue on tablet.</p>
 							</article>
 							<article class="coming-soon-card">
-								<span class="coming-soon-icon">🏆</span>
+								<span class="coming-soon-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+								</span>
 								<h3 data-i18n="comingSoonAchievementsTitle">Achievements</h3>
 								<p data-i18n="comingSoonAchievementsText">Earn badges as you master new skills. Track your learning milestones.</p>
 							</article>
 							<article class="coming-soon-card">
-								<span class="coming-soon-icon">⚡</span>
+								<span class="coming-soon-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+								</span>
 								<h3 data-i18n="comingSoonJsTitle">JavaScript</h3>
 								<p data-i18n="comingSoonJsText">Interactive JavaScript lessons with live code execution and DOM manipulation.</p>
 							</article>
 							<article class="coming-soon-card">
-								<span class="coming-soon-icon">🧩</span>
+								<span class="coming-soon-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+								</span>
 								<h3 data-i18n="comingSoonFrameworksTitle">Frameworks</h3>
 								<p data-i18n="comingSoonFrameworksText">React, Vue, and Svelte basics. Build real components step by step.</p>
 							</article>
 						</div>
+						<div class="newsletter-signup">
+							<p data-i18n="newsletterText">Want to know when new features launch?</p>
+							<form id="newsletter-form" class="newsletter-form">
+								<input type="email" id="newsletter-email" required data-i18n-placeholder="newsletterPlaceholder" placeholder="your@email.com">
+								<button type="submit" class="btn btn-outline" data-i18n="newsletterButton">Notify Me</button>
+							</form>
+							<p class="newsletter-disclaimer" data-i18n="newsletterDisclaimer">Max once a week. Unsubscribe anytime via mail@codecrispi.es</p>
+							<p id="newsletter-thanks" class="newsletter-thanks hidden" data-i18n="newsletterThanks">Thanks! We'll keep you posted.</p>
+						</div>
 					</section>
 
 					<section class="device-notice">
-						<p data-i18n="deviceNotice">
+						<p data-i18n-html="deviceNotice">
 							<strong>Best on desktop or tablet (landscape).</strong> Mobile works, but larger screens make coding easier.
 						</p>
 					</section>
 
 					<section class="landing-cta">
 						<h2 data-i18n="landingCtaTitle">Start Learning Today</h2>
-						<a href="#welcome/0" class="cta-button" data-i18n="landingCtaButton">Begin Your Journey</a>
+						<a href="#welcome/0" class="cta-button" data-i18n="landingCtaButton">Let's get crispy!</a>
 						<p class="cta-sub" data-i18n="landingCtaSub">Free and open source. No account required. Progress saved locally.</p>
 					</section>
 

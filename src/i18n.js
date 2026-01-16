@@ -118,7 +118,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Learn Web Development",
-		landingHeroHighlight: "By Writing Real Code",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle: "Master HTML, CSS, and Tailwind through hands-on exercises with instant feedback. Free and open source.",
 		landingCtaStart: "Start Learning NOW",
 		landingWhyTitle: "Why CODE CRISPIES Works",
@@ -137,7 +137,7 @@ const translations = {
 		comingSoon: "Coming Soon",
 		landingCtaTitle: "Start Learning Today",
 		landingCtaSub: "Free and open source. No account required. Progress saved locally.",
-		landingCtaButton: "Begin Your Journey",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "Coming Soon",
@@ -149,6 +149,13 @@ const translations = {
 		comingSoonJsText: "Interactive JavaScript lessons with live code execution and DOM manipulation.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "React, Vue, and Svelte basics. Build real components step by step.",
+
+		// Newsletter
+		newsletterText: "Want to know when new features launch?",
+		newsletterPlaceholder: "your@email.com",
+		newsletterButton: "Notify Me",
+		newsletterThanks: "Thanks! We'll keep you posted.",
+		newsletterDisclaimer: "Max once a week. Unsubscribe anytime via mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Best on desktop or tablet (landscape).</strong> Mobile works, but larger screens make coding easier.",
@@ -283,7 +290,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Web Programmierung",
-		landingHeroHighlight: "Selbstständig lernen",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
 		landingWhyTitle: "Warum CODE CRISPIES funktioniert",
@@ -304,7 +311,7 @@ const translations = {
 		comingSoon: "Bald verfügbar",
 		landingCtaTitle: "Heute noch anfangen",
 		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
-		landingCtaButton: "Jetzt erste Schritte machen",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "Demnächst",
@@ -316,6 +323,13 @@ const translations = {
 		comingSoonJsText: "Interaktive JavaScript-Lektionen mit Live-Code-Ausführung und DOM-Manipulation.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "React, Vue und Svelte Grundlagen. Baue echte Komponenten Schritt für Schritt.",
+
+		// Newsletter
+		newsletterText: "Möchtest du erfahren, wenn neue Funktionen erscheinen?",
+		newsletterPlaceholder: "deine@email.de",
+		newsletterButton: "Benachrichtigen",
+		newsletterThanks: "Danke! Wir halten dich auf dem Laufenden.",
+		newsletterDisclaimer: "Max. einmal pro Woche. Jederzeit abmelden über mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Am besten auf Desktop oder Tablet (Querformat).</strong> Mobil funktioniert, aber größere Bildschirme machen das Coden einfacher.",
@@ -450,7 +464,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Naucz się tworzenia stron",
-		landingHeroHighlight: "Pisząc prawdziwy kod",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle: "Opanuj HTML, CSS i Tailwind poprzez praktyczne ćwiczenia z natychmiastową informacją zwrotną. Darmowe i open source.",
 		landingCtaStart: "Zacznij TERAZ",
 		landingWhyTitle: "Dlaczego CODE CRISPIES działa",
@@ -471,7 +485,7 @@ const translations = {
 		comingSoon: "Wkrótce",
 		landingCtaTitle: "Zacznij naukę już dziś",
 		landingCtaSub: "Darmowe i open source. Bez konta. Postęp zapisywany lokalnie.",
-		landingCtaButton: "Rozpocznij swoją podróż",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "Wkrótce",
@@ -483,6 +497,13 @@ const translations = {
 		comingSoonJsText: "Interaktywne lekcje JavaScript z wykonywaniem kodu na żywo i manipulacją DOM.",
 		comingSoonFrameworksTitle: "Frameworki",
 		comingSoonFrameworksText: "Podstawy React, Vue i Svelte. Buduj prawdziwe komponenty krok po kroku.",
+
+		// Newsletter
+		newsletterText: "Chcesz wiedzieć, kiedy pojawią się nowe funkcje?",
+		newsletterPlaceholder: "twoj@email.pl",
+		newsletterButton: "Powiadom mnie",
+		newsletterThanks: "Dzięki! Będziemy informować.",
+		newsletterDisclaimer: "Maks. raz w tygodniu. Wypisz się w dowolnym momencie przez mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Najlepiej na komputerze lub tablecie (poziomo).</strong> Na telefonie też działa, ale większy ekran ułatwia kodowanie.",
@@ -618,7 +639,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Aprende desarrollo web",
-		landingHeroHighlight: "Escribiendo código real",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle:
 			"Domina HTML, CSS y Tailwind a través de ejercicios prácticos con retroalimentación instantánea. Gratis y de código abierto.",
 		landingCtaStart: "Empieza AHORA",
@@ -640,7 +661,7 @@ const translations = {
 		comingSoon: "Próximamente",
 		landingCtaTitle: "Empieza a aprender hoy",
 		landingCtaSub: "Gratis y de código abierto. Sin cuenta requerida. Progreso guardado localmente.",
-		landingCtaButton: "Comienza tu viaje",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "Próximamente",
@@ -652,6 +673,13 @@ const translations = {
 		comingSoonJsText: "Lecciones interactivas de JavaScript con ejecución de código en vivo y manipulación del DOM.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "Fundamentos de React, Vue y Svelte. Construye componentes reales paso a paso.",
+
+		// Newsletter
+		newsletterText: "¿Quieres saber cuando se lancen nuevas funciones?",
+		newsletterPlaceholder: "tu@email.com",
+		newsletterButton: "Notificarme",
+		newsletterThanks: "¡Gracias! Te mantendremos informado.",
+		newsletterDisclaimer: "Máximo una vez por semana. Cancela cuando quieras vía mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Mejor en escritorio o tablet (horizontal).</strong> Funciona en móvil, pero pantallas más grandes facilitan la programación.",
@@ -785,7 +813,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "تعلم تطوير الويب",
-		landingHeroHighlight: "بكتابة كود حقيقي",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle: "أتقن HTML و CSS و Tailwind من خلال تمارين عملية مع ملاحظات فورية. مجاني ومفتوح المصدر.",
 		landingCtaStart: "ابدأ الآن",
 		landingWhyTitle: "لماذا CODE CRISPIES فعال",
@@ -804,7 +832,7 @@ const translations = {
 		comingSoon: "قريباً",
 		landingCtaTitle: "ابدأ التعلم اليوم",
 		landingCtaSub: "مجاني ومفتوح المصدر. لا حاجة لحساب. يُحفظ التقدم محليًا.",
-		landingCtaButton: "ابدأ رحلتك",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "قريباً",
@@ -816,6 +844,13 @@ const translations = {
 		comingSoonJsText: "دروس تفاعلية في JavaScript مع تنفيذ مباشر للكود والتعامل مع DOM.",
 		comingSoonFrameworksTitle: "أطر العمل",
 		comingSoonFrameworksText: "أساسيات React وVue وSvelte. ابنِ مكونات حقيقية خطوة بخطوة.",
+
+		// Newsletter
+		newsletterText: "هل تريد معرفة متى تُطلق ميزات جديدة؟",
+		newsletterPlaceholder: "بريدك@email.com",
+		newsletterButton: "أبلغني",
+		newsletterThanks: "شكراً! سنبقيك على اطلاع.",
+		newsletterDisclaimer: "مرة واحدة أسبوعياً كحد أقصى. إلغاء الاشتراك في أي وقت عبر mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>أفضل على الكمبيوتر أو الجهاز اللوحي (أفقي).</strong> يعمل على الجوال، لكن الشاشات الأكبر تسهّل البرمجة.",
@@ -950,7 +985,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Вивчай веб-розробку",
-		landingHeroHighlight: "Пишучи справжній код",
+		landingHeroHighlight: "Crispy Code",
 		landingHeroSubtitle: "Опануй HTML, CSS та Tailwind через практичні вправи з миттєвим зворотним зв'язком. Безкоштовно та з відкритим кодом.",
 		landingCtaStart: "Почни ЗАРАЗ",
 		landingWhyTitle: "Чому CODE CRISPIES працює",
@@ -970,7 +1005,7 @@ const translations = {
 		comingSoon: "Незабаром",
 		landingCtaTitle: "Почни вчитися сьогодні",
 		landingCtaSub: "Безкоштовно та з відкритим кодом. Без реєстрації. Прогрес зберігається локально.",
-		landingCtaButton: "Розпочни свою подорож",
+		landingCtaButton: "Let's get crispy!",
 
 		// Coming Soon
 		landingComingSoonTitle: "Незабаром",
@@ -982,6 +1017,13 @@ const translations = {
 		comingSoonJsText: "Інтерактивні уроки JavaScript з виконанням коду в реальному часі та маніпуляцією DOM.",
 		comingSoonFrameworksTitle: "Фреймворки",
 		comingSoonFrameworksText: "Основи React, Vue та Svelte. Створюй справжні компоненти крок за кроком.",
+
+		// Newsletter
+		newsletterText: "Хочете дізнатися, коли з'являться нові функції?",
+		newsletterPlaceholder: "ваш@email.com",
+		newsletterButton: "Повідомити мене",
+		newsletterThanks: "Дякуємо! Ми будемо тримати вас в курсі.",
+		newsletterDisclaimer: "Максимум раз на тиждень. Відписатися можна будь-коли через mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Найкраще на комп'ютері або планшеті (горизонтально).</strong> На телефоні теж працює, але більший екран полегшує програмування.",

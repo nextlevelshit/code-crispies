@@ -1924,9 +1924,14 @@ input:checked + .toggle-slider::before {
 }
 
 .coming-soon-icon {
-	font-size: 2rem;
 	display: block;
 	margin-bottom: 0.75rem;
+}
+
+.coming-soon-icon svg {
+	width: 2rem;
+	height: 2rem;
+	stroke: var(--section-color);
 }
 
 .coming-soon-card h3 {
@@ -1952,6 +1957,71 @@ input:checked + .toggle-slider::before {
 	.coming-soon-grid {
 		grid-template-columns: 1fr;
 	}
+}
+
+/* Newsletter Signup */
+.newsletter-signup {
+	margin-top: var(--spacing-lg);
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.newsletter-signup p {
+	margin: 0;
+	color: var(--light-text);
+}
+
+.newsletter-form {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.newsletter-form input[type="email"] {
+	padding: 0.5rem 1rem;
+	border: 2px solid var(--border-color);
+	border-radius: var(--border-radius-sm);
+	background: var(--panel-bg);
+	color: var(--text);
+	font-size: 1rem;
+	min-width: 200px;
+}
+
+.newsletter-form input[type="email"]:focus {
+	outline: none;
+	border-color: var(--section-color);
+}
+
+.newsletter-signup .btn-outline {
+	border: 2px solid var(--section-color);
+	color: var(--section-color);
+	background: transparent;
+	padding: 0.5rem 1.5rem;
+	font-weight: 500;
+	transition: all 0.2s;
+}
+
+.newsletter-signup .btn-outline:hover {
+	background: var(--section-color);
+	color: white;
+}
+
+.newsletter-disclaimer {
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+.newsletter-thanks {
+	color: var(--success);
+	font-weight: 500;
+}
+
+.newsletter-thanks.hidden {
+	display: none;
 }
 
 /* Device Notice */
