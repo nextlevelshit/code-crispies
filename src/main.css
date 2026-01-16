@@ -3001,6 +3001,34 @@ body[data-section="tailwind"] .cm-editor .cm-activeLine {
 	background-color: rgba(0, 188, 212, 0.08) !important;
 }
 
+/* Module pill section colors */
+body[data-section="css"] .module-pill {
+	background: rgba(124, 77, 255, 0.1);
+	color: #7c4dff;
+}
+
+body[data-section="css"] .module-pill .level-indicator {
+	color: #5c35cc;
+}
+
+body[data-section="html"] .module-pill {
+	background: rgba(233, 30, 99, 0.1);
+	color: #e91e63;
+}
+
+body[data-section="html"] .module-pill .level-indicator {
+	color: #c2185b;
+}
+
+body[data-section="tailwind"] .module-pill {
+	background: rgba(0, 188, 212, 0.1);
+	color: #00bcd4;
+}
+
+body[data-section="tailwind"] .module-pill .level-indicator {
+	color: #0097a7;
+}
+
 /* Code block border section colors */
 body[data-section="css"] .code-block {
 	border-color: rgba(124, 77, 255, 0.4);
