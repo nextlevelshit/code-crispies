@@ -891,6 +891,10 @@ kbd {
 	box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.08);
 }
 
+.game-controls.centered {
+	justify-content: center;
+}
+
 /* ================= SIDEBAR ================= */
 .sidebar-backdrop {
 	position: fixed;
