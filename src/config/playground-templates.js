@@ -329,19 +329,19 @@ export const playgroundTemplates = [
 <div class="pricing">
   <div class="plan">
     <div class="plan-name">Basic</div>
-    <div class="plan-price">$9</div>
+    <div class="plan-price">€9</div>
     <div class="plan-period">per month</div>
     <button class="plan-btn">Get Started</button>
   </div>
   <div class="plan featured">
     <div class="plan-name">Pro</div>
-    <div class="plan-price">$29</div>
+    <div class="plan-price">€29</div>
     <div class="plan-period">per month</div>
     <button class="plan-btn">Get Started</button>
   </div>
   <div class="plan">
     <div class="plan-name">Team</div>
-    <div class="plan-price">$99</div>
+    <div class="plan-price">€99</div>
     <div class="plan-period">per month</div>
     <button class="plan-btn">Get Started</button>
   </div>
@@ -698,6 +698,732 @@ export const playgroundTemplates = [
       </div>
     </div>
   </main>
+</div>`
+	},
+	{
+		name: "Social Post",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1rem;
+    background: #fafafa;
+  }
+
+  .post {
+    max-width: 400px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  }
+
+  .username {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+
+  .post-actions {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+  }
+
+  .post-actions span {
+    cursor: pointer;
+  }
+
+  .likes {
+    padding: 0 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .caption {
+    padding: 0.5rem 1rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .caption strong {
+    margin-right: 0.5rem;
+  }
+</style>
+
+<article class="post">
+  <header class="post-header">
+    <div class="avatar"></div>
+    <span class="username">creative_studio</span>
+  </header>
+  <div class="post-image"></div>
+  <div class="post-actions">
+    <span>♡</span>
+    <span>💬</span>
+    <span>↗</span>
+  </div>
+  <div class="likes">2,847 likes</div>
+  <p class="caption"><strong>creative_studio</strong> Living my best life ✨🌟</p>
+</article>`
+	},
+	{
+		name: "Story Highlights",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1.5rem;
+    background: white;
+  }
+
+  .stories {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+
+  .story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .story-ring {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    padding: 2px;
+  }
+
+  .story-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ddd;
+    border: 2px solid white;
+  }
+
+  .story.seen .story-ring {
+    background: #ccc;
+  }
+
+  .story-name {
+    font-size: 0.7rem;
+    color: #262626;
+  }
+</style>
+
+<div class="stories">
+  <div class="story">
+    <div class="story-ring"><div class="story-avatar"></div></div>
+    <span class="story-name">You</span>
+  </div>
+  <div class="story">
+    <div class="story-ring"><div class="story-avatar"></div></div>
+    <span class="story-name">anna</span>
+  </div>
+  <div class="story">
+    <div class="story-ring"><div class="story-avatar"></div></div>
+    <span class="story-name">mike</span>
+  </div>
+  <div class="story seen">
+    <div class="story-ring"><div class="story-avatar"></div></div>
+    <span class="story-name">lisa</span>
+  </div>
+  <div class="story seen">
+    <div class="story-ring"><div class="story-avatar"></div></div>
+    <span class="story-name">alex</span>
+  </div>
+</div>`
+	},
+	{
+		name: "Like Button",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    gap: 2rem;
+  }
+
+  .like-btn {
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .like-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .like-btn:active {
+    transform: scale(0.95);
+  }
+
+  .like-btn.liked {
+    animation: pop 0.3s ease;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .liked .heart {
+    color: #ed4956;
+  }
+
+  .like-count {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #262626;
+  }
+</style>
+
+<button class="like-btn" onclick="this.classList.toggle('liked')">
+  <span class="heart">♥</span>
+</button>
+
+<button class="like-btn liked">
+  <span class="heart">♥</span>
+</button>
+
+<div class="like-count">1,234 likes</div>`
+	},
+	{
+		name: "Comment Section",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1rem;
+    background: #fafafa;
+  }
+
+  .comments {
+    max-width: 400px;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .comment {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    flex-shrink: 0;
+  }
+
+  .comment-content {
+    flex: 1;
+  }
+
+  .comment-user {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
+  .comment-text {
+    font-size: 0.9rem;
+    color: #262626;
+    line-height: 1.4;
+  }
+
+  .comment-meta {
+    font-size: 0.75rem;
+    color: #8e8e8e;
+    margin-top: 0.25rem;
+  }
+
+  .comment-input {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #efefef;
+  }
+
+  .comment-input input {
+    flex: 1;
+    border: none;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .post-btn {
+    color: #0095f6;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
+<div class="comments">
+  <div class="comment">
+    <div class="comment-avatar"></div>
+    <div class="comment-content">
+      <span class="comment-user">sarah_designs</span>
+      <span class="comment-text">This is amazing! 🔥</span>
+      <div class="comment-meta">2h · Reply · ♡ 12</div>
+    </div>
+  </div>
+  <div class="comment">
+    <div class="comment-avatar"></div>
+    <div class="comment-content">
+      <span class="comment-user">mike_photo</span>
+      <span class="comment-text">Love the colors! What filter did you use?</span>
+      <div class="comment-meta">1h · Reply · ♡ 5</div>
+    </div>
+  </div>
+  <div class="comment-input">
+    <input type="text" placeholder="Add a comment...">
+    <button class="post-btn">Post</button>
+  </div>
+</div>`
+	},
+	{
+		name: "Notification Badge",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem;
+  }
+
+  .icon-btn {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f0f2f5;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    background: #fe2c55;
+    color: white;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .badge.dot {
+    width: 12px;
+    height: 12px;
+    min-width: unset;
+    padding: 0;
+  }
+</style>
+
+<button class="icon-btn">
+  🔔
+  <span class="badge">3</span>
+</button>
+
+<button class="icon-btn">
+  💬
+  <span class="badge">99+</span>
+</button>
+
+<button class="icon-btn">
+  ❤️
+  <span class="badge dot"></span>
+</button>
+
+<button class="icon-btn">
+  👤
+</button>`
+	},
+	{
+		name: "Emoji Reactions",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .reactions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  .reaction {
+    font-size: 1.75rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+
+  .reaction:hover {
+    transform: scale(1.3) translateY(-5px);
+    background: #f0f2f5;
+  }
+
+  .message {
+    background: #0084ff;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 18px;
+    max-width: 250px;
+  }
+
+  .reaction-bar {
+    display: flex;
+    gap: 2px;
+    margin-top: 0.5rem;
+  }
+
+  .mini-reaction {
+    font-size: 0.9rem;
+    background: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+</style>
+
+<div class="reactions">
+  <span class="reaction">👍</span>
+  <span class="reaction">❤️</span>
+  <span class="reaction">😂</span>
+  <span class="reaction">😮</span>
+  <span class="reaction">😢</span>
+  <span class="reaction">😠</span>
+</div>
+
+<div>
+  <div class="message">Check out this cool CSS trick!</div>
+  <div class="reaction-bar">
+    <span class="mini-reaction">👍 12</span>
+    <span class="mini-reaction">❤️ 5</span>
+  </div>
+</div>`
+	},
+	{
+		name: "Bio Section",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1rem;
+    background: #fafafa;
+  }
+
+  .bio {
+    max-width: 320px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .bio-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .bio-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bio-avatar-inner {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+
+  .bio-stats {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: #8e8e8e;
+  }
+
+  .bio-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .bio-desc {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #262626;
+  }
+
+  .bio-link {
+    color: #00376b;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .follow-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem;
+    background: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+
+<div class="bio">
+  <div class="bio-header">
+    <div class="bio-avatar"><div class="bio-avatar-inner"></div></div>
+    <div class="bio-stats">
+      <div class="stat"><div class="stat-num">142</div><div class="stat-label">posts</div></div>
+      <div class="stat"><div class="stat-num">8.5K</div><div class="stat-label">followers</div></div>
+      <div class="stat"><div class="stat-num">284</div><div class="stat-label">following</div></div>
+    </div>
+  </div>
+  <div class="bio-name">Creative Studio ✨</div>
+  <div class="bio-desc">Digital creator | Design tips<br>📍 New York<br>✉️ hello@studio.com</div>
+  <a class="bio-link" href="#">linktr.ee/creativestudio</a>
+  <button class="follow-btn">Follow</button>
+</div>`
+	},
+	{
+		name: "Status Update",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1rem;
+    background: #f0f2f5;
+  }
+
+  .status-box {
+    max-width: 500px;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .status-input {
+    display: flex;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e4e6eb;
+  }
+
+  .status-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+
+  .status-field {
+    flex: 1;
+    background: #f0f2f5;
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #65676b;
+    cursor: pointer;
+  }
+
+  .status-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0.75rem;
+  }
+
+  .status-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #65676b;
+  }
+
+  .status-action:hover {
+    background: #f0f2f5;
+  }
+
+  .status-action span:first-child {
+    font-size: 1.25rem;
+  }
+</style>
+
+<div class="status-box">
+  <div class="status-input">
+    <div class="status-avatar"></div>
+    <div class="status-field">What's on your mind?</div>
+  </div>
+  <div class="status-actions">
+    <div class="status-action"><span>🎥</span> Live</div>
+    <div class="status-action"><span>🖼️</span> Photo</div>
+    <div class="status-action"><span>😊</span> Feeling</div>
+  </div>
+</div>`
+	},
+	{
+		name: "Chat Bubble",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1rem;
+    background: #f0f2f5;
+  }
+
+  .chat {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .message {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .message.sent {
+    align-self: flex-end;
+    background: #0084ff;
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .message.received {
+    align-self: flex-start;
+    background: #e4e6eb;
+    color: #050505;
+    border-bottom-left-radius: 4px;
+  }
+
+  .message.received + .message.received,
+  .message.sent + .message.sent {
+    margin-top: -0.25rem;
+  }
+
+  .typing {
+    display: flex;
+    gap: 4px;
+    padding: 1rem;
+    background: #e4e6eb;
+    border-radius: 18px;
+    width: fit-content;
+  }
+
+  .typing span {
+    width: 8px;
+    height: 8px;
+    background: #90949c;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite;
+  }
+
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+</style>
+
+<div class="chat">
+  <div class="message received">Hey! How are you? 👋</div>
+  <div class="message sent">I'm good! Just learned some CSS 🎨</div>
+  <div class="message sent">Check out this cool effect!</div>
+  <div class="message received">Wow that's awesome! 😍</div>
+  <div class="message received">Can you teach me?</div>
+  <div class="typing"><span></span><span></span><span></span></div>
 </div>`
 	}
 ];
