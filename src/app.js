@@ -696,6 +696,7 @@ function nextLesson() {
 
 		if (newState.module.id !== prevModuleId) {
 			updateModuleHighlight(newState.module.id);
+			updateSectionColor(getModuleSection(newState.module));
 		}
 		loadCurrentLesson();
 	}
@@ -712,6 +713,7 @@ function prevLesson() {
 
 		if (newState.module.id !== prevModuleId) {
 			updateModuleHighlight(newState.module.id);
+			updateSectionColor(getModuleSection(newState.module));
 		}
 		loadCurrentLesson();
 	}
