@@ -404,6 +404,9 @@ function initializeModules() {
 		// Use the new renderModuleList function with both callbacks
 		renderModuleList(elements.moduleList, modules, selectModule, selectLesson);
 
+		// Render footer lesson links (for all pages)
+		renderFooterLessonLinks();
+
 		// Handle route (home, section, or lesson)
 		handleRoute(false);
 
@@ -2031,7 +2034,6 @@ function updateSectionColor(sectionId) {
 function showLandingPage() {
 	hideAllPages();
 	elements.landingPage?.classList.remove("hidden");
-	window.scrollTo(0, 0);
 
 	// Reset section color on landing page
 	updateSectionColor(null);
@@ -2041,6 +2043,9 @@ function showLandingPage() {
 
 	// Render footer lesson links
 	renderFooterLessonLinks();
+
+	// Scroll to top after content is rendered
+	requestAnimationFrame(() => window.scrollTo(0, 0));
 }
 
 /**
@@ -2166,7 +2171,6 @@ function showSectionPage(sectionId) {
 function showReferencePage(refId) {
 	hideAllPages();
 	elements.referencePage?.classList.remove("hidden");
-	window.scrollTo(0, 0);
 
 	// Default to CSS if no refId
 	const activeRef = refId || "css";
@@ -2194,6 +2198,9 @@ function showReferencePage(refId) {
 	} else if (elements.referenceBody) {
 		elements.referenceBody.innerHTML = `<p>Reference for "${activeRef}" coming soon...</p>`;
 	}
+
+	// Scroll to top after content is rendered
+	requestAnimationFrame(() => window.scrollTo(0, 0));
 }
 
 /**
