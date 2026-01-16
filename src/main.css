@@ -2848,72 +2848,72 @@ input:checked + .toggle-slider::before {
 }
 
 /* ================= SECTION COLOR CODING ================= */
-/* CSS Section - Violet */
+/* CSS Section - Muted Violet */
 [data-section="css"] {
-	--section-color: #7c4dff;
-	--section-color-light: #a47fff;
-	--section-color-dark: #5c35cc;
-	--section-color-rgb: 124, 77, 255;
+	--section-color: #7b68a6;
+	--section-color-light: #9d8ec4;
+	--section-color-dark: #5a4a7a;
+	--section-color-rgb: 123, 104, 166;
 }
 
-/* HTML Section - Raspberry */
+/* HTML Section - Muted Rose */
 [data-section="html"] {
-	--section-color: #e91e63;
-	--section-color-light: #f06292;
-	--section-color-dark: #c2185b;
-	--section-color-rgb: 233, 30, 99;
+	--section-color: #c75b7a;
+	--section-color-light: #db8a9e;
+	--section-color-dark: #a34560;
+	--section-color-rgb: 199, 91, 122;
 }
 
-/* Tailwind Section - Cyan */
+/* Tailwind Section - Muted Teal */
 [data-section="tailwind"] {
-	--section-color: #00bcd4;
-	--section-color-light: #4dd0e1;
-	--section-color-dark: #0097a7;
-	--section-color-rgb: 0, 188, 212;
+	--section-color: #4a9ea8;
+	--section-color-light: #6fbac3;
+	--section-color-dark: #3a7d85;
+	--section-color-rgb: 74, 158, 168;
 }
 
 /* Apply section colors to nav links */
 .nav-link[data-section="css"] {
-	color: #7c4dff;
+	color: #7b68a6;
 }
 
 .nav-link[data-section="html"] {
-	color: #e91e63;
+	color: #c75b7a;
 }
 
 .nav-link[data-section="tailwind"] {
-	color: #00bcd4;
+	color: #4a9ea8;
 }
 
 .nav-link[data-section="css"]:hover,
 .nav-link[data-section="css"].active {
-	background: rgba(124, 77, 255, 0.1);
-	color: #5c35cc;
+	background: rgba(123, 104, 166, 0.1);
+	color: #5a4a7a;
 }
 
 .nav-link[data-section="html"]:hover,
 .nav-link[data-section="html"].active {
-	background: rgba(233, 30, 99, 0.1);
-	color: #c2185b;
+	background: rgba(199, 91, 122, 0.1);
+	color: #a34560;
 }
 
 .nav-link[data-section="tailwind"]:hover,
 .nav-link[data-section="tailwind"].active {
-	background: rgba(0, 188, 212, 0.1);
-	color: #0097a7;
+	background: rgba(74, 158, 168, 0.1);
+	color: #3a7d85;
 }
 
 /* Logo color coding based on section */
 [data-section="css"] .code-text {
-	color: #7c4dff;
+	color: #7b68a6;
 }
 
 [data-section="html"] .code-text {
-	color: #e91e63;
+	color: #c75b7a;
 }
 
 [data-section="tailwind"] .code-text {
-	color: #00bcd4;
+	color: #4a9ea8;
 }
 
 /* Reference nav link colors */
@@ -2921,7 +2921,7 @@ input:checked + .toggle-slider::before {
 .ref-nav-link[data-ref="selectors"],
 .ref-nav-link[data-ref="flexbox"],
 .ref-nav-link[data-ref="grid"] {
-	color: #7c4dff;
+	color: #7b68a6;
 }
 
 .ref-nav-link[data-ref="css"]:hover,
@@ -2932,153 +2932,166 @@ input:checked + .toggle-slider::before {
 .ref-nav-link[data-ref="flexbox"].active,
 .ref-nav-link[data-ref="grid"]:hover,
 .ref-nav-link[data-ref="grid"].active {
-	background: rgba(124, 77, 255, 0.15);
-	color: #5c35cc;
+	background: rgba(123, 104, 166, 0.15);
+	color: #5a4a7a;
 }
 
 .ref-nav-link[data-ref="html"] {
-	color: #e91e63;
+	color: #c75b7a;
 }
 
 .ref-nav-link[data-ref="html"]:hover,
 .ref-nav-link[data-ref="html"].active {
-	background: rgba(233, 30, 99, 0.15);
-	color: #c2185b;
+	background: rgba(199, 91, 122, 0.15);
+	color: #a34560;
 }
 
 /* CodeMirror section color overrides */
 body[data-section="css"] .cm-editor .cm-content {
-	caret-color: #7c4dff !important;
+	caret-color: #7b68a6 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-cursor,
 body[data-section="css"] .cm-editor .cm-dropCursor {
-	border-left-color: #7c4dff !important;
+	border-left-color: #7b68a6 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-selectionBackground,
 body[data-section="css"] .cm-editor .cm-content ::selection {
-	background-color: rgba(124, 77, 255, 0.25) !important;
+	background-color: rgba(123, 104, 166, 0.25) !important;
 }
 
 body[data-section="css"] .cm-editor .cm-activeLine {
-	background-color: rgba(124, 77, 255, 0.08) !important;
+	background-color: rgba(123, 104, 166, 0.08) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-content {
-	caret-color: #e91e63 !important;
+	caret-color: #c75b7a !important;
 }
 
 body[data-section="html"] .cm-editor .cm-cursor,
 body[data-section="html"] .cm-editor .cm-dropCursor {
-	border-left-color: #e91e63 !important;
+	border-left-color: #c75b7a !important;
 }
 
 body[data-section="html"] .cm-editor .cm-selectionBackground,
 body[data-section="html"] .cm-editor .cm-content ::selection {
-	background-color: rgba(233, 30, 99, 0.25) !important;
+	background-color: rgba(199, 91, 122, 0.25) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-activeLine {
-	background-color: rgba(233, 30, 99, 0.08) !important;
+	background-color: rgba(199, 91, 122, 0.08) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-content {
-	caret-color: #00bcd4 !important;
+	caret-color: #4a9ea8 !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-cursor,
 body[data-section="tailwind"] .cm-editor .cm-dropCursor {
-	border-left-color: #00bcd4 !important;
+	border-left-color: #4a9ea8 !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-selectionBackground,
 body[data-section="tailwind"] .cm-editor .cm-content ::selection {
-	background-color: rgba(0, 188, 212, 0.25) !important;
+	background-color: rgba(74, 158, 168, 0.25) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-activeLine {
-	background-color: rgba(0, 188, 212, 0.08) !important;
+	background-color: rgba(74, 158, 168, 0.08) !important;
 }
 
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
-	background: rgba(124, 77, 255, 0.1);
-	color: #7c4dff;
+	background: rgba(123, 104, 166, 0.1);
+	color: #7b68a6;
 }
 
 body[data-section="css"] .module-pill .level-indicator {
-	color: #5c35cc;
+	color: #5a4a7a;
 }
 
 body[data-section="html"] .module-pill {
-	background: rgba(233, 30, 99, 0.1);
-	color: #e91e63;
+	background: rgba(199, 91, 122, 0.1);
+	color: #c75b7a;
 }
 
 body[data-section="html"] .module-pill .level-indicator {
-	color: #c2185b;
+	color: #a34560;
 }
 
 body[data-section="tailwind"] .module-pill {
-	background: rgba(0, 188, 212, 0.1);
-	color: #00bcd4;
+	background: rgba(74, 158, 168, 0.1);
+	color: #4a9ea8;
 }
 
 body[data-section="tailwind"] .module-pill .level-indicator {
-	color: #0097a7;
+	color: #3a7d85;
 }
 
 /* Code block border section colors */
 body[data-section="css"] .code-block {
-	border-color: rgba(124, 77, 255, 0.4);
+	border-color: rgba(123, 104, 166, 0.4);
 }
 
 body[data-section="html"] .code-block {
-	border-color: rgba(233, 30, 99, 0.4);
+	border-color: rgba(199, 91, 122, 0.4);
 }
 
 body[data-section="tailwind"] .code-block {
-	border-color: rgba(0, 188, 212, 0.4);
+	border-color: rgba(74, 158, 168, 0.4);
 }
 
 /* Section code block CodeMirror syntax highlighting overrides */
 body[data-section="css"] .code-block .cm-editor .cm-line {
-	color: #c9b8ff;
+	color: #c9c0e0;
 }
 
 body[data-section="html"] .code-block .cm-editor .cm-line {
-	color: #ffb8c9;
+	color: #e8c0cc;
 }
 
 body[data-section="tailwind"] .code-block .cm-editor .cm-line {
-	color: #b8f0ff;
+	color: #c0e0e8;
 }
 
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
-	background: rgba(124, 77, 255, 0.9);
+	background: rgba(123, 104, 166, 0.92);
 }
 
 [data-section="html"] .task-instruction {
-	background: rgba(233, 30, 99, 0.9);
+	background: rgba(199, 91, 122, 0.92);
 }
 
 [data-section="tailwind"] .task-instruction {
-	background: rgba(0, 188, 212, 0.9);
+	background: rgba(74, 158, 168, 0.92);
+}
+
+/* Section page progress bar colors */
+body[data-section="css"] .section-progress-bar .progress-fill {
+	background: #7b68a6;
+}
+
+body[data-section="html"] .section-progress-bar .progress-fill {
+	background: #c75b7a;
+}
+
+body[data-section="tailwind"] .section-progress-bar .progress-fill {
+	background: #4a9ea8;
 }
 
 /* Section page header colors */
 [data-section="css"] .section-hero h1 {
-	color: #7c4dff;
+	color: #7b68a6;
 }
 
 [data-section="html"] .section-hero h1 {
-	color: #e91e63;
+	color: #c75b7a;
 }
 
 [data-section="tailwind"] .section-hero h1 {
-	color: #00bcd4;
+	color: #4a9ea8;
 }
 
 /* Reference footer */
