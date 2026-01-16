@@ -1,11 +1,11 @@
 /**
- * Internationalization module for Code Crispies
+ * Internationalization module for CODE CRISPIES
  */
 
 const translations = {
 	en: {
 		// Page
-		pageTitle: "Code Crispies - Learn HTML & CSS Interactively",
+		pageTitle: "CODE CRISPIES - Learn HTML & CSS Interactively",
 		skipLink: "Skip to main content",
 
 		// Header
@@ -48,9 +48,9 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "Help",
-		aboutTitle: "About Code Crispies",
+		aboutTitle: "About CODE CRISPIES",
 		aboutText:
-			"Code Crispies is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!",
+			"CODE CRISPIES is a free, open-source platform for learning web development through hands-on exercises. No account required - just start coding!",
 		learningModesTitle: "Learning Modes",
 		modeCss: "<strong>CSS</strong> - Write CSS rules to style elements",
 		modeTailwind: "<strong>Tailwind</strong> - Apply utility classes directly in HTML",
@@ -85,7 +85,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Contact & Links",
-		contactText: 'Code Crispies is developed by <a href="https://librete.ch" target="_blank">LibreTECH</a>',
+		contactText: 'CODE CRISPIES is developed by <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Reset Progress",
@@ -121,7 +121,7 @@ const translations = {
 		landingHeroHighlight: "By Writing Real Code",
 		landingHeroSubtitle: "Master HTML, CSS, and Tailwind through hands-on exercises with instant feedback. Free and open source.",
 		landingCtaStart: "Start Learning NOW",
-		landingWhyTitle: "Why Code Crispies Works",
+		landingWhyTitle: "Why CODE CRISPIES Works",
 		landingBenefit1Title: "Learn by Doing",
 		landingBenefit1Text: "Write real code from lesson one. No videos to watch—just you, an editor, and instant feedback on every keystroke.",
 		landingBenefit2Title: "Practice at Your Pace",
@@ -145,17 +145,17 @@ const translations = {
 		footerPlayground: "Playground",
 		footerAbout: "About",
 		footerSupport: "Support",
-		footerSupportText: "Help keep Code Crispies free and open source.",
+		footerSupportText: "Help keep CODE CRISPIES free and open source.",
 		footerLicense: "Released into the public domain.",
 
 		// Help Dialog Support
 		supportTitle: "Support the Project",
-		supportText: "Help keep Code Crispies free and open source."
+		supportText: "Help keep CODE CRISPIES free and open source."
 	},
 
 	de: {
 		// Page
-		pageTitle: "Code Crispies - HTML & CSS interaktiv lernen",
+		pageTitle: "CODE CRISPIES - HTML & CSS interaktiv lernen",
 		skipLink: "Zum Hauptinhalt springen",
 
 		// Header
@@ -198,9 +198,9 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "Hilfe",
-		aboutTitle: "Über Code Crispies",
+		aboutTitle: "Über CODE CRISPIES",
 		aboutText:
-			"Code Crispies ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich - einfach loslegen!",
+			"CODE CRISPIES ist eine kostenlose Open-Source-Plattform zum Erlernen von Webentwicklung durch praktische Übungen. Kein Konto erforderlich - einfach loslegen!",
 		learningModesTitle: "Lernmodi",
 		modeCss: "<strong>CSS</strong> - Schreibe CSS-Regeln zum Stylen von Elementen",
 		modeTailwind: "<strong>Tailwind</strong> - Wende Utility-Klassen direkt im HTML an",
@@ -236,7 +236,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Kontakt & Links",
-		contactText: 'Code Crispies wird von <a href="https://librete.ch" target="_blank">LibreTECH</a> entwickelt',
+		contactText: 'CODE CRISPIES wird von <a href="https://librete.ch" target="_blank">LibreTECH</a> entwickelt',
 
 		// Reset dialog
 		resetDialogTitle: "Fortschritt zurücksetzen",
@@ -272,7 +272,7 @@ const translations = {
 		landingHeroHighlight: "Selbstständig lernen",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
-		landingWhyTitle: "Warum Code Crispies funktioniert",
+		landingWhyTitle: "Warum CODE CRISPIES funktioniert",
 		landingBenefit1Title: "Lernen durch Praxis",
 		landingBenefit1Text:
 			"Schreibe echten Code ab der ersten Lektion. Keine Videos – nur du, ein Editor und sofortiges Feedback bei jedem Tastendruck.",
@@ -298,18 +298,18 @@ const translations = {
 		footerPlayground: "Playground",
 		footerAbout: "Über uns",
 		footerSupport: "Unterstützen",
-		footerSupportText: "Hilf mit, Code Crispies kostenlos und Open Source zu halten.",
+		footerSupportText: "Hilf mit, CODE CRISPIES kostenlos und Open Source zu halten.",
 		footerLicense: "Gemeinfrei (Public Domain).",
 
 		// Help Dialog Support
 		supportTitle: "Projekt unterstützen",
-		supportText: "Hilf mit, Code Crispies kostenlos und Open Source zu halten."
+		supportText: "Hilf mit, CODE CRISPIES kostenlos und Open Source zu halten."
 	},
 
 	// Polish
 	pl: {
 		// Page
-		pageTitle: "Code Crispies - Nauka HTML i CSS interaktywnie",
+		pageTitle: "CODE CRISPIES - Nauka HTML i CSS interaktywnie",
 		skipLink: "Przejdź do głównej treści",
 
 		// Header
@@ -352,9 +352,9 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "Pomoc",
-		aboutTitle: "O Code Crispies",
+		aboutTitle: "O CODE CRISPIES",
 		aboutText:
-			"Code Crispies to darmowa platforma open-source do nauki tworzenia stron internetowych poprzez praktyczne ćwiczenia. Nie wymaga konta - po prostu zacznij kodować!",
+			"CODE CRISPIES to darmowa platforma open-source do nauki tworzenia stron internetowych poprzez praktyczne ćwiczenia. Nie wymaga konta - po prostu zacznij kodować!",
 		learningModesTitle: "Tryby nauki",
 		modeCss: "<strong>CSS</strong> - Pisz reguły CSS do stylizowania elementów",
 		modeTailwind: "<strong>Tailwind</strong> - Stosuj klasy utility bezpośrednio w HTML",
@@ -389,7 +389,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Kontakt i linki",
-		contactText: 'Code Crispies jest rozwijany przez <a href="https://librete.ch" target="_blank">LibreTECH</a>',
+		contactText: 'CODE CRISPIES jest rozwijany przez <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Resetuj postęp",
@@ -425,7 +425,7 @@ const translations = {
 		landingHeroHighlight: "Pisząc prawdziwy kod",
 		landingHeroSubtitle: "Opanuj HTML, CSS i Tailwind poprzez praktyczne ćwiczenia z natychmiastową informacją zwrotną. Darmowe i open source.",
 		landingCtaStart: "Zacznij TERAZ",
-		landingWhyTitle: "Dlaczego Code Crispies działa",
+		landingWhyTitle: "Dlaczego CODE CRISPIES działa",
 		landingBenefit1Title: "Ucz się przez praktykę",
 		landingBenefit1Text:
 			"Pisz prawdziwy kod od pierwszej lekcji. Żadnych filmów – tylko ty, edytor i natychmiastowa informacja zwrotna przy każdym naciśnięciu klawisza.",
@@ -451,18 +451,18 @@ const translations = {
 		footerPlayground: "Plac zabaw",
 		footerAbout: "O nas",
 		footerSupport: "Wsparcie",
-		footerSupportText: "Pomóż utrzymać Code Crispies darmowym i open source.",
+		footerSupportText: "Pomóż utrzymać CODE CRISPIES darmowym i open source.",
 		footerLicense: "Udostępnione jako domena publiczna.",
 
 		// Help Dialog Support
 		supportTitle: "Wesprzyj projekt",
-		supportText: "Pomóż utrzymać Code Crispies darmowym i open source."
+		supportText: "Pomóż utrzymać CODE CRISPIES darmowym i open source."
 	},
 
 	// Spanish
 	es: {
 		// Page
-		pageTitle: "Code Crispies - Aprende HTML y CSS de forma interactiva",
+		pageTitle: "CODE CRISPIES - Aprende HTML y CSS de forma interactiva",
 		skipLink: "Saltar al contenido principal",
 
 		// Header
@@ -505,9 +505,9 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "Ayuda",
-		aboutTitle: "Acerca de Code Crispies",
+		aboutTitle: "Acerca de CODE CRISPIES",
 		aboutText:
-			"Code Crispies es una plataforma gratuita de código abierto para aprender desarrollo web a través de ejercicios prácticos. No se requiere cuenta, ¡solo empieza a programar!",
+			"CODE CRISPIES es una plataforma gratuita de código abierto para aprender desarrollo web a través de ejercicios prácticos. No se requiere cuenta, ¡solo empieza a programar!",
 		learningModesTitle: "Modos de aprendizaje",
 		modeCss: "<strong>CSS</strong> - Escribe reglas CSS para estilizar elementos",
 		modeTailwind: "<strong>Tailwind</strong> - Aplica clases de utilidad directamente en HTML",
@@ -543,7 +543,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Contacto y enlaces",
-		contactText: 'Code Crispies es desarrollado por <a href="https://librete.ch" target="_blank">LibreTECH</a>',
+		contactText: 'CODE CRISPIES es desarrollado por <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Reiniciar progreso",
@@ -580,7 +580,7 @@ const translations = {
 		landingHeroSubtitle:
 			"Domina HTML, CSS y Tailwind a través de ejercicios prácticos con retroalimentación instantánea. Gratis y de código abierto.",
 		landingCtaStart: "Empieza AHORA",
-		landingWhyTitle: "Por qué funciona Code Crispies",
+		landingWhyTitle: "Por qué funciona CODE CRISPIES",
 		landingBenefit1Title: "Aprende haciendo",
 		landingBenefit1Text:
 			"Escribe código real desde la primera lección. Sin videos que ver—solo tú, un editor y retroalimentación instantánea en cada tecla.",
@@ -606,18 +606,18 @@ const translations = {
 		footerPlayground: "Zona de pruebas",
 		footerAbout: "Acerca de",
 		footerSupport: "Apoyar",
-		footerSupportText: "Ayuda a mantener Code Crispies gratis y de código abierto.",
+		footerSupportText: "Ayuda a mantener CODE CRISPIES gratis y de código abierto.",
 		footerLicense: "Liberado al dominio público.",
 
 		// Help Dialog Support
 		supportTitle: "Apoyar el proyecto",
-		supportText: "Ayuda a mantener Code Crispies gratis y de código abierto."
+		supportText: "Ayuda a mantener CODE CRISPIES gratis y de código abierto."
 	},
 
 	// Arabic
 	ar: {
 		// Page
-		pageTitle: "Code Crispies - تعلم HTML و CSS بشكل تفاعلي",
+		pageTitle: "CODE CRISPIES - تعلم HTML و CSS بشكل تفاعلي",
 		skipLink: "انتقل إلى المحتوى الرئيسي",
 
 		// Header
@@ -660,8 +660,8 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "مساعدة",
-		aboutTitle: "عن Code Crispies",
-		aboutText: "Code Crispies هي منصة مجانية مفتوحة المصدر لتعلم تطوير الويب من خلال تمارين عملية. لا يلزم حساب - فقط ابدأ البرمجة!",
+		aboutTitle: "عن CODE CRISPIES",
+		aboutText: "CODE CRISPIES هي منصة مجانية مفتوحة المصدر لتعلم تطوير الويب من خلال تمارين عملية. لا يلزم حساب - فقط ابدأ البرمجة!",
 		learningModesTitle: "أوضاع التعلم",
 		modeCss: "<strong>CSS</strong> - اكتب قواعد CSS لتنسيق العناصر",
 		modeTailwind: "<strong>Tailwind</strong> - طبق فئات الأدوات مباشرة في HTML",
@@ -696,7 +696,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "التواصل والروابط",
-		contactText: 'Code Crispies تم تطويره بواسطة <a href="https://librete.ch" target="_blank">LibreTECH</a>',
+		contactText: 'CODE CRISPIES تم تطويره بواسطة <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "إعادة تعيين التقدم",
@@ -732,7 +732,7 @@ const translations = {
 		landingHeroHighlight: "بكتابة كود حقيقي",
 		landingHeroSubtitle: "أتقن HTML و CSS و Tailwind من خلال تمارين عملية مع ملاحظات فورية. مجاني ومفتوح المصدر.",
 		landingCtaStart: "ابدأ الآن",
-		landingWhyTitle: "لماذا Code Crispies فعال",
+		landingWhyTitle: "لماذا CODE CRISPIES فعال",
 		landingBenefit1Title: "تعلم بالممارسة",
 		landingBenefit1Text: "اكتب كودًا حقيقيًا من الدرس الأول. لا فيديوهات للمشاهدة—فقط أنت ومحرر وملاحظات فورية مع كل ضغطة مفتاح.",
 		landingBenefit2Title: "بسرعتك الخاصة",
@@ -756,18 +756,18 @@ const translations = {
 		footerPlayground: "ساحة التجربة",
 		footerAbout: "حول",
 		footerSupport: "الدعم",
-		footerSupportText: "ساعد في إبقاء Code Crispies مجانيًا ومفتوح المصدر.",
+		footerSupportText: "ساعد في إبقاء CODE CRISPIES مجانيًا ومفتوح المصدر.",
 		footerLicense: "مُطلق للملكية العامة.",
 
 		// Help Dialog Support
 		supportTitle: "ادعم المشروع",
-		supportText: "ساعد في إبقاء Code Crispies مجانيًا ومفتوح المصدر."
+		supportText: "ساعد في إبقاء CODE CRISPIES مجانيًا ومفتوح المصدر."
 	},
 
 	// Ukrainian
 	uk: {
 		// Page
-		pageTitle: "Code Crispies - Вивчай HTML та CSS інтерактивно",
+		pageTitle: "CODE CRISPIES - Вивчай HTML та CSS інтерактивно",
 		skipLink: "Перейти до основного вмісту",
 
 		// Header
@@ -810,9 +810,9 @@ const translations = {
 
 		// Help dialog
 		helpTitle: "Допомога",
-		aboutTitle: "Про Code Crispies",
+		aboutTitle: "Про CODE CRISPIES",
 		aboutText:
-			"Code Crispies — це безкоштовна платформа з відкритим кодом для вивчення веб-розробки через практичні вправи. Обліковий запис не потрібен — просто починайте кодувати!",
+			"CODE CRISPIES — це безкоштовна платформа з відкритим кодом для вивчення веб-розробки через практичні вправи. Обліковий запис не потрібен — просто починайте кодувати!",
 		learningModesTitle: "Режими навчання",
 		modeCss: "<strong>CSS</strong> - Пишіть правила CSS для стилізації елементів",
 		modeTailwind: "<strong>Tailwind</strong> - Застосовуйте утилітарні класи безпосередньо в HTML",
@@ -847,7 +847,7 @@ const translations = {
 
 		// Contact
 		contactTitle: "Контакти та посилання",
-		contactText: 'Code Crispies розроблено <a href="https://librete.ch" target="_blank">LibreTECH</a>',
+		contactText: 'CODE CRISPIES розроблено <a href="https://librete.ch" target="_blank">LibreTECH</a>',
 
 		// Reset dialog
 		resetDialogTitle: "Скинути прогрес",
@@ -883,7 +883,7 @@ const translations = {
 		landingHeroHighlight: "Пишучи справжній код",
 		landingHeroSubtitle: "Опануй HTML, CSS та Tailwind через практичні вправи з миттєвим зворотним зв'язком. Безкоштовно та з відкритим кодом.",
 		landingCtaStart: "Почни ЗАРАЗ",
-		landingWhyTitle: "Чому Code Crispies працює",
+		landingWhyTitle: "Чому CODE CRISPIES працює",
 		landingBenefit1Title: "Вчись на практиці",
 		landingBenefit1Text:
 			"Пиши справжній код з першого уроку. Жодних відео—тільки ти, редактор і миттєвий зворотний зв'язок при кожному натисканні клавіші.",
@@ -908,12 +908,12 @@ const translations = {
 		footerPlayground: "Пісочниця",
 		footerAbout: "Про нас",
 		footerSupport: "Підтримка",
-		footerSupportText: "Допоможи зберегти Code Crispies безкоштовним та з відкритим кодом.",
+		footerSupportText: "Допоможи зберегти CODE CRISPIES безкоштовним та з відкритим кодом.",
 		footerLicense: "Передано у суспільне надбання.",
 
 		// Help Dialog Support
 		supportTitle: "Підтримати проєкт",
-		supportText: "Допоможи зберегти Code Crispies безкоштовним та з відкритим кодом."
+		supportText: "Допоможи зберегти CODE CRISPIES безкоштовним та з відкритим кодом."
 	}
 };
 

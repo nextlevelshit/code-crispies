@@ -252,16 +252,41 @@ kbd {
 }
 
 .logo h1 .code-text {
-	color: var(--primary-color);
+	color: #8b6bc4;
 }
 
 .logo h1 .crispies-text {
-	background: var(--primary-color);
+	background: #8b6bc4;
 	color: white;
 	padding: 0.15rem 0.35rem;
 	border-radius: 4px;
 	letter-spacing: 0.05em;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo section color coding */
+[data-section="css"] .logo h1 .code-text {
+	color: #8b6bc4;
+}
+
+[data-section="css"] .logo h1 .crispies-text {
+	background: #8b6bc4;
+}
+
+[data-section="html"] .logo h1 .code-text {
+	color: #c75b7a;
+}
+
+[data-section="html"] .logo h1 .crispies-text {
+	background: #c75b7a;
+}
+
+[data-section="tailwind"] .logo h1 .code-text {
+	color: #26a69a;
+}
+
+[data-section="tailwind"] .logo h1 .crispies-text {
+	background: #26a69a;
 }
 
 .help-toggle {
@@ -1954,7 +1979,9 @@ input:checked + .toggle-slider::before {
 	color: var(--primary-color);
 }
 
-#footer-lesson-links {
+#footer-lesson-links,
+#ref-footer-lesson-links,
+#section-footer-lesson-links {
 	display: flex;
 	gap: 2rem;
 }
@@ -2856,12 +2883,12 @@ input:checked + .toggle-slider::before {
 	--section-color-rgb: 139, 107, 196;
 }
 
-/* HTML Section - Balanced Rose */
+/* HTML Section - Raspberry */
 [data-section="html"] {
-	--section-color: #d4637b;
-	--section-color-light: #e08899;
-	--section-color-dark: #b84d63;
-	--section-color-rgb: 212, 99, 123;
+	--section-color: #c75b7a;
+	--section-color-light: #d97a94;
+	--section-color-dark: #a84862;
+	--section-color-rgb: 199, 91, 122;
 }
 
 /* Tailwind Section - Balanced Teal */
@@ -2878,7 +2905,7 @@ input:checked + .toggle-slider::before {
 }
 
 .nav-link[data-section="html"] {
-	color: #d4637b;
+	color: #c75b7a;
 }
 
 .nav-link[data-section="tailwind"] {
@@ -2893,8 +2920,8 @@ input:checked + .toggle-slider::before {
 
 .nav-link[data-section="html"]:hover,
 .nav-link[data-section="html"].active {
-	background: rgba(212, 99, 123, 0.1);
-	color: #b84d63;
+	background: rgba(199, 91, 122, 0.1);
+	color: #a84862;
 }
 
 .nav-link[data-section="tailwind"]:hover,
@@ -2903,17 +2930,45 @@ input:checked + .toggle-slider::before {
 	color: #00897b;
 }
 
-/* Logo color coding based on section */
-[data-section="css"] .code-text {
-	color: #8b6bc4;
+/* Hint section colors */
+body[data-section="css"] .hint {
+	background: rgba(139, 107, 196, 0.3);
+	border-left-color: #a98cd6;
 }
 
-[data-section="html"] .code-text {
-	color: #d4637b;
+body[data-section="css"] .hint-progress {
+	background: #8b6bc4;
 }
 
-[data-section="tailwind"] .code-text {
-	color: #26a69a;
+body[data-section="html"] .hint {
+	background: rgba(199, 91, 122, 0.3);
+	border-left-color: #d97a94;
+}
+
+body[data-section="html"] .hint-progress {
+	background: #c75b7a;
+}
+
+body[data-section="tailwind"] .hint {
+	background: rgba(38, 166, 154, 0.3);
+	border-left-color: #4db6ac;
+}
+
+body[data-section="tailwind"] .hint-progress {
+	background: #26a69a;
+}
+
+/* RTL hint border */
+[dir="rtl"] body[data-section="css"] .hint {
+	border-right-color: #a98cd6;
+}
+
+[dir="rtl"] body[data-section="html"] .hint {
+	border-right-color: #d97a94;
+}
+
+[dir="rtl"] body[data-section="tailwind"] .hint {
+	border-right-color: #4db6ac;
 }
 
 /* Reference nav link colors */
@@ -2937,13 +2992,13 @@ input:checked + .toggle-slider::before {
 }
 
 .ref-nav-link[data-ref="html"] {
-	color: #d4637b;
+	color: #c75b7a;
 }
 
 .ref-nav-link[data-ref="html"]:hover,
 .ref-nav-link[data-ref="html"].active {
-	background: rgba(212, 99, 123, 0.15);
-	color: #b84d63;
+	background: rgba(199, 91, 122, 0.15);
+	color: #a84862;
 }
 
 /* CodeMirror section color overrides */
@@ -2966,21 +3021,21 @@ body[data-section="css"] .cm-editor .cm-activeLine {
 }
 
 body[data-section="html"] .cm-editor .cm-content {
-	caret-color: #d4637b !important;
+	caret-color: #c75b7a !important;
 }
 
 body[data-section="html"] .cm-editor .cm-cursor,
 body[data-section="html"] .cm-editor .cm-dropCursor {
-	border-left-color: #d4637b !important;
+	border-left-color: #c75b7a !important;
 }
 
 body[data-section="html"] .cm-editor .cm-selectionBackground,
 body[data-section="html"] .cm-editor .cm-content ::selection {
-	background-color: rgba(212, 99, 123, 0.25) !important;
+	background-color: rgba(199, 91, 122, 0.25) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-activeLine {
-	background-color: rgba(212, 99, 123, 0.08) !important;
+	background-color: rgba(199, 91, 122, 0.08) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-content {
@@ -3012,12 +3067,12 @@ body[data-section="css"] .module-pill .level-indicator {
 }
 
 body[data-section="html"] .module-pill {
-	background: rgba(212, 99, 123, 0.1);
-	color: #d4637b;
+	background: rgba(199, 91, 122, 0.1);
+	color: #c75b7a;
 }
 
 body[data-section="html"] .module-pill .level-indicator {
-	color: #b84d63;
+	color: #a84862;
 }
 
 body[data-section="tailwind"] .module-pill {
@@ -3035,7 +3090,7 @@ body[data-section="css"] .code-block {
 }
 
 body[data-section="html"] .code-block {
-	border-color: rgba(212, 99, 123, 0.4);
+	border-color: rgba(199, 91, 122, 0.4);
 }
 
 body[data-section="tailwind"] .code-block {
@@ -3061,7 +3116,7 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 }
 
 [data-section="html"] .task-instruction {
-	background: rgba(212, 99, 123, 0.92);
+	background: rgba(199, 91, 122, 0.92);
 }
 
 [data-section="tailwind"] .task-instruction {
@@ -3074,7 +3129,7 @@ body[data-section="css"] .section-progress-bar .progress-fill {
 }
 
 body[data-section="html"] .section-progress-bar .progress-fill {
-	background: #d4637b;
+	background: #c75b7a;
 }
 
 body[data-section="tailwind"] .section-progress-bar .progress-fill {
@@ -3087,23 +3142,28 @@ body[data-section="tailwind"] .section-progress-bar .progress-fill {
 }
 
 [data-section="html"] .section-hero h1 {
-	color: #d4637b;
+	color: #c75b7a;
 }
 
 [data-section="tailwind"] .section-hero h1 {
 	color: #26a69a;
 }
 
-/* Reference footer */
-.reference-footer {
-	text-align: center;
-	padding: 2rem 1rem;
-	margin-top: 3rem;
-	border-top: 1px solid var(--border-color);
-	color: var(--light-text);
-	font-size: 0.9rem;
+/* Section and Reference footer - override landing-footer styles */
+.section-footer.landing-footer,
+.reference-footer.landing-footer {
+	max-width: 900px;
+	margin: 6rem auto 0;
+	padding: 0 var(--spacing-lg) var(--spacing-lg);
+	border-top: none;
 }
 
-.reference-footer a {
+.section-footer .footer-links a,
+.reference-footer .footer-links a {
+	color: var(--light-text);
+}
+
+.section-footer .footer-links a:hover,
+.reference-footer .footer-links a:hover {
 	color: var(--section-color, var(--primary-color));
 }

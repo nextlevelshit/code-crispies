@@ -3,7 +3,7 @@
 	"id": "welcome",
 	"title": "مرحباً",
 	"description": "ابدأ مع Code Crispies",
-	"mode": "html",
+	"mode": "css",
 	"difficulty": "beginner",
 	"excludeFromProgress": true,
 	"lessons": [
