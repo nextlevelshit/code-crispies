@@ -30,6 +30,7 @@ const translations = {
 		hideExpected: "Hide Expected",
 		previous: "Previous",
 		next: "Next",
+		back: "Back",
 		levelIndicator: "Lesson {current} of {total}",
 		lessonLabel: "Lesson",
 
@@ -252,6 +253,7 @@ const translations = {
 		hideExpected: "Lösung ausblenden",
 		previous: "Zurück",
 		next: "Weiter",
+		back: "Zurück",
 		levelIndicator: "Lektion {current} von {total}",
 		lessonLabel: "Lektion",
 
@@ -474,6 +476,7 @@ const translations = {
 		hideExpected: "Ukryj oczekiwane",
 		previous: "Poprzednia",
 		next: "Następna",
+		back: "Wstecz",
 		levelIndicator: "Lekcja {current} z {total}",
 		lessonLabel: "Lekcja",
 
@@ -695,6 +698,7 @@ const translations = {
 		hideExpected: "Ocultar esperado",
 		previous: "Anterior",
 		next: "Siguiente",
+		back: "Volver",
 		levelIndicator: "Lección {current} de {total}",
 		lessonLabel: "Lección",
 
@@ -918,6 +922,7 @@ const translations = {
 		hideExpected: "إخفاء المتوقع",
 		previous: "السابق",
 		next: "التالي",
+		back: "رجوع",
 		levelIndicator: "الدرس {current} من {total}",
 		lessonLabel: "درس",
 
@@ -1136,6 +1141,7 @@ const translations = {
 		hideExpected: "Сховати очікуване",
 		previous: "Попередній",
 		next: "Наступний",
+		back: "Назад",
 		levelIndicator: "Урок {current} з {total}",
 		lessonLabel: "Урок",
 

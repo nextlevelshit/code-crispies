@@ -408,7 +408,7 @@
 								<label for="code-input" class="editor-label" data-i18n="editorLabel">CSS Editor</label>
 								<div class="editor-actions">
 									<div class="editor-tools">
-										<button id="random-template-btn" class="btn btn-icon hidden" title="Load random template"><img src="./dice.svg" alt="" /></button>
+										<button id="random-template-btn" class="btn btn-icon hidden" title="Load random template"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3" ry="3"/><circle cx="7" cy="7" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="7" r="1.5" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg></button>
 										<button id="undo-btn" class="btn btn-icon" data-i18n-title="undoTitle" title="Undo (Ctrl+Z)">↶</button>
 										<button id="redo-btn" class="btn btn-icon" data-i18n-title="redoTitle" title="Redo (Ctrl+Shift+Z)">↷</button>
 										<button
@@ -434,6 +434,7 @@
 				<!-- Right Panel: Preview + Navigation -->
 				<div class="right-panel">
 					<div class="game-controls">
+						<a id="back-btn" href="#" class="btn hidden" data-i18n="back">Back</a>
 						<button id="prev-btn" class="btn" data-i18n="previous">Previous</button>
 						<span class="module-pill" id="module-pill">
 							<span class="module-name"></span>
