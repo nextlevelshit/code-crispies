@@ -1742,6 +1742,45 @@ input:checked + .toggle-slider::before {
 	font-weight: 500;
 }
 
+.section-card-disabled {
+	cursor: not-allowed;
+	opacity: 0.7;
+	position: relative;
+}
+
+.section-card-disabled:hover {
+	transform: none;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.coming-soon-badge {
+	display: inline-block;
+	background: linear-gradient(135deg, #06b6d4, #0891b2);
+	color: white;
+	font-size: 0.65rem;
+	font-weight: 600;
+	padding: 3px 8px;
+	border-radius: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.section-card-disabled .coming-soon-badge {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
+
+.topic-link-disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+.topic-link-disabled .coming-soon-badge {
+	margin-left: 8px;
+	vertical-align: middle;
+}
+
 /* Landing About Section */
 .landing-about {
 	padding: 3rem 1rem;
