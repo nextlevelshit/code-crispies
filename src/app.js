@@ -2448,6 +2448,11 @@ function init() {
 	// Initialize i18n before anything else
 	initI18n();
 
+	// Set dynamic year in footer
+	document.querySelectorAll(".current-year").forEach((el) => {
+		el.textContent = new Date().getFullYear();
+	});
+
 	loadUserSettings();
 
 	// Restore cached lesson content immediately to avoid "Loading..." flash
