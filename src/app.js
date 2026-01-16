@@ -750,24 +750,15 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// In playground mode: hide next button, repurpose prev as back button
+	// Hide next button in playground mode
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
 	elements.gameControls?.classList.toggle("centered", isPlayground);
 
-	if (isPlayground) {
-		// Change prev button to "Back" in playground mode
-		elements.prevBtn.textContent = t("back");
-		elements.prevBtn.disabled = false;
-		elements.prevBtn.classList.remove("btn-disabled");
-	} else {
-		// Normal mode: prev/next navigation
-		elements.prevBtn.textContent = t("previous");
-		elements.prevBtn.disabled = !engineState.canGoPrev;
-		elements.nextBtn.disabled = !engineState.canGoNext;
-
-		elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
-		elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
-	}
+	// Update button states
+	elements.prevBtn.disabled = !engineState.canGoPrev;
+	elements.nextBtn.disabled = !engineState.canGoNext;
+	elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
+	elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
 }
 
 function nextLesson() {
