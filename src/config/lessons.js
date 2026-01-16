@@ -16,6 +16,10 @@ import htmlElementsEN from "../../lessons/20-html-elements.json";
 import htmlFormsBasicEN from "../../lessons/21-html-forms-basic.json";
 import htmlFormsValidationEN from "../../lessons/22-html-forms-validation.json";
 import htmlDetailsSummaryEN from "../../lessons/23-html-details-summary.json";
+import htmlProgressMeterEN from "../../lessons/24-html-progress-meter.json";
+import htmlDatalistEN from "../../lessons/25-html-datalist.json";
+import htmlDialogEN from "../../lessons/27-html-dialog.json";
+import htmlFieldsetEN from "../../lessons/28-html-forms-fieldset.json";
 import htmlFigureEN from "../../lessons/29-html-figure.json";
 import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
@@ -35,6 +39,10 @@ import htmlElementsDE from "../../lessons/de/20-html-elements.json";
 import htmlFormsBasicDE from "../../lessons/de/21-html-forms-basic.json";
 import htmlFormsValidationDE from "../../lessons/de/22-html-forms-validation.json";
 import htmlDetailsSummaryDE from "../../lessons/de/23-html-details-summary.json";
+import htmlProgressMeterDE from "../../lessons/de/24-html-progress-meter.json";
+import htmlDatalistDE from "../../lessons/de/25-html-datalist.json";
+import htmlDialogDE from "../../lessons/de/27-html-dialog.json";
+import htmlFieldsetDE from "../../lessons/de/28-html-forms-fieldset.json";
 import htmlTablesDE from "../../lessons/de/30-html-tables.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
 import flexboxDE from "../../lessons/de/flexbox.json";
@@ -50,6 +58,10 @@ import htmlElementsPL from "../../lessons/pl/20-html-elements.json";
 import htmlFormsBasicPL from "../../lessons/pl/21-html-forms-basic.json";
 import htmlFormsValidationPL from "../../lessons/pl/22-html-forms-validation.json";
 import htmlDetailsSummaryPL from "../../lessons/pl/23-html-details-summary.json";
+import htmlProgressMeterPL from "../../lessons/pl/24-html-progress-meter.json";
+import htmlDatalistPL from "../../lessons/pl/25-html-datalist.json";
+import htmlDialogPL from "../../lessons/pl/27-html-dialog.json";
+import htmlFieldsetPL from "../../lessons/pl/28-html-forms-fieldset.json";
 import htmlTablesPL from "../../lessons/pl/30-html-tables.json";
 import htmlSvgPL from "../../lessons/pl/32-html-svg.json";
 import flexboxPL from "../../lessons/pl/flexbox.json";
@@ -65,6 +77,10 @@ import htmlElementsES from "../../lessons/es/20-html-elements.json";
 import htmlFormsBasicES from "../../lessons/es/21-html-forms-basic.json";
 import htmlFormsValidationES from "../../lessons/es/22-html-forms-validation.json";
 import htmlDetailsSummaryES from "../../lessons/es/23-html-details-summary.json";
+import htmlProgressMeterES from "../../lessons/es/24-html-progress-meter.json";
+import htmlDatalistES from "../../lessons/es/25-html-datalist.json";
+import htmlDialogES from "../../lessons/es/27-html-dialog.json";
+import htmlFieldsetES from "../../lessons/es/28-html-forms-fieldset.json";
 import htmlTablesES from "../../lessons/es/30-html-tables.json";
 import htmlSvgES from "../../lessons/es/32-html-svg.json";
 import flexboxES from "../../lessons/es/flexbox.json";
@@ -80,6 +96,10 @@ import htmlElementsAR from "../../lessons/ar/20-html-elements.json";
 import htmlFormsBasicAR from "../../lessons/ar/21-html-forms-basic.json";
 import htmlFormsValidationAR from "../../lessons/ar/22-html-forms-validation.json";
 import htmlDetailsSummaryAR from "../../lessons/ar/23-html-details-summary.json";
+import htmlProgressMeterAR from "../../lessons/ar/24-html-progress-meter.json";
+import htmlDatalistAR from "../../lessons/ar/25-html-datalist.json";
+import htmlDialogAR from "../../lessons/ar/27-html-dialog.json";
+import htmlFieldsetAR from "../../lessons/ar/28-html-forms-fieldset.json";
 import htmlTablesAR from "../../lessons/ar/30-html-tables.json";
 import htmlSvgAR from "../../lessons/ar/32-html-svg.json";
 import flexboxAR from "../../lessons/ar/flexbox.json";
@@ -95,6 +115,10 @@ import htmlElementsUK from "../../lessons/uk/20-html-elements.json";
 import htmlFormsBasicUK from "../../lessons/uk/21-html-forms-basic.json";
 import htmlFormsValidationUK from "../../lessons/uk/22-html-forms-validation.json";
 import htmlDetailsSummaryUK from "../../lessons/uk/23-html-details-summary.json";
+import htmlProgressMeterUK from "../../lessons/uk/24-html-progress-meter.json";
+import htmlDatalistUK from "../../lessons/uk/25-html-datalist.json";
+import htmlDialogUK from "../../lessons/uk/27-html-dialog.json";
+import htmlFieldsetUK from "../../lessons/uk/28-html-forms-fieldset.json";
 import htmlTablesUK from "../../lessons/uk/30-html-tables.json";
 import htmlSvgUK from "../../lessons/uk/32-html-svg.json";
 import flexboxUK from "../../lessons/uk/flexbox.json";
@@ -121,8 +145,12 @@ const moduleStoreEN = [
 	htmlSvgEN,
 	// HTML Interactive
 	htmlDetailsSummaryEN,
+	htmlDialogEN,
+	htmlProgressMeterEN,
 	htmlFormsBasicEN,
 	htmlFormsValidationEN,
+	htmlFieldsetEN,
+	htmlDatalistEN,
 	htmlTablesEN,
 	// Outro
 	goodbyeEN,
@@ -151,8 +179,12 @@ const moduleStoreDE = [
 	htmlSvgDE,
 	// HTML Interactive
 	htmlDetailsSummaryDE,
+	htmlDialogDE,
+	htmlProgressMeterDE,
 	htmlFormsBasicDE,
 	htmlFormsValidationDE,
+	htmlFieldsetDE,
+	htmlDatalistDE,
 	htmlTablesDE,
 	// Outro
 	goodbyeEN,
@@ -181,8 +213,12 @@ const moduleStorePL = [
 	htmlSvgPL,
 	// HTML Interactive
 	htmlDetailsSummaryPL,
+	htmlDialogPL,
+	htmlProgressMeterPL,
 	htmlFormsBasicPL,
 	htmlFormsValidationPL,
+	htmlFieldsetPL,
+	htmlDatalistPL,
 	htmlTablesPL,
 	// Outro
 	goodbyeEN,
@@ -211,8 +247,12 @@ const moduleStoreES = [
 	htmlSvgES,
 	// HTML Interactive
 	htmlDetailsSummaryES,
+	htmlDialogES,
+	htmlProgressMeterES,
 	htmlFormsBasicES,
 	htmlFormsValidationES,
+	htmlFieldsetES,
+	htmlDatalistES,
 	htmlTablesES,
 	// Outro
 	goodbyeEN,
@@ -241,8 +281,12 @@ const moduleStoreAR = [
 	htmlSvgAR,
 	// HTML Interactive
 	htmlDetailsSummaryAR,
+	htmlDialogAR,
+	htmlProgressMeterAR,
 	htmlFormsBasicAR,
 	htmlFormsValidationAR,
+	htmlFieldsetAR,
+	htmlDatalistAR,
 	htmlTablesAR,
 	// Outro
 	goodbyeEN,
@@ -271,8 +315,12 @@ const moduleStoreUK = [
 	htmlSvgUK,
 	// HTML Interactive
 	htmlDetailsSummaryUK,
+	htmlDialogUK,
+	htmlProgressMeterUK,
 	htmlFormsBasicUK,
 	htmlFormsValidationUK,
+	htmlFieldsetUK,
+	htmlDatalistUK,
 	htmlTablesUK,
 	// Outro
 	goodbyeEN,

@@ -165,6 +165,7 @@ const elements = {
 	sectionFooterLessonLinks: document.getElementById("section-footer-lesson-links"),
 	progressFill: document.getElementById("progress-fill"),
 	progressText: document.getElementById("progress-text"),
+	milestonesContainer: document.getElementById("milestones"),
 	resetBtn: document.getElementById("reset-btn"),
 	disableFeedbackToggle: document.getElementById("disable-feedback-toggle"),
 
@@ -310,14 +311,48 @@ function showSuccessHint(message) {
 
 // ================= PROGRESS DISPLAY =================
 
+// Track last milestone to detect new achievements
+let lastMilestoneReached = 0;
+
 function updateProgressDisplay() {
 	const stats = lessonEngine.getProgressStats();
-	elements.progressFill.style.width = `${stats.percentComplete}%`;
-	elements.progressText.textContent = t("progressText", {
-		percent: stats.percentComplete,
+
+	// Update progress bar (now shows progress to next milestone)
+	elements.progressFill.style.width = `${stats.progressToNext}%`;
+
+	// Update progress text
+	elements.progressText.textContent = t("progressTextMilestone", {
 		completed: stats.totalCompleted,
-		total: stats.totalLessons
+		next: stats.nextMilestone
 	});
+
+	// Update milestone indicators
+	if (elements.milestonesContainer) {
+		const milestoneEls = elements.milestonesContainer.querySelectorAll(".milestone");
+		milestoneEls.forEach((el) => {
+			const value = parseInt(el.dataset.value, 10);
+			el.classList.remove("reached", "current", "next", "just-reached");
+
+			if (stats.milestonesReached.includes(value)) {
+				el.classList.add("reached");
+				// Check if this milestone was just reached
+				if (value > lastMilestoneReached && value === stats.currentMilestone) {
+					el.classList.add("just-reached");
+				}
+			} else if (value === stats.nextMilestone) {
+				el.classList.add("next");
+			}
+
+			if (value === stats.currentMilestone) {
+				el.classList.add("current");
+			}
+		});
+	}
+
+	// Update last milestone for celebration detection
+	if (stats.currentMilestone > lastMilestoneReached) {
+		lastMilestoneReached = stats.currentMilestone;
+	}
 }
 
 // ================= USER SETTINGS =================

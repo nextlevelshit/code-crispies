@@ -472,10 +472,11 @@ export class LessonEngine {
 	}
 
 	/**
-	 * Get overall progress statistics
-	 * @returns {Object} Progress statistics
+	 * Get overall progress statistics with milestone data
+	 * @returns {Object} Progress statistics including milestone progress
 	 */
 	getProgressStats() {
+		const MILESTONES = [1, 5, 10, 20, 30, 50, 75, 100];
 		let totalLessons = 0;
 		let totalCompleted = 0;
 
@@ -490,10 +491,25 @@ export class LessonEngine {
 			}
 		});
 
+		// Calculate milestone progress
+		const milestonesReached = MILESTONES.filter((m) => totalCompleted >= m);
+		const currentMilestone = milestonesReached[milestonesReached.length - 1] || 0;
+		const nextMilestone = MILESTONES.find((m) => m > totalCompleted) || 100;
+		const progressToNext =
+			nextMilestone > currentMilestone
+				? Math.round(((totalCompleted - currentMilestone) / (nextMilestone - currentMilestone)) * 100)
+				: 100;
+
 		return {
 			totalLessons,
 			totalCompleted,
-			percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0
+			percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0,
+			// Milestone data
+			milestones: MILESTONES,
+			milestonesReached,
+			currentMilestone,
+			nextMilestone,
+			progressToNext
 		};
 	}
 
