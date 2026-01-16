@@ -1,6 +1,11 @@
 -- CODE CRISPIES - Supabase Database Setup
 -- Run this in Supabase Dashboard → SQL Editor → New Query
 
+-- Drop existing objects first
+  DROP FUNCTION IF EXISTS delete_own_account();
+  DROP TABLE IF EXISTS user_progress;
+  DROP TABLE IF EXISTS newsletter_subscribers;
+
 -- User progress table
 CREATE TABLE user_progress (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
