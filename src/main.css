@@ -1008,7 +1008,8 @@ nav.sidebar-section {
 
 .progress-fill {
 	height: 100%;
-	background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8, #7c4dff);
+	background: linear-gradient(90deg, #9163b8, #d45aa0, #1aafb8, #7c4dff);
+	background-size: calc(100% * 100 / var(--progress-percent, 100)) 100%;
 	border-radius: 4px;
 	transition: width 0.3s ease;
 	width: 0%;
@@ -1045,15 +1046,23 @@ nav.sidebar-section {
 }
 
 .milestone.reached {
-	background: linear-gradient(135deg, #9163b8, #7c4dff);
 	color: white;
 }
 
+/* Each milestone gets a portion of the gradient based on position */
+.milestone.reached:nth-child(1) { background: #9163b8; }
+.milestone.reached:nth-child(2) { background: linear-gradient(135deg, #9163b8, #a85dac); }
+.milestone.reached:nth-child(3) { background: linear-gradient(135deg, #9163b8, #d45aa0); }
+.milestone.reached:nth-child(4) { background: linear-gradient(135deg, #9163b8, #d45aa0, #e87aac); }
+.milestone.reached:nth-child(5) { background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8); }
+.milestone.reached:nth-child(6) { background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8, #4b8ecc); }
+.milestone.reached:nth-child(7) { background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8, #7c4dff); }
+.milestone.reached:nth-child(8) { background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8, #7c4dff); }
+
 .milestone.current {
-	background: linear-gradient(135deg, #d45aa0, #1aafb8);
 	color: white;
 	transform: scale(1.15);
-	box-shadow: 0 2px 8px rgba(212, 90, 160, 0.4);
+	box-shadow: 0 2px 8px rgba(145, 99, 184, 0.4);
 }
 
 .milestone.next {

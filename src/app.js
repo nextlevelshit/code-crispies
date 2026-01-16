@@ -317,8 +317,10 @@ let lastMilestoneReached = 0;
 function updateProgressDisplay() {
 	const stats = lessonEngine.getProgressStats();
 
-	// Update progress bar (now shows progress to next milestone)
-	elements.progressFill.style.width = `${stats.progressToNext}%`;
+	// Update progress bar - shows overall progress with full gradient
+	const progressPercent = stats.percentComplete || 1;
+	elements.progressFill.style.width = `${progressPercent}%`;
+	elements.progressFill.style.setProperty('--progress-percent', progressPercent);
 
 	// Update progress text - show completed of total lessons
 	elements.progressText.textContent = t("progressTextMilestone", {
