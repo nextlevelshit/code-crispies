@@ -1191,15 +1191,15 @@ nav.sidebar-section:not(.sidebar-nav-mobile) {
 	color: white;
 }
 
-/* Each milestone gets a color based on its position in 0-100 scale
+/* Each milestone gets a color evenly distributed across the gradient
    Gradient: #9163b8 (0%) → #d45aa0 (33%) → #1aafb8 (67%) → #7c4dff (100%) */
-.milestone.reached:nth-child(1) { background: #9263b7; } /* 1% */
-.milestone.reached:nth-child(2) { background: #9a60b2; } /* 5% */
-.milestone.reached:nth-child(3) { background: #a85dac; } /* 10% */
-.milestone.reached:nth-child(4) { background: #c159a4; } /* 20% */
-.milestone.reached:nth-child(5) { background: #d45aa0; } /* 30% */
-.milestone.reached:nth-child(6) { background: #7785ac; } /* 50% */
-.milestone.reached:nth-child(7) { background: #3a9bd2; } /* 75% */
+.milestone.reached:nth-child(1) { background: #a55eac; } /* ~14% */
+.milestone.reached:nth-child(2) { background: #c459a2; } /* ~28% */
+.milestone.reached:nth-child(3) { background: #d45aa0; } /* ~33% pink */
+.milestone.reached:nth-child(4) { background: #a874a8; } /* ~43% */
+.milestone.reached:nth-child(5) { background: #7785ac; } /* ~50% */
+.milestone.reached:nth-child(6) { background: #33a3b6; } /* ~62% */
+.milestone.reached:nth-child(7) { background: #4889d8; } /* ~80% */
 .milestone.reached:nth-child(8) { background: #7c4dff; } /* 100% */
 
 .milestone.current {
