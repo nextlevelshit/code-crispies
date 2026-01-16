@@ -1651,6 +1651,13 @@ input:checked + .toggle-slider::before {
 
 .auth-links .btn-text {
 	font-size: 0.875rem;
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.auth-links .btn-text:hover {
+	color: var(--primary-color-dark, var(--primary-color));
+	text-decoration: underline;
 }
 
 /* Social Login */
@@ -3630,6 +3637,19 @@ body[data-section="tailwind"] .section-progress-bar .progress-fill {
 }
 
 [data-section="tailwind"] .section-hero h1 {
+	color: #1aafb8;
+}
+
+/* Lesson title h2 section colors */
+body[data-section="css"] #lesson-title {
+	color: #9163b8;
+}
+
+body[data-section="html"] #lesson-title {
+	color: #d45aa0;
+}
+
+body[data-section="tailwind"] #lesson-title {
 	color: #1aafb8;
 }
 

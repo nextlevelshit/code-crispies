@@ -33,15 +33,7 @@ export async function initAuth(engine) {
     return;
   }
 
-  // Check initial session
-  try {
-    const { data } = await authModule.getUser();
-    if (data?.user) handleLogin(data.user);
-  } catch (e) {
-    console.log("Auth check failed:", e.message);
-  }
-
-  // Listen for auth changes
+  // Listen for auth changes FIRST (catches OAuth callback)
   authModule.onAuthStateChange((event, session) => {
     if (event === "SIGNED_IN" && session?.user) {
       handleLogin(session.user);
@@ -49,6 +41,14 @@ export async function initAuth(engine) {
       handleLogout();
     }
   });
+
+  // Check initial session (getSession handles OAuth callback URL)
+  try {
+    const { data } = await authModule.getSession();
+    if (data?.session?.user) handleLogin(data.session.user);
+  } catch (e) {
+    console.log("Auth check failed:", e.message);
+  }
 
   // Attach form handlers
   setupAuthForms();
