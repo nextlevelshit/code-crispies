@@ -2560,6 +2560,19 @@ function init() {
 			track("support_click", { location: "landing" });
 		}
 	});
+
+	// Newsletter form submission
+	const newsletterForm = document.getElementById("newsletter-form");
+	const newsletterThanks = document.getElementById("newsletter-thanks");
+	newsletterForm?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const email = document.getElementById("newsletter-email")?.value;
+		if (email) {
+			track("newsletter_signup", { email });
+			newsletterForm.classList.add("hidden");
+			newsletterThanks?.classList.remove("hidden");
+		}
+	});
 }
 
 // Start the application
