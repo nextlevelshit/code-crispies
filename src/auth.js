@@ -17,11 +17,8 @@ export async function handleOAuthCallback() {
 
   // Check if hash contains OAuth tokens (access_token, error, etc.)
   if (!hash.includes("access_token") && !hash.includes("error_description") && !hash.includes("refresh_token")) {
-    console.log("[Auth] No OAuth tokens in hash");
     return false;
   }
-
-  console.log("[Auth] OAuth callback detected in URL hash");
 
   try {
     const supabaseModule = await import("./supabase.js");
