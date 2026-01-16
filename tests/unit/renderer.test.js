@@ -1,5 +1,5 @@
 import { describe, test, expect, vi, beforeEach } from "vitest";
-import { renderModuleList, renderLesson, renderLevelIndicator, showFeedback, clearFeedback } from "../../src/helpers/renderer.js";
+import { renderModuleList, renderLesson, renderLevelIndicator, showFeedback, clearFeedback, computeLessonDifficulty } from "../../src/helpers/renderer.js";
 
 describe("Renderer Module", () => {
 	beforeEach(() => {
@@ -174,6 +174,70 @@ describe("Renderer Module", () => {
 
 			// Should work when called multiple times
 			clearFeedback();
+		});
+	});
+
+	describe("computeLessonDifficulty", () => {
+		test("should return 'easy' when codePrefix contains selector", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: ".text {\n  ",
+				solution: "color: coral;"
+			})).toBe("easy");
+
+			expect(computeLessonDifficulty({
+				codePrefix: "h1, h2, h3 {\n  ",
+				solution: "color: steelblue;"
+			})).toBe("easy");
+		});
+
+		test("should return 'medium' for simple type selector", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: "p {\n  color: steelblue;\n}"
+			})).toBe("medium");
+
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: "a {\n  color: coral;\n}"
+			})).toBe("medium");
+		});
+
+		test("should return 'medium' for simple class selector", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: ".badge {\n  background: tomato;\n}"
+			})).toBe("medium");
+		});
+
+		test("should return 'hard' for descendant selectors", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: ".nav a {\n  color: white;\n}"
+			})).toBe("hard");
+
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: ".card p {\n  font-size: 0.9rem;\n}"
+			})).toBe("hard");
+		});
+
+		test("should return 'hard' for chained class selectors", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: ".btn.primary {\n  background: steelblue;\n}"
+			})).toBe("hard");
+		});
+
+		test("should return 'hard' for type+class selectors", () => {
+			expect(computeLessonDifficulty({
+				codePrefix: "",
+				solution: "a.btn {\n  text-decoration: none;\n}"
+			})).toBe("hard");
+		});
+
+		test("should handle missing fields gracefully", () => {
+			expect(computeLessonDifficulty({})).toBe("medium");
+			expect(computeLessonDifficulty({ codePrefix: null })).toBe("medium");
 		});
 	});
 });

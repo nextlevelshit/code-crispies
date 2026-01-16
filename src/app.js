@@ -1,6 +1,6 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
 import { CodeEditor, crispyEditorTheme } from "./impl/CodeEditor.js";
-import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
+import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar, renderDifficultyBadge } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
@@ -648,6 +648,9 @@ function loadCurrentLesson() {
 		lesson
 	);
 
+	// Render difficulty badge
+	renderDifficultyBadge(elements.lessonTitleRow, lesson);
+
 	// Set user code in CodeMirror (clear history to prevent undo/redo across lessons)
 	if (codeEditor) {
 		codeEditor.setValueAndClearHistory(engineState.userCode);
@@ -657,12 +660,13 @@ function loadCurrentLesson() {
 	if (engineState.isCompleted) {
 		elements.runBtn.querySelector("span").textContent = t("rerun");
 
-		// Add completion badge if not present
-		if (!document.querySelector(".completion-badge")) {
+		// Add completion badge to difficulty-wrapper if not present
+		const wrapper = document.querySelector(".difficulty-wrapper");
+		if (wrapper && !wrapper.querySelector(".completion-badge")) {
 			const badge = document.createElement("span");
 			badge.className = "completion-badge";
 			badge.textContent = t("completed");
-			elements.lessonTitleRow.appendChild(badge);
+			wrapper.appendChild(badge);
 		}
 
 		// Show gradient border and glow for completed lessons
@@ -671,7 +675,7 @@ function loadCurrentLesson() {
 	} else {
 		elements.runBtn.querySelector("span").textContent = t("run");
 
-		// Remove completion badge and border if exists
+		// Remove completion badge if exists
 		const badge = document.querySelector(".completion-badge");
 		if (badge) badge.remove();
 		elements.previewWrapper?.classList.remove("completed-glow");
@@ -2479,6 +2483,11 @@ function init() {
 	elements.menuBtn.addEventListener("click", openSidebar);
 	elements.closeSidebar.addEventListener("click", closeSidebar);
 	elements.sidebarBackdrop.addEventListener("click", closeSidebar);
+
+	// Sidebar nav links (mobile) - close sidebar on click
+	document.querySelectorAll(".sidebar-nav-link").forEach((link) => {
+		link.addEventListener("click", closeSidebar);
+	});
 
 	// Logo click - navigate to home landing
 	elements.logoLink.addEventListener("click", (e) => {
