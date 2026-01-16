@@ -2918,25 +2918,25 @@ input:checked + .toggle-slider::before {
 
 .nav-link[data-section="css"]:hover,
 .nav-link[data-section="css"].active {
-	background: rgba(139, 107, 196, 0.1);
-	color: #6b4fa0;
+	background: rgba(145, 99, 184, 0.1);
+	color: #724a95;
 }
 
 .nav-link[data-section="html"]:hover,
 .nav-link[data-section="html"].active {
-	background: rgba(199, 91, 122, 0.1);
-	color: #a84862;
+	background: rgba(212, 90, 160, 0.1);
+	color: #b24485;
 }
 
 .nav-link[data-section="tailwind"]:hover,
 .nav-link[data-section="tailwind"].active {
-	background: rgba(38, 166, 154, 0.1);
-	color: #00897b;
+	background: rgba(26, 175, 184, 0.1);
+	color: #0d8f96;
 }
 
 /* Hint section colors */
 body[data-section="css"] .hint {
-	background: rgba(139, 107, 196, 0.3);
+	background: rgba(145, 99, 184, 0.3);
 	border-left-color: #a98cd6;
 }
 
@@ -2945,7 +2945,7 @@ body[data-section="css"] .hint-progress {
 }
 
 body[data-section="html"] .hint {
-	background: rgba(199, 91, 122, 0.3);
+	background: rgba(212, 90, 160, 0.3);
 	border-left-color: #d97a94;
 }
 
@@ -2954,7 +2954,7 @@ body[data-section="html"] .hint-progress {
 }
 
 body[data-section="tailwind"] .hint {
-	background: rgba(38, 166, 154, 0.3);
+	background: rgba(26, 175, 184, 0.3);
 	border-left-color: #4db6ac;
 }
 
@@ -2991,8 +2991,8 @@ body[data-section="tailwind"] .hint-progress {
 .ref-nav-link[data-ref="flexbox"].active,
 .ref-nav-link[data-ref="grid"]:hover,
 .ref-nav-link[data-ref="grid"].active {
-	background: rgba(139, 107, 196, 0.15);
-	color: #6b4fa0;
+	background: rgba(145, 99, 184, 0.15);
+	color: #724a95;
 }
 
 .ref-nav-link[data-ref="html"] {
@@ -3001,8 +3001,8 @@ body[data-section="tailwind"] .hint-progress {
 
 .ref-nav-link[data-ref="html"]:hover,
 .ref-nav-link[data-ref="html"].active {
-	background: rgba(199, 91, 122, 0.15);
-	color: #a84862;
+	background: rgba(212, 90, 160, 0.15);
+	color: #b24485;
 }
 
 /* CodeMirror section color overrides */
@@ -3017,11 +3017,11 @@ body[data-section="css"] .cm-editor .cm-dropCursor {
 
 body[data-section="css"] .cm-editor .cm-selectionBackground,
 body[data-section="css"] .cm-editor .cm-content ::selection {
-	background-color: rgba(139, 107, 196, 0.25) !important;
+	background-color: rgba(145, 99, 184, 0.25) !important;
 }
 
 body[data-section="css"] .cm-editor .cm-activeLine {
-	background-color: rgba(139, 107, 196, 0.08) !important;
+	background-color: rgba(145, 99, 184, 0.08) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-content {
@@ -3035,11 +3035,11 @@ body[data-section="html"] .cm-editor .cm-dropCursor {
 
 body[data-section="html"] .cm-editor .cm-selectionBackground,
 body[data-section="html"] .cm-editor .cm-content ::selection {
-	background-color: rgba(199, 91, 122, 0.25) !important;
+	background-color: rgba(212, 90, 160, 0.25) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-activeLine {
-	background-color: rgba(199, 91, 122, 0.08) !important;
+	background-color: rgba(212, 90, 160, 0.08) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-content {
@@ -3053,52 +3053,52 @@ body[data-section="tailwind"] .cm-editor .cm-dropCursor {
 
 body[data-section="tailwind"] .cm-editor .cm-selectionBackground,
 body[data-section="tailwind"] .cm-editor .cm-content ::selection {
-	background-color: rgba(38, 166, 154, 0.25) !important;
+	background-color: rgba(26, 175, 184, 0.25) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-activeLine {
-	background-color: rgba(38, 166, 154, 0.08) !important;
+	background-color: rgba(26, 175, 184, 0.08) !important;
 }
 
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
-	background: rgba(139, 107, 196, 0.1);
+	background: rgba(145, 99, 184, 0.1);
 	color: #9163b8;
 }
 
 body[data-section="css"] .module-pill .level-indicator {
-	color: #6b4fa0;
+	color: #724a95;
 }
 
 body[data-section="html"] .module-pill {
-	background: rgba(199, 91, 122, 0.1);
+	background: rgba(212, 90, 160, 0.1);
 	color: #d45aa0;
 }
 
 body[data-section="html"] .module-pill .level-indicator {
-	color: #a84862;
+	color: #b24485;
 }
 
 body[data-section="tailwind"] .module-pill {
-	background: rgba(38, 166, 154, 0.1);
+	background: rgba(26, 175, 184, 0.1);
 	color: #1aafb8;
 }
 
 body[data-section="tailwind"] .module-pill .level-indicator {
-	color: #00897b;
+	color: #0d8f96;
 }
 
 /* Code block border section colors */
 body[data-section="css"] .code-block {
-	border-color: rgba(139, 107, 196, 0.4);
+	border-color: rgba(145, 99, 184, 0.4);
 }
 
 body[data-section="html"] .code-block {
-	border-color: rgba(199, 91, 122, 0.4);
+	border-color: rgba(212, 90, 160, 0.4);
 }
 
 body[data-section="tailwind"] .code-block {
-	border-color: rgba(38, 166, 154, 0.4);
+	border-color: rgba(26, 175, 184, 0.4);
 }
 
 /* Section code block CodeMirror syntax highlighting overrides */
@@ -3116,15 +3116,15 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
-	background: rgba(139, 107, 196, 0.92);
+	background: rgba(145, 99, 184, 0.92);
 }
 
 [data-section="html"] .task-instruction {
-	background: rgba(199, 91, 122, 0.92);
+	background: rgba(212, 90, 160, 0.92);
 }
 
 [data-section="tailwind"] .task-instruction {
-	background: rgba(38, 166, 154, 0.92);
+	background: rgba(26, 175, 184, 0.92);
 }
 
 /* Section page progress bar colors */
