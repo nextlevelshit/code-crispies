@@ -895,6 +895,7 @@ kbd {
 .game-controls {
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
+	gap: var(--spacing-md);
 	align-items: center;
 	padding: var(--spacing-md);
 	background: var(--panel-bg);
