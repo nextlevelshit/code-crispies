@@ -24,7 +24,7 @@ export const playgroundTemplates = [
   .card-image {
     width: 100%;
     height: 180px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    object-fit: cover;
   }
 
   .card-content {
@@ -45,7 +45,7 @@ export const playgroundTemplates = [
 </style>
 
 <article class="card">
-  <div class="card-image"></div>
+  <img class="card-image" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400" alt="">
   <div class="card-content">
     <h2 class="card-title">Card Title</h2>
     <p class="card-text">A simple card component with an image placeholder and text content.</p>
@@ -136,7 +136,7 @@ export const playgroundTemplates = [
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f093fb, #f5576c);
+    object-fit: cover;
     margin: 0 auto 1rem;
   }
 
@@ -172,7 +172,7 @@ export const playgroundTemplates = [
 </style>
 
 <div class="profile">
-  <div class="avatar"></div>
+  <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="">
   <h2 class="name">Jane Doe</h2>
   <p class="role">UI Designer</p>
   <div class="stats">
@@ -727,7 +727,7 @@ export const playgroundTemplates = [
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    object-fit: cover;
   }
 
   .username {
@@ -738,7 +738,7 @@ export const playgroundTemplates = [
   .post-image {
     width: 100%;
     height: 300px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    object-fit: cover;
   }
 
   .post-actions {
@@ -770,10 +770,10 @@ export const playgroundTemplates = [
 
 <article class="post">
   <header class="post-header">
-    <div class="avatar"></div>
+    <img class="avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64" alt="">
     <span class="username">creative_studio</span>
   </header>
-  <div class="post-image"></div>
+  <img class="post-image" src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=500" alt="">
   <div class="post-actions">
     <span>♡</span>
     <span>💬</span>
@@ -819,7 +819,7 @@ export const playgroundTemplates = [
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: #ddd;
+    object-fit: cover;
     border: 2px solid white;
   }
 
@@ -835,23 +835,23 @@ export const playgroundTemplates = [
 
 <div class="stories">
   <div class="story">
-    <div class="story-ring"><div class="story-avatar"></div></div>
+    <div class="story-ring"><img class="story-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=64" alt=""></div>
     <span class="story-name">You</span>
   </div>
   <div class="story">
-    <div class="story-ring"><div class="story-avatar"></div></div>
+    <div class="story-ring"><img class="story-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64" alt=""></div>
     <span class="story-name">anna</span>
   </div>
   <div class="story">
-    <div class="story-ring"><div class="story-avatar"></div></div>
+    <div class="story-ring"><img class="story-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64" alt=""></div>
     <span class="story-name">mike</span>
   </div>
   <div class="story seen">
-    <div class="story-ring"><div class="story-avatar"></div></div>
+    <div class="story-ring"><img class="story-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64" alt=""></div>
     <span class="story-name">lisa</span>
   </div>
   <div class="story seen">
-    <div class="story-ring"><div class="story-avatar"></div></div>
+    <div class="story-ring"><img class="story-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64" alt=""></div>
     <span class="story-name">alex</span>
   </div>
 </div>`
@@ -941,7 +941,7 @@ export const playgroundTemplates = [
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    object-fit: cover;
     flex-shrink: 0;
   }
 
@@ -992,7 +992,7 @@ export const playgroundTemplates = [
 
 <div class="comments">
   <div class="comment">
-    <div class="comment-avatar"></div>
+    <img class="comment-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64" alt="">
     <div class="comment-content">
       <span class="comment-user">sarah_designs</span>
       <span class="comment-text">This is amazing! 🔥</span>
@@ -1000,7 +1000,7 @@ export const playgroundTemplates = [
     </div>
   </div>
   <div class="comment">
-    <div class="comment-avatar"></div>
+    <img class="comment-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64" alt="">
     <div class="comment-content">
       <span class="comment-user">mike_photo</span>
       <span class="comment-text">Love the colors! What filter did you use?</span>
@@ -1189,16 +1189,15 @@ export const playgroundTemplates = [
     height: 80px;
     border-radius: 50%;
     background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 3px;
+    flex-shrink: 0;
   }
 
-  .bio-avatar-inner {
-    width: 72px;
-    height: 72px;
+  .bio-avatar img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    object-fit: cover;
   }
 
   .bio-stats {
@@ -1254,7 +1253,7 @@ export const playgroundTemplates = [
 
 <div class="bio">
   <div class="bio-header">
-    <div class="bio-avatar"><div class="bio-avatar-inner"></div></div>
+    <div class="bio-avatar"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt=""></div>
     <div class="bio-stats">
       <div class="stat"><div class="stat-num">142</div><div class="stat-label">posts</div></div>
       <div class="stat"><div class="stat-num">8.5K</div><div class="stat-label">followers</div></div>
@@ -1295,7 +1294,7 @@ export const playgroundTemplates = [
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    object-fit: cover;
   }
 
   .status-field {
@@ -1338,7 +1337,7 @@ export const playgroundTemplates = [
 
 <div class="status-box">
   <div class="status-input">
-    <div class="status-avatar"></div>
+    <img class="status-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=64" alt="">
     <div class="status-field">What's on your mind?</div>
   </div>
   <div class="status-actions">
