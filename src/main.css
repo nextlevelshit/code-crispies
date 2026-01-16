@@ -1040,6 +1040,28 @@ nav.sidebar-section {
 	color: var(--light-text);
 }
 
+.progress-bar-row {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+}
+
+.progress-bar-row .progress-bar {
+	flex: 1;
+}
+
+.progress-current {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--text-color);
+	white-space: nowrap;
+}
+
+.progress-total {
+	font-size: 0.75rem;
+	color: var(--light-text);
+}
+
 /* Milestone Progress */
 .milestone-progress {
 	gap: var(--spacing-sm);
