@@ -147,6 +147,7 @@ const elements = {
 	previewSection: document.querySelector(".preview-section"),
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
+	gameControls: document.querySelector(".game-controls"),
 	levelIndicator: document.getElementById("level-indicator"),
 	headerLevelPill: document.getElementById("header-level-pill"),
 
@@ -708,9 +709,10 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide nav buttons in playground mode
+	// Hide nav buttons and center controls in playground mode
 	elements.prevBtn.classList.toggle("hidden", isPlayground);
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
+	elements.gameControls?.classList.toggle("centered", isPlayground);
 
 	if (!isPlayground) {
 		elements.prevBtn.disabled = !engineState.canGoPrev;
