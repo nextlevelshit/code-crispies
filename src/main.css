@@ -3,13 +3,13 @@
 	/* Primary colors */
 	--primary-color: #5e4b8b;
 	--primary-light: #8a77b5;
-	--primary-dark: #3b2e63;
+	--primary-dark: #724a95;
 
-	/* Section colors (default to primary) */
-	--section-color: var(--primary-color);
-	--section-color-light: var(--primary-light);
-	--section-color-dark: var(--primary-dark);
-	--section-color-rgb: 94, 75, 139;
+	/* Section colors (default to CSS purple) */
+	--section-color: #9163b8;
+	--section-color-light: #a87dc8;
+	--section-color-dark: #724a95;
+	--section-color-rgb: 145, 99, 184;
 
 	/* Secondary colors */
 	--secondary-color: #444444;
@@ -265,13 +265,7 @@ kbd {
 }
 
 /* Logo section color coding */
-[data-section="css"] .logo h1 .code-text {
-	color: #9163b8;
-}
-
-[data-section="css"] .logo h1 .crispies-text {
-	background: #9163b8;
-}
+/* CSS uses default colors */
 
 [data-section="html"] .logo h1 .code-text {
 	color: #d45aa0;
@@ -2879,13 +2873,7 @@ input:checked + .toggle-slider::before {
 }
 
 /* ================= SECTION COLOR CODING ================= */
-/* CSS Section - Purple (balanced) */
-[data-section="css"] {
-	--section-color: #9163b8;
-	--section-color-light: #a87dc8;
-	--section-color-dark: #724a95;
-	--section-color-rgb: 145, 99, 184;
-}
+/* CSS Section uses default purple from :root */
 
 /* HTML Section - Pink (balanced) */
 [data-section="html"] {
