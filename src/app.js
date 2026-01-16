@@ -17,6 +17,9 @@ import { css } from "@codemirror/lang-css";
 function track(eventName, eventData = {}) {
 	if (typeof umami !== "undefined" && umami.track) {
 		umami.track(eventName, eventData);
+		console.log("Track:", eventName, eventData);
+	} else {
+		console.log("Track blocked (umami unavailable):", eventName, eventData);
 	}
 }
 
@@ -2568,7 +2571,6 @@ function init() {
 		e.preventDefault();
 		const email = document.getElementById("newsletter-email")?.value;
 		if (email) {
-			console.log("Newsletter signup:", email);
 			track("newsletter_signup", { email: email });
 			newsletterForm.classList.add("hidden");
 			newsletterThanks?.classList.remove("hidden");
