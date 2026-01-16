@@ -1130,13 +1130,13 @@ button.lesson-list-item {
 }
 
 .btn-primary {
-	background: var(--primary-color);
+	background: var(--section-color, var(--primary-color));
 	color: var(--white-text);
-	border-color: var(--primary-dark);
+	border-color: var(--section-color-dark, var(--primary-dark));
 }
 
 .btn-primary:hover {
-	background: var(--primary-dark);
+	background: var(--section-color-dark, var(--primary-dark));
 }
 
 .btn-run {
@@ -2947,55 +2947,58 @@ input:checked + .toggle-slider::before {
 }
 
 /* CodeMirror section color overrides */
-[data-section="css"] .cm-content {
-	caret-color: #7c4dff;
+body[data-section="css"] .cm-editor .cm-content {
+	caret-color: #7c4dff !important;
 }
 
-[data-section="css"] .cm-cursor,
-[data-section="css"] .cm-dropCursor {
+body[data-section="css"] .cm-editor .cm-cursor,
+body[data-section="css"] .cm-editor .cm-dropCursor {
 	border-left-color: #7c4dff !important;
 }
 
-[data-section="css"] .cm-searchMatch {
-	outline-color: #7c4dff;
+body[data-section="css"] .cm-editor .cm-selectionBackground,
+body[data-section="css"] .cm-editor .cm-content ::selection {
+	background-color: rgba(124, 77, 255, 0.25) !important;
 }
 
-[data-section="css"] .cm-searchMatch.cm-searchMatch-selected {
-	background-color: rgba(124, 77, 255, 0.3);
+body[data-section="css"] .cm-editor .cm-activeLine {
+	background-color: rgba(124, 77, 255, 0.08) !important;
 }
 
-[data-section="html"] .cm-content {
-	caret-color: #e91e63;
+body[data-section="html"] .cm-editor .cm-content {
+	caret-color: #e91e63 !important;
 }
 
-[data-section="html"] .cm-cursor,
-[data-section="html"] .cm-dropCursor {
+body[data-section="html"] .cm-editor .cm-cursor,
+body[data-section="html"] .cm-editor .cm-dropCursor {
 	border-left-color: #e91e63 !important;
 }
 
-[data-section="html"] .cm-searchMatch {
-	outline-color: #e91e63;
+body[data-section="html"] .cm-editor .cm-selectionBackground,
+body[data-section="html"] .cm-editor .cm-content ::selection {
+	background-color: rgba(233, 30, 99, 0.25) !important;
 }
 
-[data-section="html"] .cm-searchMatch.cm-searchMatch-selected {
-	background-color: rgba(233, 30, 99, 0.3);
+body[data-section="html"] .cm-editor .cm-activeLine {
+	background-color: rgba(233, 30, 99, 0.08) !important;
 }
 
-[data-section="tailwind"] .cm-content {
-	caret-color: #00bcd4;
+body[data-section="tailwind"] .cm-editor .cm-content {
+	caret-color: #00bcd4 !important;
 }
 
-[data-section="tailwind"] .cm-cursor,
-[data-section="tailwind"] .cm-dropCursor {
+body[data-section="tailwind"] .cm-editor .cm-cursor,
+body[data-section="tailwind"] .cm-editor .cm-dropCursor {
 	border-left-color: #00bcd4 !important;
 }
 
-[data-section="tailwind"] .cm-searchMatch {
-	outline-color: #00bcd4;
+body[data-section="tailwind"] .cm-editor .cm-selectionBackground,
+body[data-section="tailwind"] .cm-editor .cm-content ::selection {
+	background-color: rgba(0, 188, 212, 0.25) !important;
 }
 
-[data-section="tailwind"] .cm-searchMatch.cm-searchMatch-selected {
-	background-color: rgba(0, 188, 212, 0.3);
+body[data-section="tailwind"] .cm-editor .cm-activeLine {
+	background-color: rgba(0, 188, 212, 0.08) !important;
 }
 
 /* Task instruction bubble section colors */
