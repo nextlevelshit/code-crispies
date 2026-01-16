@@ -1154,6 +1154,9 @@ button.lesson-list-item {
 }
 
 .btn-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 4px 8px;
 	font-size: 1rem;
 	min-width: 32px;
@@ -1166,6 +1169,13 @@ button.lesson-list-item {
 	background: var(--bg-color);
 	color: var(--text-color);
 	border-color: var(--primary-color);
+}
+
+.btn-icon img {
+	width: 1rem;
+	height: 1rem;
+	margin: 0;
+	display: block;
 }
 
 .editor-tools {

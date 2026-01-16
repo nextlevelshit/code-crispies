@@ -27,7 +27,8 @@ const state = {
 		skipResetCodeConfirmation: false
 	},
 	showExpected: false,
-	animationTimeout: null
+	animationTimeout: null,
+	lastPlaygroundTemplate: null
 };
 
 // Track CodeMirror views for cleanup
@@ -579,9 +580,9 @@ function loadCurrentLesson() {
 		lesson
 	);
 
-	// Set user code in CodeMirror
+	// Set user code in CodeMirror (clear history to prevent undo/redo across lessons)
 	if (codeEditor) {
-		codeEditor.setValue(engineState.userCode);
+		codeEditor.setValueAndClearHistory(engineState.userCode);
 	}
 
 	// Update Run button text based on completion status
@@ -731,9 +732,17 @@ function resetCode() {
 	// Reset editor to initial code for current lesson
 	lessonEngine.reset();
 	const engineState = lessonEngine.getCurrentState();
+	const isPlayground = engineState.lesson?.mode === "playground";
 	track("reset_code", { module: engineState.module?.id, lesson: engineState.lessonIndex });
+
 	if (codeEditor && engineState.lesson) {
-		codeEditor.setValue(engineState.lesson.initialCode || "");
+		// In playground mode, restore the last template if available
+		if (isPlayground && state.lastPlaygroundTemplate) {
+			codeEditor.setValue(state.lastPlaygroundTemplate.code);
+			lessonEngine.applyUserCode(state.lastPlaygroundTemplate.code, true);
+		} else {
+			codeEditor.setValue(engineState.lesson.initialCode || "");
+		}
 	}
 	// Clear hints and success indicators
 	clearHint();
@@ -755,6 +764,7 @@ function loadRandomTemplate() {
 	const template = getRandomTemplate();
 	if (codeEditor && template) {
 		track("playground_template", { template: template.name });
+		state.lastPlaygroundTemplate = template;
 		codeEditor.setValue(template.code);
 		// Apply the code to the preview
 		lessonEngine.applyUserCode(template.code, true);

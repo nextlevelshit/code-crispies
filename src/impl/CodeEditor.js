@@ -183,7 +183,7 @@ export class CodeEditor {
 	}
 
 	/**
-	 * Set editor value
+	 * Set editor value (preserves history)
 	 */
 	setValue(value) {
 		if (!this.view) return;
@@ -195,6 +195,13 @@ export class CodeEditor {
 				insert: value
 			}
 		});
+	}
+
+	/**
+	 * Set editor value and clear history (for lesson switching)
+	 */
+	setValueAndClearHistory(value) {
+		this.init(value);
 	}
 
 	/**
