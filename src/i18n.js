@@ -253,7 +253,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Web Programmierung",
-		landingHeroHighlight: "Selbstständig Coden lernen",
+		landingHeroHighlight: "Selbstständig lernen",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
 		landingWhyTitle: "Warum Code Crispies funktioniert",

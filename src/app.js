@@ -1,5 +1,5 @@
 import { LessonEngine } from "./impl/LessonEngine.js";
-import { CodeEditor } from "./impl/CodeEditor.js";
+import { CodeEditor, crispyEditorTheme } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
@@ -10,7 +10,6 @@ import { getRandomTemplate } from "./config/playground-templates.js";
 // CodeMirror imports for syntax highlighting
 import { EditorState } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
-import { oneDark } from "@codemirror/theme-one-dark";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 
@@ -79,7 +78,7 @@ function highlightSectionCodeBlocks() {
 		// Create read-only CodeMirror view
 		const state = EditorState.create({
 			doc: content,
-			extensions: [langExtension, oneDark, readOnlyTheme, EditorState.readOnly.of(true), EditorView.lineWrapping]
+			extensions: [langExtension, crispyEditorTheme, readOnlyTheme, EditorState.readOnly.of(true), EditorView.lineWrapping]
 		});
 
 		const view = new EditorView({
@@ -2153,7 +2152,7 @@ function highlightReferenceCodeBlocks() {
 		const view = new EditorView({
 			state: EditorState.create({
 				doc: code,
-				extensions: [isHtml ? html() : css(), oneDark, readOnlyTheme, EditorState.readOnly.of(true), EditorView.editable.of(false)]
+				extensions: [isHtml ? html() : css(), crispyEditorTheme, readOnlyTheme, EditorState.readOnly.of(true), EditorView.editable.of(false)]
 			}),
 			parent
 		});
