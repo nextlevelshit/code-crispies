@@ -1923,9 +1923,7 @@ input:checked + .toggle-slider::before {
 }
 
 .nav-link-ref {
-	margin-left: 0.5rem;
-	padding-left: 1rem;
-	border-left: 1px solid var(--border-color);
+	margin-left: 1rem;
 }
 
 @media (min-width: 769px) {
