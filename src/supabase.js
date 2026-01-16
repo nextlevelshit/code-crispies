@@ -45,6 +45,10 @@ export const auth = {
     supabase?.auth.getSession() ??
     Promise.resolve({ data: { session: null }, error: null }),
 
+  setSession: ({ access_token, refresh_token }) =>
+    supabase?.auth.setSession({ access_token, refresh_token }) ??
+    Promise.resolve({ data: { session: null }, error: { message: "Not configured" } }),
+
   onAuthStateChange: (callback) =>
     supabase?.auth.onAuthStateChange(callback) ?? { data: { subscription: { unsubscribe: () => {} } } },
 

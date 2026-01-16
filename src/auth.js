@@ -17,6 +17,7 @@ export async function handleOAuthCallback() {
 
   // Check if hash contains OAuth tokens (access_token, error, etc.)
   if (!hash.includes("access_token") && !hash.includes("error_description") && !hash.includes("refresh_token")) {
+    console.log("[Auth] No OAuth tokens in hash");
     return false;
   }
 
@@ -25,20 +26,33 @@ export async function handleOAuthCallback() {
   try {
     const supabaseModule = await import("./supabase.js");
     if (!supabaseModule.isConfigured) {
+      console.log("[Auth] Supabase not configured");
       return false;
     }
 
-    // Let Supabase process the OAuth tokens
-    const { data, error } = await supabaseModule.auth.getSession();
+    // Parse tokens from hash
+    const params = new URLSearchParams(hash.substring(1));
+    const accessToken = params.get("access_token");
+    const refreshToken = params.get("refresh_token");
 
-    if (error) {
-      console.error("[Auth] OAuth callback error:", error.message);
-    } else if (data?.session) {
-      console.log("[Auth] OAuth login successful:", data.session.user?.email);
-      oauthHandled = true;
+    console.log("[Auth] Tokens found:", { accessToken: !!accessToken, refreshToken: !!refreshToken });
+
+    if (accessToken && refreshToken) {
+      // Explicitly set the session with tokens from URL
+      const { data, error } = await supabaseModule.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken
+      });
+
+      if (error) {
+        console.error("[Auth] OAuth setSession error:", error.message);
+      } else if (data?.session) {
+        console.log("[Auth] OAuth login successful:", data.session.user?.email);
+        oauthHandled = true;
+      }
     }
 
-    // Clear the hash after processing (will be replaced by router)
+    // Clear the hash after processing
     window.history.replaceState(null, "", window.location.pathname);
 
     return true;

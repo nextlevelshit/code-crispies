@@ -149,7 +149,6 @@ const elements = {
 	expectedOverlay: document.getElementById("expected-overlay"),
 	previewWrapper: document.querySelector(".preview-wrapper"),
 	previewSection: document.querySelector(".preview-section"),
-	backBtn: document.getElementById("back-btn"),
 	prevBtn: document.getElementById("prev-btn"),
 	nextBtn: document.getElementById("next-btn"),
 	gameControls: document.querySelector(".game-controls"),
@@ -751,13 +750,18 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide nav buttons and center controls in playground mode, show back button
-	elements.backBtn?.classList.toggle("hidden", !isPlayground);
-	elements.prevBtn.classList.toggle("hidden", isPlayground);
+	// In playground mode: hide next button, repurpose prev as back button
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
 	elements.gameControls?.classList.toggle("centered", isPlayground);
 
-	if (!isPlayground) {
+	if (isPlayground) {
+		// Change prev button to "Back" in playground mode
+		elements.prevBtn.textContent = t("back");
+		elements.prevBtn.disabled = false;
+		elements.prevBtn.classList.remove("btn-disabled");
+	} else {
+		// Normal mode: prev/next navigation
+		elements.prevBtn.textContent = t("previous");
 		elements.prevBtn.disabled = !engineState.canGoPrev;
 		elements.nextBtn.disabled = !engineState.canGoNext;
 
@@ -788,7 +792,16 @@ function nextLesson() {
 }
 
 function prevLesson() {
-	const prevModuleId = lessonEngine.getCurrentState().module?.id;
+	const engineState = lessonEngine.getCurrentState();
+	const isPlayground = engineState.lesson?.mode === "playground";
+
+	// In playground mode, "Back" navigates to home
+	if (isPlayground) {
+		navigateTo("#");
+		return;
+	}
+
+	const prevModuleId = engineState.module?.id;
 	const success = lessonEngine.previousLesson();
 	if (success) {
 		const newState = lessonEngine.getCurrentState();
@@ -2455,12 +2468,12 @@ function init() {
 	// Set timeout to show fallback if loading takes too long
 	loadingTimeout = setTimeout(showLoadingFallback, 3000);
 
-	// Load modules after editor is ready
-	initializeModules();
-
-	// Handle OAuth callback BEFORE router (tokens are in URL hash)
+	// Handle OAuth callback FIRST (tokens are in URL hash, must run before router)
 	handleOAuthCallback().then(() => {
-		// Initialize URL router for shareable links
+		// Load modules (this also calls handleRoute inside)
+		initializeModules();
+
+		// Initialize URL router for browser back/forward
 		initRouter();
 
 		// Initialize authentication
