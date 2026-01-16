@@ -1174,7 +1174,7 @@ button.lesson-list-item {
 .btn-icon:hover {
 	background: var(--bg-color);
 	color: var(--text-color);
-	border-color: var(--primary-color);
+	border-color: var(--section-color, var(--primary-color));
 }
 
 .btn-icon img {
@@ -1216,14 +1216,14 @@ button.lesson-list-item {
 }
 
 #reset-code-btn {
-	background: var(--primary-color);
+	background: var(--section-color, var(--primary-color));
 	color: white;
-	border-color: var(--primary-color);
+	border-color: var(--section-color, var(--primary-color));
 }
 
 #reset-code-btn:hover {
-	background: var(--primary-dark);
-	border-color: var(--primary-dark);
+	background: var(--section-color-dark, var(--primary-dark));
+	border-color: var(--section-color-dark, var(--primary-dark));
 }
 
 /* Hide Run button - live preview is stable */
