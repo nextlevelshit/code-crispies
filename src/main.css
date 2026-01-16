@@ -2388,17 +2388,11 @@ input:checked + .toggle-slider::before {
 .device-notice {
 	margin-top: var(--spacing-lg);
 	text-align: center;
-	padding: 1rem;
-}
-
-.device-notice p {
-	display: inline-block;
 	padding: 0.75rem 1.5rem;
 	background: linear-gradient(135deg, rgba(145, 99, 184, 0.1), rgba(212, 90, 160, 0.1), rgba(26, 175, 184, 0.1));
 	border-radius: var(--border-radius-md);
 	color: var(--light-text);
 	font-size: 0.9rem;
-	margin: 0;
 }
 
 .device-notice strong {
