@@ -275,7 +275,7 @@ const translations = {
 		lessons: "Lektionen",
 		settings: "Einstellungen",
 		showHints: "Hinweise anzeigen",
-		resetAllProgress: "Fortschritt zurücksetzen",
+		resetAllProgress: "Fortschritt",
 		openSource: "Open Source:",
 		by: "von",
 
