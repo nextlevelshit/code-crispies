@@ -1983,12 +1983,27 @@ function hideAllPages() {
 }
 
 /**
+ * Update section color coding on body
+ * @param {string|null} sectionId - Section ID (css, html, tailwind) or null to reset
+ */
+function updateSectionColor(sectionId) {
+	if (sectionId) {
+		document.body.setAttribute("data-section", sectionId);
+	} else {
+		document.body.removeAttribute("data-section");
+	}
+}
+
+/**
  * Show home landing page
  */
 function showLandingPage() {
 	hideAllPages();
 	elements.landingPage?.classList.remove("hidden");
 	window.scrollTo(0, 0);
+
+	// Reset section color on landing page
+	updateSectionColor(null);
 
 	// Update section progress on landing page
 	updateLandingProgress();
@@ -2062,6 +2077,9 @@ function showSectionPage(sectionId) {
 	elements.sectionPage?.classList.remove("hidden");
 	window.scrollTo(0, 0);
 
+	// Update section color
+	updateSectionColor(sectionId);
+
 	// Track section page view
 	track("section_view", { section: sectionId });
 
@@ -2112,6 +2130,10 @@ function showReferencePage(refId) {
 
 	// Default to CSS if no refId
 	const activeRef = refId || "css";
+
+	// Map reference to section for color coding
+	const refToSection = { css: "css", selectors: "css", flexbox: "css", grid: "css", html: "html" };
+	updateSectionColor(refToSection[activeRef] || "css");
 
 	// Track reference page view
 	track("reference_view", { ref: activeRef });
@@ -2256,9 +2278,13 @@ function navigateToLesson(moduleId, lessonIndex, shouldUpdateUrl = true) {
 			lessonEngine.setLessonByIndex(0);
 			loadCurrentLesson();
 			updateModuleHighlight(fallbackModule.id);
+			updateSectionColor(getModuleSection(fallbackModule));
 		}
 		return;
 	}
+
+	// Update section color based on module
+	updateSectionColor(getModuleSection(module));
 
 	// Validate lessonIndex is in bounds
 	if (lessonIndex < 0 || lessonIndex >= module.lessons.length) {
