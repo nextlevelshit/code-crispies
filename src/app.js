@@ -320,10 +320,10 @@ function updateProgressDisplay() {
 	// Update progress bar (now shows progress to next milestone)
 	elements.progressFill.style.width = `${stats.progressToNext}%`;
 
-	// Update progress text
+	// Update progress text - show completed of total lessons
 	elements.progressText.textContent = t("progressTextMilestone", {
 		completed: stats.totalCompleted,
-		next: stats.nextMilestone
+		total: stats.totalLessons
 	});
 
 	// Update milestone indicators
