@@ -6,6 +6,7 @@ import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 import { getRandomTemplate } from "./config/playground-templates.js";
+import { initAuth } from "./auth.js";
 
 // CodeMirror imports for syntax highlighting
 import { EditorState } from "@codemirror/state";
@@ -2423,6 +2424,9 @@ function init() {
 	// Initialize URL router for shareable links
 	initRouter();
 
+	// Initialize authentication
+	initAuth(lessonEngine);
+
 	// Sidebar controls
 	elements.menuBtn.addEventListener("click", openSidebar);
 	elements.closeSidebar.addEventListener("click", closeSidebar);
@@ -2484,6 +2488,31 @@ function init() {
 		if (e.target === elements.shareDialog) closeShareDialog();
 	});
 	elements.copyUrlBtn.addEventListener("click", copyShareUrl);
+
+	// Legal dialogs (Privacy & Imprint)
+	const privacyDialog = document.getElementById("privacy-dialog");
+	const imprintDialog = document.getElementById("imprint-dialog");
+
+	document.querySelectorAll(".privacy-link").forEach((btn) => {
+		btn.addEventListener("click", () => privacyDialog?.showModal());
+	});
+	document.querySelectorAll(".imprint-link").forEach((btn) => {
+		btn.addEventListener("click", () => imprintDialog?.showModal());
+	});
+
+	document.querySelector(".privacy-dialog-close")?.addEventListener("click", () => {
+		privacyDialog?.close();
+	});
+	document.querySelector(".imprint-dialog-close")?.addEventListener("click", () => {
+		imprintDialog?.close();
+	});
+
+	privacyDialog?.addEventListener("click", (e) => {
+		if (e.target === privacyDialog) privacyDialog.close();
+	});
+	imprintDialog?.addEventListener("click", (e) => {
+		if (e.target === imprintDialog) imprintDialog.close();
+	});
 
 	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
@@ -2567,10 +2596,18 @@ function init() {
 	// Newsletter form submission
 	const newsletterForm = document.getElementById("newsletter-form");
 	const newsletterThanks = document.getElementById("newsletter-thanks");
-	newsletterForm?.addEventListener("submit", (e) => {
+	newsletterForm?.addEventListener("submit", async (e) => {
 		e.preventDefault();
-		const email = document.getElementById("newsletter-email")?.value;
+		const emailInput = document.getElementById("newsletter-email");
+		const email = emailInput?.value;
 		if (email) {
+			// Import newsletter helper dynamically to avoid loading Supabase if not needed
+			try {
+				const { newsletter } = await import("./supabase.js");
+				await newsletter.subscribe(email);
+			} catch (err) {
+				console.error("Newsletter subscription error:", err);
+			}
 			track("newsletter_signup", { email: email });
 			newsletterForm.classList.add("hidden");
 			newsletterThanks?.classList.remove("hidden");
