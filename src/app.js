@@ -2568,7 +2568,8 @@ function init() {
 		e.preventDefault();
 		const email = document.getElementById("newsletter-email")?.value;
 		if (email) {
-			track("newsletter_signup", { email });
+			console.log("Newsletter signup:", email);
+			track("newsletter_signup", { email: email });
 			newsletterForm.classList.add("hidden");
 			newsletterThanks?.classList.remove("hidden");
 		}
