@@ -308,6 +308,16 @@ kbd {
 	gap: var(--spacing-sm);
 }
 
+#auth-trigger-header {
+	display: none;
+}
+
+@media (min-width: 769px) {
+	#auth-trigger-header {
+		display: inline-flex;
+	}
+}
+
 /* ================= GAME LAYOUT ================= */
 .game-layout {
 	display: flex;
@@ -374,6 +384,7 @@ kbd {
 	gap: 0.5rem;
 	background: var(--primary-bg-medium);
 	color: var(--primary-color);
+	min-width: 0;
 	padding: 4px 12px;
 	border-radius: 16px;
 	font-size: 0.8rem;
@@ -385,12 +396,18 @@ kbd {
 .module-name {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
 }
 
 .module-pill .level-indicator {
 	color: var(--primary-dark);
 	font-weight: 500;
 	opacity: 0.8;
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .lesson-title-row {
@@ -398,7 +415,13 @@ kbd {
 	align-items: center;
 	gap: 0.5rem;
 	margin-bottom: var(--spacing-sm);
-	flex-wrap: wrap;
+}
+
+.lesson-title-row .difficulty-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: auto;
 }
 
 #lesson-title {
@@ -446,6 +469,28 @@ kbd {
 	border-radius: var(--border-radius-sm);
 	vertical-align: middle;
 }
+
+.difficulty-badge {
+	display: inline-flex;
+	align-items: flex-end;
+	gap: 2px;
+	vertical-align: middle;
+}
+
+.difficulty-badge .bar {
+	width: 3px;
+	border-radius: 1px;
+	background: var(--border-color);
+}
+
+.difficulty-badge .bar:nth-child(1) { height: 6px; }
+.difficulty-badge .bar:nth-child(2) { height: 9px; }
+.difficulty-badge .bar:nth-child(3) { height: 12px; }
+
+.difficulty-easy .bar:nth-child(1),
+.difficulty-medium .bar:nth-child(1),
+.difficulty-medium .bar:nth-child(2),
+.difficulty-hard .bar { background: var(--light-text); }
 
 .lesson-description {
 	font-size: 0.95rem;
@@ -996,12 +1041,67 @@ kbd {
 	border-bottom: none;
 }
 
+/* Mobile navigation in sidebar */
+.sidebar-nav-mobile {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.sidebar-nav-link {
+	display: block;
+	padding: 0.6rem var(--spacing-md);
+	font-size: 0.9rem;
+	font-weight: 500;
+	text-decoration: none;
+	color: var(--text-color);
+	border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-nav-link:last-child {
+	border-bottom: none;
+}
+
+.sidebar-nav-link:hover {
+	background: var(--primary-bg-light);
+	color: var(--primary-color);
+}
+
+.sidebar-auth-link {
+	width: calc(100% - 2 * var(--spacing-md));
+	margin: var(--spacing-sm) var(--spacing-md);
+	padding: 0.5rem 1rem;
+	text-align: center;
+	background: var(--primary-color);
+	color: var(--white-text);
+	border: none;
+	border-radius: var(--border-radius-md);
+	cursor: pointer;
+	font-family: inherit;
+	font-weight: 500;
+}
+
+.sidebar-auth-link:hover {
+	background: var(--primary-dark);
+}
+
+@media (min-width: 769px) {
+	.sidebar-nav-mobile {
+		display: none;
+	}
+}
+
 /* Make the lessons nav section fill available space */
-nav.sidebar-section {
+nav.sidebar-section:not(.sidebar-nav-mobile) {
 	flex: 1;
 	overflow-y: auto;
 	min-height: 0;
 	padding-bottom: var(--spacing-md);
+}
+
+.sidebar-nav-mobile {
+	flex: none;
+	padding: 0;
 }
 
 .sidebar-section h4 {
@@ -1388,8 +1488,63 @@ button.lesson-list-item {
 	display: none;
 }
 
-/* ================= TOGGLE SWITCH ================= */
-/* Setting row (for label + control) */
+/* ================= SETTINGS CARD ================= */
+.settings-card {
+	background: var(--bg-color);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md);
+	overflow: hidden;
+}
+
+.settings-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.settings-row:last-child {
+	border-bottom: none;
+}
+
+.settings-label {
+	font-size: 0.9rem;
+	color: var(--text-color);
+}
+
+.settings-toggle {
+	width: 40px;
+	height: 22px;
+	appearance: none;
+	background: var(--border-color);
+	border-radius: 11px;
+	position: relative;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.settings-toggle::before {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 18px;
+	height: 18px;
+	background: white;
+	border-radius: 50%;
+	transition: transform 0.2s;
+}
+
+.settings-toggle:checked {
+	background: var(--primary-color);
+}
+
+.settings-toggle:checked::before {
+	transform: translateX(18px);
+}
+
+/* Legacy setting row (for label + control) */
 .setting-row {
 	display: flex;
 	align-items: center;
@@ -3177,11 +3332,16 @@ input:checked + .toggle-slider::before {
 
 	.module-pill {
 		flex: 1;
+		min-width: 0;
+		max-width: 100%;
 		margin: 0 var(--spacing-sm);
 		justify-content: center;
+		overflow: hidden;
 	}
 
 	.module-name {
+		flex: 1;
+		min-width: 0;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;

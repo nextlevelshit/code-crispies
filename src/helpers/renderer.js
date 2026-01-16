@@ -3,6 +3,49 @@
  */
 import { t } from "../i18n.js";
 
+/**
+ * Compute lesson difficulty based on lesson structure
+ * - Easy: selector is provided in codePrefix (student only writes properties)
+ * - Medium: student writes a simple selector (single element/class)
+ * - Hard: student writes compound selectors (descendant, chained classes, type+class)
+ * @param {Object} lesson - The lesson object
+ * @returns {"easy"|"medium"|"hard"} The computed difficulty
+ */
+export function computeLessonDifficulty(lesson) {
+	const codePrefix = lesson.codePrefix || "";
+	const solution = lesson.solution || "";
+
+	// If codePrefix contains an opening brace, selector is provided → Easy
+	if (codePrefix.includes("{")) {
+		return "easy";
+	}
+
+	// No codePrefix with selector - check the solution complexity
+	// Hard: descendant selectors (space before {), chained classes (.a.b), type+class (a.class)
+	const selectorMatch = solution.match(/^([^{]+)\{/);
+	if (selectorMatch) {
+		const selector = selectorMatch[1].trim();
+
+		// Descendant selector: has space (e.g., ".nav a", ".card p")
+		if (/\S\s+\S/.test(selector)) {
+			return "hard";
+		}
+
+		// Chained classes: multiple dots without space (e.g., ".btn.primary")
+		if ((selector.match(/\./g) || []).length > 1) {
+			return "hard";
+		}
+
+		// Type + class: element followed by dot (e.g., "a.btn", "div.card")
+		if (/^[a-z]+\.[a-z]/i.test(selector)) {
+			return "hard";
+		}
+	}
+
+	// Simple selector → Medium
+	return "medium";
+}
+
 // Feedback elements cache
 let feedbackElement = null;
 let feedbackTimeout = null;
@@ -136,6 +179,42 @@ export function renderLesson(titleEl, descriptionEl, taskEl, previewEl, prefixEl
 
 	// Initial preview render with empty user code
 	// The LessonEngine will handle this when it's first set
+}
+
+/**
+ * Render the difficulty badge (right-aligned in title row)
+ * @param {HTMLElement} container - The container element (lesson-title-row)
+ * @param {Object} lesson - The lesson object
+ */
+export function renderDifficultyBadge(container, lesson) {
+	// Remove existing difficulty wrapper if any
+	const existingWrapper = container.querySelector(".difficulty-wrapper");
+	if (existingWrapper) {
+		existingWrapper.remove();
+	}
+
+	// Compute difficulty
+	const difficulty = computeLessonDifficulty(lesson);
+
+	// Create wrapper for right-alignment
+	const wrapper = document.createElement("span");
+	wrapper.className = "difficulty-wrapper";
+
+	// Create badge element with three bars
+	const badge = document.createElement("span");
+	badge.className = `difficulty-badge difficulty-${difficulty}`;
+	badge.setAttribute("aria-label", t(`difficulty_${difficulty}_label`));
+	badge.setAttribute("title", t(`difficulty_${difficulty}`));
+
+	// Add three bars
+	for (let i = 0; i < 3; i++) {
+		const bar = document.createElement("span");
+		bar.className = "bar";
+		badge.appendChild(bar);
+	}
+
+	wrapper.appendChild(badge);
+	container.appendChild(wrapper);
 }
 
 /**

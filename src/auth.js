@@ -153,6 +153,7 @@ function updateAuthUI(user) {
 
   // Sidebar elements
   const authTriggerSidebar = document.getElementById("auth-trigger-sidebar");
+  const authTriggerMobile = document.getElementById("auth-trigger-mobile");
   const userMenuSidebar = document.getElementById("user-menu-sidebar");
   const userEmailSidebar = document.getElementById("user-email-sidebar");
   const sidebarHint = document.querySelector(".sidebar-auth-hint");
@@ -161,6 +162,7 @@ function updateAuthUI(user) {
     authTriggerHeader?.classList.add("hidden");
     userEmailHeader?.classList.remove("hidden");
     authTriggerSidebar?.classList.add("hidden");
+    authTriggerMobile?.classList.add("hidden");
     userMenuSidebar?.classList.remove("hidden");
     sidebarHint?.classList.add("hidden");
     if (userEmailHeader) userEmailHeader.textContent = user.email;
@@ -169,6 +171,7 @@ function updateAuthUI(user) {
     authTriggerHeader?.classList.remove("hidden");
     userEmailHeader?.classList.add("hidden");
     authTriggerSidebar?.classList.remove("hidden");
+    authTriggerMobile?.classList.remove("hidden");
     userMenuSidebar?.classList.add("hidden");
     sidebarHint?.classList.remove("hidden");
   }
@@ -257,7 +260,7 @@ function setupAuthForms() {
     .getElementById("show-reset")
     ?.addEventListener("click", () => switchForm("reset"));
 
-  // Dialog triggers (both header and sidebar)
+  // Dialog triggers (header, sidebar, and mobile)
   document
     .getElementById("auth-trigger-header")
     ?.addEventListener("click", () => {
@@ -265,6 +268,11 @@ function setupAuthForms() {
     });
   document
     .getElementById("auth-trigger-sidebar")
+    ?.addEventListener("click", () => {
+      authDialog?.showModal();
+    });
+  document
+    .getElementById("auth-trigger-mobile")
     ?.addEventListener("click", () => {
       authDialog?.showModal();
     });

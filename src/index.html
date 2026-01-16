@@ -463,6 +463,13 @@
 					<button id="close-sidebar" class="close-btn" data-i18n-aria-label="closeMenu" aria-label="Close menu">&times;</button>
 				</div>
 
+				<nav class="sidebar-section sidebar-nav-mobile" aria-label="Learning paths">
+					<a href="#css" class="sidebar-nav-link" data-section="css">CSS</a>
+					<a href="#html" class="sidebar-nav-link" data-section="html">HTML</a>
+					<a href="#tailwind" class="sidebar-nav-link" data-section="tailwind">Tailwind</a>
+					<button id="auth-trigger-mobile" class="sidebar-nav-link sidebar-auth-link" data-i18n="authLogin">Log In</button>
+				</nav>
+
 				<div class="sidebar-section">
 					<h4 data-i18n="progress">Progress</h4>
 					<div class="progress-display milestone-progress" id="progress-display">
@@ -504,23 +511,27 @@
 
 				<div class="sidebar-section">
 					<h4 data-i18n="settings">Settings</h4>
-					<label class="setting-row">
-						<span class="setting-label" data-i18n="language">Language</span>
-						<select id="lang-select" class="lang-select">
-							<option value="en">English</option>
-							<option value="de">Deutsch</option>
-							<option value="pl">Polski</option>
-							<option value="es">Español</option>
-							<option value="ar">العربية</option>
-							<option value="uk">Українська</option>
-						</select>
-					</label>
-					<label class="toggle-switch">
-						<input type="checkbox" id="disable-feedback-toggle" checked />
-						<span class="toggle-slider"></span>
-						<span class="toggle-label" data-i18n="showHints">Show Hints</span>
-					</label>
-					<button id="reset-btn" class="btn btn-text" data-i18n="resetAllProgress">Reset All Progress</button>
+					<div class="settings-card">
+						<label class="settings-row">
+							<span class="settings-label" data-i18n="language">Language</span>
+							<select id="lang-select" class="lang-select">
+								<option value="en">English</option>
+								<option value="de">Deutsch</option>
+								<option value="pl">Polski</option>
+								<option value="es">Español</option>
+								<option value="ar">العربية</option>
+								<option value="uk">Українська</option>
+							</select>
+						</label>
+						<label class="settings-row">
+							<span class="settings-label" data-i18n="showHints">Show Hints</span>
+							<input type="checkbox" id="disable-feedback-toggle" class="settings-toggle" checked />
+						</label>
+						<div class="settings-row">
+							<span class="settings-label" data-i18n="resetAllProgress">Reset All Progress</span>
+							<button id="reset-btn" class="btn btn-sm btn-ghost" data-i18n="reset">Reset</button>
+						</div>
+					</div>
 				</div>
 
 				<footer class="app-footer">
