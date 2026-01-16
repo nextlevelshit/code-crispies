@@ -796,7 +796,6 @@ kbd {
 	}
 	100% {
 		--border-angle: -360deg;
-		border-color: transparent;
 	}
 }
 
