@@ -120,7 +120,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Learn Web Development",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle: "Master HTML, CSS, and Tailwind through hands-on exercises with instant feedback. Free and open source.",
 		landingCtaStart: "Start Learning NOW",
 		landingWhyTitle: "Why CODE CRISPIES Works",
@@ -344,7 +344,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Web Programmierung",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
 		landingWhyTitle: "Warum CODE CRISPIES funktioniert",
@@ -566,7 +566,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Naucz się tworzenia stron",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle: "Opanuj HTML, CSS i Tailwind poprzez praktyczne ćwiczenia z natychmiastową informacją zwrotną. Darmowe i open source.",
 		landingCtaStart: "Zacznij TERAZ",
 		landingWhyTitle: "Dlaczego CODE CRISPIES działa",
@@ -789,7 +789,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Aprende desarrollo web",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle:
 			"Domina HTML, CSS y Tailwind a través de ejercicios prácticos con retroalimentación instantánea. Gratis y de código abierto.",
 		landingCtaStart: "Empieza AHORA",
@@ -1011,7 +1011,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "تعلم تطوير الويب",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle: "أتقن HTML و CSS و Tailwind من خلال تمارين عملية مع ملاحظات فورية. مجاني ومفتوح المصدر.",
 		landingCtaStart: "ابدأ الآن",
 		landingWhyTitle: "لماذا CODE CRISPIES فعال",
@@ -1231,7 +1231,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Вивчай веб-розробку",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Code Crispy",
 		landingHeroSubtitle: "Опануй HTML, CSS та Tailwind через практичні вправи з миттєвим зворотним зв'язком. Безкоштовно та з відкритим кодом.",
 		landingCtaStart: "Почни ЗАРАЗ",
 		landingWhyTitle: "Чому CODE CRISPIES працює",
