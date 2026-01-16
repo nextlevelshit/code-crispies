@@ -1,0 +1,92 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-gradients",
+	"title": "CSS Gradients",
+	"description": "Create smooth color transitions with CSS gradients.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "gradients-1",
+			"title": "Linear Gradient",
+			"description": "Gradients create smooth transitions between colors. The <kbd>linear-gradient()</kbd> function creates a gradient along a straight line.<br><br><strong>Basic syntax:</strong><br><pre>background: linear-gradient(color1, color2);</pre><br>By default, gradients flow from top to bottom.",
+			"task": "Add a gradient background from <kbd>coral</kbd> to <kbd>gold</kbd>.",
+			"previewHTML": "<div class=\"card\"><h3>Summer Sale</h3><p>Up to 50% off</p></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .card { padding: 2rem; border-radius: 12px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); } .card h3 { margin: 0 0 8px; font-size: 1.5rem; } .card p { margin: 0; opacity: 0.9; }",
+			"sandboxCSS": "",
+			"codePrefix": ".card {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "background: linear-gradient(coral, gold);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "linear-gradient",
+					"message": "Use <kbd>linear-gradient()</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "coral",
+					"message": "Include <kbd>coral</kbd> as the first color"
+				},
+				{
+					"type": "contains",
+					"value": "gold",
+					"message": "Include <kbd>gold</kbd> as the second color"
+				}
+			]
+		},
+		{
+			"id": "gradients-2",
+			"title": "Gradient Direction",
+			"description": "Control the gradient direction by adding an angle or keyword before the colors.<br><br><strong>Keywords:</strong> <kbd>to right</kbd>, <kbd>to left</kbd>, <kbd>to bottom right</kbd><br><strong>Angles:</strong> <kbd>45deg</kbd>, <kbd>90deg</kbd>, <kbd>180deg</kbd><br><br><pre>background: linear-gradient(to right, blue, purple);</pre>",
+			"task": "Make the gradient flow from left to right using <kbd>to right</kbd>.",
+			"previewHTML": "<button class=\"btn\">Get Started</button>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 2rem; } .btn { padding: 1rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; color: white; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": ".btn {\n  background: linear-gradient(",
+			"initialCode": "",
+			"codeSuffix": ", steelblue, mediumseagreen);\n}",
+			"solution": "to right",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "to right",
+					"message": "Add <kbd>to right</kbd> to set the direction"
+				}
+			]
+		},
+		{
+			"id": "gradients-3",
+			"title": "Radial Gradient",
+			"description": "The <kbd>radial-gradient()</kbd> function creates a gradient that radiates from a center point outward in a circular or elliptical pattern.<br><br><pre>background: radial-gradient(circle, white, steelblue);</pre><br>Add <kbd>circle</kbd> for a perfect circular gradient.",
+			"task": "Create a radial gradient from <kbd>white</kbd> to <kbd>steelblue</kbd>.",
+			"previewHTML": "<div class=\"orb\"></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 2rem; display: flex; justify-content: center; } .orb { width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 8px 32px rgba(70, 130, 180, 0.4); }",
+			"sandboxCSS": "",
+			"codePrefix": ".orb {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "background: radial-gradient(circle, white, steelblue);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "radial-gradient",
+					"message": "Use <kbd>radial-gradient()</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "white",
+					"message": "Start with <kbd>white</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "steelblue",
+					"message": "End with <kbd>steelblue</kbd>"
+				}
+			]
+		}
+	]
+}

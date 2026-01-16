@@ -23,8 +23,13 @@ import htmlFieldsetEN from "../../lessons/28-html-forms-fieldset.json";
 import htmlFigureEN from "../../lessons/29-html-figure.json";
 import htmlTablesEN from "../../lessons/30-html-tables.json";
 import htmlSvgEN from "../../lessons/32-html-svg.json";
+import htmlSemanticEN from "../../lessons/33-html-semantic.json";
 import flexboxEN from "../../lessons/flexbox.json";
 import gridEN from "../../lessons/grid.json";
+import gradientsEN from "../../lessons/09-gradients.json";
+import filtersEN from "../../lessons/11-filters.json";
+import positioningEN from "../../lessons/12-positioning.json";
+import pseudoElementsEN from "../../lessons/13-pseudo-elements.json";
 import playgroundEN from "../../lessons/98-playground.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
@@ -130,17 +135,22 @@ const moduleStoreEN = [
 	// CSS Visual (immediate impact)
 	basicSelectorsEN,
 	colorsEN,
+	gradientsEN,
 	typographyEN,
 	boxModelEN,
 	// CSS Layout
 	flexboxEN,
 	gridEN,
+	positioningEN,
 	unitsVariablesEN,
 	responsiveEN,
 	// CSS Polish
 	transitionsAnimationsEN,
+	filtersEN,
+	pseudoElementsEN,
 	// HTML Structure
 	htmlElementsEN,
+	htmlSemanticEN,
 	htmlFigureEN,
 	htmlSvgEN,
 	// HTML Interactive
@@ -164,17 +174,22 @@ const moduleStoreDE = [
 	// CSS Visual (immediate impact)
 	basicSelectorsDE,
 	colorsEN, // Using EN fallback until translated
+	gradientsEN, // Using EN fallback until translated
 	typographyEN, // Using EN fallback until translated
 	boxModelDE,
 	// CSS Layout
 	flexboxDE,
 	gridEN, // Using EN fallback until translated
+	positioningEN, // Using EN fallback until translated
 	unitsVariablesDE,
 	responsiveDE,
 	// CSS Polish
 	transitionsAnimationsDE,
+	filtersEN, // Using EN fallback until translated
+	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsDE,
+	htmlSemanticEN, // Using EN fallback until translated
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgDE,
 	// HTML Interactive
@@ -198,17 +213,22 @@ const moduleStorePL = [
 	// CSS Visual (immediate impact)
 	basicSelectorsPL,
 	colorsEN, // Using EN fallback until translated
+	gradientsEN, // Using EN fallback until translated
 	typographyEN, // Using EN fallback until translated
 	boxModelPL,
 	// CSS Layout
 	flexboxPL,
 	gridEN, // Using EN fallback until translated
+	positioningEN, // Using EN fallback until translated
 	unitsVariablesPL,
 	responsivePL,
 	// CSS Polish
 	transitionsAnimationsPL,
+	filtersEN, // Using EN fallback until translated
+	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsPL,
+	htmlSemanticEN, // Using EN fallback until translated
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgPL,
 	// HTML Interactive
@@ -232,17 +252,22 @@ const moduleStoreES = [
 	// CSS Visual (immediate impact)
 	basicSelectorsES,
 	colorsEN, // Using EN fallback until translated
+	gradientsEN, // Using EN fallback until translated
 	typographyEN, // Using EN fallback until translated
 	boxModelES,
 	// CSS Layout
 	flexboxES,
 	gridEN, // Using EN fallback until translated
+	positioningEN, // Using EN fallback until translated
 	unitsVariablesES,
 	responsiveES,
 	// CSS Polish
 	transitionsAnimationsES,
+	filtersEN, // Using EN fallback until translated
+	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsES,
+	htmlSemanticEN, // Using EN fallback until translated
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgES,
 	// HTML Interactive
@@ -266,17 +291,22 @@ const moduleStoreAR = [
 	// CSS Visual (immediate impact)
 	basicSelectorsAR,
 	colorsEN, // Using EN fallback until translated
+	gradientsEN, // Using EN fallback until translated
 	typographyEN, // Using EN fallback until translated
 	boxModelAR,
 	// CSS Layout
 	flexboxAR,
 	gridEN, // Using EN fallback until translated
+	positioningEN, // Using EN fallback until translated
 	unitsVariablesAR,
 	responsiveAR,
 	// CSS Polish
 	transitionsAnimationsAR,
+	filtersEN, // Using EN fallback until translated
+	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsAR,
+	htmlSemanticEN, // Using EN fallback until translated
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgAR,
 	// HTML Interactive
@@ -300,17 +330,22 @@ const moduleStoreUK = [
 	// CSS Visual (immediate impact)
 	basicSelectorsUK,
 	colorsEN, // Using EN fallback until translated
+	gradientsEN, // Using EN fallback until translated
 	typographyEN, // Using EN fallback until translated
 	boxModelUK,
 	// CSS Layout
 	flexboxUK,
 	gridEN, // Using EN fallback until translated
+	positioningEN, // Using EN fallback until translated
 	unitsVariablesUK,
 	responsiveUK,
 	// CSS Polish
 	transitionsAnimationsUK,
+	filtersEN, // Using EN fallback until translated
+	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsUK,
+	htmlSemanticEN, // Using EN fallback until translated
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgUK,
 	// HTML Interactive
