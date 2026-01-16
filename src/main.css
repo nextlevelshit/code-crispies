@@ -1019,6 +1019,65 @@ nav.sidebar-section {
 	color: var(--light-text);
 }
 
+/* Milestone Progress */
+.milestone-progress {
+	gap: var(--spacing-sm);
+}
+
+.milestones {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 2px;
+}
+
+.milestone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 24px;
+	height: 24px;
+	font-size: 0.7rem;
+	font-weight: 600;
+	color: var(--light-text);
+	background: var(--border-color);
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+
+.milestone.reached {
+	background: linear-gradient(135deg, #9163b8, #7c4dff);
+	color: white;
+}
+
+.milestone.current {
+	background: linear-gradient(135deg, #d45aa0, #1aafb8);
+	color: white;
+	transform: scale(1.15);
+	box-shadow: 0 2px 8px rgba(212, 90, 160, 0.4);
+}
+
+.milestone.next {
+	border: 2px dashed var(--light-text);
+	background: transparent;
+}
+
+/* Milestone celebration animation */
+@keyframes milestone-pop {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.4);
+	}
+	100% {
+		transform: scale(1.15);
+	}
+}
+
+.milestone.just-reached {
+	animation: milestone-pop 0.5s ease-out;
+}
+
 /* Module List in Sidebar */
 .module-list {
 	/* No max-height - parent nav.sidebar-section handles overflow */

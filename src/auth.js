@@ -261,12 +261,18 @@ function setupAuthForms() {
     });
 
   // OAuth buttons
-  document.getElementById("google-login")?.addEventListener("click", () => {
-    authModule?.signInWithGoogle();
+  document.getElementById("google-login")?.addEventListener("click", async () => {
+    const { error } = await authModule?.signInWithGoogle() ?? { error: null };
+    if (error) {
+      showOAuthError(error.message);
+    }
   });
 
-  document.getElementById("github-login")?.addEventListener("click", () => {
-    authModule?.signInWithGitHub();
+  document.getElementById("github-login")?.addEventListener("click", async () => {
+    const { error } = await authModule?.signInWithGitHub() ?? { error: null };
+    if (error) {
+      showOAuthError(error.message);
+    }
   });
 
   // Close dialog on backdrop click
@@ -361,6 +367,22 @@ async function handleResetSubmit(e) {
   } else {
     errorEl.classList.add("hidden");
     successEl.classList.remove("hidden");
+  }
+}
+
+function showOAuthError(message) {
+  // Show error in the currently visible form's error element
+  const loginError = document.getElementById("login-error");
+  const signupError = document.getElementById("signup-error");
+
+  // Use whichever form is visible
+  const errorEl = !document.getElementById("login-form")?.classList.contains("hidden")
+    ? loginError
+    : signupError;
+
+  if (errorEl) {
+    errorEl.textContent = message;
+    errorEl.classList.remove("hidden");
   }
 }
 
