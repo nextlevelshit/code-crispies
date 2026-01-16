@@ -319,8 +319,10 @@ function updateProgressDisplay() {
 	const stats = lessonEngine.getProgressStats();
 
 	// Update progress bar - shows progress towards next milestone
+	// CSS variable scales gradient so only first X% of colors show
 	const progressPercent = stats.progressToNext || 1;
 	elements.progressFill.style.width = `${progressPercent}%`;
+	elements.progressFill.style.setProperty('--progress-percent', progressPercent);
 
 	// Update progress current - show progress towards next milestone
 	elements.progressCurrent.textContent = `${stats.totalCompleted}/${stats.nextMilestone}`;
