@@ -6,7 +6,6 @@ import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n
 import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 import { getRandomTemplate } from "./config/playground-templates.js";
-import { initAuth, handleOAuthCallback } from "./auth.js";
 
 // CodeMirror imports for syntax highlighting
 import { EditorState } from "@codemirror/state";
@@ -18,9 +17,6 @@ import { css } from "@codemirror/lang-css";
 function track(eventName, eventData = {}) {
 	if (typeof umami !== "undefined" && umami.track) {
 		umami.track(eventName, eventData);
-		console.debug("Track:", eventName, eventData);
-	} else {
-		console.debug("Track blocked (umami unavailable):", eventName, eventData);
 	}
 }
 
@@ -165,7 +161,6 @@ const elements = {
 	sectionFooterLessonLinks: document.getElementById("section-footer-lesson-links"),
 	progressFill: document.getElementById("progress-fill"),
 	progressText: document.getElementById("progress-text"),
-	milestonesContainer: document.getElementById("milestones"),
 	resetBtn: document.getElementById("reset-btn"),
 	disableFeedbackToggle: document.getElementById("disable-feedback-toggle"),
 
@@ -311,50 +306,14 @@ function showSuccessHint(message) {
 
 // ================= PROGRESS DISPLAY =================
 
-// Track last milestone to detect new achievements
-let lastMilestoneReached = 0;
-
 function updateProgressDisplay() {
 	const stats = lessonEngine.getProgressStats();
-
-	// Update progress bar - shows overall progress with full gradient
-	const progressPercent = stats.percentComplete || 1;
-	elements.progressFill.style.width = `${progressPercent}%`;
-	elements.progressFill.style.setProperty('--progress-percent', progressPercent);
-
-	// Update progress text - show completed of total lessons
-	elements.progressText.textContent = t("progressTextMilestone", {
+	elements.progressFill.style.width = `${stats.percentComplete}%`;
+	elements.progressText.textContent = t("progressText", {
+		percent: stats.percentComplete,
 		completed: stats.totalCompleted,
 		total: stats.totalLessons
 	});
-
-	// Update milestone indicators
-	if (elements.milestonesContainer) {
-		const milestoneEls = elements.milestonesContainer.querySelectorAll(".milestone");
-		milestoneEls.forEach((el) => {
-			const value = parseInt(el.dataset.value, 10);
-			el.classList.remove("reached", "current", "next", "just-reached");
-
-			if (stats.milestonesReached.includes(value)) {
-				el.classList.add("reached");
-				// Check if this milestone was just reached
-				if (value > lastMilestoneReached && value === stats.currentMilestone) {
-					el.classList.add("just-reached");
-				}
-			} else if (value === stats.nextMilestone) {
-				el.classList.add("next");
-			}
-
-			if (value === stats.currentMilestone) {
-				el.classList.add("current");
-			}
-		});
-	}
-
-	// Update last milestone for celebration detection
-	if (stats.currentMilestone > lastMilestoneReached) {
-		lastMilestoneReached = stats.currentMilestone;
-	}
 }
 
 // ================= USER SETTINGS =================
@@ -539,7 +498,6 @@ function resetSuccessIndicators() {
 	elements.previewWrapper?.classList.remove("matched");
 	elements.previewWrapper?.classList.remove("completed-glow");
 	elements.previewSection?.classList.remove("matched");
-	elements.previewSection?.classList.remove("completed-glow");
 
 	// Remove completion badge if present
 	const badge = document.querySelector(".completion-badge");
@@ -662,9 +620,8 @@ function loadCurrentLesson() {
 			elements.lessonTitleRow.appendChild(badge);
 		}
 
-		// Show gradient border and glow for completed lessons
+		// Show gradient border for completed lessons
 		elements.previewWrapper?.classList.add("completed-glow");
-		elements.previewSection?.classList.add("completed-glow");
 	} else {
 		elements.runBtn.querySelector("span").textContent = t("run");
 
@@ -672,7 +629,6 @@ function loadCurrentLesson() {
 		const badge = document.querySelector(".completion-badge");
 		if (badge) badge.remove();
 		elements.previewWrapper?.classList.remove("completed-glow");
-		elements.previewSection?.classList.remove("completed-glow");
 	}
 
 	// Update level indicator (hide in playground mode)
@@ -755,15 +711,18 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide next button in playground mode
+	// Hide nav buttons and center controls in playground mode
+	elements.prevBtn.classList.toggle("hidden", isPlayground);
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
 	elements.gameControls?.classList.toggle("centered", isPlayground);
 
-	// Update button states
-	elements.prevBtn.disabled = !engineState.canGoPrev;
-	elements.nextBtn.disabled = !engineState.canGoNext;
-	elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
-	elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
+	if (!isPlayground) {
+		elements.prevBtn.disabled = !engineState.canGoPrev;
+		elements.nextBtn.disabled = !engineState.canGoNext;
+
+		elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
+		elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
+	}
 }
 
 function nextLesson() {
@@ -788,8 +747,7 @@ function nextLesson() {
 }
 
 function prevLesson() {
-	const engineState = lessonEngine.getCurrentState();
-	const prevModuleId = engineState.module?.id;
+	const prevModuleId = lessonEngine.getCurrentState().module?.id;
 	const success = lessonEngine.previousLesson();
 	if (success) {
 		const newState = lessonEngine.getCurrentState();
@@ -869,8 +827,6 @@ function runCode() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	track("run_code", { module: engineState.module?.id, lesson: engineState.lessonIndex, playground: isPlayground });
-
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
 	if (runButtonImg) {
@@ -937,9 +893,8 @@ function runCode() {
 		state.animationTimeout = setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
 			elements.previewSection?.classList.remove("matched");
-			// Keep the gradient border and glow visible after animation
+			// Keep the gradient border visible after animation
 			elements.previewWrapper?.classList.add("completed-glow");
-			elements.previewSection?.classList.add("completed-glow");
 			state.animationTimeout = null;
 		}, 3500);
 
@@ -2459,17 +2414,11 @@ function init() {
 	// Set timeout to show fallback if loading takes too long
 	loadingTimeout = setTimeout(showLoadingFallback, 3000);
 
-	// Handle OAuth callback FIRST (tokens are in URL hash, must run before router)
-	handleOAuthCallback().then(() => {
-		// Load modules (this also calls handleRoute inside)
-		initializeModules();
+	// Load modules after editor is ready
+	initializeModules();
 
-		// Initialize URL router for browser back/forward
-		initRouter();
-
-		// Initialize authentication
-		initAuth(lessonEngine);
-	});
+	// Initialize URL router for shareable links
+	initRouter();
 
 	// Sidebar controls
 	elements.menuBtn.addEventListener("click", openSidebar);
@@ -2481,7 +2430,6 @@ function init() {
 		e.preventDefault();
 		navigateTo("");
 		showLandingPage();
-		track("logo_click");
 	});
 
 	// Language select
@@ -2534,42 +2482,10 @@ function init() {
 	});
 	elements.copyUrlBtn.addEventListener("click", copyShareUrl);
 
-	// Legal dialogs (Privacy & Imprint)
-	const privacyDialog = document.getElementById("privacy-dialog");
-	const imprintDialog = document.getElementById("imprint-dialog");
-
-	document.querySelectorAll(".privacy-link").forEach((btn) => {
-		btn.addEventListener("click", () => {
-			privacyDialog?.showModal();
-			track("privacy_open");
-		});
-	});
-	document.querySelectorAll(".imprint-link").forEach((btn) => {
-		btn.addEventListener("click", () => {
-			imprintDialog?.showModal();
-			track("imprint_open");
-		});
-	});
-
-	document.querySelector(".privacy-dialog-close")?.addEventListener("click", () => {
-		privacyDialog?.close();
-	});
-	document.querySelector(".imprint-dialog-close")?.addEventListener("click", () => {
-		imprintDialog?.close();
-	});
-
-	privacyDialog?.addEventListener("click", (e) => {
-		if (e.target === privacyDialog) privacyDialog.close();
-	});
-	imprintDialog?.addEventListener("click", (e) => {
-		if (e.target === imprintDialog) imprintDialog.close();
-	});
-
 	// Settings
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
 		state.userSettings.disableFeedbackErrors = !e.target.checked;
 		saveUserSettings();
-		track("setting_change", { setting: "feedback_errors", enabled: e.target.checked });
 	});
 
 	// Click on editor content to focus CodeMirror
@@ -2642,27 +2558,6 @@ function init() {
 			track("landing_section", { section: target.dataset.section });
 		} else if (target.closest(".footer-support")) {
 			track("support_click", { location: "landing" });
-		}
-	});
-
-	// Newsletter form submission
-	const newsletterForm = document.getElementById("newsletter-form");
-	const newsletterThanks = document.getElementById("newsletter-thanks");
-	newsletterForm?.addEventListener("submit", async (e) => {
-		e.preventDefault();
-		const emailInput = document.getElementById("newsletter-email");
-		const email = emailInput?.value;
-		if (email) {
-			// Import newsletter helper dynamically to avoid loading Supabase if not needed
-			try {
-				const { newsletter } = await import("./supabase.js");
-				await newsletter.subscribe(email);
-			} catch (err) {
-				console.error("Newsletter subscription error:", err);
-			}
-			track("newsletter_signup", { email: email });
-			newsletterForm.classList.add("hidden");
-			newsletterThanks?.classList.remove("hidden");
 		}
 	});
 }

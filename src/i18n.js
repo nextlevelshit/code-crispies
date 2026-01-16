@@ -30,7 +30,6 @@ const translations = {
 		hideExpected: "Hide Expected",
 		previous: "Previous",
 		next: "Next",
-		back: "Back",
 		levelIndicator: "Lesson {current} of {total}",
 		lessonLabel: "Lesson",
 
@@ -40,7 +39,6 @@ const translations = {
 		language: "Language",
 		progress: "Progress",
 		progressText: "{percent}% Complete ({completed}/{total})",
-		progressTextMilestone: "{completed} of {total} lessons completed",
 		lessons: "Lessons",
 		settings: "Settings",
 		showHints: "Show Hints",
@@ -120,7 +118,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Learn Web Development",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "By Writing Real Code",
 		landingHeroSubtitle: "Master HTML, CSS, and Tailwind through hands-on exercises with instant feedback. Free and open source.",
 		landingCtaStart: "Start Learning NOW",
 		landingWhyTitle: "Why CODE CRISPIES Works",
@@ -131,7 +129,7 @@ const translations = {
 		landingBenefit3Title: "Master Real Skills",
 		landingBenefit3Text: "Learn CSS, HTML, and Tailwind the way professionals use them—through hands-on exercises and reference guides.",
 		landingBenefit4Title: "Free & Open Source",
-		landingBenefit4Text: "No paywall, no tracking. Optional account for cloud sync across devices. The code is open for everyone.",
+		landingBenefit4Text: "No account, no paywall, no tracking. Your progress stays in your browser. The code is open for everyone.",
 		landingPathsTitle: "Explore Learning Paths",
 		landingCssDesc: "Styling, layout, and animations",
 		landingHtmlDesc: "Semantic markup and native elements",
@@ -139,7 +137,7 @@ const translations = {
 		comingSoon: "Coming Soon",
 		landingCtaTitle: "Start Learning Today",
 		landingCtaSub: "Free and open source. No account required. Progress saved locally.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "Begin Your Journey",
 
 		// Coming Soon
 		landingComingSoonTitle: "Coming Soon",
@@ -151,15 +149,6 @@ const translations = {
 		comingSoonJsText: "Interactive JavaScript lessons with live code execution and DOM manipulation.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "React, Vue, and Svelte basics. Build real components step by step.",
-		comingSoonChallengesTitle: "Code Challenges",
-		comingSoonChallengesText: "Test your skills with timed puzzles. Compete on leaderboards and earn ranks.",
-
-		// Newsletter
-		newsletterText: "Want to know when new features launch?",
-		newsletterPlaceholder: "your@email.com",
-		newsletterButton: "Notify Me",
-		newsletterThanks: "Thanks! We'll keep you posted.",
-		newsletterDisclaimer: "Max once a week. Unsubscribe anytime via mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Best on desktop or tablet (landscape).</strong> Mobile works, but larger screens make coding easier.",
@@ -172,58 +161,10 @@ const translations = {
 		footerSupport: "Support",
 		footerSupportText: "Help keep CODE CRISPIES free and open source.",
 		footerLicense: "Released into the public domain.",
-		footerPrivacy: "Privacy Policy",
-		footerImprint: "Imprint",
-
-		// Privacy Policy
-		privacyTitle: "Privacy Policy",
-		privacyIntro: "CODE CRISPIES respects your privacy. This policy explains what data we collect and how we use it.",
-		privacyLocalTitle: "Local Storage",
-		privacyLocalText: "Your learning progress, code, and settings are stored locally in your browser. This data never leaves your device unless you create an account.",
-		privacyAccountTitle: "Account Data (Optional)",
-		privacyAccountText: "If you create an account, we store your email address and encrypted password to enable cloud sync. Your progress data is synced to our servers (Supabase) so you can access it across devices.",
-		privacyNewsletterTitle: "Newsletter (Optional)",
-		privacyNewsletterText: "If you subscribe to our newsletter, we store your email address to send updates about new features. You can unsubscribe anytime.",
-		privacyNoTrackingTitle: "No Tracking",
-		privacyNoTrackingText: "We do not use cookies for tracking, analytics, or advertising. We do not share your data with third parties.",
-		privacyRightsTitle: "Your Rights (GDPR)",
-		privacyRightsText: "You can delete your account and all associated data at any time from the sidebar menu. For questions or data requests, contact us at mail@codecrispi.es",
-		privacyUpdated: "Last updated: January 2025",
-
-		// Imprint
-		imprintTitle: "Imprint",
-		imprintResponsibleTitle: "Responsible for content",
-		imprintContactTitle: "Contact",
-		imprintDisclaimerTitle: "Disclaimer",
-		imprintDisclaimerText: "CODE CRISPIES is provided \"as is\" without warranty. We are not liable for any damages arising from the use of this service. External links are provided for convenience; we are not responsible for their content.",
 
 		// Help Dialog Support
 		supportTitle: "Support the Project",
-		supportText: "Help keep CODE CRISPIES free and open source.",
-
-		// Auth
-		authLogin: "Log In",
-		authSignUp: "Sign Up",
-		authLogout: "Log Out",
-		authEmail: "Email",
-		authPassword: "Password",
-		authConfirmPassword: "Confirm Password",
-		authNoAccount: "Don't have an account? Sign up",
-		authHaveAccount: "Already have an account? Log in",
-		authForgotPassword: "Forgot password?",
-		authResetPassword: "Reset Password",
-		authResetInstructions: "Enter your email to receive a password reset link.",
-		authSendReset: "Send Reset Link",
-		authResetSent: "Check your email for the reset link.",
-		authOrContinueWith: "or continue with",
-		authPasswordMismatch: "Passwords do not match",
-		authSignupSuccess: "Account created! Check your email to confirm.",
-		authAccount: "Account",
-		authSyncHint: "Log in to sync progress across devices",
-		authDeleteAccount: "Delete Account",
-		authDeleteDialogTitle: "Delete Account",
-		authDeleteDialogText: "Are you sure you want to delete your account? All your cloud progress will be permanently deleted. This cannot be undone.",
-		authDeleteConfirm: "Delete Account"
+		supportText: "Help keep CODE CRISPIES free and open source."
 	},
 
 	de: {
@@ -253,7 +194,6 @@ const translations = {
 		hideExpected: "Lösung ausblenden",
 		previous: "Zurück",
 		next: "Weiter",
-		back: "Zurück",
 		levelIndicator: "Lektion {current} von {total}",
 		lessonLabel: "Lektion",
 
@@ -263,7 +203,6 @@ const translations = {
 		language: "Sprache",
 		progress: "Fortschritt",
 		progressText: "{percent}% abgeschlossen ({completed}/{total})",
-		progressTextMilestone: "{completed} von {total} Lektionen abgeschlossen",
 		lessons: "Lektionen",
 		settings: "Einstellungen",
 		showHints: "Hinweise anzeigen",
@@ -344,7 +283,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Web Programmierung",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Selbstständig lernen",
 		landingHeroSubtitle: "Meistere HTML, CSS und Tailwind durch praktische Übungen mit sofortigem Feedback. Kostenlos und Open Source.",
 		landingCtaStart: "Jetzt starten",
 		landingWhyTitle: "Warum CODE CRISPIES funktioniert",
@@ -357,7 +296,7 @@ const translations = {
 		landingBenefit3Title: "Echte Fähigkeiten",
 		landingBenefit3Text: "Lerne CSS, HTML und Tailwind so, wie Profis sie nutzen – durch praktische Übungen und Referenzanleitungen.",
 		landingBenefit4Title: "Frei & Open Source",
-		landingBenefit4Text: "Keine Paywall, kein Tracking. Optionales Konto für Cloud-Sync über Geräte hinweg. Der Code ist offen für alle.",
+		landingBenefit4Text: "Kein Konto, keine Paywall, kein Tracking. Dein Fortschritt bleibt in deinem Browser. Der Code ist offen für alle.",
 		landingPathsTitle: "Lernpfade entdecken",
 		landingCssDesc: "Styling, Layout und Animationen",
 		landingHtmlDesc: "Semantisches Markup und native Elemente",
@@ -365,7 +304,7 @@ const translations = {
 		comingSoon: "Bald verfügbar",
 		landingCtaTitle: "Heute noch anfangen",
 		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "Jetzt erste Schritte machen",
 
 		// Coming Soon
 		landingComingSoonTitle: "Demnächst",
@@ -377,15 +316,6 @@ const translations = {
 		comingSoonJsText: "Interaktive JavaScript-Lektionen mit Live-Code-Ausführung und DOM-Manipulation.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "React, Vue und Svelte Grundlagen. Baue echte Komponenten Schritt für Schritt.",
-		comingSoonChallengesTitle: "Code-Herausforderungen",
-		comingSoonChallengesText: "Teste deine Fähigkeiten mit zeitgesteuerten Rätseln. Kämpfe auf Bestenlisten und steige im Rang auf.",
-
-		// Newsletter
-		newsletterText: "Möchtest du erfahren, wenn neue Funktionen erscheinen?",
-		newsletterPlaceholder: "deine@email.de",
-		newsletterButton: "Benachrichtigen",
-		newsletterThanks: "Danke! Wir halten dich auf dem Laufenden.",
-		newsletterDisclaimer: "Max. einmal pro Woche. Jederzeit abmelden über mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Am besten auf Desktop oder Tablet (Querformat).</strong> Mobil funktioniert, aber größere Bildschirme machen das Coden einfacher.",
@@ -398,54 +328,10 @@ const translations = {
 		footerSupport: "Unterstützen",
 		footerSupportText: "Hilf mit, CODE CRISPIES kostenlos und Open Source zu halten.",
 		footerLicense: "Gemeinfrei (Public Domain).",
-		footerPrivacy: "Datenschutz",
-		footerImprint: "Impressum",
-		privacyTitle: "Datenschutzerklärung",
-		privacyIntro: "CODE CRISPIES respektiert deine Privatsphäre. Diese Richtlinie erklärt, welche Daten wir sammeln und wie wir sie verwenden.",
-		privacyLocalTitle: "Lokale Speicherung",
-		privacyLocalText: "Dein Lernfortschritt, Code und Einstellungen werden lokal in deinem Browser gespeichert. Diese Daten verlassen dein Gerät nicht, es sei denn, du erstellst ein Konto.",
-		privacyAccountTitle: "Kontodaten (Optional)",
-		privacyAccountText: "Wenn du ein Konto erstellst, speichern wir deine E-Mail-Adresse und dein verschlüsseltes Passwort für die Cloud-Synchronisierung.",
-		privacyNewsletterTitle: "Newsletter (Optional)",
-		privacyNewsletterText: "Wenn du unseren Newsletter abonnierst, speichern wir deine E-Mail-Adresse für Updates. Du kannst dich jederzeit abmelden.",
-		privacyNoTrackingTitle: "Kein Tracking",
-		privacyNoTrackingText: "Wir verwenden keine Cookies für Tracking, Analytik oder Werbung. Wir teilen deine Daten nicht mit Dritten.",
-		privacyRightsTitle: "Deine Rechte (DSGVO)",
-		privacyRightsText: "Du kannst dein Konto und alle zugehörigen Daten jederzeit über das Seitenmenü löschen. Bei Fragen: mail@codecrispi.es",
-		privacyUpdated: "Zuletzt aktualisiert: Januar 2025",
-		imprintTitle: "Impressum",
-		imprintResponsibleTitle: "Verantwortlich für den Inhalt",
-		imprintContactTitle: "Kontakt",
-		imprintDisclaimerTitle: "Haftungsausschluss",
-		imprintDisclaimerText: "CODE CRISPIES wird ohne Gewährleistung bereitgestellt. Wir haften nicht für Schäden, die durch die Nutzung entstehen.",
 
 		// Help Dialog Support
 		supportTitle: "Projekt unterstützen",
-		supportText: "Hilf mit, CODE CRISPIES kostenlos und Open Source zu halten.",
-
-		// Auth
-		authLogin: "Anmelden",
-		authSignUp: "Registrieren",
-		authLogout: "Abmelden",
-		authEmail: "E-Mail",
-		authPassword: "Passwort",
-		authConfirmPassword: "Passwort bestätigen",
-		authNoAccount: "Noch kein Konto? Registrieren",
-		authHaveAccount: "Bereits ein Konto? Anmelden",
-		authForgotPassword: "Passwort vergessen?",
-		authResetPassword: "Passwort zurücksetzen",
-		authResetInstructions: "Gib deine E-Mail-Adresse ein, um einen Link zum Zurücksetzen zu erhalten.",
-		authSendReset: "Link senden",
-		authResetSent: "Prüfe deine E-Mails für den Reset-Link.",
-		authOrContinueWith: "oder weiter mit",
-		authPasswordMismatch: "Passwörter stimmen nicht überein",
-		authSignupSuccess: "Konto erstellt! Überprüfe deine E-Mail zur Bestätigung.",
-		authAccount: "Konto",
-		authSyncHint: "Anmelden, um Fortschritt geräteübergreifend zu synchronisieren",
-		authDeleteAccount: "Konto löschen",
-		authDeleteDialogTitle: "Konto löschen",
-		authDeleteDialogText: "Bist du sicher, dass du dein Konto löschen möchtest? Dein gesamter Cloud-Fortschritt wird dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.",
-		authDeleteConfirm: "Konto löschen"
+		supportText: "Hilf mit, CODE CRISPIES kostenlos und Open Source zu halten."
 	},
 
 	// Polish
@@ -476,7 +362,6 @@ const translations = {
 		hideExpected: "Ukryj oczekiwane",
 		previous: "Poprzednia",
 		next: "Następna",
-		back: "Wstecz",
 		levelIndicator: "Lekcja {current} z {total}",
 		lessonLabel: "Lekcja",
 
@@ -486,7 +371,6 @@ const translations = {
 		language: "Język",
 		progress: "Postęp",
 		progressText: "{percent}% ukończone ({completed}/{total})",
-		progressTextMilestone: "{completed} z {total} lekcji ukończonych",
 		lessons: "Lekcje",
 		settings: "Ustawienia",
 		showHints: "Pokaż podpowiedzi",
@@ -566,7 +450,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Naucz się tworzenia stron",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Pisząc prawdziwy kod",
 		landingHeroSubtitle: "Opanuj HTML, CSS i Tailwind poprzez praktyczne ćwiczenia z natychmiastową informacją zwrotną. Darmowe i open source.",
 		landingCtaStart: "Zacznij TERAZ",
 		landingWhyTitle: "Dlaczego CODE CRISPIES działa",
@@ -579,7 +463,7 @@ const translations = {
 		landingBenefit3Text:
 			"Naucz się CSS, HTML i Tailwind tak, jak używają ich profesjonaliści – poprzez praktyczne ćwiczenia i przewodniki referencyjne.",
 		landingBenefit4Title: "Darmowe i Open Source",
-		landingBenefit4Text: "Bez paywalla, bez śledzenia. Opcjonalne konto do synchronizacji w chmurze. Kod jest otwarty dla wszystkich.",
+		landingBenefit4Text: "Bez konta, bez paywalla, bez śledzenia. Twój postęp zostaje w przeglądarce. Kod jest otwarty dla wszystkich.",
 		landingPathsTitle: "Odkryj ścieżki nauki",
 		landingCssDesc: "Stylowanie, układy i animacje",
 		landingHtmlDesc: "Semantyczne znaczniki i natywne elementy",
@@ -587,7 +471,7 @@ const translations = {
 		comingSoon: "Wkrótce",
 		landingCtaTitle: "Zacznij naukę już dziś",
 		landingCtaSub: "Darmowe i open source. Bez konta. Postęp zapisywany lokalnie.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "Rozpocznij swoją podróż",
 
 		// Coming Soon
 		landingComingSoonTitle: "Wkrótce",
@@ -599,15 +483,6 @@ const translations = {
 		comingSoonJsText: "Interaktywne lekcje JavaScript z wykonywaniem kodu na żywo i manipulacją DOM.",
 		comingSoonFrameworksTitle: "Frameworki",
 		comingSoonFrameworksText: "Podstawy React, Vue i Svelte. Buduj prawdziwe komponenty krok po kroku.",
-		comingSoonChallengesTitle: "Wyzwania kodowania",
-		comingSoonChallengesText: "Sprawdź swoje umiejętności w zadaniach na czas. Rywalizuj na tablicach wyników i zdobywaj rangi.",
-
-		// Newsletter
-		newsletterText: "Chcesz wiedzieć, kiedy pojawią się nowe funkcje?",
-		newsletterPlaceholder: "twoj@email.pl",
-		newsletterButton: "Powiadom mnie",
-		newsletterThanks: "Dzięki! Będziemy informować.",
-		newsletterDisclaimer: "Maks. raz w tygodniu. Wypisz się w dowolnym momencie przez mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Najlepiej na komputerze lub tablecie (poziomo).</strong> Na telefonie też działa, ale większy ekran ułatwia kodowanie.",
@@ -620,54 +495,10 @@ const translations = {
 		footerSupport: "Wsparcie",
 		footerSupportText: "Pomóż utrzymać CODE CRISPIES darmowym i open source.",
 		footerLicense: "Udostępnione jako domena publiczna.",
-		footerPrivacy: "Polityka prywatności",
-		footerImprint: "Informacje prawne",
-		privacyTitle: "Polityka prywatności",
-		privacyIntro: "CODE CRISPIES szanuje Twoją prywatność. Ta polityka wyjaśnia, jakie dane zbieramy i jak je wykorzystujemy.",
-		privacyLocalTitle: "Lokalne przechowywanie",
-		privacyLocalText: "Twój postęp, kod i ustawienia są przechowywane lokalnie w przeglądarce. Dane te nie opuszczają urządzenia, chyba że utworzysz konto.",
-		privacyAccountTitle: "Dane konta (opcjonalne)",
-		privacyAccountText: "Jeśli utworzysz konto, przechowujemy Twój e-mail i zaszyfrowane hasło do synchronizacji w chmurze.",
-		privacyNewsletterTitle: "Newsletter (opcjonalnie)",
-		privacyNewsletterText: "Jeśli zapiszesz się do newslettera, przechowujemy Twój e-mail do wysyłania aktualizacji. Możesz się wypisać w dowolnym momencie.",
-		privacyNoTrackingTitle: "Brak śledzenia",
-		privacyNoTrackingText: "Nie używamy plików cookie do śledzenia, analityki ani reklam. Nie udostępniamy danych osobom trzecim.",
-		privacyRightsTitle: "Twoje prawa (RODO)",
-		privacyRightsText: "Możesz usunąć swoje konto i wszystkie powiązane dane w dowolnym momencie z menu bocznego. Pytania: mail@codecrispi.es",
-		privacyUpdated: "Ostatnia aktualizacja: styczeń 2025",
-		imprintTitle: "Informacje prawne",
-		imprintResponsibleTitle: "Odpowiedzialny za treść",
-		imprintContactTitle: "Kontakt",
-		imprintDisclaimerTitle: "Zastrzeżenie",
-		imprintDisclaimerText: "CODE CRISPIES jest dostarczany bez gwarancji. Nie ponosimy odpowiedzialności za szkody wynikające z korzystania z usługi.",
 
 		// Help Dialog Support
 		supportTitle: "Wesprzyj projekt",
-		supportText: "Pomóż utrzymać CODE CRISPIES darmowym i open source.",
-
-		// Auth
-		authLogin: "Zaloguj się",
-		authSignUp: "Zarejestruj się",
-		authLogout: "Wyloguj się",
-		authEmail: "E-mail",
-		authPassword: "Hasło",
-		authConfirmPassword: "Potwierdź hasło",
-		authNoAccount: "Nie masz konta? Zarejestruj się",
-		authHaveAccount: "Masz już konto? Zaloguj się",
-		authForgotPassword: "Zapomniałeś hasła?",
-		authResetPassword: "Resetuj hasło",
-		authResetInstructions: "Podaj swój e-mail, aby otrzymać link do resetowania hasła.",
-		authSendReset: "Wyślij link",
-		authResetSent: "Sprawdź e-mail, aby znaleźć link do resetowania.",
-		authOrContinueWith: "lub kontynuuj przez",
-		authPasswordMismatch: "Hasła nie są zgodne",
-		authSignupSuccess: "Konto utworzone! Sprawdź e-mail, aby potwierdzić.",
-		authAccount: "Konto",
-		authSyncHint: "Zaloguj się, aby synchronizować postępy między urządzeniami",
-		authDeleteAccount: "Usuń konto",
-		authDeleteDialogTitle: "Usuń konto",
-		authDeleteDialogText: "Czy na pewno chcesz usunąć swoje konto? Cały postęp w chmurze zostanie trwale usunięty. Tej operacji nie można cofnąć.",
-		authDeleteConfirm: "Usuń konto"
+		supportText: "Pomóż utrzymać CODE CRISPIES darmowym i open source."
 	},
 
 	// Spanish
@@ -698,7 +529,6 @@ const translations = {
 		hideExpected: "Ocultar esperado",
 		previous: "Anterior",
 		next: "Siguiente",
-		back: "Volver",
 		levelIndicator: "Lección {current} de {total}",
 		lessonLabel: "Lección",
 
@@ -708,7 +538,6 @@ const translations = {
 		language: "Idioma",
 		progress: "Progreso",
 		progressText: "{percent}% completado ({completed}/{total})",
-		progressTextMilestone: "{completed} de {total} lecciones completadas",
 		lessons: "Lecciones",
 		settings: "Configuración",
 		showHints: "Mostrar pistas",
@@ -789,7 +618,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Aprende desarrollo web",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Escribiendo código real",
 		landingHeroSubtitle:
 			"Domina HTML, CSS y Tailwind a través de ejercicios prácticos con retroalimentación instantánea. Gratis y de código abierto.",
 		landingCtaStart: "Empieza AHORA",
@@ -803,7 +632,7 @@ const translations = {
 		landingBenefit3Title: "Habilidades reales",
 		landingBenefit3Text: "Aprende CSS, HTML y Tailwind como los usan los profesionales—a través de ejercicios prácticos y guías de referencia.",
 		landingBenefit4Title: "Gratis y Open Source",
-		landingBenefit4Text: "Sin paywall, sin rastreo. Cuenta opcional para sincronización en la nube. El código está abierto para todos.",
+		landingBenefit4Text: "Sin cuenta, sin paywall, sin rastreo. Tu progreso se queda en tu navegador. El código está abierto para todos.",
 		landingPathsTitle: "Explora rutas de aprendizaje",
 		landingCssDesc: "Estilos, diseño y animaciones",
 		landingHtmlDesc: "Marcado semántico y elementos nativos",
@@ -811,7 +640,7 @@ const translations = {
 		comingSoon: "Próximamente",
 		landingCtaTitle: "Empieza a aprender hoy",
 		landingCtaSub: "Gratis y de código abierto. Sin cuenta requerida. Progreso guardado localmente.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "Comienza tu viaje",
 
 		// Coming Soon
 		landingComingSoonTitle: "Próximamente",
@@ -823,15 +652,6 @@ const translations = {
 		comingSoonJsText: "Lecciones interactivas de JavaScript con ejecución de código en vivo y manipulación del DOM.",
 		comingSoonFrameworksTitle: "Frameworks",
 		comingSoonFrameworksText: "Fundamentos de React, Vue y Svelte. Construye componentes reales paso a paso.",
-		comingSoonChallengesTitle: "Desafíos de código",
-		comingSoonChallengesText: "Pon a prueba tus habilidades con puzzles cronometrados. Compite en clasificaciones y gana rangos.",
-
-		// Newsletter
-		newsletterText: "¿Quieres saber cuando se lancen nuevas funciones?",
-		newsletterPlaceholder: "tu@email.com",
-		newsletterButton: "Notificarme",
-		newsletterThanks: "¡Gracias! Te mantendremos informado.",
-		newsletterDisclaimer: "Máximo una vez por semana. Cancela cuando quieras vía mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Mejor en escritorio o tablet (horizontal).</strong> Funciona en móvil, pero pantallas más grandes facilitan la programación.",
@@ -844,54 +664,10 @@ const translations = {
 		footerSupport: "Apoyar",
 		footerSupportText: "Ayuda a mantener CODE CRISPIES gratis y de código abierto.",
 		footerLicense: "Liberado al dominio público.",
-		footerPrivacy: "Política de privacidad",
-		footerImprint: "Aviso legal",
-		privacyTitle: "Política de privacidad",
-		privacyIntro: "CODE CRISPIES respeta tu privacidad. Esta política explica qué datos recopilamos y cómo los usamos.",
-		privacyLocalTitle: "Almacenamiento local",
-		privacyLocalText: "Tu progreso, código y configuración se almacenan localmente en tu navegador. Estos datos no salen de tu dispositivo a menos que crees una cuenta.",
-		privacyAccountTitle: "Datos de cuenta (opcional)",
-		privacyAccountText: "Si creas una cuenta, almacenamos tu email y contraseña encriptada para la sincronización en la nube.",
-		privacyNewsletterTitle: "Newsletter (opcional)",
-		privacyNewsletterText: "Si te suscribes al newsletter, almacenamos tu email para enviar actualizaciones. Puedes cancelar en cualquier momento.",
-		privacyNoTrackingTitle: "Sin rastreo",
-		privacyNoTrackingText: "No usamos cookies para rastreo, analíticas o publicidad. No compartimos tus datos con terceros.",
-		privacyRightsTitle: "Tus derechos (RGPD)",
-		privacyRightsText: "Puedes eliminar tu cuenta y todos los datos asociados en cualquier momento desde el menú lateral. Contacto: mail@codecrispi.es",
-		privacyUpdated: "Última actualización: enero 2025",
-		imprintTitle: "Aviso legal",
-		imprintResponsibleTitle: "Responsable del contenido",
-		imprintContactTitle: "Contacto",
-		imprintDisclaimerTitle: "Descargo de responsabilidad",
-		imprintDisclaimerText: "CODE CRISPIES se proporciona sin garantía. No somos responsables de daños derivados del uso de este servicio.",
 
 		// Help Dialog Support
 		supportTitle: "Apoyar el proyecto",
-		supportText: "Ayuda a mantener CODE CRISPIES gratis y de código abierto.",
-
-		// Auth
-		authLogin: "Iniciar sesión",
-		authSignUp: "Registrarse",
-		authLogout: "Cerrar sesión",
-		authEmail: "Correo electrónico",
-		authPassword: "Contraseña",
-		authConfirmPassword: "Confirmar contraseña",
-		authNoAccount: "¿No tienes cuenta? Regístrate",
-		authHaveAccount: "¿Ya tienes cuenta? Inicia sesión",
-		authForgotPassword: "¿Olvidaste tu contraseña?",
-		authResetPassword: "Restablecer contraseña",
-		authResetInstructions: "Ingresa tu correo para recibir un enlace de restablecimiento.",
-		authSendReset: "Enviar enlace",
-		authResetSent: "Revisa tu correo para el enlace de restablecimiento.",
-		authOrContinueWith: "o continúa con",
-		authPasswordMismatch: "Las contraseñas no coinciden",
-		authSignupSuccess: "¡Cuenta creada! Revisa tu correo para confirmar.",
-		authAccount: "Cuenta",
-		authSyncHint: "Inicia sesión para sincronizar tu progreso entre dispositivos",
-		authDeleteAccount: "Eliminar cuenta",
-		authDeleteDialogTitle: "Eliminar cuenta",
-		authDeleteDialogText: "¿Estás seguro de que quieres eliminar tu cuenta? Todo tu progreso en la nube se eliminará permanentemente. Esta acción no se puede deshacer.",
-		authDeleteConfirm: "Eliminar cuenta"
+		supportText: "Ayuda a mantener CODE CRISPIES gratis y de código abierto."
 	},
 
 	// Arabic
@@ -922,7 +698,6 @@ const translations = {
 		hideExpected: "إخفاء المتوقع",
 		previous: "السابق",
 		next: "التالي",
-		back: "رجوع",
 		levelIndicator: "الدرس {current} من {total}",
 		lessonLabel: "درس",
 
@@ -932,7 +707,6 @@ const translations = {
 		language: "اللغة",
 		progress: "التقدم",
 		progressText: "{percent}% مكتمل ({completed}/{total})",
-		progressTextMilestone: "{completed} من {total} درس مكتمل",
 		lessons: "الدروس",
 		settings: "الإعدادات",
 		showHints: "إظهار التلميحات",
@@ -1011,7 +785,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "تعلم تطوير الويب",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "بكتابة كود حقيقي",
 		landingHeroSubtitle: "أتقن HTML و CSS و Tailwind من خلال تمارين عملية مع ملاحظات فورية. مجاني ومفتوح المصدر.",
 		landingCtaStart: "ابدأ الآن",
 		landingWhyTitle: "لماذا CODE CRISPIES فعال",
@@ -1022,7 +796,7 @@ const translations = {
 		landingBenefit3Title: "مهارات حقيقية",
 		landingBenefit3Text: "تعلم CSS و HTML و Tailwind بالطريقة التي يستخدمها المحترفون—من خلال تمارين عملية وأدلة مرجعية.",
 		landingBenefit4Title: "مجاني ومفتوح المصدر",
-		landingBenefit4Text: "بدون حواجز دفع، بدون تتبع. حساب اختياري للمزامنة السحابية. الكود مفتوح للجميع.",
+		landingBenefit4Text: "بدون حساب، بدون حواجز دفع، بدون تتبع. تقدمك يبقى في متصفحك. الكود مفتوح للجميع.",
 		landingPathsTitle: "استكشف مسارات التعلم",
 		landingCssDesc: "التنسيق والتخطيط والرسوم المتحركة",
 		landingHtmlDesc: "الترميز الدلالي والعناصر الأصلية",
@@ -1030,7 +804,7 @@ const translations = {
 		comingSoon: "قريباً",
 		landingCtaTitle: "ابدأ التعلم اليوم",
 		landingCtaSub: "مجاني ومفتوح المصدر. لا حاجة لحساب. يُحفظ التقدم محليًا.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "ابدأ رحلتك",
 
 		// Coming Soon
 		landingComingSoonTitle: "قريباً",
@@ -1042,15 +816,6 @@ const translations = {
 		comingSoonJsText: "دروس تفاعلية في JavaScript مع تنفيذ مباشر للكود والتعامل مع DOM.",
 		comingSoonFrameworksTitle: "أطر العمل",
 		comingSoonFrameworksText: "أساسيات React وVue وSvelte. ابنِ مكونات حقيقية خطوة بخطوة.",
-		comingSoonChallengesTitle: "تحديات البرمجة",
-		comingSoonChallengesText: "اختبر مهاراتك مع ألغاز موقوتة. تنافس على لوحات المتصدرين واكسب الرتب.",
-
-		// Newsletter
-		newsletterText: "هل تريد معرفة متى تُطلق ميزات جديدة؟",
-		newsletterPlaceholder: "بريدك@email.com",
-		newsletterButton: "أبلغني",
-		newsletterThanks: "شكراً! سنبقيك على اطلاع.",
-		newsletterDisclaimer: "مرة واحدة أسبوعياً كحد أقصى. إلغاء الاشتراك في أي وقت عبر mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>أفضل على الكمبيوتر أو الجهاز اللوحي (أفقي).</strong> يعمل على الجوال، لكن الشاشات الأكبر تسهّل البرمجة.",
@@ -1063,54 +828,10 @@ const translations = {
 		footerSupport: "الدعم",
 		footerSupportText: "ساعد في إبقاء CODE CRISPIES مجانيًا ومفتوح المصدر.",
 		footerLicense: "مُطلق للملكية العامة.",
-		footerPrivacy: "سياسة الخصوصية",
-		footerImprint: "البيانات القانونية",
-		privacyTitle: "سياسة الخصوصية",
-		privacyIntro: "CODE CRISPIES يحترم خصوصيتك. توضح هذه السياسة البيانات التي نجمعها وكيف نستخدمها.",
-		privacyLocalTitle: "التخزين المحلي",
-		privacyLocalText: "يتم تخزين تقدمك وكودك وإعداداتك محليًا في متصفحك. لا تغادر هذه البيانات جهازك إلا إذا أنشأت حسابًا.",
-		privacyAccountTitle: "بيانات الحساب (اختياري)",
-		privacyAccountText: "إذا أنشأت حسابًا، نخزن بريدك الإلكتروني وكلمة مرورك المشفرة للمزامنة السحابية.",
-		privacyNewsletterTitle: "النشرة الإخبارية (اختياري)",
-		privacyNewsletterText: "إذا اشتركت في نشرتنا الإخبارية، نخزن بريدك الإلكتروني لإرسال التحديثات. يمكنك إلغاء الاشتراك في أي وقت.",
-		privacyNoTrackingTitle: "بدون تتبع",
-		privacyNoTrackingText: "لا نستخدم ملفات تعريف الارتباط للتتبع أو التحليلات أو الإعلانات. لا نشارك بياناتك مع أطراف ثالثة.",
-		privacyRightsTitle: "حقوقك (GDPR)",
-		privacyRightsText: "يمكنك حذف حسابك وجميع البيانات المرتبطة في أي وقت من القائمة الجانبية. للاستفسارات: mail@codecrispi.es",
-		privacyUpdated: "آخر تحديث: يناير 2025",
-		imprintTitle: "البيانات القانونية",
-		imprintResponsibleTitle: "المسؤول عن المحتوى",
-		imprintContactTitle: "التواصل",
-		imprintDisclaimerTitle: "إخلاء المسؤولية",
-		imprintDisclaimerText: "يتم تقديم CODE CRISPIES دون ضمان. نحن غير مسؤولين عن أي أضرار ناتجة عن استخدام هذه الخدمة.",
 
 		// Help Dialog Support
 		supportTitle: "ادعم المشروع",
-		supportText: "ساعد في إبقاء CODE CRISPIES مجانيًا ومفتوح المصدر.",
-
-		// Auth
-		authLogin: "تسجيل الدخول",
-		authSignUp: "إنشاء حساب",
-		authLogout: "تسجيل الخروج",
-		authEmail: "البريد الإلكتروني",
-		authPassword: "كلمة المرور",
-		authConfirmPassword: "تأكيد كلمة المرور",
-		authNoAccount: "ليس لديك حساب؟ سجّل الآن",
-		authHaveAccount: "لديك حساب بالفعل؟ سجّل الدخول",
-		authForgotPassword: "نسيت كلمة المرور؟",
-		authResetPassword: "إعادة تعيين كلمة المرور",
-		authResetInstructions: "أدخل بريدك الإلكتروني لتلقي رابط إعادة التعيين.",
-		authSendReset: "إرسال الرابط",
-		authResetSent: "تحقق من بريدك الإلكتروني للحصول على رابط إعادة التعيين.",
-		authOrContinueWith: "أو تابع باستخدام",
-		authPasswordMismatch: "كلمات المرور غير متطابقة",
-		authSignupSuccess: "تم إنشاء الحساب! تحقق من بريدك الإلكتروني للتأكيد.",
-		authAccount: "الحساب",
-		authSyncHint: "سجّل الدخول لمزامنة التقدم عبر الأجهزة",
-		authDeleteAccount: "حذف الحساب",
-		authDeleteDialogTitle: "حذف الحساب",
-		authDeleteDialogText: "هل أنت متأكد أنك تريد حذف حسابك؟ سيتم حذف جميع تقدمك في السحابة نهائيًا. لا يمكن التراجع عن هذا الإجراء.",
-		authDeleteConfirm: "حذف الحساب"
+		supportText: "ساعد في إبقاء CODE CRISPIES مجانيًا ومفتوح المصدر."
 	},
 
 	// Ukrainian
@@ -1141,7 +862,6 @@ const translations = {
 		hideExpected: "Сховати очікуване",
 		previous: "Попередній",
 		next: "Наступний",
-		back: "Назад",
 		levelIndicator: "Урок {current} з {total}",
 		lessonLabel: "Урок",
 
@@ -1151,7 +871,6 @@ const translations = {
 		language: "Мова",
 		progress: "Прогрес",
 		progressText: "{percent}% завершено ({completed}/{total})",
-		progressTextMilestone: "{completed} з {total} уроків завершено",
 		lessons: "Уроки",
 		settings: "Налаштування",
 		showHints: "Показувати підказки",
@@ -1231,7 +950,7 @@ const translations = {
 
 		// Landing page
 		landingHeroTitle: "Вивчай веб-розробку",
-		landingHeroHighlight: "Crispy Code",
+		landingHeroHighlight: "Пишучи справжній код",
 		landingHeroSubtitle: "Опануй HTML, CSS та Tailwind через практичні вправи з миттєвим зворотним зв'язком. Безкоштовно та з відкритим кодом.",
 		landingCtaStart: "Почни ЗАРАЗ",
 		landingWhyTitle: "Чому CODE CRISPIES працює",
@@ -1243,7 +962,7 @@ const translations = {
 		landingBenefit3Title: "Реальні навички",
 		landingBenefit3Text: "Вивчай CSS, HTML та Tailwind так, як їх використовують професіонали—через практичні вправи та довідники.",
 		landingBenefit4Title: "Безкоштовно та Open Source",
-		landingBenefit4Text: "Без paywall, без відстеження. Опціональний акаунт для хмарної синхронізації. Код відкритий для всіх.",
+		landingBenefit4Text: "Без акаунту, без paywall, без відстеження. Твій прогрес залишається у браузері. Код відкритий для всіх.",
 		landingPathsTitle: "Досліджуй шляхи навчання",
 		landingCssDesc: "Стилізація, макети та анімації",
 		landingHtmlDesc: "Семантична розмітка та нативні елементи",
@@ -1251,7 +970,7 @@ const translations = {
 		comingSoon: "Незабаром",
 		landingCtaTitle: "Почни вчитися сьогодні",
 		landingCtaSub: "Безкоштовно та з відкритим кодом. Без реєстрації. Прогрес зберігається локально.",
-		landingCtaButton: "Let's get crispy!",
+		landingCtaButton: "Розпочни свою подорож",
 
 		// Coming Soon
 		landingComingSoonTitle: "Незабаром",
@@ -1263,15 +982,6 @@ const translations = {
 		comingSoonJsText: "Інтерактивні уроки JavaScript з виконанням коду в реальному часі та маніпуляцією DOM.",
 		comingSoonFrameworksTitle: "Фреймворки",
 		comingSoonFrameworksText: "Основи React, Vue та Svelte. Створюй справжні компоненти крок за кроком.",
-		comingSoonChallengesTitle: "Кодові виклики",
-		comingSoonChallengesText: "Перевір свої навички в завданнях на час. Змагайся в рейтингах і здобувай ранги.",
-
-		// Newsletter
-		newsletterText: "Хочете дізнатися, коли з'являться нові функції?",
-		newsletterPlaceholder: "ваш@email.com",
-		newsletterButton: "Повідомити мене",
-		newsletterThanks: "Дякуємо! Ми будемо тримати вас в курсі.",
-		newsletterDisclaimer: "Максимум раз на тиждень. Відписатися можна будь-коли через mail@codecrispi.es",
 
 		// Device Notice
 		deviceNotice: "<strong>Найкраще на комп'ютері або планшеті (горизонтально).</strong> На телефоні теж працює, але більший екран полегшує програмування.",
@@ -1284,54 +994,10 @@ const translations = {
 		footerSupport: "Підтримка",
 		footerSupportText: "Допоможи зберегти CODE CRISPIES безкоштовним та з відкритим кодом.",
 		footerLicense: "Передано у суспільне надбання.",
-		footerPrivacy: "Політика конфіденційності",
-		footerImprint: "Правова інформація",
-		privacyTitle: "Політика конфіденційності",
-		privacyIntro: "CODE CRISPIES поважає твою приватність. Ця політика пояснює, які дані ми збираємо і як їх використовуємо.",
-		privacyLocalTitle: "Локальне сховище",
-		privacyLocalText: "Твій прогрес, код та налаштування зберігаються локально у браузері. Ці дані не залишають твій пристрій, якщо ти не створюєш акаунт.",
-		privacyAccountTitle: "Дані акаунту (необов'язково)",
-		privacyAccountText: "Якщо ти створюєш акаунт, ми зберігаємо твою електронну пошту та зашифрований пароль для хмарної синхронізації.",
-		privacyNewsletterTitle: "Розсилка (необов'язково)",
-		privacyNewsletterText: "Якщо ти підписуєшся на розсилку, ми зберігаємо твою пошту для надсилання оновлень. Ти можеш відписатися в будь-який час.",
-		privacyNoTrackingTitle: "Без відстеження",
-		privacyNoTrackingText: "Ми не використовуємо файли cookie для відстеження, аналітики чи реклами. Ми не ділимося твоїми даними з третіми сторонами.",
-		privacyRightsTitle: "Твої права (GDPR)",
-		privacyRightsText: "Ти можеш видалити свій акаунт і всі пов'язані дані в будь-який час з бічного меню. Питання: mail@codecrispi.es",
-		privacyUpdated: "Останнє оновлення: січень 2025",
-		imprintTitle: "Правова інформація",
-		imprintResponsibleTitle: "Відповідальний за вміст",
-		imprintContactTitle: "Контакт",
-		imprintDisclaimerTitle: "Застереження",
-		imprintDisclaimerText: "CODE CRISPIES надається без гарантій. Ми не несемо відповідальності за збитки, що виникають внаслідок використання цього сервісу.",
 
 		// Help Dialog Support
 		supportTitle: "Підтримати проєкт",
-		supportText: "Допоможи зберегти CODE CRISPIES безкоштовним та з відкритим кодом.",
-
-		// Auth
-		authLogin: "Увійти",
-		authSignUp: "Зареєструватися",
-		authLogout: "Вийти",
-		authEmail: "Електронна пошта",
-		authPassword: "Пароль",
-		authConfirmPassword: "Підтвердити пароль",
-		authNoAccount: "Немає акаунту? Зареєструйся",
-		authHaveAccount: "Вже є акаунт? Увійди",
-		authForgotPassword: "Забули пароль?",
-		authResetPassword: "Скинути пароль",
-		authResetInstructions: "Введи свою електронну пошту, щоб отримати посилання для скидання.",
-		authSendReset: "Надіслати посилання",
-		authResetSent: "Перевір електронну пошту для посилання на скидання.",
-		authOrContinueWith: "або продовжити через",
-		authPasswordMismatch: "Паролі не співпадають",
-		authSignupSuccess: "Акаунт створено! Перевір електронну пошту для підтвердження.",
-		authAccount: "Акаунт",
-		authSyncHint: "Увійди, щоб синхронізувати прогрес між пристроями",
-		authDeleteAccount: "Видалити акаунт",
-		authDeleteDialogTitle: "Видалити акаунт",
-		authDeleteDialogText: "Ти впевнений, що хочеш видалити свій акаунт? Весь твій хмарний прогрес буде видалено назавжди. Цю дію неможливо скасувати.",
-		authDeleteConfirm: "Видалити акаунт"
+		supportText: "Допоможи зберегти CODE CRISPIES безкоштовним та з відкритим кодом."
 	}
 };
 

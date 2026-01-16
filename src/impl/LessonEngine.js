@@ -4,20 +4,6 @@
  */
 import { validateUserCode } from "../helpers/validator.js";
 
-// Auth sync - lazy loaded to avoid circular dependencies
-let authModule = null;
-async function getAuthModule() {
-	if (!authModule) {
-		try {
-			authModule = await import("../auth.js");
-		} catch (e) {
-			// Auth module not available, skip cloud sync
-			return null;
-		}
-	}
-	return authModule;
-}
-
 export class LessonEngine {
 	constructor() {
 		this.currentLesson = null;
@@ -472,11 +458,10 @@ export class LessonEngine {
 	}
 
 	/**
-	 * Get overall progress statistics with milestone data
-	 * @returns {Object} Progress statistics including milestone progress
+	 * Get overall progress statistics
+	 * @returns {Object} Progress statistics
 	 */
 	getProgressStats() {
-		const MILESTONES = [1, 5, 10, 20, 30, 50, 75, 100];
 		let totalLessons = 0;
 		let totalCompleted = 0;
 
@@ -491,30 +476,15 @@ export class LessonEngine {
 			}
 		});
 
-		// Calculate milestone progress
-		const milestonesReached = MILESTONES.filter((m) => totalCompleted >= m);
-		const currentMilestone = milestonesReached[milestonesReached.length - 1] || 0;
-		const nextMilestone = MILESTONES.find((m) => m > totalCompleted) || 100;
-		const progressToNext =
-			nextMilestone > currentMilestone
-				? Math.round(((totalCompleted - currentMilestone) / (nextMilestone - currentMilestone)) * 100)
-				: 100;
-
 		return {
 			totalLessons,
 			totalCompleted,
-			percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0,
-			// Milestone data
-			milestones: MILESTONES,
-			milestonesReached,
-			currentMilestone,
-			nextMilestone,
-			progressToNext
+			percentComplete: totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0
 		};
 	}
 
 	/**
-	 * Save progress to localStorage and optionally sync to cloud
+	 * Save progress to localStorage
 	 */
 	saveUserProgress() {
 		try {
@@ -524,21 +494,8 @@ export class LessonEngine {
 				timestamp: new Date().toISOString()
 			};
 			localStorage.setItem("codeCrispies.progress", JSON.stringify(progressData));
-
-			// Trigger cloud sync if logged in (debounced)
-			this.triggerCloudSync();
 		} catch (e) {
 			console.error("Error saving progress:", e);
-		}
-	}
-
-	/**
-	 * Trigger cloud sync if user is logged in (debounced)
-	 */
-	async triggerCloudSync() {
-		const auth = await getAuthModule();
-		if (auth?.isLoggedIn()) {
-			auth.debouncedSyncToCloud();
 		}
 	}
 
@@ -564,14 +521,11 @@ export class LessonEngine {
 	}
 
 	/**
-	 * Save user code to localStorage and optionally sync to cloud
+	 * Save user code to localStorage
 	 */
 	saveUserCodeToStorage() {
 		try {
 			localStorage.setItem("codeCrispies.userCode", JSON.stringify(Array.from(this.userCodeMap.entries())));
-
-			// Trigger cloud sync if logged in (debounced)
-			this.triggerCloudSync();
 		} catch (e) {
 			console.error("Error saving user code:", e);
 		}

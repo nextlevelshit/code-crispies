@@ -39,54 +39,6 @@
 					"message": "Add 3 rows (1 header + 2 data rows)"
 				}
 			]
-		},
-		{
-			"id": "table-sections",
-			"title": "Table Sections",
-			"description": "Semantic table sections improve accessibility and allow for separate styling:<br><br>• <kbd>&lt;thead&gt;</kbd> — header section<br>• <kbd>&lt;tbody&gt;</kbd> — main content<br>• <kbd>&lt;tfoot&gt;</kbd> — footer (totals, summaries)",
-			"task": "Wrap the header row in <kbd>&lt;thead&gt;</kbd> and data rows in <kbd>&lt;tbody&gt;</kbd>.",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } table { border-collapse: collapse; width: 100%; max-width: 350px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); } th, td { padding: 12px 16px; text-align: left; } thead { background: steelblue; color: white; } tbody tr:nth-child(even) { background: #f8f9fa; }",
-			"sandboxCSS": "",
-			"initialCode": "<table>\n  <tr>\n    <th>Name</th>\n    <th>Score</th>\n  </tr>\n  <tr>\n    <td>Alice</td>\n    <td>95</td>\n  </tr>\n  <tr>\n    <td>Bob</td>\n    <td>87</td>\n  </tr>\n</table>",
-			"solution": "<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Alice</td>\n      <td>95</td>\n    </tr>\n    <tr>\n      <td>Bob</td>\n      <td>87</td>\n    </tr>\n  </tbody>\n</table>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "thead",
-					"message": "Add a <kbd>&lt;thead&gt;</kbd> section for the header"
-				},
-				{
-					"type": "element_exists",
-					"value": "tbody",
-					"message": "Add a <kbd>&lt;tbody&gt;</kbd> section for the data"
-				}
-			]
-		},
-		{
-			"id": "table-colspan",
-			"title": "Spanning Columns",
-			"description": "The <kbd>colspan</kbd> attribute lets a cell span multiple columns. This is useful for headers that group multiple columns or footer totals.<br><br><pre>&lt;td colspan=\"2\"&gt;...&lt;/td&gt;</pre>",
-			"task": "Add a footer row that spans both columns using <kbd>colspan=\"2\"</kbd>.",
-			"previewHTML": "",
-			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; } table { border-collapse: collapse; width: 100%; max-width: 350px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); } th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #eee; } thead { background: steelblue; color: white; } tfoot { background: #f0f0f0; font-weight: 600; }",
-			"sandboxCSS": "",
-			"initialCode": "<table>\n  <thead>\n    <tr>\n      <th>Item</th>\n      <th>Price</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Coffee</td>\n      <td>$4</td>\n    </tr>\n    <tr>\n      <td>Cake</td>\n      <td>$6</td>\n    </tr>\n  </tbody>\n</table>",
-			"solution": "<table>\n  <thead>\n    <tr>\n      <th>Item</th>\n      <th>Price</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Coffee</td>\n      <td>$4</td>\n    </tr>\n    <tr>\n      <td>Cake</td>\n      <td>$6</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td colspan=\"2\">Total: $10</td>\n    </tr>\n  </tfoot>\n</table>",
-			"previewContainer": "preview-area",
-			"validations": [
-				{
-					"type": "element_exists",
-					"value": "tfoot",
-					"message": "Add a <kbd>&lt;tfoot&gt;</kbd> section"
-				},
-				{
-					"type": "contains",
-					"value": "colspan",
-					"message": "Use <kbd>colspan</kbd> to span columns"
-				}
-			]
 		}
 	]
 }

@@ -98,53 +98,6 @@
 					"message": "Set letter-spacing to <kbd>1px</kbd>"
 				}
 			]
-		},
-		{
-			"id": "text-decoration",
-			"title": "Text Decoration",
-			"description": "The <kbd>text-decoration</kbd> property adds lines to text. Common values:<br><br>• <kbd>underline</kbd> — line below text<br>• <kbd>line-through</kbd> — strikethrough<br>• <kbd>none</kbd> — removes decoration (useful for links)<br><br>You can also style decorations with <kbd>text-decoration-color</kbd> and <kbd>text-decoration-style</kbd>.",
-			"task": "Show the old price with a strikethrough. Add <kbd>text-decoration: line-through</kbd>.",
-			"previewHTML": "<div class=\"price-box\"><span class=\"old-price\">$49.99</span><span class=\"new-price\">$29.99</span></div>",
-			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .price-box { display: flex; gap: 1rem; align-items: center; } .old-price { color: #999; font-size: 1rem; } .new-price { color: coral; font-size: 1.5rem; font-weight: bold; }",
-			"sandboxCSS": "",
-			"codePrefix": ".old-price {\n  ",
-			"initialCode": "",
-			"codeSuffix": "\n}",
-			"previewContainer": "preview-area",
-			"solution": "text-decoration: line-through;",
-			"validations": [
-				{
-					"type": "property_value",
-					"value": { "property": "text-decoration", "expected": "line-through" },
-					"message": "Set text-decoration to <kbd>line-through</kbd>"
-				}
-			]
-		},
-		{
-			"id": "text-shadow",
-			"title": "Text Shadow",
-			"description": "The <kbd>text-shadow</kbd> property adds shadow effects to text. The syntax is:<br><br><pre>text-shadow: x-offset y-offset blur color;</pre><br>Example: <kbd>text-shadow: 2px 2px 4px gray</kbd> creates a soft shadow offset down and right.",
-			"task": "Add depth to the heading with <kbd>text-shadow: 2px 2px 4px gray</kbd>.",
-			"previewHTML": "<h1 class=\"hero-title\">Welcome</h1>",
-			"previewBaseCSS": "body { font-family: system-ui; padding: 2rem; background: linear-gradient(135deg, #667eea, #764ba2); } .hero-title { margin: 0; font-size: 3rem; color: white; text-align: center; }",
-			"sandboxCSS": "",
-			"codePrefix": ".hero-title {\n  ",
-			"initialCode": "",
-			"codeSuffix": "\n}",
-			"previewContainer": "preview-area",
-			"solution": "text-shadow: 2px 2px 4px gray;",
-			"validations": [
-				{
-					"type": "contains",
-					"value": "text-shadow",
-					"message": "Use <kbd>text-shadow</kbd> property"
-				},
-				{
-					"type": "contains",
-					"value": "2px 2px",
-					"message": "Set offset to <kbd>2px 2px</kbd>"
-				}
-			]
 		}
 	]
 }
