@@ -893,8 +893,8 @@ kbd {
 
 /* ================= GAME CONTROLS ================= */
 .game-controls {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
 	padding: var(--spacing-md);
 	background: var(--panel-bg);
@@ -902,8 +902,16 @@ kbd {
 	box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.08);
 }
 
-.game-controls.centered {
-	justify-content: center;
+.game-controls #prev-btn {
+	justify-self: start;
+}
+
+.game-controls .module-pill {
+	justify-self: center;
+}
+
+.game-controls #next-btn {
+	justify-self: end;
 }
 
 /* ================= SIDEBAR ================= */
