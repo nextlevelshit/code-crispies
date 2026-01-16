@@ -1424,6 +1424,916 @@ export const playgroundTemplates = [
   <div class="message received">Can you teach me?</div>
   <div class="typing"><span></span><span></span><span></span></div>
 </div>`
+	},
+	{
+		name: "Accordion FAQ",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1.5rem;
+    background: #f8f9fa;
+  }
+
+  .faq {
+    max-width: 500px;
+  }
+
+  .faq h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+  }
+
+  details {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  summary::after {
+    content: "+";
+    font-size: 1.25rem;
+    color: #667eea;
+  }
+
+  details[open] summary::after {
+    content: "−";
+  }
+
+  details[open] summary {
+    border-bottom: 1px solid #eee;
+  }
+
+  .answer {
+    padding: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details>
+    <summary>How do I get started?</summary>
+    <div class="answer">Simply create an account and follow our step-by-step guide. It takes less than 5 minutes!</div>
+  </details>
+  <details>
+    <summary>Is there a free trial?</summary>
+    <div class="answer">Yes! We offer a 14-day free trial with full access to all features.</div>
+  </details>
+  <details open>
+    <summary>Can I cancel anytime?</summary>
+    <div class="answer">Absolutely. No contracts, no commitments. Cancel with one click.</div>
+  </details>
+</div>`
+	},
+	{
+		name: "Form Validation",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1.5rem;
+    background: #f0f2f5;
+  }
+
+  .form {
+    max-width: 320px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+
+  input:valid {
+    border-color: #10b981;
+  }
+
+  input:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+  }
+
+  .hint {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: -0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #5a6fd6;
+  }
+</style>
+
+<form class="form">
+  <h2>Create Account</h2>
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="you@example.com" required>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="Min. 8 characters" minlength="8" required>
+  <p class="hint">Must be at least 8 characters</p>
+
+  <label for="age">Age</label>
+  <input type="number" id="age" min="18" max="120" placeholder="18+" required>
+
+  <button type="submit">Sign Up</button>
+</form>`
+	},
+	{
+		name: "Toggle Switch",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+  }
+
+  .settings {
+    max-width: 300px;
+  }
+
+  .setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .setting-info h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .setting-info p {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .toggle {
+    position: relative;
+    width: 50px;
+    height: 28px;
+  }
+
+  .toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .slider::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+
+  input:checked + .slider {
+    background: #667eea;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(22px);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+  }
+</style>
+
+<div class="settings">
+  <div class="setting">
+    <div class="setting-info">
+      <h3>Dark Mode</h3>
+      <p>Use dark theme</p>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="setting">
+    <div class="setting-info">
+      <h3>Notifications</h3>
+      <p>Get push alerts</p>
+    </div>
+    <label class="toggle">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="setting">
+    <div class="setting-info">
+      <h3>Auto-save</h3>
+      <p>Save automatically</p>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>`
+	},
+	{
+		name: "CSS Tabs",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 1.5rem;
+    background: #f8f9fa;
+  }
+
+  .tabs {
+    max-width: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .tabs input[type="radio"] {
+    display: none;
+  }
+
+  .tab-nav {
+    display: flex;
+    background: #f0f2f5;
+  }
+
+  .tab-nav label {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s;
+  }
+
+  .tab-nav label:hover {
+    background: #e8eaed;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 1.5rem;
+    animation: fadeIn 0.3s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #tab1:checked ~ .tab-nav label[for="tab1"],
+  #tab2:checked ~ .tab-nav label[for="tab2"],
+  #tab3:checked ~ .tab-nav label[for="tab3"] {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 -2px 0 #667eea inset;
+  }
+
+  #tab1:checked ~ .content1,
+  #tab2:checked ~ .content2,
+  #tab3:checked ~ .content3 {
+    display: block;
+  }
+</style>
+
+<div class="tabs">
+  <input type="radio" id="tab1" name="tabs" checked>
+  <input type="radio" id="tab2" name="tabs">
+  <input type="radio" id="tab3" name="tabs">
+
+  <div class="tab-nav">
+    <label for="tab1">Overview</label>
+    <label for="tab2">Features</label>
+    <label for="tab3">Pricing</label>
+  </div>
+
+  <div class="tab-content content1">
+    <h3>Welcome! 👋</h3>
+    <p>This is a CSS-only tab component using radio buttons.</p>
+  </div>
+  <div class="tab-content content2">
+    <h3>Features ✨</h3>
+    <p>No JavaScript needed! Pure CSS magic with :checked selector.</p>
+  </div>
+  <div class="tab-content content3">
+    <h3>Pricing 💰</h3>
+    <p>It's free! Open source and ready to use.</p>
+  </div>
+</div>`
+	},
+	{
+		name: "Modal Dialog",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+  }
+
+  .open-btn {
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    max-width: 400px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  }
+
+  dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .modal-footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .btn-cancel {
+    background: #f0f2f5;
+    border: none;
+  }
+
+  .btn-confirm {
+    background: #667eea;
+    color: white;
+    border: none;
+  }
+</style>
+
+<button class="open-btn" onclick="document.getElementById('modal').showModal()">
+  Open Modal
+</button>
+
+<dialog id="modal">
+  <div class="modal-header">
+    <h2>Confirm Action</h2>
+    <button class="close-btn" onclick="this.closest('dialog').close()">×</button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to continue? This action uses the native HTML &lt;dialog&gt; element.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-cancel" onclick="this.closest('dialog').close()">Cancel</button>
+    <button class="btn-confirm" onclick="this.closest('dialog').close()">Confirm</button>
+  </div>
+</dialog>`
+	},
+	{
+		name: "Tooltip",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 3rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip-btn {
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .tooltip-text {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: #1a1a2e;
+    color: white;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    margin-bottom: 8px;
+  }
+
+  .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a2e;
+  }
+
+  .tooltip:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .tooltip.bottom .tooltip-text {
+    bottom: auto;
+    top: 100%;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+
+  .tooltip.bottom .tooltip-text::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: #1a1a2e;
+  }
+</style>
+
+<div class="tooltip">
+  <button class="tooltip-btn">Hover me</button>
+  <span class="tooltip-text">Tooltip on top!</span>
+</div>
+
+<div class="tooltip bottom">
+  <button class="tooltip-btn">Or me</button>
+  <span class="tooltip-text">Tooltip on bottom!</span>
+</div>`
+	},
+	{
+		name: "Progress Steps",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+    background: #f8f9fa;
+  }
+
+  .progress-steps {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .progress-steps::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    right: 40px;
+    height: 4px;
+    background: #ddd;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .step.completed .step-circle {
+    background: #10b981;
+    color: white;
+  }
+
+  .step.active .step-circle {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+  }
+
+  .step-label {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .step.completed .step-label,
+  .step.active .step-label {
+    color: #333;
+    font-weight: 500;
+  }
+</style>
+
+<div class="progress-steps">
+  <div class="step completed">
+    <div class="step-circle">✓</div>
+    <span class="step-label">Cart</span>
+  </div>
+  <div class="step completed">
+    <div class="step-circle">✓</div>
+    <span class="step-label">Shipping</span>
+  </div>
+  <div class="step active">
+    <div class="step-circle">3</div>
+    <span class="step-label">Payment</span>
+  </div>
+  <div class="step">
+    <div class="step-circle">4</div>
+    <span class="step-label">Done</span>
+  </div>
+</div>`
+	},
+	{
+		name: "Dropdown Menu",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-btn {
+    padding: 0.75rem 1.25rem;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dropdown-btn::after {
+    content: "▼";
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s;
+    margin-top: 4px;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown:hover .dropdown-btn::after {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .dropdown-item:hover {
+    background: #f0f2f5;
+  }
+
+  .dropdown-item.danger {
+    color: #ef4444;
+  }
+
+  .divider {
+    height: 1px;
+    background: #eee;
+    margin: 0.5rem 0;
+  }
+</style>
+
+<div class="dropdown">
+  <button class="dropdown-btn">Options</button>
+  <div class="dropdown-menu">
+    <a href="#" class="dropdown-item">👤 Profile</a>
+    <a href="#" class="dropdown-item">⚙️ Settings</a>
+    <a href="#" class="dropdown-item">❓ Help</a>
+    <div class="divider"></div>
+    <a href="#" class="dropdown-item danger">🚪 Logout</a>
+  </div>
+</div>`
+	},
+	{
+		name: "Star Rating",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.25rem;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .rating label:hover,
+  .rating label:hover ~ label,
+  .rating input:checked ~ label {
+    color: #fbbf24;
+  }
+
+  .rating-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .stars {
+    color: #fbbf24;
+    letter-spacing: 2px;
+  }
+
+  .rating-count {
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>
+
+<p>Click to rate:</p>
+<div class="rating">
+  <input type="radio" id="star5" name="rating" value="5">
+  <label for="star5">★</label>
+  <input type="radio" id="star4" name="rating" value="4">
+  <label for="star4">★</label>
+  <input type="radio" id="star3" name="rating" value="3" checked>
+  <label for="star3">★</label>
+  <input type="radio" id="star2" name="rating" value="2">
+  <label for="star2">★</label>
+  <input type="radio" id="star1" name="rating" value="1">
+  <label for="star1">★</label>
+</div>
+
+<div class="rating-display">
+  <span class="stars">★★★★☆</span>
+  <strong>4.2</strong>
+  <span class="rating-count">(128 reviews)</span>
+</div>`
+	},
+	{
+		name: "Search Box",
+		code: `<style>
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+    background: #f0f2f5;
+  }
+
+  .search-container {
+    max-width: 400px;
+  }
+
+  .search-box {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
+
+  .search-box input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  }
+
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+  }
+
+  .search-box input:valid + .clear-btn {
+    display: block;
+  }
+
+  .clear-btn {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ddd;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .suggestions {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  .suggestion {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .suggestion:hover {
+    background: #f8f9fa;
+  }
+
+  .suggestion-icon {
+    color: #999;
+  }
+</style>
+
+<div class="search-container">
+  <div class="search-box">
+    <input type="search" placeholder="Search..." required>
+    <button class="clear-btn">×</button>
+  </div>
+  <div class="suggestions">
+    <div class="suggestion">
+      <span class="suggestion-icon">🕐</span> Recent search
+    </div>
+    <div class="suggestion">
+      <span class="suggestion-icon">🔥</span> Trending topic
+    </div>
+    <div class="suggestion">
+      <span class="suggestion-icon">📁</span> In your files
+    </div>
+  </div>
+</div>`
 	}
 ];
 
