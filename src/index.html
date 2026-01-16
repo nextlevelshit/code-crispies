@@ -77,6 +77,8 @@
 						<a href="#tailwind" class="nav-link" data-section="tailwind">Tailwind</a>
 						<a href="#reference/css" class="nav-link nav-link-ref" data-section="reference">Reference</a>
 					</nav>
+					<button id="auth-trigger-header" class="btn btn-outline btn-sm" data-i18n="authLogin">Log In</button>
+					<span id="user-email-header" class="user-email hidden"></span>
 					<button id="help-btn" class="help-toggle" data-i18n-aria-label="help" aria-label="Help">?</button>
 				</div>
 			</header>
@@ -139,7 +141,7 @@
 								</svg>
 								<h3 data-i18n="landingBenefit4Title">Free & Open Source</h3>
 								<p data-i18n="landingBenefit4Text">
-									No account, no paywall, no tracking. Your progress stays in your browser. The code is open for everyone.
+									No paywall, no tracking. Optional account for cloud sync across devices. The code is open for everyone.
 								</p>
 							</article>
 						</div>
@@ -174,13 +176,6 @@
 						<div class="coming-soon-grid">
 							<article class="coming-soon-card">
 								<span class="coming-soon-icon">
-									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
-								</span>
-								<h3 data-i18n="comingSoonSyncTitle">Cloud Sync</h3>
-								<p data-i18n="comingSoonSyncText">Sync your progress across all devices. Start on desktop, continue on tablet.</p>
-							</article>
-							<article class="coming-soon-card">
-								<span class="coming-soon-icon">
 									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
 								</span>
 								<h3 data-i18n="comingSoonAchievementsTitle">Achievements</h3>
@@ -199,6 +194,13 @@
 								</span>
 								<h3 data-i18n="comingSoonFrameworksTitle">Frameworks</h3>
 								<p data-i18n="comingSoonFrameworksText">React, Vue, and Svelte basics. Build real components step by step.</p>
+							</article>
+							<article class="coming-soon-card">
+								<span class="coming-soon-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+								</span>
+								<h3 data-i18n="comingSoonChallengesTitle">Code Challenges</h3>
+								<p data-i18n="comingSoonChallengesText">Test your skills with timed puzzles. Compete on leaderboards and earn ranks.</p>
 							</article>
 						</div>
 						<div class="newsletter-signup">
@@ -254,6 +256,11 @@
 						</div>
 						<div class="footer-bottom">
 							<p>&copy; 2025 <a href="https://librete.ch">LibreTECH</a>. <span data-i18n="footerLicense">Open source under MIT License.</span></p>
+							<p class="footer-legal">
+								<button type="button" class="btn-text privacy-link" data-i18n="footerPrivacy">Privacy Policy</button>
+								<span class="footer-separator">·</span>
+								<button type="button" class="btn-text imprint-link" data-i18n="footerImprint">Imprint</button>
+							</p>
 						</div>
 					</footer>
 				</div>
@@ -306,6 +313,11 @@
 					</div>
 					<div class="footer-bottom">
 						<p>&copy; 2025 <a href="https://librete.ch">LibreTECH</a>. <span data-i18n="footerLicense">Open source under MIT License.</span></p>
+						<p class="footer-legal">
+							<button type="button" class="btn-text privacy-link" data-i18n="footerPrivacy">Privacy Policy</button>
+							<span class="footer-separator">·</span>
+							<button type="button" class="btn-text imprint-link" data-i18n="footerImprint">Imprint</button>
+						</p>
 					</div>
 				</footer>
 			</div>
@@ -354,6 +366,11 @@
 					</div>
 					<div class="footer-bottom">
 						<p>&copy; 2025 <a href="https://librete.ch">LibreTECH</a>. <span data-i18n="footerLicense">Open source under MIT License.</span></p>
+						<p class="footer-legal">
+							<button type="button" class="btn-text privacy-link" data-i18n="footerPrivacy">Privacy Policy</button>
+							<span class="footer-separator">·</span>
+							<button type="button" class="btn-text imprint-link" data-i18n="footerImprint">Imprint</button>
+						</p>
 					</div>
 				</footer>
 			</div>
@@ -462,6 +479,17 @@
 				<nav class="sidebar-section" aria-label="Lesson navigation">
 					<h4 id="lessons-heading" data-i18n="lessons">Lessons</h4>
 					<div class="module-list" id="module-list" role="tree" aria-labelledby="lessons-heading"></div>
+
+					<div class="sidebar-auth-box">
+						<h4 data-i18n="authAccount">Account</h4>
+						<button id="auth-trigger-sidebar" class="btn btn-outline btn-full" data-i18n="authLogin">Log In</button>
+						<div id="user-menu-sidebar" class="user-menu-sidebar hidden">
+							<span id="user-email-sidebar" class="user-email"></span>
+							<button id="logout-btn-sidebar" class="btn btn-outline btn-full" data-i18n="authLogout">Log Out</button>
+							<button id="delete-account-btn" class="btn btn-text btn-danger btn-full" data-i18n="authDeleteAccount">Delete Account</button>
+						</div>
+						<p class="sidebar-auth-hint" data-i18n="authSyncHint">Log in to sync progress across devices</p>
+					</div>
 				</nav>
 
 				<div class="sidebar-section">
@@ -616,6 +644,22 @@
 				</div>
 			</dialog>
 
+			<!-- Delete Account Confirmation Dialog -->
+			<dialog id="delete-account-dialog" class="dialog">
+				<div class="dialog-header">
+					<h3 data-i18n="authDeleteDialogTitle">Delete Account</h3>
+					<button id="delete-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<p data-i18n="authDeleteDialogText">Are you sure you want to delete your account? All your cloud progress will be permanently deleted. This cannot be undone.</p>
+					<p id="delete-account-error" class="auth-error hidden"></p>
+					<div class="dialog-actions">
+						<button id="cancel-delete" class="btn" data-i18n="cancel">Cancel</button>
+						<button id="confirm-delete" class="btn btn-danger" data-i18n="authDeleteConfirm">Delete Account</button>
+					</div>
+				</div>
+			</dialog>
+
 			<!-- Share Dialog -->
 			<dialog id="share-dialog" class="dialog">
 				<div class="dialog-header">
@@ -629,6 +673,136 @@
 						<button id="copy-url-btn" class="btn btn-primary" data-i18n="copyUrl">Copy</button>
 					</div>
 					<p id="copy-feedback" class="copy-feedback" data-i18n="urlCopied" hidden>URL copied to clipboard!</p>
+				</div>
+			</dialog>
+
+			<!-- Privacy Policy Dialog -->
+			<dialog id="privacy-dialog" class="dialog legal-dialog">
+				<div class="dialog-header">
+					<h3 data-i18n="privacyTitle">Privacy Policy</h3>
+					<button class="dialog-close privacy-dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content legal-content">
+					<p data-i18n="privacyIntro">CODE CRISPIES respects your privacy. This policy explains what data we collect and how we use it.</p>
+
+					<h4 data-i18n="privacyLocalTitle">Local Storage</h4>
+					<p data-i18n="privacyLocalText">Your learning progress, code, and settings are stored locally in your browser. This data never leaves your device unless you create an account.</p>
+
+					<h4 data-i18n="privacyAccountTitle">Account Data (Optional)</h4>
+					<p data-i18n="privacyAccountText">If you create an account, we store your email address and encrypted password to enable cloud sync. Your progress data is synced to our servers (Supabase) so you can access it across devices.</p>
+
+					<h4 data-i18n="privacyNewsletterTitle">Newsletter (Optional)</h4>
+					<p data-i18n="privacyNewsletterText">If you subscribe to our newsletter, we store your email address to send updates about new features. You can unsubscribe anytime.</p>
+
+					<h4 data-i18n="privacyNoTrackingTitle">No Tracking</h4>
+					<p data-i18n="privacyNoTrackingText">We do not use cookies for tracking, analytics, or advertising. We do not share your data with third parties.</p>
+
+					<h4 data-i18n="privacyRightsTitle">Your Rights (GDPR)</h4>
+					<p data-i18n="privacyRightsText">You can delete your account and all associated data at any time from the sidebar menu. For questions or data requests, contact us at mail@codecrispi.es</p>
+
+					<p class="legal-updated" data-i18n="privacyUpdated">Last updated: January 2025</p>
+				</div>
+			</dialog>
+
+			<!-- Imprint Dialog -->
+			<dialog id="imprint-dialog" class="dialog legal-dialog">
+				<div class="dialog-header">
+					<h3 data-i18n="imprintTitle">Imprint</h3>
+					<button class="dialog-close imprint-dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content legal-content">
+					<h4 data-i18n="imprintResponsibleTitle">Responsible for content</h4>
+					<p>
+						Michael Czechowski<br>
+						Schnellweg 3<br>
+						70199 Stuttgart<br>
+						Germany
+					</p>
+
+					<h4 data-i18n="imprintContactTitle">Contact</h4>
+					<p>
+						Email: mail@codecrispi.es<br>
+						Website: <a href="https://librete.ch" target="_blank">librete.ch</a>
+					</p>
+
+					<h4 data-i18n="imprintDisclaimerTitle">Disclaimer</h4>
+					<p data-i18n="imprintDisclaimerText">CODE CRISPIES is provided "as is" without warranty. We are not liable for any damages arising from the use of this service. External links are provided for convenience; we are not responsible for their content.</p>
+				</div>
+			</dialog>
+
+			<!-- Auth Dialog -->
+			<dialog id="auth-dialog" class="dialog auth-dialog">
+				<div class="dialog-header">
+					<h2 id="auth-dialog-title" data-i18n="authLogin">Log In</h2>
+					<button class="dialog-close close-dialog" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<!-- Login Form -->
+					<form id="login-form" class="auth-form">
+						<div class="form-field">
+							<label for="login-email" data-i18n="authEmail">Email</label>
+							<input type="email" id="login-email" required autocomplete="email">
+						</div>
+						<div class="form-field">
+							<label for="login-password" data-i18n="authPassword">Password</label>
+							<input type="password" id="login-password" required minlength="6" autocomplete="current-password">
+						</div>
+						<p id="login-error" class="auth-error hidden"></p>
+						<button type="submit" class="btn btn-primary btn-full" data-i18n="authLogin">Log In</button>
+					</form>
+
+					<!-- Signup Form (hidden by default) -->
+					<form id="signup-form" class="auth-form hidden">
+						<div class="form-field">
+							<label for="signup-email" data-i18n="authEmail">Email</label>
+							<input type="email" id="signup-email" required autocomplete="email">
+						</div>
+						<div class="form-field">
+							<label for="signup-password" data-i18n="authPassword">Password</label>
+							<input type="password" id="signup-password" required minlength="6" autocomplete="new-password">
+						</div>
+						<div class="form-field">
+							<label for="signup-confirm" data-i18n="authConfirmPassword">Confirm Password</label>
+							<input type="password" id="signup-confirm" required minlength="6" autocomplete="new-password">
+						</div>
+						<p id="signup-error" class="auth-error hidden"></p>
+						<p id="signup-success" class="auth-success hidden" data-i18n="authSignupSuccess">Account created! Check your email to confirm.</p>
+						<button type="submit" class="btn btn-primary btn-full" data-i18n="authSignUp">Sign Up</button>
+					</form>
+
+					<!-- Password Reset Form (hidden by default) -->
+					<form id="reset-form" class="auth-form hidden">
+						<p class="auth-instructions" data-i18n="authResetInstructions">Enter your email to receive a password reset link.</p>
+						<div class="form-field">
+							<label for="reset-email" data-i18n="authEmail">Email</label>
+							<input type="email" id="reset-email" required autocomplete="email">
+						</div>
+						<p id="reset-error" class="auth-error hidden"></p>
+						<p id="reset-success" class="auth-success hidden" data-i18n="authResetSent">Check your email for the reset link.</p>
+						<button type="submit" class="btn btn-primary btn-full" data-i18n="authSendReset">Send Reset Link</button>
+					</form>
+
+					<!-- Social Login Buttons -->
+					<div class="auth-social">
+						<div class="auth-divider"><span data-i18n="authOrContinueWith">or continue with</span></div>
+						<div class="auth-social-buttons">
+							<button type="button" id="google-login" class="btn btn-social">
+								<svg class="social-icon" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+								Google
+							</button>
+							<button type="button" id="github-login" class="btn btn-social">
+								<svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" fill="currentColor"/></svg>
+								GitHub
+							</button>
+						</div>
+					</div>
+
+					<!-- Form switcher links -->
+					<div class="auth-links">
+						<button type="button" id="show-signup" class="btn-text" data-i18n="authNoAccount">Don't have an account? Sign up</button>
+						<button type="button" id="show-login" class="btn-text hidden" data-i18n="authHaveAccount">Already have an account? Log in</button>
+						<button type="button" id="show-reset" class="btn-text" data-i18n="authForgotPassword">Forgot password?</button>
+					</div>
 				</div>
 			</dialog>
 		</div>
