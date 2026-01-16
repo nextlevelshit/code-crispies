@@ -225,6 +225,13 @@ function closeSidebar() {
 function toggleExpectedResult() {
 	state.showExpected = !state.showExpected;
 
+	const engineState = lessonEngine.getCurrentState();
+	track("expected_toggle", {
+		show: state.showExpected,
+		module: engineState.module?.id,
+		lesson: engineState.lessonIndex
+	});
+
 	if (state.showExpected) {
 		elements.expectedOverlay.classList.add("visible");
 		elements.showExpectedBtn.textContent = t("hideExpected");
@@ -2456,6 +2463,46 @@ function init() {
 	// Click on editor content to focus CodeMirror
 	elements.editorContent?.addEventListener("click", () => {
 		if (codeEditor) codeEditor.focus();
+	});
+
+	// Track clicks on "Coming Soon" disabled topic links
+	document.addEventListener("click", (e) => {
+		const disabledLink = e.target.closest(".topic-link-disabled");
+		if (disabledLink) {
+			const topicText = disabledLink.textContent.replace("Coming Soon", "").trim();
+			track("coming_soon_click", { topic: topicText });
+		}
+	});
+
+	// Track external link clicks
+	document.addEventListener("click", (e) => {
+		const link = e.target.closest('a[target="_blank"]');
+		if (link) {
+			track("external_link", { url: link.href, text: link.textContent.trim() });
+		}
+	});
+
+	// Track header nav link clicks (CSS, HTML, Tailwind)
+	document.querySelectorAll(".nav-link[data-section]").forEach((link) => {
+		link.addEventListener("click", () => {
+			track("header_nav_click", { section: link.dataset.section });
+		});
+	});
+
+	// Track footer link clicks
+	document.addEventListener("click", (e) => {
+		const footerLink = e.target.closest(".landing-footer a, .section-footer a, .reference-footer a");
+		if (footerLink && !footerLink.target) {
+			track("footer_link", { href: footerLink.getAttribute("href"), text: footerLink.textContent.trim() });
+		}
+	});
+
+	// Track practice/reference cross-links
+	document.addEventListener("click", (e) => {
+		const refLink = e.target.closest(".ref-see-also a");
+		if (refLink) {
+			track("practice_link", { href: refLink.getAttribute("href"), text: refLink.textContent.trim() });
+		}
 	});
 
 	// Keyboard shortcuts

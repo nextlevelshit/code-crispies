@@ -2372,10 +2372,6 @@ input:checked + .toggle-slider::before {
 	background: var(--panel-bg);
 	border-radius: var(--border-radius-md);
 	margin-bottom: var(--spacing-lg);
-	position: sticky;
-	top: 0;
-	z-index: 10;
-	box-shadow: var(--shadow);
 }
 
 .ref-nav-link {
@@ -2532,20 +2528,28 @@ input:checked + .toggle-slider::before {
 /* Cross-reference links in reference pages */
 .ref-see-also {
 	margin-top: var(--spacing-lg);
-	padding-top: var(--spacing-md);
-	border-top: 1px solid var(--border-color);
-	font-size: 0.9rem;
-	color: var(--light-text);
+	padding: var(--spacing-md);
+	background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(0, 188, 212, 0.1));
+	border-radius: var(--border-radius-md);
+	font-size: 0.95rem;
+	color: var(--text-color);
+	border: 1px solid rgba(155, 89, 182, 0.2);
 }
 
 .ref-see-also a {
-	color: var(--primary-color);
+	color: var(--section-color, var(--primary-color));
 	text-decoration: none;
-	font-weight: 500;
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: var(--border-radius-sm);
+	transition: background 0.2s, transform 0.2s;
 }
 
 .ref-see-also a:hover {
-	text-decoration: underline;
+	background: var(--section-color, var(--primary-color));
+	color: white;
+	transform: translateY(-1px);
 }
 
 /* Responsive reference tables */
