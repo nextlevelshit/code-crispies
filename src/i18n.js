@@ -365,7 +365,7 @@ const translations = {
 		landingHtmlDesc: "Semantisches Markup und native Elemente",
 		landingTailwindDesc: "Utility-first CSS-Framework",
 		comingSoon: "Bald verfügbar",
-		landingCtaTitle: "Heute noch anfangen",
+		landingCtaTitle: "Jetzt gleich anfangen",
 		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
 		landingCtaButton: "Let's get crispy!",
 
