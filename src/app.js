@@ -560,10 +560,12 @@ function loadCurrentLesson() {
 		elements.instructionsSection?.classList.add("hidden");
 		elements.editorSection?.classList.add("playground-mode");
 		elements.randomTemplateBtn?.classList.remove("hidden");
+		elements.showExpectedBtn?.classList.add("hidden");
 	} else {
 		elements.instructionsSection?.classList.remove("hidden");
 		elements.editorSection?.classList.remove("playground-mode");
 		elements.randomTemplateBtn?.classList.add("hidden");
+		elements.showExpectedBtn?.classList.remove("hidden");
 	}
 
 	// Add transition class for smooth content swap
