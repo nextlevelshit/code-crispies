@@ -1216,7 +1216,7 @@ const sectionContent = {
 				<h2>Utility-First Basics</h2>
 				<p>Tailwind CSS uses small, single-purpose utility classes applied directly in HTML. Instead of writing <code>.btn { background: blue; padding: 1rem; }</code> in a stylesheet, you write <code>class="bg-blue-500 p-4"</code> on the element. Each class does exactly one thing, making styles predictable and composable.</p>
 				<p>This approach eliminates context-switching between HTML and CSS files. Common utilities include <code>text-lg</code> for font size, <code>font-bold</code> for weight, <code>rounded</code> for border radius, and <code>shadow</code> for box shadows. Hover states use the <code>hover:</code> prefix like <code>hover:bg-blue-600</code>.</p>
-				<a href="#tailwind-basics/0" class="topic-link">Start with Tailwind CSS Basics</a>
+				<span class="topic-link topic-link-disabled">Start with Tailwind CSS Basics <span class="coming-soon-badge">Coming Soon</span></span>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1236,7 +1236,7 @@ const sectionContent = {
 				<h2>Spacing & Sizing</h2>
 				<p>Tailwind's spacing scale is consistent and memorable. The pattern is simple: <code>p-4</code> means padding of 1rem (16px), <code>p-2</code> is 0.5rem, <code>p-8</code> is 2rem. The same numbers work for margin (<code>m-4</code>), gap (<code>gap-4</code>), and space utilities. Use directional variants like <code>px-4</code> (horizontal) or <code>pt-2</code> (top only).</p>
 				<p>Width and height follow patterns too: <code>w-full</code> for 100%, <code>w-1/2</code> for 50%, <code>w-64</code> for fixed 16rem, <code>h-screen</code> for viewport height. Combine <code>max-w-xl</code> with <code>mx-auto</code> for centered containers with maximum widths.</p>
-				<a href="#tailwind-basics/1" class="topic-link">Learn Tailwind Spacing & Sizing</a>
+				<span class="topic-link topic-link-disabled">Learn Tailwind Spacing & Sizing <span class="coming-soon-badge">Coming Soon</span></span>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1260,7 +1260,7 @@ const sectionContent = {
 				<h2>Flexbox & Grid</h2>
 				<p>Tailwind's layout utilities map directly to CSS flexbox and grid. Enable flex with <code>flex</code>, then control direction (<code>flex-row</code>, <code>flex-col</code>), alignment (<code>items-center</code>, <code>justify-between</code>), and wrapping (<code>flex-wrap</code>). The <code>gap-4</code> utility adds consistent spacing between items.</p>
 				<p>For grid layouts, use <code>grid</code> with column definitions like <code>grid-cols-3</code> for three equal columns or <code>grid-cols-[200px_1fr]</code> for custom track sizes. The <code>col-span-2</code> utility makes items span multiple columns.</p>
-				<a href="#tailwind-basics/2" class="topic-link">Build Layouts with Tailwind</a>
+				<span class="topic-link topic-link-disabled">Build Layouts with Tailwind <span class="coming-soon-badge">Coming Soon</span></span>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1286,7 +1286,7 @@ const sectionContent = {
 				<h2>Responsive Design</h2>
 				<p>Tailwind uses mobile-first responsive prefixes. Unprefixed utilities apply to all screen sizes. Add <code>sm:</code> (640px+), <code>md:</code> (768px+), <code>lg:</code> (1024px+), or <code>xl:</code> (1280px+) prefixes to apply styles at specific breakpoints and above.</p>
 				<p>Build responsive layouts by starting with mobile styles, then adding larger-screen overrides. For example, <code>flex-col md:flex-row</code> stacks items vertically on mobile and horizontally on medium screens. Use <code>hidden md:block</code> to show/hide elements at different sizes.</p>
-				<a href="#tailwind-basics/3" class="topic-link">Tailwind Responsive Design</a>
+				<span class="topic-link topic-link-disabled">Tailwind Responsive Design <span class="coming-soon-badge">Coming Soon</span></span>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
