@@ -629,7 +629,6 @@ function loadCurrentLesson() {
 	}
 
 	// Update level indicator (hide in playground mode)
-	const isPlayground = engineState.lesson?.mode === "playground";
 	if (isPlayground) {
 		elements.levelIndicator.classList.add("hidden");
 	} else {
