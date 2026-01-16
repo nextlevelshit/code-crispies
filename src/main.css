@@ -252,11 +252,11 @@ kbd {
 }
 
 .logo h1 .code-text {
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 .logo h1 .crispies-text {
-	background: #8b6bc4;
+	background: #9b59b6;
 	color: white;
 	padding: 0.15rem 0.35rem;
 	border-radius: 4px;
@@ -266,27 +266,27 @@ kbd {
 
 /* Logo section color coding */
 [data-section="css"] .logo h1 .code-text {
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 [data-section="css"] .logo h1 .crispies-text {
-	background: #8b6bc4;
+	background: #9b59b6;
 }
 
 [data-section="html"] .logo h1 .code-text {
-	color: #c75b7a;
+	color: #e040fb;
 }
 
 [data-section="html"] .logo h1 .crispies-text {
-	background: #c75b7a;
+	background: #e040fb;
 }
 
 [data-section="tailwind"] .logo h1 .code-text {
-	color: #26a69a;
+	color: #00bcd4;
 }
 
 [data-section="tailwind"] .logo h1 .crispies-text {
-	background: #26a69a;
+	background: #00bcd4;
 }
 
 .help-toggle {
@@ -2879,41 +2879,41 @@ input:checked + .toggle-slider::before {
 }
 
 /* ================= SECTION COLOR CODING ================= */
-/* CSS Section - Balanced Violet */
+/* CSS Section - Purple (from completed badge) */
 [data-section="css"] {
-	--section-color: #8b6bc4;
-	--section-color-light: #a98cd6;
-	--section-color-dark: #6b4fa0;
-	--section-color-rgb: 139, 107, 196;
+	--section-color: #9b59b6;
+	--section-color-light: #b07cc6;
+	--section-color-dark: #7d4192;
+	--section-color-rgb: 155, 89, 182;
 }
 
-/* HTML Section - Raspberry */
+/* HTML Section - Pink/Magenta (from completed badge) */
 [data-section="html"] {
-	--section-color: #c75b7a;
-	--section-color-light: #d97a94;
-	--section-color-dark: #a84862;
-	--section-color-rgb: 199, 91, 122;
+	--section-color: #e040fb;
+	--section-color-light: #e96bfc;
+	--section-color-dark: #b330c9;
+	--section-color-rgb: 224, 64, 251;
 }
 
-/* Tailwind Section - Balanced Teal */
+/* Tailwind Section - Cyan (from completed badge) */
 [data-section="tailwind"] {
-	--section-color: #26a69a;
-	--section-color-light: #4db6ac;
-	--section-color-dark: #00897b;
-	--section-color-rgb: 38, 166, 154;
+	--section-color: #00bcd4;
+	--section-color-light: #26c6da;
+	--section-color-dark: #0097a7;
+	--section-color-rgb: 0, 188, 212;
 }
 
 /* Apply section colors to nav links */
 .nav-link[data-section="css"] {
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 .nav-link[data-section="html"] {
-	color: #c75b7a;
+	color: #e040fb;
 }
 
 .nav-link[data-section="tailwind"] {
-	color: #26a69a;
+	color: #00bcd4;
 }
 
 .nav-link[data-section="css"]:hover,
@@ -2941,7 +2941,7 @@ body[data-section="css"] .hint {
 }
 
 body[data-section="css"] .hint-progress {
-	background: #8b6bc4;
+	background: #9b59b6;
 }
 
 body[data-section="html"] .hint {
@@ -2950,7 +2950,7 @@ body[data-section="html"] .hint {
 }
 
 body[data-section="html"] .hint-progress {
-	background: #c75b7a;
+	background: #e040fb;
 }
 
 body[data-section="tailwind"] .hint {
@@ -2959,7 +2959,7 @@ body[data-section="tailwind"] .hint {
 }
 
 body[data-section="tailwind"] .hint-progress {
-	background: #26a69a;
+	background: #00bcd4;
 }
 
 /* RTL hint border */
@@ -2980,7 +2980,7 @@ body[data-section="tailwind"] .hint-progress {
 .ref-nav-link[data-ref="selectors"],
 .ref-nav-link[data-ref="flexbox"],
 .ref-nav-link[data-ref="grid"] {
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 .ref-nav-link[data-ref="css"]:hover,
@@ -2996,7 +2996,7 @@ body[data-section="tailwind"] .hint-progress {
 }
 
 .ref-nav-link[data-ref="html"] {
-	color: #c75b7a;
+	color: #e040fb;
 }
 
 .ref-nav-link[data-ref="html"]:hover,
@@ -3007,12 +3007,12 @@ body[data-section="tailwind"] .hint-progress {
 
 /* CodeMirror section color overrides */
 body[data-section="css"] .cm-editor .cm-content {
-	caret-color: #8b6bc4 !important;
+	caret-color: #9b59b6 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-cursor,
 body[data-section="css"] .cm-editor .cm-dropCursor {
-	border-left-color: #8b6bc4 !important;
+	border-left-color: #9b59b6 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-selectionBackground,
@@ -3025,12 +3025,12 @@ body[data-section="css"] .cm-editor .cm-activeLine {
 }
 
 body[data-section="html"] .cm-editor .cm-content {
-	caret-color: #c75b7a !important;
+	caret-color: #e040fb !important;
 }
 
 body[data-section="html"] .cm-editor .cm-cursor,
 body[data-section="html"] .cm-editor .cm-dropCursor {
-	border-left-color: #c75b7a !important;
+	border-left-color: #e040fb !important;
 }
 
 body[data-section="html"] .cm-editor .cm-selectionBackground,
@@ -3043,12 +3043,12 @@ body[data-section="html"] .cm-editor .cm-activeLine {
 }
 
 body[data-section="tailwind"] .cm-editor .cm-content {
-	caret-color: #26a69a !important;
+	caret-color: #00bcd4 !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-cursor,
 body[data-section="tailwind"] .cm-editor .cm-dropCursor {
-	border-left-color: #26a69a !important;
+	border-left-color: #00bcd4 !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-selectionBackground,
@@ -3063,7 +3063,7 @@ body[data-section="tailwind"] .cm-editor .cm-activeLine {
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
 	background: rgba(139, 107, 196, 0.1);
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 body[data-section="css"] .module-pill .level-indicator {
@@ -3072,7 +3072,7 @@ body[data-section="css"] .module-pill .level-indicator {
 
 body[data-section="html"] .module-pill {
 	background: rgba(199, 91, 122, 0.1);
-	color: #c75b7a;
+	color: #e040fb;
 }
 
 body[data-section="html"] .module-pill .level-indicator {
@@ -3081,7 +3081,7 @@ body[data-section="html"] .module-pill .level-indicator {
 
 body[data-section="tailwind"] .module-pill {
 	background: rgba(38, 166, 154, 0.1);
-	color: #26a69a;
+	color: #00bcd4;
 }
 
 body[data-section="tailwind"] .module-pill .level-indicator {
@@ -3129,28 +3129,28 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 
 /* Section page progress bar colors */
 body[data-section="css"] .section-progress-bar .progress-fill {
-	background: #8b6bc4;
+	background: #9b59b6;
 }
 
 body[data-section="html"] .section-progress-bar .progress-fill {
-	background: #c75b7a;
+	background: #e040fb;
 }
 
 body[data-section="tailwind"] .section-progress-bar .progress-fill {
-	background: #26a69a;
+	background: #00bcd4;
 }
 
 /* Section page header colors */
 [data-section="css"] .section-hero h1 {
-	color: #8b6bc4;
+	color: #9b59b6;
 }
 
 [data-section="html"] .section-hero h1 {
-	color: #c75b7a;
+	color: #e040fb;
 }
 
 [data-section="tailwind"] .section-hero h1 {
-	color: #26a69a;
+	color: #00bcd4;
 }
 
 /* Section and Reference footer - override landing-footer styles */
