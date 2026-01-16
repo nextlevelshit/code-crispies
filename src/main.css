@@ -984,7 +984,7 @@ nav.sidebar-section {
 
 .progress-fill {
 	height: 100%;
-	background: var(--success-color);
+	background: linear-gradient(135deg, #9b59b6, #e040fb, #00bcd4, #7c4dff);
 	border-radius: 4px;
 	transition: width 0.3s ease;
 	width: 0%;
