@@ -155,6 +155,7 @@ const elements = {
 	sidebarBackdrop: document.getElementById("sidebar-backdrop"),
 	closeSidebar: document.getElementById("close-sidebar"),
 	moduleList: document.getElementById("module-list"),
+	footerLessonLinks: document.getElementById("footer-lesson-links"),
 	progressFill: document.getElementById("progress-fill"),
 	progressText: document.getElementById("progress-text"),
 	resetBtn: document.getElementById("reset-btn"),
@@ -1991,6 +1992,40 @@ function showLandingPage() {
 
 	// Update section progress on landing page
 	updateLandingProgress();
+
+	// Render footer lesson links
+	renderFooterLessonLinks();
+}
+
+/**
+ * Render module links in the landing page footer, grouped by section
+ */
+function renderFooterLessonLinks() {
+	if (!elements.footerLessonLinks) return;
+
+	const modules = lessonEngine.modules || [];
+	const sectionGroups = { css: [], html: [] };
+
+	modules.forEach((module) => {
+		if (module.excludeFromProgress) return;
+		const sectionId = getModuleSection(module);
+		if (sectionId && sectionGroups[sectionId]) {
+			sectionGroups[sectionId].push(module);
+		}
+	});
+
+	let html = "";
+	Object.entries(sectionGroups).forEach(([sectionId, sectionModules]) => {
+		if (sectionModules.length === 0) return;
+		const sectionName = sectionId.toUpperCase();
+		html += `<div class="footer-section-group"><strong><a href="#${sectionId}">${sectionName}</a></strong>`;
+		sectionModules.forEach((module) => {
+			html += `<a href="#${module.id}/0">${module.title}</a>`;
+		});
+		html += "</div>";
+	});
+
+	elements.footerLessonLinks.innerHTML = html;
 }
 
 /**
@@ -2387,6 +2422,8 @@ function init() {
 			track("landing_cta", { href: target.getAttribute("href") });
 		} else if (target.classList.contains("section-card")) {
 			track("landing_section", { section: target.dataset.section });
+		} else if (target.closest(".footer-support")) {
+			track("support_click", { location: "landing" });
 		}
 	});
 }
