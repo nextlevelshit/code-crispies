@@ -15,7 +15,7 @@ export const sections = {
 		id: "html",
 		title: "HTML",
 		description: "Semantic markup and native elements",
-		color: "#9b59b6",
+		color: "#e91e63",
 		order: 2
 	},
 	tailwind: {
