@@ -755,14 +755,11 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide next button in playground mode (grid layout keeps pill centered)
-	elements.nextBtn.classList.toggle("hidden", isPlayground);
-
 	// Update button states
 	elements.prevBtn.disabled = !engineState.canGoPrev;
-	elements.nextBtn.disabled = !engineState.canGoNext;
+	elements.nextBtn.disabled = isPlayground || !engineState.canGoNext;
 	elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
-	elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
+	elements.nextBtn.classList.toggle("btn-disabled", isPlayground || !engineState.canGoNext);
 }
 
 function nextLesson() {
