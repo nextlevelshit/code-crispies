@@ -164,7 +164,8 @@ const elements = {
 	refFooterLessonLinks: document.getElementById("ref-footer-lesson-links"),
 	sectionFooterLessonLinks: document.getElementById("section-footer-lesson-links"),
 	progressFill: document.getElementById("progress-fill"),
-	progressText: document.getElementById("progress-text"),
+	progressCurrent: document.getElementById("progress-current"),
+	progressTotal: document.getElementById("progress-total"),
 	milestonesContainer: document.getElementById("milestones"),
 	resetBtn: document.getElementById("reset-btn"),
 	disableFeedbackToggle: document.getElementById("disable-feedback-toggle"),
@@ -322,9 +323,11 @@ function updateProgressDisplay() {
 	elements.progressFill.style.width = `${progressPercent}%`;
 	elements.progressFill.style.setProperty('--progress-percent', progressPercent);
 
-	// Update progress text - show completed of total lessons
-	elements.progressText.textContent = t("progressTextMilestone", {
-		completed: stats.totalCompleted,
+	// Update progress current - show progress towards next milestone
+	elements.progressCurrent.textContent = `${stats.totalCompleted}/${stats.nextMilestone}`;
+
+	// Update progress total - show total lessons
+	elements.progressTotal.textContent = t("progressTotal", {
 		total: stats.totalLessons
 	});
 
