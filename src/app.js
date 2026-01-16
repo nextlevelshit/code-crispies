@@ -755,9 +755,8 @@ function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
-	// Hide next button in playground mode
+	// Hide next button in playground mode (grid layout keeps pill centered)
 	elements.nextBtn.classList.toggle("hidden", isPlayground);
-	elements.gameControls?.classList.toggle("centered", isPlayground);
 
 	// Update button states
 	elements.prevBtn.disabled = !engineState.canGoPrev;
