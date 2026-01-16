@@ -60,8 +60,8 @@ const crispyTheme = EditorView.theme(
 	{ dark: true }
 );
 
-// Syntax highlighting with purple accent
-const crispyHighlight = HighlightStyle.define([
+// Default syntax highlighting (blue accent)
+const defaultHighlight = HighlightStyle.define([
 	{ tag: tags.keyword, color: "#c9a6eb" },
 	{ tag: tags.operator, color: "#cdd6f4" },
 	{ tag: tags.variableName, color: "#89b4fa" },
@@ -83,8 +83,42 @@ const crispyHighlight = HighlightStyle.define([
 	{ tag: tags.color, color: "#f9e2af" }
 ]);
 
-// Combined theme export
-export const crispyEditorTheme = [crispyTheme, syntaxHighlighting(crispyHighlight)];
+// CSS section highlighting (purple selectors)
+const cssHighlight = HighlightStyle.define([
+	{ tag: tags.keyword, color: "#c9a6eb" },
+	{ tag: tags.operator, color: "#cdd6f4" },
+	{ tag: tags.variableName, color: "#c9a6eb" },
+	{ tag: tags.propertyName, color: "#89b4fa" },
+	{ tag: tags.attributeName, color: "#89b4fa" },
+	{ tag: tags.className, color: "#c9a6eb" },
+	{ tag: tags.tagName, color: "#c9a6eb" },
+	{ tag: tags.string, color: "#a6e3a1" },
+	{ tag: tags.number, color: "#fab387" },
+	{ tag: tags.bool, color: "#fab387" },
+	{ tag: tags.null, color: "#fab387" },
+	{ tag: tags.comment, color: "#6c7086", fontStyle: "italic" },
+	{ tag: tags.bracket, color: "#cdd6f4" },
+	{ tag: tags.punctuation, color: "#cdd6f4" },
+	{ tag: tags.definition(tags.variableName), color: "#c9a6eb" },
+	{ tag: tags.function(tags.variableName), color: "#89b4fa" },
+	{ tag: tags.atom, color: "#c9a6eb" },
+	{ tag: tags.unit, color: "#a6e3a1" },
+	{ tag: tags.color, color: "#f9e2af" }
+]);
+
+// Get highlight style based on section
+function getHighlightForSection(section) {
+	if (section === "css") return cssHighlight;
+	return defaultHighlight;
+}
+
+// Get theme with section-specific highlighting
+export function getEditorTheme(section) {
+	return [crispyTheme, syntaxHighlighting(getHighlightForSection(section))];
+}
+
+// Default combined theme export (for backwards compatibility)
+export const crispyEditorTheme = [crispyTheme, syntaxHighlighting(defaultHighlight)];
 
 // Custom overrides for editor styling
 const editorTheme = EditorView.theme(
@@ -110,6 +144,7 @@ export class CodeEditor {
 		this.options = options;
 		this.view = null;
 		this.mode = options.mode || "css";
+		this.section = options.section || null;
 		this.onChange = options.onChange || (() => {});
 	}
 
@@ -126,7 +161,7 @@ export class CodeEditor {
 		// Build extensions array
 		const extensions = [
 			langExtension,
-			crispyEditorTheme,
+			getEditorTheme(this.section),
 			editorTheme,
 			// History for undo/redo
 			history(),
@@ -211,6 +246,17 @@ export class CodeEditor {
 		if (this.mode === mode) return;
 
 		this.mode = mode;
+		const currentValue = this.getValue();
+		this.init(currentValue);
+	}
+
+	/**
+	 * Set section for theme (css, html, tailwind)
+	 */
+	setSection(section) {
+		if (this.section === section) return;
+
+		this.section = section;
 		const currentValue = this.getValue();
 		this.init(currentValue);
 	}

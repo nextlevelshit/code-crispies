@@ -3,7 +3,7 @@
 	"id": "welcome",
 	"title": "Willkommen",
 	"description": "Erste Schritte mit Code Crispies",
-	"mode": "html",
+	"mode": "css",
 	"difficulty": "beginner",
 	"excludeFromProgress": true,
 	"lessons": [

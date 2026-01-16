@@ -156,6 +156,8 @@ const elements = {
 	closeSidebar: document.getElementById("close-sidebar"),
 	moduleList: document.getElementById("module-list"),
 	footerLessonLinks: document.getElementById("footer-lesson-links"),
+	refFooterLessonLinks: document.getElementById("ref-footer-lesson-links"),
+	sectionFooterLessonLinks: document.getElementById("section-footer-lesson-links"),
 	progressFill: document.getElementById("progress-fill"),
 	progressText: document.getElementById("progress-text"),
 	resetBtn: document.getElementById("reset-btn"),
@@ -456,6 +458,13 @@ function selectLesson(moduleId, lessonIndex) {
 
 	loadCurrentLesson();
 
+	// Update section color coding (after loadCurrentLesson to ensure content is loaded first)
+	const newState = lessonEngine.getCurrentState();
+	updateSectionColor(getModuleSection(newState.module));
+
+	// Update nav highlight
+	updateNavHighlight({ type: RouteType.LESSON, moduleId, lessonIndex });
+
 	// Close sidebar after selection on mobile
 	if (window.innerWidth <= 768) {
 		closeSidebar();
@@ -694,11 +703,15 @@ function nextLesson() {
 		// Update URL
 		updateHash(newState.module.id, newState.lessonIndex);
 
-		if (newState.module.id !== prevModuleId) {
+		const moduleChanged = newState.module.id !== prevModuleId;
+		if (moduleChanged) {
 			updateModuleHighlight(newState.module.id);
-			updateSectionColor(getModuleSection(newState.module));
 		}
 		loadCurrentLesson();
+		if (moduleChanged) {
+			updateSectionColor(getModuleSection(newState.module));
+			updateNavHighlight({ type: RouteType.LESSON, moduleId: newState.module.id, lessonIndex: newState.lessonIndex });
+		}
 	}
 }
 
@@ -711,11 +724,15 @@ function prevLesson() {
 		// Update URL
 		updateHash(newState.module.id, newState.lessonIndex);
 
-		if (newState.module.id !== prevModuleId) {
+		const moduleChanged = newState.module.id !== prevModuleId;
+		if (moduleChanged) {
 			updateModuleHighlight(newState.module.id);
-			updateSectionColor(getModuleSection(newState.module));
 		}
 		loadCurrentLesson();
+		if (moduleChanged) {
+			updateSectionColor(getModuleSection(newState.module));
+			updateNavHighlight({ type: RouteType.LESSON, moduleId: newState.module.id, lessonIndex: newState.lessonIndex });
+		}
 	}
 }
 
@@ -1852,7 +1869,7 @@ function stripHtml(html) {
  * Update page meta tags based on current route for SEO
  */
 function updatePageMeta(route) {
-	const defaultTitle = "Code Crispies - Learn HTML & CSS Interactively | Free Coding Practice";
+	const defaultTitle = "CODE CRISPIES - Learn HTML & CSS Interactively | Free Coding Practice";
 	const defaultDesc =
 		"Master HTML, CSS, and Tailwind through hands-on coding exercises. Free, open-source learning platform with instant feedback. No account required.";
 
@@ -1872,7 +1889,7 @@ function updatePageMeta(route) {
 		case RouteType.SECTION: {
 			const sectionNames = { css: "CSS", html: "HTML", tailwind: "Tailwind CSS" };
 			const sectionName = sectionNames[route.sectionId] || route.sectionId;
-			title = `${sectionName} Lessons - Code Crispies | Learn ${sectionName}`;
+			title = `${sectionName} Lessons - CODE CRISPIES | Learn ${sectionName}`;
 			description = `Learn ${sectionName} through interactive coding exercises. Hands-on practice with instant feedback.`;
 			break;
 		}
@@ -1881,7 +1898,7 @@ function updatePageMeta(route) {
 			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
 			const lesson = module?.lessons[route.lessonIndex];
 			if (module && lesson) {
-				title = `${lesson.title} - ${module.title} | Code Crispies`;
+				title = `${lesson.title} - ${module.title} | CODE CRISPIES`;
 				const lessonDesc = stripHtml(lesson.description || lesson.task);
 				description = lessonDesc.length > 155 ? lessonDesc.slice(0, 152) + "..." : lessonDesc || defaultDesc;
 			}
@@ -1897,7 +1914,7 @@ function updatePageMeta(route) {
 				html: "HTML Elements"
 			};
 			const refName = refNames[route.refId] || "Reference";
-			title = `${refName} Reference - Code Crispies`;
+			title = `${refName} Reference - CODE CRISPIES`;
 			description = `Quick reference guide for ${refName}. Syntax, examples, and common patterns for web development.`;
 			break;
 		}
@@ -1913,13 +1930,13 @@ function updatePageMeta(route) {
 	// Update Open Graph tags
 	const ogTitle = document.querySelector('meta[property="og:title"]');
 	const ogDesc = document.querySelector('meta[property="og:description"]');
-	if (ogTitle) ogTitle.setAttribute("content", title.replace(" | Code Crispies", "").replace(" - Code Crispies", ""));
+	if (ogTitle) ogTitle.setAttribute("content", title.replace(" | CODE CRISPIES", "").replace(" - CODE CRISPIES", ""));
 	if (ogDesc) ogDesc.setAttribute("content", description);
 
 	// Update Twitter tags
 	const twitterTitle = document.querySelector('meta[name="twitter:title"]');
 	const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-	if (twitterTitle) twitterTitle.setAttribute("content", title.replace(" | Code Crispies", "").replace(" - Code Crispies", ""));
+	if (twitterTitle) twitterTitle.setAttribute("content", title.replace(" | CODE CRISPIES", "").replace(" - CODE CRISPIES", ""));
 	if (twitterDesc) twitterDesc.setAttribute("content", description);
 }
 
@@ -1994,6 +2011,11 @@ function updateSectionColor(sectionId) {
 	} else {
 		document.body.removeAttribute("data-section");
 	}
+
+	// Update code editor theme for section
+	if (codeEditor) {
+		codeEditor.setSection(sectionId);
+	}
 }
 
 /**
@@ -2018,8 +2040,6 @@ function showLandingPage() {
  * Render module links in the landing page footer, grouped by section
  */
 function renderFooterLessonLinks() {
-	if (!elements.footerLessonLinks) return;
-
 	const modules = lessonEngine.modules || [];
 	const sectionGroups = { css: [], html: [] };
 
@@ -2042,7 +2062,16 @@ function renderFooterLessonLinks() {
 		html += "</div>";
 	});
 
-	elements.footerLessonLinks.innerHTML = html;
+	// Update all footer lesson links
+	if (elements.footerLessonLinks) {
+		elements.footerLessonLinks.innerHTML = html;
+	}
+	if (elements.refFooterLessonLinks) {
+		elements.refFooterLessonLinks.innerHTML = html;
+	}
+	if (elements.sectionFooterLessonLinks) {
+		elements.sectionFooterLessonLinks.innerHTML = html;
+	}
 }
 
 /**
@@ -2077,7 +2106,6 @@ function updateLandingProgress() {
 function showSectionPage(sectionId) {
 	hideAllPages();
 	elements.sectionPage?.classList.remove("hidden");
-	window.scrollTo(0, 0);
 
 	// Update section color
 	updateSectionColor(sectionId);
@@ -2120,6 +2148,9 @@ function showSectionPage(sectionId) {
 	const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 	if (elements.sectionProgressFill) elements.sectionProgressFill.style.width = `${percent}%`;
 	if (elements.sectionProgressText) elements.sectionProgressText.textContent = `${completed} of ${total} lessons complete`;
+
+	// Scroll to top after content is rendered
+	requestAnimationFrame(() => window.scrollTo(0, 0));
 }
 
 /**
