@@ -41,6 +41,10 @@ export const auth = {
     supabase?.auth.getUser() ??
     Promise.resolve({ data: { user: null }, error: null }),
 
+  getSession: () =>
+    supabase?.auth.getSession() ??
+    Promise.resolve({ data: { session: null }, error: null }),
+
   onAuthStateChange: (callback) =>
     supabase?.auth.onAuthStateChange(callback) ?? { data: { subscription: { unsubscribe: () => {} } } },
 
