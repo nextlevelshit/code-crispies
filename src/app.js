@@ -539,6 +539,7 @@ function resetSuccessIndicators() {
 	elements.previewWrapper?.classList.remove("matched");
 	elements.previewWrapper?.classList.remove("completed-glow");
 	elements.previewSection?.classList.remove("matched");
+	elements.previewSection?.classList.remove("completed-glow");
 
 	// Remove completion badge if present
 	const badge = document.querySelector(".completion-badge");
@@ -661,8 +662,9 @@ function loadCurrentLesson() {
 			elements.lessonTitleRow.appendChild(badge);
 		}
 
-		// Show gradient border for completed lessons
+		// Show gradient border and glow for completed lessons
 		elements.previewWrapper?.classList.add("completed-glow");
+		elements.previewSection?.classList.add("completed-glow");
 	} else {
 		elements.runBtn.querySelector("span").textContent = t("run");
 
@@ -670,6 +672,7 @@ function loadCurrentLesson() {
 		const badge = document.querySelector(".completion-badge");
 		if (badge) badge.remove();
 		elements.previewWrapper?.classList.remove("completed-glow");
+		elements.previewSection?.classList.remove("completed-glow");
 	}
 
 	// Update level indicator (hide in playground mode)
@@ -932,8 +935,9 @@ function runCode() {
 		state.animationTimeout = setTimeout(() => {
 			elements.previewWrapper?.classList.remove("matched");
 			elements.previewSection?.classList.remove("matched");
-			// Keep the gradient border visible after animation
+			// Keep the gradient border and glow visible after animation
 			elements.previewWrapper?.classList.add("completed-glow");
+			elements.previewSection?.classList.add("completed-glow");
 			state.animationTimeout = null;
 		}, 3500);
 

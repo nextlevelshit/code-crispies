@@ -662,6 +662,18 @@ kbd {
 	pointer-events: none;
 }
 
+/* Persistent glow for completed lessons */
+.preview-section.completed-glow::before {
+	content: "";
+	position: absolute;
+	inset: var(--spacing-md);
+	border-radius: var(--border-radius-md);
+	background: conic-gradient(from 0deg, #9163b8, #d45aa0, #1aafb8, #7c4dff, #9163b8);
+	filter: blur(30px);
+	opacity: 0.35;
+	pointer-events: none;
+}
+
 .preview-header {
 	display: flex;
 	justify-content: space-between;
@@ -813,7 +825,7 @@ kbd {
 	}
 	100% {
 		--border-angle: -360deg;
-		opacity: 0;
+		opacity: 0.35;
 	}
 }
 

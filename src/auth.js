@@ -1,5 +1,12 @@
 import { t, applyTranslations } from "./i18n.js";
 
+// Analytics tracking helper
+function track(eventName, eventData = {}) {
+  if (typeof umami !== "undefined" && umami.track) {
+    umami.track(eventName, eventData);
+  }
+}
+
 let currentUser = null;
 let oauthHandled = false;
 let lessonEngineRef = null;
@@ -40,6 +47,8 @@ export async function handleOAuthCallback() {
 
       if (!error && data?.session) {
         oauthHandled = true;
+        const provider = data.session.user?.app_metadata?.provider || "oauth";
+        track("auth_login", { method: provider });
       }
     }
 
