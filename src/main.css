@@ -3001,6 +3001,32 @@ body[data-section="tailwind"] .cm-editor .cm-activeLine {
 	background-color: rgba(0, 188, 212, 0.08) !important;
 }
 
+/* Code block border section colors */
+body[data-section="css"] .code-block {
+	border-color: rgba(124, 77, 255, 0.4);
+}
+
+body[data-section="html"] .code-block {
+	border-color: rgba(233, 30, 99, 0.4);
+}
+
+body[data-section="tailwind"] .code-block {
+	border-color: rgba(0, 188, 212, 0.4);
+}
+
+/* Section code block CodeMirror syntax highlighting overrides */
+body[data-section="css"] .code-block .cm-editor .cm-line {
+	color: #c9b8ff;
+}
+
+body[data-section="html"] .code-block .cm-editor .cm-line {
+	color: #ffb8c9;
+}
+
+body[data-section="tailwind"] .code-block .cm-editor .cm-line {
+	color: #b8f0ff;
+}
+
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
 	background: rgba(124, 77, 255, 0.9);
