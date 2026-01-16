@@ -628,12 +628,23 @@ function loadCurrentLesson() {
 		elements.previewWrapper?.classList.remove("completed-glow");
 	}
 
-	// Update level indicator
-	renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
+	// Update level indicator (hide in playground mode)
+	const isPlayground = engineState.lesson?.mode === "playground";
+	if (isPlayground) {
+		elements.levelIndicator.classList.add("hidden");
+	} else {
+		elements.levelIndicator.classList.remove("hidden");
+		renderLevelIndicator(elements.levelIndicator, engineState.lessonIndex + 1, engineState.totalLessons);
+	}
 	// Header pill shows module name + level (clickable link to return to lesson)
 	if (elements.headerLevelPill && engineState.module) {
-		const label = t("lessonLabel");
-		elements.headerLevelPill.innerHTML = `<span class="header-module-name">${engineState.module.title}</span> <span class="header-level">${label} ${engineState.lessonIndex + 1} / ${engineState.totalLessons}</span>`;
+		if (isPlayground) {
+			// Playground: just show title, no lesson count
+			elements.headerLevelPill.innerHTML = `<span class="header-module-name">${engineState.module.title}</span>`;
+		} else {
+			const label = t("lessonLabel");
+			elements.headerLevelPill.innerHTML = `<span class="header-module-name">${engineState.module.title}</span> <span class="header-level">${label} ${engineState.lessonIndex + 1} / ${engineState.totalLessons}</span>`;
+		}
 		elements.headerLevelPill.href = `#${engineState.module.id}/${engineState.lessonIndex}`;
 	}
 
