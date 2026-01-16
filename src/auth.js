@@ -274,6 +274,7 @@ function setupAuthForms() {
     .getElementById("logout-btn-sidebar")
     ?.addEventListener("click", async () => {
       await authModule?.signOut();
+      track("auth_logout");
     });
 
   // Delete account button and dialog
@@ -318,6 +319,7 @@ function setupAuthForms() {
       } else {
         errorEl.classList.add("hidden");
         deleteDialog.close();
+        track("auth_delete_account");
         // Sign out and clear local state
         await authModule.signOut();
       }
@@ -379,6 +381,7 @@ async function handleLoginSubmit(e) {
   } else {
     errorEl.classList.add("hidden");
     document.getElementById("auth-dialog").close();
+    track("auth_login", { method: "email" });
   }
 }
 
@@ -416,6 +419,7 @@ async function handleSignupSubmit(e) {
     e.target.querySelectorAll(".form-field, button[type='submit']").forEach(el => {
       el.classList.add("hidden");
     });
+    track("auth_signup", { method: "email" });
   }
 }
 
