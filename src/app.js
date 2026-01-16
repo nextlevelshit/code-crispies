@@ -869,6 +869,8 @@ function runCode() {
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
+	track("run_code", { module: engineState.module?.id, lesson: engineState.lessonIndex, playground: isPlayground });
+
 	// Rotate the Run button icon
 	const runButtonImg = document.querySelector("#run-btn img");
 	if (runButtonImg) {
@@ -2479,6 +2481,7 @@ function init() {
 		e.preventDefault();
 		navigateTo("");
 		showLandingPage();
+		track("logo_click");
 	});
 
 	// Language select
@@ -2536,10 +2539,16 @@ function init() {
 	const imprintDialog = document.getElementById("imprint-dialog");
 
 	document.querySelectorAll(".privacy-link").forEach((btn) => {
-		btn.addEventListener("click", () => privacyDialog?.showModal());
+		btn.addEventListener("click", () => {
+			privacyDialog?.showModal();
+			track("privacy_open");
+		});
 	});
 	document.querySelectorAll(".imprint-link").forEach((btn) => {
-		btn.addEventListener("click", () => imprintDialog?.showModal());
+		btn.addEventListener("click", () => {
+			imprintDialog?.showModal();
+			track("imprint_open");
+		});
 	});
 
 	document.querySelector(".privacy-dialog-close")?.addEventListener("click", () => {
@@ -2560,6 +2569,7 @@ function init() {
 	elements.disableFeedbackToggle.addEventListener("change", (e) => {
 		state.userSettings.disableFeedbackErrors = !e.target.checked;
 		saveUserSettings();
+		track("setting_change", { setting: "feedback_errors", enabled: e.target.checked });
 	});
 
 	// Click on editor content to focus CodeMirror
