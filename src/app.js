@@ -696,12 +696,19 @@ function handleEditorChange(code) {
 
 function updateNavigationButtons() {
 	const engineState = lessonEngine.getCurrentState();
+	const isPlayground = engineState.lesson?.mode === "playground";
 
-	elements.prevBtn.disabled = !engineState.canGoPrev;
-	elements.nextBtn.disabled = !engineState.canGoNext;
+	// Hide nav buttons in playground mode
+	elements.prevBtn.classList.toggle("hidden", isPlayground);
+	elements.nextBtn.classList.toggle("hidden", isPlayground);
 
-	elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
-	elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
+	if (!isPlayground) {
+		elements.prevBtn.disabled = !engineState.canGoPrev;
+		elements.nextBtn.disabled = !engineState.canGoNext;
+
+		elements.prevBtn.classList.toggle("btn-disabled", !engineState.canGoPrev);
+		elements.nextBtn.classList.toggle("btn-disabled", !engineState.canGoNext);
+	}
 }
 
 function nextLesson() {
