@@ -1,0 +1,88 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "html-semantic",
+	"title": "Semantic HTML",
+	"mode": "html",
+	"description": "Use meaningful HTML elements to structure content properly.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "semantic-1",
+			"title": "The <article> Element",
+			"description": "The <kbd>&lt;article&gt;</kbd> element represents self-contained content that could be distributed independently, like a blog post, news article, or comment.<br><br><pre>&lt;article&gt;\n  &lt;h2&gt;Article Title&lt;/h2&gt;\n  &lt;p&gt;Article content...&lt;/p&gt;\n&lt;/article&gt;</pre>",
+			"task": "Wrap the blog post content in an <kbd>&lt;article&gt;</kbd> element.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } article { padding: 1rem; background: #f9f9f9; border-left: 4px solid steelblue; border-radius: 4px; } h2 { margin: 0 0 8px; color: steelblue; } p { margin: 0; color: #555; line-height: 1.5; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "<h2>My First Post</h2>\n<p>This is a blog post about learning HTML.</p>",
+			"codeSuffix": "",
+			"solution": "<article>\n<h2>My First Post</h2>\n<p>This is a blog post about learning HTML.</p>\n</article>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "<article>",
+					"message": "Add an opening <kbd>&lt;article&gt;</kbd> tag"
+				},
+				{
+					"type": "contains",
+					"value": "</article>",
+					"message": "Add a closing <kbd>&lt;/article&gt;</kbd> tag"
+				}
+			]
+		},
+		{
+			"id": "semantic-2",
+			"title": "The <section> Element",
+			"description": "The <kbd>&lt;section&gt;</kbd> element represents a thematic grouping of content, typically with a heading. Use it to divide a page into logical sections.<br><br><pre>&lt;section&gt;\n  &lt;h2&gt;Features&lt;/h2&gt;\n  &lt;p&gt;Our product features...&lt;/p&gt;\n&lt;/section&gt;</pre>",
+			"task": "Wrap the features content in a <kbd>&lt;section&gt;</kbd> element.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } section { padding: 1rem; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 8px; } h2 { margin: 0 0 12px; } ul { margin: 0; padding-left: 1.5rem; } li { margin: 4px 0; color: #444; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "<h2>Features</h2>\n<ul>\n  <li>Fast performance</li>\n  <li>Easy to use</li>\n</ul>",
+			"codeSuffix": "",
+			"solution": "<section>\n<h2>Features</h2>\n<ul>\n  <li>Fast performance</li>\n  <li>Easy to use</li>\n</ul>\n</section>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "<section>",
+					"message": "Add an opening <kbd>&lt;section&gt;</kbd> tag"
+				},
+				{
+					"type": "contains",
+					"value": "</section>",
+					"message": "Add a closing <kbd>&lt;/section&gt;</kbd> tag"
+				}
+			]
+		},
+		{
+			"id": "semantic-3",
+			"title": "The <aside> Element",
+			"description": "The <kbd>&lt;aside&gt;</kbd> element represents content tangentially related to the main content, like sidebars, pull quotes, or related links.<br><br><pre>&lt;aside&gt;\n  &lt;h3&gt;Related&lt;/h3&gt;\n  &lt;ul&gt;...&lt;/ul&gt;\n&lt;/aside&gt;</pre>",
+			"task": "Wrap the related links in an <kbd>&lt;aside&gt;</kbd> element.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } aside { padding: 1rem; background: #fff8e7; border: 1px solid #ffe0a6; border-radius: 8px; } h3 { margin: 0 0 8px; color: #b8860b; font-size: 0.9rem; text-transform: uppercase; } ul { margin: 0; padding-left: 1.2rem; } li { margin: 4px 0; } a { color: #b8860b; }",
+			"sandboxCSS": "",
+			"codePrefix": "",
+			"initialCode": "<h3>Related Posts</h3>\n<ul>\n  <li><a href=\"#\">CSS Basics</a></li>\n  <li><a href=\"#\">HTML Tips</a></li>\n</ul>",
+			"codeSuffix": "",
+			"solution": "<aside>\n<h3>Related Posts</h3>\n<ul>\n  <li><a href=\"#\">CSS Basics</a></li>\n  <li><a href=\"#\">HTML Tips</a></li>\n</ul>\n</aside>",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "<aside>",
+					"message": "Add an opening <kbd>&lt;aside&gt;</kbd> tag"
+				},
+				{
+					"type": "contains",
+					"value": "</aside>",
+					"message": "Add a closing <kbd>&lt;/aside&gt;</kbd> tag"
+				}
+			]
+		}
+	]
+}
