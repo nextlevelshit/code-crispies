@@ -2848,72 +2848,72 @@ input:checked + .toggle-slider::before {
 }
 
 /* ================= SECTION COLOR CODING ================= */
-/* CSS Section - Muted Violet */
+/* CSS Section - Balanced Violet */
 [data-section="css"] {
-	--section-color: #7b68a6;
-	--section-color-light: #9d8ec4;
-	--section-color-dark: #5a4a7a;
-	--section-color-rgb: 123, 104, 166;
+	--section-color: #8b6bc4;
+	--section-color-light: #a98cd6;
+	--section-color-dark: #6b4fa0;
+	--section-color-rgb: 139, 107, 196;
 }
 
-/* HTML Section - Muted Rose */
+/* HTML Section - Balanced Rose */
 [data-section="html"] {
-	--section-color: #c75b7a;
-	--section-color-light: #db8a9e;
-	--section-color-dark: #a34560;
-	--section-color-rgb: 199, 91, 122;
+	--section-color: #d4637b;
+	--section-color-light: #e08899;
+	--section-color-dark: #b84d63;
+	--section-color-rgb: 212, 99, 123;
 }
 
-/* Tailwind Section - Muted Teal */
+/* Tailwind Section - Balanced Teal */
 [data-section="tailwind"] {
-	--section-color: #4a9ea8;
-	--section-color-light: #6fbac3;
-	--section-color-dark: #3a7d85;
-	--section-color-rgb: 74, 158, 168;
+	--section-color: #26a69a;
+	--section-color-light: #4db6ac;
+	--section-color-dark: #00897b;
+	--section-color-rgb: 38, 166, 154;
 }
 
 /* Apply section colors to nav links */
 .nav-link[data-section="css"] {
-	color: #7b68a6;
+	color: #8b6bc4;
 }
 
 .nav-link[data-section="html"] {
-	color: #c75b7a;
+	color: #d4637b;
 }
 
 .nav-link[data-section="tailwind"] {
-	color: #4a9ea8;
+	color: #26a69a;
 }
 
 .nav-link[data-section="css"]:hover,
 .nav-link[data-section="css"].active {
-	background: rgba(123, 104, 166, 0.1);
-	color: #5a4a7a;
+	background: rgba(139, 107, 196, 0.1);
+	color: #6b4fa0;
 }
 
 .nav-link[data-section="html"]:hover,
 .nav-link[data-section="html"].active {
-	background: rgba(199, 91, 122, 0.1);
-	color: #a34560;
+	background: rgba(212, 99, 123, 0.1);
+	color: #b84d63;
 }
 
 .nav-link[data-section="tailwind"]:hover,
 .nav-link[data-section="tailwind"].active {
-	background: rgba(74, 158, 168, 0.1);
-	color: #3a7d85;
+	background: rgba(38, 166, 154, 0.1);
+	color: #00897b;
 }
 
 /* Logo color coding based on section */
 [data-section="css"] .code-text {
-	color: #7b68a6;
+	color: #8b6bc4;
 }
 
 [data-section="html"] .code-text {
-	color: #c75b7a;
+	color: #d4637b;
 }
 
 [data-section="tailwind"] .code-text {
-	color: #4a9ea8;
+	color: #26a69a;
 }
 
 /* Reference nav link colors */
@@ -2921,7 +2921,7 @@ input:checked + .toggle-slider::before {
 .ref-nav-link[data-ref="selectors"],
 .ref-nav-link[data-ref="flexbox"],
 .ref-nav-link[data-ref="grid"] {
-	color: #7b68a6;
+	color: #8b6bc4;
 }
 
 .ref-nav-link[data-ref="css"]:hover,
@@ -2932,114 +2932,114 @@ input:checked + .toggle-slider::before {
 .ref-nav-link[data-ref="flexbox"].active,
 .ref-nav-link[data-ref="grid"]:hover,
 .ref-nav-link[data-ref="grid"].active {
-	background: rgba(123, 104, 166, 0.15);
-	color: #5a4a7a;
+	background: rgba(139, 107, 196, 0.15);
+	color: #6b4fa0;
 }
 
 .ref-nav-link[data-ref="html"] {
-	color: #c75b7a;
+	color: #d4637b;
 }
 
 .ref-nav-link[data-ref="html"]:hover,
 .ref-nav-link[data-ref="html"].active {
-	background: rgba(199, 91, 122, 0.15);
-	color: #a34560;
+	background: rgba(212, 99, 123, 0.15);
+	color: #b84d63;
 }
 
 /* CodeMirror section color overrides */
 body[data-section="css"] .cm-editor .cm-content {
-	caret-color: #7b68a6 !important;
+	caret-color: #8b6bc4 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-cursor,
 body[data-section="css"] .cm-editor .cm-dropCursor {
-	border-left-color: #7b68a6 !important;
+	border-left-color: #8b6bc4 !important;
 }
 
 body[data-section="css"] .cm-editor .cm-selectionBackground,
 body[data-section="css"] .cm-editor .cm-content ::selection {
-	background-color: rgba(123, 104, 166, 0.25) !important;
+	background-color: rgba(139, 107, 196, 0.25) !important;
 }
 
 body[data-section="css"] .cm-editor .cm-activeLine {
-	background-color: rgba(123, 104, 166, 0.08) !important;
+	background-color: rgba(139, 107, 196, 0.08) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-content {
-	caret-color: #c75b7a !important;
+	caret-color: #d4637b !important;
 }
 
 body[data-section="html"] .cm-editor .cm-cursor,
 body[data-section="html"] .cm-editor .cm-dropCursor {
-	border-left-color: #c75b7a !important;
+	border-left-color: #d4637b !important;
 }
 
 body[data-section="html"] .cm-editor .cm-selectionBackground,
 body[data-section="html"] .cm-editor .cm-content ::selection {
-	background-color: rgba(199, 91, 122, 0.25) !important;
+	background-color: rgba(212, 99, 123, 0.25) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-activeLine {
-	background-color: rgba(199, 91, 122, 0.08) !important;
+	background-color: rgba(212, 99, 123, 0.08) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-content {
-	caret-color: #4a9ea8 !important;
+	caret-color: #26a69a !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-cursor,
 body[data-section="tailwind"] .cm-editor .cm-dropCursor {
-	border-left-color: #4a9ea8 !important;
+	border-left-color: #26a69a !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-selectionBackground,
 body[data-section="tailwind"] .cm-editor .cm-content ::selection {
-	background-color: rgba(74, 158, 168, 0.25) !important;
+	background-color: rgba(38, 166, 154, 0.25) !important;
 }
 
 body[data-section="tailwind"] .cm-editor .cm-activeLine {
-	background-color: rgba(74, 158, 168, 0.08) !important;
+	background-color: rgba(38, 166, 154, 0.08) !important;
 }
 
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
-	background: rgba(123, 104, 166, 0.1);
-	color: #7b68a6;
+	background: rgba(139, 107, 196, 0.1);
+	color: #8b6bc4;
 }
 
 body[data-section="css"] .module-pill .level-indicator {
-	color: #5a4a7a;
+	color: #6b4fa0;
 }
 
 body[data-section="html"] .module-pill {
-	background: rgba(199, 91, 122, 0.1);
-	color: #c75b7a;
+	background: rgba(212, 99, 123, 0.1);
+	color: #d4637b;
 }
 
 body[data-section="html"] .module-pill .level-indicator {
-	color: #a34560;
+	color: #b84d63;
 }
 
 body[data-section="tailwind"] .module-pill {
-	background: rgba(74, 158, 168, 0.1);
-	color: #4a9ea8;
+	background: rgba(38, 166, 154, 0.1);
+	color: #26a69a;
 }
 
 body[data-section="tailwind"] .module-pill .level-indicator {
-	color: #3a7d85;
+	color: #00897b;
 }
 
 /* Code block border section colors */
 body[data-section="css"] .code-block {
-	border-color: rgba(123, 104, 166, 0.4);
+	border-color: rgba(139, 107, 196, 0.4);
 }
 
 body[data-section="html"] .code-block {
-	border-color: rgba(199, 91, 122, 0.4);
+	border-color: rgba(212, 99, 123, 0.4);
 }
 
 body[data-section="tailwind"] .code-block {
-	border-color: rgba(74, 158, 168, 0.4);
+	border-color: rgba(38, 166, 154, 0.4);
 }
 
 /* Section code block CodeMirror syntax highlighting overrides */
@@ -3057,41 +3057,41 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
-	background: rgba(123, 104, 166, 0.92);
+	background: rgba(139, 107, 196, 0.92);
 }
 
 [data-section="html"] .task-instruction {
-	background: rgba(199, 91, 122, 0.92);
+	background: rgba(212, 99, 123, 0.92);
 }
 
 [data-section="tailwind"] .task-instruction {
-	background: rgba(74, 158, 168, 0.92);
+	background: rgba(38, 166, 154, 0.92);
 }
 
 /* Section page progress bar colors */
 body[data-section="css"] .section-progress-bar .progress-fill {
-	background: #7b68a6;
+	background: #8b6bc4;
 }
 
 body[data-section="html"] .section-progress-bar .progress-fill {
-	background: #c75b7a;
+	background: #d4637b;
 }
 
 body[data-section="tailwind"] .section-progress-bar .progress-fill {
-	background: #4a9ea8;
+	background: #26a69a;
 }
 
 /* Section page header colors */
 [data-section="css"] .section-hero h1 {
-	color: #7b68a6;
+	color: #8b6bc4;
 }
 
 [data-section="html"] .section-hero h1 {
-	color: #c75b7a;
+	color: #d4637b;
 }
 
 [data-section="tailwind"] .section-hero h1 {
-	color: #4a9ea8;
+	color: #26a69a;
 }
 
 /* Reference footer */
