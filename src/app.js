@@ -1939,6 +1939,7 @@ function handleRoute(shouldUpdateUrl = true) {
 			break;
 		case RouteType.LANGUAGE:
 			// Switch language and redirect to home
+			track("language_url", { language: route.lang });
 			setLanguage(route.lang);
 			applyTranslations();
 			// Sync language dropdown
@@ -1977,6 +1978,7 @@ function hideAllPages() {
 function showLandingPage() {
 	hideAllPages();
 	elements.landingPage?.classList.remove("hidden");
+	window.scrollTo(0, 0);
 
 	// Update section progress on landing page
 	updateLandingProgress();
@@ -2000,7 +2002,7 @@ function updateLandingProgress() {
 				}
 			});
 			if (total > 0) {
-				progressEl.textContent = `${completed}/${total} lessons`;
+				progressEl.textContent = `${total} lessons to explore`;
 			} else {
 				progressEl.textContent = "";
 			}
@@ -2014,6 +2016,7 @@ function updateLandingProgress() {
 function showSectionPage(sectionId) {
 	hideAllPages();
 	elements.sectionPage?.classList.remove("hidden");
+	window.scrollTo(0, 0);
 
 	// Track section page view
 	track("section_view", { section: sectionId });
@@ -2061,6 +2064,7 @@ function showSectionPage(sectionId) {
 function showReferencePage(refId) {
 	hideAllPages();
 	elements.referencePage?.classList.remove("hidden");
+	window.scrollTo(0, 0);
 
 	// Default to CSS if no refId
 	const activeRef = refId || "css";
@@ -2181,8 +2185,9 @@ function updateNavHighlight(route) {
 			link.classList.add("active");
 		} else if (route?.type === RouteType.LESSON) {
 			// Highlight section based on module's inferred section
+			// Skip highlighting for modules excluded from progress (welcome, playground, goodbye)
 			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
-			if (module) {
+			if (module && !module.excludeFromProgress) {
 				const moduleSection = getModuleSection(module);
 				if (link.dataset.section === moduleSection) {
 					link.classList.add("active");
@@ -2361,6 +2366,18 @@ function init() {
 		// Escape to close sidebar (dialogs handle Escape natively)
 		if (e.key === "Escape") {
 			closeSidebar();
+		}
+	});
+
+	// Landing page tracking (event delegation)
+	elements.landingPage?.addEventListener("click", (e) => {
+		const target = e.target.closest("a");
+		if (!target) return;
+
+		if (target.classList.contains("cta-button")) {
+			track("landing_cta", { href: target.getAttribute("href") });
+		} else if (target.classList.contains("section-card")) {
+			track("landing_section", { section: target.dataset.section });
 		}
 	});
 }
