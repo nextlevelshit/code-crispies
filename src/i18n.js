@@ -139,6 +139,20 @@ const translations = {
 		landingCtaSub: "Free and open source. No account required. Progress saved locally.",
 		landingCtaButton: "Begin Your Journey",
 
+		// Coming Soon
+		landingComingSoonTitle: "Coming Soon",
+		comingSoonSyncTitle: "Cloud Sync",
+		comingSoonSyncText: "Sync your progress across all devices. Start on desktop, continue on tablet.",
+		comingSoonAchievementsTitle: "Achievements",
+		comingSoonAchievementsText: "Earn badges as you master new skills. Track your learning milestones.",
+		comingSoonJsTitle: "JavaScript",
+		comingSoonJsText: "Interactive JavaScript lessons with live code execution and DOM manipulation.",
+		comingSoonFrameworksTitle: "Frameworks",
+		comingSoonFrameworksText: "React, Vue, and Svelte basics. Build real components step by step.",
+
+		// Device Notice
+		deviceNotice: "<strong>Best on desktop or tablet (landscape).</strong> Mobile works, but larger screens make coding easier.",
+
 		// Footer
 		footerModules: "Modules",
 		footerResources: "Resources",
@@ -292,6 +306,20 @@ const translations = {
 		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
 		landingCtaButton: "Jetzt erste Schritte machen",
 
+		// Coming Soon
+		landingComingSoonTitle: "Demnächst",
+		comingSoonSyncTitle: "Cloud-Sync",
+		comingSoonSyncText: "Synchronisiere deinen Fortschritt auf allen Geräten. Starte am Desktop, mach am Tablet weiter.",
+		comingSoonAchievementsTitle: "Erfolge",
+		comingSoonAchievementsText: "Verdiene Abzeichen beim Erlernen neuer Fähigkeiten. Verfolge deine Lernmeilensteine.",
+		comingSoonJsTitle: "JavaScript",
+		comingSoonJsText: "Interaktive JavaScript-Lektionen mit Live-Code-Ausführung und DOM-Manipulation.",
+		comingSoonFrameworksTitle: "Frameworks",
+		comingSoonFrameworksText: "React, Vue und Svelte Grundlagen. Baue echte Komponenten Schritt für Schritt.",
+
+		// Device Notice
+		deviceNotice: "<strong>Am besten auf Desktop oder Tablet (Querformat).</strong> Mobil funktioniert, aber größere Bildschirme machen das Coden einfacher.",
+
 		// Footer
 		footerModules: "Module",
 		footerResources: "Ressourcen",
@@ -444,6 +472,20 @@ const translations = {
 		landingCtaTitle: "Zacznij naukę już dziś",
 		landingCtaSub: "Darmowe i open source. Bez konta. Postęp zapisywany lokalnie.",
 		landingCtaButton: "Rozpocznij swoją podróż",
+
+		// Coming Soon
+		landingComingSoonTitle: "Wkrótce",
+		comingSoonSyncTitle: "Synchronizacja",
+		comingSoonSyncText: "Synchronizuj postępy na wszystkich urządzeniach. Zacznij na komputerze, kontynuuj na tablecie.",
+		comingSoonAchievementsTitle: "Osiągnięcia",
+		comingSoonAchievementsText: "Zdobywaj odznaki, ucząc się nowych umiejętności. Śledź swoje postępy.",
+		comingSoonJsTitle: "JavaScript",
+		comingSoonJsText: "Interaktywne lekcje JavaScript z wykonywaniem kodu na żywo i manipulacją DOM.",
+		comingSoonFrameworksTitle: "Frameworki",
+		comingSoonFrameworksText: "Podstawy React, Vue i Svelte. Buduj prawdziwe komponenty krok po kroku.",
+
+		// Device Notice
+		deviceNotice: "<strong>Najlepiej na komputerze lub tablecie (poziomo).</strong> Na telefonie też działa, ale większy ekran ułatwia kodowanie.",
 
 		// Footer
 		footerModules: "Moduły",
@@ -600,6 +642,20 @@ const translations = {
 		landingCtaSub: "Gratis y de código abierto. Sin cuenta requerida. Progreso guardado localmente.",
 		landingCtaButton: "Comienza tu viaje",
 
+		// Coming Soon
+		landingComingSoonTitle: "Próximamente",
+		comingSoonSyncTitle: "Sincronización",
+		comingSoonSyncText: "Sincroniza tu progreso en todos tus dispositivos. Empieza en el escritorio, continúa en la tablet.",
+		comingSoonAchievementsTitle: "Logros",
+		comingSoonAchievementsText: "Gana insignias mientras dominas nuevas habilidades. Sigue tus hitos de aprendizaje.",
+		comingSoonJsTitle: "JavaScript",
+		comingSoonJsText: "Lecciones interactivas de JavaScript con ejecución de código en vivo y manipulación del DOM.",
+		comingSoonFrameworksTitle: "Frameworks",
+		comingSoonFrameworksText: "Fundamentos de React, Vue y Svelte. Construye componentes reales paso a paso.",
+
+		// Device Notice
+		deviceNotice: "<strong>Mejor en escritorio o tablet (horizontal).</strong> Funciona en móvil, pero pantallas más grandes facilitan la programación.",
+
 		// Footer
 		footerModules: "Módulos",
 		footerResources: "Recursos",
@@ -749,6 +805,20 @@ const translations = {
 		landingCtaTitle: "ابدأ التعلم اليوم",
 		landingCtaSub: "مجاني ومفتوح المصدر. لا حاجة لحساب. يُحفظ التقدم محليًا.",
 		landingCtaButton: "ابدأ رحلتك",
+
+		// Coming Soon
+		landingComingSoonTitle: "قريباً",
+		comingSoonSyncTitle: "مزامنة سحابية",
+		comingSoonSyncText: "زامن تقدمك عبر جميع أجهزتك. ابدأ على الكمبيوتر، تابع على الجهاز اللوحي.",
+		comingSoonAchievementsTitle: "الإنجازات",
+		comingSoonAchievementsText: "احصل على شارات أثناء إتقانك لمهارات جديدة. تتبع معالم تعلمك.",
+		comingSoonJsTitle: "جافاسكريبت",
+		comingSoonJsText: "دروس تفاعلية في JavaScript مع تنفيذ مباشر للكود والتعامل مع DOM.",
+		comingSoonFrameworksTitle: "أطر العمل",
+		comingSoonFrameworksText: "أساسيات React وVue وSvelte. ابنِ مكونات حقيقية خطوة بخطوة.",
+
+		// Device Notice
+		deviceNotice: "<strong>أفضل على الكمبيوتر أو الجهاز اللوحي (أفقي).</strong> يعمل على الجوال، لكن الشاشات الأكبر تسهّل البرمجة.",
 
 		// Footer
 		footerModules: "الوحدات",
@@ -901,6 +971,20 @@ const translations = {
 		landingCtaTitle: "Почни вчитися сьогодні",
 		landingCtaSub: "Безкоштовно та з відкритим кодом. Без реєстрації. Прогрес зберігається локально.",
 		landingCtaButton: "Розпочни свою подорож",
+
+		// Coming Soon
+		landingComingSoonTitle: "Незабаром",
+		comingSoonSyncTitle: "Хмарна синхронізація",
+		comingSoonSyncText: "Синхронізуй прогрес на всіх пристроях. Почни на комп'ютері, продовжуй на планшеті.",
+		comingSoonAchievementsTitle: "Досягнення",
+		comingSoonAchievementsText: "Отримуй значки, освоюючи нові навички. Відстежуй свої навчальні віхи.",
+		comingSoonJsTitle: "JavaScript",
+		comingSoonJsText: "Інтерактивні уроки JavaScript з виконанням коду в реальному часі та маніпуляцією DOM.",
+		comingSoonFrameworksTitle: "Фреймворки",
+		comingSoonFrameworksText: "Основи React, Vue та Svelte. Створюй справжні компоненти крок за кроком.",
+
+		// Device Notice
+		deviceNotice: "<strong>Найкраще на комп'ютері або планшеті (горизонтально).</strong> На телефоні теж працює, але більший екран полегшує програмування.",
 
 		// Footer
 		footerModules: "Модулі",
