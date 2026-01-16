@@ -74,7 +74,8 @@
 					<nav class="main-nav" id="main-nav" aria-label="Main sections">
 						<a href="#css" class="nav-link" data-section="css">CSS</a>
 						<a href="#html" class="nav-link" data-section="html">HTML</a>
-						<a href="#tailwind" class="nav-link" data-section="tailwind">Tailwind</a>
+						<!-- Tailwind disabled until lessons are ready -->
+						<!-- <a href="#tailwind" class="nav-link" data-section="tailwind">Tailwind</a> -->
 						<a href="#reference/css" class="nav-link nav-link-ref" data-section="reference">Reference</a>
 					</nav>
 					<button id="help-btn" class="help-toggle" data-i18n-aria-label="help" aria-label="Help">?</button>
@@ -150,12 +151,15 @@
 								<p data-i18n="landingHtmlDesc">Semantic markup and native elements</p>
 								<span class="section-card-progress" id="html-progress"></span>
 							</a>
+							<!-- Tailwind disabled until lessons are ready -->
+							<!--
 							<a href="#tailwind" class="section-card" data-section="tailwind">
 								<div class="section-card-icon" style="background: #06b6d4">TW</div>
 								<h3>Tailwind CSS</h3>
 								<p data-i18n="landingTailwindDesc">Utility-first CSS framework</p>
 								<span class="section-card-progress" id="tailwind-progress"></span>
 							</a>
+							-->
 						</div>
 					</section>
 
@@ -164,6 +168,39 @@
 						<a href="#welcome/0" class="cta-button" data-i18n="landingCtaButton">Begin Your Journey</a>
 						<p class="cta-sub" data-i18n="landingCtaSub">Free and open source. No account required. Progress saved locally.</p>
 					</section>
+
+					<footer class="landing-footer">
+						<div class="footer-grid">
+							<section class="footer-section footer-modules">
+								<div id="footer-lesson-links" class="footer-links"></div>
+							</section>
+							<section class="footer-section">
+								<h4 data-i18n="footerResources">Resources</h4>
+								<ul class="footer-links">
+									<li><a href="#reference/css">CSS Reference</a></li>
+									<li><a href="#reference/html">HTML Reference</a></li>
+									<li><a href="#playground/0" data-i18n="footerPlayground">Playground</a></li>
+								</ul>
+							</section>
+							<section class="footer-section">
+								<h4 data-i18n="footerAbout">About</h4>
+								<ul class="footer-links">
+									<li><a href="https://librete.ch" target="_blank">LibreTECH</a></li>
+									<li><a href="https://git.librete.ch/public/code-crispies" target="_blank">Source Code</a></li>
+									<li><a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a></li>
+								</ul>
+							</section>
+							<section class="footer-section footer-support">
+								<h4 data-i18n="footerSupport">Support</h4>
+								<p data-i18n="footerSupportText">Help keep Code Crispies free and open source.</p>
+								<script src="https://liberapay.com/libretech/widgets/button.js"></script>
+								<noscript><a href="https://liberapay.com/libretech/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+							</section>
+						</div>
+						<div class="footer-bottom">
+							<p>&copy; 2025 <a href="https://librete.ch">LibreTECH</a>. <span data-i18n="footerLicense">Open source under MIT License.</span></p>
+						</div>
+					</footer>
 				</div>
 			</div>
 
@@ -356,7 +393,7 @@
 						<li data-i18n-html="modeHtml"><strong>HTML</strong> - Practice semantic markup and native elements</li>
 					</ul>
 					<p class="help-nav-links">
-						Jump to: <a href="#css">CSS</a> | <a href="#html">HTML</a> | <a href="#tailwind">Tailwind</a> |
+						Jump to: <a href="#css">CSS</a> | <a href="#html">HTML</a> |
 						<a href="#reference/css">Reference</a>
 					</p>
 
@@ -415,6 +452,13 @@
 						<li><a href="https://github.com/nextlevelshit/code-crispies" target="_blank">GitHub</a> – Public mirror</li>
 						<li><a href="https://www.linkedin.com/in/michael-werner-czechowski" target="_blank">LinkedIn</a> – Michael Czechowski</li>
 					</ul>
+
+					<h4 data-i18n="supportTitle">Support the Project</h4>
+					<p data-i18n="supportText">Help keep Code Crispies free and open source.</p>
+					<div class="help-support" onclick="typeof umami !== 'undefined' && umami.track('support_click', {location: 'help'})">
+						<script src="https://liberapay.com/libretech/widgets/button.js"></script>
+						<noscript><a href="https://liberapay.com/libretech/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+					</div>
 				</div>
 			</dialog>
 

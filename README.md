@@ -1,16 +1,16 @@
 ![Code Crispies Logo](./public/android-chrome-192x192.png)
 # Code Crispies
 
-An interactive platform for learning CSS and Tailwind CSS through practical challenges.
+An interactive platform for learning HTML, CSS, and Tailwind CSS through practical challenges.
 
 ## 📚 Overview
 
-Code Crispies is a web-based learning platform designed to help users master CSS and Tailwind CSS through hands-on exercises. The application presents a series of progressive challenges organized into themed modules, allowing learners to build their skills step by step while receiving immediate feedback.
+Code Crispies is a web-based learning platform designed to help users master HTML, CSS, and Tailwind CSS through hands-on exercises. The application presents a series of progressive challenges organized into themed modules, allowing learners to build their skills step by step while receiving immediate feedback.
 
 ### Key Features
 
-- **Interactive Lessons**: Learn CSS and Tailwind concepts through practical, hands-on challenges
-- **Dual Mode Support**: Switch between CSS and Tailwind CSS learning modes
+- **Interactive Lessons**: Learn HTML, CSS, and Tailwind concepts through practical, hands-on challenges
+- **Multiple Learning Paths**: CSS fundamentals, HTML semantics, and Tailwind CSS utilities
 - **Progressive Difficulty**: Modules are structured to build skills gradually from basic to advanced
 - **Real-Time Feedback**: Get immediate validation on your code solutions with comprehensive feedback
 - **Progress Tracking**: Your learning progress is automatically saved in the browser
@@ -256,4 +256,4 @@ When adding new lessons:
 
 ## 📄 License
 
-Copyright (c) 2026 Michael Czechowski. Licensed under the [./LICENSE](WTFPL).
+This project is released into the public domain under the [Unlicense](./LICENSE). You are free to copy, modify, publish, use, compile, sell, or distribute this software for any purpose.

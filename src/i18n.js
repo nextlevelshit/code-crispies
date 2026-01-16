@@ -134,7 +134,20 @@ const translations = {
 		landingTailwindDesc: "Utility-first CSS framework",
 		landingCtaTitle: "Start Learning Today",
 		landingCtaSub: "Free and open source. No account required. Progress saved locally.",
-		landingCtaButton: "Begin Your Journey"
+		landingCtaButton: "Begin Your Journey",
+
+		// Footer
+		footerModules: "Modules",
+		footerResources: "Resources",
+		footerPlayground: "Playground",
+		footerAbout: "About",
+		footerSupport: "Support",
+		footerSupportText: "Help keep Code Crispies free and open source.",
+		footerLicense: "Released into the public domain.",
+
+		// Help Dialog Support
+		supportTitle: "Support the Project",
+		supportText: "Help keep Code Crispies free and open source."
 	},
 
 	de: {
@@ -271,7 +284,20 @@ const translations = {
 		landingTailwindDesc: "Utility-first CSS-Framework",
 		landingCtaTitle: "Heute noch anfangen",
 		landingCtaSub: "Kostenlos und Open Source. Kein Konto erforderlich. Fortschritt wird lokal gespeichert.",
-		landingCtaButton: "Starte deine Reise"
+		landingCtaButton: "Jetzt erste Schritte machen",
+
+		// Footer
+		footerModules: "Module",
+		footerResources: "Ressourcen",
+		footerPlayground: "Playground",
+		footerAbout: "Über uns",
+		footerSupport: "Unterstützen",
+		footerSupportText: "Hilf mit, Code Crispies kostenlos und Open Source zu halten.",
+		footerLicense: "Gemeinfrei (Public Domain).",
+
+		// Help Dialog Support
+		supportTitle: "Projekt unterstützen",
+		supportText: "Hilf mit, Code Crispies kostenlos und Open Source zu halten."
 	},
 
 	// Polish
@@ -408,7 +434,20 @@ const translations = {
 		landingTailwindDesc: "Framework CSS oparty na klasach utility",
 		landingCtaTitle: "Zacznij naukę już dziś",
 		landingCtaSub: "Darmowe i open source. Bez konta. Postęp zapisywany lokalnie.",
-		landingCtaButton: "Rozpocznij swoją podróż"
+		landingCtaButton: "Rozpocznij swoją podróż",
+
+		// Footer
+		footerModules: "Moduły",
+		footerResources: "Zasoby",
+		footerPlayground: "Plac zabaw",
+		footerAbout: "O nas",
+		footerSupport: "Wsparcie",
+		footerSupportText: "Pomóż utrzymać Code Crispies darmowym i open source.",
+		footerLicense: "Udostępnione jako domena publiczna.",
+
+		// Help Dialog Support
+		supportTitle: "Wesprzyj projekt",
+		supportText: "Pomóż utrzymać Code Crispies darmowym i open source."
 	},
 
 	// Spanish
@@ -547,7 +586,20 @@ const translations = {
 		landingTailwindDesc: "Framework CSS basado en utilidades",
 		landingCtaTitle: "Empieza a aprender hoy",
 		landingCtaSub: "Gratis y de código abierto. Sin cuenta requerida. Progreso guardado localmente.",
-		landingCtaButton: "Comienza tu viaje"
+		landingCtaButton: "Comienza tu viaje",
+
+		// Footer
+		footerModules: "Módulos",
+		footerResources: "Recursos",
+		footerPlayground: "Zona de pruebas",
+		footerAbout: "Acerca de",
+		footerSupport: "Apoyar",
+		footerSupportText: "Ayuda a mantener Code Crispies gratis y de código abierto.",
+		footerLicense: "Liberado al dominio público.",
+
+		// Help Dialog Support
+		supportTitle: "Apoyar el proyecto",
+		supportText: "Ayuda a mantener Code Crispies gratis y de código abierto."
 	},
 
 	// Arabic
@@ -681,7 +733,20 @@ const translations = {
 		landingTailwindDesc: "إطار CSS قائم على الأدوات",
 		landingCtaTitle: "ابدأ التعلم اليوم",
 		landingCtaSub: "مجاني ومفتوح المصدر. لا حاجة لحساب. يُحفظ التقدم محليًا.",
-		landingCtaButton: "ابدأ رحلتك"
+		landingCtaButton: "ابدأ رحلتك",
+
+		// Footer
+		footerModules: "الوحدات",
+		footerResources: "الموارد",
+		footerPlayground: "ساحة التجربة",
+		footerAbout: "حول",
+		footerSupport: "الدعم",
+		footerSupportText: "ساعد في إبقاء Code Crispies مجانيًا ومفتوح المصدر.",
+		footerLicense: "مُطلق للملكية العامة.",
+
+		// Help Dialog Support
+		supportTitle: "ادعم المشروع",
+		supportText: "ساعد في إبقاء Code Crispies مجانيًا ومفتوح المصدر."
 	},
 
 	// Ukrainian
@@ -817,7 +882,20 @@ const translations = {
 		landingTailwindDesc: "CSS-фреймворк на основі утиліт",
 		landingCtaTitle: "Почни вчитися сьогодні",
 		landingCtaSub: "Безкоштовно та з відкритим кодом. Без реєстрації. Прогрес зберігається локально.",
-		landingCtaButton: "Розпочни свою подорож"
+		landingCtaButton: "Розпочни свою подорож",
+
+		// Footer
+		footerModules: "Модулі",
+		footerResources: "Ресурси",
+		footerPlayground: "Пісочниця",
+		footerAbout: "Про нас",
+		footerSupport: "Підтримка",
+		footerSupportText: "Допоможи зберегти Code Crispies безкоштовним та з відкритим кодом.",
+		footerLicense: "Передано у суспільне надбання.",
+
+		// Help Dialog Support
+		supportTitle: "Підтримати проєкт",
+		supportText: "Допоможи зберегти Code Crispies безкоштовним та з відкритим кодом."
 	}
 };
 

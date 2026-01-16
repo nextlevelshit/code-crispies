@@ -1865,6 +1865,132 @@ input:checked + .toggle-slider::before {
 	margin-top: 1rem;
 }
 
+/* ================= LANDING FOOTER ================= */
+.landing-footer {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 1px solid var(--border-color);
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--text-color);
+	margin-bottom: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.footer-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-links li {
+	margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+	color: var(--light-text);
+	text-decoration: none;
+	font-size: 0.875rem;
+	transition: color 0.2s;
+}
+
+.footer-links a:hover {
+	color: var(--primary-color);
+}
+
+#footer-lesson-links {
+	display: flex;
+	gap: 2rem;
+}
+
+.footer-section-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+
+.footer-section-group strong {
+	margin-bottom: 0.5rem;
+}
+
+.footer-section-group strong a {
+	color: var(--text-color);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+
+.footer-section-group a {
+	display: inline-block;
+	color: #888;
+	text-decoration: none;
+	font-size: 0.7rem;
+	font-weight: 500;
+	background: rgba(0, 0, 0, 0.03);
+	padding: 4px 10px;
+	border-radius: 12px;
+	max-width: 140px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.footer-section-group a:hover {
+	color: var(--primary-color);
+	background: rgba(0, 0, 0, 0.06);
+}
+
+.footer-support p {
+	color: var(--light-text);
+	font-size: 0.875rem;
+	margin-bottom: 1rem;
+}
+
+.footer-bottom {
+	text-align: center;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+	color: var(--light-text);
+	font-size: 0.8rem;
+	margin: 0;
+}
+
+.footer-bottom a {
+	color: var(--light-text);
+}
+
+.footer-bottom a:hover {
+	color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+	.footer-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.footer-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* ================= SECTION PAGE ================= */
 .section-page {
 	flex: 1;
