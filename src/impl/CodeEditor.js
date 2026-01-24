@@ -1,8 +1,8 @@
 /**
  * CodeEditor - CodeMirror 6 wrapper with Emmet support
  */
-import { EditorState, Prec } from "@codemirror/state";
-import { EditorView, keymap, placeholder } from "@codemirror/view";
+import { EditorState, EditorSelection, Prec, StateField, Compartment } from "@codemirror/state";
+import { EditorView, keymap, placeholder, Decoration } from "@codemirror/view";
 import { defaultKeymap, historyKeymap, indentMore, indentLess, undo, redo } from "@codemirror/commands";
 import { history } from "@codemirror/commands";
 import { html } from "@codemirror/lang-html";
@@ -146,17 +146,134 @@ export class CodeEditor {
 		this.mode = options.mode || "css";
 		this.section = options.section || null;
 		this.onChange = options.onChange || (() => {});
+		// Read-only zones support
+		this.prefixLength = 0;
+		this.suffixLength = 0;
+		this.currentPrefix = "";
+		this.currentSuffix = "";
+		this.readOnlyCompartment = new Compartment();
 	}
 
 	/**
-	 * Initialize the editor
+	 * Initialize the editor (backwards compatible wrapper)
 	 */
 	init(initialValue = "") {
+		return this.initWithContext("", initialValue, "");
+	}
+
+	/**
+	 * Initialize the editor with read-only prefix/suffix zones
+	 * @param {string} prefix - Read-only prefix text (e.g., ".card {\n  ")
+	 * @param {string} initialValue - Editable user code
+	 * @param {string} suffix - Read-only suffix text (e.g., "\n}")
+	 */
+	initWithContext(prefix = "", initialValue = "", suffix = "") {
 		// Clear container
 		this.container.innerHTML = "";
 
+		// Store prefix/suffix for re-initialization (e.g., when mode changes)
+		this.currentPrefix = prefix;
+		this.currentSuffix = suffix;
+		this.prefixLength = prefix.length;
+		this.suffixLength = suffix.length;
+
+		const fullDoc = prefix + initialValue + suffix;
+
 		// Get language extension based on mode
 		const langExtension = this.mode === "html" ? html() : css();
+
+		// Create read-only zones decorations
+		const readOnlyMark = Decoration.mark({ class: "cm-readonly-zone" });
+
+		// StateField to track and provide decorations for read-only zones
+		const readOnlyDecorations = StateField.define({
+			create: (state) => {
+				const decorations = [];
+				if (this.prefixLength > 0) {
+					decorations.push(readOnlyMark.range(0, this.prefixLength));
+				}
+				if (this.suffixLength > 0) {
+					const suffixStart = state.doc.length - this.suffixLength;
+					decorations.push(readOnlyMark.range(suffixStart, state.doc.length));
+				}
+				return Decoration.set(decorations);
+			},
+			update: (decorations, tr) => {
+				if (!tr.docChanged) return decorations;
+				// Recalculate decorations after document changes
+				const newDecorations = [];
+				if (this.prefixLength > 0) {
+					newDecorations.push(readOnlyMark.range(0, this.prefixLength));
+				}
+				if (this.suffixLength > 0) {
+					const suffixStart = tr.state.doc.length - this.suffixLength;
+					newDecorations.push(readOnlyMark.range(suffixStart, tr.state.doc.length));
+				}
+				return Decoration.set(newDecorations);
+			},
+			provide: (f) => EditorView.decorations.from(f)
+		});
+
+		// Change filter to prevent edits in read-only zones
+		const readOnlyFilter = EditorState.changeFilter.of((tr) => {
+			// If no prefix/suffix, allow all changes
+			if (this.prefixLength === 0 && this.suffixLength === 0) {
+				return true;
+			}
+
+			const prefixEnd = this.prefixLength;
+			const suffixStart = tr.startState.doc.length - this.suffixLength;
+
+			// Check all change ranges - allow only changes within [prefixEnd, suffixStart]
+			let blocked = false;
+			tr.changes.iterChangedRanges((fromA, toA) => {
+				// Block if change starts in prefix zone
+				if (fromA < prefixEnd) {
+					blocked = true;
+				}
+				// Block if change extends into suffix zone
+				if (toA > suffixStart) {
+					blocked = true;
+				}
+			});
+
+			return !blocked;
+		});
+
+		// Transaction filter to constrain cursor/selection to editable area
+		const cursorFilter = EditorState.transactionFilter.of((tr) => {
+			// If no prefix/suffix, no constraints needed
+			if (this.prefixLength === 0 && this.suffixLength === 0) {
+				return tr;
+			}
+
+			const prefixEnd = this.prefixLength;
+			const suffixStart = tr.newDoc.length - this.suffixLength;
+
+			// Check if selection needs adjustment
+			const selection = tr.newSelection;
+			let needsAdjustment = false;
+
+			for (const range of selection.ranges) {
+				if (range.from < prefixEnd || range.to > suffixStart) {
+					needsAdjustment = true;
+					break;
+				}
+			}
+
+			if (!needsAdjustment) {
+				return tr;
+			}
+
+			// Clamp selection to editable area
+			const newRanges = selection.ranges.map((range) => {
+				const from = Math.max(prefixEnd, Math.min(suffixStart, range.from));
+				const to = Math.max(prefixEnd, Math.min(suffixStart, range.to));
+				return EditorSelection.range(from, to);
+			});
+
+			return [tr, { selection: EditorSelection.create(newRanges, selection.mainIndex) }];
+		});
 
 		// Build extensions array
 		const extensions = [
@@ -165,6 +282,10 @@ export class CodeEditor {
 			editorTheme,
 			// History for undo/redo
 			history(),
+			// Read-only zones (decorations, change filter, and cursor constraint)
+			readOnlyDecorations,
+			readOnlyFilter,
+			cursorFilter,
 			// Emmet abbreviation tracking
 			abbreviationTracker(),
 			// High priority keymap for Emmet
@@ -184,20 +305,21 @@ export class CodeEditor {
 			}),
 			EditorView.updateListener.of((update) => {
 				if (update.docChanged) {
-					this.onChange(this.getValue());
+					// Report only the editable portion to the onChange handler
+					this.onChange(this.getEditableValue());
 				}
 			}),
 			EditorView.lineWrapping
 		];
 
-		// Add placeholder if provided
-		if (this.options.placeholder) {
+		// Add placeholder if provided (only makes sense when no prefix/suffix)
+		if (this.options.placeholder && this.prefixLength === 0 && this.suffixLength === 0) {
 			extensions.push(placeholder(this.options.placeholder));
 		}
 
 		// Create editor state
 		const state = EditorState.create({
-			doc: initialValue,
+			doc: fullDoc,
 			extensions
 		});
 
@@ -207,26 +329,47 @@ export class CodeEditor {
 			parent: this.container
 		});
 
+		// Position cursor at start of editable area
+		if (this.prefixLength > 0) {
+			this.view.dispatch({
+				selection: { anchor: this.prefixLength }
+			});
+		}
+
 		return this;
 	}
 
 	/**
-	 * Get current editor value
+	 * Get current full editor value (including prefix/suffix)
 	 */
 	getValue() {
 		return this.view ? this.view.state.doc.toString() : "";
 	}
 
 	/**
-	 * Set editor value (preserves history)
+	 * Get only the editable portion (excluding prefix/suffix)
+	 */
+	getEditableValue() {
+		if (!this.view) return "";
+		const fullText = this.view.state.doc.toString();
+		const editableEnd = fullText.length - this.suffixLength;
+		return fullText.slice(this.prefixLength, editableEnd);
+	}
+
+	/**
+	 * Set editor value in the editable zone only (preserves history)
 	 */
 	setValue(value) {
 		if (!this.view) return;
 
+		// Only replace the editable portion
+		const editableStart = this.prefixLength;
+		const editableEnd = this.view.state.doc.length - this.suffixLength;
+
 		this.view.dispatch({
 			changes: {
-				from: 0,
-				to: this.view.state.doc.length,
+				from: editableStart,
+				to: editableEnd,
 				insert: value
 			}
 		});
@@ -234,9 +377,12 @@ export class CodeEditor {
 
 	/**
 	 * Set editor value and clear history (for lesson switching)
+	 * @param {string} value - The editable user code (not including prefix/suffix)
+	 * @param {string} prefix - Optional read-only prefix
+	 * @param {string} suffix - Optional read-only suffix
 	 */
-	setValueAndClearHistory(value) {
-		this.init(value);
+	setValueAndClearHistory(value, prefix = "", suffix = "") {
+		this.initWithContext(prefix, value, suffix);
 	}
 
 	/**
@@ -246,8 +392,8 @@ export class CodeEditor {
 		if (this.mode === mode) return;
 
 		this.mode = mode;
-		const currentValue = this.getValue();
-		this.init(currentValue);
+		const editableValue = this.getEditableValue();
+		this.initWithContext(this.currentPrefix, editableValue, this.currentSuffix);
 	}
 
 	/**
@@ -257,8 +403,8 @@ export class CodeEditor {
 		if (this.section === section) return;
 
 		this.section = section;
-		const currentValue = this.getValue();
-		this.init(currentValue);
+		const editableValue = this.getEditableValue();
+		this.initWithContext(this.currentPrefix, editableValue, this.currentSuffix);
 	}
 
 	/**
