@@ -27,7 +27,7 @@ export const RouteType = {
 /**
  * Valid section IDs
  */
-const SECTIONS = ["css", "html", "tailwind", "markdown"];
+const SECTIONS = ["css", "html", "markdown"]; // tailwind temporarily disabled
 
 /**
  * Valid language codes for URL-based switching

@@ -2347,7 +2347,7 @@ function renderFooterLessonLinks() {
  * Update progress indicators on landing page
  */
 function updateLandingProgress() {
-	["css", "html", "tailwind", "markdown"].forEach((sectionId) => {
+	["css", "html", "markdown"].forEach((sectionId) => { // tailwind temporarily disabled
 		const progressEl = document.getElementById(`${sectionId}-progress`);
 		if (progressEl) {
 			const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
