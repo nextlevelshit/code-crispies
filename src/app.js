@@ -573,6 +573,11 @@ function updateEditorForMode(mode) {
 			label: "CSS Editor",
 			cmMode: "css"
 		},
+		markdown: {
+			placeholder: "# Heading\n\nWrite your **Markdown** here...",
+			label: "Markdown Editor",
+			cmMode: "markdown"
+		},
 		playground: {
 			placeholder: "<style>\n  /* CSS here */\n</style>\n\n<!-- HTML here -->",
 			label: "HTML & CSS",
@@ -1409,6 +1414,85 @@ const sectionContent = {
 				</div>
 			</div>
 		</div>
+	`,
+	markdown: `
+		<div class="section-overview">
+			<p><strong>Markdown</strong> is a lightweight markup language created by John Gruber in 2004. It lets you write formatted text using plain text syntax that's easy to read and write. Markdown is used everywhere—from GitHub READMEs to documentation, note-taking apps, and content management systems.</p>
+			<p>The beauty of Markdown is its simplicity: <code># Heading</code> creates a heading, <code>**bold**</code> makes text bold, and <code>[link](url)</code> creates a link. No complex HTML tags needed. Markdown files can be converted to HTML, PDF, or many other formats.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Headings & Structure</h2>
+				<p>Create document structure with headings using <code>#</code> symbols. One <code>#</code> for h1, two <code>##</code> for h2, up to six levels. This creates a clear hierarchy in your documents.</p>
+				<p>
+					<a href="#markdown-basics/0" class="topic-link">Practice headings →</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code># Main Title
+## Section
+### Subsection
+#### Detail</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Text Formatting</h2>
+				<p>Emphasize text with <code>**bold**</code> or <code>*italic*</code>. Combine them with <code>***bold italic***</code>. Use backticks for <code>\`inline code\`</code> to highlight commands or code snippets in your text.</p>
+				<p>
+					<a href="#markdown-basics/2" class="topic-link">Practice formatting →</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>This is **bold** text.
+This is *italic* text.
+This is \`inline code\`.</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Lists</h2>
+				<p>Create bullet lists with <code>-</code>, <code>*</code>, or <code>+</code>. Numbered lists use <code>1.</code>, <code>2.</code>, etc. Indent items with spaces to create nested lists for complex outlines.</p>
+				<p>
+					<a href="#markdown-basics/4" class="topic-link">Practice lists →</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>- First item
+- Second item
+  - Nested item
+
+1. Step one
+2. Step two
+3. Step three</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Links & Images</h2>
+				<p>Create links with <code>[text](url)</code> syntax. Images use the same format with an exclamation mark: <code>![alt text](image-url)</code>. The alt text describes the image for accessibility.</p>
+				<p>
+					<a href="#markdown-basics/6" class="topic-link">Practice links →</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>[Visit Google](https://google.com)
+
+![Logo](https://example.com/logo.png)</code></pre>
+				</div>
+			</div>
+		</div>
 	`
 };
 
@@ -1925,6 +2009,105 @@ const referenceContent = {
 		</section>
 
 		<p class="ref-see-also">Learn: <a href="#html">HTML Section</a> | Style with: <a href="#reference/css">CSS Properties</a></p>
+	`,
+
+	markdown: `
+		<h1>Markdown Syntax Reference</h1>
+		<p class="ref-intro">A quick guide to Markdown syntax for formatting text documents. Markdown is used in GitHub, documentation, and note-taking apps.</p>
+
+		<section class="ref-section">
+			<h2>Text Formatting</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Result</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td><code>**bold**</code></td><td><strong>bold</strong></td><td>Or use __bold__</td></tr>
+					<tr><td><code>*italic*</code></td><td><em>italic</em></td><td>Or use _italic_</td></tr>
+					<tr><td><code>***bold italic***</code></td><td><strong><em>bold italic</em></strong></td><td>Combine both</td></tr>
+					<tr><td><code>~~strikethrough~~</code></td><td><s>strikethrough</s></td><td>GFM extension</td></tr>
+					<tr><td><code>\`inline code\`</code></td><td><code>inline code</code></td><td>Monospace font</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Headings</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Level</th><th>Usage</th></tr></thead>
+				<tbody>
+					<tr><td><code># Heading 1</code></td><td>h1</td><td>Document title</td></tr>
+					<tr><td><code>## Heading 2</code></td><td>h2</td><td>Main sections</td></tr>
+					<tr><td><code>### Heading 3</code></td><td>h3</td><td>Subsections</td></tr>
+					<tr><td><code>#### Heading 4</code></td><td>h4</td><td>Minor sections</td></tr>
+					<tr><td><code>##### Heading 5</code></td><td>h5</td><td>Rarely used</td></tr>
+					<tr><td><code>###### Heading 6</code></td><td>h6</td><td>Smallest heading</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Lists</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Type</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td><code>- Item</code></td><td>Unordered</td><td>Or use * or +</td></tr>
+					<tr><td><code>1. Item</code></td><td>Ordered</td><td>Numbers auto-increment</td></tr>
+					<tr><td><code>  - Nested</code></td><td>Nested list</td><td>2-space indent</td></tr>
+					<tr><td><code>- [x] Task</code></td><td>Task list</td><td>GFM extension</td></tr>
+					<tr><td><code>- [ ] Task</code></td><td>Unchecked task</td><td>Interactive checkboxes</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Links & Images</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Purpose</th><th>Example</th></tr></thead>
+				<tbody>
+					<tr><td><code>[text](url)</code></td><td>Inline link</td><td>[Google](https://google.com)</td></tr>
+					<tr><td><code>[text](url "title")</code></td><td>Link with tooltip</td><td>Hover text</td></tr>
+					<tr><td><code>![alt](url)</code></td><td>Image</td><td>Alt text for accessibility</td></tr>
+					<tr><td><code>&lt;url&gt;</code></td><td>Auto-link</td><td>URLs become clickable</td></tr>
+					<tr><td><code>[ref]: url</code></td><td>Reference link</td><td>Define at doc bottom</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Code Blocks</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Purpose</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td><code>\`\`\`</code></td><td>Fenced code</td><td>3 backticks or tildes</td></tr>
+					<tr><td><code>\`\`\`js</code></td><td>Syntax highlight</td><td>Add language identifier</td></tr>
+					<tr><td><code>    code</code></td><td>Indented code</td><td>4-space indent</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Block Elements</h2>
+			<table class="ref-table">
+				<thead><tr><th>Syntax</th><th>Element</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td><code>> Quote</code></td><td>Blockquote</td><td>Nest with >></td></tr>
+					<tr><td><code>---</code></td><td>Horizontal rule</td><td>Or *** or ___</td></tr>
+					<tr><td><code>| A | B |</code></td><td>Table</td><td>GFM extension</td></tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section class="ref-section">
+			<h2>Tables (GFM)</h2>
+			<div class="ref-example">
+				<pre><code>| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |</code></pre>
+			</div>
+			<p>Use colons for alignment: <code>:---</code> (left), <code>:---:</code> (center), <code>---:</code> (right)</p>
+		</section>
+
+		<p class="ref-see-also">Learn: <a href="#markdown">Markdown Section</a> | Also try: <a href="#html">HTML Elements</a></p>
 	`
 };
 
@@ -1970,7 +2153,7 @@ function updatePageMeta(route) {
 			break;
 
 		case RouteType.SECTION: {
-			const sectionNames = { css: "CSS", html: "HTML", tailwind: "Tailwind CSS" };
+			const sectionNames = { css: "CSS", html: "HTML", tailwind: "Tailwind CSS", markdown: "Markdown" };
 			const sectionName = sectionNames[route.sectionId] || route.sectionId;
 			title = `${sectionName} Lessons - CODE CRISPIES | Learn ${sectionName}`;
 			description = `Learn ${sectionName} through interactive coding exercises. Hands-on practice with instant feedback.`;
@@ -1994,7 +2177,8 @@ function updatePageMeta(route) {
 				selectors: "CSS Selectors",
 				flexbox: "Flexbox",
 				grid: "CSS Grid",
-				html: "HTML Elements"
+				html: "HTML Elements",
+				markdown: "Markdown Syntax"
 			};
 			const refName = refNames[route.refId] || "Reference";
 			title = `${refName} Reference - CODE CRISPIES`;
@@ -2163,7 +2347,7 @@ function renderFooterLessonLinks() {
  * Update progress indicators on landing page
  */
 function updateLandingProgress() {
-	["css", "html", "tailwind"].forEach((sectionId) => {
+	["css", "html", "tailwind", "markdown"].forEach((sectionId) => {
 		const progressEl = document.getElementById(`${sectionId}-progress`);
 		if (progressEl) {
 			const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
@@ -2249,7 +2433,7 @@ function showReferencePage(refId) {
 	const activeRef = refId || "css";
 
 	// Map reference to section for color coding
-	const refToSection = { css: "css", selectors: "css", flexbox: "css", grid: "css", html: "html" };
+	const refToSection = { css: "css", selectors: "css", flexbox: "css", grid: "css", html: "html", markdown: "markdown" };
 	updateSectionColor(refToSection[activeRef] || "css");
 
 	// Track reference page view

@@ -7,6 +7,7 @@ import { defaultKeymap, historyKeymap, indentMore, indentLess, undo, redo } from
 import { history } from "@codemirror/commands";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
+import { markdown } from "@codemirror/lang-markdown";
 import { autocompletion } from "@codemirror/autocomplete";
 import { abbreviationTracker, expandAbbreviation } from "@emmetio/codemirror6-plugin";
 import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
@@ -180,7 +181,7 @@ export class CodeEditor {
 		const fullDoc = prefix + initialValue + suffix;
 
 		// Get language extension based on mode
-		const langExtension = this.mode === "html" ? html() : css();
+		const langExtension = this.mode === "html" ? html() : this.mode === "markdown" ? markdown() : css();
 
 		// Create read-only zones decorations
 		const readOnlyMark = Decoration.mark({ class: "cm-readonly-zone" });

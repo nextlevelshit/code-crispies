@@ -283,6 +283,14 @@ kbd {
 	background: #1aafb8;
 }
 
+[data-section="markdown"] .logo h1 .code-text {
+	color: #5b8dd9;
+}
+
+[data-section="markdown"] .logo h1 .crispies-text {
+	background: #5b8dd9;
+}
+
 .help-toggle {
 	width: 28px;
 	height: 28px;
@@ -3602,6 +3610,14 @@ input:checked + .toggle-slider::before {
 	--section-color-rgb: 26, 175, 184;
 }
 
+/* Markdown Section - Blue */
+[data-section="markdown"] {
+	--section-color: #5b8dd9;
+	--section-color-light: #7ba3e5;
+	--section-color-dark: #4070b8;
+	--section-color-rgb: 91, 141, 217;
+}
+
 /* Apply section colors to nav links */
 .nav-link[data-section="css"] {
 	color: #9163b8;
@@ -3613,6 +3629,10 @@ input:checked + .toggle-slider::before {
 
 .nav-link[data-section="tailwind"] {
 	color: #1aafb8;
+}
+
+.nav-link[data-section="markdown"] {
+	color: #5b8dd9;
 }
 
 .nav-link[data-section="css"]:hover,
@@ -3631,6 +3651,12 @@ input:checked + .toggle-slider::before {
 .nav-link[data-section="tailwind"].active {
 	background: rgba(26, 175, 184, 0.1);
 	color: #0d8f96;
+}
+
+.nav-link[data-section="markdown"]:hover,
+.nav-link[data-section="markdown"].active {
+	background: rgba(91, 141, 217, 0.1);
+	color: #4070b8;
 }
 
 /* Hint section colors */
@@ -3661,6 +3687,15 @@ body[data-section="tailwind"] .hint-progress {
 	background: #1aafb8;
 }
 
+body[data-section="markdown"] .hint {
+	background: rgba(91, 141, 217, 0.3);
+	border-left-color: #7ba3e5;
+}
+
+body[data-section="markdown"] .hint-progress {
+	background: #5b8dd9;
+}
+
 /* RTL hint border */
 [dir="rtl"] body[data-section="css"] .hint {
 	border-right-color: #a98cd6;
@@ -3672,6 +3707,10 @@ body[data-section="tailwind"] .hint-progress {
 
 [dir="rtl"] body[data-section="tailwind"] .hint {
 	border-right-color: #4db6ac;
+}
+
+[dir="rtl"] body[data-section="markdown"] .hint {
+	border-right-color: #7ba3e5;
 }
 
 /* Reference nav link colors */
@@ -3759,6 +3798,24 @@ body[data-section="tailwind"] .cm-editor .cm-activeLine {
 	background-color: rgba(26, 175, 184, 0.08) !important;
 }
 
+body[data-section="markdown"] .cm-editor .cm-content {
+	caret-color: #5b8dd9 !important;
+}
+
+body[data-section="markdown"] .cm-editor .cm-cursor,
+body[data-section="markdown"] .cm-editor .cm-dropCursor {
+	border-left-color: #5b8dd9 !important;
+}
+
+body[data-section="markdown"] .cm-editor .cm-selectionBackground,
+body[data-section="markdown"] .cm-editor .cm-content ::selection {
+	background-color: rgba(91, 141, 217, 0.25) !important;
+}
+
+body[data-section="markdown"] .cm-editor .cm-activeLine {
+	background-color: rgba(91, 141, 217, 0.08) !important;
+}
+
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
 	background: rgba(145, 99, 184, 0.1);
@@ -3787,6 +3844,15 @@ body[data-section="tailwind"] .module-pill .level-indicator {
 	color: #0d8f96;
 }
 
+body[data-section="markdown"] .module-pill {
+	background: rgba(91, 141, 217, 0.1);
+	color: #5b8dd9;
+}
+
+body[data-section="markdown"] .module-pill .level-indicator {
+	color: #4070b8;
+}
+
 /* Code block border section colors */
 body[data-section="css"] .code-block {
 	border-color: rgba(145, 99, 184, 0.4);
@@ -3798,6 +3864,10 @@ body[data-section="html"] .code-block {
 
 body[data-section="tailwind"] .code-block {
 	border-color: rgba(26, 175, 184, 0.4);
+}
+
+body[data-section="markdown"] .code-block {
+	border-color: rgba(91, 141, 217, 0.4);
 }
 
 /* Section code block CodeMirror syntax highlighting overrides */
@@ -3813,6 +3883,10 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 	color: #c0e0e8;
 }
 
+body[data-section="markdown"] .code-block .cm-editor .cm-line {
+	color: #c0d0e8;
+}
+
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
 	background: rgba(145, 99, 184, 0.92);
@@ -3824,6 +3898,10 @@ body[data-section="tailwind"] .code-block .cm-editor .cm-line {
 
 [data-section="tailwind"] .task-instruction {
 	background: rgba(26, 175, 184, 0.92);
+}
+
+[data-section="markdown"] .task-instruction {
+	background: rgba(91, 141, 217, 0.92);
 }
 
 /* Section page progress bar colors */
@@ -3839,6 +3917,10 @@ body[data-section="tailwind"] .section-progress-bar .progress-fill {
 	background: #1aafb8;
 }
 
+body[data-section="markdown"] .section-progress-bar .progress-fill {
+	background: #5b8dd9;
+}
+
 /* Section page header colors */
 [data-section="css"] .section-hero h1 {
 	color: #9163b8;
@@ -3852,6 +3934,10 @@ body[data-section="tailwind"] .section-progress-bar .progress-fill {
 	color: #1aafb8;
 }
 
+[data-section="markdown"] .section-hero h1 {
+	color: #5b8dd9;
+}
+
 /* Lesson title h2 section colors */
 body[data-section="css"] #lesson-title {
 	color: #9163b8;
@@ -3863,6 +3949,10 @@ body[data-section="html"] #lesson-title {
 
 body[data-section="tailwind"] #lesson-title {
 	color: #1aafb8;
+}
+
+body[data-section="markdown"] #lesson-title {
+	color: #5b8dd9;
 }
 
 /* Section and Reference footer - override landing-footer styles */

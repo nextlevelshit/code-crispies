@@ -24,6 +24,13 @@ export const sections = {
 		description: "Utility-first CSS framework",
 		color: "#26a69a",
 		order: 3
+	},
+	markdown: {
+		id: "markdown",
+		title: "Markdown",
+		description: "Lightweight markup language for formatting text",
+		color: "#5b8dd9",
+		order: 4
 	}
 };
 
@@ -57,6 +64,7 @@ export function getModuleSection(module) {
 	const mode = module.mode || "css";
 	if (mode === "html") return "html";
 	if (mode === "tailwind") return "tailwind";
+	if (mode === "markdown") return "markdown";
 	return "css";
 }
 

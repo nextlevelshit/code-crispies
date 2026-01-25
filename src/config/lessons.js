@@ -30,6 +30,7 @@ import gradientsEN from "../../lessons/09-gradients.json";
 import filtersEN from "../../lessons/11-filters.json";
 import positioningEN from "../../lessons/12-positioning.json";
 import pseudoElementsEN from "../../lessons/13-pseudo-elements.json";
+import markdownBasicsEN from "../../lessons/40-markdown-basics.json";
 import playgroundEN from "../../lessons/98-playground.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
@@ -162,6 +163,8 @@ const moduleStoreEN = [
 	htmlFieldsetEN,
 	htmlDatalistEN,
 	htmlTablesEN,
+	// Markdown
+	markdownBasicsEN,
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -201,6 +204,8 @@ const moduleStoreDE = [
 	htmlFieldsetDE,
 	htmlDatalistDE,
 	htmlTablesDE,
+	// Markdown
+	markdownBasicsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -240,6 +245,8 @@ const moduleStorePL = [
 	htmlFieldsetPL,
 	htmlDatalistPL,
 	htmlTablesPL,
+	// Markdown
+	markdownBasicsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -279,6 +286,8 @@ const moduleStoreES = [
 	htmlFieldsetES,
 	htmlDatalistES,
 	htmlTablesES,
+	// Markdown
+	markdownBasicsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -318,6 +327,8 @@ const moduleStoreAR = [
 	htmlFieldsetAR,
 	htmlDatalistAR,
 	htmlTablesAR,
+	// Markdown
+	markdownBasicsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -357,6 +368,8 @@ const moduleStoreUK = [
 	htmlFieldsetUK,
 	htmlDatalistUK,
 	htmlTablesUK,
+	// Markdown
+	markdownBasicsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN

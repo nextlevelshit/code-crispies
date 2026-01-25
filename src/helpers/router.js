@@ -8,6 +8,7 @@
  * - #css           -> CSS section landing
  * - #html          -> HTML section landing
  * - #tailwind      -> Tailwind section landing
+ * - #markdown      -> Markdown section landing
  * - #reference/css -> CSS cheatsheet
  * - #module/index  -> Lesson (e.g., #flexbox/2)
  */
@@ -26,7 +27,7 @@ export const RouteType = {
 /**
  * Valid section IDs
  */
-const SECTIONS = ["css", "html", "tailwind"];
+const SECTIONS = ["css", "html", "tailwind", "markdown"];
 
 /**
  * Valid language codes for URL-based switching
