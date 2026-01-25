@@ -593,6 +593,12 @@ kbd {
 	height: 100%;
 }
 
+/* Read-only zones (codePrefix/codeSuffix) */
+.cm-readonly-zone {
+	opacity: 0.5;
+	background: rgba(100, 100, 120, 0.1);
+}
+
 .editor-content .cm-scroller {
 	overflow: auto;
 }
