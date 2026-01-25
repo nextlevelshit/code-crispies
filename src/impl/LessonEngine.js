@@ -3,6 +3,7 @@
  * Single source of truth for lesson state and progress
  */
 import { validateUserCode } from "../helpers/validator.js";
+import { marked } from "marked";
 
 // Auth sync - lazy loaded to avoid circular dependencies
 let authModule = null;
@@ -256,6 +257,38 @@ export class LessonEngine {
         </body>
       </html>
     `);
+		} else if (mode === "markdown") {
+			// For Markdown mode, parse user code to HTML
+			const renderedHtml = marked.parse(this.userCode || "");
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>
+            body { font-family: system-ui, sans-serif; line-height: 1.6; padding: 1rem; }
+            h1, h2, h3, h4, h5, h6 { margin: 1em 0 0.5em; line-height: 1.3; }
+            h1 { font-size: 2em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+            h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+            p { margin: 0.5em 0; }
+            ul, ol { margin: 0.5em 0; padding-left: 2em; }
+            li { margin: 0.25em 0; }
+            code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+            pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+            pre code { background: none; padding: 0; }
+            blockquote { margin: 0.5em 0; padding-left: 1em; border-left: 4px solid #ddd; color: #666; }
+            a { color: #0366d6; }
+            hr { border: none; border-top: 1px solid #eee; margin: 1em 0; }
+            img { max-width: 100%; }
+          </style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${renderedHtml}
+        </body>
+      </html>
+    `);
 		} else {
 			// Original CSS mode
 			const userCssWithWrapper = this.getCompleteCss();
@@ -347,6 +380,38 @@ export class LessonEngine {
         </head>
         <body>
           ${htmlWithClasses}
+        </body>
+      </html>
+    `);
+		} else if (mode === "markdown") {
+			// For Markdown mode, parse solution to HTML
+			const renderedHtml = marked.parse(solutionCode || "");
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>
+            body { font-family: system-ui, sans-serif; line-height: 1.6; padding: 1rem; }
+            h1, h2, h3, h4, h5, h6 { margin: 1em 0 0.5em; line-height: 1.3; }
+            h1 { font-size: 2em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+            h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.3em; }
+            p { margin: 0.5em 0; }
+            ul, ol { margin: 0.5em 0; padding-left: 2em; }
+            li { margin: 0.25em 0; }
+            code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+            pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; }
+            pre code { background: none; padding: 0; }
+            blockquote { margin: 0.5em 0; padding-left: 1em; border-left: 4px solid #ddd; color: #666; }
+            a { color: #0366d6; }
+            hr { border: none; border-top: 1px solid #eee; margin: 1em 0; }
+            img { max-width: 100%; }
+          </style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${renderedHtml}
         </body>
       </html>
     `);
