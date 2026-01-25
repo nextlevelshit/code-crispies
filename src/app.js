@@ -653,8 +653,11 @@ function loadCurrentLesson() {
 	renderDifficultyBadge(elements.lessonTitleRow, lesson);
 
 	// Set user code in CodeMirror (clear history to prevent undo/redo across lessons)
+	// Pass codePrefix/codeSuffix as read-only zones for CSS mode
 	if (codeEditor) {
-		codeEditor.setValueAndClearHistory(engineState.userCode);
+		const prefix = lesson.codePrefix || "";
+		const suffix = lesson.codeSuffix || "";
+		codeEditor.setValueAndClearHistory(engineState.userCode, prefix, suffix);
 	}
 
 	// Update Run button text based on completion status
@@ -869,7 +872,7 @@ function loadRandomTemplate() {
 }
 
 function runCode() {
-	const userCode = codeEditor ? codeEditor.getValue() : "";
+	const userCode = codeEditor ? codeEditor.getEditableValue() : "";
 	const engineState = lessonEngine.getCurrentState();
 	const isPlayground = engineState.lesson?.mode === "playground";
 
