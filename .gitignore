@@ -8,3 +8,8 @@ coverage
 
 # Claude Code local settings (user-specific)
 .claude/settings.local.json
+.claude_settings.json
+
+# Auto-Claude
+.auto-claude
+.worktrees
