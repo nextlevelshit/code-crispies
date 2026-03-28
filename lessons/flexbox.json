@@ -9,7 +9,7 @@
 			"id": "flexbox-1",
 			"title": "Container",
 			"description": "Before flexbox, creating even simple layouts required floats, positioning hacks, or table-based layouts. Flexbox (Flexible Box Layout) revolutionized CSS by providing a one-dimensional layout system designed specifically for distributing space and aligning content.<br><br><strong>How it works:</strong> When you set <kbd>display: flex</kbd> on an element, it becomes a <em>flex container</em>. Its direct children automatically become <em>flex items</em> that flow along a main axis (horizontal by default). This single property transforms stacked block elements into a horizontal row.<br><br><strong>The two axes:</strong><br>• <em>Main axis</em> – The primary direction items flow (row = left→right)<br>• <em>Cross axis</em> – Perpendicular to main (row = top→bottom)<br><br><pre>.nav {\n  display: flex;\n}</pre>",
-			"task": "This navigation menu stacks vertically. Add <kbd>display: flex</kbd> to <kbd>.nav</kbd> to arrange the links horizontally.",
+			"task": "The navigation links are stacking vertically. Make them display side by side in a horizontal row.",
 			"previewHTML": "<nav class=\"nav\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; } .nav a:hover { background: rgba(255,255,255,0.1); }",
 			"sandboxCSS": "",
@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "display", "expected": "flex" },
-					"message": "Set <kbd>display: flex</kbd>"
+					"message": "Try changing the display mode to create a flex container"
 				}
 			]
 		},
@@ -30,7 +30,7 @@
 			"id": "flexbox-2",
 			"title": "Gap",
 			"description": "The <kbd>gap</kbd> property adds consistent spacing between flex items without needing margins. It only creates space between items, not around the edges.",
-			"task": "Add <kbd>gap: 1rem</kbd> to space out the navigation links evenly.",
+			"task": "The navigation links are crammed together with no breathing room. Add 1rem of spacing between them.",
 			"previewHTML": "<nav class=\"nav\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; display: flex; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; background: rgba(255,255,255,0.1); }",
 			"sandboxCSS": "",
@@ -43,7 +43,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "gap", "expected": "1rem" },
-					"message": "Set <kbd>gap: 1rem</kbd>"
+					"message": "Use the property that adds spacing between flex items"
 				}
 			]
 		},
@@ -51,7 +51,7 @@
 			"id": "flexbox-3",
 			"title": "Justify Content",
 			"description": "<kbd>justify-content</kbd> distributes items along the main axis. Common values:<br>• <kbd>flex-start</kbd> – pack items at the start<br>• <kbd>flex-end</kbd> – pack at the end<br>• <kbd>center</kbd> – center items<br>• <kbd>space-between</kbd> – equal space between items<br>• <kbd>space-around</kbd> – equal space around items",
-			"task": "Push the \"Login\" button to the right by setting <kbd>justify-content: space-between</kbd> on the nav.",
+			"task": "The Login button should sit on the far right, with the other links staying on the left. Distribute the space between them.",
 			"previewHTML": "<nav class=\"nav\"><div class=\"links\"><a href=\"#\">Home</a><a href=\"#\">Products</a><a href=\"#\">About</a></div><a href=\"#\" class=\"login\">Login</a></nav>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .nav { background: #1a1a2e; padding: 1rem; display: flex; } .links { display: flex; gap: 8px; } .nav a { color: white; text-decoration: none; padding: 8px 1rem; border-radius: 4px; } .nav a:hover { background: rgba(255,255,255,0.1); } .login { background: steelblue; }",
 			"sandboxCSS": "",
@@ -64,7 +64,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "justify-content", "expected": "space-between" },
-					"message": "Set <kbd>justify-content: space-between</kbd>"
+					"message": "Use the property that distributes items along the main axis"
 				}
 			]
 		},
@@ -72,7 +72,7 @@
 			"id": "flexbox-4",
 			"title": "Align Items",
 			"description": "<kbd>align-items</kbd> controls alignment on the cross axis (vertical when flex-direction is row). Values include:<br>• <kbd>stretch</kbd> – stretch to fill (default)<br>• <kbd>flex-start</kbd> – align to top<br>• <kbd>flex-end</kbd> – align to bottom<br>• <kbd>center</kbd> – center vertically",
-			"task": "The logo and nav links have different heights. Center them vertically with <kbd>align-items: center</kbd>.",
+			"task": "The logo and nav links sit at different heights. Center them vertically so they line up.",
 			"previewHTML": "<header class=\"header\"><div class=\"logo\">ACME</div><nav><a href=\"#\">Products</a><a href=\"#\">Pricing</a><a href=\"#\">Docs</a></nav></header>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; } .header { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; } .logo { font-size: 1.5rem; font-weight: bold; color: steelblue; } nav { display: flex; gap: 1rem; } nav a { color: #333; text-decoration: none; font-size: 0.9rem; }",
 			"sandboxCSS": "",
@@ -85,7 +85,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "align-items", "expected": "center" },
-					"message": "Set <kbd>align-items: center</kbd>"
+					"message": "Use the property that controls cross-axis alignment"
 				}
 			]
 		},
@@ -93,7 +93,7 @@
 			"id": "flexbox-5",
 			"title": "Flex Wrap",
 			"description": "By default, flex items squeeze onto one line. <kbd>flex-wrap: wrap</kbd> allows items to flow onto multiple lines when they run out of space.",
-			"task": "These cards overflow the container. Add <kbd>flex-wrap: wrap</kbd> to allow them to wrap to new rows.",
+			"task": "The cards overflow the container instead of fitting within it. Allow the items to flow onto new rows when they run out of space.",
 			"previewHTML": "<div class=\"cards\"><article class=\"card\">Card 1</article><article class=\"card\">Card 2</article><article class=\"card\">Card 3</article><article class=\"card\">Card 4</article><article class=\"card\">Card 5</article><article class=\"card\">Card 6</article></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .cards { display: flex; gap: 1rem; } .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 120px; text-align: center; }",
 			"sandboxCSS": "",
@@ -106,7 +106,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "flex-wrap", "expected": "wrap" },
-					"message": "Set <kbd>flex-wrap: wrap</kbd>"
+					"message": "Use the property that allows flex items to wrap onto new lines"
 				}
 			]
 		},
@@ -114,7 +114,7 @@
 			"id": "flexbox-6",
 			"title": "Flex Grow",
 			"description": "The <kbd>flex</kbd> property on items controls how they grow and shrink. <kbd>flex: 1</kbd> makes an item grow to fill available space. Multiple items with <kbd>flex: 1</kbd> share space equally.",
-			"task": "Make the search input expand to fill available space by setting <kbd>flex: 1</kbd> on <kbd>.search</kbd>.",
+			"task": "The search input is too narrow. Make it stretch to fill all the remaining space in the toolbar.",
 			"previewHTML": "<div class=\"toolbar\"><input class=\"search\" type=\"text\" placeholder=\"Search...\"><button class=\"btn\">Search</button><button class=\"btn\">Filters</button></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .toolbar { display: flex; gap: 8px; padding: 1rem; background: #f5f5f5; border-radius: 8px; } .search { padding: 8px 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; } .btn { padding: 8px 1rem; background: steelblue; color: white; border: none; border-radius: 4px; cursor: pointer; }",
 			"sandboxCSS": "",
@@ -125,9 +125,9 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "flex", "expected": "1" },
-					"message": "Set <kbd>flex: 1</kbd>"
+					"type": "regex",
+					"value": "(flex\\s*:\\s*1|flex-grow\\s*:\\s*1)",
+					"message": "Use the property that makes a flex item grow to fill available space"
 				}
 			]
 		}
