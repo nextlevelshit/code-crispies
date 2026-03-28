@@ -13,3 +13,9 @@ coverage
 # Auto-Claude
 .auto-claude
 .worktrees
+
+# Wave ephemeral data
+.wave/workspaces
+.wave/traces
+.wave/artifacts
+.wave/output

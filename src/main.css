@@ -1,15 +1,15 @@
 /* ================= BASE THEME ================= */
 :root {
 	/* Primary colors */
-	--primary-color: #5e4b8b;
-	--primary-light: #8a77b5;
-	--primary-dark: #724a95;
+	--primary-color: #c9507a;
+	--primary-light: #e077a0;
+	--primary-dark: #a83d65;
 
-	/* Section colors (default to CSS purple) */
-	--section-color: #9163b8;
-	--section-color-light: #a87dc8;
-	--section-color-dark: #724a95;
-	--section-color-rgb: 145, 99, 184;
+	/* Section colors (default to CSS pink) */
+	--section-color: #d95a8a;
+	--section-color-light: #e87da6;
+	--section-color-dark: #b84472;
+	--section-color-rgb: 217, 90, 138;
 
 	/* Secondary colors */
 	--secondary-color: #444444;
@@ -23,9 +23,9 @@
 	--white-text: #ffffff;
 
 	/* Background colors */
-	--bg-color: #f8f7fc;
+	--bg-color: #fcf7f9;
 	--panel-bg: #ffffff;
-	--code-bg: #f7f5fa;
+	--code-bg: #faf5f7;
 	--editor-bg: #1e1e1e;
 	--editor-highlight: #303030;
 
@@ -34,9 +34,9 @@
 
 	/* Status colors */
 	--info-color: #7a93fe;
-	--success-color: #9b6dd4;
-	--success-color-dark: #7c4dff;
-	--success-color-light: #c9b8e8;
+	--success-color: #d46d9b;
+	--success-color-dark: #b84472;
+	--success-color-light: #e8b8d0;
 	--error-color: #cb6e75;
 	--danger-color: #dc3545;
 
@@ -252,11 +252,11 @@ kbd {
 }
 
 .logo h1 .code-text {
-	color: #9163b8;
+	color: #d95a8a;
 }
 
 .logo h1 .crispies-text {
-	background: #9163b8;
+	background: #d95a8a;
 	color: white;
 	padding: 0.15rem 0.35rem;
 	border-radius: 4px;
@@ -468,7 +468,7 @@ kbd {
 .completion-badge {
 	display: inline-block;
 	padding: 0.15rem 0.5rem;
-	background: linear-gradient(135deg, #9163b8, #d45aa0, #1aafb8, #7c4dff);
+	background: linear-gradient(135deg, #d95a8a, #d45aa0, #1aafb8, #ff4d88);
 	color: white;
 	font-size: 0.7rem;
 	font-weight: 600;
@@ -714,7 +714,7 @@ kbd {
 	position: absolute;
 	inset: var(--spacing-md);
 	border-radius: var(--border-radius-md);
-	background: conic-gradient(from var(--border-angle), #9163b8, #d45aa0, #1aafb8, #7c4dff, #9163b8);
+	background: conic-gradient(from var(--border-angle), #d95a8a, #d45aa0, #1aafb8, #ff4d88, #d95a8a);
 	filter: blur(30px);
 	opacity: 0;
 	animation: spin-glow 3s ease-out forwards;
@@ -727,7 +727,7 @@ kbd {
 	position: absolute;
 	inset: var(--spacing-md);
 	border-radius: var(--border-radius-md);
-	background: conic-gradient(from 0deg, #9163b8, #d45aa0, #1aafb8, #7c4dff, #9163b8);
+	background: conic-gradient(from 0deg, #d95a8a, #d45aa0, #1aafb8, #ff4d88, #d95a8a);
 	filter: blur(30px);
 	opacity: 0.35;
 	pointer-events: none;
@@ -816,7 +816,7 @@ kbd {
 	border: 6px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-		conic-gradient(from 0deg, #9163b8, #d45aa0, #1aafb8, #7c4dff, #9163b8) border-box;
+		conic-gradient(from 0deg, #d95a8a, #d45aa0, #1aafb8, #ff4d88, #d95a8a) border-box;
 }
 
 .preview-wrapper.matched {
@@ -824,7 +824,7 @@ kbd {
 	border: 6px solid transparent;
 	background:
 		linear-gradient(var(--panel-bg), var(--panel-bg)) padding-box,
-		conic-gradient(from var(--border-angle), #9163b8, #d45aa0, #1aafb8, #7c4dff, #9163b8) border-box;
+		conic-gradient(from var(--border-angle), #d95a8a, #d45aa0, #1aafb8, #ff4d88, #d95a8a) border-box;
 	animation: spin-border 3s ease-out forwards;
 	overflow: visible;
 }
@@ -844,7 +844,7 @@ kbd {
 	font-weight: 800;
 	letter-spacing: 0.05em;
 	color: white;
-	background: linear-gradient(135deg, #9163b8 0%, #d45aa0 50%, #7c4dff 100%);
+	background: linear-gradient(135deg, #d95a8a 0%, #d45aa0 50%, #ff4d88 100%);
 	padding: 1.25rem 2rem 1.75rem;
 	z-index: 10;
 	pointer-events: none;
@@ -1142,7 +1142,7 @@ nav.sidebar-section:not(.sidebar-nav-mobile) {
 
 .progress-fill {
 	height: 100%;
-	background: linear-gradient(90deg, #9163b8, #d45aa0, #1aafb8, #7c4dff);
+	background: linear-gradient(90deg, #d95a8a, #d45aa0, #1aafb8, #ff4d88);
 	background-size: calc(100% * 100 / var(--progress-percent, 100)) 100%;
 	border-radius: 4px;
 	transition: width 0.3s ease;
@@ -1206,7 +1206,7 @@ nav.sidebar-section:not(.sidebar-nav-mobile) {
 }
 
 /* Each milestone gets a color evenly distributed across the gradient
-   Gradient: #9163b8 (0%) → #d45aa0 (33%) → #1aafb8 (67%) → #7c4dff (100%) */
+   Gradient: #d95a8a (0%) → #d45aa0 (33%) → #1aafb8 (67%) → #ff4d88 (100%) */
 .milestone.reached:nth-child(1) { background: #a55eac; } /* ~14% */
 .milestone.reached:nth-child(2) { background: #c459a2; } /* ~28% */
 .milestone.reached:nth-child(3) { background: #d45aa0; } /* ~33% pink */
@@ -1214,12 +1214,12 @@ nav.sidebar-section:not(.sidebar-nav-mobile) {
 .milestone.reached:nth-child(5) { background: #7785ac; } /* ~50% */
 .milestone.reached:nth-child(6) { background: #33a3b6; } /* ~62% */
 .milestone.reached:nth-child(7) { background: #4889d8; } /* ~80% */
-.milestone.reached:nth-child(8) { background: #7c4dff; } /* 100% */
+.milestone.reached:nth-child(8) { background: #ff4d88; } /* 100% */
 
 .milestone.current {
 	color: white;
 	transform: scale(1.15);
-	box-shadow: 0 2px 8px rgba(145, 99, 184, 0.4);
+	box-shadow: 0 2px 8px rgba(217, 90, 138, 0.4);
 }
 
 .milestone.next {
@@ -2590,7 +2590,7 @@ input:checked + .toggle-slider::before {
 	margin-top: var(--spacing-lg);
 	text-align: center;
 	padding: 0.75rem 1.5rem;
-	background: linear-gradient(135deg, rgba(145, 99, 184, 0.1), rgba(212, 90, 160, 0.1), rgba(26, 175, 184, 0.1));
+	background: linear-gradient(135deg, rgba(217, 90, 138, 0.1), rgba(212, 90, 160, 0.1), rgba(26, 175, 184, 0.1));
 	border-radius: var(--border-radius-md);
 	color: var(--light-text);
 	font-size: 0.9rem;
@@ -2840,7 +2840,7 @@ input:checked + .toggle-slider::before {
 }
 
 .section-overview code {
-	background: rgba(var(--section-color-rgb, 145, 99, 184), 0.1);
+	background: rgba(var(--section-color-rgb, 217, 90, 138), 0.1);
 	color: var(--section-color-dark, var(--primary-dark));
 	padding: 0.1rem 0.35rem;
 	border-radius: 4px;
@@ -2950,7 +2950,7 @@ input:checked + .toggle-slider::before {
 
 /* Inline code in topic text */
 .topic-text code {
-	background: rgba(var(--section-color-rgb, 145, 99, 184), 0.1);
+	background: rgba(var(--section-color-rgb, 217, 90, 138), 0.1);
 	color: var(--section-color-dark, var(--primary-dark));
 	padding: 0.15rem 0.4rem;
 	border-radius: 4px;
@@ -3592,7 +3592,7 @@ input:checked + .toggle-slider::before {
 }
 
 /* ================= SECTION COLOR CODING ================= */
-/* CSS Section uses default purple from :root */
+/* CSS Section uses default pink from :root */
 
 /* HTML Section - Pink (balanced) */
 [data-section="html"] {
@@ -3620,7 +3620,7 @@ input:checked + .toggle-slider::before {
 
 /* Apply section colors to nav links */
 .nav-link[data-section="css"] {
-	color: #9163b8;
+	color: #d95a8a;
 }
 
 .nav-link[data-section="html"] {
@@ -3637,8 +3637,8 @@ input:checked + .toggle-slider::before {
 
 .nav-link[data-section="css"]:hover,
 .nav-link[data-section="css"].active {
-	background: rgba(145, 99, 184, 0.1);
-	color: #724a95;
+	background: rgba(217, 90, 138, 0.1);
+	color: #a83d65;
 }
 
 .nav-link[data-section="html"]:hover,
@@ -3661,12 +3661,12 @@ input:checked + .toggle-slider::before {
 
 /* Hint section colors */
 body[data-section="css"] .hint {
-	background: rgba(145, 99, 184, 0.3);
+	background: rgba(217, 90, 138, 0.3);
 	border-left-color: #a98cd6;
 }
 
 body[data-section="css"] .hint-progress {
-	background: #9163b8;
+	background: #d95a8a;
 }
 
 body[data-section="html"] .hint {
@@ -3718,7 +3718,7 @@ body[data-section="markdown"] .hint-progress {
 .ref-nav-link[data-ref="selectors"],
 .ref-nav-link[data-ref="flexbox"],
 .ref-nav-link[data-ref="grid"] {
-	color: #9163b8;
+	color: #d95a8a;
 }
 
 .ref-nav-link[data-ref="css"]:hover,
@@ -3729,8 +3729,8 @@ body[data-section="markdown"] .hint-progress {
 .ref-nav-link[data-ref="flexbox"].active,
 .ref-nav-link[data-ref="grid"]:hover,
 .ref-nav-link[data-ref="grid"].active {
-	background: rgba(145, 99, 184, 0.15);
-	color: #724a95;
+	background: rgba(217, 90, 138, 0.15);
+	color: #a83d65;
 }
 
 .ref-nav-link[data-ref="html"] {
@@ -3745,21 +3745,21 @@ body[data-section="markdown"] .hint-progress {
 
 /* CodeMirror section color overrides */
 body[data-section="css"] .cm-editor .cm-content {
-	caret-color: #9163b8 !important;
+	caret-color: #d95a8a !important;
 }
 
 body[data-section="css"] .cm-editor .cm-cursor,
 body[data-section="css"] .cm-editor .cm-dropCursor {
-	border-left-color: #9163b8 !important;
+	border-left-color: #d95a8a !important;
 }
 
 body[data-section="css"] .cm-editor .cm-selectionBackground,
 body[data-section="css"] .cm-editor .cm-content ::selection {
-	background-color: rgba(145, 99, 184, 0.25) !important;
+	background-color: rgba(217, 90, 138, 0.25) !important;
 }
 
 body[data-section="css"] .cm-editor .cm-activeLine {
-	background-color: rgba(145, 99, 184, 0.08) !important;
+	background-color: rgba(217, 90, 138, 0.08) !important;
 }
 
 body[data-section="html"] .cm-editor .cm-content {
@@ -3818,12 +3818,12 @@ body[data-section="markdown"] .cm-editor .cm-activeLine {
 
 /* Module pill section colors */
 body[data-section="css"] .module-pill {
-	background: rgba(145, 99, 184, 0.1);
-	color: #9163b8;
+	background: rgba(217, 90, 138, 0.1);
+	color: #d95a8a;
 }
 
 body[data-section="css"] .module-pill .level-indicator {
-	color: #724a95;
+	color: #a83d65;
 }
 
 body[data-section="html"] .module-pill {
@@ -3855,7 +3855,7 @@ body[data-section="markdown"] .module-pill .level-indicator {
 
 /* Code block border section colors */
 body[data-section="css"] .code-block {
-	border-color: rgba(145, 99, 184, 0.4);
+	border-color: rgba(217, 90, 138, 0.4);
 }
 
 body[data-section="html"] .code-block {
@@ -3889,7 +3889,7 @@ body[data-section="markdown"] .code-block .cm-editor .cm-line {
 
 /* Task instruction bubble section colors */
 [data-section="css"] .task-instruction {
-	background: rgba(145, 99, 184, 0.92);
+	background: rgba(217, 90, 138, 0.92);
 }
 
 [data-section="html"] .task-instruction {
@@ -3906,7 +3906,7 @@ body[data-section="markdown"] .code-block .cm-editor .cm-line {
 
 /* Section page progress bar colors */
 body[data-section="css"] .section-progress-bar .progress-fill {
-	background: #9163b8;
+	background: #d95a8a;
 }
 
 body[data-section="html"] .section-progress-bar .progress-fill {
@@ -3923,7 +3923,7 @@ body[data-section="markdown"] .section-progress-bar .progress-fill {
 
 /* Section page header colors */
 [data-section="css"] .section-hero h1 {
-	color: #9163b8;
+	color: #d95a8a;
 }
 
 [data-section="html"] .section-hero h1 {
@@ -3940,7 +3940,7 @@ body[data-section="markdown"] .section-progress-bar .progress-fill {
 
 /* Lesson title h2 section colors */
 body[data-section="css"] #lesson-title {
-	color: #9163b8;
+	color: #d95a8a;
 }
 
 body[data-section="html"] #lesson-title {

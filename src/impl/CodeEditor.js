@@ -13,7 +13,7 @@ import { abbreviationTracker, expandAbbreviation } from "@emmetio/codemirror6-pl
 import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { tags } from "@lezer/highlight";
 
-// Custom theme with purple accent colors (matching app completed state)
+// Custom theme with pink accent colors (matching app completed state)
 const crispyTheme = EditorView.theme(
 	{
 		"&": {
@@ -21,10 +21,10 @@ const crispyTheme = EditorView.theme(
 			color: "#c8c8d0"
 		},
 		".cm-content": {
-			caretColor: "#9b6dd4"
+			caretColor: "#d46d9b"
 		},
 		".cm-cursor, .cm-dropCursor": {
-			borderLeftColor: "#9b6dd4"
+			borderLeftColor: "#d46d9b"
 		},
 		"&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": {
 			backgroundColor: "#3e3e4a"
@@ -35,10 +35,10 @@ const crispyTheme = EditorView.theme(
 		},
 		".cm-searchMatch": {
 			backgroundColor: "#3e3e4a",
-			outline: "1px solid #9b6dd4"
+			outline: "1px solid #d46d9b"
 		},
 		".cm-searchMatch.cm-searchMatch-selected": {
-			backgroundColor: "rgba(155, 109, 212, 0.3)"
+			backgroundColor: "rgba(212, 109, 155, 0.3)"
 		},
 		".cm-activeLine": {
 			backgroundColor: "#2e2e3a"
@@ -63,13 +63,13 @@ const crispyTheme = EditorView.theme(
 
 // Default syntax highlighting (blue accent)
 const defaultHighlight = HighlightStyle.define([
-	{ tag: tags.keyword, color: "#c9a6eb" },
+	{ tag: tags.keyword, color: "#eba6c9" },
 	{ tag: tags.operator, color: "#cdd6f4" },
 	{ tag: tags.variableName, color: "#89b4fa" },
 	{ tag: tags.propertyName, color: "#89b4fa" },
 	{ tag: tags.attributeName, color: "#89b4fa" },
 	{ tag: tags.className, color: "#89b4fa" },
-	{ tag: tags.tagName, color: "#c9a6eb" },
+	{ tag: tags.tagName, color: "#eba6c9" },
 	{ tag: tags.string, color: "#a6e3a1" },
 	{ tag: tags.number, color: "#fab387" },
 	{ tag: tags.bool, color: "#fab387" },
@@ -79,20 +79,20 @@ const defaultHighlight = HighlightStyle.define([
 	{ tag: tags.punctuation, color: "#cdd6f4" },
 	{ tag: tags.definition(tags.variableName), color: "#89b4fa" },
 	{ tag: tags.function(tags.variableName), color: "#89b4fa" },
-	{ tag: tags.atom, color: "#c9a6eb" },
+	{ tag: tags.atom, color: "#eba6c9" },
 	{ tag: tags.unit, color: "#a6e3a1" },
 	{ tag: tags.color, color: "#f9e2af" }
 ]);
 
-// CSS section highlighting (purple selectors)
+// CSS section highlighting (pink selectors)
 const cssHighlight = HighlightStyle.define([
-	{ tag: tags.keyword, color: "#c9a6eb" },
+	{ tag: tags.keyword, color: "#eba6c9" },
 	{ tag: tags.operator, color: "#cdd6f4" },
-	{ tag: tags.variableName, color: "#c9a6eb" },
+	{ tag: tags.variableName, color: "#eba6c9" },
 	{ tag: tags.propertyName, color: "#89b4fa" },
 	{ tag: tags.attributeName, color: "#89b4fa" },
-	{ tag: tags.className, color: "#c9a6eb" },
-	{ tag: tags.tagName, color: "#c9a6eb" },
+	{ tag: tags.className, color: "#eba6c9" },
+	{ tag: tags.tagName, color: "#eba6c9" },
 	{ tag: tags.string, color: "#a6e3a1" },
 	{ tag: tags.number, color: "#fab387" },
 	{ tag: tags.bool, color: "#fab387" },
@@ -100,9 +100,9 @@ const cssHighlight = HighlightStyle.define([
 	{ tag: tags.comment, color: "#6c7086", fontStyle: "italic" },
 	{ tag: tags.bracket, color: "#cdd6f4" },
 	{ tag: tags.punctuation, color: "#cdd6f4" },
-	{ tag: tags.definition(tags.variableName), color: "#c9a6eb" },
+	{ tag: tags.definition(tags.variableName), color: "#eba6c9" },
 	{ tag: tags.function(tags.variableName), color: "#89b4fa" },
-	{ tag: tags.atom, color: "#c9a6eb" },
+	{ tag: tags.atom, color: "#eba6c9" },
 	{ tag: tags.unit, color: "#a6e3a1" },
 	{ tag: tags.color, color: "#f9e2af" }
 ]);
