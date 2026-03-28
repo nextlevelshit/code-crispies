@@ -27,7 +27,35 @@ describe("Lessons Config Module", () => {
 			modules.forEach((module) => {
 				module.lessons.forEach((lesson) => {
 					expect(lesson.mode).toBeDefined();
-					expect(["html", "css", "tailwind", "markdown", "playground"]).toContain(lesson.mode);
+					expect(["html", "css", "tailwind", "markdown", "javascript", "playground"]).toContain(lesson.mode);
+				});
+			});
+		});
+	});
+
+	describe("JavaScript modules", () => {
+		test("should include JavaScript modules", async () => {
+			const modules = await loadModules();
+			const moduleIds = modules.map((m) => m.id);
+
+			expect(moduleIds).toContain("js-variables");
+			expect(moduleIds).toContain("js-dom");
+			expect(moduleIds).toContain("js-events");
+		});
+
+		test("JavaScript modules should have correct mode and structure", async () => {
+			const modules = await loadModules();
+			const jsModules = modules.filter((m) => m.mode === "javascript");
+
+			expect(jsModules.length).toBe(3);
+
+			jsModules.forEach((module) => {
+				expect(module.lessons.length).toBeGreaterThanOrEqual(3);
+				module.lessons.forEach((lesson) => {
+					expect(lesson.mode).toBe("javascript");
+					expect(lesson.validations.length).toBeGreaterThan(0);
+					expect(lesson.task).toBeTruthy();
+					expect(lesson.solution).toBeTruthy();
 				});
 			});
 		});

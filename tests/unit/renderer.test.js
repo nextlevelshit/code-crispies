@@ -240,4 +240,67 @@ describe("Renderer Module", () => {
 			expect(computeLessonDifficulty({ codePrefix: null })).toBe("medium");
 		});
 	});
+
+	describe("renderModuleList section headers", () => {
+		const noop = () => {};
+
+		test("inserts section header elements between different category groups", () => {
+			const container = document.getElementById("module-list");
+			const modules = [
+				{ id: "css-basic-selectors", title: "CSS Selectors", lessons: [{ title: "L1" }] },
+				{ id: "colors", title: "Colors", lessons: [{ title: "L1" }] },
+				{ id: "flexbox", title: "Flexbox", lessons: [{ title: "L1" }] },
+				{ id: "html-elements", title: "HTML Elements", lessons: [{ title: "L1" }] }
+			];
+
+			renderModuleList(container, modules, noop, noop);
+
+			const headers = container.querySelectorAll(".module-section-header");
+			expect(headers.length).toBe(3); // CSS Basics, CSS Layout, HTML Structure
+		});
+
+		test("section headers display correct category text", () => {
+			const container = document.getElementById("module-list");
+			const modules = [
+				{ id: "css-basic-selectors", title: "CSS Selectors", lessons: [{ title: "L1" }] },
+				{ id: "flexbox", title: "Flexbox", lessons: [{ title: "L1" }] }
+			];
+
+			renderModuleList(container, modules, noop, noop);
+
+			const headers = container.querySelectorAll(".module-section-header");
+			expect(headers[0].textContent).toBe("CSS Basics");
+			expect(headers[1].textContent).toBe("CSS Layout");
+		});
+
+		test("no section header is inserted between modules in the same category", () => {
+			const container = document.getElementById("module-list");
+			const modules = [
+				{ id: "css-basic-selectors", title: "CSS Selectors", lessons: [{ title: "L1" }] },
+				{ id: "colors", title: "Colors", lessons: [{ title: "L1" }] },
+				{ id: "typography", title: "Typography", lessons: [{ title: "L1" }] }
+			];
+
+			renderModuleList(container, modules, noop, noop);
+
+			const headers = container.querySelectorAll(".module-section-header");
+			expect(headers.length).toBe(1);
+			expect(headers[0].textContent).toBe("CSS Basics");
+		});
+
+		test("Welcome and Outro modules have no section headers", () => {
+			const container = document.getElementById("module-list");
+			const modules = [
+				{ id: "welcome", title: "Welcome", lessons: [{ title: "L1" }] },
+				{ id: "css-basic-selectors", title: "CSS Selectors", lessons: [{ title: "L1" }] },
+				{ id: "playground", title: "Playground", lessons: [{ title: "L1" }] }
+			];
+
+			renderModuleList(container, modules, noop, noop);
+
+			const headers = container.querySelectorAll(".module-section-header");
+			expect(headers.length).toBe(1);
+			expect(headers[0].textContent).toBe("CSS Basics");
+		});
+	});
 });

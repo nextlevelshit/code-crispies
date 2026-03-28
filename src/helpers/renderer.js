@@ -2,6 +2,7 @@
  * Renderer - Handles UI updates for the CSS learning platform
  */
 import { t } from "../i18n.js";
+import { getModuleCategory } from "../config/lessons.js";
 
 /**
  * Compute lesson difficulty based on lesson structure
@@ -72,8 +73,21 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		}
 	}
 
+	// Track current category for section headers
+	let currentCategory = null;
+
 	// Create list items for each module
 	modules.forEach((module) => {
+		// Insert section header when category changes
+		const category = getModuleCategory(module.id);
+		if (category && category !== currentCategory) {
+			currentCategory = category;
+			const header = document.createElement("h3");
+			header.className = "module-section-header";
+			header.textContent = category;
+			header.setAttribute("aria-hidden", "true");
+			container.appendChild(header);
+		}
 		// Create module container
 		// Use native <details>/<summary> for expand/collapse
 		const moduleContainer = document.createElement("details");

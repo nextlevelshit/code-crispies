@@ -1,0 +1,93 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-dom",
+	"title": "JS DOM",
+	"description": "Learn to select HTML elements with querySelector, change their text content, and modify their styles using JavaScript.",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-query",
+			"title": "Select an Element",
+			"description": "Use <kbd>document.querySelector()</kbd> to find an element by its CSS selector. It returns the first matching element.",
+			"task": "Select the element with id <kbd>box</kbd> and store it in a <kbd>const el</kbd>",
+			"previewHTML": "<div id=\"box\" style=\"width:80px;height:80px;background:coral;border-radius:8px;\"></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "const el = document.querySelector(\"#box\");",
+			"codePrefix": "",
+			"codeSuffix": "\nif (el) el.textContent = \"Found!\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "querySelector",
+					"message": "Use <kbd>document.querySelector()</kbd> to select the element"
+				},
+				{
+					"type": "regex",
+					"value": "querySelector\\s*\\([\"']#box[\"']\\)",
+					"message": "Pass <kbd>\"#box\"</kbd> as the selector"
+				},
+				{
+					"type": "regex",
+					"value": "const\\s+el\\s*=",
+					"message": "Store the result in a constant named <kbd>el</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-text",
+			"title": "Change Text",
+			"description": "The <kbd>textContent</kbd> property lets you read or change the text inside an element. Setting it replaces all the element's text.",
+			"task": "Set the <kbd>textContent</kbd> of <kbd>el</kbd> to <kbd>\"Hello!\"</kbd>",
+			"previewHTML": "<p id=\"msg\">Old text</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "el.textContent = \"Hello!\";",
+			"codePrefix": "const el = document.querySelector(\"#msg\");\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "textContent",
+					"message": "Use the <kbd>textContent</kbd> property"
+				},
+				{
+					"type": "regex",
+					"value": "el\\.textContent\\s*=\\s*[\"']Hello![\"']",
+					"message": "Set <kbd>el.textContent</kbd> to <kbd>\"Hello!\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-style",
+			"title": "Change Style",
+			"description": "Access an element's inline styles through the <kbd>style</kbd> property. CSS properties use camelCase in JavaScript, so <kbd>background-color</kbd> becomes <kbd>backgroundColor</kbd>.",
+			"task": "Set <kbd>el.style.backgroundColor</kbd> to <kbd>\"gold\"</kbd>",
+			"previewHTML": "<div id=\"box\" style=\"width:80px;height:80px;background:coral;border-radius:8px;\"></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "el.style.backgroundColor = \"gold\";",
+			"codePrefix": "const el = document.querySelector(\"#box\");\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "style.backgroundColor",
+					"message": "Use <kbd>el.style.backgroundColor</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "\\.style\\.backgroundColor\\s*=\\s*[\"']gold[\"']",
+					"message": "Set the background color to <kbd>\"gold\"</kbd>"
+				}
+			]
+		}
+	]
+}

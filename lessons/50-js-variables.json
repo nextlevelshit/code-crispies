@@ -1,0 +1,98 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-variables",
+	"title": "JS Variables",
+	"description": "Learn to declare variables with let and const, work with strings and numbers, and use template literals to build dynamic text.",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-const",
+			"title": "Constants",
+			"description": "Use <kbd>const</kbd> to declare a variable that cannot be reassigned. Constants are great for values that stay the same throughout your program.",
+			"task": "Declare a constant named <kbd>name</kbd> with the value <kbd>\"Ada\"</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "const name = \"Ada\";",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById(\"out\").textContent = name;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "const",
+					"message": "Use <kbd>const</kbd> to declare the variable"
+				},
+				{
+					"type": "regex",
+					"value": "const\\s+name\\s*=",
+					"message": "Name your constant <kbd>name</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "[\"']Ada[\"']",
+					"message": "Set the value to <kbd>\"Ada\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-let",
+			"title": "Let Variables",
+			"description": "Use <kbd>let</kbd> to declare a variable that can be reassigned later. This is useful when you need to update a value.",
+			"task": "Declare a variable <kbd>score</kbd> with <kbd>let</kbd> and set it to <kbd>0</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "let score = 0;",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById(\"out\").textContent = \"Score: \" + score;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "let",
+					"message": "Use <kbd>let</kbd> to declare the variable"
+				},
+				{
+					"type": "regex",
+					"value": "let\\s+score\\s*=\\s*0",
+					"message": "Set <kbd>score</kbd> to <kbd>0</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-template",
+			"title": "Template Literals",
+			"description": "Template literals use backticks <kbd>`</kbd> and <kbd>${}</kbd> to embed expressions inside strings. They make building dynamic text much easier than string concatenation.",
+			"task": "Create a <kbd>const msg</kbd> using a template literal: <kbd>`Hi, ${name}!`</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "const msg = `Hi, ${name}!`;",
+			"codePrefix": "const name = \"Ada\";\n",
+			"codeSuffix": "\ndocument.getElementById(\"out\").textContent = msg;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "${",
+					"message": "Use <kbd>${}</kbd> to embed the variable inside the template"
+				},
+				{
+					"type": "regex",
+					"value": "`[^`]*\\$\\{\\s*name\\s*\\}[^`]*`",
+					"message": "Embed <kbd>name</kbd> inside a template literal with backticks"
+				},
+				{
+					"type": "regex",
+					"value": "const\\s+msg\\s*=",
+					"message": "Assign the result to a constant named <kbd>msg</kbd>"
+				}
+			]
+		}
+	]
+}

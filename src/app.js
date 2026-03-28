@@ -578,6 +578,11 @@ function updateEditorForMode(mode) {
 			label: "Markdown Editor",
 			cmMode: "markdown"
 		},
+		javascript: {
+			placeholder: "// Write your JavaScript here...",
+			label: "JavaScript Editor",
+			cmMode: "javascript"
+		},
 		playground: {
 			placeholder: "<style>\n  /* CSS here */\n</style>\n\n<!-- HTML here -->",
 			label: "HTML & CSS",
@@ -1493,6 +1498,64 @@ This is \`inline code\`.</code></pre>
 				</div>
 			</div>
 		</div>
+	`,
+	javascript: `
+		<div class="section-overview">
+			<p><strong>JavaScript</strong> is the programming language of the web. It makes pages interactive—responding to clicks, updating content, and manipulating the DOM (Document Object Model). Every modern website uses JavaScript to create dynamic user experiences.</p>
+			<p>Start with the fundamentals: declaring variables with <code>const</code> and <code>let</code>, selecting elements with <code>querySelector</code>, changing content and styles, and responding to user events like clicks.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Variables</h2>
+				<p>Store values using <code>const</code> (cannot be reassigned) and <code>let</code> (can be updated). Use template literals with backticks to build dynamic strings with embedded expressions.</p>
+				<p>
+					<a href="#js-variables/0" class="topic-link">Practice variables</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>const name = "Ada";
+let score = 0;
+const msg = \`Hi, \${name}!\`;</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>DOM Manipulation</h2>
+				<p>Use <code>document.querySelector()</code> to find elements, <code>textContent</code> to change text, and <code>style</code> to modify CSS properties directly from JavaScript.</p>
+				<p>
+					<a href="#js-dom/0" class="topic-link">Practice DOM</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>const el = document.querySelector("#box");
+el.textContent = "Hello!";
+el.style.backgroundColor = "gold";</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Events</h2>
+				<p>Use <code>addEventListener</code> to respond to user interactions. Handle clicks, toggle classes, and build interactive features like counters and toggles.</p>
+				<p>
+					<a href="#js-events/0" class="topic-link">Practice events</a>
+				</p>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>btn.addEventListener("click", () => {
+  count++;
+  out.textContent = count;
+});</code></pre>
+				</div>
+			</div>
+		</div>
 	`
 };
 
@@ -2310,7 +2373,7 @@ function showLandingPage() {
  */
 function renderFooterLessonLinks() {
 	const modules = lessonEngine.modules || [];
-	const sectionGroups = { css: [], html: [] };
+	const sectionGroups = { css: [], html: [], markdown: [], javascript: [] };
 
 	modules.forEach((module) => {
 		if (module.excludeFromProgress) return;
@@ -2347,7 +2410,7 @@ function renderFooterLessonLinks() {
  * Update progress indicators on landing page
  */
 function updateLandingProgress() {
-	["css", "html", "markdown"].forEach((sectionId) => { // tailwind temporarily disabled
+	["css", "html", "markdown", "javascript"].forEach((sectionId) => { // tailwind temporarily disabled
 		const progressEl = document.getElementById(`${sectionId}-progress`);
 		if (progressEl) {
 			const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);

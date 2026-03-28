@@ -226,6 +226,69 @@ describe("CSS Validator", () => {
 	});
 });
 
+describe("JavaScript Validator", () => {
+	describe("validateUserCode with mode: javascript", () => {
+		it("should pass contains validation for correct code", () => {
+			const userCode = 'const name = "Ada";';
+			const lesson = {
+				mode: "javascript",
+				validations: [{ type: "contains", value: "const", message: "Use const" }]
+			};
+
+			const result = validateUserCode(userCode, lesson);
+			expect(result.isValid).toBe(true);
+		});
+
+		it("should fail contains validation for missing code", () => {
+			const userCode = 'var name = "Ada";';
+			const lesson = {
+				mode: "javascript",
+				validations: [{ type: "contains", value: "const", message: "Use const keyword" }]
+			};
+
+			const result = validateUserCode(userCode, lesson);
+			expect(result.isValid).toBe(false);
+			expect(result.message).toBe("Use const keyword");
+		});
+
+		it("should pass regex validation", () => {
+			const userCode = 'const name = "Ada";';
+			const lesson = {
+				mode: "javascript",
+				validations: [{ type: "regex", value: "const\\s+name\\s*=", message: "Declare name" }]
+			};
+
+			const result = validateUserCode(userCode, lesson);
+			expect(result.isValid).toBe(true);
+		});
+
+		it("should handle not_contains validation", () => {
+			const userCode = "let score = 0;";
+			const lesson = {
+				mode: "javascript",
+				validations: [{ type: "not_contains", value: "var", message: "Don't use var" }]
+			};
+
+			const result = validateUserCode(userCode, lesson);
+			expect(result.isValid).toBe(true);
+
+			const failLesson = {
+				mode: "javascript",
+				validations: [{ type: "not_contains", value: "let", message: "Don't use let" }]
+			};
+
+			const failResult = validateUserCode(userCode, failLesson);
+			expect(failResult.isValid).toBe(false);
+		});
+
+		it("should pass with no validations", () => {
+			const result = validateUserCode("const x = 1;", { mode: "javascript" });
+			expect(result.isValid).toBe(true);
+			expect(result.message).toContain("No validations specified");
+		});
+	});
+});
+
 describe("HTML Validator", () => {
 	describe("validateUserCode with mode: html", () => {
 		it("should validate element_exists correctly", () => {

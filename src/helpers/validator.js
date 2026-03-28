@@ -10,6 +10,8 @@ export function validateUserCode(userCode, lesson) {
 			return validateHtmlCode(userCode, lesson);
 		case "tailwind":
 			return validateTailwindClasses(userCode, lesson);
+		case "javascript":
+			return validateJavaScriptCode(userCode, lesson);
 		case "css":
 		default:
 			return validateCssCode(userCode, lesson);
@@ -190,6 +192,80 @@ function validateHtmlCode(userHtml, lesson) {
 
 			default:
 				console.warn(`Unknown HTML validation type: ${type}`);
+				validationPassed = true;
+		}
+
+		if (validationPassed) {
+			result.validCases++;
+		} else {
+			return result;
+		}
+	}
+
+	result.validCases = validations.length;
+	return result;
+}
+
+/**
+ * Validate user JavaScript code against the lesson requirements
+ * @param {string} userCode - User submitted JavaScript code
+ * @param {Object} lesson - The current lesson object
+ * @returns {Object} Validation result with isValid and message properties
+ */
+function validateJavaScriptCode(userCode, lesson) {
+	if (!lesson || !lesson.validations) {
+		return { isValid: true, message: "No validations specified for this lesson." };
+	}
+
+	const validations = lesson.validations;
+
+	let result = {
+		isValid: true,
+		validCases: 0,
+		totalCases: validations.length,
+		message: "Your CODE looks CRISPY!"
+	};
+
+	for (const validation of validations) {
+		const { type, value, message, options } = validation;
+		let validationPassed = false;
+
+		switch (type) {
+			case "contains":
+				validationPassed = containsValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						...result,
+						isValid: false,
+						message: message || `Your code should include "${value}".`
+					};
+				}
+				break;
+
+			case "not_contains":
+				validationPassed = !containsValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						...result,
+						isValid: false,
+						message: message || `Your code should not include "${value}".`
+					};
+				}
+				break;
+
+			case "regex":
+				validationPassed = regexValidation(userCode, value, options);
+				if (!validationPassed) {
+					result = {
+						...result,
+						isValid: false,
+						message: message || "Your code does not match the expected pattern."
+					};
+				}
+				break;
+
+			default:
+				console.warn(`Unknown JavaScript validation type: ${type}`);
 				validationPassed = true;
 		}
 

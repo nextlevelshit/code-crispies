@@ -31,6 +31,9 @@ import filtersEN from "../../lessons/11-filters.json";
 import positioningEN from "../../lessons/12-positioning.json";
 import pseudoElementsEN from "../../lessons/13-pseudo-elements.json";
 import markdownBasicsEN from "../../lessons/40-markdown-basics.json";
+import jsVariablesEN from "../../lessons/50-js-variables.json";
+import jsDomEN from "../../lessons/51-js-dom.json";
+import jsEventsEN from "../../lessons/52-js-events.json";
 import playgroundEN from "../../lessons/98-playground.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
@@ -165,6 +168,10 @@ const moduleStoreEN = [
 	htmlTablesEN,
 	// Markdown
 	markdownBasicsEN,
+	// JavaScript
+	jsVariablesEN,
+	jsDomEN,
+	jsEventsEN,
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -206,6 +213,10 @@ const moduleStoreDE = [
 	htmlTablesDE,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -247,6 +258,10 @@ const moduleStorePL = [
 	htmlTablesPL,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -288,6 +303,10 @@ const moduleStoreES = [
 	htmlTablesES,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -329,6 +348,10 @@ const moduleStoreAR = [
 	htmlTablesAR,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -370,6 +393,10 @@ const moduleStoreUK = [
 	htmlTablesUK,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -384,6 +411,58 @@ const moduleStores = {
 	ar: moduleStoreAR,
 	uk: moduleStoreUK
 };
+
+/**
+ * Category labels for sidebar section headers.
+ * Maps module IDs to their visual grouping label.
+ */
+const moduleCategories = {
+	// CSS Basics
+	"css-basic-selectors": "CSS Basics",
+	colors: "CSS Basics",
+	gradients: "CSS Basics",
+	typography: "CSS Basics",
+	"box-model": "CSS Basics",
+	// CSS Layout
+	flexbox: "CSS Layout",
+	grid: "CSS Layout",
+	positioning: "CSS Layout",
+	"units-variables": "CSS Layout",
+	responsive: "CSS Layout",
+	// CSS Polish
+	"transitions-animations": "CSS Polish",
+	filters: "CSS Polish",
+	"pseudo-elements": "CSS Polish",
+	// HTML Structure
+	"html-elements": "HTML Structure",
+	"html-semantic": "HTML Structure",
+	"html-figure": "HTML Structure",
+	"html-svg": "HTML Structure",
+	// HTML Interactive
+	"html-details-summary": "HTML Interactive",
+	"html-dialog": "HTML Interactive",
+	"html-progress-meter": "HTML Interactive",
+	"html-forms-basic": "HTML Interactive",
+	"html-forms-validation": "HTML Interactive",
+	"html-forms-fieldset": "HTML Interactive",
+	"html-datalist": "HTML Interactive",
+	"html-tables": "HTML Interactive",
+	// Markdown
+	"markdown-basics": "Markdown",
+	// JavaScript
+	"js-variables": "JavaScript",
+	"js-dom": "JavaScript",
+	"js-events": "JavaScript"
+};
+
+/**
+ * Get the sidebar category label for a module
+ * @param {string} moduleId - The module ID
+ * @returns {string|null} The category label, or null for uncategorized modules (welcome, outro)
+ */
+export function getModuleCategory(moduleId) {
+	return moduleCategories[moduleId] || null;
+}
 
 /**
  * Load all available modules for a given language

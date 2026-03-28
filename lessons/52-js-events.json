@@ -1,0 +1,103 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-events",
+	"title": "JS Events",
+	"description": "Learn to respond to user actions by adding event listeners for clicks, toggling classes, and updating the page dynamically.",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-click",
+			"title": "Click Handler",
+			"description": "Use <kbd>addEventListener(\"click\", ...)</kbd> to run code when an element is clicked. The first argument is the event type and the second is a callback function.",
+			"task": "Add a <kbd>click</kbd> event listener to <kbd>btn</kbd> that sets <kbd>out.textContent</kbd> to <kbd>\"Clicked!\"</kbd>",
+			"previewHTML": "<button id=\"btn\" style=\"padding:8px 16px;font-size:1rem;\">Click me</button>\n<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "btn.addEventListener(\"click\", () => {\n  out.textContent = \"Clicked!\";\n});",
+			"codePrefix": "const btn = document.querySelector(\"#btn\");\nconst out = document.querySelector(\"#out\");\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for events"
+				},
+				{
+					"type": "regex",
+					"value": "addEventListener\\s*\\(\\s*[\"']click[\"']",
+					"message": "Listen for the <kbd>\"click\"</kbd> event"
+				},
+				{
+					"type": "regex",
+					"value": "textContent\\s*=\\s*[\"']Clicked![\"']",
+					"message": "Set <kbd>out.textContent</kbd> to <kbd>\"Clicked!\"</kbd> inside the handler"
+				}
+			]
+		},
+		{
+			"id": "js-toggle",
+			"title": "Toggle a Class",
+			"description": "Use <kbd>classList.toggle()</kbd> to add a class if it's missing or remove it if it's present. This is perfect for on/off states like toggling dark mode or active states.",
+			"task": "Inside the click handler, call <kbd>box.classList.toggle(\"on\")</kbd>",
+			"previewHTML": "<div id=\"box\" style=\"width:80px;height:80px;background:coral;border-radius:8px;transition:background 0.3s;\"></div>\n<style>.on { background: mediumseagreen !important; }</style>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "box.addEventListener(\"click\", () => {\n  box.classList.toggle(\"on\");\n});",
+			"codePrefix": "const box = document.querySelector(\"#box\");\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "classList.toggle",
+					"message": "Use <kbd>classList.toggle()</kbd> to toggle the class"
+				},
+				{
+					"type": "regex",
+					"value": "classList\\.toggle\\s*\\(\\s*[\"']on[\"']\\s*\\)",
+					"message": "Toggle the class <kbd>\"on\"</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for clicks"
+				}
+			]
+		},
+		{
+			"id": "js-counter",
+			"title": "Simple Counter",
+			"description": "Combine variables and event listeners to build interactive features. Use <kbd>let</kbd> for a value that changes, and update the display each time the button is clicked.",
+			"task": "In the click handler, increment <kbd>count</kbd> by 1 and set <kbd>out.textContent</kbd> to <kbd>count</kbd>",
+			"previewHTML": "<button id=\"btn\" style=\"padding:8px 16px;font-size:1rem;\">Add 1</button>\n<p id=\"out\">0</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "btn.addEventListener(\"click\", () => {\n  count++;\n  out.textContent = count;\n});",
+			"codePrefix": "const btn = document.querySelector(\"#btn\");\nconst out = document.querySelector(\"#out\");\nlet count = 0;\n",
+			"codeSuffix": "",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for clicks"
+				},
+				{
+					"type": "regex",
+					"value": "count\\s*\\+\\+|count\\s*\\+=\\s*1|count\\s*=\\s*count\\s*\\+\\s*1",
+					"message": "Increment <kbd>count</kbd> by 1 (use <kbd>count++</kbd>)"
+				},
+				{
+					"type": "regex",
+					"value": "out\\.textContent\\s*=\\s*count",
+					"message": "Update the display with <kbd>out.textContent = count</kbd>"
+				}
+			]
+		}
+	]
+}

@@ -31,6 +31,13 @@ export const sections = {
 		description: "Lightweight markup language for formatting text",
 		color: "#5b8dd9",
 		order: 4
+	},
+	javascript: {
+		id: "javascript",
+		title: "JavaScript",
+		description: "Variables, DOM manipulation, and event handling",
+		color: "#f0c040",
+		order: 5
 	}
 };
 
@@ -65,6 +72,7 @@ export function getModuleSection(module) {
 	if (mode === "html") return "html";
 	if (mode === "tailwind") return "tailwind";
 	if (mode === "markdown") return "markdown";
+	if (mode === "javascript") return "javascript";
 	return "css";
 }
 

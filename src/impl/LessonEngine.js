@@ -289,6 +289,30 @@ export class LessonEngine {
         </body>
       </html>
     `);
+		} else if (mode === "javascript") {
+			// For JavaScript mode, inject user code as a script
+			const { codePrefix, codeSuffix } = this.currentLesson;
+			const fullScript = `${codePrefix || ""}${this.userCode || ""}${codeSuffix || ""}`;
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${previewHTML || ""}
+          <script>
+            try {
+              ${fullScript}
+            } catch (e) {
+              console.error("Script error:", e);
+            }
+          </script>
+        </body>
+      </html>
+    `);
 		} else {
 			// Original CSS mode
 			const userCssWithWrapper = this.getCompleteCss();
@@ -412,6 +436,30 @@ export class LessonEngine {
         </head>
         <body>
           ${renderedHtml}
+        </body>
+      </html>
+    `);
+		} else if (mode === "javascript") {
+			// For JavaScript mode, inject solution code as a script
+			const { codePrefix, codeSuffix } = this.currentLesson;
+			const fullScript = `${codePrefix || ""}${solutionCode}${codeSuffix || ""}`;
+			iframeDoc.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${previewHTML || ""}
+          <script>
+            try {
+              ${fullScript}
+            } catch (e) {
+              console.error("Script error:", e);
+            }
+          </script>
         </body>
       </html>
     `);
