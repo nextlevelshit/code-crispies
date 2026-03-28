@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "اضبط <kbd>padding: 1rem</kbd>"
+					"message": "أي خاصية تضيف مساحة بين المحتوى وحافة العنصر؟"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "اضبط <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "استخدم الاختصار الذي يحدد حداً على جانب واحد فقط",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "اضبط <kbd>margin-bottom: 1rem</kbd>"
+					"message": "أي خاصية تدفع العناصر المجاورة بعيداً من الأسفل؟"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "اضبط <kbd>box-sizing: border-box</kbd>"
+					"message": "أي وضع تحجيم يشمل padding والحدود في عرض العنصر؟"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "اضبط <kbd>padding: 8px 1rem</kbd>",
+					"message": "استخدم اختصار القيمتين: العمودي أولاً، ثم الأفقي",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "اضبط <kbd>margin: 0 auto</kbd>",
+					"message": "استخدم الاختصار الذي يحسب هوامش أفقية متساوية تلقائياً",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "اضبط <kbd>border-radius: 50%</kbd>"
+					"message": "أي خاصية تدوّر الزوايا؟ فكر في النسبة المئوية التي تصنع دائرة"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "اضبط <kbd>padding: 1rem</kbd>"
+					"message": "أضف مساحة داخلية للإشعار"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "اضبط <kbd>border-left: 4px solid coral</kbd>",
+					"message": "أضف لمسة ملونة على الحافة اليسرى",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "اضبط <kbd>border-radius: 4px</kbd>"
+					"message": "نعّم زوايا الإشعار"
 				}
 			]
 		}

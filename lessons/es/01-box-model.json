@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Establece <kbd>padding: 1rem</kbd>"
+					"message": "¿Qué propiedad añade espacio entre el contenido y el borde del elemento?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "Establece <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "Usa el atajo que define un borde en un solo lado",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "Establece <kbd>margin-bottom: 1rem</kbd>"
+					"message": "¿Qué propiedad empuja los elementos vecinos hacia abajo?"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Establece <kbd>box-sizing: border-box</kbd>"
+					"message": "¿Qué modo de tamaño incluye padding y borde en el ancho del elemento?"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "Establece <kbd>padding: 8px 1rem</kbd>",
+					"message": "Usa el atajo de dos valores: vertical primero, luego horizontal",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "Establece <kbd>margin: 0 auto</kbd>",
+					"message": "Usa el atajo que calcula márgenes horizontales iguales automáticamente",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "Establece <kbd>border-radius: 50%</kbd>"
+					"message": "¿Qué propiedad redondea las esquinas? Piensa en qué porcentaje crea un círculo"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Establece <kbd>padding: 1rem</kbd>"
+					"message": "Añade espacio interior a la notificación"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "Establece <kbd>border-left: 4px solid coral</kbd>",
+					"message": "Añade un acento de color en el borde izquierdo",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "Establece <kbd>border-radius: 4px</kbd>"
+					"message": "Suaviza las esquinas de la notificación"
 				}
 			]
 		}

@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Setze <kbd>padding: 1rem</kbd>"
+					"message": "Welche Eigenschaft fügt Abstand zwischen Inhalt und Elementrand hinzu?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "Setze <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "Verwende die Kurzschreibweise, die einen Rahmen auf nur einer Seite setzt",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "Setze <kbd>margin-bottom: 1rem</kbd>"
+					"message": "Welche Eigenschaft schiebt benachbarte Elemente nach unten weg?"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Setze <kbd>box-sizing: border-box</kbd>"
+					"message": "Welcher Größenmodus bezieht Padding und Rahmen in die Breite des Elements ein?"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "Setze <kbd>padding: 8px 1rem</kbd>",
+					"message": "Verwende die Zwei-Werte-Kurzschreibweise: vertikal zuerst, dann horizontal",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "Setze <kbd>margin: 0 auto</kbd>",
+					"message": "Verwende die Kurzschreibweise, die gleiche horizontale Abstände automatisch berechnet",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "Setze <kbd>border-radius: 50%</kbd>"
+					"message": "Welche Eigenschaft rundet Ecken? Denke daran, welcher Prozentwert einen Kreis ergibt"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Setze <kbd>padding: 1rem</kbd>"
+					"message": "Füge inneren Abstand zur Benachrichtigung hinzu"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "Setze <kbd>border-left: 4px solid coral</kbd>",
+					"message": "Füge einen farbigen Akzent an der linken Kante hinzu",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "Setze <kbd>border-radius: 4px</kbd>"
+					"message": "Runde die Ecken der Benachrichtigung ab"
 				}
 			]
 		}

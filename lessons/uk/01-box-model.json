@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Встановіть <kbd>padding: 1rem</kbd>"
+					"message": "Яка властивість додає простір між контентом і краєм елемента?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "Встановіть <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "Використайте скорочення, яке встановлює межу лише з одного боку",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "Встановіть <kbd>margin-bottom: 1rem</kbd>"
+					"message": "Яка властивість відштовхує сусідні елементи знизу?"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Встановіть <kbd>box-sizing: border-box</kbd>"
+					"message": "Який режим розміру включає padding і межу в ширину елемента?"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "Встановіть <kbd>padding: 8px 1rem</kbd>",
+					"message": "Використайте скорочення з двома значеннями: спочатку вертикальне, потім горизонтальне",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "Встановіть <kbd>margin: 0 auto</kbd>",
+					"message": "Використайте скорочення, яке автоматично розраховує рівні горизонтальні поля",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "Встановіть <kbd>border-radius: 50%</kbd>"
+					"message": "Яка властивість заокруглює кути? Подумайте, який відсоток створює коло"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Встановіть <kbd>padding: 1rem</kbd>"
+					"message": "Додайте внутрішній відступ до сповіщення"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "Встановіть <kbd>border-left: 4px solid coral</kbd>",
+					"message": "Додайте кольоровий акцент на лівому краю",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "Встановіть <kbd>border-radius: 4px</kbd>"
+					"message": "Згладьте кути сповіщення"
 				}
 			]
 		}

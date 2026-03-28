@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Ustaw <kbd>padding: 1rem</kbd>"
+					"message": "Która właściwość dodaje przestrzeń między treścią a krawędzią elementu?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "Ustaw <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "Użyj skrótu, który ustawia ramkę tylko po jednej stronie",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "Ustaw <kbd>margin-bottom: 1rem</kbd>"
+					"message": "Która właściwość odpycha sąsiednie elementy w dół?"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Ustaw <kbd>box-sizing: border-box</kbd>"
+					"message": "Który tryb rozmiaru uwzględnia padding i ramkę w szerokości elementu?"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "Ustaw <kbd>padding: 8px 1rem</kbd>",
+					"message": "Użyj skrótu dwuwartościowego: najpierw pionowo, potem poziomo",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "Ustaw <kbd>margin: 0 auto</kbd>",
+					"message": "Użyj skrótu, który automatycznie oblicza równe marginesy poziome",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "Ustaw <kbd>border-radius: 50%</kbd>"
+					"message": "Która właściwość zaokrągla rogi? Pomyśl, jaki procent tworzy koło"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Ustaw <kbd>padding: 1rem</kbd>"
+					"message": "Dodaj wewnętrzny odstęp do powiadomienia"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "Ustaw <kbd>border-left: 4px solid coral</kbd>",
+					"message": "Dodaj kolorowy akcent na lewej krawędzi",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "Ustaw <kbd>border-radius: 4px</kbd>"
+					"message": "Wygładź rogi powiadomienia"
 				}
 			]
 		}
