@@ -9,7 +9,7 @@
 			"id": "colors-1",
 			"title": "Background Color",
 			"description": "Color is one of the most powerful tools in web design. It creates visual hierarchy, conveys meaning, and establishes brand identity. CSS provides multiple ways to specify colors.<br><br><strong>CSS named colors:</strong> CSS includes 147 named colors like <kbd>steelblue</kbd>, <kbd>coral</kbd>, <kbd>gold</kbd>, and <kbd>tomato</kbd>. These are easy to remember and read.<br><br><strong>The background-color property:</strong> Sets the fill color behind an element's content and padding areas.<br><br><pre>.card {\n  background-color: lightblue;\n}</pre>",
-			"task": "This notification card needs a subtle background. Add <kbd>background-color: seashell</kbd>.",
+			"task": "This notification card looks bare. Give it a soft, warm background color.",
 			"previewHTML": "<div class=\"alert\"><strong>New message</strong><p>You have 3 unread notifications</p></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .alert { padding: 1rem; border-left: 4px solid coral; border-radius: 4px; } .alert strong { display: block; margin-bottom: 4px; } .alert p { margin: 0; color: #666; font-size: 0.9rem; }",
 			"sandboxCSS": "",
@@ -20,9 +20,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "background-color", "expected": "seashell" },
-					"message": "Which property fills the area behind the content?"
+					"type": "regex",
+					"value": "background-color:\\s*(seashell|linen|mistyrose|lavenderblush|cornsilk|oldlace|papayawhip|antiquewhite|bisque|peachpuff)",
+					"message": "Which property fills the area behind the content? Try a warm, soft color name",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -30,7 +31,7 @@
 			"id": "colors-2",
 			"title": "Text Color",
 			"description": "The <kbd>color</kbd> property sets the color of text content. Good contrast between text and background is essential for readability and accessibility.",
-			"task": "Make the alert title stand out. Add <kbd>color: coral</kbd>.",
+			"task": "The alert title blends in with the body text. Make it pop with a warm accent color.",
 			"previewHTML": "<div class=\"alert\"><strong class=\"title\">Warning</strong><p>Your session will expire in 5 minutes</p></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .alert { padding: 1rem; background-color: seashell; border-left: 4px solid coral; border-radius: 4px; } .alert .title { display: block; margin-bottom: 4px; } .alert p { margin: 0; color: #666; font-size: 0.9rem; }",
 			"sandboxCSS": "",
@@ -41,9 +42,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "color", "expected": "coral" },
-					"message": "Which property changes the text color?"
+					"type": "regex",
+					"value": "color:\\s*(coral|tomato|orangered|indianred|salmon|darksalmon)",
+					"message": "Which property changes the text color? Try a warm, vibrant color name",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -51,7 +53,7 @@
 			"id": "colors-3",
 			"title": "Border Color",
 			"description": "Borders can have their own color using <kbd>border-color</kbd>. This is useful when you want to change just the color without redefining the entire border.",
-			"task": "This card needs an accent border. Add <kbd>border-color: coral</kbd>.",
+			"task": "The card border is dull gray. Give it a warm accent color.",
 			"previewHTML": "<article class=\"card\"><h3>Premium Plan</h3><p>Unlimited access to all features</p></article>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .card { padding: 1rem; background: white; border: 4px solid #ddd; border-radius: 8px; } .card h3 { margin: 0 0 8px; } .card p { margin: 0; color: #666; }",
 			"sandboxCSS": "",
@@ -62,9 +64,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "border-color", "expected": "coral" },
-					"message": "Which property changes just the border's color without redefining the whole border?"
+					"type": "regex",
+					"value": "border-color:\\s*(coral|tomato|orangered|indianred|salmon|darksalmon|crimson)",
+					"message": "Which property changes just the border's color? Try a warm, vibrant name",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -72,7 +75,7 @@
 			"id": "colors-4",
 			"title": "Hex Colors",
 			"description": "Beyond named colors, CSS supports hex codes (<kbd>#ff6347</kbd>), RGB (<kbd>rgb(255, 99, 71)</kbd>), and HSL (<kbd>hsl(9, 100%, 64%)</kbd>). Hex codes are the most common format in professional projects.",
-			"task": "Set the badge background to gold using its hex code. Add <kbd>background-color: #ffd700</kbd>.",
+			"task": "This badge needs a golden background. Use a hex color code to set it.",
 			"previewHTML": "<span class=\"badge\">NEW</span>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #333; }",
 			"sandboxCSS": "",
@@ -83,9 +86,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "background-color", "expected": "#ffd700" },
-					"message": "Use the same background property, but with a hex code this time"
+					"type": "regex",
+					"value": "background-color:\\s*(#ffd700|#ffcc00|#ffc107|#f0c000|gold)",
+					"message": "Use a hex code for background-color — something in the gold/yellow family",
+					"options": { "caseSensitive": false }
 				}
 			]
 		}
