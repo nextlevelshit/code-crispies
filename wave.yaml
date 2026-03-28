@@ -1,0 +1,377 @@
+adapters:
+    claude:
+        binary: claude
+        default_permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+            deny: []
+        mode: headless
+        output_format: json
+        project_files:
+            - CLAUDE.md
+            - .claude/settings.json
+apiVersion: v1
+kind: WaveManifest
+metadata:
+    description: An interactive platform for learning CSS through practical challenges
+    name: code-crispies
+personas:
+    auditor:
+        adapter: claude
+        description: Security review and quality assurance
+        model: claude-haiku
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Grep
+                - Glob
+                - Bash
+            deny:
+                - Edit(*)
+                - Bash(rm -rf /*)
+                - Bash(git push*)
+                - Bash(git commit*)
+        system_prompt_file: .wave/personas/auditor.md
+        temperature: 0.1
+    craftsman:
+        adapter: claude
+        description: Code implementation and testing
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+            deny:
+                - Bash(rm -rf /*)
+        system_prompt_file: .wave/personas/craftsman.md
+        temperature: 0.7
+    debugger:
+        adapter: claude
+        description: Systematic debugging and root cause analysis
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash
+            deny:
+                - Edit(*)
+                - Bash(rm -rf /*)
+                - Bash(git push*)
+                - Bash(git commit*)
+        system_prompt_file: .wave/personas/debugger.md
+        temperature: 0.1
+    github-analyst:
+        adapter: claude
+        description: GitHub issue analysis and scanning
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Bash(gh issue view*)
+                - Bash(gh issue list*)
+                - Bash(gh release list*)
+                - Bash(gh pr view*)
+                - Bash(gh pr list*)
+                - Bash(gh --version)
+                - Bash(git log*)
+                - Bash(git status*)
+                - Bash(ls *)
+            deny:
+                - Bash(gh issue edit*)
+                - Bash(gh issue create*)
+                - Bash(gh issue close*)
+                - Bash(glab *)
+                - Bash(tea *)
+                - Edit(*)
+        system_prompt_file: .wave/personas/github-analyst.md
+        temperature: 0.1
+    github-commenter:
+        adapter: claude
+        description: Posts comments on GitHub issues and pull requests, creates PRs
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Bash(gh issue comment*)
+                - Bash(gh pr comment*)
+                - Bash(gh pr review*)
+                - Bash(gh pr create*)
+                - Bash(gh pr edit*)
+                - Bash(gh pr view*)
+                - Bash(gh --version)
+                - Bash(git push*)
+                - Bash(git status*)
+                - Bash(git log*)
+                - Bash(git remote*)
+                - Bash(git diff*)
+            deny:
+                - Bash(gh issue edit*)
+                - Bash(gh issue close*)
+                - Bash(gh pr merge*)
+                - Bash(gh pr close*)
+                - Edit(*)
+        system_prompt_file: .wave/personas/github-commenter.md
+        temperature: 0.2
+    github-enhancer:
+        adapter: claude
+        description: GitHub issue enhancement and improvement
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Bash(gh issue edit*)
+                - Bash(gh issue view*)
+                - Bash(gh label create*)
+                - Bash(gh --version)
+            deny:
+                - Bash(gh issue create*)
+                - Bash(gh issue close*)
+                - Bash(glab *)
+                - Bash(tea *)
+                - Edit(*)
+        system_prompt_file: .wave/personas/github-enhancer.md
+        temperature: 0.2
+    github-scoper:
+        adapter: claude
+        description: GitHub epic analysis, decomposition, and sub-issue creation
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Bash(gh issue create*)
+                - Bash(gh issue view*)
+                - Bash(gh issue list*)
+                - Bash(gh --version)
+            deny:
+                - Bash(gh issue edit*)
+                - Bash(gh issue close*)
+                - Bash(glab *)
+                - Bash(tea *)
+                - Edit(*)
+        system_prompt_file: .wave/personas/github-scoper.md
+        temperature: 0.1
+    implementer:
+        adapter: claude
+        description: Execution specialist for code changes and structured output
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+            deny:
+                - Bash(rm -rf /*)
+                - Bash(sudo *)
+        system_prompt_file: .wave/personas/implementer.md
+        temperature: 0.3
+    navigator:
+        adapter: claude
+        description: Read-only codebase exploration and analysis
+        model: claude-haiku
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash(git log*)
+                - Bash(git status*)
+            deny:
+                - Edit(*)
+                - Bash(git commit*)
+                - Bash(git push*)
+        system_prompt_file: .wave/personas/navigator.md
+        temperature: 0.1
+    philosopher:
+        adapter: claude
+        description: Architecture design and specification
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+            deny: []
+        system_prompt_file: .wave/personas/philosopher.md
+        temperature: 0.3
+    planner:
+        adapter: claude
+        description: Task breakdown and planning
+        model: claude-haiku
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+            deny: []
+        system_prompt_file: .wave/personas/planner.md
+        temperature: 0.2
+    provocateur:
+        adapter: claude
+        description: Creative challenger for divergent thinking and complexity hunting
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash(wc *)
+                - Bash(git log*)
+                - Bash(git diff*)
+                - Bash(find*)
+                - Bash(ls*)
+            deny:
+                - Edit(*)
+                - Bash(git commit*)
+                - Bash(git push*)
+                - Bash(rm*)
+        system_prompt_file: .wave/personas/provocateur.md
+        temperature: 0.8
+    researcher:
+        adapter: claude
+        description: Deep codebase research and analysis
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+                - WebSearch
+                - WebFetch
+            deny: []
+        system_prompt_file: .wave/personas/researcher.md
+        temperature: 0.1
+    reviewer:
+        adapter: claude
+        description: Code review and quality checks
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash
+            deny:
+                - Write(*.go)
+                - Write(*.ts)
+                - Write(*.py)
+                - Write(*.rs)
+                - Edit(*)
+                - Bash(rm *)
+                - Bash(git push*)
+                - Bash(git commit*)
+        system_prompt_file: .wave/personas/reviewer.md
+        temperature: 0.1
+    summarizer:
+        adapter: claude
+        description: Context compaction for relay handoffs
+        model: claude-haiku
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+            deny: []
+        system_prompt_file: .wave/personas/summarizer.md
+        temperature: 0
+    supervisor:
+        adapter: claude
+        description: Work supervision and quality evaluation
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash
+            deny:
+                - Edit(*)
+                - Bash(git push*)
+                - Bash(git commit*)
+                - Bash(rm*)
+        system_prompt_file: .wave/personas/supervisor.md
+        temperature: 0.2
+    synthesizer:
+        adapter: claude
+        description: Structured synthesis of analysis findings into actionable JSON proposals
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Edit
+                - Bash
+                - Glob
+                - Grep
+            deny: []
+        system_prompt_file: .wave/personas/synthesizer.md
+        temperature: 0.2
+    validator:
+        adapter: claude
+        description: Skeptical analysis and verification of findings against source code
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Glob
+                - Grep
+                - Bash(wc *)
+                - Bash(git log*)
+                - Bash(git diff*)
+            deny:
+                - Edit(*)
+                - Bash(git commit*)
+                - Bash(git push*)
+                - Bash(rm*)
+        system_prompt_file: .wave/personas/validator.md
+        temperature: 0.1
+project:
+    build_command: npm run build
+    flavour: node
+    format_command: npm run format
+    language: javascript
+    lint_command: ""
+    skill: javascript
+    source_glob: '*.{js,jsx,ts,tsx}'
+    test_command: npm test
+runtime:
+    audit:
+        log_all_file_operations: false
+        log_all_tool_calls: true
+        log_dir: .wave/traces/
+    default_timeout_minutes: 30
+    max_concurrent_workers: 5
+    meta_pipeline:
+        max_depth: 2
+        max_total_steps: 20
+        max_total_tokens: 500000
+        timeout_minutes: 60
+    relay:
+        strategy: summarize_to_checkpoint
+        token_threshold_percent: 80
+    workspace_root: .wave/workspaces
