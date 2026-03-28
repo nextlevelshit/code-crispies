@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Set <kbd>padding: 1rem</kbd>"
+					"message": "Which property adds space between content and the element's edge?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+steelblue",
-					"message": "Set <kbd>border-left: 4px solid steelblue</kbd>",
+					"message": "Use the shorthand that sets a border on just one side",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -65,7 +65,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "margin-bottom", "expected": "1rem" },
-					"message": "Set <kbd>margin-bottom: 1rem</kbd>"
+					"message": "Which property pushes neighboring elements away from the bottom?"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "box-sizing", "expected": "border-box" },
-					"message": "Set <kbd>box-sizing: border-box</kbd>"
+					"message": "Which sizing mode includes padding and border in the element's width?"
 				}
 			]
 		},
@@ -107,7 +107,7 @@
 				{
 					"type": "regex",
 					"value": "padding:\\s*8px\\s+1rem",
-					"message": "Set <kbd>padding: 8px 1rem</kbd>",
+					"message": "Use the two-value shorthand: vertical first, then horizontal",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -129,7 +129,7 @@
 				{
 					"type": "regex",
 					"value": "margin:\\s*0\\s+auto",
-					"message": "Set <kbd>margin: 0 auto</kbd>",
+					"message": "Use the shorthand that auto-calculates equal horizontal margins",
 					"options": { "caseSensitive": false }
 				}
 			]
@@ -151,7 +151,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "50%" },
-					"message": "Set <kbd>border-radius: 50%</kbd>"
+					"message": "Which property rounds corners? Think about what percentage makes a circle"
 				}
 			]
 		},
@@ -172,18 +172,18 @@
 				{
 					"type": "property_value",
 					"value": { "property": "padding", "expected": "1rem" },
-					"message": "Set <kbd>padding: 1rem</kbd>"
+					"message": "Add inner spacing to the notification"
 				},
 				{
 					"type": "regex",
 					"value": "border-left:\\s*4px\\s+solid\\s+coral",
-					"message": "Set <kbd>border-left: 4px solid coral</kbd>",
+					"message": "Add a colored accent on the left edge",
 					"options": { "caseSensitive": false }
 				},
 				{
 					"type": "property_value",
 					"value": { "property": "border-radius", "expected": "4px" },
-					"message": "Set <kbd>border-radius: 4px</kbd>"
+					"message": "Soften the corners of the notification"
 				}
 			]
 		}

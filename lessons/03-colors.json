@@ -22,7 +22,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "background-color", "expected": "seashell" },
-					"message": "Set <kbd>background-color: seashell</kbd>"
+					"message": "Which property fills the area behind the content?"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "color", "expected": "coral" },
-					"message": "Set <kbd>color: coral</kbd>"
+					"message": "Which property changes the text color?"
 				}
 			]
 		},
@@ -64,7 +64,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "border-color", "expected": "coral" },
-					"message": "Set <kbd>border-color: coral</kbd>"
+					"message": "Which property changes just the border's color without redefining the whole border?"
 				}
 			]
 		},
@@ -85,7 +85,7 @@
 				{
 					"type": "property_value",
 					"value": { "property": "background-color", "expected": "#ffd700" },
-					"message": "Set <kbd>background-color: #ffd700</kbd>"
+					"message": "Use the same background property, but with a hex code this time"
 				}
 			]
 		}
