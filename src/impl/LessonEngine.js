@@ -216,18 +216,18 @@ export class LessonEngine {
 		iframe.style.height = "100%";
 		iframe.style.border = "none";
 		iframe.title = "Preview";
+		iframe.setAttribute("sandbox", "allow-scripts");
 
 		const container = document.getElementById(previewContainer || "preview-area");
 		container.innerHTML = "";
 		container.appendChild(iframe);
 
-		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-		iframeDoc.open();
+		let html;
 
 		if (mode === "html" || mode === "playground") {
 			// For HTML/playground mode, user code IS the HTML content (may include <style> blocks)
 			const userHtml = this.userCode || "";
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -239,11 +239,11 @@ export class LessonEngine {
           ${userHtml}
         </body>
       </html>
-    `);
+    `;
 		} else if (mode === "tailwind") {
 			// For Tailwind mode, user code goes directly in HTML classes
 			const htmlWithClasses = this.injectTailwindClasses(previewHTML, this.userCode);
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -256,11 +256,11 @@ export class LessonEngine {
           ${htmlWithClasses}
         </body>
       </html>
-    `);
+    `;
 		} else if (mode === "markdown") {
 			// For Markdown mode, parse user code to HTML
 			const renderedHtml = marked.parse(this.userCode || "");
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -288,11 +288,11 @@ export class LessonEngine {
           ${renderedHtml}
         </body>
       </html>
-    `);
+    `;
 		} else {
 			// Original CSS mode
 			const userCssWithWrapper = this.getCompleteCss();
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -305,10 +305,10 @@ export class LessonEngine {
           ${previewHTML}
         </body>
       </html>
-    `);
+    `;
 		}
 
-		iframeDoc.close();
+		iframe.srcdoc = html;
 	}
 
 	injectTailwindClasses(html, userClasses) {
@@ -341,6 +341,7 @@ export class LessonEngine {
 		iframe.style.height = "100%";
 		iframe.style.border = "none";
 		iframe.title = "Expected Result";
+		iframe.setAttribute("sandbox", "allow-scripts");
 
 		const container = document.getElementById("preview-expected");
 		if (!container) return;
@@ -348,12 +349,11 @@ export class LessonEngine {
 		container.innerHTML = "";
 		container.appendChild(iframe);
 
-		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-		iframeDoc.open();
+		let html;
 
 		if (mode === "html" || mode === "playground") {
 			// For HTML/playground mode, solution code IS the HTML content
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -365,11 +365,11 @@ export class LessonEngine {
           ${solutionCode}
         </body>
       </html>
-    `);
+    `;
 		} else if (mode === "tailwind") {
 			// For Tailwind mode, inject solution classes into HTML
 			const htmlWithClasses = this.injectTailwindClasses(previewHTML, solutionCode);
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -382,11 +382,11 @@ export class LessonEngine {
           ${htmlWithClasses}
         </body>
       </html>
-    `);
+    `;
 		} else if (mode === "markdown") {
 			// For Markdown mode, parse solution to HTML
 			const renderedHtml = marked.parse(solutionCode || "");
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -414,12 +414,12 @@ export class LessonEngine {
           ${renderedHtml}
         </body>
       </html>
-    `);
+    `;
 		} else {
 			// CSS mode - wrap solution with prefix/suffix
 			const { codePrefix, codeSuffix } = this.currentLesson;
 			const solutionCss = `${codePrefix || ""}${solutionCode}${codeSuffix || ""}`;
-			iframeDoc.write(`
+			html = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -432,10 +432,10 @@ export class LessonEngine {
           ${previewHTML}
         </body>
       </html>
-    `);
+    `;
 		}
 
-		iframeDoc.close();
+		iframe.srcdoc = html;
 	}
 
 	/**
