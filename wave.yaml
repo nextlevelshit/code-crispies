@@ -18,6 +18,8 @@ kind: WaveManifest
 metadata:
     description: An interactive platform for learning CSS through practical challenges
     name: code-crispies
+ontology:
+    telos: Interactive self-learning platform for web technologies (CSS, HTML, JavaScript, Markdown)
 personas:
     auditor:
         adapter: claude
@@ -69,95 +71,92 @@ personas:
                 - Bash(git commit*)
         system_prompt_file: .wave/personas/debugger.md
         temperature: 0.1
-    github-analyst:
+    gitea-analyst:
         adapter: claude
-        description: GitHub issue analysis and scanning
+        description: Gitea issue analysis and scanning
         permissions:
             allowed_tools:
                 - Read
                 - Write
-                - Bash(gh issue view*)
-                - Bash(gh issue list*)
-                - Bash(gh release list*)
-                - Bash(gh pr view*)
-                - Bash(gh pr list*)
-                - Bash(gh --version)
+                - Bash(tea issues view*)
+                - Bash(tea issues list*)
+                - Bash(tea releases list*)
+                - Bash(tea pulls view*)
+                - Bash(tea pulls list*)
+                - Bash(tea --version)
                 - Bash(git log*)
                 - Bash(git status*)
                 - Bash(ls *)
             deny:
-                - Bash(gh issue edit*)
-                - Bash(gh issue create*)
-                - Bash(gh issue close*)
+                - Bash(tea issues edit*)
+                - Bash(tea issues create*)
+                - Bash(tea issues close*)
+                - Bash(gh *)
                 - Bash(glab *)
-                - Bash(tea *)
                 - Edit(*)
-        system_prompt_file: .wave/personas/github-analyst.md
+        system_prompt_file: .wave/personas/gitea-analyst.md
         temperature: 0.1
-    github-commenter:
+    gitea-commenter:
         adapter: claude
-        description: Posts comments on GitHub issues and pull requests, creates PRs
+        description: Posts comments on Gitea issues and pull requests
         permissions:
             allowed_tools:
                 - Read
                 - Write
-                - Bash(gh issue comment*)
-                - Bash(gh pr comment*)
-                - Bash(gh pr review*)
-                - Bash(gh pr create*)
-                - Bash(gh pr edit*)
-                - Bash(gh pr view*)
-                - Bash(gh --version)
+                - Bash(tea issues comment*)
+                - Bash(tea pulls create*)
+                - Bash(tea --version)
                 - Bash(git push*)
                 - Bash(git status*)
                 - Bash(git log*)
                 - Bash(git remote*)
                 - Bash(git diff*)
             deny:
-                - Bash(gh issue edit*)
-                - Bash(gh issue close*)
-                - Bash(gh pr merge*)
-                - Bash(gh pr close*)
+                - Bash(tea issues edit*)
+                - Bash(tea issues close*)
+                - Bash(tea pulls merge*)
+                - Bash(tea pulls close*)
+                - Bash(gh *)
+                - Bash(glab *)
                 - Edit(*)
-        system_prompt_file: .wave/personas/github-commenter.md
+        system_prompt_file: .wave/personas/gitea-commenter.md
         temperature: 0.2
-    github-enhancer:
+    gitea-enhancer:
         adapter: claude
-        description: GitHub issue enhancement and improvement
+        description: Gitea issue enhancement and improvement
         permissions:
             allowed_tools:
                 - Read
                 - Write
-                - Bash(gh issue edit*)
-                - Bash(gh issue view*)
-                - Bash(gh label create*)
-                - Bash(gh --version)
+                - Bash(tea issues edit*)
+                - Bash(tea issues view*)
+                - Bash(tea --version)
             deny:
-                - Bash(gh issue create*)
-                - Bash(gh issue close*)
+                - Bash(tea issues create*)
+                - Bash(tea issues close*)
+                - Bash(gh *)
                 - Bash(glab *)
-                - Bash(tea *)
                 - Edit(*)
-        system_prompt_file: .wave/personas/github-enhancer.md
+        system_prompt_file: .wave/personas/gitea-enhancer.md
         temperature: 0.2
-    github-scoper:
+    gitea-scoper:
         adapter: claude
-        description: GitHub epic analysis, decomposition, and sub-issue creation
+        description: Gitea epic analysis, decomposition, and sub-issue creation
         permissions:
             allowed_tools:
                 - Read
                 - Write
-                - Bash(gh issue create*)
-                - Bash(gh issue view*)
-                - Bash(gh issue list*)
-                - Bash(gh --version)
+                - Bash(tea issues create*)
+                - Bash(tea issues view*)
+                - Bash(tea issues list*)
+                - Bash(tea --version)
             deny:
-                - Bash(gh issue edit*)
-                - Bash(gh issue close*)
+                - Bash(tea issues edit*)
+                - Bash(tea issues close*)
+                - Bash(gh *)
                 - Bash(glab *)
-                - Bash(tea *)
                 - Edit(*)
-        system_prompt_file: .wave/personas/github-scoper.md
+        system_prompt_file: .wave/personas/gitea-scoper.md
         temperature: 0.1
     implementer:
         adapter: claude
