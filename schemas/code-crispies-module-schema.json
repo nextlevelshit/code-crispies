@@ -19,8 +19,8 @@
 		},
 		"mode": {
 			"type": "string",
-			"enum": ["css", "tailwind", "html", "markdown"],
-			"description": "Whether this module teaches CSS, Tailwind, HTML, or Markdown"
+			"enum": ["css", "tailwind", "html", "markdown", "javascript"],
+			"description": "Whether this module teaches CSS, Tailwind, HTML, Markdown, or JavaScript"
 		},
 		"difficulty": {
 			"type": "string",
@@ -60,7 +60,7 @@
 					},
 					"mode": {
 						"type": "string",
-						"enum": ["css", "tailwind", "html", "markdown"],
+						"enum": ["css", "tailwind", "html", "markdown", "javascript"],
 						"description": "Override module mode for individual lessons"
 					},
 					"tailwindConfig": {

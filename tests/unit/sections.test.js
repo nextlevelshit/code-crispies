@@ -3,12 +3,13 @@ import { sections, getSection, getSectionList, getModuleSection, getModulesBySec
 
 describe("Sections Config", () => {
 	describe("sections constant", () => {
-		test("sections_AllDefined_HasFourSections", () => {
-			expect(Object.keys(sections)).toHaveLength(4);
+		test("sections_AllDefined_HasFiveSections", () => {
+			expect(Object.keys(sections)).toHaveLength(5);
 			expect(sections).toHaveProperty("css");
 			expect(sections).toHaveProperty("html");
 			expect(sections).toHaveProperty("tailwind");
 			expect(sections).toHaveProperty("markdown");
+			expect(sections).toHaveProperty("javascript");
 		});
 
 		test("sections_EachSection_HasRequiredFields", () => {
@@ -27,7 +28,8 @@ describe("Sections Config", () => {
 			["css", "CSS"],
 			["html", "HTML"],
 			["tailwind", "Tailwind CSS"],
-			["markdown", "Markdown"]
+			["markdown", "Markdown"],
+			["javascript", "JavaScript"]
 		])("getSection_%s_ReturnsCorrectSection", (id, expectedTitle) => {
 			const section = getSection(id);
 			expect(section).not.toBeNull();
@@ -51,7 +53,7 @@ describe("Sections Config", () => {
 	describe("getSectionList", () => {
 		test("getSectionList_Default_ReturnsSortedByOrder", () => {
 			const list = getSectionList();
-			expect(list).toHaveLength(4);
+			expect(list).toHaveLength(5);
 
 			// Verify sorted by order
 			for (let i = 1; i < list.length; i++) {
@@ -64,9 +66,9 @@ describe("Sections Config", () => {
 			expect(list[0].id).toBe("css");
 		});
 
-		test("getSectionList_Default_MarkdownIsLast", () => {
+		test("getSectionList_Default_JavaScriptIsLast", () => {
 			const list = getSectionList();
-			expect(list[list.length - 1].id).toBe("markdown");
+			expect(list[list.length - 1].id).toBe("javascript");
 		});
 
 		test("getSectionList_Default_ContainsAllSections", () => {
@@ -76,6 +78,7 @@ describe("Sections Config", () => {
 			expect(ids).toContain("html");
 			expect(ids).toContain("tailwind");
 			expect(ids).toContain("markdown");
+			expect(ids).toContain("javascript");
 		});
 	});
 
@@ -89,7 +92,8 @@ describe("Sections Config", () => {
 			["css", "css"],
 			["html", "html"],
 			["tailwind", "tailwind"],
-			["markdown", "markdown"]
+			["markdown", "markdown"],
+			["javascript", "javascript"]
 		])("getModuleSection_Mode%s_InfersCorrectSection", (mode, expectedSection) => {
 			const module = { mode };
 			expect(getModuleSection(module)).toBe(expectedSection);
@@ -104,7 +108,7 @@ describe("Sections Config", () => {
 		});
 
 		test("getModuleSection_UnknownMode_DefaultsToCss", () => {
-			expect(getModuleSection({ mode: "javascript" })).toBe("css");
+			expect(getModuleSection({ mode: "unknown-mode" })).toBe("css");
 		});
 
 		test("getModuleSection_ExplicitSectionOverridesMode_UsesSection", () => {

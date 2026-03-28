@@ -257,6 +257,30 @@ export class LessonEngine {
         </body>
       </html>
     `;
+		} else if (mode === "javascript") {
+			// For JavaScript mode, user code runs as a script against previewHTML
+			const { codePrefix, codeSuffix } = this.currentLesson;
+			const fullScript = `${codePrefix || ""}${this.userCode || ""}${codeSuffix || ""}`;
+			html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${previewHTML || ""}
+          <script>
+          try {
+            ${fullScript}
+          } catch (e) {
+            document.body.innerHTML += '<pre style="color:red">' + e.message + '</pre>';
+          }
+          </script>
+        </body>
+      </html>
+    `;
 		} else if (mode === "markdown") {
 			// For Markdown mode, parse user code to HTML
 			const renderedHtml = marked.parse(this.userCode || "");
@@ -380,6 +404,30 @@ export class LessonEngine {
         </head>
         <body>
           ${htmlWithClasses}
+        </body>
+      </html>
+    `;
+		} else if (mode === "javascript") {
+			// For JavaScript mode, solution code runs as a script against previewHTML
+			const { codePrefix, codeSuffix } = this.currentLesson;
+			const fullScript = `${codePrefix || ""}${solutionCode}${codeSuffix || ""}`;
+			html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>html, body { min-height: 100%; margin: 0; }</style>
+          <style>${previewBaseCSS || ""}</style>
+          <style>${sandboxCSS || ""}</style>
+        </head>
+        <body>
+          ${previewHTML || ""}
+          <script>
+          try {
+            ${fullScript}
+          } catch (e) {
+            document.body.innerHTML += '<pre style="color:red">' + e.message + '</pre>';
+          }
+          </script>
         </body>
       </html>
     `;

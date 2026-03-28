@@ -19,6 +19,10 @@ describe("Lessons Config Module", () => {
 			expect(moduleIds).toContain("css-basic-selectors");
 			expect(moduleIds).toContain("box-model");
 			expect(moduleIds).toContain("flexbox");
+			// JavaScript modules
+			expect(moduleIds).toContain("js-variables");
+			expect(moduleIds).toContain("js-dom");
+			expect(moduleIds).toContain("js-events");
 		});
 
 		test("should have mode set on each lesson", async () => {
@@ -27,7 +31,7 @@ describe("Lessons Config Module", () => {
 			modules.forEach((module) => {
 				module.lessons.forEach((lesson) => {
 					expect(lesson.mode).toBeDefined();
-					expect(["html", "css", "tailwind", "markdown", "playground"]).toContain(lesson.mode);
+					expect(["html", "css", "tailwind", "markdown", "javascript", "playground"]).toContain(lesson.mode);
 				});
 			});
 		});

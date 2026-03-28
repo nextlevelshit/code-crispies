@@ -56,7 +56,8 @@ describe("Router", () => {
 		test.each([
 			["css", "css"],
 			["html", "html"],
-			["markdown", "markdown"]
+			["markdown", "markdown"],
+			["javascript", "javascript"]
 		])("parseHash_SectionId_%s_ReturnsSectionRoute", (sectionId, expectedId) => {
 			window.location.hash = `#${sectionId}`;
 			const result = parseHash();
@@ -220,6 +221,7 @@ describe("Router", () => {
 			expect(ids).toContain("css");
 			expect(ids).toContain("html");
 			expect(ids).toContain("markdown");
+			expect(ids).toContain("javascript");
 		});
 
 		test("getSectionIds_MutatingCopy_DoesNotAffectOriginal", () => {
