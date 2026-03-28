@@ -578,6 +578,11 @@ function updateEditorForMode(mode) {
 			label: "Markdown Editor",
 			cmMode: "markdown"
 		},
+		javascript: {
+			placeholder: "// Write your JavaScript here...",
+			label: "JavaScript Editor",
+			cmMode: "javascript"
+		},
 		playground: {
 			placeholder: "<style>\n  /* CSS here */\n</style>\n\n<!-- HTML here -->",
 			label: "HTML & CSS",
@@ -1493,6 +1498,64 @@ This is \`inline code\`.</code></pre>
 				</div>
 			</div>
 		</div>
+	`,
+	javascript: `
+		<div class="section-overview">
+			<p><strong>JavaScript</strong> is the programming language of the web. It adds interactivity to HTML pages—responding to clicks, updating content dynamically, validating forms, and much more. Every modern browser includes a JavaScript engine, making it the most widely deployed programming language in the world.</p>
+			<p>These beginner lessons cover the fundamentals: declaring variables, selecting and modifying DOM elements, and handling user events. Each concept builds on the previous one, giving you the tools to make any web page interactive.</p>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Variables & Data Types</h2>
+				<p>JavaScript uses <code>const</code> for values that won't change and <code>let</code> for values that will. Template literals with backticks make it easy to embed expressions in strings using <code>\${...}</code> syntax.</p>
+				<p>Arrays store ordered collections in square brackets. Objects store key-value pairs in curly braces. These are the building blocks of every JavaScript program.</p>
+				<a href="#js-variables/0" class="topic-link">Learn JS Variables</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>const name = "Alice";
+let count = 0;
+count = count + 1;
+
+const msg = \`Hello, \${name}!\`;
+const colors = ["red", "green"];</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>DOM Manipulation</h2>
+				<p>The DOM (Document Object Model) is how JavaScript sees your HTML. Use <code>document.querySelector()</code> to find elements by CSS selector, then modify them with properties like <code>textContent</code>, <code>style</code>, and <code>classList</code>.</p>
+				<a href="#js-dom/0" class="topic-link">Practice DOM Methods</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>const title = document.querySelector('h1');
+title.textContent = "New Title";
+title.style.color = "coral";
+title.classList.add("active");</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="topic-row">
+			<div class="topic-text">
+				<h2>Event Handling</h2>
+				<p>Events let your code respond to user actions. Use <code>addEventListener()</code> to run a function when something happens—a click, a keystroke, or an input change. The callback receives an event object with details about what happened.</p>
+				<a href="#js-events/0" class="topic-link">Handle Events</a>
+			</div>
+			<div class="topic-code">
+				<div class="code-block">
+					<pre><code>const btn = document.querySelector('.btn');
+
+btn.addEventListener('click', () => {
+  alert('Clicked!');
+});</code></pre>
+				</div>
+			</div>
+		</div>
 	`
 };
 
@@ -2310,7 +2373,7 @@ function showLandingPage() {
  */
 function renderFooterLessonLinks() {
 	const modules = lessonEngine.modules || [];
-	const sectionGroups = { css: [], html: [] };
+	const sectionGroups = { css: [], html: [], javascript: [] };
 
 	modules.forEach((module) => {
 		if (module.excludeFromProgress) return;
@@ -2347,7 +2410,7 @@ function renderFooterLessonLinks() {
  * Update progress indicators on landing page
  */
 function updateLandingProgress() {
-	["css", "html", "markdown"].forEach((sectionId) => { // tailwind temporarily disabled
+	["css", "html", "markdown", "javascript"].forEach((sectionId) => { // tailwind temporarily disabled
 		const progressEl = document.getElementById(`${sectionId}-progress`);
 		if (progressEl) {
 			const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);

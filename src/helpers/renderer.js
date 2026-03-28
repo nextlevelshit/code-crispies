@@ -2,6 +2,7 @@
  * Renderer - Handles UI updates for the CSS learning platform
  */
 import { t } from "../i18n.js";
+import { getModuleSection, getSection, getSectionList } from "../config/sections.js";
 
 /**
  * Compute lesson difficulty based on lesson structure
@@ -72,8 +73,24 @@ export function renderModuleList(container, modules, onSelectModule, onSelectLes
 		}
 	}
 
+	// Group modules by section for headers
+	let currentSectionId = null;
+
 	// Create list items for each module
 	modules.forEach((module) => {
+		// Insert section header when section changes
+		const sectionId = getModuleSection(module);
+		if (sectionId !== currentSectionId && !module.excludeFromProgress) {
+			currentSectionId = sectionId;
+			const section = getSection(sectionId);
+			if (section) {
+				const header = document.createElement("h3");
+				header.className = "sidebar-section-header";
+				header.textContent = section.title;
+				header.style.borderLeftColor = section.color;
+				container.appendChild(header);
+			}
+		}
 		// Create module container
 		// Use native <details>/<summary> for expand/collapse
 		const moduleContainer = document.createElement("details");

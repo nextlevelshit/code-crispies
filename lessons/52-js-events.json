@@ -1,0 +1,118 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-events",
+	"title": "JS Events",
+	"description": "Learn to respond to user interactions with addEventListener for clicks, input changes, and keyboard events.",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-click",
+			"title": "Click Events",
+			"description": "Use <kbd>addEventListener('click', ...)</kbd> to run code when a user clicks an element. The first argument is the event name, the second is a callback function.",
+			"task": "Add a click listener to the <kbd>.btn</kbd> element that sets the <kbd>.msg</kbd> text to <kbd>\"Clicked!\"</kbd>",
+			"previewHTML": "<button class=\"btn\">Click me</button><p class=\"msg\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .btn { padding: 0.5rem 1rem; border: none; background: steelblue; color: white; border-radius: 4px; cursor: pointer; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "const btn = document.querySelector('.btn');\nconst msg = document.querySelector('.msg');\n\n",
+			"codeSuffix": "",
+			"solution": "btn.addEventListener('click', () => {\n  msg.textContent = \"Clicked!\";\n});",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for events"
+				},
+				{
+					"type": "regex",
+					"value": "addEventListener\\(['\"`]click['\"`]",
+					"message": "Listen for the <kbd>'click'</kbd> event"
+				},
+				{
+					"type": "contains",
+					"value": "textContent",
+					"message": "Use <kbd>textContent</kbd> to update the text"
+				},
+				{
+					"type": "regex",
+					"value": "(\"Clicked!\"|'Clicked!'|`Clicked!`)",
+					"message": "Set the text to <kbd>\"Clicked!\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-toggle",
+			"title": "Toggle Classes",
+			"description": "Combine events with <kbd>classList.toggle()</kbd> to switch a class on and off. Each click adds the class if missing, or removes it if present.",
+			"task": "Add a click listener to <kbd>.btn</kbd> that toggles the class <kbd>\"on\"</kbd> on <kbd>.lamp</kbd>",
+			"previewHTML": "<button class=\"btn\">Toggle</button><div class=\"lamp\">💡</div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; text-align: center; } .btn { padding: 0.5rem 1rem; border: none; background: steelblue; color: white; border-radius: 4px; cursor: pointer; } .lamp { font-size: 3rem; margin-top: 1rem; opacity: 0.3; transition: opacity 0.3s; } .lamp.on { opacity: 1; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "const btn = document.querySelector('.btn');\nconst lamp = document.querySelector('.lamp');\n\n",
+			"codeSuffix": "",
+			"solution": "btn.addEventListener('click', () => {\n  lamp.classList.toggle('on');\n});",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for events"
+				},
+				{
+					"type": "regex",
+					"value": "addEventListener\\(['\"`]click['\"`]",
+					"message": "Listen for the <kbd>'click'</kbd> event"
+				},
+				{
+					"type": "regex",
+					"value": "classList\\.toggle\\(",
+					"message": "Use <kbd>classList.toggle()</kbd> to switch the class"
+				},
+				{
+					"type": "regex",
+					"value": "(\"on\"|'on'|`on`)",
+					"message": "Toggle the class <kbd>\"on\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-input",
+			"title": "Input Events",
+			"description": "The <kbd>input</kbd> event fires every time the value of an input field changes. Use <kbd>event.target.value</kbd> to read the current value.",
+			"task": "Add an input listener to <kbd>.field</kbd> that sets <kbd>.out</kbd> text to the input's value",
+			"previewHTML": "<input class=\"field\" placeholder=\"Type here...\"><p class=\"out\">Echo: </p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .field { padding: 0.5rem; border: 2px solid #ccc; border-radius: 4px; font-size: 1rem; width: 100%; box-sizing: border-box; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "const field = document.querySelector('.field');\nconst out = document.querySelector('.out');\n\n",
+			"codeSuffix": "",
+			"solution": "field.addEventListener('input', (event) => {\n  out.textContent = event.target.value;\n});",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "addEventListener",
+					"message": "Use <kbd>addEventListener</kbd> to listen for events"
+				},
+				{
+					"type": "regex",
+					"value": "addEventListener\\(['\"`]input['\"`]",
+					"message": "Listen for the <kbd>'input'</kbd> event"
+				},
+				{
+					"type": "contains",
+					"value": "textContent",
+					"message": "Use <kbd>textContent</kbd> to update the output"
+				},
+				{
+					"type": "regex",
+					"value": "(event|e|evt)\\.target\\.value",
+					"message": "Read the input value with <kbd>event.target.value</kbd>"
+				}
+			]
+		}
+	]
+}

@@ -31,6 +31,9 @@ import filtersEN from "../../lessons/11-filters.json";
 import positioningEN from "../../lessons/12-positioning.json";
 import pseudoElementsEN from "../../lessons/13-pseudo-elements.json";
 import markdownBasicsEN from "../../lessons/40-markdown-basics.json";
+import jsVariablesEN from "../../lessons/50-js-variables.json";
+import jsDomEN from "../../lessons/51-js-dom.json";
+import jsEventsEN from "../../lessons/52-js-events.json";
 import playgroundEN from "../../lessons/98-playground.json";
 import goodbyeEN from "../../lessons/99-goodbye.json";
 
@@ -165,6 +168,10 @@ const moduleStoreEN = [
 	htmlTablesEN,
 	// Markdown
 	markdownBasicsEN,
+	// JavaScript
+	jsVariablesEN,
+	jsDomEN,
+	jsEventsEN,
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -206,6 +213,10 @@ const moduleStoreDE = [
 	htmlTablesDE,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -247,6 +258,10 @@ const moduleStorePL = [
 	htmlTablesPL,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -288,6 +303,10 @@ const moduleStoreES = [
 	htmlTablesES,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -329,6 +348,10 @@ const moduleStoreAR = [
 	htmlTablesAR,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
@@ -370,6 +393,10 @@ const moduleStoreUK = [
 	htmlTablesUK,
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
+	// JavaScript
+	jsVariablesEN, // Using EN fallback until translated
+	jsDomEN, // Using EN fallback until translated
+	jsEventsEN, // Using EN fallback until translated
 	// Outro
 	goodbyeEN,
 	playgroundEN
