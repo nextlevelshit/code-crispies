@@ -9,7 +9,7 @@
 			"id": "filters-1",
 			"title": "Blur Filter",
 			"description": "The <kbd>filter</kbd> property applies visual effects to elements. The <kbd>blur()</kbd> function creates a Gaussian blur effect.<br><br><pre>filter: blur(4px);</pre><br>Higher values create more blur. This is great for backgrounds or creating depth.",
-			"task": "Blur the background image using <kbd>filter: blur(4px)</kbd>.",
+			"task": "Blur the background image to create a frosted-glass effect. Use a blur radius between 2px and 8px.",
 			"previewHTML": "<div class=\"bg\"></div><div class=\"content\"><h2>Welcome</h2></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; margin: 0; height: 200px; position: relative; overflow: hidden; } .bg { position: absolute; inset: 0; background: linear-gradient(45deg, coral, gold, steelblue); } .content { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; height: 100%; } .content h2 { color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3); margin: 0; }",
 			"sandboxCSS": "",
@@ -20,9 +20,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "property_value",
-					"value": { "property": "filter", "expected": "blur(4px)" },
-					"message": "Set <kbd>filter: blur(4px)</kbd>"
+					"type": "regex",
+					"value": "filter:\\s*blur\\((2|3|4|5|6|7|8)px\\)",
+					"message": "Use the <kbd>filter</kbd> property with the <kbd>blur()</kbd> function. Try a value between 2px and 8px",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -30,7 +31,7 @@
 			"id": "filters-2",
 			"title": "Grayscale Filter",
 			"description": "The <kbd>grayscale()</kbd> function removes color from an element. Use values from <kbd>0%</kbd> (full color) to <kbd>100%</kbd> (fully grayscale).<br><br><pre>filter: grayscale(100%);</pre><br>Great for hover effects or disabled states.",
-			"task": "Make the image grayscale with <kbd>filter: grayscale(100%)</kbd>.",
+			"task": "Remove all color from the image to create a black-and-white effect.",
 			"previewHTML": "<div class=\"photo\"></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .photo { width: 200px; height: 150px; background: linear-gradient(135deg, coral 0%, gold 50%, steelblue 100%); border-radius: 8px; }",
 			"sandboxCSS": "",
@@ -41,14 +42,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "grayscale",
-					"message": "Use <kbd>grayscale()</kbd> filter"
-				},
-				{
-					"type": "contains",
-					"value": "100%",
-					"message": "Set to <kbd>100%</kbd> for full grayscale"
+					"type": "regex",
+					"value": "filter:\\s*grayscale\\(100%\\)",
+					"message": "Which filter function removes color from an element? Set it to full strength",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -56,7 +53,7 @@
 			"id": "filters-3",
 			"title": "Brightness Filter",
 			"description": "The <kbd>brightness()</kbd> function adjusts how bright an element appears. Values below <kbd>100%</kbd> darken, above <kbd>100%</kbd> brighten.<br><br><pre>filter: brightness(150%);</pre>",
-			"task": "Brighten the card with <kbd>filter: brightness(120%)</kbd>.",
+			"task": "Make the card appear brighter and more vivid. Use a brightness value between 110% and 150%.",
 			"previewHTML": "<div class=\"card\"><span>Featured</span></div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #1a1a2e; } .card { padding: 2rem; background: linear-gradient(135deg, #4a4a6a, #2a2a4a); border-radius: 12px; text-align: center; } .card span { color: gold; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }",
 			"sandboxCSS": "",
@@ -67,14 +64,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "brightness",
-					"message": "Use <kbd>brightness()</kbd> filter"
-				},
-				{
-					"type": "contains",
-					"value": "120%",
-					"message": "Set to <kbd>120%</kbd>"
+					"type": "regex",
+					"value": "filter:\\s*brightness\\(1[1-5]0%\\)",
+					"message": "Use the <kbd>filter</kbd> property with the <kbd>brightness()</kbd> function. Values above 100% make things brighter",
+					"options": { "caseSensitive": false }
 				}
 			]
 		},
@@ -82,7 +75,7 @@
 			"id": "filters-4",
 			"title": "Drop Shadow",
 			"description": "The <kbd>drop-shadow()</kbd> filter creates a shadow that follows the shape of the element, including transparency. Unlike <kbd>box-shadow</kbd>, it works on images with transparent backgrounds.<br><br><pre>filter: drop-shadow(2px 4px 6px black);</pre>",
-			"task": "Add a drop shadow with <kbd>filter: drop-shadow(4px 4px 8px gray)</kbd>.",
+			"task": "Add a soft shadow behind the star to give it depth. Use the drop-shadow filter with offset, blur, and a color.",
 			"previewHTML": "<div class=\"icon\">★</div>",
 			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 2rem; display: flex; justify-content: center; } .icon { font-size: 4rem; color: gold; }",
 			"sandboxCSS": "",
@@ -93,14 +86,10 @@
 			"previewContainer": "preview-area",
 			"validations": [
 				{
-					"type": "contains",
-					"value": "drop-shadow",
-					"message": "Use <kbd>drop-shadow()</kbd> filter"
-				},
-				{
-					"type": "contains",
-					"value": "4px 4px 8px",
-					"message": "Set shadow offset and blur"
+					"type": "regex",
+					"value": "filter:\\s*drop-shadow\\(\\d+px\\s+\\d+px\\s+\\d+px\\s+\\w+\\)",
+					"message": "Use the <kbd>filter</kbd> property with <kbd>drop-shadow()</kbd>. It needs horizontal offset, vertical offset, blur radius, and a color",
+					"options": { "caseSensitive": false }
 				}
 			]
 		}
