@@ -158,6 +158,24 @@ personas:
                 - Edit(*)
         system_prompt_file: .wave/personas/gitea-scoper.md
         temperature: 0.1
+    pedagogy-auditor:
+        adapter: claude
+        description: Instructional design expert evaluating exercise quality
+        model: claude-opus
+        permissions:
+            allowed_tools:
+                - Read
+                - Write
+                - Bash
+                - Glob
+                - Grep
+            deny:
+                - Edit(*)
+                - Bash(rm -rf /*)
+                - Bash(git push*)
+                - Bash(git commit*)
+        system_prompt_file: .wave/personas/pedagogy-auditor.md
+        temperature: 0.2
     implementer:
         adapter: claude
         description: Execution specialist for code changes and structured output
