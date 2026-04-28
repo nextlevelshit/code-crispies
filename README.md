@@ -200,20 +200,60 @@ Coverage reports are generated in the `coverage/` directory with detailed HTML r
 
 ## 🚢 Deployment
 
-To build the project for production:
+### Static build
 
 ```bash
 npm run build
 ```
 
-The output will be generated in the `dist/` directory, which can be deployed to any static web server.
+Outputs to `dist/`. Deployable to any static web server.
 
-For GitHub Pages deployment, the configuration is already set up with the base path `/code-crispies/`.
+For GitHub Pages, base path `/code-crispies/` is preconfigured.
 
-Preview the production build locally:
 ```bash
-npm run preview
+npm run preview   # local prod preview
 ```
+
+### Docker (Netcup VPS)
+
+This repo is the deployable unit for `cc.cloud.librete.ch` on the
+Netcup VPS — sibling to `caddy`, `immich`, `mp`, `umami` (see
+`libretech/netcup`). Multi-stage `Dockerfile` builds the static bundle
+and serves it via nginx; `compose.yaml` joins the external `edge`
+network so Caddy reverse-proxies to it.
+
+```sh
+# from a workstation
+git push
+ssh netcup
+cd /srv/cc
+git pull
+docker compose build
+docker compose up -d
+```
+
+#### First-time setup on the server
+
+```sh
+ssh netcup
+git clone https://git.librete.ch/public/code-crispies.git /srv/cc
+cd /srv/cc
+cp .env.example .env
+$EDITOR .env   # fill VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY
+chmod 600 .env
+docker compose build
+docker compose up -d
+
+# Verify
+docker compose ps
+docker compose exec -T cc wget -qO- http://127.0.0.1/health
+curl -sS https://cc.cloud.librete.ch/   # via caddy
+```
+
+The nginx config inside the image rewrites unknown paths to
+`index.html` so client-side routing keeps working. `VITE_SUPABASE_*`
+are baked into the bundle at `docker compose build`, so a rebuild is
+needed when they change.
 
 ## 🌐 Internationalization
 
