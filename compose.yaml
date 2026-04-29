@@ -1,5 +1,12 @@
 name: cc
 
+# Default behaviour:
+#   - On dev (no CC_IMAGE in env): build from local context.
+#   - On netcup (CC_IMAGE pinned in /srv/cc/.env to the published Gitea
+#     package): pull the image and skip the build context entirely.
+# The Gitea deploy workflow pushes git.librete.ch/public/code-crispies:main
+# on every main push.
+
 services:
   cc:
     build:
@@ -7,7 +14,8 @@ services:
       args:
         VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
         VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
-    image: cc:local
+    image: ${CC_IMAGE:-cc:local}
+    pull_policy: ${CC_PULL_POLICY:-missing}
     restart: always
     networks:
       - edge
