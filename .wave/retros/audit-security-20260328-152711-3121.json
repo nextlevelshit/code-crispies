@@ -1,0 +1,45 @@
+{
+  "run_id": "audit-security-20260328-152711-3121",
+  "pipeline": "audit-security",
+  "timestamp": "2026-03-28T15:46:08.556131003+01:00",
+  "quantitative": {
+    "total_duration_ms": 1137555,
+    "total_steps": 3,
+    "success_count": 3,
+    "failure_count": 0,
+    "total_retries": 3,
+    "total_tokens": 146555,
+    "steps": [
+      {
+        "name": "report",
+        "duration_ms": 70593,
+        "retries": 1,
+        "status": "success",
+        "adapter": "summarizer",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 28353
+      },
+      {
+        "name": "scan",
+        "duration_ms": 727575,
+        "retries": 1,
+        "status": "success",
+        "adapter": "navigator",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 61193
+      },
+      {
+        "name": "deep-dive",
+        "duration_ms": 338698,
+        "retries": 1,
+        "status": "success",
+        "adapter": "auditor",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 57009
+      }
+    ]
+  }
+}

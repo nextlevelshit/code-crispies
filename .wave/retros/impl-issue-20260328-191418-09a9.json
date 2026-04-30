@@ -1,0 +1,55 @@
+{
+  "run_id": "impl-issue-20260328-191418-09a9",
+  "pipeline": "impl-issue",
+  "timestamp": "2026-03-28T19:27:14.219250828+01:00",
+  "quantitative": {
+    "total_duration_ms": 776218,
+    "total_steps": 4,
+    "success_count": 4,
+    "failure_count": 0,
+    "total_retries": 4,
+    "total_tokens": 131026,
+    "steps": [
+      {
+        "name": "plan",
+        "duration_ms": 146322,
+        "retries": 1,
+        "status": "success",
+        "adapter": "implementer",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 39838
+      },
+      {
+        "name": "implement",
+        "duration_ms": 474670,
+        "retries": 1,
+        "status": "success",
+        "adapter": "craftsman",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 51492
+      },
+      {
+        "name": "create-pr",
+        "duration_ms": 76889,
+        "retries": 1,
+        "status": "success",
+        "adapter": "gitea-commenter",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 18776
+      },
+      {
+        "name": "fetch-assess",
+        "duration_ms": 69364,
+        "retries": 1,
+        "status": "success",
+        "adapter": "implementer",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 20920
+      }
+    ]
+  }
+}

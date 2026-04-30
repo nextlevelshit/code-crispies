@@ -1,0 +1,55 @@
+{
+  "run_id": "impl-feature-20260328-200101-ecae",
+  "pipeline": "impl-feature",
+  "timestamp": "2026-03-28T20:24:46.695641262+01:00",
+  "quantitative": {
+    "total_duration_ms": 1425694,
+    "total_steps": 4,
+    "success_count": 4,
+    "failure_count": 0,
+    "total_retries": 4,
+    "total_tokens": 365030,
+    "steps": [
+      {
+        "name": "plan",
+        "duration_ms": 201070,
+        "retries": 1,
+        "status": "success",
+        "adapter": "planner",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 32991
+      },
+      {
+        "name": "implement",
+        "duration_ms": 955124,
+        "retries": 1,
+        "status": "success",
+        "adapter": "craftsman",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 208294
+      },
+      {
+        "name": "publish",
+        "duration_ms": 76891,
+        "retries": 1,
+        "status": "success",
+        "adapter": "craftsman",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 19425
+      },
+      {
+        "name": "explore",
+        "duration_ms": 184210,
+        "retries": 1,
+        "status": "success",
+        "adapter": "navigator",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 104320
+      }
+    ]
+  }
+}

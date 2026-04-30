@@ -1,0 +1,25 @@
+{
+  "run_id": "audit-dx-20260328-135948-267b",
+  "pipeline": "audit-dx",
+  "timestamp": "2026-03-28T14:05:51.419194117+01:00",
+  "quantitative": {
+    "total_duration_ms": 363418,
+    "total_steps": 1,
+    "success_count": 1,
+    "failure_count": 0,
+    "total_retries": 1,
+    "total_tokens": 62008,
+    "steps": [
+      {
+        "name": "audit",
+        "duration_ms": 362563,
+        "retries": 1,
+        "status": "success",
+        "adapter": "navigator",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 62008
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "run_id": "audit-pedagogy-20260328-213312-b6f8",
+  "pipeline": "audit-pedagogy",
+  "timestamp": "2026-03-28T22:03:59.970266055+01:00",
+  "quantitative": {
+    "total_duration_ms": 1847969,
+    "total_steps": 3,
+    "success_count": 3,
+    "failure_count": 0,
+    "total_retries": 3,
+    "total_tokens": 637289,
+    "steps": [
+      {
+        "name": "scan-lessons",
+        "duration_ms": 375421,
+        "retries": 1,
+        "status": "success",
+        "adapter": "navigator",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 204387
+      },
+      {
+        "name": "pedagogy-audit",
+        "duration_ms": 1008342,
+        "retries": 1,
+        "status": "success",
+        "adapter": "pedagogy-auditor",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 291369
+      },
+      {
+        "name": "improvement-plan",
+        "duration_ms": 463197,
+        "retries": 1,
+        "status": "success",
+        "adapter": "planner",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 141533
+      }
+    ]
+  }
+}

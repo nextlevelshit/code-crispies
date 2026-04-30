@@ -1,0 +1,35 @@
+{
+  "run_id": "doc-onboard-20260328-161951-4e6a",
+  "pipeline": "doc-onboard",
+  "timestamp": "2026-03-28T16:24:37.293760508+01:00",
+  "quantitative": {
+    "total_duration_ms": 286293,
+    "total_steps": 2,
+    "success_count": 2,
+    "failure_count": 0,
+    "total_retries": 2,
+    "total_tokens": 191906,
+    "steps": [
+      {
+        "name": "survey",
+        "duration_ms": 170644,
+        "retries": 1,
+        "status": "success",
+        "adapter": "navigator",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 160822
+      },
+      {
+        "name": "guide",
+        "duration_ms": 114447,
+        "retries": 1,
+        "status": "success",
+        "adapter": "philosopher",
+        "exit_code": 0,
+        "files_changed": 0,
+        "tokens_used": 31084
+      }
+    ]
+  }
+}

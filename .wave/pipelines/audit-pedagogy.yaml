@@ -1,0 +1,147 @@
+kind: WavePipeline
+metadata:
+  name: audit-pedagogy
+  description: "Didactic quality audit: evaluate exercises for learning effectiveness, not code quality"
+  release: false
+
+skills:
+  - software-design
+
+input:
+  source: cli
+  example: "Audit all lesson modules for pedagogical quality"
+  schema:
+    type: string
+    description: "Focus area or scope for the pedagogy audit"
+
+steps:
+  - id: scan-lessons
+    persona: navigator
+    workspace:
+      type: basic
+      root: ./
+    exec:
+      type: prompt
+      source: |
+        Scan ALL lesson JSON files in the lessons/ directory (English versions only, not translations).
+
+        For EACH lesson file:
+        1. Read the full JSON
+        2. For each exercise in the lessons array, extract:
+           - id, title, task, description, solution, validations, codePrefix, codeSuffix
+        3. Analyze the relationship between task description and solution:
+           - Is the solution literally stated in the task/description text?
+           - Does solving it require understanding beyond what's written?
+           - Are there multiple valid solutions or only one exact match?
+
+        Output a structured inventory of all exercises with their metadata.
+        Write to .wave/output/lesson-inventory.json
+    output_artifacts:
+      - name: inventory
+        path: .wave/output/lesson-inventory.json
+        type: json
+    handover:
+      contract:
+        type: json_schema
+        source: .wave/output/lesson-inventory.json
+        schema_path: .wave/contracts/lesson-inventory.schema.json
+        on_failure: skip
+
+  - id: pedagogy-audit
+    persona: pedagogy-auditor
+    dependencies: [scan-lessons]
+    memory:
+      inject_artifacts:
+        - step: scan-lessons
+          artifact: inventory
+          as: lessons
+    workspace:
+      type: basic
+      root: ./
+    exec:
+      type: prompt
+      source: |
+        Perform a thorough pedagogical audit of all lesson modules.
+
+        You have the full lesson inventory. For EACH module, evaluate:
+
+        1. BLOOM'S TAXONOMY LEVEL
+           - What cognitive level do most exercises target?
+           - Level 1 (Remember): Type exact syntax from description
+           - Level 2 (Understand): Adapt a concept to a slightly different context
+           - Level 3 (Apply): Solve a novel problem using learned concepts
+           - Level 4 (Analyze): Debug, compare, or optimize code
+
+        2. COPY-PASTE SCORE (0-100)
+           - Compare each task description to its solution
+           - If the solution text appears verbatim in the description → high copy-paste
+           - If the student must transform/combine information → low copy-paste
+           - Score 100 = pure copy-paste, 0 = fully original thinking required
+
+        3. TRANSFER REQUIREMENT
+           - Does the student need to apply concepts from earlier lessons?
+           - Are there exercises that combine multiple skills?
+           - Does difficulty progress within the module?
+
+        4. VALIDATION QUALITY
+           - Do validations accept multiple correct solutions?
+           - Do error messages guide learning or just say "wrong"?
+           - Are there partial-credit possibilities?
+
+        5. SPECIFIC ISSUES per exercise
+           For exercises scoring poorly, provide:
+           - The exact problem (e.g., "solution 'display: flex;' is literally in the task text")
+           - A concrete improvement suggestion
+           - Expected impact on learning
+
+        Be brutally honest. The goal is to identify WHERE students coast through
+        without learning and WHERE they get stuck without support.
+
+        Write the full audit to .wave/output/pedagogy-report.json
+        Also write a human-readable markdown summary to .wave/output/pedagogy-report.md
+    output_artifacts:
+      - name: report
+        path: .wave/output/pedagogy-report.md
+        type: markdown
+      - name: report-json
+        path: .wave/output/pedagogy-report.json
+        type: json
+
+  - id: improvement-plan
+    persona: planner
+    dependencies: [pedagogy-audit]
+    memory:
+      inject_artifacts:
+        - step: pedagogy-audit
+          artifact: report-json
+          as: audit
+    workspace:
+      type: basic
+      root: ./
+    exec:
+      type: prompt
+      source: |
+        Based on the pedagogy audit, create a concrete improvement plan.
+
+        For EACH module that scored below 60 on transfer or above 60 on copy-paste:
+        1. Identify the 2-3 worst exercises
+        2. Write improved task descriptions that require actual thinking
+        3. Suggest additional validation types that accept multiple solutions
+        4. Propose new exercises that test TRANSFER, not recall
+
+        Group improvements by priority:
+        - CRITICAL: Exercises where students learn nothing (pure copy-paste)
+        - HIGH: Exercises that could be great with small changes
+        - MEDIUM: Missing scaffolding or difficulty gaps
+
+        Write the plan to .wave/output/improvement-plan.json with structure:
+        { modules: [{ id, current_score, improvements: [{ exercise_id, problem, improved_task, improved_validations }] }] }
+
+        Also write .wave/output/improvement-plan.md as human-readable markdown.
+    output_artifacts:
+      - name: plan
+        path: .wave/output/improvement-plan.md
+        type: markdown
+      - name: plan-json
+        path: .wave/output/improvement-plan.json
+        type: json
