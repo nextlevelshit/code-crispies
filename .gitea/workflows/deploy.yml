@@ -27,7 +27,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container:
-      image: git.librete.ch/libretech/runner-image:v1
+      image: git.librete.ch/public/runner-image:v1
     timeout-minutes: 20
     if: ${{ vars.DEPLOY_ENABLED == 'true' }}
     steps:
