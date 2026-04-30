@@ -10,7 +10,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     container:
-      image: git.librete.ch/public/runner-image:v1
+      image: git.librete.ch/public/runner-image:v0.1.0:9d1e204fe8e06b7d16cdc8da0c7077fa4171daef62099cc8c09993834e576ca5
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
