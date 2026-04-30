@@ -19,3 +19,4 @@ coverage
 .wave/traces
 .wave/artifacts
 .wave/output
+.wave/state.db
