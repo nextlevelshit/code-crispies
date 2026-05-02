@@ -10,9 +10,9 @@ on:
 #   REGISTRY_USER       libretech (user-namespace packages — bot can't push)
 #   REGISTRY_PASS       libretech-user PAT scoped write:package
 #   DEPLOY_HOST         user@your-deploy-host
-#   DEPLOY_KEY          passphrase-less private key on netcup root authorized_keys
+#   DEPLOY_KEY          passphrase-less private key authorized on deploy host
 #   DEPLOY_PATH         /srv/cc
-#   HEALTH_URL          https://cc.cloud.librete.ch/
+#   HEALTH_URL          https://your-domain/health
 #   VITE_SUPABASE_URL   public; baked at build time
 #   VITE_SUPABASE_ANON_KEY  public-by-design supabase anon key; baked at build time
 #
