@@ -3,6 +3,8 @@
 
 An interactive platform for learning HTML, CSS, and Tailwind CSS through practical challenges.
 
+> **Deploy / operate on netcup:** see [DEPLOY.md](DEPLOY.md) (canonical netcup runbook).
+
 ## 📚 Overview
 
 Code Crispies is a web-based learning platform designed to help users master HTML, CSS, and Tailwind CSS through hands-on exercises. The application presents a series of progressive challenges organized into themed modules, allowing learners to build their skills step by step while receiving immediate feedback.
