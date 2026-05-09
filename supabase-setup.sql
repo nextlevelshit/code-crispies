@@ -26,6 +26,10 @@ CREATE TABLE newsletter_subscribers (
   subscribed_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Grants (required even with RLS — RLS gates rows, GRANTs gate table access)
+GRANT SELECT, INSERT, UPDATE, DELETE ON user_progress TO authenticated;
+GRANT INSERT ON newsletter_subscribers TO anon, authenticated;
+
 -- Row Level Security
 ALTER TABLE user_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;

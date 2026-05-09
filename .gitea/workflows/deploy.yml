@@ -19,7 +19,7 @@ on:
 # Required repository variable:
 #   DEPLOY_ENABLED      "true" to enable
 #
-# Image: git.librete.ch/public/code-crispies
+# Image: git.librete.ch/libretech/cc
 #   main pushes  → :main + :sha-<short>
 #   tag pushes   → :<tag> + :latest
 
@@ -44,7 +44,7 @@ jobs:
       - id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.REGISTRY }}/public/code-crispies
+          images: ${{ secrets.REGISTRY }}/libretech/cc
           tags: |
             type=ref,event=branch
             type=ref,event=tag
