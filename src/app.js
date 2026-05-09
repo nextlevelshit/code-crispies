@@ -3,7 +3,7 @@ import { CodeEditor, crispyEditorTheme } from "./impl/CodeEditor.js";
 import { renderLesson, renderModuleList, renderLevelIndicator, updateActiveLessonInSidebar, renderDifficultyBadge } from "./helpers/renderer.js";
 import { loadModules } from "./config/lessons.js";
 import { initI18n, t, getLanguage, setLanguage, applyTranslations } from "./i18n.js";
-import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo } from "./helpers/router.js";
+import { parseHash, updateHash, replaceHash, getShareableUrl, RouteType, navigateTo, migrateLegacyHashRoute } from "./helpers/router.js";
 import { sections, getSection, getModuleSection, getModulesBySection } from "./config/sections.js";
 import { getRandomTemplate } from "./config/playground-templates.js";
 import { initAuth, handleOAuthCallback } from "./auth.js";
@@ -1149,8 +1149,8 @@ const sectionContent = {
 				<h2>Selectors & Properties</h2>
 				<p>CSS uses selectors to target HTML elements and apply styles. The most common selector is the class selector (<code>.classname</code>), which targets elements with a specific class attribute. You can also use element selectors (<code>p</code>, <code>div</code>), ID selectors (<code>#id</code>), and combinators to select nested elements.</p>
 				<p>Properties define what aspect of the element to style. Common properties include <code>color</code> for text color, <code>background</code> for backgrounds, <code>padding</code> for internal spacing, and <code>margin</code> for external spacing. Each property accepts specific value types like colors, lengths, or keywords.</p>
-				<a href="#css-basic-selectors/0" class="topic-link">Practice CSS Selectors</a>
-				<a href="#reference/selectors" class="topic-ref">Selectors Reference →</a>
+				<a href="/css-basic-selectors/0" class="topic-link">Practice CSS Selectors</a>
+				<a href="/reference/selectors" class="topic-ref">Selectors Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1173,7 +1173,7 @@ const sectionContent = {
 				<h2>The Box Model</h2>
 				<p>Every HTML element is rendered as a rectangular box with four distinct layers. The <code>content</code> area holds your text or images. <code>padding</code> creates space inside the element between the content and border. The <code>border</code> wraps around the padding. Finally, <code>margin</code> creates space outside the element, separating it from neighbors.</p>
 				<p>By default, <code>width</code> only sets the content width. Adding padding and border increases the total size. Use <code>box-sizing: border-box</code> to include padding and border in the declared width, making layouts much more predictable.</p>
-				<a href="#box-model/0" class="topic-link">Learn the CSS Box Model</a>
+				<a href="/box-model/0" class="topic-link">Learn the CSS Box Model</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1194,8 +1194,8 @@ const sectionContent = {
 				<h2>Flexbox Layout</h2>
 				<p>Flexbox is a one-dimensional layout system for arranging items in rows or columns. Apply <code>display: flex</code> to a container to enable it. Child elements become flex items that can grow, shrink, and align automatically.</p>
 				<p>Control alignment with <code>justify-content</code> (main axis: <code>flex-start</code>, <code>center</code>, <code>space-between</code>) and <code>align-items</code> (cross axis: <code>stretch</code>, <code>center</code>, <code>flex-end</code>). The <code>gap</code> property adds consistent spacing between items without margins.</p>
-				<a href="#flexbox/0" class="topic-link">Master CSS Flexbox Layout</a>
-				<a href="#reference/flexbox" class="topic-ref">Flexbox Reference →</a>
+				<a href="/flexbox/0" class="topic-link">Master CSS Flexbox Layout</a>
+				<a href="/reference/flexbox" class="topic-ref">Flexbox Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1219,8 +1219,8 @@ const sectionContent = {
 				<h2>CSS Grid</h2>
 				<p>CSS Grid is a two-dimensional layout system for creating complex row and column layouts. Enable it with <code>display: grid</code>, then define columns using <code>grid-template-columns</code>. The <code>repeat()</code> function creates multiple tracks, and <code>fr</code> units distribute available space proportionally.</p>
 				<p>Grid excels at page layouts and card grids. Use <code>grid-template-columns: repeat(3, 1fr)</code> for three equal columns, or <code>repeat(auto-fill, minmax(250px, 1fr))</code> for responsive columns that wrap automatically.</p>
-				<a href="#grid/0" class="topic-link">Explore CSS Grid Layout</a>
-				<a href="#reference/grid" class="topic-ref">Grid Reference →</a>
+				<a href="/grid/0" class="topic-link">Explore CSS Grid Layout</a>
+				<a href="/reference/grid" class="topic-ref">Grid Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1243,7 +1243,7 @@ const sectionContent = {
 				<h2>Units & Variables</h2>
 				<p>CSS supports multiple unit types for different use cases. Use <code>px</code> for fixed sizes, <code>rem</code> for scalable typography (relative to root font size), <code>%</code> for parent-relative sizing, and <code>vh</code>/<code>vw</code> for viewport-relative dimensions. Prefer <code>rem</code> for accessibility—it respects user font preferences.</p>
 				<p>CSS custom properties (variables) store reusable values. Define them with <code>--name: value</code> in <code>:root</code> for global access, then use them anywhere with <code>var(--name)</code>. This makes themes and consistent design systems easy to maintain.</p>
-				<a href="#units-variables/0" class="topic-link">Study CSS Units & Variables</a>
+				<a href="/units-variables/0" class="topic-link">Study CSS Units & Variables</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1275,8 +1275,8 @@ const sectionContent = {
 				<h2>Semantic Structure</h2>
 				<p>HTML5 introduced semantic elements that convey meaning about content structure. Use <code>&lt;header&gt;</code> for introductory content, <code>&lt;nav&gt;</code> for navigation links, <code>&lt;main&gt;</code> for primary content, <code>&lt;article&gt;</code> for self-contained compositions, <code>&lt;section&gt;</code> for thematic groupings, and <code>&lt;footer&gt;</code> for closing content.</p>
 				<p>Semantic markup improves accessibility—screen readers announce element roles. It also helps SEO as search engines better understand your content hierarchy. Replace generic <code>&lt;div&gt;</code> containers with appropriate semantic elements whenever possible.</p>
-				<a href="#html-elements/0" class="topic-link">Learn HTML Semantic Elements</a>
-				<a href="#reference/html" class="topic-ref">HTML Reference →</a>
+				<a href="/html-elements/0" class="topic-link">Learn HTML Semantic Elements</a>
+				<a href="/reference/html" class="topic-ref">HTML Reference →</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1301,7 +1301,7 @@ const sectionContent = {
 				<h2>Forms & Validation</h2>
 				<p>HTML forms collect user input with elements like <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;button&gt;</code>. Always pair inputs with <code>&lt;label&gt;</code> elements using matching <code>for</code> and <code>id</code> attributes—this is crucial for accessibility and usability.</p>
 				<p>Native validation attributes eliminate JavaScript for common cases: <code>required</code> prevents empty submissions, <code>type="email"</code> validates email format, <code>minlength</code>/<code>maxlength</code> control text length, and <code>pattern</code> accepts custom regex patterns. The browser handles error messages automatically.</p>
-				<a href="#html-forms-basic/0" class="topic-link">Build HTML Forms</a>
+				<a href="/html-forms-basic/0" class="topic-link">Build HTML Forms</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1326,7 +1326,7 @@ const sectionContent = {
 				<h2>Interactive Elements</h2>
 				<p>Modern HTML includes powerful interactive components that work without JavaScript. The <code>&lt;details&gt;</code> element creates native accordions—click <code>&lt;summary&gt;</code> to toggle visibility. Add the <code>open</code> attribute to start expanded. Multiple details elements create FAQ-style interfaces instantly.</p>
 				<p>The <code>&lt;dialog&gt;</code> element creates accessible modal dialogs. Call <code>.showModal()</code> in JavaScript to open it with backdrop and focus trapping built-in. Use <code>&lt;datalist&gt;</code> with inputs to provide autocomplete suggestions from a predefined list.</p>
-				<a href="#html-details-summary/0" class="topic-link">Try Interactive HTML Elements</a>
+				<a href="/html-details-summary/0" class="topic-link">Try Interactive HTML Elements</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1352,7 +1352,7 @@ const sectionContent = {
 				<h2>Tables & Lists</h2>
 				<p>Use <code>&lt;table&gt;</code> exclusively for tabular data, never for page layout. Structure tables with <code>&lt;thead&gt;</code> for header rows, <code>&lt;tbody&gt;</code> for data rows, and optionally <code>&lt;tfoot&gt;</code> for summaries. Mark header cells with <code>&lt;th&gt;</code> (not <code>&lt;td&gt;</code>) and add <code>scope="col"</code> or <code>scope="row"</code> for accessibility.</p>
 				<p>Lists come in three flavors: <code>&lt;ul&gt;</code> for unordered bullet lists, <code>&lt;ol&gt;</code> for numbered sequences, and <code>&lt;dl&gt;</code> for definition lists (term/description pairs). Nest lists for hierarchical content like navigation menus or category trees.</p>
-				<a href="#html-tables/0" class="topic-link">Structure Data with HTML Tables</a>
+				<a href="/html-tables/0" class="topic-link">Structure Data with HTML Tables</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1379,7 +1379,7 @@ const sectionContent = {
 		<div class="section-overview">
 			<p><strong>Tailwind CSS</strong> is a utility-first CSS framework that takes a radically different approach to styling. Instead of writing custom CSS classes like <code>.card</code> or <code>.button</code>, you compose designs using small, single-purpose utility classes directly in your HTML: <code>class="p-4 bg-white rounded shadow"</code>.</p>
 			<p>This approach solves common CSS problems: no more specificity battles, no unused styles, no inventing class names. Tailwind's consistent spacing scale (<code>p-1</code> through <code>p-12</code>), color palette (<code>blue-500</code>, <code>gray-100</code>), and responsive prefixes (<code>md:</code>, <code>lg:</code>) make building consistent, responsive interfaces fast and predictable.</p>
-			<p class="section-see-also">For the underlying CSS concepts, see the <a href="#css">CSS Section</a> and <a href="#reference/css">CSS Reference</a>.</p>
+			<p class="section-see-also">For the underlying CSS concepts, see the <a href="/css">CSS Section</a> and <a href="/reference/css">CSS Reference</a>.</p>
 		</div>
 
 		<div class="topic-row">
@@ -1490,7 +1490,7 @@ const sectionContent = {
 				<h2>Headings & Structure</h2>
 				<p>Create document structure with headings using <code>#</code> symbols. One <code>#</code> for h1, two <code>##</code> for h2, up to six levels. This creates a clear hierarchy in your documents.</p>
 				<p>
-					<a href="#markdown-basics/0" class="topic-link">Practice headings →</a>
+					<a href="/markdown-basics/0" class="topic-link">Practice headings →</a>
 				</p>
 			</div>
 			<div class="topic-code">
@@ -1508,7 +1508,7 @@ const sectionContent = {
 				<h2>Text Formatting</h2>
 				<p>Emphasize text with <code>**bold**</code> or <code>*italic*</code>. Combine them with <code>***bold italic***</code>. Use backticks for <code>\`inline code\`</code> to highlight commands or code snippets in your text.</p>
 				<p>
-					<a href="#markdown-basics/2" class="topic-link">Practice formatting →</a>
+					<a href="/markdown-basics/2" class="topic-link">Practice formatting →</a>
 				</p>
 			</div>
 			<div class="topic-code">
@@ -1525,7 +1525,7 @@ This is \`inline code\`.</code></pre>
 				<h2>Lists</h2>
 				<p>Create bullet lists with <code>-</code>, <code>*</code>, or <code>+</code>. Numbered lists use <code>1.</code>, <code>2.</code>, etc. Indent items with spaces to create nested lists for complex outlines.</p>
 				<p>
-					<a href="#markdown-basics/4" class="topic-link">Practice lists →</a>
+					<a href="/markdown-basics/4" class="topic-link">Practice lists →</a>
 				</p>
 			</div>
 			<div class="topic-code">
@@ -1546,7 +1546,7 @@ This is \`inline code\`.</code></pre>
 				<h2>Links & Images</h2>
 				<p>Create links with <code>[text](url)</code> syntax. Images use the same format with an exclamation mark: <code>![alt text](image-url)</code>. The alt text describes the image for accessibility.</p>
 				<p>
-					<a href="#markdown-basics/6" class="topic-link">Practice links →</a>
+					<a href="/markdown-basics/6" class="topic-link">Practice links →</a>
 				</p>
 			</div>
 			<div class="topic-code">
@@ -1569,7 +1569,7 @@ This is \`inline code\`.</code></pre>
 				<h2>Variables & Data Types</h2>
 				<p>JavaScript uses <code>const</code> for values that won't change and <code>let</code> for values that will. Template literals with backticks make it easy to embed expressions in strings using <code>\${...}</code> syntax.</p>
 				<p>Arrays store ordered collections in square brackets. Objects store key-value pairs in curly braces. These are the building blocks of every JavaScript program.</p>
-				<a href="#js-variables/0" class="topic-link">Learn JS Variables</a>
+				<a href="/js-variables/0" class="topic-link">Learn JS Variables</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1587,7 +1587,7 @@ const colors = ["red", "green"];</code></pre>
 			<div class="topic-text">
 				<h2>DOM Manipulation</h2>
 				<p>The DOM (Document Object Model) is how JavaScript sees your HTML. Use <code>document.querySelector()</code> to find elements by CSS selector, then modify them with properties like <code>textContent</code>, <code>style</code>, and <code>classList</code>.</p>
-				<a href="#js-dom/0" class="topic-link">Practice DOM Methods</a>
+				<a href="/js-dom/0" class="topic-link">Practice DOM Methods</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1603,7 +1603,7 @@ title.classList.add("active");</code></pre>
 			<div class="topic-text">
 				<h2>Event Handling</h2>
 				<p>Events let your code respond to user actions. Use <code>addEventListener()</code> to run a function when something happens—a click, a keystroke, or an input change. The callback receives an event object with details about what happened.</p>
-				<a href="#js-events/0" class="topic-link">Handle Events</a>
+				<a href="/js-events/0" class="topic-link">Handle Events</a>
 			</div>
 			<div class="topic-code">
 				<div class="code-block">
@@ -1735,7 +1735,7 @@ const referenceContent = {
 			</table>
 		</section>
 
-		<p class="ref-see-also">See also: <a href="#reference/flexbox">Flexbox Reference</a> | <a href="#reference/grid">Grid Reference</a> | <a href="#reference/selectors">Selectors Reference</a></p>
+		<p class="ref-see-also">See also: <a href="/reference/flexbox">Flexbox Reference</a> | <a href="/reference/grid">Grid Reference</a> | <a href="/reference/selectors">Selectors Reference</a></p>
 	`,
 
 	selectors: `
@@ -1815,7 +1815,7 @@ const referenceContent = {
 			</ol>
 		</section>
 
-		<p class="ref-see-also">Practice: <a href="#css-basic-selectors/0">Basic Selectors Lessons</a> | <a href="#css-advanced-selectors/0">Advanced Selectors</a></p>
+		<p class="ref-see-also">Practice: <a href="/css-basic-selectors/0">Basic Selectors Lessons</a> | <a href="/css-advanced-selectors/0">Advanced Selectors</a></p>
 	`,
 
 	flexbox: `
@@ -1889,7 +1889,7 @@ const referenceContent = {
 			</div>
 		</section>
 
-		<p class="ref-see-also">Practice: <a href="#flexbox/0">Flexbox Lessons</a> | Compare: <a href="#reference/grid">CSS Grid</a></p>
+		<p class="ref-see-also">Practice: <a href="/flexbox/0">Flexbox Lessons</a> | Compare: <a href="/reference/grid">CSS Grid</a></p>
 	`,
 
 	grid: `
@@ -1978,7 +1978,7 @@ const referenceContent = {
 			</div>
 		</section>
 
-		<p class="ref-see-also">Practice: <a href="#grid/0">Grid Lessons</a> | Compare: <a href="#reference/flexbox">Flexbox</a></p>
+		<p class="ref-see-also">Practice: <a href="/grid/0">Grid Lessons</a> | Compare: <a href="/reference/flexbox">Flexbox</a></p>
 	`,
 
 	html: `
@@ -2130,7 +2130,7 @@ const referenceContent = {
 			</table>
 		</section>
 
-		<p class="ref-see-also">Learn: <a href="#html">HTML Section</a> | Style with: <a href="#reference/css">CSS Properties</a></p>
+		<p class="ref-see-also">Learn: <a href="/html">HTML Section</a> | Style with: <a href="/reference/css">CSS Properties</a></p>
 	`,
 
 	markdown: `
@@ -2229,7 +2229,7 @@ const referenceContent = {
 			<p>Use colons for alignment: <code>:---</code> (left), <code>:---:</code> (center), <code>---:</code> (right)</p>
 		</section>
 
-		<p class="ref-see-also">Learn: <a href="#markdown">Markdown Section</a> | Also try: <a href="#html">HTML Elements</a></p>
+		<p class="ref-see-also">Learn: <a href="/markdown">Markdown Section</a> | Also try: <a href="/html">HTML Elements</a></p>
 	`
 };
 
@@ -2446,9 +2446,9 @@ function renderFooterLessonLinks() {
 	Object.entries(sectionGroups).forEach(([sectionId, sectionModules]) => {
 		if (sectionModules.length === 0) return;
 		const sectionName = sectionId.toUpperCase();
-		html += `<div class="footer-section-group"><strong><a href="#${sectionId}">${sectionName}</a></strong>`;
+		html += `<div class="footer-section-group"><strong><a href="/${sectionId}">${sectionName}</a></strong>`;
 		sectionModules.forEach((module) => {
-			html += `<a href="#${module.id}/0">${module.title}</a>`;
+			html += `<a href="/${module.id}/0">${module.title}</a>`;
 		});
 		html += "</div>";
 	});
@@ -2779,6 +2779,12 @@ function init() {
 
 	// Handle OAuth callback FIRST (tokens are in URL hash, must run before router)
 	handleOAuthCallback().then(() => {
+		// Migrate legacy #path hash URLs to /path equivalents (preserves
+		// bookmarks + share links from the old hash-based router). Skips
+		// OAuth hashes (already consumed above) and pure anchors like
+		// #main-content.
+		migrateLegacyHashRoute();
+
 		// Load modules (this also calls handleRoute inside)
 		initializeModules();
 

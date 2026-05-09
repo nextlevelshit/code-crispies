@@ -1,21 +1,21 @@
 /**
  * URL Router for Code Crispies
- * Handles hash-based routing for pages, sections, and lessons
+ * Path-based routing using History API for real deep-link SEO.
  *
  * Route formats:
- * - #              -> Home landing page
- * - #de, #pl, #ar  -> Switch language and go to home
- * - #css           -> CSS section landing
- * - #html          -> HTML section landing
- * - #tailwind      -> Tailwind section landing
- * - #markdown      -> Markdown section landing
- * - #reference/css -> CSS cheatsheet
- * - #module/index  -> Lesson (e.g., #flexbox/2)
+ * - /              -> Home landing page
+ * - /de, /pl, ...  -> Switch language and go to home
+ * - /css           -> CSS section landing
+ * - /html          -> HTML section landing
+ * - /tailwind      -> Tailwind section landing
+ * - /markdown      -> Markdown section landing
+ * - /reference/css -> CSS cheatsheet
+ * - /flexbox/2     -> Lesson (module/index)
+ *
+ * Legacy hash routes (#flexbox/2) are detected on bootstrap and
+ * redirected to the equivalent path (see migrateLegacyHashRoute).
  */
 
-/**
- * Route types
- */
 export const RouteType = {
 	HOME: "home",
 	SECTION: "section",
@@ -24,130 +24,123 @@ export const RouteType = {
 	LANGUAGE: "language"
 };
 
-/**
- * Valid section IDs
- */
 const SECTIONS = ["css", "html", "markdown", "javascript"]; // tailwind temporarily disabled
-
-/**
- * Valid language codes for URL-based switching
- */
 const LANGUAGES = ["en", "de", "pl", "es", "ar", "uk"];
 
 /**
- * Parse current URL hash into route info
- * @returns {{ type: string, moduleId?: string, lessonIndex?: number, sectionId?: string, refId?: string } | null}
+ * Parse the current URL pathname into route info.
+ * @returns {{ type: string, moduleId?: string, lessonIndex?: number, sectionId?: string, refId?: string, lang?: string } | null}
  */
-export function parseHash() {
-	const hash = window.location.hash.slice(1); // Remove '#'
+export function parseRoute() {
+	const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
 
-	// Empty hash = home
-	if (!hash) {
+	if (!path) {
 		return { type: RouteType.HOME };
 	}
 
-	const parts = hash.split("/");
+	const parts = path.split("/");
 
-	// Single segment routes
 	if (parts.length === 1) {
 		const segment = parts[0];
 
-		// Language switching (e.g., #de, #pl, #ar)
 		if (LANGUAGES.includes(segment)) {
 			return { type: RouteType.LANGUAGE, lang: segment };
 		}
-
-		// Section landing pages
 		if (SECTIONS.includes(segment)) {
 			return { type: RouteType.SECTION, sectionId: segment };
 		}
-
-		// Reference index (no specific ref)
 		if (segment === "reference") {
 			return { type: RouteType.REFERENCE, refId: null };
 		}
-
-		// Single segment could be module with implicit lesson 0
 		return { type: RouteType.LESSON, moduleId: segment, lessonIndex: 0 };
 	}
 
-	// Two segment routes
 	if (parts.length === 2) {
-		// Reference subpages
 		if (parts[0] === "reference") {
 			return { type: RouteType.REFERENCE, refId: parts[1] };
 		}
-
-		// Lesson route (existing behavior)
 		const moduleId = parts[0];
 		const lessonIndex = parseInt(parts[1], 10);
-
 		if (moduleId && !isNaN(lessonIndex) && lessonIndex >= 0) {
 			return { type: RouteType.LESSON, moduleId, lessonIndex };
 		}
 	}
 
-	// Invalid route
 	return null;
 }
 
-/**
- * Update URL hash with history entry (for navigation)
- * @param {string} moduleId
- * @param {number} lessonIndex
- */
+/** Backwards-compat alias for the old hash-based parser. */
+export const parseHash = parseRoute;
+
+function lessonPath(moduleId, lessonIndex) {
+	return `/${moduleId}/${lessonIndex}`;
+}
+
+function routePath(route) {
+	if (!route) return "/";
+	return route.startsWith("/") ? route : `/${route}`;
+}
+
+/** Update URL with history entry (for navigation). */
 export function updateHash(moduleId, lessonIndex) {
-	const newHash = `#${moduleId}/${lessonIndex}`;
-	if (window.location.hash !== newHash) {
-		history.pushState(null, "", newHash);
+	const newPath = lessonPath(moduleId, lessonIndex);
+	if (window.location.pathname !== newPath) {
+		history.pushState(null, "", newPath);
 	}
 }
 
-/**
- * Update URL to a specific route
- * @param {string} route - The route string (e.g., "css", "reference/flexbox", "")
- */
+/** Navigate to a specific route segment ("css", "reference/flexbox", "" for home). */
 export function navigateTo(route) {
-	const newHash = route ? `#${route}` : "#";
-	if (window.location.hash !== newHash) {
-		history.pushState(null, "", newHash);
+	const newPath = routePath(route);
+	if (window.location.pathname !== newPath) {
+		history.pushState(null, "", newPath);
 	}
 }
 
-/**
- * Replace URL hash without history entry (for invalid URL fallbacks)
- * @param {string} moduleId
- * @param {number} lessonIndex
- */
+/** Replace URL without history entry (for invalid URL fallbacks). */
 export function replaceHash(moduleId, lessonIndex) {
-	const newHash = `#${moduleId}/${lessonIndex}`;
-	history.replaceState(null, "", newHash);
+	history.replaceState(null, "", lessonPath(moduleId, lessonIndex));
 }
 
-/**
- * Replace URL to a specific route without history entry
- * @param {string} route - The route string
- */
 export function replaceTo(route) {
-	const newHash = route ? `#${route}` : "#";
-	history.replaceState(null, "", newHash);
+	history.replaceState(null, "", routePath(route));
 }
 
-/**
- * Build full shareable URL for current lesson
- * @param {string} moduleId
- * @param {number} lessonIndex
- * @returns {string}
- */
 export function getShareableUrl(moduleId, lessonIndex) {
-	const base = window.location.origin + window.location.pathname;
-	return `${base}#${moduleId}/${lessonIndex}`;
+	return `${window.location.origin}${lessonPath(moduleId, lessonIndex)}`;
 }
 
-/**
- * Get valid section IDs
- * @returns {string[]}
- */
 export function getSectionIds() {
 	return [...SECTIONS];
+}
+
+/**
+ * One-time bootstrap: if the URL still uses a legacy `#path` route,
+ * redirect to the equivalent path-based URL. Pure anchor hashes like
+ * `#main-content` are left alone.
+ *
+ * Run once on app start BEFORE the first parseRoute() call.
+ *
+ * @returns {boolean} true if a redirect happened (caller should skip
+ *   further routing this tick — popstate/load will fire fresh).
+ */
+export function migrateLegacyHashRoute() {
+	const hash = window.location.hash.slice(1);
+	if (!hash) return false;
+
+	const parts = hash.split("/");
+	const first = parts[0];
+
+	const looksLikeRoute =
+		LANGUAGES.includes(first) ||
+		SECTIONS.includes(first) ||
+		first === "reference" ||
+		// module/index pattern: 2 parts, second is numeric
+		(parts.length === 2 && !isNaN(parseInt(parts[1], 10)));
+
+	if (!looksLikeRoute) return false;
+
+	const newUrl = `/${hash}${window.location.search}`;
+	history.replaceState(null, "", newUrl);
+	return true;
 }
