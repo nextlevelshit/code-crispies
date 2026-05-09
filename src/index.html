@@ -34,26 +34,60 @@
 		<meta name="twitter:description" content="Master HTML, CSS, and Tailwind through hands-on coding exercises." />
 		<meta name="twitter:image" content="https://codecrispi.es/og-image.png" />
 
+		<link rel="canonical" href="https://codecrispi.es/" />
+
 		<!-- Structured Data -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
-				"@type": "WebApplication",
-				"name": "CODE CRISPIES",
-				"description": "Interactive platform for learning HTML, CSS, and Tailwind through hands-on coding exercises",
-				"url": "https://codecrispi.es/",
-				"applicationCategory": "EducationalApplication",
-				"operatingSystem": "Web Browser",
-				"offers": {
-					"@type": "Offer",
-					"price": "0",
-					"priceCurrency": "USD"
-				},
-				"author": {
-					"@type": "Organization",
-					"name": "LibreTECH",
-					"url": "https://librete.ch"
-				}
+				"@graph": [
+					{
+						"@type": "WebApplication",
+						"@id": "https://codecrispi.es/#app",
+						"name": "CODE CRISPIES",
+						"description": "Interactive platform for learning HTML, CSS, Tailwind, JavaScript, and Markdown through hands-on coding exercises",
+						"url": "https://codecrispi.es/",
+						"applicationCategory": "EducationalApplication",
+						"operatingSystem": "Web Browser",
+						"isAccessibleForFree": true,
+						"inLanguage": ["en", "de", "es", "ar", "pl", "uk"],
+						"offers": {
+							"@type": "Offer",
+							"price": "0",
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock"
+						},
+						"author": {
+							"@type": "Organization",
+							"@id": "https://librete.ch/#org",
+							"name": "LibreTECH",
+							"url": "https://librete.ch"
+						}
+					},
+					{
+						"@type": "Course",
+						"@id": "https://codecrispi.es/#course",
+						"name": "Code Crispies — Interactive Web Development",
+						"description": "135 progressive lessons covering HTML, CSS, Tailwind, JavaScript, and Markdown with live preview and instant validation.",
+						"url": "https://codecrispi.es/",
+						"provider": { "@id": "https://librete.ch/#org" },
+						"educationalLevel": "Beginner",
+						"isAccessibleForFree": true,
+						"inLanguage": ["en", "de", "es", "ar", "pl", "uk"],
+						"teaches": ["HTML", "CSS", "Tailwind CSS", "JavaScript", "Markdown"],
+						"hasCourseInstance": {
+							"@type": "CourseInstance",
+							"courseMode": "Online",
+							"courseWorkload": "PT10H"
+						},
+						"offers": {
+							"@type": "Offer",
+							"category": "Free",
+							"price": "0",
+							"priceCurrency": "EUR"
+						}
+					}
+				]
 			}
 		</script>
 

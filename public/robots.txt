@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# No restricted paths — public learning content.
+# Skip the asset hash bundle directory from being crawled as
+# distinct URLs (they're referenced via index.html, not navigable).
+Disallow: /assets/
+
+Sitemap: https://codecrispi.es/sitemap.xml
