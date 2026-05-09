@@ -1,301 +1,125 @@
-![Code Crispies Logo](./public/android-chrome-192x192.png)
-# Code Crispies
+<p align="center">
+  <a href="https://codecrispi.es"><img src="./public/logo.svg" alt="Code Crispies" width="640"></a>
+</p>
 
-An interactive platform for learning HTML, CSS, and Tailwind CSS through practical challenges.
+<p align="center">
+  <strong>Learn HTML, CSS, Tailwind, JS &amp; Markdown — hands-on, in your browser.</strong>
+</p>
 
-> **Deploy / operate on netcup:** see [DEPLOY.md](DEPLOY.md) (canonical netcup runbook).
+<p align="center">
+  <a href="https://codecrispi.es"><img src="https://img.shields.io/badge/live-codecrispi.es-4f46e5?style=for-the-badge" alt="live demo"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-fbca04?style=for-the-badge" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/lessons-135-0e8a16?style=for-the-badge" alt="135 lessons">
+  <img src="https://img.shields.io/badge/no-signup-1da1f2?style=for-the-badge" alt="no signup">
+</p>
 
-## 📚 Overview
+<p align="center">
+  <a href="https://codecrispi.es"><strong>▶ Try it live</strong></a>
+</p>
 
-Code Crispies is a web-based learning platform designed to help users master HTML, CSS, and Tailwind CSS through hands-on exercises. The application presents a series of progressive challenges organized into themed modules, allowing learners to build their skills step by step while receiving immediate feedback.
+---
 
-### Key Features
+135 progressive lessons across HTML, CSS, Tailwind, JavaScript, and Markdown. Each lesson is a short coding challenge with live preview and instant validation. No account, no ads, no tracking beyond privacy-friendly Umami. Self-hostable.
 
-- **Interactive Lessons**: Learn HTML, CSS, and Tailwind concepts through practical, hands-on challenges
-- **Multiple Learning Paths**: CSS fundamentals, HTML semantics, and Tailwind CSS utilities
-- **Progressive Difficulty**: Modules are structured to build skills gradually from basic to advanced
-- **Real-Time Feedback**: Get immediate validation on your code solutions with comprehensive feedback
-- **Progress Tracking**: Your learning progress is automatically saved in the browser
-- **Visual Preview**: See the results of your code in real-time with live preview
-- **Comprehensive Modules**: Cover various CSS and Tailwind topics in organized learning paths
-- **Schema-Validated Lessons**: All lessons follow a strict JSON schema for consistency
+## How it compares
 
-## 🛠️ Technical Stack
+| | Free | No signup | Self-host | Live validation | Scope |
+|---|:---:|:---:|:---:|:---:|---|
+| **Code Crispies** | ✅ | ✅ | ✅ | ✅ | HTML, CSS, Tailwind, JS, Markdown |
+| Flexbox Froggy | ✅ | ✅ | ❌ | ✅ | Flexbox only |
+| CSS Diner | ✅ | ✅ | ❌ | ✅ | Selectors only |
+| CSSBattle | ✅ | ❌ | ❌ | ✅ | CSS code-golf |
+| Frontend Mentor | partial | ❌ | ❌ | manual | Design challenges |
+| Scrimba | freemium | ❌ | ❌ | via video | Video courses |
 
-- Pure JavaScript (ES Modules)
-- HTML5 & CSS3
-- Vite for bundling and development
-- Vitest for testing with coverage reporting
-- JSON Schema validation for lesson structure
-- Local Storage for progress persistence
-- whatwg-fetch polyfill for compatibility
+## Local development
 
-## 🚀 Getting Started
+```bash
+git clone https://github.com/nextlevelshit/code-crispies.git
+cd code-crispies
+npm i
+npm start         # http://localhost:1312
+```
 
-### Prerequisites
+Requires Node 18+, npm 8+. `nvm use` if you have it.
 
-- Node.js (v18 or higher recommended)
-- npm (v8 or higher recommended)
+### Scripts
 
-### Installation
+| | |
+|---|---|
+| `npm start` | dev server with host binding |
+| `npm run build` | production build → `dist/` |
+| `npm run preview` | local preview of prod build |
+| `npm run test` | run vitest once |
+| `npm run test.watch` | watch mode |
+| `npm run test.coverage` | coverage report → `coverage/` |
+| `npm run format` | prettier on source |
+| `npm run format.lessons` | prettier on lesson JSON |
 
-0. NVM (optional)
-   ```bash
-   nvm use
-   ```
-
-1. Clone the repository:
-   ```bash
-   git clone https://git.librete.ch/public/code-crispies.git
-   cd code-crispies
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm i
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-4. Open your browser and navigate to:
-   ```
-   http://localhost:1312
-   ```
-
-### Available Scripts
-
-- `npm start` - Start the development server (alias for `npm run dev`)
-- `npm run dev` - Start the development server with host binding
-- `npm run build` - Build for production
-- `npm run preview` - Preview the production build locally with debug mode
-- `npm run test` - Run tests once
-- `npm run test.watch` - Run tests in watch mode
-- `npm run test.coverage` - Run tests with coverage report
-- `npm run format` - Format source code with Prettier (includes config files)
-- `npm run format.lessons` - Format lesson JSON files with Prettier
-
-## 📖 Usage Guide
-
-### How to Use Code Crispies
-
-1. **Select a Module**: Choose a learning module from the available options
-2. **Choose Mode**: Select between CSS or Tailwind CSS learning mode (if applicable)
-3. **Read the Challenge**: Each lesson includes a description, task instructions, and learning objectives
-4. **Write Code**: Enter your CSS or Tailwind solution in the editor
-5. **Run Your Code**: Click the "Run" button (or press Ctrl+Enter) to test your solution
-6. **Review Feedback**: Get comprehensive feedback with validation messages
-7. **Progress**: Move to the next lesson once your solution passes all validations
-
-### Keyboard Shortcuts
-
-- `Ctrl+Enter` - Run your code
-- `Tab` - Insert appropriate indentation
-
-## 🧩 Project Structure
+## Project layout
 
 ```
 code-crispies/
-├── coverage/          # Test coverage reports
-├── docs/              # Documentation files (multilingual)
-├── lessons/           # JSON lesson definitions
-├── public/            # Static assets and PWA manifests
-├── schemas/           # JSON Schema definitions
-│   └── code-crispies-module-schema.json
+├── lessons/              # 135 JSON lesson definitions
+│   ├── *.json            # English (default)
+│   └── ar|de|es|pl|uk/   # localized (partial)
+├── public/               # static assets, PWA, og-image, logo
+├── schemas/              # JSON Schema for lessons
 ├── src/
-│   ├── config/        # Configuration files
-│   │   └── lessons.js # Module and lesson loading logic
-│   ├── helpers/       # Helper utilities
-│   │   ├── renderer.js # UI rendering functions
-│   │   └── validator.js # Code validation logic
-│   ├── impl/
-│   │   └── LessonEngine.js # Core lesson processing logic
-│   ├── app.js         # Main application entry point
-│   ├── index.html     # Main HTML template
-│   └── main.css       # Global styles
-├── tests/             # Test files
-│   ├── setup.js       # Test configuration
-│   └── unit/          # Unit tests
-├── vite.config.js     # Vite configuration
-└── vitest.config.js   # Vitest configuration
+│   ├── config/lessons.js
+│   ├── helpers/{renderer,validator}.js
+│   ├── impl/LessonEngine.js
+│   ├── app.js
+│   ├── index.html
+│   └── main.css
+└── tests/unit/           # vitest
 ```
 
-## 📝 Adding New Lessons
+## Authoring lessons
 
-Lessons are defined in JSON format following the schema in `schemas/code-crispies-module-schema.json`. Each module includes comprehensive lesson definitions with validation rules.
-
-### Module Structure
+Lessons live in `lessons/*.json`, validated against [`schemas/code-crispies-module-schema.json`](./schemas/code-crispies-module-schema.json).
 
 ```json
 {
-  "id": "unique-module-id",
+  "id": "module-id",
   "title": "Module Title",
-  "description": "Detailed description of module content and purpose",
-  "mode": "css", // or "tailwind"
-  "difficulty": "beginner", // "intermediate" or "advanced"
+  "mode": "css",
+  "difficulty": "beginner",
   "lessons": [
-    // Lesson objects...
-  ]
-}
-```
-
-### Lesson Structure
-
-```json
-{
-  "id": "unique-lesson-id",
-  "title": "Lesson Title",
-  "description": "Detailed lesson description and concepts",
-  "mode": "css", // Optional override for module mode
-  "task": "Specific task instructions for the student",
-  "previewHTML": "<div>HTML for preview</div>",
-  "previewBaseCSS": "/* Base styles for preview */",
-  "sandboxCSS": "/* Additional sandbox styles */",
-  "initialCode": "/* Starting code for student */",
-  "solution": "/* Optional solution code */",
-  "previewContainer": "container-id",
-  "validations": [
     {
-      "type": "contains", // "contains_class", "not_contains", "regex", "property_value", "syntax", "custom"
-      "value": "expected-content",
-      "message": "Feedback message for validation failure",
-      "options": {
-        "caseSensitive": false
-      }
+      "id": "lesson-id",
+      "title": "Lesson Title",
+      "task": "What the student must do",
+      "previewHTML": "<div>preview markup</div>",
+      "initialCode": "/* starting code */",
+      "validations": [
+        { "type": "property_value", "property": "display", "expected": "flex" }
+      ]
     }
   ]
 }
 ```
 
-### Validation Types
+Validation types: `contains`, `contains_class`, `not_contains`, `regex`, `property_value`, `syntax`, `custom`.
 
-- **contains**: Check if code contains specific text
-- **contains_class**: Check if HTML contains specific CSS class
-- **not_contains**: Ensure code doesn't contain specific text
-- **regex**: Validate against regular expression pattern
-- **property_value**: Validate specific CSS property values
-- **syntax**: Check for valid CSS syntax
-- **custom**: Custom validation logic
+For Tailwind mode, `{{USER_CLASSES}}` in `previewHTML` is replaced with student input.
 
-## 🧪 Testing
+## Deployment
 
-The project uses Vitest for comprehensive testing with coverage reporting. Tests are organized in the `tests/unit/` directory.
+`npm run build` → `dist/`. Deploy to any static web server. GitHub Pages: base path `/code-crispies/` is preconfigured.
 
-Run tests:
-```bash
-npm run test
-```
+## Internationalization
 
-Run tests in watch mode:
-```bash
-npm run test.watch
-```
+Lessons available in `lessons/*.json` (English default) and partial translations in `ar`, `de`, `es`, `pl`, `uk`. Docs in `docs/` (English + German).
 
-Generate coverage report:
-```bash
-npm run test.coverage
-```
+## Contributing
 
-Coverage reports are generated in the `coverage/` directory with detailed HTML reports.
+1. Fork
+2. Branch off `main`
+3. `npm run format` + `npm run format.lessons`
+4. `npm run test`
+5. Open PR
 
-## 🚢 Deployment
+## License
 
-### Static build
-
-```bash
-npm run build
-```
-
-Outputs to `dist/`. Deployable to any static web server.
-
-For GitHub Pages, base path `/code-crispies/` is preconfigured.
-
-```bash
-npm run preview   # local prod preview
-```
-
-### Docker (Netcup VPS)
-
-This repo is the deployable unit for `cc.cloud.librete.ch` on the
-Netcup VPS — sibling to `caddy`, `immich`, `mp`, `umami` (see
-`libretech/netcup`). Multi-stage `Dockerfile` builds the static bundle
-and serves it via nginx; `compose.yaml` joins the external `edge`
-network so Caddy reverse-proxies to it.
-
-```sh
-# from a workstation
-git push
-ssh netcup
-cd /srv/cc
-git pull
-docker compose build
-docker compose up -d
-```
-
-#### First-time setup on the server
-
-```sh
-ssh netcup
-git clone https://git.librete.ch/public/code-crispies.git /srv/cc
-cd /srv/cc
-cp .env.example .env
-$EDITOR .env   # fill VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY
-chmod 600 .env
-docker compose build
-docker compose up -d
-
-# Verify
-docker compose ps
-docker compose exec -T cc wget -qO- http://127.0.0.1/health
-curl -sS https://cc.cloud.librete.ch/   # via caddy
-```
-
-The nginx config inside the image rewrites unknown paths to
-`index.html` so client-side routing keeps working. `VITE_SUPABASE_*`
-are baked into the bundle at `docker compose build`, so a rebuild is
-needed when they change.
-
-## 🌐 Internationalization
-
-The project supports multiple languages:
-
-### Localized Lessons
-Lessons are available in the `lessons/` directory with language-specific subdirectories:
-- English (default): `lessons/*.json`
-- Arabic: `lessons/ar/`
-- German: `lessons/de/`
-- Spanish: `lessons/es/`
-- Polish: `lessons/pl/`
-- Ukrainian: `lessons/uk/`
-
-### Documentation
-Multilingual documentation in the `docs/` directory:
-- English documentation (`en-*.md`)
-- German documentation (`de-*.md`)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please ensure all lessons follow the JSON schema validation.
-
-1. Fork the repository
-2. Create your feature branch (`git switch -c feature/amazing-feature`)
-3. Add/modify lessons following the schema in `schemas/code-crispies-module-schema.json`
-4. Format your code: `npm run format` and `npm run format.lessons`
-5. Run tests: `npm run test`
-6. Commit your changes (`git commit -m 'Add some amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
-
-### Adding New Lessons
-
-When adding new lessons:
-1. Create or modify JSON files in the `lessons/` directory
-2. Ensure they validate against the schema
-3. Test thoroughly with various validation scenarios
-4. Update documentation if needed
-
-## 📄 License
-
-This project is released into the public domain under the [Unlicense](./LICENSE). You are free to copy, modify, publish, use, compile, sell, or distribute this software for any purpose.
+[MIT](./LICENSE) — © 2026 Michael Czechowski.
