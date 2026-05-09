@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Pre-renders blog/*.md to dist/blog/<slug>/index.html (one HTML file
- * per post) plus dist/blog/index.html (post list).
+ * per post) plus dist/blog/index.html (post list) plus
+ * dist/blog/rss.xml.
  *
  * Frontmatter format:
  *   ---
@@ -12,19 +13,46 @@
  *   tags: [a, b]
  *   ---
  *
- * Markdown rendered with `marked` (already a runtime dep). Output is
- * fully static — Google sees real content, no JS required.
+ * Markdown rendered with `marked`; code blocks get syntax tokens via
+ * highlight.js so the .hljs-* classes can be themed at the post level.
  */
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
+import hljs from "highlight.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const BLOG_DIR = join(ROOT, "blog");
 const DIST = join(ROOT, "dist", "blog");
 const ORIGIN = "https://codecrispi.es";
+
+// Wire highlight.js into marked: detect language from fence, fall
+// back to auto-detect, leave classes in place so the post stylesheet
+// can theme them.
+marked.use({
+	renderer: {
+		code({ text, lang }) {
+			const langClass = lang ? lang.replace(/[^a-z0-9-]/gi, "") : "";
+			let html;
+			try {
+				if (langClass && hljs.getLanguage(langClass)) {
+					html = hljs.highlight(text, { language: langClass, ignoreIllegals: true }).value;
+				} else {
+					html = hljs.highlightAuto(text).value;
+				}
+			} catch {
+				html = text
+					.replace(/&/g, "&amp;")
+					.replace(/</g, "&lt;")
+					.replace(/>/g, "&gt;");
+			}
+			const cls = langClass ? ` language-${langClass}` : "";
+			return `<pre class="hljs"><code class="hljs${cls}">${html}</code></pre>\n`;
+		}
+	}
+});
 
 function parseFrontmatter(raw) {
 	const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -36,11 +64,9 @@ function parseFrontmatter(raw) {
 		if (!m) continue;
 		let [, key, value] = m;
 		value = value.trim();
-		// Strip wrapping quotes
 		if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
 			value = value.slice(1, -1);
 		}
-		// Array syntax [a, b, c]
 		if (value.startsWith("[") && value.endsWith("]")) {
 			value = value
 				.slice(1, -1)
@@ -61,11 +87,53 @@ function escapeHtml(s) {
 		.replace(/"/g, "&quot;");
 }
 
+function readingTime(text) {
+	const words = text.split(/\s+/).filter(Boolean).length;
+	return Math.max(1, Math.round(words / 200));
+}
+
+const SHARED_STYLES = `
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: #1f2937; max-width: 720px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; background: #fafafa; }
+  a { color: #4f46e5; }
+  a:hover { color: #4338ca; }
+  header.site { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid #e5e7eb; }
+  header.site .brand { display: flex; align-items: center; gap: .6rem; color: inherit; text-decoration: none; font-weight: 800; letter-spacing: -.02em; font-size: 1.05rem; }
+  header.site .brand img { width: 36px; height: 36px; }
+  header.site .brand span { color: #4f46e5; }
+  header.site nav { font-size: .9rem; }
+  header.site nav a { margin-left: .9rem; text-decoration: none; color: #4b5563; font-weight: 500; }
+  header.site nav a:hover { color: #4f46e5; }
+  footer.site { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: .9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  /* highlight.js base — github-light theme tokens, trimmed */
+  pre.hljs { background: #0f172a; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: 8px; overflow-x: auto; font-size: .9rem; line-height: 1.55; margin: 1.25rem 0; }
+  pre.hljs code { background: transparent; padding: 0; color: inherit; font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+  .hljs-keyword, .hljs-selector-tag, .hljs-meta { color: #c4b5fd; }
+  .hljs-string, .hljs-attr-value, .hljs-symbol, .hljs-bullet { color: #86efac; }
+  .hljs-comment, .hljs-quote { color: #94a3b8; font-style: italic; }
+  .hljs-number, .hljs-literal { color: #fda4af; }
+  .hljs-attr, .hljs-attribute, .hljs-title, .hljs-name, .hljs-section { color: #fcd34d; }
+  .hljs-tag, .hljs-property, .hljs-built_in, .hljs-selector-class, .hljs-selector-id, .hljs-selector-pseudo { color: #93c5fd; }
+  .hljs-variable, .hljs-template-variable { color: #fbbf24; }
+  .hljs-deletion { color: #fda4af; }
+  .hljs-addition { color: #86efac; }
+`;
+
 function postPagе(post) {
 	const title = `${post.meta.title} — Code Crispies Blog`;
 	const desc = post.meta.description || "";
 	const url = `${ORIGIN}/blog/${post.meta.slug}/`;
 	const tags = Array.isArray(post.meta.tags) ? post.meta.tags : [];
+	const minutes = readingTime(post.body);
+
+	// Suggest a related practice link if a tag matches a known module
+	// prefix (cheap heuristic; non-fatal if wrong, just a soft CTA).
+	const tagToModule = { html: "html-elements", css: "css-fundamentals", tailwind: "tailwind-basics", typography: "typography", responsive: "responsive" };
+	const practiceTag = tags.find((t) => tagToModule[t]);
+	const practiceLink = practiceTag
+		? `<p>Want to practice <strong>${escapeHtml(practiceTag)}</strong> hands-on? <a href="/${tagToModule[practiceTag]}/0">Open the ${escapeHtml(practiceTag)} module →</a></p>`
+		: '<p>Practice in the browser at <a href="/">codecrispi.es</a> — 135 free interactive lessons.</p>';
 
 	return `<!doctype html>
 <html lang="en">
@@ -83,47 +151,43 @@ function postPagе(post) {
 <meta property="article:published_time" content="${post.meta.date}">
 ${tags.map((t) => `<meta property="article:tag" content="${escapeHtml(t)}">`).join("\n")}
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Code Crispies Blog" href="/blog/rss.xml">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","headline":${JSON.stringify(post.meta.title)},"datePublished":"${post.meta.date}","description":${JSON.stringify(desc)},"url":"${url}","author":{"@type":"Organization","name":"LibreTECH","url":"https://librete.ch"},"publisher":{"@type":"Organization","name":"Code Crispies","url":"${ORIGIN}"},"mainEntityOfPage":"${url}","keywords":${JSON.stringify(tags.join(", "))}}
 </script>
 <link rel="icon" href="/favicon.ico">
-<style>
-  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: #1f2937; max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-  header { display: flex; align-items: center; gap: .75rem; margin-bottom: 2rem; }
-  header img { width: 40px; height: 40px; }
-  header a { color: inherit; text-decoration: none; font-weight: 700; letter-spacing: -.02em; }
-  header a span { color: #4f46e5; }
-  h1 { font-size: 2.25rem; line-height: 1.15; letter-spacing: -.03em; margin: 0 0 .5rem; }
-  .meta { color: #6b7280; font-size: .9rem; margin-bottom: 2rem; }
-  .meta time + .tags { margin-left: .75rem; }
-  .tag { background: #eef2ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: .8rem; margin-right: .25rem; }
-  article { margin-top: 1rem; }
+<style>${SHARED_STYLES}
+  h1 { font-size: 2.25rem; line-height: 1.15; letter-spacing: -.03em; margin: 0 0 .75rem; }
+  .meta { color: #6b7280; font-size: .9rem; margin: 0 0 2.25rem; display: flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
+  .meta time { color: inherit; }
+  .tag { background: #eef2ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: .8rem; }
   article h2 { margin-top: 2.5rem; font-size: 1.5rem; letter-spacing: -.02em; }
   article h3 { margin-top: 2rem; font-size: 1.2rem; }
   article p, article li { font-size: 1.05rem; }
-  article a { color: #4f46e5; }
-  article code { background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: .92em; }
-  article pre { background: #1f2937; color: #f9fafb; padding: 1rem 1.25rem; border-radius: 8px; overflow-x: auto; font-size: .9rem; }
-  article pre code { background: transparent; padding: 0; color: inherit; }
+  article :not(pre) > code { background: #eef2ff; color: #312e81; padding: 1px 6px; border-radius: 4px; font-size: .92em; font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
   article kbd { background: #f3f4f6; border: 1px solid #d1d5db; border-bottom-width: 2px; padding: 1px 6px; border-radius: 4px; font-size: .85em; font-family: inherit; }
   article hr { border: 0; border-top: 1px solid #e5e7eb; margin: 2.5rem 0; }
-  article blockquote { border-left: 3px solid #4f46e5; padding-left: 1rem; color: #4b5563; }
-  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: .9rem; }
-  footer a { color: #4f46e5; }
+  article blockquote { border-left: 3px solid #4f46e5; padding-left: 1rem; color: #4b5563; font-style: italic; }
+  .practice-cta { margin-top: 3rem; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, #eef2ff 0%, #fef3c7 100%); border-radius: 12px; border: 1px solid #c7d2fe; }
+  .practice-cta p { margin: 0; }
 </style>
 </head>
 <body>
-<header>
-  <a href="/"><img src="/bowl.png" alt=""> CODE <span>CRISPIES</span></a>
+<header class="site">
+  <a class="brand" href="/"><img src="/bowl.png" alt=""><span>CODE CRISPIES</span></a>
+  <nav><a href="/blog/">Blog</a> <a href="/">Try it</a></nav>
 </header>
 <h1>${escapeHtml(post.meta.title)}</h1>
 <p class="meta">
   <time datetime="${post.meta.date}">${post.meta.date}</time>
-  <span class="tags">${tags.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("")}</span>
+  <span>${minutes} min read</span>
+  ${tags.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("")}
 </p>
 <article>${marked.parse(post.body)}</article>
-<footer>
-  <p>← <a href="/blog">All posts</a> · <a href="/">Try Code Crispies</a></p>
+<aside class="practice-cta">${practiceLink}</aside>
+<footer class="site">
+  <span>← <a href="/blog/">All posts</a></span>
+  <span><a href="/blog/rss.xml">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
 </footer>
 </body>
 </html>
@@ -134,9 +198,11 @@ function indexPage(posts) {
 	const items = posts
 		.map(
 			(p) => `  <li>
-    <a href="/blog/${p.meta.slug}/"><h2>${escapeHtml(p.meta.title)}</h2></a>
-    <p class="meta"><time datetime="${p.meta.date}">${p.meta.date}</time></p>
-    <p>${escapeHtml(p.meta.description || "")}</p>
+    <a href="/blog/${p.meta.slug}/">
+      <h2>${escapeHtml(p.meta.title)}</h2>
+      <p class="meta"><time datetime="${p.meta.date}">${p.meta.date}</time> · ${readingTime(p.body)} min read</p>
+      <p class="excerpt">${escapeHtml(p.meta.description || "")}</p>
+    </a>
   </li>`
 		)
 		.join("\n");
@@ -155,34 +221,68 @@ function indexPage(posts) {
 <meta property="og:url" content="${ORIGIN}/blog/">
 <meta property="og:image" content="${ORIGIN}/og-image.png">
 <link rel="icon" href="/favicon.ico">
-<style>
-  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; color: #1f2937; max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-  header { display: flex; align-items: center; gap: .75rem; margin-bottom: 2rem; }
-  header img { width: 40px; height: 40px; }
-  header a { color: inherit; text-decoration: none; font-weight: 700; letter-spacing: -.02em; }
-  header a span { color: #4f46e5; }
+<link rel="alternate" type="application/rss+xml" title="Code Crispies Blog" href="/blog/rss.xml">
+<style>${SHARED_STYLES}
   h1 { font-size: 2rem; margin: 0 0 .5rem; letter-spacing: -.02em; }
-  .lede { color: #6b7280; margin-bottom: 2rem; }
-  ul { list-style: none; padding: 0; }
-  li { padding: 1.25rem 0; border-bottom: 1px solid #e5e7eb; }
-  li a { text-decoration: none; color: inherit; }
+  .lede { color: #6b7280; margin: 0 0 2rem; font-size: 1.05rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 1.25rem; }
+  li a { display: block; padding: 1.25rem; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
+  li a:hover { border-color: #818cf8; transform: translateY(-1px); }
+  li h2 { margin: 0 0 .25rem; font-size: 1.3rem; letter-spacing: -.01em; color: #1f2937; }
   li a:hover h2 { color: #4f46e5; }
-  li h2 { margin: 0 0 .25rem; font-size: 1.35rem; letter-spacing: -.01em; }
-  .meta { color: #9ca3af; font-size: .85rem; margin: 0 0 .5rem; }
-  li p:last-child { color: #4b5563; margin: 0; }
+  li .meta { color: #9ca3af; font-size: .85rem; margin: 0 0 .5rem; }
+  li .excerpt { color: #4b5563; margin: 0; font-size: .98rem; }
 </style>
 </head>
 <body>
-<header>
-  <a href="/"><img src="/bowl.png" alt=""> CODE <span>CRISPIES</span></a>
+<header class="site">
+  <a class="brand" href="/"><img src="/bowl.png" alt=""><span>CODE CRISPIES</span></a>
+  <nav><a href="/">Try it</a></nav>
 </header>
 <h1>Blog</h1>
 <p class="lede">Hands-on web-development tutorials. Each post is short, code-first, and links back to a Code Crispies module to practice.</p>
 <ul>
 ${items}
 </ul>
+<footer class="site">
+  <span>${posts.length} post${posts.length === 1 ? "" : "s"}</span>
+  <span><a href="/blog/rss.xml">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
+</footer>
 </body>
 </html>
+`;
+}
+
+function rssFeed(posts) {
+	const lastBuild = new Date().toUTCString();
+	const items = posts
+		.slice(0, 20)
+		.map((p) => {
+			const url = `${ORIGIN}/blog/${p.meta.slug}/`;
+			const pubDate = new Date(`${p.meta.date}T12:00:00Z`).toUTCString();
+			return `    <item>
+      <title>${escapeHtml(p.meta.title)}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${escapeHtml(p.meta.description || "")}</description>
+    </item>`;
+		})
+		.join("\n");
+
+	return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Crispies Blog</title>
+    <link>${ORIGIN}/blog/</link>
+    <description>Hands-on web-development tutorials from the Code Crispies team.</description>
+    <language>en</language>
+    <lastBuildDate>${lastBuild}</lastBuildDate>
+    <atom:link href="${ORIGIN}/blog/rss.xml" rel="self" type="application/rss+xml"/>
+${items}
+  </channel>
+</rss>
 `;
 }
 
@@ -204,5 +304,6 @@ for (const post of posts) {
 }
 
 writeFileSync(join(DIST, "index.html"), indexPage(posts));
+writeFileSync(join(DIST, "rss.xml"), rssFeed(posts));
 
-console.log(`✓ wrote ${posts.length} blog post(s) + index to dist/blog/`);
+console.log(`✓ wrote ${posts.length} blog post(s) + index + RSS to dist/blog/`);
