@@ -2238,6 +2238,29 @@ const referenceContent = {
 function initRouter() {
 	// Handle browser back/forward
 	window.addEventListener("popstate", handlePopState);
+
+	// Intercept internal <a> clicks so navigation stays in-SPA via
+	// pushState instead of doing a full page reload. Skip externals,
+	// modifier-keys (open-in-new-tab), blank targets, anchor hashes,
+	// and the static /blog/* tree (real pre-rendered HTML).
+	document.addEventListener("click", (e) => {
+		const a = e.target.closest("a[href]");
+		if (!a) return;
+		const href = a.getAttribute("href");
+		if (!href || !href.startsWith("/")) return;
+		if (href.startsWith("//")) return; // protocol-relative
+		if (href.startsWith("/blog")) return; // static pages, full nav
+		if (a.target === "_blank") return;
+		if (a.hasAttribute("download")) return;
+		if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+
+		e.preventDefault();
+		if (href === window.location.pathname) return;
+
+		history.pushState(null, "", href);
+		// pushState doesn't fire popstate, so route manually.
+		handleRoute(false);
+	});
 }
 
 function handlePopState() {

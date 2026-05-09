@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "npm run dev",
 		"dev": "vite --host",
-		"build": "vite build && node scripts/generate-sitemap.mjs",
+		"build": "vite build && node scripts/generate-blog.mjs && node scripts/generate-sitemap.mjs",
 		"preview": "vite preview --debug",
 		"test": "vitest run",
 		"test.watch": "vitest watch",
