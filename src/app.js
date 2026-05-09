@@ -956,11 +956,22 @@ function runCode() {
 		const moduleId = updatedState.module?.id;
 		const completedCount = lessonEngine.userProgress?.[moduleId]?.completed?.length ?? 0;
 		const lessonCount = updatedState.module?.lessons?.length ?? 0;
-		if (moduleId && lessonCount > 0 && completedCount === lessonCount) {
+		const isModuleComplete = moduleId && lessonCount > 0 && completedCount === lessonCount;
+		if (isModuleComplete) {
 			track("module_complete", {
 				module: moduleId,
 				lessons: lessonCount
 			});
+		}
+
+		// Nudge the share button so users notice they can broadcast the win.
+		// Pulse animation is short (CSS-driven, ~5s) — no modal interrupt.
+		// On module-complete fire it harder.
+		if (elements.shareBtn) {
+			elements.shareBtn.classList.add(isModuleComplete ? "attention-strong" : "attention");
+			setTimeout(() => {
+				elements.shareBtn.classList.remove("attention", "attention-strong");
+			}, isModuleComplete ? 8000 : 5000);
 		}
 
 		// Show success hint
@@ -1101,6 +1112,20 @@ function handleResetCodeClick() {
 
 // ================= SHARE DIALOG =================
 
+/**
+ * Build a share message for the current lesson. Used by every
+ * platform — keep it under 240 chars so it fits everywhere.
+ */
+function buildShareText() {
+	const engineState = lessonEngine.getCurrentState();
+	const lessonTitle = engineState.lesson?.title?.trim();
+	const moduleTitle = engineState.module?.title?.trim();
+	if (lessonTitle && moduleTitle) {
+		return `Just learned "${lessonTitle}" (${moduleTitle}) on Code Crispies — free interactive HTML/CSS/JS lessons.`;
+	}
+	return "Learning HTML, CSS, Tailwind, JS & Markdown hands-on with Code Crispies — free, no signup.";
+}
+
 function showShareDialog() {
 	track("share_open");
 	const engineState = lessonEngine.getCurrentState();
@@ -1108,7 +1133,15 @@ function showShareDialog() {
 		const shareUrl = getShareableUrl(engineState.module.id, engineState.lessonIndex);
 		elements.shareUrlInput.value = shareUrl;
 		elements.copyFeedback.hidden = true;
+		const lbl = document.getElementById("share-lesson-label");
+		if (lbl) {
+			const title = engineState.lesson?.title || "this lesson";
+			lbl.textContent = `Share "${title}":`;
+		}
 	}
+	// Show native-share button if Web Share API is available (mobile)
+	const nativeBtn = document.getElementById("share-native");
+	if (nativeBtn) nativeBtn.hidden = !(navigator.share);
 	elements.shareDialog.showModal();
 }
 
@@ -1132,6 +1165,40 @@ async function copyShareUrl() {
 		setTimeout(() => {
 			elements.copyFeedback.hidden = true;
 		}, 2000);
+	}
+}
+
+/**
+ * Open a platform share intent in a new tab.
+ * Tracks per-platform clicks so the dashboard can compare reach.
+ */
+function shareToPlatform(platform) {
+	const url = elements.shareUrlInput.value;
+	const text = buildShareText();
+	track("share_platform", { platform });
+
+	let intentUrl = "";
+	switch (platform) {
+		case "twitter":
+			intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+			break;
+		case "mastodon": {
+			// Generic Mastodon share URL (user picks instance) via toot.kytta.dev
+			intentUrl = `https://toot.kytta.dev/?text=${encodeURIComponent(`${text} ${url}`)}`;
+			break;
+		}
+		case "bluesky":
+			intentUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(`${text} ${url}`)}`;
+			break;
+		case "native":
+			if (navigator.share) {
+				navigator.share({ title: "Code Crispies", text, url }).catch(() => {});
+				return;
+			}
+			break;
+	}
+	if (intentUrl) {
+		window.open(intentUrl, "_blank", "noopener,noreferrer");
 	}
 }
 
@@ -2885,6 +2952,9 @@ function init() {
 		if (e.target === elements.shareDialog) closeShareDialog();
 	});
 	elements.copyUrlBtn.addEventListener("click", copyShareUrl);
+	document.querySelectorAll(".share-platform").forEach((btn) => {
+		btn.addEventListener("click", () => shareToPlatform(btn.dataset.platform));
+	});
 
 	// Legal dialogs (Privacy & Imprint)
 	const privacyDialog = document.getElementById("privacy-dialog");

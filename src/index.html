@@ -736,12 +736,30 @@
 					<button id="share-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
 				</div>
 				<div class="dialog-content">
-					<p data-i18n="shareDialogText">Copy this URL to share the current lesson:</p>
+					<p id="share-lesson-label" class="share-lesson-label"></p>
 					<div class="share-url-container">
 						<input type="text" id="share-url-input" class="share-url-input" readonly />
 						<button id="copy-url-btn" class="btn btn-primary" data-i18n="copyUrl">Copy</button>
 					</div>
 					<p id="copy-feedback" class="copy-feedback" data-i18n="urlCopied" hidden>URL copied to clipboard!</p>
+					<div class="share-platforms" role="group" aria-label="Share to platform">
+						<button id="share-twitter" class="share-platform" type="button" data-platform="twitter" title="Share to X / Twitter">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+							<span>X</span>
+						</button>
+						<button id="share-mastodon" class="share-platform" type="button" data-platform="mastodon" title="Share to Mastodon">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 13.913c-.29 1.469-2.592 3.121-5.238 3.396-1.379.165-2.737.318-4.185.252-2.367-.108-4.236-.564-4.236-.564 0 .228.014.448.042.654.307 2.336 2.319 2.476 4.226 2.541 1.923.066 3.638-.474 3.638-.474l.079 1.732s-1.347.722-3.747.855c-1.323.072-2.965-.033-4.879-.54C3.13 20.668.519 17.275.097 13.108c-.13-1.245-.149-2.44-.097-3.587.412-9.064 6.286-9.629 6.286-9.629 2.95-1.357 8-1.342 11.034.027 0 0 5.873.564 6.286 9.629.052 1.147.034 2.342-.097 3.587z"/></svg>
+							<span>Mastodon</span>
+						</button>
+						<button id="share-bluesky" class="share-platform" type="button" data-platform="bluesky" title="Share to Bluesky">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+							<span>Bluesky</span>
+						</button>
+						<button id="share-native" class="share-platform" type="button" data-platform="native" title="Share via system" hidden>
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z"/></svg>
+							<span>Share</span>
+						</button>
+					</div>
 				</div>
 			</dialog>
 
