@@ -24,6 +24,44 @@ function track(eventName, eventData = {}) {
 	}
 }
 
+// Global error handlers — capture uncaught JS + CSP violations.
+// Strip PII: only filename (basename), line/col, truncated message.
+// Throttle to avoid event-storms (max 1 per error signature per minute).
+const _errorThrottle = new Map();
+function _shouldEmitError(sig) {
+	const now = Date.now();
+	const last = _errorThrottle.get(sig) || 0;
+	if (now - last < 60_000) return false;
+	_errorThrottle.set(sig, now);
+	return true;
+}
+window.addEventListener("error", (e) => {
+	const file = (e.filename || "").split("/").pop() || "unknown";
+	const msg = (e.message || "").slice(0, 140);
+	const sig = `${file}:${e.lineno}:${msg.slice(0, 40)}`;
+	if (_shouldEmitError(sig)) {
+		track("js_error", { file, line: e.lineno, col: e.colno, message: msg });
+	}
+});
+window.addEventListener("unhandledrejection", (e) => {
+	const reason = e.reason;
+	const msg = (reason?.message || String(reason || "unknown")).slice(0, 140);
+	const sig = `promise:${msg.slice(0, 40)}`;
+	if (_shouldEmitError(sig)) {
+		track("js_unhandled_rejection", { message: msg });
+	}
+});
+document.addEventListener("securitypolicyviolation", (e) => {
+	const sig = `csp:${e.violatedDirective}:${e.blockedURI}`;
+	if (_shouldEmitError(sig)) {
+		track("csp_violation", {
+			directive: e.violatedDirective,
+			blocked_uri: (e.blockedURI || "").slice(0, 200),
+			source_file: (e.sourceFile || "").split("/").pop() || ""
+		});
+	}
+});
+
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
@@ -913,6 +951,18 @@ function runCode() {
 			lesson: engineState.lessonIndex
 		});
 
+		// Derive module_complete: validateCode() already marked progress, so refetch state
+		const updatedState = lessonEngine.getCurrentState();
+		const moduleId = updatedState.module?.id;
+		const completedCount = lessonEngine.userProgress?.[moduleId]?.completed?.length ?? 0;
+		const lessonCount = updatedState.module?.lessons?.length ?? 0;
+		if (moduleId && lessonCount > 0 && completedCount === lessonCount) {
+			track("module_complete", {
+				module: moduleId,
+				lessons: lessonCount
+			});
+		}
+
 		// Show success hint
 		showSuccessHint(validationResult.message || t("successMessage"));
 
@@ -969,6 +1019,15 @@ function runCode() {
 		// Show hint with step progress
 		const step = validationResult.validCases + 1;
 		const total = validationResult.totalCases;
+
+		// Track partial / failed validation — funnel signal for which lessons trip users
+		track("lesson_fail", {
+			module: engineState.module?.id,
+			lesson: engineState.lessonIndex,
+			step,
+			total,
+			progress: total > 0 ? Math.round((step - 1) / total * 100) : 0
+		});
 
 		// Only show hints if enabled
 		if (!state.userSettings.disableFeedbackErrors) {

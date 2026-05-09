@@ -340,8 +340,10 @@ function setupAuthForms() {
     if (currentHash && !currentHash.includes("access_token")) {
       localStorage.setItem("codeCrispies.oauthReturnRoute", currentHash);
     }
+    track("auth_oauth_click", { provider: "google" });
     const { error } = await authModule?.signInWithGoogle() ?? { error: null };
     if (error) {
+      track("auth_oauth_failed", { provider: "google", error_code: error.status || error.code });
       showOAuthError(error.message);
     }
   });
@@ -352,8 +354,10 @@ function setupAuthForms() {
     if (currentHash && !currentHash.includes("access_token")) {
       localStorage.setItem("codeCrispies.oauthReturnRoute", currentHash);
     }
+    track("auth_oauth_click", { provider: "github" });
     const { error } = await authModule?.signInWithGitHub() ?? { error: null };
     if (error) {
+      track("auth_oauth_failed", { provider: "github", error_code: error.status || error.code });
       showOAuthError(error.message);
     }
   });
@@ -386,6 +390,7 @@ async function handleLoginSubmit(e) {
   if (error) {
     errorEl.textContent = error.message;
     errorEl.classList.remove("hidden");
+    track("auth_login_failed", { method: "email", error_code: error.status || error.code });
   } else {
     errorEl.classList.add("hidden");
     document.getElementById("auth-dialog").close();
@@ -418,6 +423,7 @@ async function handleSignupSubmit(e) {
     errorEl.textContent = error.message;
     errorEl.classList.remove("hidden");
     document.getElementById("signup-success")?.classList.add("hidden");
+    track("auth_signup_failed", { method: "email", error_code: error.status || error.code });
   } else {
     errorEl.classList.add("hidden");
     // Show success message
@@ -449,9 +455,11 @@ async function handleResetSubmit(e) {
     errorEl.textContent = error.message;
     errorEl.classList.remove("hidden");
     successEl.classList.add("hidden");
+    track("auth_password_reset_failed", { error_code: error.status || error.code });
   } else {
     errorEl.classList.add("hidden");
     successEl.classList.remove("hidden");
+    track("auth_password_reset_request");
   }
 }
 
