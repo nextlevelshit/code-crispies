@@ -47,10 +47,26 @@ function stripHtml(s) {
 	return String(s).replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 }
 
+/**
+ * Read src/config/lessons.js and return the set of English module
+ * file basenames that are actually wired into the app. Anything not
+ * imported there is invisible to the SPA — generating a static page
+ * for it would let users land on a lesson the app can't load.
+ */
+function getPublishedFileNames() {
+	const src = readFileSync(join(ROOT, "src/config/lessons.js"), "utf8");
+	const re = /import\s+\w+\s+from\s+["']\.\.\/\.\.\/lessons\/([0-9a-z][^"']+\.json)["']/g;
+	const out = new Set();
+	for (const m of src.matchAll(re)) out.add(m[1]);
+	return out;
+}
+
 function loadModules() {
+	const published = getPublishedFileNames();
 	const out = [];
 	for (const f of readdirSync(LESSONS_DIR)) {
 		if (!f.endsWith(".json")) continue;
+		if (!published.has(f)) continue;
 		try {
 			const m = JSON.parse(readFileSync(join(LESSONS_DIR, f), "utf8"));
 			if (!m.id || !Array.isArray(m.lessons)) continue;

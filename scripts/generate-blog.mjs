@@ -133,9 +133,24 @@ function postPagе(post) {
 		? `${ORIGIN}/blog/${post.meta.slug}/og.png`
 		: `${ORIGIN}/og-image.png`;
 
-	// Suggest a related practice link if a tag matches a known module
-	// prefix (cheap heuristic; non-fatal if wrong, just a soft CTA).
-	const tagToModule = { html: "html-elements", css: "css-fundamentals", tailwind: "tailwind-basics", typography: "typography", responsive: "responsive" };
+	// Suggest a related practice link if a tag matches a known module.
+	// Map keys = post tags, values = module IDs that are actually loaded
+	// in src/config/lessons.js moduleStoreEN. Wrong values send users to
+	// a 404 / fallback page (user-reported regression).
+	const tagToModule = {
+		html: "html-elements",
+		css: "css-basic-selectors",
+		selectors: "css-basic-selectors",
+		typography: "typography-fonts",
+		layout: "flexbox",
+		responsive: "responsive-design",
+		animation: "transitions-animations",
+		scroll: "transitions-animations",
+		color: "colors-backgrounds",
+		grid: "grid",
+		flexbox: "flexbox",
+		ux: "html-details-summary"
+	};
 	const practiceTag = tags.find((t) => tagToModule[t]);
 	const practiceLink = practiceTag
 		? `<p>Want to practice <strong>${escapeHtml(practiceTag)}</strong> hands-on? <a href="/${tagToModule[practiceTag]}/0">Open the ${escapeHtml(practiceTag)} module →</a></p>`

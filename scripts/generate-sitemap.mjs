@@ -26,10 +26,21 @@ const ORIGIN = "https://codecrispi.es";
 const SECTIONS = ["css", "html", "markdown", "javascript"];
 const REFERENCE_IDS = ["css", "html", "flexbox", "grid", "selectors"];
 
+/** Only modules wired into src/config/lessons.js — see lesson-pages.mjs */
+function getPublishedFileNames() {
+	const src = readFileSync(join(ROOT, "src/config/lessons.js"), "utf8");
+	const re = /import\s+\w+\s+from\s+["']\.\.\/\.\.\/lessons\/([0-9a-z][^"']+\.json)["']/g;
+	const out = new Set();
+	for (const m of src.matchAll(re)) out.add(m[1]);
+	return out;
+}
+
 function loadModules() {
+	const published = getPublishedFileNames();
 	const out = [];
 	for (const f of readdirSync(LESSONS_DIR)) {
 		if (!f.endsWith(".json")) continue;
+		if (!published.has(f)) continue;
 		try {
 			const m = JSON.parse(readFileSync(join(LESSONS_DIR, f), "utf8"));
 			if (!m.id || !Array.isArray(m.lessons)) continue;
