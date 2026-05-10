@@ -165,6 +165,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "Want to know when new features launch?",
 		newsletterPlaceholder: "your@email.com",
+		newsletterEmailLabel: "Email address for newsletter",
 		newsletterButton: "Notify Me",
 		newsletterThanks: "Thanks! We'll keep you posted.",
 		newsletterDisclaimer: "Max once a week. Unsubscribe anytime — see Imprint for contact.",
@@ -399,6 +400,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "Möchtest du erfahren, wenn neue Funktionen erscheinen?",
 		newsletterPlaceholder: "deine@email.de",
+		newsletterEmailLabel: "E-Mail-Adresse für Newsletter",
 		newsletterButton: "Benachrichtigen",
 		newsletterThanks: "Danke! Wir halten dich auf dem Laufenden.",
 		newsletterDisclaimer: "Max. einmal pro Woche. Abmelden jederzeit — Kontakt im Impressum.",
@@ -629,6 +631,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "Chcesz wiedzieć, kiedy pojawią się nowe funkcje?",
 		newsletterPlaceholder: "twoj@email.pl",
+		newsletterEmailLabel: "Adres e-mail do newslettera",
 		newsletterButton: "Powiadom mnie",
 		newsletterThanks: "Dzięki! Będziemy informować.",
 		newsletterDisclaimer: "Maks. raz w tygodniu. Wypisz się w dowolnym momencie — kontakt w Stopce redakcyjnej.",
@@ -861,6 +864,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "¿Quieres saber cuando se lancen nuevas funciones?",
 		newsletterPlaceholder: "tu@email.com",
+		newsletterEmailLabel: "Dirección de correo para el boletín",
 		newsletterButton: "Notificarme",
 		newsletterThanks: "¡Gracias! Te mantendremos informado.",
 		newsletterDisclaimer: "Máximo una vez por semana. Cancela cuando quieras — contacto en el Aviso legal.",
@@ -1088,6 +1092,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "هل تريد معرفة متى تُطلق ميزات جديدة؟",
 		newsletterPlaceholder: "بريدك@email.com",
+		newsletterEmailLabel: "عنوان البريد الإلكتروني للنشرة",
 		newsletterButton: "أبلغني",
 		newsletterThanks: "شكراً! سنبقيك على اطلاع.",
 		newsletterDisclaimer: "مرة واحدة أسبوعياً كحد أقصى. إلغاء الاشتراك في أي وقت — جهة الاتصال في بيان الناشر.",
@@ -1317,6 +1322,7 @@ const translations = {
 		// Newsletter
 		newsletterText: "Хочете дізнатися, коли з'являться нові функції?",
 		newsletterPlaceholder: "ваш@email.com",
+		newsletterEmailLabel: "Email-адреса для розсилки",
 		newsletterButton: "Повідомити мене",
 		newsletterThanks: "Дякуємо! Ми будемо тримати вас в курсі.",
 		newsletterDisclaimer: "Максимум раз на тиждень. Відписатися можна будь-коли — контакт у вихідних даних.",

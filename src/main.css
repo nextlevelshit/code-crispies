@@ -354,7 +354,7 @@ kbd {
 	cursor: pointer;
 }
 
-.logo h1 {
+.logo .logo-text {
 	font-size: 1rem;
 	font-weight: 800;
 	color: var(--text-color);
@@ -362,13 +362,28 @@ kbd {
 	display: flex;
 	align-items: center;
 	gap: 0.15rem;
+	margin: 0;
 }
 
-.logo h1 .code-text {
+/* Visually-hidden labels — invisible to sighted users, exposed to screen
+   readers. Used for inputs that have a placeholder but no visible label. */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.logo .logo-text .code-text {
 	color: #9163b8;
 }
 
-.logo h1 .crispies-text {
+.logo .logo-text .crispies-text {
 	background: #9163b8;
 	color: white;
 	padding: 0.15rem 0.35rem;
@@ -3550,7 +3565,7 @@ input:checked + .toggle-slider::before {
 }
 
 @media (max-width: 480px) {
-	.logo h1 {
+	.logo .logo-text {
 		font-size: 0.9rem;
 	}
 

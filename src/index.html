@@ -121,9 +121,9 @@
 					</button>
 					<a href="#" class="header-level-pill" id="header-level-pill"></a>
 				</div>
-				<a href="#" id="logo-link" class="logo">
-					<img src="/bowl.png" width="40" alt="CODE CRISPIES Logo" decoding="async" />
-					<h1><span class="code-text">CODE</span><span class="crispies-text">CRISPIES</span></h1>
+				<a href="#" id="logo-link" class="logo" aria-label="Code Crispies — home">
+					<img src="/bowl.png" width="40" alt="" decoding="async" />
+					<p class="logo-text"><span class="code-text">CODE</span><span class="crispies-text">CRISPIES</span></p>
 				</a>
 				<div class="header-actions">
 					<nav class="main-nav" id="main-nav" aria-label="Main sections">
@@ -281,7 +281,8 @@
 						<div class="newsletter-signup">
 							<p data-i18n="newsletterText">Want to know when new features launch?</p>
 							<form id="newsletter-form" class="newsletter-form">
-								<input type="email" id="newsletter-email" required data-i18n-placeholder="newsletterPlaceholder" placeholder="your@email.com">
+								<label for="newsletter-email" class="visually-hidden" data-i18n="newsletterEmailLabel">Email address for newsletter</label>
+							<input type="email" id="newsletter-email" required data-i18n-placeholder="newsletterPlaceholder" placeholder="your@email.com">
 								<button type="submit" class="btn btn-outline" data-i18n="newsletterButton">Notify Me</button>
 							</form>
 							<p class="newsletter-disclaimer" data-i18n="newsletterDisclaimer">Max once a week. Unsubscribe anytime — see Imprint for contact.</p>
@@ -840,7 +841,7 @@
 				<div class="dialog-content">
 					<p id="share-lesson-label" class="share-lesson-label"></p>
 					<div class="share-url-container">
-						<input type="text" id="share-url-input" class="share-url-input" readonly />
+						<input type="text" id="share-url-input" class="share-url-input" readonly aria-label="Lesson share URL" />
 						<button id="copy-url-btn" class="btn btn-primary" data-i18n="copyUrl">Copy</button>
 					</div>
 					<p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite" data-i18n="urlCopied" hidden>URL copied to clipboard!</p>
