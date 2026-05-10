@@ -4,6 +4,7 @@ description: "Media Queries reagieren auf den Viewport. Container Queries reagie
 date: 2026-05-10
 slug: container-queries-erstes-layout
 tags: [css, responsive, layout]
+lang: de
 ---
 
 Eine Card-Komponente sieht im Sidebar-Bereich anders aus als im Hauptinhalt. Bisher war das ein Schmerz: gleiche Komponente, je nach Viewport-Breite andere Styles, obwohl die Sidebar längst eng ist und der Hauptinhalt breit. Container Queries lösen das endlich.

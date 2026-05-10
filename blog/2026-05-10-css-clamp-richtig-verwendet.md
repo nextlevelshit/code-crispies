@@ -4,6 +4,7 @@ description: "clamp(min, preferred, max) ersetzt einen Stapel Media Queries durc
 date: 2026-05-10
 slug: css-clamp-richtig-verwendet
 tags: [css, typography, responsive]
+lang: de
 ---
 
 Wenn du noch `font-size` über vier Breakpoints staffelst, ist `clamp()` das nächste Tool, das deinen Code halbiert. Drei Argumente, eine Zeile, fluide Skalierung zwischen Min und Max.
