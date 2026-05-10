@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://codecrispi.es"><img src="https://img.shields.io/badge/live-codecrispi.es-4f46e5?style=for-the-badge" alt="live demo"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-fbca04?style=for-the-badge" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/lessons-120-0e8a16?style=for-the-badge" alt="120 lessons">
+  <img src="https://img.shields.io/badge/lessons-174-0e8a16?style=for-the-badge" alt="174 lessons">
   <img src="https://img.shields.io/badge/modules-32-7c3aed?style=for-the-badge" alt="32 modules">
   <img src="https://img.shields.io/badge/no-signup-1da1f2?style=for-the-badge" alt="no signup">
 </p>
