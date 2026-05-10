@@ -37,6 +37,8 @@ Throughput ceiling = single nginx workers + Caddy CPU + VPS network. Tuned, but 
 4. Cache rule: HTML respects `Cache-Control: max-age=300` (already set)
 5. Origin: keep current netcup IP, Cloudflare proxies
 
+**Dormant prep:** see [`CLOUDFLARE-PREP.md`](./CLOUDFLARE-PREP.md) — full runbook to pre-configure CF in DNS-only mode (gray cloud), so activation is a single per-record toggle when traffic forces it. Zero behavior change until activated.
+
 **Effect:** capacity multiplies ~20x for static (assets, blog OG). HN-frontpage no longer breaks the box.
 
 **Cost:** $0 (free tier). Caveat: Cloudflare sees user IPs + can MITM TLS. Acceptable for an open-source educational site; not for a service handling financial data.
