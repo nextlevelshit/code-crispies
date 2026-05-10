@@ -2,7 +2,7 @@
  * Internationalization module for CODE CRISPIES
  */
 
-const translations = {
+export const translations = {
 	en: {
 		// Page
 		pageTitle: "CODE CRISPIES - Learn HTML & CSS Interactively",

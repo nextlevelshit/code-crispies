@@ -20,6 +20,7 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { translations } from "../src/i18n.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -131,6 +132,63 @@ function fillPrerender(html, contentHtml) {
 		placeholderRe,
 		`<aside id="cc-prerender" class="cc-prerender" aria-hidden="true">\n${contentHtml}\n\t\t</aside>`
 	);
+}
+
+/**
+ * For per-locale pages, swap the text inside elements carrying
+ * `data-i18n="key"` to the matching translation. Crawlers (no JS)
+ * see localized text; the SPA's runtime applyTranslations() then
+ * overwrites the same elements with the same content (idempotent).
+ *
+ * Also handles `data-i18n-placeholder` (input placeholder), and
+ * `data-i18n-aria-label` (aria-label attribute).
+ */
+function applyI18n(html, t) {
+	if (!t) return html;
+	const escAttr = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+	// data-i18n="key" → swap inner text. Conservative regex: only match
+	// elements whose content is plain text (no nested tags), to avoid
+	// clobbering structured headings like <h1><span>...</span></h1>.
+	html = html.replace(
+		/<([a-z0-9]+)([^>]*\sdata-i18n="([a-z0-9_]+)"[^>]*)>([^<]*)<\/\1>/gi,
+		(m, tag, attrs, key, _inner) => {
+			const v = t[key];
+			if (v == null) return m;
+			return `<${tag}${attrs}>${escAttr(v).replace(/&quot;/g, '"')}</${tag}>`;
+		}
+	);
+	// data-i18n-placeholder="key" → swap placeholder attr
+	html = html.replace(
+		/(\s)placeholder="([^"]*)"([^>]*\sdata-i18n-placeholder="([a-z0-9_]+)")/gi,
+		(m, sp, _orig, rest, key) => {
+			const v = t[key];
+			return v == null ? m : `${sp}placeholder="${escAttr(v)}"${rest}`;
+		}
+	);
+	// Same the other order
+	html = html.replace(
+		/(\sdata-i18n-placeholder="([a-z0-9_]+)"[^>]*)\splaceholder="([^"]*)"/gi,
+		(m, before, key, _orig) => {
+			const v = t[key];
+			return v == null ? m : `${before} placeholder="${escAttr(v)}"`;
+		}
+	);
+	// data-i18n-aria-label="key" → swap aria-label attr (similar dual order)
+	html = html.replace(
+		/(\s)aria-label="([^"]*)"([^>]*\sdata-i18n-aria-label="([a-z0-9_]+)")/gi,
+		(m, sp, _orig, rest, key) => {
+			const v = t[key];
+			return v == null ? m : `${sp}aria-label="${escAttr(v)}"${rest}`;
+		}
+	);
+	html = html.replace(
+		/(\sdata-i18n-aria-label="([a-z0-9_]+)"[^>]*)\saria-label="([^"]*)"/gi,
+		(m, before, key, _orig) => {
+			const v = t[key];
+			return v == null ? m : `${before} aria-label="${escAttr(v)}"`;
+		}
+	);
+	return html;
 }
 
 function rewriteHead(shellHtml, { title, description, canonical, jsonLd, lang = "en", alternates = [] }) {
@@ -503,6 +561,39 @@ for (const lang of SECONDARY_LOCALES) {
 	const localized = localeModules[lang];
 	if (!localized) continue;
 	for (const m of localized) emitModulePages(m, lang, lang);
+}
+
+// Post-process per-locale pages: walk every emitted /<lang>/ HTML file
+// and swap data-i18n text to the localized strings. Crawlers (no JS)
+// then see proper localized chrome instead of EN defaults.
+function walkAndLocalize(dir, t) {
+	let count = 0;
+	for (const name of readdirSync(dir, { withFileTypes: true })) {
+		const full = join(dir, name.name);
+		if (name.isDirectory()) {
+			count += walkAndLocalize(full, t);
+		} else if (name.name === "index.html") {
+			const html = readFileSync(full, "utf8");
+			const localized = applyI18n(html, t);
+			if (localized !== html) {
+				writeFileSync(full, localized);
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+for (const lang of SECONDARY_LOCALES) {
+	const localeDir = join(DIST, lang);
+	const t = translations?.[lang];
+	if (!t) continue;
+	try {
+		const n = walkAndLocalize(localeDir, t);
+		console.log(`✓ localized ${n} ${lang}/ HTML files via data-i18n swap`);
+	} catch (e) {
+		// Locale dir may not exist if generation skipped; non-fatal.
+	}
 }
 
 console.log(`✓ wrote ${sectionPages} section + ${modulePages} module + ${lessonPages} lesson pages`);
