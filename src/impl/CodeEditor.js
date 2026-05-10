@@ -122,12 +122,14 @@ export function getEditorTheme(section) {
 // Default combined theme export (for backwards compatibility)
 export const crispyEditorTheme = [crispyTheme, syntaxHighlighting(defaultHighlight)];
 
-// Custom overrides for editor styling
+// Custom overrides for editor styling. Font-size driven by --cm-font-size
+// CSS var so the user-settings dialog can override at runtime without
+// re-creating editor instances.
 const editorTheme = EditorView.theme(
 	{
 		"&": {
 			height: "100%",
-			fontSize: "14px"
+			fontSize: "var(--cm-font-size, 14px)"
 		},
 		".cm-content": {
 			fontFamily: "'JetBrains Mono', 'Fira Code', monospace",

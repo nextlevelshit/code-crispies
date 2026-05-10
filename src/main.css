@@ -4366,3 +4366,20 @@ body[data-section="javascript"] #lesson-title {
 @media (prefers-reduced-motion: reduce) {
 	.search-toggle, .search-results a { transition: none; }
 }
+
+/* ================= EDITOR FONT-SIZE SLIDER ================= */
+.settings-row .settings-label .settings-value {
+	margin-left: 0.5rem;
+	font-size: 0.78rem;
+	color: var(--light-text);
+	font-variant-numeric: tabular-nums;
+}
+.settings-range {
+	width: 110px;
+	accent-color: var(--primary-color);
+	cursor: pointer;
+}
+.settings-range:focus-visible {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 2px;
+}

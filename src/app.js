@@ -133,12 +133,22 @@ try {
 const state = {
 	userSettings: {
 		disableFeedbackErrors: false,
-		skipResetCodeConfirmation: false
+		skipResetCodeConfirmation: false,
+		editorFontSize: 14
 	},
 	showExpected: false,
 	animationTimeout: null,
 	lastPlaygroundTemplate: null
 };
+
+/**
+ * Apply editor font size to the document. CodeMirror's theme reads
+ * --cm-font-size from CSS so we don't need to recreate editor instances.
+ */
+function applyEditorFontSize(px) {
+	const clamped = Math.max(11, Math.min(20, Number(px) || 14));
+	document.documentElement.style.setProperty("--cm-font-size", `${clamped}px`);
+}
 
 // Track CodeMirror views for cleanup
 let sectionCodeViews = [];
@@ -480,6 +490,13 @@ function loadUserSettings() {
 			console.error("Error loading user settings:", e);
 		}
 	}
+	// Apply editor font size to CSS var + sync slider UI (setting may have
+	// loaded from defaults if no saved value).
+	applyEditorFontSize(state.userSettings.editorFontSize);
+	const slider = document.getElementById("editor-font-size");
+	const valueLabel = document.getElementById("editor-font-size-value");
+	if (slider) slider.value = state.userSettings.editorFontSize;
+	if (valueLabel) valueLabel.textContent = `${state.userSettings.editorFontSize}px`;
 }
 
 function saveUserSettings() {
@@ -3234,6 +3251,24 @@ function init() {
 		saveUserSettings();
 		track("setting_change", { setting: "feedback_errors", enabled: e.target.checked });
 	});
+
+	// Editor font size slider — debounce save to avoid 10 writes per drag
+	const fontSlider = document.getElementById("editor-font-size");
+	const fontValueLabel = document.getElementById("editor-font-size-value");
+	if (fontSlider) {
+		let saveTimer = null;
+		fontSlider.addEventListener("input", (e) => {
+			const px = Number(e.target.value);
+			state.userSettings.editorFontSize = px;
+			if (fontValueLabel) fontValueLabel.textContent = `${px}px`;
+			applyEditorFontSize(px);
+			clearTimeout(saveTimer);
+			saveTimer = setTimeout(() => {
+				saveUserSettings();
+				track("setting_change", { setting: "editor_font_size", value: px });
+			}, 300);
+		});
+	}
 
 	// Click on editor content to focus CodeMirror
 	elements.editorContent?.addEventListener("click", () => {
