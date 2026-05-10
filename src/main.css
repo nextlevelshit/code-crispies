@@ -264,40 +264,8 @@ kbd {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Logo section color coding */
-/* CSS uses default colors */
-
-[data-section="html"] .logo h1 .code-text {
-	color: #d45aa0;
-}
-
-[data-section="html"] .logo h1 .crispies-text {
-	background: #d45aa0;
-}
-
-[data-section="tailwind"] .logo h1 .code-text {
-	color: #1aafb8;
-}
-
-[data-section="tailwind"] .logo h1 .crispies-text {
-	background: #1aafb8;
-}
-
-[data-section="markdown"] .logo h1 .code-text {
-	color: #5b8dd9;
-}
-
-[data-section="markdown"] .logo h1 .crispies-text {
-	background: #5b8dd9;
-}
-
-[data-section="javascript"] .logo h1 .code-text {
-	color: #d4a017;
-}
-
-[data-section="javascript"] .logo h1 .crispies-text {
-	background: #d4a017;
-}
+/* Logo stays brand-neutral across sections — color-coding lives on
+   the per-section accents (next button, task border, nav highlight). */
 
 .help-toggle {
 	width: 28px;
@@ -980,6 +948,9 @@ kbd {
 
 .game-controls #next-btn {
 	justify-self: end;
+	/* Subtle section-color accent — keeps Next as the visual primary
+	   action without flooding the rest of the lesson with color. */
+	border: 2px solid var(--section-color, var(--primary-color));
 }
 
 /* ================= SIDEBAR ================= */
@@ -4031,25 +4002,10 @@ body[data-section="javascript"] .code-block .cm-editor .cm-line {
 	color: #e0d8b0;
 }
 
-/* Task instruction bubble section colors */
-[data-section="css"] .task-instruction {
-	background: rgba(145, 99, 184, 0.92);
-}
-
-[data-section="html"] .task-instruction {
-	background: rgba(212, 90, 160, 0.92);
-}
-
-[data-section="tailwind"] .task-instruction {
-	background: rgba(26, 175, 184, 0.92);
-}
-
-[data-section="markdown"] .task-instruction {
-	background: rgba(91, 141, 217, 0.92);
-}
-
-[data-section="javascript"] .task-instruction {
-	background: rgba(212, 160, 23, 0.92);
+/* Task instruction — default bg, only the left border carries the
+   section color so the section-coding stays visible but unobtrusive. */
+.task-instruction {
+	border-left: 4px solid var(--section-color, var(--primary-color));
 }
 
 /* Section page progress bar colors */
