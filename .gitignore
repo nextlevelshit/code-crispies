@@ -8,6 +8,8 @@ coverage
 
 # Claude Code local settings (user-specific)
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks.db
 .claude_settings.json
 
 # Auto-Claude
