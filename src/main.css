@@ -4127,3 +4127,40 @@ body[data-section="javascript"] #lesson-title {
 .cta-button:focus-visible {
 	outline-offset: 3px;
 }
+
+/* ================= LESSON UX ================= */
+
+/* Module progress chip in lesson header — quiet, dependent on lesson */
+.lesson-progress {
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--text-secondary, #6b7280);
+	background: var(--bg-secondary, #f3f4f6);
+	padding: 2px 8px;
+	border-radius: 999px;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+.lesson-progress:empty { display: none; }
+
+/* Run button keyboard shortcut hint */
+.run-shortcut {
+	margin-left: 0.6rem;
+	display: inline-flex;
+	gap: 0.15rem;
+	opacity: 0.7;
+	font-size: 0.8em;
+}
+.run-shortcut kbd {
+	background: rgba(255, 255, 255, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	border-bottom-width: 2px;
+	padding: 0 5px;
+	border-radius: 3px;
+	font-family: inherit;
+	font-size: 0.95em;
+	line-height: 1.4;
+}
+@media (max-width: 720px) {
+	.run-shortcut { display: none; }
+}

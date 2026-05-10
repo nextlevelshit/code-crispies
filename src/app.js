@@ -767,6 +767,14 @@ function loadCurrentLesson() {
 	// Render difficulty badge
 	renderDifficultyBadge(elements.lessonTitleRow, lesson);
 
+	// Update lesson-progress chip "<index+1> / <total>"
+	const lessonProgressEl = document.getElementById("lesson-progress");
+	if (lessonProgressEl && engineState.module?.lessons) {
+		const total = engineState.module.lessons.length;
+		const current = (engineState.lessonIndex || 0) + 1;
+		lessonProgressEl.textContent = total > 1 ? `${current} / ${total}` : "";
+	}
+
 	// Set user code in CodeMirror (clear history to prevent undo/redo across lessons)
 	// Pass codePrefix/codeSuffix as read-only zones for CSS mode
 	if (codeEditor) {
@@ -1039,6 +1047,15 @@ function runCode() {
 			setTimeout(() => {
 				elements.shareBtn.classList.remove("attention", "attention-strong");
 			}, isModuleComplete ? 8000 : 5000);
+		}
+
+		// Move keyboard focus to Next so Tab/Enter continues the flow.
+		// Skip if user disabled the auto-focus by hovering away — i.e.
+		// only when no other interactive element has focus.
+		if (elements.nextBtn && !elements.nextBtn.disabled) {
+			const active = document.activeElement;
+			const safe = !active || active === document.body || active.tagName === "TEXTAREA" || active === elements.runBtn;
+			if (safe) setTimeout(() => elements.nextBtn.focus({ preventScroll: true }), 100);
 		}
 
 		// Show success hint
