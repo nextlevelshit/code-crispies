@@ -2791,7 +2791,9 @@ function renderFooterLessonLinks() {
 	Object.entries(sectionGroups).forEach(([sectionId, sectionModules]) => {
 		if (sectionModules.length === 0) return;
 		const sectionName = sectionId.toUpperCase();
-		html += `<div class="footer-section-group"><strong><a href="/${sectionId}">${sectionName}</a></strong>`;
+		// data-section attr lets updateNavHighlight() set aria-current here
+		// alongside the main-nav and sidebar-nav links.
+		html += `<div class="footer-section-group"><strong><a href="/${sectionId}" class="footer-nav-link" data-section="${sectionId}">${sectionName}</a></strong>`;
 		sectionModules.forEach((module) => {
 			html += `<a href="/${module.id}/0">${module.title}</a>`;
 		});
@@ -3079,7 +3081,9 @@ function updateNavHighlight(route) {
 		}
 	}
 
-	const allNavLinks = document.querySelectorAll(".nav-link[data-section], .sidebar-nav-link[data-section]");
+	const allNavLinks = document.querySelectorAll(
+		".nav-link[data-section], .sidebar-nav-link[data-section], .footer-nav-link[data-section]"
+	);
 	allNavLinks.forEach((link) => {
 		const isActive = link.dataset.section === activeSection;
 		link.classList.toggle("active", isActive);
