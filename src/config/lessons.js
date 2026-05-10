@@ -60,6 +60,16 @@ import semanticHtmlDE from "../../lessons/de/33-html-semantic.json";
 import jsVariablesDE from "../../lessons/de/50-js-variables.json";
 import jsDomDE from "../../lessons/de/51-js-dom.json";
 import jsEventsDE from "../../lessons/de/52-js-events.json";
+import colorsDE from "../../lessons/de/03-colors.json";
+import typographyDE from "../../lessons/de/04-typography.json";
+import gradientsDE from "../../lessons/de/09-gradients.json";
+import filtersDE from "../../lessons/de/11-filters.json";
+import positioningDE from "../../lessons/de/12-positioning.json";
+import pseudoElementsDE from "../../lessons/de/13-pseudo-elements.json";
+import htmlFigureDE from "../../lessons/de/29-html-figure.json";
+import markdownBasicsDE from "../../lessons/de/40-markdown-basics.json";
+import playgroundDE from "../../lessons/de/98-playground.json";
+import goodbyeDE from "../../lessons/de/99-goodbye.json";
 
 // Polish lesson imports
 import welcomePL from "../../lessons/pl/00-welcome.json";
@@ -188,24 +198,24 @@ const moduleStoreDE = [
 	welcomeDE,
 	// CSS Visual (immediate impact)
 	basicSelectorsDE,
-	colorsEN, // Using EN fallback until translated
-	gradientsEN, // Using EN fallback until translated
-	typographyEN, // Using EN fallback until translated
+	colorsDE,
+	gradientsDE,
+	typographyDE,
 	boxModelDE,
 	// CSS Layout
 	flexboxDE,
 	gridDE,
-	positioningEN, // Using EN fallback until translated
+	positioningDE,
 	unitsVariablesDE,
 	responsiveDE,
 	// CSS Polish
 	transitionsAnimationsDE,
-	filtersEN, // Using EN fallback until translated
-	pseudoElementsEN, // Using EN fallback until translated
+	filtersDE,
+	pseudoElementsDE,
 	// HTML Structure
 	htmlElementsDE,
 	semanticHtmlDE,
-	htmlFigureEN, // Using EN fallback until translated
+	htmlFigureDE,
 	htmlSvgDE,
 	// HTML Interactive
 	htmlDetailsSummaryDE,
@@ -217,14 +227,14 @@ const moduleStoreDE = [
 	htmlDatalistDE,
 	htmlTablesDE,
 	// Markdown
-	markdownBasicsEN, // Using EN fallback until translated
+	markdownBasicsDE,
 	// JavaScript
 	jsVariablesDE,
 	jsDomDE,
 	jsEventsDE,
 	// Outro
-	goodbyeEN,
-	playgroundEN
+	goodbyeDE,
+	playgroundDE
 ];
 
 // Polish module store - ordered for design students

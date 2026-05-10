@@ -1,0 +1,30 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "goodbye",
+	"title": "Wie geht's weiter?",
+	"description": "Du hast es geschafft! Hier sind die nächsten Schritte für deine Web-Entwicklungs-Reise.",
+	"mode": "html",
+	"difficulty": "beginner",
+	"excludeFromProgress": true,
+	"lessons": [
+		{
+			"id": "next-steps",
+			"title": "Geschafft!",
+			"description": "<strong>Great progress!</strong> You're building real web development skills.<br><br><strong>Continue learning:</strong><br>• <a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs</a> - The definitive reference<br>• <a href=\"https://css-tricks.com\" target=\"_blank\">CSS-Tricks</a> - Practical techniques<br><br><strong>Practice ideas:</strong><br>• Build your portfolio site<br>• Recreate a website you like<br>• Try the <a href=\"/playground/0\">Playground</a> to experiment freely<br><br><strong>Contribute:</strong> Code Crispies is <a href=\"https://github.com/nextlevelshit/code-crispies\" target=\"_blank\">open source</a>. Add lessons, fix bugs, or translate!<br><br><strong>Support:</strong> Help keep it free and open source!<br><a href=\"https://liberapay.com/libretech/donate\" target=\"_blank\" onclick=\"typeof umami !== 'undefined' && umami.track('support_click', {location: 'goodbye'})\"><img alt=\"Donate using Liberapay\" src=\"https://liberapay.com/assets/widgets/donate.svg\" style=\"margin-top: 8px;\"></a>",
+			"task": "Du hast die Code Crispies-Lektionen abgeschlossen. Erkunde die Referenz-Seiten und probiere im Spielplatz alles aus.",
+			"previewHTML": "",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 20px; text-align: center; font-size: 1.5rem; color: #6366f1; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "Thank you!",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "Thank you",
+					"message": "Type <code>Thank you!</code>"
+				}
+			]
+		}
+	]
+}

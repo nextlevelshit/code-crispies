@@ -1,21 +1,21 @@
 {
-	"$schema": "../../schemas/code-crispies-module-schema.json",
+	"$schema": "../schemas/code-crispies-module-schema.json",
 	"id": "html-figure",
-	"title": "Figure & Figcaption",
-	"description": "Erstelle eigenständige Inhalte mit Beschriftungen",
+	"title": "Figure",
+	"description": "Erstelle eigenständige Inhalte mit Bildunterschriften.",
 	"mode": "html",
 	"difficulty": "beginner",
 	"lessons": [
 		{
 			"id": "figure-basic",
-			"title": "Bild mit Beschriftung",
-			"description": "Das <kbd>&lt;figure&gt;</kbd>-Element umschließt eigenständige Inhalte wie Bilder, Diagramme oder Code. Füge <kbd>&lt;figcaption&gt;</kbd> hinzu, um eine Beschriftung zu erstellen.<br><br>Diese semantische Struktur hilft Screenreadern und Suchmaschinen, deinen Inhalt zu verstehen.",
-			"task": "Erstelle eine Figure mit:<br>1. Einem <kbd>&lt;figure&gt;</kbd>-Element<br>2. Einem <kbd>&lt;img&gt;</kbd> darin (verwende eine Platzhalter-URL)<br>3. Einem <kbd>&lt;figcaption&gt;</kbd>, das das Bild beschreibt",
+			"title": "Bild mit Bildunterschrift",
+			"description": "The <kbd>&lt;figure&gt;</kbd> element wraps self-contained content like images, diagrams, or code. Add <kbd>&lt;figcaption&gt;</kbd> to provide a caption.<br><br>This semantic structure helps screen readers and search engines understand your content.",
+			"task": "Erstelle eine Figure mit:<br>1. Einem <kbd>&lt;figure&gt;</kbd>-Element<br>2. Einem <kbd>&lt;img&gt;</kbd> darin (verwende Platzhalter-URL)<br>3. Einer <kbd>&lt;figcaption&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #f5f5f5; } figure { margin: 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 400px; } figure img { width: 100%; height: 200px; object-fit: cover; display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); } figcaption { padding: 15px 20px; color: #555; font-size: 0.95rem; border-top: 1px solid #eee; }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<figure>\n  <img src=\"https://picsum.photos/400/200\" alt=\"Eine schöne Landschaft\">\n  <figcaption>Eine wunderschöne Berglandschaft bei Sonnenuntergang.</figcaption>\n</figure>",
+			"solution": "<figure>\n  <img src=\"https://picsum.photos/400/200\" alt=\"A beautiful landscape\">\n  <figcaption>A beautiful mountain landscape at sunset.</figcaption>\n</figure>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -31,20 +31,20 @@
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> für die Beschriftung hinzu"
+					"message": "Füge eine <kbd>&lt;figcaption&gt;</kbd> für die Bildunterschrift hinzu"
 				}
 			]
 		},
 		{
 			"id": "figure-code",
 			"title": "Code-Figure",
-			"description": "Figures sind nicht nur für Bilder! Du kannst sie für Code-Schnipsel, Zitate oder jeden eigenständigen Inhalt verwenden.<br><br>Kombiniere <kbd>&lt;figure&gt;</kbd> mit <kbd>&lt;pre&gt;</kbd> und <kbd>&lt;code&gt;</kbd> für Code-Beispiele.",
-			"task": "Erstelle eine Code-Figure:<br>1. Ein <kbd>&lt;figure&gt;</kbd>-Element<br>2. Ein <kbd>&lt;pre&gt;</kbd> mit <kbd>&lt;code&gt;</kbd> und etwas Code<br>3. Ein <kbd>&lt;figcaption&gt;</kbd>, das den Code beschreibt",
+			"description": "Figures aren't just for images! You can use them for code snippets, quotes, or any self-contained content.<br><br>Combine <kbd>&lt;figure&gt;</kbd> with <kbd>&lt;pre&gt;</kbd> and <kbd>&lt;code&gt;</kbd> for code examples.",
+			"task": "Erstelle eine Code-Figure:<br>1. Ein <kbd>&lt;figure&gt;</kbd>-Element<br>2. Ein <kbd>&lt;pre&gt;</kbd> mit <kbd>&lt;code&gt;</kbd><br>3. Eine <kbd>&lt;figcaption&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: #1e1e1e; } figure { margin: 0; background: #2d2d2d; border-radius: 10px; overflow: hidden; max-width: 500px; } pre { margin: 0; padding: 20px; overflow-x: auto; } code { color: #9cdcfe; font-family: 'Fira Code', 'Consolas', monospace; font-size: 14px; line-height: 1.5; } figcaption { padding: 12px 20px; color: #888; font-size: 0.85rem; background: #252525; border-top: 1px solid #3d3d3d; }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<figure>\n  <pre><code>function greet(name) {\n  return `Hallo, ${name}!`;\n}</code></pre>\n  <figcaption>Eine einfache Begrüßungsfunktion in JavaScript</figcaption>\n</figure>",
+			"solution": "<figure>\n  <pre><code>function greet(name) {\n  return `Hello, ${name}!`;\n}</code></pre>\n  <figcaption>A simple greeting function in JavaScript</figcaption>\n</figure>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -55,7 +55,7 @@
 				{
 					"type": "element_exists",
 					"value": "pre",
-					"message": "Füge ein <kbd>&lt;pre&gt;</kbd>-Element für formatierten Text hinzu"
+					"message": "Füge ein <kbd>&lt;pre&gt;</kbd> für vorformatierten Text hinzu"
 				},
 				{
 					"type": "element_exists",
@@ -65,20 +65,20 @@
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> hinzu, das den Code beschreibt"
+					"message": "Füge eine <kbd>&lt;figcaption&gt;</kbd> hinzu, die den Code beschreibt"
 				}
 			]
 		},
 		{
 			"id": "figure-gallery",
 			"title": "Bildergalerie",
-			"description": "Du kannst mehrere Bilder in eine einzige <kbd>&lt;figure&gt;</kbd> packen, um eine Galerie oder einen Vergleich zu erstellen.<br><br>Das figcaption beschreibt die gesamte Gruppe.",
-			"task": "Erstelle eine Galerie-Figure:<br>1. Ein <kbd>&lt;figure&gt;</kbd>-Element<br>2. Mindestens 2 <kbd>&lt;img&gt;</kbd>-Elemente<br>3. Ein <kbd>&lt;figcaption&gt;</kbd>, das die Galerie beschreibt",
+			"description": "You can put multiple images inside a single <kbd>&lt;figure&gt;</kbd> to create a gallery or comparison.<br><br>The figcaption describes the entire group.",
+			"task": "Erstelle eine Galerie-Figure:<br>1. Ein <kbd>&lt;figure&gt;</kbd>-Element<br>2. Mindestens 2 <kbd>&lt;img&gt;</kbd>-Elemente<br>3. Eine <kbd>&lt;figcaption&gt;</kbd>",
 			"previewHTML": "",
 			"previewBaseCSS": "body { font-family: system-ui; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); min-height: 100vh; margin: 0; box-sizing: border-box; } figure { margin: 0; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); max-width: 500px; padding: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; } figure img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; background: linear-gradient(45deg, #ff6b6b, #feca57); } figcaption { grid-column: 1 / -1; padding: 10px 5px 5px; color: #666; font-size: 0.9rem; text-align: center; }",
 			"sandboxCSS": "",
 			"initialCode": "",
-			"solution": "<figure>\n  <img src=\"https://picsum.photos/200/120?1\" alt=\"Foto 1\">\n  <img src=\"https://picsum.photos/200/120?2\" alt=\"Foto 2\">\n  <img src=\"https://picsum.photos/200/120?3\" alt=\"Foto 3\">\n  <img src=\"https://picsum.photos/200/120?4\" alt=\"Foto 4\">\n  <figcaption>Meine Urlaubsfoto-Galerie</figcaption>\n</figure>",
+			"solution": "<figure>\n  <img src=\"https://picsum.photos/200/120?1\" alt=\"Photo 1\">\n  <img src=\"https://picsum.photos/200/120?2\" alt=\"Photo 2\">\n  <img src=\"https://picsum.photos/200/120?3\" alt=\"Photo 3\">\n  <img src=\"https://picsum.photos/200/120?4\" alt=\"Photo 4\">\n  <figcaption>My vacation photo gallery</figcaption>\n</figure>",
 			"previewContainer": "preview-area",
 			"validations": [
 				{
@@ -88,13 +88,16 @@
 				},
 				{
 					"type": "element_count",
-					"value": { "selector": "figure img", "min": 2 },
+					"value": {
+						"selector": "figure img",
+						"min": 2
+					},
 					"message": "Füge mindestens 2 Bilder in die Figure ein"
 				},
 				{
 					"type": "element_exists",
 					"value": "figcaption",
-					"message": "Füge ein <kbd>&lt;figcaption&gt;</kbd> für die Galerie hinzu"
+					"message": "Füge eine <kbd>&lt;figcaption&gt;</kbd> für die Galerie hinzu"
 				}
 			]
 		}

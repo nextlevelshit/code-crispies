@@ -1,0 +1,197 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "markdown-basics",
+	"title": "Markdown-Grundlagen",
+	"description": "Lerne, Textdokumente mit Markdown zu formatieren — einer einfachen und lesbaren Auszeichnungssprache.",
+	"mode": "markdown",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "md-headings",
+			"title": "Überschriften",
+			"description": "Markdown uses hash symbols <kbd>#</kbd> to create headings. One <kbd>#</kbd> creates the largest heading (h1), two <kbd>##</kbd> creates a smaller heading (h2), and so on up to six levels.<br><br><pre># Main Title\n## Section\n### Subsection</pre>",
+			"task": "Erstelle eine Hauptüberschrift mit <kbd># Hello</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "# Hello",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^#\\s+.+",
+					"message": "Beginne mit <kbd>#</kbd> gefolgt von einem Leerzeichen und deinem Überschriftstext"
+				},
+				{
+					"type": "contains",
+					"value": "Hello",
+					"message": "Deine Überschrift sollte <kbd>Hello</kbd> enthalten"
+				}
+			]
+		},
+		{
+			"id": "md-heading-levels",
+			"title": "Überschriften-Ebenen",
+			"description": "Use more <kbd>#</kbd> symbols for smaller headings. <kbd>##</kbd> creates an h2, <kbd>###</kbd> an h3. This creates a clear document structure with visual hierarchy.",
+			"task": "Erstelle eine h2-Überschrift mit <kbd>## About</kbd> gefolgt von einer h3 mit <kbd>### Details</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "## About\n\n### Details",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^##\\s+About",
+					"message": "Beginne mit <kbd>## About</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "###\\s+Details",
+					"message": "Füge <kbd>### Details</kbd> für die h3 hinzu"
+				}
+			]
+		},
+		{
+			"id": "md-bold",
+			"title": "Fetter Text",
+			"description": "Wrap text in double asterisks <kbd>**</kbd> or double underscores <kbd>__</kbd> to make it <strong>bold</strong>. This emphasizes important words or phrases.",
+			"task": "Mach das Wort <kbd>important</kbd> fett mit <kbd>**</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "This is important text.",
+			"solution": "This is **important** text.",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\*\\*important\\*\\*",
+					"message": "Umschließe <kbd>important</kbd> mit doppelten Sternchen: <kbd>**important**</kbd>"
+				}
+			]
+		},
+		{
+			"id": "md-italic",
+			"title": "Kursiver Text",
+			"description": "Wrap text in single asterisks <kbd>*</kbd> or single underscores <kbd>_</kbd> to make it <em>italic</em>. Use this for subtle emphasis or titles of works.",
+			"task": "Mach das Wort <kbd>elegant</kbd> kursiv mit <kbd>*</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "A simple and elegant solution.",
+			"solution": "A simple and *elegant* solution.",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\*elegant\\*",
+					"message": "Umschließe <kbd>elegant</kbd> mit einzelnen Sternchen: <kbd>*elegant*</kbd>"
+				},
+				{
+					"type": "not_contains",
+					"value": "**elegant**",
+					"message": "Verwende einzelne Sternchen für kursiv, nicht doppelte"
+				}
+			]
+		},
+		{
+			"id": "md-unordered-list",
+			"title": "Aufzählungslisten",
+			"description": "Create bullet lists using <kbd>-</kbd>, <kbd>*</kbd>, or <kbd>+</kbd> at the start of each line. Each item goes on its own line.",
+			"task": "Erstelle eine Aufzählungsliste mit drei Einträgen: <kbd>Apple</kbd>, <kbd>Banana</kbd>, <kbd>Cherry</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "- Apple\n- Banana\n- Cherry",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "^[-*+]\\s+Apple",
+					"message": "Beginne mit Strich, Stern oder Plus gefolgt von <kbd>Apple</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "[-*+]\\s+Banana",
+					"message": "Füge <kbd>Banana</kbd> als Listenelement hinzu"
+				},
+				{
+					"type": "regex",
+					"value": "[-*+]\\s+Cherry",
+					"message": "Füge <kbd>Cherry</kbd> als Listenelement hinzu"
+				}
+			]
+		},
+		{
+			"id": "md-ordered-list",
+			"title": "Nummerierte Listen",
+			"description": "Create numbered lists by starting lines with <kbd>1.</kbd>, <kbd>2.</kbd>, etc. Markdown automatically numbers them in sequence.",
+			"task": "Erstelle eine nummerierte Liste: <kbd>Wake up</kbd>, <kbd>Eat breakfast</kbd>, <kbd>Start coding</kbd>",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "1. Wake up\n2. Eat breakfast\n3. Start coding",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\d+\\.\\s+Wake up",
+					"message": "Beginne mit Zahl und Punkt: <kbd>1. Wake up</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "\\d+\\.\\s+Eat breakfast",
+					"message": "Füge <kbd>Eat breakfast</kbd> als nummerierten Eintrag hinzu"
+				},
+				{
+					"type": "regex",
+					"value": "\\d+\\.\\s+Start coding",
+					"message": "Füge <kbd>Start coding</kbd> als nummerierten Eintrag hinzu"
+				}
+			]
+		},
+		{
+			"id": "md-links",
+			"title": "Links",
+			"description": "Create links with <kbd>[text](url)</kbd>. The text in brackets is what readers see; the URL in parentheses is where they go when clicked.",
+			"task": "Erstelle einen Link, der <kbd>Google</kbd> zeigt und auf <kbd>https://google.com</kbd> verweist",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"solution": "[Google](https://google.com)",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "\\[Google\\]\\(https?://google\\.com\\)",
+					"message": "Verwende das Format <kbd>[Google](https://google.com)</kbd>"
+				}
+			]
+		},
+		{
+			"id": "md-inline-code",
+			"title": "Inline-Code",
+			"description": "Wrap text in backticks <kbd>`</kbd> to format it as code. This is useful for variable names, commands, or short code snippets in your text.",
+			"task": "Formatiere <kbd>npm install</kbd> als Inline-Code mit Backticks",
+			"previewHTML": "",
+			"previewBaseCSS": "",
+			"sandboxCSS": "",
+			"initialCode": "Run npm install to install dependencies.",
+			"solution": "Run `npm install` to install dependencies.",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "`npm install`",
+					"message": "Umschließe <kbd>npm install</kbd> mit Backticks: <kbd>`npm install`</kbd>"
+				}
+			]
+		}
+	]
+}

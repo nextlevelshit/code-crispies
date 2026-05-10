@@ -1,0 +1,171 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "typography-fonts",
+	"title": "Typografie",
+	"description": "Lerne, das Erscheinungsbild von Text durch Schriftauswahl, Größe, Abstände und Effekte zu steuern.",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "monospace-font",
+			"title": "Monospace-Schriften",
+			"description": "Different font families create different visual impressions. <kbd>monospace</kbd> fonts have equal-width characters, making them perfect for displaying code, data, or keyboard shortcuts.<br><br>Every computer has a monospace font built in, so <kbd>font-family: monospace</kbd> always works. This makes it a safe choice for inline code in any web project.",
+			"task": "Style den Inline-Code mit einer Monospace-Schrift. Füge <kbd>font-family: monospace</kbd> hinzu.",
+			"previewHTML": "<article>\n  <h3>Quick Tip</h3>\n  <p>Press <span class=\"code\">Ctrl + S</span> to save your work, or <span class=\"code\">Ctrl + Z</span> to undo.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } h3 { margin: 0 0 0.5rem; } p { margin: 0; color: #555; line-height: 1.6; } .code { background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 4px; }",
+			"sandboxCSS": "",
+			"codePrefix": ".code {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "font-family: monospace;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-family",
+						"expected": "monospace"
+					},
+					"message": "Setze font-family auf <kbd>monospace</kbd>"
+				}
+			]
+		},
+		{
+			"id": "font-size-line-height",
+			"title": "Lesbarer Fließtext",
+			"description": "Good typography is invisible—readers focus on content, not struggling to read it. Two properties work together for readability:<br><br><kbd>font-size</kbd> controls how big the text appears. For body text, <kbd>1rem</kbd> (16px by default) is a comfortable starting point.<br><br><kbd>line-height</kbd> sets the space between lines. A value of <kbd>1.6</kbd> means the line height is 1.6 times the font size—giving text room to breathe.",
+			"task": "Mach den Text angenehm lesbar. Füge <kbd>font-size: 1rem</kbd> und <kbd>line-height: 1.6</kbd> hinzu.",
+			"previewHTML": "<article>\n  <h2>The Art of Coffee</h2>\n  <p>Great coffee starts with quality beans. The roast level affects flavor—light roasts are fruity and acidic, while dark roasts are bold and smoky.</p>\n  <p>Water temperature matters too. Brew between 90-96°C for optimal extraction. Too hot burns the coffee; too cold leaves it weak.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } h2 { margin: 0 0 1rem; color: #333; } p { margin: 0 0 1rem; color: #444; } p:last-child { margin-bottom: 0; }",
+			"sandboxCSS": "",
+			"codePrefix": "article {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "font-size: 1rem;\n  line-height: 1.6;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-size",
+						"expected": "1rem"
+					},
+					"message": "Setze font-size auf <kbd>1rem</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "line-height",
+						"expected": "1.6"
+					},
+					"message": "Setze line-height auf <kbd>1.6</kbd>"
+				}
+			]
+		},
+		{
+			"id": "font-weight",
+			"title": "Fette Überschriften",
+			"description": "Font weight controls how thick or thin text appears. Common values include:<br><br>• <kbd>normal</kbd> (400) — default body text<br>• <kbd>bold</kbd> (700) — strong emphasis<br>• <kbd>lighter</kbd> / <kbd>bolder</kbd> — relative to parent<br><br>Card titles and headings often use bold text to create visual hierarchy and draw attention to key information.",
+			"task": "Lass den Karten-Titel hervorstechen. Füge <kbd>font-weight: bold</kbd> hinzu.",
+			"previewHTML": "<article class=\"card\">\n  <span class=\"title\">Weekend Special</span>\n  <p>Fresh pastries and artisan coffee, 20% off all items this Saturday and Sunday.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; max-width: 320px; } .title { display: block; font-size: 1.25rem; color: steelblue; margin-bottom: 0.5rem; font-weight: normal; } p { margin: 0; color: #555; line-height: 1.5; }",
+			"sandboxCSS": "",
+			"codePrefix": ".title {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "font-weight: bold;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "font-weight",
+						"expected": "bold"
+					},
+					"message": "Setze font-weight auf <kbd>bold</kbd>"
+				}
+			]
+		},
+		{
+			"id": "text-transform",
+			"title": "Großbuchstaben-Labels",
+			"description": "The <kbd>text-transform</kbd> property changes text capitalization without editing the HTML. This keeps content semantic while styling it differently:<br><br>• <kbd>uppercase</kbd> — ALL CAPS (great for labels, buttons)<br>• <kbd>lowercase</kbd> — all lowercase<br>• <kbd>capitalize</kbd> — First Letter Of Each Word<br><br>Combined with <kbd>letter-spacing</kbd>, uppercase text creates a clean, modern label style often used in UI design.",
+			"task": "Style die Tag-Labels. Füge <kbd>text-transform: uppercase</kbd> und <kbd>letter-spacing: 1px</kbd> hinzu.",
+			"previewHTML": "<article>\n  <div class=\"tags\">\n    <span class=\"tag\">Design</span>\n    <span class=\"tag\">CSS</span>\n    <span class=\"tag\">Tutorial</span>\n  </div>\n  <h3>Getting Started with Typography</h3>\n  <p>Learn the fundamentals of web typography in this beginner-friendly guide.</p>\n</article>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; } .tag { background: #e8f4f8; color: steelblue; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; } h3 { margin: 0 0 0.5rem; } p { margin: 0; color: #555; line-height: 1.5; }",
+			"sandboxCSS": "",
+			"codePrefix": ".tag {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "text-transform: uppercase;\n  letter-spacing: 1px;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-transform",
+						"expected": "uppercase"
+					},
+					"message": "Setze text-transform auf <kbd>uppercase</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "letter-spacing",
+						"expected": "1px"
+					},
+					"message": "Setze letter-spacing auf <kbd>1px</kbd>"
+				}
+			]
+		},
+		{
+			"id": "text-decoration",
+			"title": "Text-Dekoration",
+			"description": "The <kbd>text-decoration</kbd> property adds lines to text. Common values:<br><br>• <kbd>underline</kbd> — line below text<br>• <kbd>line-through</kbd> — strikethrough<br>• <kbd>none</kbd> — removes decoration (useful for links)<br><br>You can also style decorations with <kbd>text-decoration-color</kbd> and <kbd>text-decoration-style</kbd>.",
+			"task": "Zeige den alten Preis durchgestrichen. Füge <kbd>text-decoration: line-through</kbd> hinzu.",
+			"previewHTML": "<div class=\"price-box\"><span class=\"old-price\">$49.99</span><span class=\"new-price\">$29.99</span></div>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 1rem; } .price-box { display: flex; gap: 1rem; align-items: center; } .old-price { color: #999; font-size: 1rem; } .new-price { color: coral; font-size: 1.5rem; font-weight: bold; }",
+			"sandboxCSS": "",
+			"codePrefix": ".old-price {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "text-decoration: line-through;",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "text-decoration",
+						"expected": "line-through"
+					},
+					"message": "Setze text-decoration auf <kbd>line-through</kbd>"
+				}
+			]
+		},
+		{
+			"id": "text-shadow",
+			"title": "Text-Schatten",
+			"description": "The <kbd>text-shadow</kbd> property adds shadow effects to text. The syntax is:<br><br><pre>text-shadow: x-offset y-offset blur color;</pre><br>Example: <kbd>text-shadow: 2px 2px 4px gray</kbd> creates a soft shadow offset down and right.",
+			"task": "Gib der Überschrift Tiefe mit <kbd>text-shadow: 2px 2px 4px gray</kbd>.",
+			"previewHTML": "<h1 class=\"hero-title\">Welcome</h1>",
+			"previewBaseCSS": "body { font-family: system-ui; padding: 2rem; background: linear-gradient(135deg, #667eea, #764ba2); } .hero-title { margin: 0; font-size: 3rem; color: white; text-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": ".hero-title {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"previewContainer": "preview-area",
+			"solution": "text-shadow: 2px 2px 4px gray;",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "text-shadow",
+					"message": "Verwende die <kbd>text-shadow</kbd>-Eigenschaft"
+				},
+				{
+					"type": "contains",
+					"value": "2px 2px",
+					"message": "Setze Versatz auf <kbd>2px 2px</kbd>"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,92 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-gradients",
+	"title": "CSS Verläufe",
+	"description": "Erstelle weiche Farbübergänge mit CSS-Verläufen.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "gradients-1",
+			"title": "Linearer Verlauf",
+			"description": "Gradients create smooth transitions between colors. The <kbd>linear-gradient()</kbd> function creates a gradient along a straight line.<br><br><strong>Basic syntax:</strong><br><pre>background: linear-gradient(color1, color2);</pre><br>By default, gradients flow from top to bottom.",
+			"task": "Füge einen Verlauf-Hintergrund von <kbd>coral</kbd> nach <kbd>gold</kbd> hinzu.",
+			"previewHTML": "<div class=\"card\"><h3>Summer Sale</h3><p>Up to 50% off</p></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .card { padding: 2rem; border-radius: 12px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); } .card h3 { margin: 0 0 8px; font-size: 1.5rem; } .card p { margin: 0; opacity: 0.9; }",
+			"sandboxCSS": "",
+			"codePrefix": ".card {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "background: linear-gradient(coral, gold);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "linear-gradient",
+					"message": "Verwende <kbd>linear-gradient()</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "coral",
+					"message": "Setze <kbd>coral</kbd> als erste Farbe"
+				},
+				{
+					"type": "contains",
+					"value": "gold",
+					"message": "Setze <kbd>gold</kbd> als zweite Farbe"
+				}
+			]
+		},
+		{
+			"id": "gradients-2",
+			"title": "Verlauf-Richtung",
+			"description": "Control the gradient direction by adding an angle or keyword before the colors.<br><br><strong>Keywords:</strong> <kbd>to right</kbd>, <kbd>to left</kbd>, <kbd>to bottom right</kbd><br><strong>Angles:</strong> <kbd>45deg</kbd>, <kbd>90deg</kbd>, <kbd>180deg</kbd><br><br><pre>background: linear-gradient(to right, blue, purple);</pre>",
+			"task": "Lass den Verlauf von links nach rechts fließen mit <kbd>to right</kbd>.",
+			"previewHTML": "<button class=\"btn\">Get Started</button>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 2rem; } .btn { padding: 1rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; color: white; cursor: pointer; }",
+			"sandboxCSS": "",
+			"codePrefix": ".btn {\n  background: linear-gradient(",
+			"initialCode": "",
+			"codeSuffix": ", steelblue, mediumseagreen);\n}",
+			"solution": "to right",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "to right",
+					"message": "Füge <kbd>to right</kbd> für die Richtung hinzu"
+				}
+			]
+		},
+		{
+			"id": "gradients-3",
+			"title": "Radialer Verlauf",
+			"description": "The <kbd>radial-gradient()</kbd> function creates a gradient that radiates from a center point outward in a circular or elliptical pattern.<br><br><pre>background: radial-gradient(circle, white, steelblue);</pre><br>Add <kbd>circle</kbd> for a perfect circular gradient.",
+			"task": "Erstelle einen radialen Verlauf von <kbd>white</kbd> zu <kbd>steelblue</kbd>.",
+			"previewHTML": "<div class=\"orb\"></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 2rem; display: flex; justify-content: center; } .orb { width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 8px 32px rgba(70, 130, 180, 0.4); }",
+			"sandboxCSS": "",
+			"codePrefix": ".orb {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "background: radial-gradient(circle, white, steelblue);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "radial-gradient",
+					"message": "Verwende <kbd>radial-gradient()</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "white",
+					"message": "Beginne mit <kbd>white</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "steelblue",
+					"message": "Ende mit <kbd>steelblue</kbd>"
+				}
+			]
+		}
+	]
+}

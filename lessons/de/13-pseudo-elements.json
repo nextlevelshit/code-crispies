@@ -1,0 +1,125 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "css-pseudo-elements",
+	"title": "CSS Pseudo-Elemente",
+	"description": "Erstelle dekorative Elemente und style spezifische Inhaltsteile mit Pseudo-Elementen.",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "pseudo-1",
+			"title": "Das ::before-Element",
+			"description": "Pseudo-elements let you style specific parts of an element. <kbd>::before</kbd> creates a virtual element as the first child.<br><br>It requires the <kbd>content</kbd> property to display anything (even if empty).<br><br><pre>.item::before {\n  content: \"→ \";\n}</pre>",
+			"task": "Füge einen Aufzählungspunkt vor jedem Listenelement mit <kbd>::before</kbd> und <kbd>content: \"• \"</kbd> ein.",
+			"previewHTML": "<ul class=\"list\"><li>First item</li><li>Second item</li><li>Third item</li></ul>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .list { list-style: none; padding: 0; margin: 0; } .list li { padding: 8px 0; }",
+			"sandboxCSS": "",
+			"codePrefix": ".list li::before {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "content: \"• \";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "content",
+					"message": "Verwende die <kbd>content</kbd>-Eigenschaft"
+				},
+				{
+					"type": "contains",
+					"value": "•",
+					"message": "Füge ein Aufzählungszeichen <kbd>•</kbd> hinzu"
+				}
+			]
+		},
+		{
+			"id": "pseudo-2",
+			"title": "::before stylen",
+			"description": "Pseudo-elements can be styled like any element. Add color, size, margins, and more.<br><br><pre>.item::before {\n  content: \"★\";\n  color: gold;\n  margin-right: 8px;\n}</pre>",
+			"task": "Style den Aufzählungspunkt mit <kbd>color: coral</kbd>.",
+			"previewHTML": "<ul class=\"list\"><li>First item</li><li>Second item</li><li>Third item</li></ul>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .list { list-style: none; padding: 0; margin: 0; } .list li { padding: 8px 0; } .list li::before { content: \"• \"; }",
+			"sandboxCSS": "",
+			"codePrefix": ".list li::before {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "color: coral;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "color",
+						"expected": "coral"
+					},
+					"message": "Setze <kbd>color: coral</kbd>"
+				}
+			]
+		},
+		{
+			"id": "pseudo-3",
+			"title": "Das ::after-Element",
+			"description": "<kbd>::after</kbd> works like <kbd>::before</kbd> but inserts content as the last child. Common uses include badges, icons, or decorative elements.<br><br><pre>.new::after {\n  content: \" ✓\";\n  color: green;\n}</pre>",
+			"task": "Füge ein Häkchen nach abgeschlossenen Elementen mit <kbd>content: \" ✓\"</kbd> hinzu.",
+			"previewHTML": "<ul class=\"list\"><li class=\"done\">Buy groceries</li><li class=\"done\">Walk the dog</li><li>Read a book</li></ul>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .list { list-style: none; padding: 0; margin: 0; } .list li { padding: 8px 0; }",
+			"sandboxCSS": "",
+			"codePrefix": ".done::after {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "content: \" ✓\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "content",
+					"message": "Verwende die <kbd>content</kbd>-Eigenschaft"
+				},
+				{
+					"type": "contains",
+					"value": "✓",
+					"message": "Füge ein Häkchen <kbd>✓</kbd> hinzu"
+				}
+			]
+		},
+		{
+			"id": "pseudo-4",
+			"title": "Dekorative Linien",
+			"description": "Pseudo-elements with <kbd>content: \"\"</kbd> can create decorative shapes when combined with width, height, and background.<br><br><pre>.title::after {\n  content: \"\";\n  display: block;\n  width: 50px;\n  height: 3px;\n  background: coral;\n}</pre>",
+			"task": "Erstelle eine Unterstrich-Dekoration mit <kbd>width: 40px</kbd>, <kbd>height: 3px</kbd> und <kbd>background: steelblue</kbd>.",
+			"previewHTML": "<h2 class=\"title\">About Us</h2><p>We build great things.</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .title { margin: 0 0 1rem; } .title::after { content: \"\"; display: block; margin-top: 8px; } p { margin: 0; color: #666; }",
+			"sandboxCSS": "",
+			"codePrefix": ".title::after {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "width: 40px;\n  height: 3px;\n  background: steelblue;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "width",
+						"expected": "40px"
+					},
+					"message": "Setze <kbd>width: 40px</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "height",
+						"expected": "3px"
+					},
+					"message": "Setze <kbd>height: 3px</kbd>"
+				},
+				{
+					"type": "property_value",
+					"value": {
+						"property": "background",
+						"expected": "steelblue"
+					},
+					"message": "Setze <kbd>background: steelblue</kbd>"
+				}
+			]
+		}
+	]
+}
