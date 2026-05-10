@@ -245,6 +245,16 @@ function wireOnboarding() {
 		if (e.target === dialog) close("backdrop");
 	});
 
+	// Expose a replay handle for the settings "Replay" button.
+	function replay() {
+		stepIdx = 0;
+		render();
+		try {
+			dialog.showModal();
+			track("onboarding_open");
+		} catch (_) {}
+	}
+
 	// Show only on first visit: no onboarded flag AND no recorded progress.
 	let onboarded = false;
 	try { onboarded = localStorage.getItem("codeCrispies.onboarded") === "1"; } catch (_) {}
@@ -252,17 +262,15 @@ function wireOnboarding() {
 		(k) => (lessonEngine.userProgress[k]?.completed?.length || 0) > 0
 	);
 	if (!onboarded && !hasProgress) {
-		stepIdx = 0;
-		render();
 		// Defer to next frame so the page paints first
-		requestAnimationFrame(() => {
-			try {
-				dialog.showModal();
-				track("onboarding_open");
-			} catch (_) {}
-		});
+		requestAnimationFrame(replay);
 	}
+	return { replay };
 }
+
+// Module-scoped handle so the "Replay" settings button can re-open the
+// tour without rewiring listeners (which would double-bind).
+let _onboardingHandle = null;
 
 // Track CodeMirror views for cleanup
 let sectionCodeViews = [];
@@ -3461,7 +3469,18 @@ function init() {
 
 	// Onboarding tour — shown once on first visit when user has no progress.
 	// 5 steps; localStorage flag prevents re-showing after Skip / completion.
-	wireOnboarding();
+	_onboardingHandle = wireOnboarding();
+
+	// Replay onboarding from settings — clears flag + re-shows tour
+	// without rewiring listeners (the wireOnboarding handle is reused).
+	document.getElementById("reset-onboarding-btn")?.addEventListener("click", () => {
+		try { localStorage.removeItem("codeCrispies.onboarded"); } catch (_) {}
+		closeSidebar();  // dismiss the settings drawer
+		requestAnimationFrame(() => {
+			_onboardingHandle?.replay();
+			track("onboarding_replay");
+		});
+	});
 
 	// Click on editor content to focus CodeMirror
 	elements.editorContent?.addEventListener("click", () => {
