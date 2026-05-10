@@ -31,7 +31,8 @@ const ORIGIN = "https://codecrispi.es";
 
 // Wire highlight.js into marked: detect language from fence, fall
 // back to auto-detect, leave classes in place so the post stylesheet
-// can theme them.
+// can theme them. Each code block also gets a copy-to-clipboard
+// button (data-raw stores the unescaped source for clipboard write).
 marked.use({
 	renderer: {
 		code({ text, lang }) {
@@ -50,7 +51,9 @@ marked.use({
 					.replace(/>/g, "&gt;");
 			}
 			const cls = langClass ? ` language-${langClass}` : "";
-			return `<pre class="hljs"><code class="hljs${cls}">${html}</code></pre>\n`;
+			const langLabel = langClass ? `<span class="cb-lang">${langClass}</span>` : "";
+			const rawAttr = text.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+			return `<div class="code-block-wrap"><pre class="hljs"><code class="hljs${cls}">${html}</code></pre>${langLabel}<button class="cb-copy" type="button" data-raw="${rawAttr}" aria-label="Copy code">copy</button></div>\n`;
 		}
 	}
 });
@@ -108,7 +111,14 @@ const SHARED_STYLES = `
   header.site nav a:hover { color: #4f46e5; }
   footer.site { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: .9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
   /* highlight.js base — github-light theme tokens, trimmed */
-  pre.hljs { background: #0f172a; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: 8px; overflow-x: auto; font-size: .9rem; line-height: 1.55; margin: 1.25rem 0; }
+  .code-block-wrap { position: relative; margin: 1.25rem 0; }
+  .code-block-wrap pre.hljs { margin: 0; }
+  .cb-lang { position: absolute; top: 8px; right: 64px; font-size: .7rem; font-family: "SFMono-Regular", monospace; color: rgba(226,232,240,.5); letter-spacing: .05em; text-transform: uppercase; pointer-events: none; }
+  .cb-copy { position: absolute; top: 8px; right: 8px; padding: 3px 10px; font-size: .75rem; font-family: inherit; background: rgba(255,255,255,.08); color: #e2e8f0; border: 1px solid rgba(255,255,255,.15); border-radius: 4px; cursor: pointer; opacity: 0; transition: opacity .15s, background .15s; }
+  .code-block-wrap:hover .cb-copy, .cb-copy:focus-visible { opacity: 1; }
+  .cb-copy:hover { background: rgba(255,255,255,.18); }
+  .cb-copy.copied { background: #10b981; border-color: #10b981; color: white; opacity: 1; }
+  pre.hljs { background: #0f172a; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: 8px; overflow-x: auto; font-size: .9rem; line-height: 1.55; }
   pre.hljs code { background: transparent; padding: 0; color: inherit; font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
   .hljs-keyword, .hljs-selector-tag, .hljs-meta { color: #c4b5fd; }
   .hljs-string, .hljs-attr-value, .hljs-symbol, .hljs-bullet { color: #86efac; }
@@ -238,6 +248,25 @@ ${JSON.stringify({
   <span>← <a href="/blog/">All posts</a></span>
   <span><a href="/blog/rss.xml">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
 </footer>
+<script>
+// Code-block copy buttons. Inline so blog pages stay self-contained
+// (no extra HTTP request). Decodes data-raw entities and writes to
+// clipboard; flashes "copied" for 1.5s.
+document.querySelectorAll(".cb-copy").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const raw = (btn.dataset.raw || "").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+    try {
+      await navigator.clipboard.writeText(raw);
+      btn.classList.add("copied");
+      const old = btn.textContent;
+      btn.textContent = "copied";
+      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = old; }, 1500);
+    } catch {
+      btn.textContent = "press Ctrl+C";
+    }
+  });
+});
+</script>
 </body>
 </html>
 `;
