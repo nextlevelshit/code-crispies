@@ -122,6 +122,9 @@
 						<a href="/javascript" class="nav-link" data-section="javascript">JavaScript</a>
 						<a href="/reference/css" class="nav-link nav-link-ref" data-section="reference">Reference</a>
 					</nav>
+					<button id="search-btn" class="search-toggle" aria-label="Search lessons" title="Search lessons">
+						<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="m11 11 3 3"/></svg>
+					</button>
 					<button id="auth-trigger-header" class="btn btn-outline btn-sm" data-i18n="authLogin">Log In</button>
 					<span id="user-email-header" class="user-email hidden"></span>
 					<button id="help-btn" class="help-toggle" data-i18n-aria-label="help" aria-label="Help">?</button>
@@ -736,6 +739,27 @@
 						<button id="cancel-delete" class="btn" data-i18n="cancel">Cancel</button>
 						<button id="confirm-delete" class="btn btn-danger" data-i18n="authDeleteConfirm">Delete Account</button>
 					</div>
+				</div>
+			</dialog>
+
+			<!-- Lesson Search Dialog -->
+			<dialog id="search-dialog" class="dialog search-dialog">
+				<div class="dialog-header">
+					<h3>Search lessons</h3>
+					<button id="search-dialog-close" class="dialog-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="dialog-content">
+					<input
+						id="search-input"
+						type="search"
+						class="search-input"
+						placeholder="Search modules, lessons…"
+						autocomplete="off"
+						spellcheck="false"
+						aria-label="Search query"
+					/>
+					<ul id="search-results" class="search-results" role="listbox" aria-label="Search results"></ul>
+					<p id="search-empty" class="search-empty" hidden>No lessons match. Try fewer characters.</p>
 				</div>
 			</dialog>
 

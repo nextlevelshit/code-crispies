@@ -3103,6 +3103,100 @@ function init() {
 		btn.addEventListener("click", () => shareToPlatform(btn.dataset.platform));
 	});
 
+	// Search dialog (header search button → opens dialog with fuzzy lesson search)
+	const searchBtn = document.getElementById("search-btn");
+	const searchDialog = document.getElementById("search-dialog");
+	const searchClose = document.getElementById("search-dialog-close");
+	const searchInput = document.getElementById("search-input");
+	const searchResults = document.getElementById("search-results");
+	const searchEmpty = document.getElementById("search-empty");
+	if (searchBtn && searchDialog && searchInput && searchResults) {
+		searchBtn.addEventListener("click", () => {
+			renderSearchResults("");
+			searchDialog.showModal();
+			// Defer focus to next frame so dialog is fully open
+			requestAnimationFrame(() => searchInput.focus());
+			track("search_open");
+		});
+		searchClose?.addEventListener("click", () => searchDialog.close());
+		searchDialog.addEventListener("click", (e) => {
+			if (e.target === searchDialog) searchDialog.close();
+		});
+		searchInput.addEventListener("input", () => renderSearchResults(searchInput.value));
+		// Click on a result → close dialog and let SPA click-interceptor handle navigation
+		searchResults.addEventListener("click", (e) => {
+			const link = e.target.closest("a[data-search-result]");
+			if (link) {
+				track("search_select", { q: searchInput.value, target: link.getAttribute("href") });
+				searchDialog.close();
+			}
+		});
+		// Arrow-key navigation between results
+		searchInput.addEventListener("keydown", (e) => {
+			if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+				const items = searchResults.querySelectorAll("a[data-search-result]");
+				if (items.length === 0) return;
+				e.preventDefault();
+				const target = e.key === "ArrowDown" ? items[0] : items[items.length - 1];
+				target.focus();
+			}
+		});
+		searchResults.addEventListener("keydown", (e) => {
+			if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+			const items = [...searchResults.querySelectorAll("a[data-search-result]")];
+			const i = items.indexOf(e.target);
+			if (i === -1) return;
+			e.preventDefault();
+			const next = e.key === "ArrowDown" ? items[i + 1] : items[i - 1];
+			(next || searchInput).focus();
+		});
+	}
+
+	function renderSearchResults(query) {
+		const q = query.trim().toLowerCase();
+		const modules = lessonEngine.modules || [];
+		// Score: 0 = no match, higher = better. Module-title match scores 2,
+		// lesson-title match scores 1. Empty query → list all modules + first 30 lessons.
+		const matches = [];
+		for (const m of modules) {
+			if (m.excludeFromProgress) continue;
+			const moduleTitle = m.title || m.id;
+			const moduleHit = !q || moduleTitle.toLowerCase().includes(q);
+			if (moduleHit) {
+				matches.push({
+					href: `/${m.id}/0/`,
+					title: moduleTitle,
+					sub: `Module · ${m.lessons?.length || 0} lessons`,
+					score: 2 + (q && moduleTitle.toLowerCase().startsWith(q) ? 1 : 0)
+				});
+			}
+			for (let i = 0; i < (m.lessons?.length || 0); i++) {
+				const l = m.lessons[i];
+				const title = l.title || `Lesson ${i + 1}`;
+				if (q && title.toLowerCase().includes(q)) {
+					matches.push({
+						href: `/${m.id}/${i}/`,
+						title,
+						sub: moduleTitle,
+						score: 1 + (title.toLowerCase().startsWith(q) ? 0.5 : 0)
+					});
+				}
+			}
+		}
+		matches.sort((a, b) => b.score - a.score);
+		const top = matches.slice(0, 30);
+		searchResults.innerHTML = top
+			.map(
+				(r) =>
+					`<li><a href="${escapeAttr(r.href)}" data-search-result tabindex="-1">
+						<strong>${escapeAttr(r.title)}</strong>
+						<span class="search-result-sub">${escapeAttr(r.sub)}</span>
+					</a></li>`
+			)
+			.join("");
+		if (searchEmpty) searchEmpty.hidden = top.length !== 0 || !q;
+	}
+
 	// Legal dialogs (Privacy & Imprint)
 	const privacyDialog = document.getElementById("privacy-dialog");
 	const imprintDialog = document.getElementById("imprint-dialog");
