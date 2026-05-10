@@ -4489,3 +4489,23 @@ body[data-section="javascript"] #lesson-title {
 	outline: 2px solid var(--primary-color);
 	outline-offset: 2px;
 }
+
+/* ================= LANDING CONTINUE =================
+   Reuses .section-modules / .module-cards-grid styles; this just bounds
+   the container width and adds vertical spacing on the landing layout. */
+.landing-continue {
+	max-width: 1100px;
+	margin: 2.5rem auto 0;
+	padding: 0 1.5rem;
+}
+.landing-continue[hidden] { display: none; }
+.landing-continue .section-modules-heading {
+	font-size: 1.5rem;
+	color: var(--text-color);
+	margin: 0 0 1.25rem;
+}
+.landing-continue .module-cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1rem;
+}

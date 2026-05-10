@@ -2638,8 +2638,41 @@ function showLandingPage() {
 	// Render footer lesson links
 	renderFooterLessonLinks();
 
+	// Render in-progress module cards (hidden if user has no progress)
+	renderLandingContinue();
+
 	// Scroll to top after content is rendered
 	requestAnimationFrame(() => window.scrollTo(0, 0));
+}
+
+/**
+ * Render "Continue your journey" cards on landing — modules where the
+ * user has started but not finished. Reuses renderSectionModuleCards()
+ * so the visual matches per-section landings. Hidden entirely if no
+ * in-progress modules (first-visit / cleared state).
+ */
+function renderLandingContinue() {
+	const container = document.getElementById("landing-continue");
+	if (!container) return;
+	const modules = lessonEngine.modules || [];
+	const progress = lessonEngine.userProgress || {};
+	const inProgress = modules.filter((m) => {
+		if (m.excludeFromProgress) return false;
+		const p = progress[m.id];
+		if (!p?.completed?.length) return false;
+		return p.completed.length < (m.lessons?.length || 0);
+	});
+	if (inProgress.length === 0) {
+		container.hidden = true;
+		container.innerHTML = "";
+		return;
+	}
+	container.hidden = false;
+	// Reuse the per-section card renderer; it already does scoring + CTA logic
+	container.innerHTML = renderSectionModuleCards(inProgress, progress).replace(
+		"Modules in this section",
+		"Continue your journey"
+	);
 }
 
 /**
@@ -2935,33 +2968,28 @@ function showLessonUI() {
  * Update nav link highlighting
  */
 function updateNavHighlight(route) {
-	if (!elements.mainNav) return;
-
-	const navLinks = elements.mainNav.querySelectorAll(".nav-link");
-	navLinks.forEach((link) => {
-		link.classList.remove("active");
-		link.removeAttribute("aria-current");
-
-		let isActive = false;
-		if (route?.type === RouteType.SECTION && link.dataset.section === route.sectionId) {
-			isActive = true;
-		} else if (route?.type === RouteType.REFERENCE && link.dataset.section === "reference") {
-			isActive = true;
-		} else if (route?.type === RouteType.LESSON) {
-			// Highlight section based on module's inferred section
-			// Skip highlighting for modules excluded from progress (welcome, playground, goodbye)
-			const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
-			if (module && !module.excludeFromProgress) {
-				const moduleSection = getModuleSection(module);
-				if (link.dataset.section === moduleSection) {
-					isActive = true;
-				}
-			}
+	// Resolve the active section ID once, then apply to every nav surface
+	// (main-nav header, sidebar-nav-link mobile drawer, footer-section-group).
+	let activeSection = null;
+	if (route?.type === RouteType.SECTION) {
+		activeSection = route.sectionId;
+	} else if (route?.type === RouteType.REFERENCE) {
+		activeSection = "reference";
+	} else if (route?.type === RouteType.LESSON) {
+		const module = lessonEngine.modules.find((m) => m.id === route.moduleId);
+		if (module && !module.excludeFromProgress) {
+			activeSection = getModuleSection(module);
 		}
+	}
 
+	const allNavLinks = document.querySelectorAll(".nav-link[data-section], .sidebar-nav-link[data-section]");
+	allNavLinks.forEach((link) => {
+		const isActive = link.dataset.section === activeSection;
+		link.classList.toggle("active", isActive);
 		if (isActive) {
-			link.classList.add("active");
 			link.setAttribute("aria-current", "page");
+		} else {
+			link.removeAttribute("aria-current");
 		}
 	});
 }
