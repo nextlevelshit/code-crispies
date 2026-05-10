@@ -85,6 +85,31 @@ export const progressDB = {
     );
     return { error };
   },
+
+  /**
+   * Subscribe to realtime updates on the user's progress row.
+   * Other-device edits (or other tabs of same device) trigger onUpdate(payload).
+   * Returns an unsubscribe function.
+   */
+  subscribeToChanges(userId, onUpdate) {
+    if (!supabase) return () => {};
+    const channel = supabase
+      .channel(`user_progress:${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "user_progress",
+          filter: `user_id=eq.${userId}`,
+        },
+        (payload) => {
+          if (payload.new) onUpdate(payload.new);
+        }
+      )
+      .subscribe();
+    return () => supabase.removeChannel(channel);
+  },
 };
 
 // Newsletter subscription helper

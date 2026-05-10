@@ -4433,6 +4433,33 @@ body[data-section="javascript"] #lesson-title {
 .search-toggle:hover { border-color: var(--primary-color); color: var(--primary-color); }
 .search-toggle:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
 
+/* ================= SYNC INDICATOR =================
+   Tiny status dot in header. Hover for tooltip; aria-live announces. */
+.sync-indicator {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	display: inline-block;
+	background: var(--border-color);
+	transition: background 0.2s;
+	flex-shrink: 0;
+	cursor: help;
+}
+.sync-indicator[data-state="local"] { background: #9ca3af; }
+.sync-indicator[data-state="syncing"] {
+	background: #f59e0b;
+	animation: sync-pulse 1.2s ease-in-out infinite;
+}
+.sync-indicator[data-state="synced"] { background: #10b981; }
+.sync-indicator[data-state="error"] { background: var(--danger-color); }
+@keyframes sync-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.4; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.sync-indicator { animation: none !important; }
+}
+
 .search-dialog { width: min(560px, 90vw); padding: 0; border: 1px solid var(--border-color); border-radius: 12px; }
 .search-dialog::backdrop { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(2px); }
 .search-input {

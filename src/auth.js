@@ -13,6 +13,29 @@ let lessonEngineRef = null;
 let authModule = null;
 let progressModule = null;
 let supabaseAvailable = false;
+let realtimeUnsub = null;
+
+/**
+ * Set sync indicator state in the header. Reads-only DOM, never throws —
+ * if the indicator element is missing (older HTML), sync still works.
+ *   "local"   → no cloud session (gray)
+ *   "syncing" → in-flight upsert/pull (yellow, pulsing)
+ *   "synced"  → last op succeeded (green)
+ *   "error"   → last op failed (red)
+ */
+function setSyncStatus(state) {
+  const el = document.getElementById("sync-indicator");
+  if (!el) return;
+  el.dataset.state = state;
+  const labels = {
+    local: "Local only — log in to sync",
+    syncing: "Syncing…",
+    synced: "Synced",
+    error: "Sync failed — will retry"
+  };
+  el.title = labels[state] || state;
+  el.setAttribute("aria-label", labels[state] || state);
+}
 
 /**
  * Check for OAuth callback tokens in URL hash BEFORE router runs.
@@ -125,11 +148,21 @@ function hideAuthUI() {
 async function handleLogin(user) {
   currentUser = user;
   updateAuthUI(user);
+  setSyncStatus("syncing");
 
-  if (!progressModule) return;
+  if (!progressModule) {
+    setSyncStatus("local");
+    return;
+  }
 
   // Load cloud progress
-  const { data } = await progressModule.load(user.id);
+  const { data, error } = await progressModule.load(user.id);
+
+  if (error && error.code !== "PGRST116") {
+    // PGRST116 = no row yet (first login). Other errors are real failures.
+    setSyncStatus("error");
+    return;
+  }
 
   if (data) {
     // Merge with localStorage (cloud wins for conflicts)
@@ -138,11 +171,34 @@ async function handleLogin(user) {
     // First login: upload localStorage to cloud
     await syncToCloud();
   }
+
+  // Subscribe to realtime updates so other-device + other-tab edits
+  // propagate without manual refresh.
+  if (realtimeUnsub) realtimeUnsub();
+  realtimeUnsub = progressModule.subscribeToChanges(user.id, (row) => {
+    // Avoid clobbering our own writes — Supabase echoes self-writes back via
+    // the channel; updated_at timestamps converge but content is identical,
+    // so mergeProgress is idempotent in that case.
+    mergeProgress({
+      progress: row.progress,
+      user_code: row.user_code,
+      settings: row.settings,
+      language: row.language
+    });
+    setSyncStatus("synced");
+  });
+
+  setSyncStatus("synced");
 }
 
 function handleLogout() {
   currentUser = null;
   updateAuthUI(null);
+  if (realtimeUnsub) {
+    realtimeUnsub();
+    realtimeUnsub = null;
+  }
+  setSyncStatus("local");
   // Keep localStorage progress, just disconnect from cloud
 }
 
@@ -180,6 +236,8 @@ function updateAuthUI(user) {
 export async function syncToCloud() {
   if (!currentUser || !progressModule) return;
 
+  setSyncStatus("syncing");
+
   const progress = JSON.parse(
     localStorage.getItem("codeCrispies.progress") || "{}"
   );
@@ -192,7 +250,8 @@ export async function syncToCloud() {
   );
   const language = localStorage.getItem("codeCrispies.language") || "en";
 
-  await progressModule.save(currentUser.id, progress, userCode, settings, language);
+  const { error } = await progressModule.save(currentUser.id, progress, userCode, settings, language);
+  setSyncStatus(error ? "error" : "synced");
 }
 
 function mergeProgress(cloudData) {
