@@ -425,18 +425,30 @@ function rssFeed(posts) {
 		.map((p) => {
 			const url = `${ORIGIN}/blog/${p.meta.slug}/`;
 			const pubDate = new Date(`${p.meta.date}T12:00:00Z`).toUTCString();
+			const tags = Array.isArray(p.meta.tags) ? p.meta.tags : [];
+			// Render full post body to HTML for content:encoded. Marked
+			// emits absolute origins for the relative links in posts via
+			// a baseUrl-style rewrite below.
+			const html = marked
+				.parse(p.body)
+				// Make relative links absolute so feed-readers don't 404.
+				.replace(/href="\/(?!\/)/g, `href="${ORIGIN}/`);
+			// CDATA escape: only need to break "]]>" sequences.
+			const cdata = html.replace(/]]>/g, "]]]]><![CDATA[>");
+			const categories = tags.map((t) => `      <category>${escapeHtml(t)}</category>`).join("\n");
 			return `    <item>
       <title>${escapeHtml(p.meta.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${escapeHtml(p.meta.description || "")}</description>
+${categories ? categories + "\n" : ""}      <content:encoded><![CDATA[${cdata}]]></content:encoded>
     </item>`;
 		})
 		.join("\n");
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Code Crispies Blog</title>
     <link>${ORIGIN}/blog/</link>
