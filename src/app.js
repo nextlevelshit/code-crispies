@@ -3432,6 +3432,26 @@ function init() {
 		});
 	});
 
+	// Email-reveal: spam-resistant pattern. Email parts (user, domain) live
+	// in data-attrs only — never concatenated in static HTML. On click, we
+	// build the address + replace the button with a real mailto link the
+	// user can click again to launch their MUA. Crawlers see "mail" and
+	// "codecrispi.es" as separate strings, never the joined address.
+	document.querySelectorAll(".email-reveal").forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const u = btn.dataset.u || "";
+			const d = btn.dataset.d || "";
+			if (!u || !d) return;
+			const addr = `${u}@${d}`; // @ = @, defer concatenation a beat
+			const a = document.createElement("a");
+			a.href = `mailto:${addr}`;
+			a.textContent = addr;
+			a.className = "email-revealed";
+			btn.replaceWith(a);
+			track("email_reveal");
+		});
+	});
+
 	document.querySelector(".privacy-dialog-close")?.addEventListener("click", () => {
 		privacyDialog?.close();
 	});

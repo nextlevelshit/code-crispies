@@ -167,7 +167,7 @@ const translations = {
 		newsletterPlaceholder: "your@email.com",
 		newsletterButton: "Notify Me",
 		newsletterThanks: "Thanks! We'll keep you posted.",
-		newsletterDisclaimer: "Max once a week. Unsubscribe anytime via mail@codecrispi.es",
+		newsletterDisclaimer: "Max once a week. Unsubscribe anytime — see Imprint for contact.",
 
 		// Device Notice
 		deviceNotice: "<strong>Best on desktop or tablet (landscape).</strong> Mobile works, but larger screens make coding easier.",
@@ -195,7 +195,7 @@ const translations = {
 		privacyNoTrackingTitle: "No Tracking",
 		privacyNoTrackingText: "We do not use cookies for tracking, analytics, or advertising. We do not share your data with third parties.",
 		privacyRightsTitle: "Your Rights (GDPR)",
-		privacyRightsText: "You can delete your account and all associated data at any time from the sidebar menu. For questions or data requests, contact us at mail@codecrispi.es",
+		privacyRightsText: "You can delete your account and all associated data at any time from the sidebar menu. For questions or data requests, see the contact link in the Imprint.",
 		privacyUpdated: "Last updated: January 2025",
 
 		// Imprint
@@ -401,7 +401,7 @@ const translations = {
 		newsletterPlaceholder: "deine@email.de",
 		newsletterButton: "Benachrichtigen",
 		newsletterThanks: "Danke! Wir halten dich auf dem Laufenden.",
-		newsletterDisclaimer: "Max. einmal pro Woche. Jederzeit abmelden über mail@codecrispi.es",
+		newsletterDisclaimer: "Max. einmal pro Woche. Abmelden jederzeit — Kontakt im Impressum.",
 
 		// Device Notice
 		deviceNotice: "<strong>Am besten auf Desktop oder Tablet (Querformat).</strong> Mobil funktioniert, aber größere Bildschirme machen das Coden einfacher.",
@@ -427,7 +427,7 @@ const translations = {
 		privacyNoTrackingTitle: "Kein Tracking",
 		privacyNoTrackingText: "Wir verwenden keine Cookies für Tracking, Analytik oder Werbung. Wir teilen deine Daten nicht mit Dritten.",
 		privacyRightsTitle: "Deine Rechte (DSGVO)",
-		privacyRightsText: "Du kannst dein Konto und alle zugehörigen Daten jederzeit über das Seitenmenü löschen. Bei Fragen: mail@codecrispi.es",
+		privacyRightsText: "Du kannst dein Konto und alle zugehörigen Daten jederzeit über das Seitenmenü löschen. Bei Fragen oder Datenanfragen siehe Kontakt im Impressum.",
 		privacyUpdated: "Zuletzt aktualisiert: Januar 2025",
 		imprintTitle: "Impressum",
 		imprintResponsibleTitle: "Verantwortlich für den Inhalt",
@@ -631,7 +631,7 @@ const translations = {
 		newsletterPlaceholder: "twoj@email.pl",
 		newsletterButton: "Powiadom mnie",
 		newsletterThanks: "Dzięki! Będziemy informować.",
-		newsletterDisclaimer: "Maks. raz w tygodniu. Wypisz się w dowolnym momencie przez mail@codecrispi.es",
+		newsletterDisclaimer: "Maks. raz w tygodniu. Wypisz się w dowolnym momencie — kontakt w Stopce redakcyjnej.",
 
 		// Device Notice
 		deviceNotice: "<strong>Najlepiej na komputerze lub tablecie (poziomo).</strong> Na telefonie też działa, ale większy ekran ułatwia kodowanie.",
@@ -657,7 +657,7 @@ const translations = {
 		privacyNoTrackingTitle: "Brak śledzenia",
 		privacyNoTrackingText: "Nie używamy plików cookie do śledzenia, analityki ani reklam. Nie udostępniamy danych osobom trzecim.",
 		privacyRightsTitle: "Twoje prawa (RODO)",
-		privacyRightsText: "Możesz usunąć swoje konto i wszystkie powiązane dane w dowolnym momencie z menu bocznego. Pytania: mail@codecrispi.es",
+		privacyRightsText: "Możesz usunąć swoje konto i wszystkie powiązane dane w dowolnym momencie z menu bocznego. W sprawie pytań — kontakt w Stopce redakcyjnej.",
 		privacyUpdated: "Ostatnia aktualizacja: styczeń 2025",
 		imprintTitle: "Informacje prawne",
 		imprintResponsibleTitle: "Odpowiedzialny za treść",
@@ -863,7 +863,7 @@ const translations = {
 		newsletterPlaceholder: "tu@email.com",
 		newsletterButton: "Notificarme",
 		newsletterThanks: "¡Gracias! Te mantendremos informado.",
-		newsletterDisclaimer: "Máximo una vez por semana. Cancela cuando quieras vía mail@codecrispi.es",
+		newsletterDisclaimer: "Máximo una vez por semana. Cancela cuando quieras — contacto en el Aviso legal.",
 
 		// Device Notice
 		deviceNotice: "<strong>Mejor en escritorio o tablet (horizontal).</strong> Funciona en móvil, pero pantallas más grandes facilitan la programación.",
@@ -889,7 +889,7 @@ const translations = {
 		privacyNoTrackingTitle: "Sin rastreo",
 		privacyNoTrackingText: "No usamos cookies para rastreo, analíticas o publicidad. No compartimos tus datos con terceros.",
 		privacyRightsTitle: "Tus derechos (RGPD)",
-		privacyRightsText: "Puedes eliminar tu cuenta y todos los datos asociados en cualquier momento desde el menú lateral. Contacto: mail@codecrispi.es",
+		privacyRightsText: "Puedes eliminar tu cuenta y todos los datos asociados en cualquier momento desde el menú lateral. Para consultas, ver contacto en el Aviso legal.",
 		privacyUpdated: "Última actualización: enero 2025",
 		imprintTitle: "Aviso legal",
 		imprintResponsibleTitle: "Responsable del contenido",
@@ -1090,7 +1090,7 @@ const translations = {
 		newsletterPlaceholder: "بريدك@email.com",
 		newsletterButton: "أبلغني",
 		newsletterThanks: "شكراً! سنبقيك على اطلاع.",
-		newsletterDisclaimer: "مرة واحدة أسبوعياً كحد أقصى. إلغاء الاشتراك في أي وقت عبر mail@codecrispi.es",
+		newsletterDisclaimer: "مرة واحدة أسبوعياً كحد أقصى. إلغاء الاشتراك في أي وقت — جهة الاتصال في بيان الناشر.",
 
 		// Device Notice
 		deviceNotice: "<strong>أفضل على الكمبيوتر أو الجهاز اللوحي (أفقي).</strong> يعمل على الجوال، لكن الشاشات الأكبر تسهّل البرمجة.",
@@ -1116,7 +1116,7 @@ const translations = {
 		privacyNoTrackingTitle: "بدون تتبع",
 		privacyNoTrackingText: "لا نستخدم ملفات تعريف الارتباط للتتبع أو التحليلات أو الإعلانات. لا نشارك بياناتك مع أطراف ثالثة.",
 		privacyRightsTitle: "حقوقك (GDPR)",
-		privacyRightsText: "يمكنك حذف حسابك وجميع البيانات المرتبطة في أي وقت من القائمة الجانبية. للاستفسارات: mail@codecrispi.es",
+		privacyRightsText: "يمكنك حذف حسابك وجميع البيانات المرتبطة في أي وقت من القائمة الجانبية. للاستفسارات: انظر جهة الاتصال في بيان الناشر.",
 		privacyUpdated: "آخر تحديث: يناير 2025",
 		imprintTitle: "البيانات القانونية",
 		imprintResponsibleTitle: "المسؤول عن المحتوى",
@@ -1319,7 +1319,7 @@ const translations = {
 		newsletterPlaceholder: "ваш@email.com",
 		newsletterButton: "Повідомити мене",
 		newsletterThanks: "Дякуємо! Ми будемо тримати вас в курсі.",
-		newsletterDisclaimer: "Максимум раз на тиждень. Відписатися можна будь-коли через mail@codecrispi.es",
+		newsletterDisclaimer: "Максимум раз на тиждень. Відписатися можна будь-коли — контакт у вихідних даних.",
 
 		// Device Notice
 		deviceNotice: "<strong>Найкраще на комп'ютері або планшеті (горизонтально).</strong> На телефоні теж працює, але більший екран полегшує програмування.",
@@ -1345,7 +1345,7 @@ const translations = {
 		privacyNoTrackingTitle: "Без відстеження",
 		privacyNoTrackingText: "Ми не використовуємо файли cookie для відстеження, аналітики чи реклами. Ми не ділимося твоїми даними з третіми сторонами.",
 		privacyRightsTitle: "Твої права (GDPR)",
-		privacyRightsText: "Ти можеш видалити свій акаунт і всі пов'язані дані в будь-який час з бічного меню. Питання: mail@codecrispi.es",
+		privacyRightsText: "Ти можеш видалити свій акаунт і всі пов'язані дані в будь-який час з бічного меню. Питання — контакт у вихідних даних.",
 		privacyUpdated: "Останнє оновлення: січень 2025",
 		imprintTitle: "Правова інформація",
 		imprintResponsibleTitle: "Відповідальний за вміст",

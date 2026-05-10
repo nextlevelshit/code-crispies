@@ -4433,6 +4433,24 @@ body[data-section="javascript"] #lesson-title {
 .search-toggle:hover { border-color: var(--primary-color); color: var(--primary-color); }
 .search-toggle:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
 
+/* ================= EMAIL REVEAL =================
+   Spam-resistant click-to-reveal pattern used inside imprint dialog.
+   Email parts live in data-attrs only; concatenation happens on click. */
+.email-reveal {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	font: inherit;
+	color: var(--primary-color);
+	cursor: pointer;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.email-reveal:hover { color: var(--primary-dark); }
+.email-reveal:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; border-radius: 2px; }
+.email-reveal-text { font-style: italic; opacity: 0.85; }
+.email-revealed { color: var(--primary-color); }
+
 /* ================= SYNC INDICATOR =================
    Tiny status dot in header. Hover for tooltip; aria-live announces. */
 .sync-indicator {
