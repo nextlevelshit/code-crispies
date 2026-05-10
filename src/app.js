@@ -62,6 +62,73 @@ document.addEventListener("securitypolicyviolation", (e) => {
 	}
 });
 
+// Web Vitals — bucket the value (avoid noisy umami events with raw ms).
+// Buckets follow Google's good/needs-improvement/poor thresholds so the
+// dashboard can report % of sessions in each bucket.
+function _webVitalBucket(name, value) {
+	const t = {
+		LCP: [2500, 4000],
+		INP: [200, 500],
+		CLS: [0.1, 0.25],
+		FCP: [1800, 3000],
+		TTFB: [800, 1800]
+	}[name];
+	if (!t) return "unknown";
+	if (value <= t[0]) return "good";
+	if (value <= t[1]) return "needs-improvement";
+	return "poor";
+}
+function _emitVital(name, value) {
+	track("web_vital", {
+		metric: name,
+		bucket: _webVitalBucket(name, value),
+		value: Math.round(value),
+		path: window.location.pathname
+	});
+}
+try {
+	// LCP — largest paint within the viewport. Last entry before user
+	// interaction wins.
+	new PerformanceObserver((list) => {
+		const entries = list.getEntries();
+		_emitVital("LCP", entries[entries.length - 1].renderTime || entries[entries.length - 1].loadTime || 0);
+	}).observe({ type: "largest-contentful-paint", buffered: true });
+
+	// CLS — sum of all unexpected layout shifts in a 1s window
+	let clsValue = 0;
+	new PerformanceObserver((list) => {
+		for (const entry of list.getEntries()) {
+			if (!entry.hadRecentInput) clsValue += entry.value;
+		}
+	}).observe({ type: "layout-shift", buffered: true });
+	addEventListener("visibilitychange", () => {
+		if (document.visibilityState === "hidden" && clsValue > 0) {
+			_emitVital("CLS", clsValue * 1000); // 0.05 → 50, fits int rounding
+		}
+	}, { once: true });
+
+	// INP — slowest interaction-to-next-paint observed
+	let worstINP = 0;
+	new PerformanceObserver((list) => {
+		for (const entry of list.getEntries()) {
+			if (entry.duration > worstINP) worstINP = entry.duration;
+		}
+	}).observe({ type: "event", buffered: true, durationThreshold: 16 });
+	addEventListener("visibilitychange", () => {
+		if (document.visibilityState === "hidden" && worstINP > 0) _emitVital("INP", worstINP);
+	}, { once: true });
+
+	// FCP + TTFB from the navigation entry
+	const nav = performance.getEntriesByType("navigation")[0];
+	if (nav) _emitVital("TTFB", nav.responseStart);
+	new PerformanceObserver((list) => {
+		const fcp = list.getEntries().find((e) => e.name === "first-contentful-paint");
+		if (fcp) _emitVital("FCP", fcp.startTime);
+	}).observe({ type: "paint", buffered: true });
+} catch {
+	// PerformanceObserver missing in old browsers — silent skip.
+}
+
 // Simplified state - LessonEngine now manages lesson state and progress
 const state = {
 	userSettings: {
