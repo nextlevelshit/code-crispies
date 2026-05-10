@@ -1,1 +1,74 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "Code Crispies — Interactive CSS, HTML, JS Lessons",
+  "short_name": "Code Crispies",
+  "description": "Hands-on web-development lessons. Write CSS, HTML, Tailwind, JavaScript, Markdown — see results instantly. Free, open-source, no signup required.",
+  "id": "/",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "browser"],
+  "orientation": "any",
+  "theme_color": "#4f46e5",
+  "background_color": "#fafafa",
+  "lang": "en",
+  "categories": ["education", "developer", "productivity"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Code Crispies — interactive CSS lesson with live preview"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "CSS lessons",
+      "short_name": "CSS",
+      "description": "Open the CSS section",
+      "url": "/css/",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "HTML lessons",
+      "short_name": "HTML",
+      "description": "Open the HTML section",
+      "url": "/html/",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tailwind lessons",
+      "short_name": "Tailwind",
+      "description": "Open the Tailwind section",
+      "url": "/tailwind/",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read the Code Crispies blog",
+      "url": "/blog/",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
