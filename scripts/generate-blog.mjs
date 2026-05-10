@@ -177,7 +177,32 @@ ${tags.map((t) => `<meta property="article:tag" content="${escapeHtml(t)}">`).jo
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="Code Crispies Blog" href="/blog/rss.xml">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","headline":${JSON.stringify(post.meta.title)},"datePublished":"${post.meta.date}","description":${JSON.stringify(desc)},"url":"${url}","author":{"@type":"Organization","name":"LibreTECH","url":"https://librete.ch"},"publisher":{"@type":"Organization","name":"Code Crispies","url":"${ORIGIN}"},"mainEntityOfPage":"${url}","keywords":${JSON.stringify(tags.join(", "))}}
+${JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      headline: post.meta.title,
+      datePublished: post.meta.date,
+      description: desc,
+      url,
+      inLanguage: lang,
+      author: { "@type": "Organization", name: "LibreTECH", url: "https://librete.ch" },
+      publisher: { "@type": "Organization", name: "Code Crispies", url: ORIGIN },
+      mainEntityOfPage: url,
+      keywords: tags.join(", "),
+      image: ogImage
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: ORIGIN + "/" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: ORIGIN + "/blog/" },
+        { "@type": "ListItem", position: 3, name: post.meta.title, item: url }
+      ]
+    }
+  ]
+})}
 </script>
 <link rel="icon" href="/favicon.ico">
 <style>${SHARED_STYLES}

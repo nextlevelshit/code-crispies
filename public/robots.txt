@@ -6,4 +6,6 @@ Allow: /
 # distinct URLs (they're referenced via index.html, not navigable).
 Disallow: /assets/
 
+# RSS-discovery: link tags in /blog/ + per-post pages already point
+# crawlers at the feed, but also expose it here for older bots.
 Sitemap: https://codecrispi.es/sitemap.xml
