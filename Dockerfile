@@ -4,6 +4,11 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
+# imagemagick: optional optimize-images.mjs build step strips PNG metadata
+# and re-encodes; saves ~6 MB across blog OG + screenshots. Only needed at
+# build time; runtime stage doesn't have it.
+RUN apk add --no-cache imagemagick
+
 # Install dependencies first (cache layer)
 COPY package.json package-lock.json ./
 RUN npm ci
