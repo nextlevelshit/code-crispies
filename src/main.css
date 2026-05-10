@@ -4089,3 +4089,41 @@ body[data-section="javascript"] #lesson-title {
 .reference-footer .footer-links a:hover {
 	color: var(--section-color, var(--primary-color));
 }
+
+/* ================= ACCESSIBILITY ================= */
+
+/* Respect user's motion preference. Disables non-essential animations
+   and transitions site-wide; keeps the minimum needed for state changes
+   (e.g. dialog show/hide) so the app stays usable. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+	/* Specific cancellations for the named animations on the lesson page */
+	.share-btn.attention,
+	.share-btn.attention-strong,
+	.preview-wrapper.matched,
+	.preview-section.matched,
+	.preview-wrapper.completed-glow,
+	.preview-section.completed-glow {
+		animation: none !important;
+	}
+}
+
+/* Stronger focus-visible ring across the app — was hit-or-miss before. */
+:focus-visible {
+	outline: 2px solid var(--accent-color, #4f46e5);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+.section-card:focus-visible,
+.benefit-card:focus-visible,
+.btn:focus-visible,
+.cta-button:focus-visible {
+	outline-offset: 3px;
+}
