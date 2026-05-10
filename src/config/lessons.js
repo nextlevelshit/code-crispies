@@ -418,14 +418,29 @@ const moduleStores = {
  * @returns {Array} Array of modules
  */
 export function loadModules(language = "en") {
-	const store = moduleStores[language] || moduleStoreEN;
-	return store.map((module) => ({
-		...module,
-		lessons: module.lessons.map((lesson) => ({
-			...lesson,
-			mode: lesson.mode || module.mode || "css"
-		}))
-	}));
+	// Strategy: EN is the canonical full set (32 modules). For non-EN
+	// locales, replace each module with its translated version when
+	// available; otherwise keep the EN module silently. Result: every
+	// language returns 32 modules — no missing-translation gaps in the UI.
+	if (language === "en" || !moduleStores[language]) {
+		return moduleStoreEN.map(decorate);
+	}
+	const localized = moduleStores[language];
+	const localizedById = new Map(localized.map((m) => [m.id, m]));
+	return moduleStoreEN.map((enModule) => {
+		const translated = localizedById.get(enModule.id);
+		return decorate(translated || enModule);
+	});
+
+	function decorate(module) {
+		return {
+			...module,
+			lessons: module.lessons.map((lesson) => ({
+				...lesson,
+				mode: lesson.mode || module.mode || "css"
+			}))
+		};
+	}
 }
 
 /**

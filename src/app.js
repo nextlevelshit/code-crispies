@@ -2664,6 +2664,20 @@ function handleRoute(shouldUpdateUrl = true) {
 		return;
 	}
 
+	// Lang-prefixed deep link: /de/<module>/<idx> arrived without the SPA
+	// having loaded DE modules. Switch language + reload modules silently
+	// (loadModules falls back to EN per-module if a translation is missing).
+	if (route.lang && route.lang !== getLanguage()) {
+		track("language_url", { language: route.lang, deep: true });
+		setLanguage(route.lang);
+		applyTranslations();
+		if (elements.langSelect) elements.langSelect.value = route.lang;
+		const langModules = loadModules(route.lang);
+		lessonEngine.setModules(langModules);
+		renderModuleList(elements.moduleList, langModules, selectModule, selectLesson);
+		updateProgressDisplay();
+	}
+
 	switch (route.type) {
 		case RouteType.HOME:
 			showLandingPage();

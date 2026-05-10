@@ -48,25 +48,34 @@ function stripHtml(s) {
 }
 
 /**
- * Read src/config/lessons.js and return the set of English module
- * file basenames that are actually wired into the app. Anything not
- * imported there is invisible to the SPA — generating a static page
- * for it would let users land on a lesson the app can't load.
+ * Read src/config/lessons.js and return module file basenames imported
+ * into the SPA, keyed by language. EN files live at lessons/*.json;
+ * other languages at lessons/<lang>/*.json. Only imported files generate
+ * static pages — anything else is invisible to the SPA.
  */
 function getPublishedFileNames() {
 	const src = readFileSync(join(ROOT, "src/config/lessons.js"), "utf8");
 	const re = /import\s+\w+\s+from\s+["']\.\.\/\.\.\/lessons\/([0-9a-z][^"']+\.json)["']/g;
-	const out = new Set();
-	for (const m of src.matchAll(re)) out.add(m[1]);
-	return out;
+	const byLang = { en: new Set() };
+	for (const m of src.matchAll(re)) {
+		const f = m[1];
+		if (f.includes("/")) {
+			const lang = f.split("/")[0];
+			if (!byLang[lang]) byLang[lang] = new Set();
+			byLang[lang].add(f);
+		} else {
+			byLang.en.add(f);
+		}
+	}
+	return byLang;
 }
 
 function loadModules() {
-	const published = getPublishedFileNames();
+	const { en } = getPublishedFileNames();
 	const out = [];
 	for (const f of readdirSync(LESSONS_DIR)) {
 		if (!f.endsWith(".json")) continue;
-		if (!published.has(f)) continue;
+		if (!en.has(f)) continue;
 		try {
 			const m = JSON.parse(readFileSync(join(LESSONS_DIR, f), "utf8"));
 			if (!m.id || !Array.isArray(m.lessons)) continue;
@@ -76,6 +85,29 @@ function loadModules() {
 		}
 	}
 	return out;
+}
+
+/**
+ * Load the imported subset of modules for a non-English locale. Any
+ * module missing a translation falls back to the English module so the
+ * SPA's silent-EN-fallback strategy is mirrored in the static pages.
+ */
+function loadLocalizedModules(lang, enModules) {
+	const published = getPublishedFileNames();
+	const langSet = published[lang];
+	if (!langSet || langSet.size === 0) return null;
+	const localizedById = new Map();
+	for (const f of langSet) {
+		try {
+			const m = JSON.parse(readFileSync(join(LESSONS_DIR, f), "utf8"));
+			if (m.id && Array.isArray(m.lessons)) localizedById.set(m.id, m);
+		} catch (e) {
+			console.warn(`skip ${f}: ${e.message}`);
+		}
+	}
+	// Preserve the EN module ordering; replace modules where a translation
+	// exists, keep EN for the rest.
+	return enModules.map((enModule) => localizedById.get(enModule.id) || enModule);
 }
 
 /**
@@ -101,8 +133,12 @@ function fillPrerender(html, contentHtml) {
 	);
 }
 
-function rewriteHead(shellHtml, { title, description, canonical, jsonLd }) {
+function rewriteHead(shellHtml, { title, description, canonical, jsonLd, lang = "en", alternates = [] }) {
 	let html = shellHtml;
+
+	// <html lang="..."> — flip to per-page locale so screen readers and
+	// auto-translators pick the right voice/dictionary.
+	html = html.replace(/<html\s+lang="[^"]*"/i, `<html lang="${lang}"`);
 
 	// Title
 	html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
@@ -119,6 +155,16 @@ function rewriteHead(shellHtml, { title, description, canonical, jsonLd }) {
 	html = html.replace(canonReAll, "");
 	const newCanon = `<link rel="canonical" href="${canonical}" />`;
 	html = html.replace("</head>", `\t\t${newCanon}\n\t</head>`);
+
+	// Strip any existing hreflang alternates, then emit the new set.
+	// Each per-page generator passes the alternates it knows about so
+	// crawlers can find the localized versions.
+	const alternateRe = /<link\s+rel="alternate"\s+hreflang="[^"]*"\s+href="[^"]*"\s*\/?>\s*/gi;
+	html = html.replace(alternateRe, "");
+	if (alternates.length) {
+		const tags = alternates.map((a) => `<link rel="alternate" hreflang="${a.lang}" href="${a.href}" />`).join("\n\t\t");
+		html = html.replace("</head>", `\t\t${tags}\n\t</head>`);
+	}
 
 	// og:url
 	html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/i,
@@ -333,6 +379,16 @@ function sectionJsonLd({ sectionId, canonical, modules }) {
 const shellHtml = readFileSync(join(DIST, "index.html"), "utf8");
 const modules = loadModules();
 
+// Locales to emit static pages for, in addition to EN. Per project
+// strategy: DE is second-class supported, others stay experimental
+// (SPA navigates them but no SEO pages emitted yet).
+const SECONDARY_LOCALES = ["de"];
+const localeModules = {};
+for (const lang of SECONDARY_LOCALES) {
+	const m = loadLocalizedModules(lang, modules);
+	if (m) localeModules[lang] = m;
+}
+
 let lessonPages = 0;
 let modulePages = 0;
 let sectionPages = 0;
@@ -354,11 +410,16 @@ for (const sectionId of Object.keys(SECTIONS)) {
 		}
 		return false;
 	});
+	const alternates = SECONDARY_LOCALES
+		.filter((lang) => localeModules[lang])
+		.map((lang) => ({ lang, href: `${ORIGIN}/${lang}/${sectionId}/` }))
+		.concat([{ lang: "x-default", href: canonical }]);
 	let html = rewriteHead(shellHtml, {
 		title: `${meta.title} — Code Crispies`,
 		description: meta.description,
 		canonical,
-		jsonLd: sectionJsonLd({ sectionId, canonical, modules: sectionModules })
+		jsonLd: sectionJsonLd({ sectionId, canonical, modules: sectionModules }),
+		alternates
 	});
 	html = fillPrerender(html, sectionPrerender({ sectionId, modules: sectionModules }));
 	const dir = join(DIST, sectionId);
@@ -367,20 +428,28 @@ for (const sectionId of Object.keys(SECTIONS)) {
 	sectionPages++;
 }
 
-// Per-module + per-lesson pages
-for (const m of modules) {
-	const moduleCanonical = `${ORIGIN}/${m.id}/`;
+/**
+ * Emit a module's static pages (the module landing + every lesson page)
+ * under a given output prefix. lang="en" writes to /<id>/, others write
+ * to /<lang>/<id>/. Pages cross-link via hreflang alternates.
+ */
+function emitModulePages(m, lang, outPrefix) {
+	const slugBase = outPrefix ? `${outPrefix}/${m.id}` : m.id;
+	const moduleCanonical = `${ORIGIN}/${slugBase}/`;
 	const moduleTitle = `${m.title || m.id} — Code Crispies`;
 	const moduleDesc = stripHtml(m.description || `Interactive lessons covering ${m.title || m.id}.`).slice(0, 200);
 
+	const moduleAlternates = buildAlternates(m.id, lang, "");
 	let moduleHtml = rewriteHead(shellHtml, {
 		title: moduleTitle,
 		description: moduleDesc,
 		canonical: moduleCanonical,
-		jsonLd: moduleJsonLd({ moduleObj: m, canonical: moduleCanonical })
+		jsonLd: moduleJsonLd({ moduleObj: m, canonical: moduleCanonical }),
+		lang,
+		alternates: moduleAlternates
 	});
 	moduleHtml = fillPrerender(moduleHtml, modulePrerender({ moduleObj: m }));
-	const moduleDir = join(DIST, m.id);
+	const moduleDir = join(DIST, slugBase);
 	mkdirSync(moduleDir, { recursive: true });
 	writeFileSync(join(moduleDir, "index.html"), moduleHtml);
 	modulePages++;
@@ -388,22 +457,52 @@ for (const m of modules) {
 	for (let i = 0; i < m.lessons.length; i++) {
 		const lesson = m.lessons[i];
 		if (!lesson) continue;
-		const canonical = `${ORIGIN}/${m.id}/${i}/`;
+		const canonical = `${ORIGIN}/${slugBase}/${i}/`;
 		const title = `${lesson.title} — ${m.title || m.id} | Code Crispies`;
 		const description = stripHtml(lesson.task || lesson.description || moduleDesc).slice(0, 200) || moduleDesc;
 
+		const lessonAlternates = buildAlternates(m.id, lang, `${i}/`);
 		let html = rewriteHead(shellHtml, {
 			title,
 			description,
 			canonical,
-			jsonLd: lessonJsonLd({ moduleObj: m, lesson, lessonIndex: i, canonical })
+			jsonLd: lessonJsonLd({ moduleObj: m, lesson, lessonIndex: i, canonical }),
+			lang,
+			alternates: lessonAlternates
 		});
 		html = fillPrerender(html, lessonPrerender({ moduleObj: m, lesson, lessonIndex: i }));
-		const lessonDir = join(DIST, m.id, String(i));
+		const lessonDir = join(DIST, slugBase, String(i));
 		mkdirSync(lessonDir, { recursive: true });
 		writeFileSync(join(lessonDir, "index.html"), html);
 		lessonPages++;
 	}
+}
+
+/**
+ * Build hreflang alternates list for a (module, lessonSuffix) pair across
+ * EN + every secondary locale that has translations. Always includes
+ * x-default → EN URL per Google guidance.
+ */
+function buildAlternates(moduleId, currentLang, lessonSuffix) {
+	const alts = [{ lang: "en", href: `${ORIGIN}/${moduleId}/${lessonSuffix}` }];
+	for (const lang of SECONDARY_LOCALES) {
+		if (!localeModules[lang]) continue;
+		alts.push({ lang, href: `${ORIGIN}/${lang}/${moduleId}/${lessonSuffix}` });
+	}
+	alts.push({ lang: "x-default", href: `${ORIGIN}/${moduleId}/${lessonSuffix}` });
+	return alts;
+}
+
+// Emit EN pages
+for (const m of modules) emitModulePages(m, "en", "");
+
+// Emit per-locale pages — every locale we have translations for gets a
+// full page set. Modules without a localized translation use the EN
+// content (silent fallback) but the URL stays under /<lang>/.
+for (const lang of SECONDARY_LOCALES) {
+	const localized = localeModules[lang];
+	if (!localized) continue;
+	for (const m of localized) emitModulePages(m, lang, lang);
 }
 
 console.log(`✓ wrote ${sectionPages} section + ${modulePages} module + ${lessonPages} lesson pages`);

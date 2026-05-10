@@ -25,22 +25,34 @@ const ORIGIN = "https://codecrispi.es";
 
 const SECTIONS = ["css", "html", "markdown", "javascript"];
 const REFERENCE_IDS = ["css", "html", "flexbox", "grid", "selectors"];
+// Locales that get static page generation (mirror lesson-pages.mjs).
+// Each emits /<lang>/<module>/<idx>/ with EN content as silent fallback.
+const SECONDARY_LOCALES = ["de"];
 
 /** Only modules wired into src/config/lessons.js — see lesson-pages.mjs */
 function getPublishedFileNames() {
 	const src = readFileSync(join(ROOT, "src/config/lessons.js"), "utf8");
 	const re = /import\s+\w+\s+from\s+["']\.\.\/\.\.\/lessons\/([0-9a-z][^"']+\.json)["']/g;
-	const out = new Set();
-	for (const m of src.matchAll(re)) out.add(m[1]);
-	return out;
+	const byLang = { en: new Set() };
+	for (const m of src.matchAll(re)) {
+		const f = m[1];
+		if (f.includes("/")) {
+			const lang = f.split("/")[0];
+			if (!byLang[lang]) byLang[lang] = new Set();
+			byLang[lang].add(f);
+		} else {
+			byLang.en.add(f);
+		}
+	}
+	return byLang;
 }
 
 function loadModules() {
-	const published = getPublishedFileNames();
+	const { en } = getPublishedFileNames();
 	const out = [];
 	for (const f of readdirSync(LESSONS_DIR)) {
 		if (!f.endsWith(".json")) continue;
-		if (!published.has(f)) continue;
+		if (!en.has(f)) continue;
 		try {
 			const m = JSON.parse(readFileSync(join(LESSONS_DIR, f), "utf8"));
 			if (!m.id || !Array.isArray(m.lessons)) continue;
@@ -50,6 +62,16 @@ function loadModules() {
 		}
 	}
 	return out;
+}
+
+/**
+ * Returns a Set of present locales (only those with imports in lessons.js).
+ * Sitemap emits /<lang>/<module>/<idx>/ entries for every EN module; the
+ * generator falls back to EN content for modules without translations.
+ */
+function localesWithPages() {
+	const published = getPublishedFileNames();
+	return SECONDARY_LOCALES.filter((l) => published[l] && published[l].size > 0);
 }
 
 function loadBlogSlugs() {
@@ -76,7 +98,7 @@ function urlEntry(loc, priority = "0.5", changefreq = "monthly") {
 	return `  <url>\n    <loc>${ORIGIN}${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
-function buildSitemap(modules, blogPosts) {
+function buildSitemap(modules, blogPosts, locales) {
 	const urls = [];
 
 	urls.push(urlEntry("/", "1.0", "weekly"));
@@ -97,6 +119,21 @@ function buildSitemap(modules, blogPosts) {
 		}
 	}
 
+	// Per-locale URLs — same module/lesson set under /<lang>/ prefix.
+	// Slightly lower priority than EN so search engines treat EN as primary.
+	for (const lang of locales) {
+		urls.push(urlEntry(`/${lang}/`, "0.7", "weekly"));
+		for (const sec of SECTIONS) {
+			urls.push(urlEntry(`/${lang}/${sec}/`, "0.6", "weekly"));
+		}
+		for (const m of modules) {
+			urls.push(urlEntry(`/${lang}/${m.id}/`, "0.55", "monthly"));
+			for (let i = 0; i < m.lessonCount; i++) {
+				urls.push(urlEntry(`/${lang}/${m.id}/${i}/`, "0.5", "monthly"));
+			}
+		}
+	}
+
 	// Blog index + per-post (high priority — these are pre-rendered content)
 	if (blogPosts.length > 0) {
 		urls.push(urlEntry("/blog/", "0.9", "weekly"));
@@ -110,10 +147,11 @@ function buildSitemap(modules, blogPosts) {
 
 const modules = loadModules();
 const blogPosts = loadBlogSlugs();
-const sitemap = buildSitemap(modules, blogPosts);
+const locales = localesWithPages();
+const sitemap = buildSitemap(modules, blogPosts, locales);
 
 mkdirSync(DIST, { recursive: true });
 writeFileSync(join(DIST, "sitemap.xml"), sitemap);
 
 const totalUrls = sitemap.match(/<loc>/g).length;
-console.log(`✓ wrote dist/sitemap.xml (${modules.length} modules, ${blogPosts.length} blog posts, ${totalUrls} URLs)`);
+console.log(`✓ wrote dist/sitemap.xml (${modules.length} modules · ${blogPosts.length} blog posts · ${locales.length} locales · ${totalUrls} URLs)`);

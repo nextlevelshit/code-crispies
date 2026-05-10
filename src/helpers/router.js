@@ -29,6 +29,11 @@ const LANGUAGES = ["en", "de", "pl", "es", "ar", "uk"];
 
 /**
  * Parse the current URL pathname into route info.
+ *
+ * Lang-prefixed paths (e.g. /de/css-basic-selectors/2) carry the locale
+ * forward so the renderer can pick the localized module data; missing
+ * translations fall back to EN silently in the loader.
+ *
  * @returns {{ type: string, moduleId?: string, lessonIndex?: number, sectionId?: string, refId?: string, lang?: string } | null}
  */
 export function parseRoute() {
@@ -38,31 +43,44 @@ export function parseRoute() {
 		return { type: RouteType.HOME };
 	}
 
-	const parts = path.split("/");
+	let parts = path.split("/");
+	let lang = null;
+
+	// Strip a leading language segment so the rest of the parser stays
+	// language-agnostic. /de + remainder = remainder routed in DE locale.
+	if (LANGUAGES.includes(parts[0]) && parts.length > 1) {
+		lang = parts[0];
+		parts = parts.slice(1);
+	}
+
+	// Helper: only include `lang` when set, so EN routes stay shape-stable.
+	const withLang = (route) => (lang ? { ...route, lang } : route);
 
 	if (parts.length === 1) {
 		const segment = parts[0];
 
+		// /<lang> alone (no remaining parts) — language switch back to home.
+		// Without a lang prefix this also handles single-segment routes.
 		if (LANGUAGES.includes(segment)) {
 			return { type: RouteType.LANGUAGE, lang: segment };
 		}
 		if (SECTIONS.includes(segment)) {
-			return { type: RouteType.SECTION, sectionId: segment };
+			return withLang({ type: RouteType.SECTION, sectionId: segment });
 		}
 		if (segment === "reference") {
-			return { type: RouteType.REFERENCE, refId: null };
+			return withLang({ type: RouteType.REFERENCE, refId: null });
 		}
-		return { type: RouteType.LESSON, moduleId: segment, lessonIndex: 0 };
+		return withLang({ type: RouteType.LESSON, moduleId: segment, lessonIndex: 0 });
 	}
 
 	if (parts.length === 2) {
 		if (parts[0] === "reference") {
-			return { type: RouteType.REFERENCE, refId: parts[1] };
+			return withLang({ type: RouteType.REFERENCE, refId: parts[1] });
 		}
 		const moduleId = parts[0];
 		const lessonIndex = parseInt(parts[1], 10);
 		if (moduleId && !isNaN(lessonIndex) && lessonIndex >= 0) {
-			return { type: RouteType.LESSON, moduleId, lessonIndex };
+			return withLang({ type: RouteType.LESSON, moduleId, lessonIndex });
 		}
 	}
 
