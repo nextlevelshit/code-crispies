@@ -2897,18 +2897,30 @@ input:checked + .toggle-slider::before {
 	font-size: 0.85em;
 }
 
-/* Topic Row - side by side layout */
+/* Topic Row — section landing 2-col (text left, code right). On
+   narrow viewports stacks via the @media block below. */
 .topic-row {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 2rem;
-	padding: 2rem 0;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+	gap: 2.5rem;
+	padding: 2.5rem 0;
 	border-bottom: 1px solid var(--border-color);
 	align-items: start;
+	scroll-margin-top: var(--header-height, 64px);
 }
 
 .topic-row:last-child {
 	border-bottom: none;
+}
+
+.topic-row:hover .topic-text h2 {
+	color: var(--section-color, var(--primary-color));
+}
+
+.topic-row:target {
+	background: linear-gradient(to right, var(--bg-secondary, #f3f4f6) 0%, transparent 60%);
+	border-radius: 8px;
+	padding-inline: 1rem;
 }
 
 .topic-text h2 {
@@ -3050,11 +3062,14 @@ input:checked + .toggle-slider::before {
 	margin-top: 0.5rem;
 }
 
-/* Responsive: stack on mobile */
-@media (max-width: 900px) {
+/* Responsive: stack on narrow viewports — but use a slightly higher
+   breakpoint than before so the side-by-side layout doesn't squish
+   prematurely on tablet portrait. */
+@media (max-width: 1024px) {
 	.topic-row {
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 1.25rem;
+		padding: 2rem 0;
 	}
 
 	.topic-code {
