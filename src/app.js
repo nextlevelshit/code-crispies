@@ -2900,11 +2900,13 @@ function updateNavHighlight(route) {
 	const navLinks = elements.mainNav.querySelectorAll(".nav-link");
 	navLinks.forEach((link) => {
 		link.classList.remove("active");
+		link.removeAttribute("aria-current");
 
+		let isActive = false;
 		if (route?.type === RouteType.SECTION && link.dataset.section === route.sectionId) {
-			link.classList.add("active");
+			isActive = true;
 		} else if (route?.type === RouteType.REFERENCE && link.dataset.section === "reference") {
-			link.classList.add("active");
+			isActive = true;
 		} else if (route?.type === RouteType.LESSON) {
 			// Highlight section based on module's inferred section
 			// Skip highlighting for modules excluded from progress (welcome, playground, goodbye)
@@ -2912,9 +2914,14 @@ function updateNavHighlight(route) {
 			if (module && !module.excludeFromProgress) {
 				const moduleSection = getModuleSection(module);
 				if (link.dataset.section === moduleSection) {
-					link.classList.add("active");
+					isActive = true;
 				}
 			}
+		}
+
+		if (isActive) {
+			link.classList.add("active");
+			link.setAttribute("aria-current", "page");
 		}
 	});
 }

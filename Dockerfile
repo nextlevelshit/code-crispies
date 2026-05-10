@@ -22,12 +22,23 @@ RUN npm run build
 # ── Runtime stage ──────────────────────────────────────────────────────────
 FROM nginx:1.27-alpine
 
-# Static SPA: redirect 404s to index.html so client-side routing works.
+# Static SPA with proper 404 for missing assets:
+# - asset extensions (.js/.css/.png/etc) → real 404 if missing (else nginx
+#   would serve the SPA shell with the wrong Content-Type, breaking caches)
+# - top-level paths → SPA shell so client-side routing works
+# - genuine misses → branded 404.html (noindex)
 RUN printf 'server {\n\
     listen 80;\n\
     server_name _;\n\
     root /usr/share/nginx/html;\n\
     index index.html;\n\
+    error_page 404 /404.html;\n\
+    location = /404.html {\n\
+        internal;\n\
+    }\n\
+    location ~* \\.(?:js|css|png|jpg|jpeg|gif|svg|ico|webmanifest|map|woff2?|ttf|xml|txt|json)$ {\n\
+        try_files $uri =404;\n\
+    }\n\
     location / {\n\
         try_files $uri $uri/ /index.html;\n\
     }\n\
