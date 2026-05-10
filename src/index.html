@@ -6,6 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://umami.cloud.librete.ch https://liberapay.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://umami.cloud.librete.ch; img-src 'self' https://liberapay.com data:; font-src 'self'; frame-src 'self' blob:" />
 
+		<!-- Cross-origin endpoints used at runtime — open the TCP/TLS handshake
+		     in parallel with HTML parsing so first analytics ping + first auth
+		     request shave ~150–300ms off cold-start. -->
+		<link rel="preconnect" href="https://umami.cloud.librete.ch" crossorigin />
+		<link rel="preconnect" href="https://nasdtgsbqxixaxecfgnl.supabase.co" crossorigin />
+		<link rel="dns-prefetch" href="https://umami.cloud.librete.ch" />
+		<link rel="dns-prefetch" href="https://nasdtgsbqxixaxecfgnl.supabase.co" />
+
 		<!-- Umami analytics (self-hosted at umami.cloud.librete.ch) -->
 		<script defer src="https://umami.cloud.librete.ch/script.js" data-website-id="4ad21991-5d01-4cf9-9f06-2c0c00ffbab1"></script>
 
@@ -17,7 +25,7 @@
 		/>
 		<meta name="keywords" content="learn CSS, HTML tutorial, Tailwind CSS, web development, coding practice, free" />
 		<meta name="robots" content="index, follow" />
-		<meta name="theme-color" content="#6366f1" />
+		<meta name="theme-color" content="#4f46e5" />
 		<link rel="canonical" href="https://codecrispi.es/" />
 
 		<!-- Open Graph / Facebook -->
@@ -66,7 +74,7 @@
 						"@type": "Course",
 						"@id": "https://codecrispi.es/#course",
 						"name": "Code Crispies — Interactive Web Development",
-						"description": "135 progressive lessons covering HTML, CSS, Tailwind, JavaScript, and Markdown with live preview and instant validation.",
+						"description": "120 progressive lessons across 32 modules covering HTML, CSS, Tailwind, JavaScript, and Markdown with live preview and instant validation.",
 						"url": "https://codecrispi.es/",
 						"provider": { "@id": "https://librete.ch/#org" },
 						"educationalLevel": "Beginner",
