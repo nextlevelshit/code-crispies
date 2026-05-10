@@ -15,6 +15,10 @@
 
 <p align="center">
   <a href="https://codecrispi.es"><strong>▶ Try it live</strong></a>
+  ·
+  <a href="https://codecrispi.es/blog/">Blog</a>
+  ·
+  <a href="https://codecrispi.es/blog/rss.xml">RSS</a>
 </p>
 
 ---
