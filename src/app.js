@@ -261,7 +261,9 @@ function wireOnboarding() {
 	const hasProgress = Object.keys(lessonEngine.userProgress || {}).some(
 		(k) => (lessonEngine.userProgress[k]?.completed?.length || 0) > 0
 	);
-	if (!onboarded && !hasProgress) {
+	// ?_screenshot=1 suppresses onboarding for capture scripts (README + OG)
+	const isScreenshot = new URLSearchParams(location.search).has("_screenshot");
+	if (!onboarded && !hasProgress && !isScreenshot) {
 		// Defer to next frame so the page paints first
 		requestAnimationFrame(replay);
 	}

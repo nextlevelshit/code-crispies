@@ -26,6 +26,29 @@
   <a href="https://codecrispi.es"><img src="./public/og-image.png" alt="Code Crispies — interactive CSS lesson with live preview" width="720"></a>
 </p>
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://codecrispi.es">
+        <img src="./public/screenshots/landing.png" alt="Landing page — Learn Web Development Code Crispy" width="320">
+      </a>
+      <br><sub><b>Landing</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://codecrispi.es/css-basic-selectors/0/">
+        <img src="./public/screenshots/lesson.png" alt="Interactive lesson — CSS Properties with editor + live preview" width="320">
+      </a>
+      <br><sub><b>Lesson editor</b></sub>
+    </td>
+    <td align="center">
+      <a href="https://codecrispi.es/blog/">
+        <img src="./public/screenshots/blog.png" alt="Blog — 40 hands-on web-dev tutorials with tag filter" width="320">
+      </a>
+      <br><sub><b>Blog</b></sub>
+    </td>
+  </tr>
+</table>
+
 ---
 
 120 progressive lessons across 32 modules covering HTML, CSS, Tailwind, JavaScript, and Markdown. Each lesson is a short coding challenge with live preview and instant validation. No account, no ads, no tracking beyond privacy-friendly Umami. Self-hostable.
