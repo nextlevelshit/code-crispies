@@ -1,0 +1,139 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-dom",
+	"title": "JS DOM",
+	"description": "Lerne HTML-Elemente mit JavaScript-DOM-Methoden wie querySelector auszuwählen und zu verändern",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-query",
+			"title": "querySelector",
+			"description": "Use <kbd>document.querySelector()</kbd> to find the first element matching a CSS selector. It returns a single element you can then modify.",
+			"task": "Wähle das <kbd>h1</kbd>-Element aus und speichere es in einer Konstante namens <kbd>title</kbd>",
+			"previewHTML": "<h1>Hello</h1><p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById('out').textContent = title.tagName;",
+			"solution": "const title = document.querySelector('h1');",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "querySelector",
+					"message": "Verwende <kbd>document.querySelector()</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "querySelector\\(['\"`]h1['\"`]\\)",
+					"message": "Übergib <kbd>'h1'</kbd> als Selektor"
+				},
+				{
+					"type": "regex",
+					"value": "const\\s+title\\s*=",
+					"message": "Speichere das Ergebnis in einer Konstante <kbd>title</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-text",
+			"title": "textContent",
+			"description": "The <kbd>textContent</kbd> property lets you read or change the text inside an element. Setting it replaces all existing text.",
+			"task": "Wähle das <kbd>.msg</kbd>-Element aus und setze sein <kbd>textContent</kbd> auf <kbd>\"Done!\"</kbd>",
+			"previewHTML": "<p class=\"msg\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "",
+			"solution": "document.querySelector('.msg').textContent = \"Done!\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "querySelector",
+					"message": "Verwende <kbd>querySelector</kbd> zum Finden des Elements"
+				},
+				{
+					"type": "contains",
+					"value": "textContent",
+					"message": "Verwende die <kbd>textContent</kbd>-Eigenschaft"
+				},
+				{
+					"type": "regex",
+					"value": "(\"Done!\"|'Done!'|`Done!`)",
+					"message": "Setze den Text auf <kbd>\"Done!\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-style",
+			"title": "Inline-Styles",
+			"description": "Access the <kbd>style</kbd> property to set inline CSS on an element. CSS properties with dashes become camelCase: <kbd>background-color</kbd> becomes <kbd>backgroundColor</kbd>.",
+			"task": "Wähle das <kbd>.box</kbd>-Element aus und setze sein <kbd>style.color</kbd> auf <kbd>\"coral\"</kbd>",
+			"previewHTML": "<p class=\"box\">Style me!</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .box { font-size: 1.5rem; font-weight: bold; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "",
+			"solution": "document.querySelector('.box').style.color = \"coral\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "querySelector",
+					"message": "Verwende <kbd>querySelector</kbd> zum Finden des Elements"
+				},
+				{
+					"type": "contains",
+					"value": ".style.",
+					"message": "Verwende die <kbd>.style</kbd>-Eigenschaft für CSS"
+				},
+				{
+					"type": "regex",
+					"value": "style\\.color\\s*=",
+					"message": "Setze <kbd>style.color</kbd> am Element"
+				},
+				{
+					"type": "regex",
+					"value": "(\"coral\"|'coral'|`coral`)",
+					"message": "Setze die Farbe auf <kbd>\"coral\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-classlist",
+			"title": "classList",
+			"description": "The <kbd>classList</kbd> property provides methods to add, remove, or toggle CSS classes on an element without touching other classes.",
+			"task": "Wähle das <kbd>.card</kbd>-Element aus und füge die Klasse <kbd>\"active\"</kbd> mit <kbd>classList.add()</kbd> hinzu",
+			"previewHTML": "<div class=\"card\">Toggle me</div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; } .card { padding: 1rem; border: 2px solid gray; border-radius: 8px; } .active { border-color: coral; background: #fff0ee; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "",
+			"solution": "document.querySelector('.card').classList.add(\"active\");",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "classList",
+					"message": "Verwende die <kbd>classList</kbd>-Eigenschaft"
+				},
+				{
+					"type": "regex",
+					"value": "classList\\.add\\(",
+					"message": "Rufe <kbd>classList.add()</kbd> auf"
+				},
+				{
+					"type": "regex",
+					"value": "(\"active\"|'active'|`active`)",
+					"message": "Füge die Klasse <kbd>\"active\"</kbd> hinzu"
+				}
+			]
+		}
+	]
+}

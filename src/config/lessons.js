@@ -55,6 +55,11 @@ import htmlFieldsetDE from "../../lessons/de/28-html-forms-fieldset.json";
 import htmlTablesDE from "../../lessons/de/30-html-tables.json";
 import htmlSvgDE from "../../lessons/de/32-html-svg.json";
 import flexboxDE from "../../lessons/de/flexbox.json";
+import gridDE from "../../lessons/de/grid.json";
+import semanticHtmlDE from "../../lessons/de/33-html-semantic.json";
+import jsVariablesDE from "../../lessons/de/50-js-variables.json";
+import jsDomDE from "../../lessons/de/51-js-dom.json";
+import jsEventsDE from "../../lessons/de/52-js-events.json";
 
 // Polish lesson imports
 import welcomePL from "../../lessons/pl/00-welcome.json";
@@ -189,7 +194,7 @@ const moduleStoreDE = [
 	boxModelDE,
 	// CSS Layout
 	flexboxDE,
-	gridEN, // Using EN fallback until translated
+	gridDE,
 	positioningEN, // Using EN fallback until translated
 	unitsVariablesDE,
 	responsiveDE,
@@ -199,7 +204,7 @@ const moduleStoreDE = [
 	pseudoElementsEN, // Using EN fallback until translated
 	// HTML Structure
 	htmlElementsDE,
-	htmlSemanticEN, // Using EN fallback until translated
+	semanticHtmlDE,
 	htmlFigureEN, // Using EN fallback until translated
 	htmlSvgDE,
 	// HTML Interactive
@@ -214,9 +219,9 @@ const moduleStoreDE = [
 	// Markdown
 	markdownBasicsEN, // Using EN fallback until translated
 	// JavaScript
-	jsVariablesEN, // Using EN fallback until translated
-	jsDomEN, // Using EN fallback until translated
-	jsEventsEN, // Using EN fallback until translated
+	jsVariablesDE,
+	jsDomDE,
+	jsEventsDE,
 	// Outro
 	goodbyeEN,
 	playgroundEN

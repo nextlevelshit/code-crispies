@@ -1,0 +1,139 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "js-variables",
+	"title": "JS Variablen",
+	"description": "Lerne Variablen mit let und const zu deklarieren und mit grundlegenden Datentypen in JavaScript zu arbeiten",
+	"mode": "javascript",
+	"difficulty": "beginner",
+	"lessons": [
+		{
+			"id": "js-const",
+			"title": "Konstanten",
+			"description": "Use <kbd>const</kbd> to declare a variable that cannot be reassigned. Constants are the default choice for most values in modern JavaScript.",
+			"task": "Deklariere eine Konstante namens <kbd>name</kbd> mit dem Wert <kbd>\"Alice\"</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById('out').textContent = name;",
+			"solution": "const name = \"Alice\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "const",
+					"message": "Verwende <kbd>const</kbd> zur Deklaration"
+				},
+				{
+					"type": "regex",
+					"value": "const\\s+name\\s*=",
+					"message": "Deklariere eine Konstante namens <kbd>name</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "\"Alice\"|'Alice'|`Alice`",
+					"message": "Setze den Wert auf <kbd>\"Alice\"</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-let",
+			"title": "Let-Variablen",
+			"description": "Use <kbd>let</kbd> to declare variables that you plan to reassign later. Unlike <kbd>const</kbd>, a <kbd>let</kbd> variable can change its value.",
+			"task": "Deklariere eine Variable <kbd>count</kbd> mit <kbd>let</kbd> auf <kbd>0</kbd>, dann weise ihr <kbd>5</kbd> zu.",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById('out').textContent = count;",
+			"solution": "let count = 0;\ncount = 5;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "let\\s+count\\s*=\\s*0",
+					"message": "Beginne mit <kbd>let count = 0;</kbd>"
+				},
+				{
+					"type": "regex",
+					"value": "count\\s*=\\s*5",
+					"message": "Weise count erneut <kbd>5</kbd> zu"
+				}
+			]
+		},
+		{
+			"id": "js-string",
+			"title": "Template-Literale",
+			"description": "Template literals use backticks <kbd>`</kbd> and <kbd>${}</kbd> to embed expressions inside strings. This makes building dynamic text much easier than string concatenation.",
+			"task": "Erstelle eine Konstante <kbd>msg</kbd> mit einem Template-Literal: <kbd>`Hello, ${name}!`</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "const name = \"World\";\n",
+			"codeSuffix": "\ndocument.getElementById('out').textContent = msg;",
+			"solution": "const msg = `Hello, ${name}!`;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "const\\s+msg\\s*=",
+					"message": "Deklariere eine Konstante namens <kbd>msg</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "${name}",
+					"message": "Verwende <kbd>${name}</kbd> in Backticks zum Einbetten der Variable"
+				},
+				{
+					"type": "regex",
+					"value": "`.*\\$\\{name\\}.*`",
+					"message": "Umschließe den ganzen String mit Backticks <kbd>`</kbd>"
+				}
+			]
+		},
+		{
+			"id": "js-array",
+			"title": "Arrays",
+			"description": "Arrays store ordered lists of values in square brackets. Access items by index (starting at 0) and use <kbd>.length</kbd> to get the count.",
+			"task": "Erstelle eine Konstante <kbd>colors</kbd> mit einem Array: <kbd>[\"red\", \"green\", \"blue\"]</kbd>",
+			"previewHTML": "<p id=\"out\">Waiting...</p>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; }",
+			"sandboxCSS": "",
+			"initialCode": "",
+			"codePrefix": "",
+			"codeSuffix": "\ndocument.getElementById('out').textContent = colors.join(', ');",
+			"solution": "const colors = [\"red\", \"green\", \"blue\"];",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "const\\s+colors\\s*=",
+					"message": "Deklariere eine Konstante namens <kbd>colors</kbd>"
+				},
+				{
+					"type": "contains",
+					"value": "[",
+					"message": "Verwende eckige Klammern <kbd>[</kbd> für ein Array"
+				},
+				{
+					"type": "regex",
+					"value": "(\"red\"|'red'|`red`)",
+					"message": "Füge <kbd>\"red\"</kbd> ins Array ein"
+				},
+				{
+					"type": "regex",
+					"value": "(\"green\"|'green'|`green`)",
+					"message": "Füge <kbd>\"green\"</kbd> ins Array ein"
+				},
+				{
+					"type": "regex",
+					"value": "(\"blue\"|'blue'|`blue`)",
+					"message": "Füge <kbd>\"blue\"</kbd> ins Array ein"
+				}
+			]
+		}
+	]
+}

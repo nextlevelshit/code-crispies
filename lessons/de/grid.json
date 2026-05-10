@@ -1,0 +1,177 @@
+{
+	"$schema": "../schemas/code-crispies-module-schema.json",
+	"id": "grid",
+	"title": "CSS Grid",
+	"description": "Beherrsche das Grid-Layout-System für komplexe zweidimensionale Layouts",
+	"difficulty": "intermediate",
+	"lessons": [
+		{
+			"id": "grid-1",
+			"title": "Grid-Container",
+			"description": "CSS Grid is a two-dimensional layout system, meaning it can handle both columns AND rows simultaneously. While Flexbox excels at one-dimensional layouts (a single row or column), Grid shines when you need precise control over both dimensions—like photo galleries, dashboards, or page layouts.<br><br><strong>How it works:</strong> Set <kbd>display: grid</kbd> on a container, then define columns with <kbd>grid-template-columns</kbd>. The <kbd>fr</kbd> unit represents a fraction of available space—<kbd>1fr 1fr 1fr</kbd> creates three equal columns.<br><br><strong>Key properties:</strong><br>• <kbd>grid-template-columns</kbd> – Defines column sizes<br>• <kbd>repeat(3, 1fr)</kbd> – Shorthand for 3 equal columns<br>• <kbd>gap</kbd> – Adds spacing between grid cells<br><br><pre>.gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}</pre>",
+			"task": "Diese Foto-Galerie zeigt Bilder in einer einzelnen Spalte. Füge <kbd>display: grid</kbd> zu <kbd>.gallery</kbd> hinzu, um Grid-Layout zu aktivieren.",
+			"previewHTML": "<section class=\"gallery\"><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%234a90a4' width='200' height='150'/%3E%3Cpath d='M60 100 L100 60 L140 100 L160 80 L200 120 L200 150 L0 150 L0 120 Z' fill='%232d5a4a'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Mountains\"><figcaption>Mountain View</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23e8c170' width='200' height='150'/%3E%3Crect fill='%2396ceb4' y='100' width='200' height='50'/%3E%3Ccircle cx='160' cy='35' r='20' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Beach\"><figcaption>Sunny Beach</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232c3e50' width='200' height='150'/%3E%3Crect fill='%2334495e' x='20' y='60' width='40' height='90'/%3E%3Crect fill='%2334495e' x='80' y='40' width='50' height='110'/%3E%3Crect fill='%2334495e' x='150' y='70' width='35' height='80'/%3E%3C/svg%3E\" alt=\"City\"><figcaption>City Skyline</figcaption></figure></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .photo { margin: 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .photo img { width: 100%; display: block; } .photo figcaption { padding: 8px; text-align: center; font-size: 0.9rem; color: #666; }",
+			"sandboxCSS": "",
+			"codePrefix": ".gallery {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "display: grid;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "display",
+						"expected": "grid"
+					},
+					"message": "Setze <kbd>display: grid</kbd>"
+				}
+			]
+		},
+		{
+			"id": "grid-2",
+			"title": "Grid-Spalten",
+			"description": "The <kbd>grid-template-columns</kbd> property defines how many columns your grid has and how wide each one should be. The <kbd>fr</kbd> unit divides available space into fractions—<kbd>1fr 1fr 1fr</kbd> creates three equal columns.",
+			"task": "Füge <kbd>grid-template-columns: repeat(3, 1fr)</kbd> hinzu, um die Fotos in drei gleichen Spalten anzuzeigen.",
+			"previewHTML": "<section class=\"gallery\"><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%234a90a4' width='200' height='150'/%3E%3Cpath d='M60 100 L100 60 L140 100 L160 80 L200 120 L200 150 L0 150 L0 120 Z' fill='%232d5a4a'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Mountains\"><figcaption>Mountain View</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23e8c170' width='200' height='150'/%3E%3Crect fill='%2396ceb4' y='100' width='200' height='50'/%3E%3Ccircle cx='160' cy='35' r='20' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Beach\"><figcaption>Sunny Beach</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232c3e50' width='200' height='150'/%3E%3Crect fill='%2334495e' x='20' y='60' width='40' height='90'/%3E%3Crect fill='%2334495e' x='80' y='40' width='50' height='110'/%3E%3Crect fill='%2334495e' x='150' y='70' width='35' height='80'/%3E%3C/svg%3E\" alt=\"City\"><figcaption>City Skyline</figcaption></figure></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .gallery { display: grid; } .photo { margin: 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .photo img { width: 100%; display: block; } .photo figcaption { padding: 8px; text-align: center; font-size: 0.9rem; color: #666; }",
+			"sandboxCSS": "",
+			"codePrefix": ".gallery {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "grid-template-columns: repeat(3, 1fr);",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "grid-template-columns:\\s*repeat\\(\\s*3\\s*,\\s*1fr\\s*\\)",
+					"message": "Setze <kbd>grid-template-columns: repeat(3, 1fr)</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "grid-3",
+			"title": "Grid-Abstand",
+			"description": "Just like in Flexbox, the <kbd>gap</kbd> property adds consistent spacing between grid cells. It creates gutters between columns and rows without adding space around the edges.",
+			"task": "Füge <kbd>gap: 1rem</kbd> hinzu, um Luft zwischen den Fotos zu schaffen.",
+			"previewHTML": "<section class=\"gallery\"><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%234a90a4' width='200' height='150'/%3E%3Cpath d='M60 100 L100 60 L140 100 L160 80 L200 120 L200 150 L0 150 L0 120 Z' fill='%232d5a4a'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Mountains\"><figcaption>Mountain View</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23e8c170' width='200' height='150'/%3E%3Crect fill='%2396ceb4' y='100' width='200' height='50'/%3E%3Ccircle cx='160' cy='35' r='20' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Beach\"><figcaption>Sunny Beach</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232c3e50' width='200' height='150'/%3E%3Crect fill='%2334495e' x='20' y='60' width='40' height='90'/%3E%3Crect fill='%2334495e' x='80' y='40' width='50' height='110'/%3E%3Crect fill='%2334495e' x='150' y='70' width='35' height='80'/%3E%3C/svg%3E\" alt=\"City\"><figcaption>City Skyline</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23a8d8ea' width='200' height='150'/%3E%3Cellipse cx='100' cy='130' rx='80' ry='30' fill='%2396ceb4'/%3E%3Crect fill='%238b4513' x='95' y='80' width='10' height='50'/%3E%3Ccircle cx='100' cy='70' r='30' fill='%232d5a4a'/%3E%3C/svg%3E\" alt=\"Tree\"><figcaption>Lone Tree</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23ff6b6b' width='200' height='150'/%3E%3Ccircle cx='100' cy='75' r='40' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Sunset\"><figcaption>Golden Sunset</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23dfe6e9' width='200' height='150'/%3E%3Cpath d='M0 100 Q50 60 100 100 T200 100 L200 150 L0 150 Z' fill='%23b2bec3'/%3E%3C/svg%3E\" alt=\"Clouds\"><figcaption>Cloudy Sky</figcaption></figure></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .gallery { display: grid; grid-template-columns: repeat(3, 1fr); } .photo { margin: 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .photo img { width: 100%; display: block; } .photo figcaption { padding: 8px; text-align: center; font-size: 0.9rem; color: #666; }",
+			"sandboxCSS": "",
+			"codePrefix": ".gallery {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "gap: 1rem;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "property_value",
+					"value": {
+						"property": "gap",
+						"expected": "1rem"
+					},
+					"message": "Setze <kbd>gap: 1rem</kbd>"
+				}
+			]
+		},
+		{
+			"id": "grid-4",
+			"title": "Spalten überspannen",
+			"description": "Grid items can span multiple columns using <kbd>grid-column: span N</kbd>. This is perfect for featured content that needs more visual prominence, like a hero image in a gallery.",
+			"task": "Lass das hervorgehobene Foto zwei Spalten überspannen, indem du <kbd>grid-column: span 2</kbd> zu <kbd>.featured</kbd> hinzufügst.",
+			"previewHTML": "<section class=\"gallery\"><figure class=\"photo featured\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect fill='%234a90a4' width='400' height='200'/%3E%3Cpath d='M100 140 L200 80 L300 140 L350 100 L400 150 L400 200 L0 200 L0 160 Z' fill='%232d5a4a'/%3E%3Ccircle cx='80' cy='50' r='25' fill='%23f4d03f'/%3E%3Ctext x='200' y='180' text-anchor='middle' fill='white' font-size='16' font-weight='bold'>FEATURED</text>%3C/svg%3E\" alt=\"Featured\"><figcaption>Featured Landscape</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23e8c170' width='200' height='150'/%3E%3Crect fill='%2396ceb4' y='100' width='200' height='50'/%3E%3Ccircle cx='160' cy='35' r='20' fill='%23f4d03f'/%3E%3C/svg%3E\" alt=\"Beach\"><figcaption>Beach</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%232c3e50' width='200' height='150'/%3E%3Crect fill='%2334495e' x='20' y='60' width='40' height='90'/%3E%3Crect fill='%2334495e' x='80' y='40' width='50' height='110'/%3E%3Crect fill='%2334495e' x='150' y='70' width='35' height='80'/%3E%3C/svg%3E\" alt=\"City\"><figcaption>City</figcaption></figure><figure class=\"photo\"><img src=\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect fill='%23a8d8ea' width='200' height='150'/%3E%3Cellipse cx='100' cy='130' rx='80' ry='30' fill='%2396ceb4'/%3E%3Crect fill='%238b4513' x='95' y='80' width='10' height='50'/%3E%3Ccircle cx='100' cy='70' r='30' fill='%232d5a4a'/%3E%3C/svg%3E\" alt=\"Tree\"><figcaption>Tree</figcaption></figure></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; } .photo { margin: 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .photo img { width: 100%; display: block; } .photo figcaption { padding: 8px; text-align: center; font-size: 0.9rem; color: #666; }",
+			"sandboxCSS": "",
+			"codePrefix": ".featured {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "grid-column: span 2;",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "grid-column:\\s*span\\s+2",
+					"message": "Setze <kbd>grid-column: span 2</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "grid-5",
+			"title": "Auto-Fit-Spalten",
+			"description": "For truly responsive grids, use <kbd>auto-fit</kbd> with <kbd>minmax()</kbd>. This automatically creates as many columns as will fit, with each being at least a minimum width but growing to fill space.",
+			"task": "Füge <kbd>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))</kbd> hinzu, um das Produktraster responsiv zu machen.",
+			"previewHTML": "<section class=\"products\"><article class=\"product\"><div class=\"img\" style=\"background: steelblue;\"></div><h3>Wireless Headphones</h3><p>$79</p></article><article class=\"product\"><div class=\"img\" style=\"background: coral;\"></div><h3>Smart Watch</h3><p>$199</p></article><article class=\"product\"><div class=\"img\" style=\"background: mediumseagreen;\"></div><h3>Portable Speaker</h3><p>$49</p></article><article class=\"product\"><div class=\"img\" style=\"background: gold;\"></div><h3>USB-C Hub</h3><p>$35</p></article><article class=\"product\"><div class=\"img\" style=\"background: orchid;\"></div><h3>Webcam HD</h3><p>$89</p></article><article class=\"product\"><div class=\"img\" style=\"background: tomato;\"></div><h3>Keyboard</h3><p>$129</p></article></section>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .products { display: grid; gap: 1rem; } .product { background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; } .product .img { height: 80px; border-radius: 4px; margin-bottom: 8px; } .product h3 { margin: 0 0 4px; font-size: 0.95rem; } .product p { margin: 0; color: steelblue; font-weight: bold; }",
+			"sandboxCSS": "",
+			"codePrefix": ".products {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "regex",
+					"value": "grid-template-columns:\\s*repeat\\(\\s*auto-fit\\s*,\\s*minmax\\(\\s*150px\\s*,\\s*1fr\\s*\\)\\s*\\)",
+					"message": "Setze <kbd>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		},
+		{
+			"id": "grid-6",
+			"title": "Grid-Template-Areas",
+			"description": "For complex page layouts, <kbd>grid-template-areas</kbd> lets you name regions and place items visually. It's like drawing your layout with ASCII art—incredibly readable and maintainable.",
+			"task": "Vervollständige das Dashboard-Layout mit grid-template-areas. Der Header soll die volle Breite einnehmen, dann nav und main nebeneinander, und der Footer wieder volle Breite.",
+			"previewHTML": "<div class=\"dashboard\"><header class=\"header\">Dashboard Header</header><nav class=\"nav\">Navigation</nav><main class=\"main\">Main Content Area</main><footer class=\"footer\">Footer</footer></div>",
+			"previewBaseCSS": "body { font-family: system-ui, sans-serif; padding: 1rem; background: #f5f5f5; } .dashboard { display: grid; grid-template-columns: 180px 1fr; grid-template-rows: auto 1fr auto; gap: 1rem; min-height: 300px; } .header { grid-area: header; background: #1a1a2e; color: white; padding: 1rem; border-radius: 8px; } .nav { grid-area: nav; background: steelblue; color: white; padding: 1rem; border-radius: 8px; } .main { grid-area: main; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } .footer { grid-area: footer; background: #333; color: white; padding: 1rem; border-radius: 8px; text-align: center; }",
+			"sandboxCSS": "",
+			"codePrefix": ".dashboard {\n  ",
+			"initialCode": "",
+			"codeSuffix": "\n}",
+			"solution": "grid-template-areas:\n    \"header header\"\n    \"nav main\"\n    \"footer footer\";",
+			"previewContainer": "preview-area",
+			"validations": [
+				{
+					"type": "contains",
+					"value": "grid-template-areas",
+					"message": "Verwende die <kbd>grid-template-areas</kbd>-Eigenschaft",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "['\"]header\\s+header['\"]",
+					"message": "Header soll beide Spalten überspannen: <kbd>\"header header\"</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "['\"]nav\\s+main['\"]",
+					"message": "Nav und main sollen nebeneinander stehen: <kbd>\"nav main\"</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				},
+				{
+					"type": "regex",
+					"value": "['\"]footer\\s+footer['\"]",
+					"message": "Footer soll beide Spalten überspannen: <kbd>\"footer footer\"</kbd>",
+					"options": {
+						"caseSensitive": false
+					}
+				}
+			]
+		}
+	]
+}
