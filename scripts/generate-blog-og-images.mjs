@@ -47,15 +47,15 @@ function htmlFor({ title, tags, date }) {
 	return `<!doctype html>
 <html><head><meta charset="utf-8"><style>
   html,body { margin:0; padding:0; width:1200px; height:630px; overflow:hidden; background:#1e1b4b; color:#fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
-  body { padding:80px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:space-between; position:relative; background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%); }
-  .grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 48px 48px; pointer-events:none; }
-  header { display:flex; align-items:center; gap:14px; font-weight:800; letter-spacing:-.02em; font-size:24px; z-index:2; }
-  header img { width:48px; height:48px; }
+  body { padding:60px 70px; box-sizing:border-box; display:grid; grid-template-rows: auto 1fr auto; row-gap: 24px; position:relative; background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%); }
+  .grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 48px 48px; pointer-events:none; z-index:1; }
+  header { display:flex; align-items:center; gap:14px; font-weight:800; letter-spacing:-.02em; font-size:22px; z-index:2; }
+  header img { width:42px; height:42px; }
   header span { color:#fde047; }
-  h1 { font-size:64px; line-height:1.1; letter-spacing:-.03em; margin:0; max-width: 1040px; z-index:2; font-weight:800; }
+  h1 { font-size:54px; line-height:1.1; letter-spacing:-.03em; margin:0; max-width: 1060px; z-index:2; font-weight:800; align-self:center; }
   .footer { display:flex; justify-content:space-between; align-items:flex-end; z-index:2; }
   .tags { display:flex; gap:10px; flex-wrap:wrap; }
-  .tag { font-size:18px; background:rgba(253,224,71,.18); border:1px solid rgba(253,224,71,.5); color:#fde047; padding:6px 14px; border-radius:999px; font-weight:600; }
+  .tag { font-size:18px; background:rgba(253,224,71,.18); border:1px solid rgba(253,224,71,.5); color:#fde047; padding:5px 14px; border-radius:999px; font-weight:600; }
   .meta { font-size:18px; color:rgba(255,255,255,.65); }
   .url { font-size:18px; font-weight:700; letter-spacing:.02em; color:rgba(255,255,255,.85); }
 </style></head><body>

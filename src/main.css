@@ -4002,10 +4002,17 @@ body[data-section="javascript"] .code-block .cm-editor .cm-line {
 	color: #e0d8b0;
 }
 
-/* Task instruction — default bg, only the left border carries the
-   section color so the section-coding stays visible but unobtrusive. */
+/* Task instruction — neutral default bg + colored left border.
+   Wins over the older purple bg from the base rule. */
 .task-instruction {
+	background: var(--bg-secondary, #f3f4f6) !important;
+	color: var(--text-primary, #1f2937) !important;
 	border-left: 4px solid var(--section-color, var(--primary-color));
+}
+.task-instruction kbd,
+.task-instruction code {
+	background: rgba(0, 0, 0, 0.06);
+	color: inherit;
 }
 
 /* Section page progress bar colors */
