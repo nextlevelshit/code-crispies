@@ -112,53 +112,102 @@ function rewriteHead(shellHtml, { title, description, canonical, jsonLd }) {
 	return html;
 }
 
+/**
+ * Heuristic: which section does a module belong to?
+ * Used for breadcrumbs.
+ */
+function sectionFor(moduleObj) {
+	const id = moduleObj.id || "";
+	const mode = (moduleObj.mode || "").toLowerCase();
+	if (id.startsWith("html-")) return "html";
+	if (id.startsWith("markdown-") || id.startsWith("md-")) return "markdown";
+	if (id.startsWith("js-")) return "javascript";
+	if (id.includes("tailwind") || mode === "tailwind") return "tailwind";
+	return "css";
+}
+
+function breadcrumbList(crumbs) {
+	return {
+		"@type": "BreadcrumbList",
+		"itemListElement": crumbs.map((c, i) => ({
+			"@type": "ListItem",
+			"position": i + 1,
+			"name": c.name,
+			"item": c.url
+		}))
+	};
+}
+
 function lessonJsonLd({ moduleObj, lesson, lessonIndex, canonical }) {
+	const sectionId = sectionFor(moduleObj);
+	const sectionName = SECTIONS[sectionId]?.title || sectionId;
 	return {
 		"@context": "https://schema.org",
-		"@type": "LearningResource",
-		"name": lesson.title,
-		"description": stripHtml(lesson.task || lesson.description || ""),
-		"url": canonical,
-		"learningResourceType": "Activity",
-		"educationalLevel": moduleObj.difficulty || "Beginner",
-		"isAccessibleForFree": true,
-		"inLanguage": "en",
-		"teaches": moduleObj.title || moduleObj.id,
-		"isPartOf": {
-			"@type": "Course",
-			"@id": `${ORIGIN}/${moduleObj.id}/`,
-			"name": moduleObj.title || moduleObj.id
-		},
-		"position": lessonIndex + 1,
-		"author": {
-			"@type": "Organization",
-			"name": "LibreTECH",
-			"url": "https://librete.ch"
-		}
+		"@graph": [
+			{
+				"@type": "LearningResource",
+				"name": lesson.title,
+				"description": stripHtml(lesson.task || lesson.description || ""),
+				"url": canonical,
+				"learningResourceType": "Activity",
+				"educationalLevel": moduleObj.difficulty || "Beginner",
+				"isAccessibleForFree": true,
+				"inLanguage": "en",
+				"teaches": moduleObj.title || moduleObj.id,
+				"isPartOf": {
+					"@type": "Course",
+					"@id": `${ORIGIN}/${moduleObj.id}/`,
+					"name": moduleObj.title || moduleObj.id
+				},
+				"position": lessonIndex + 1,
+				"author": {
+					"@type": "Organization",
+					"name": "LibreTECH",
+					"url": "https://librete.ch"
+				}
+			},
+			breadcrumbList([
+				{ name: "Home", url: ORIGIN + "/" },
+				{ name: sectionName, url: `${ORIGIN}/${sectionId}/` },
+				{ name: moduleObj.title || moduleObj.id, url: `${ORIGIN}/${moduleObj.id}/` },
+				{ name: lesson.title, url: canonical }
+			])
+		]
 	};
 }
 
 function moduleJsonLd({ moduleObj, canonical }) {
+	const sectionId = sectionFor(moduleObj);
+	const sectionName = SECTIONS[sectionId]?.title || sectionId;
 	return {
 		"@context": "https://schema.org",
-		"@type": "Course",
-		"name": moduleObj.title || moduleObj.id,
-		"description": stripHtml(moduleObj.description || ""),
-		"url": canonical,
-		"provider": {
-			"@type": "Organization",
-			"name": "LibreTECH",
-			"url": "https://librete.ch"
-		},
-		"educationalLevel": moduleObj.difficulty || "Beginner",
-		"isAccessibleForFree": true,
-		"inLanguage": "en",
-		"hasPart": moduleObj.lessons.map((l, i) => ({
-			"@type": "LearningResource",
-			"name": l.title,
-			"position": i + 1,
-			"url": `${ORIGIN}/${moduleObj.id}/${i}/`
-		}))
+		"@graph": [
+			{
+				"@type": "Course",
+				"name": moduleObj.title || moduleObj.id,
+				"description": stripHtml(moduleObj.description || ""),
+				"url": canonical,
+				"provider": {
+					"@type": "Organization",
+					"name": "LibreTECH",
+					"url": "https://librete.ch"
+				},
+				"educationalLevel": moduleObj.difficulty || "Beginner",
+				"isAccessibleForFree": true,
+				"inLanguage": "en",
+				"hasPart": moduleObj.lessons.map((l, i) => ({
+					"@type": "LearningResource",
+					"name": l.title,
+					"position": i + 1,
+					"url": `${ORIGIN}/${moduleObj.id}/${i}/`
+				}))
+			},
+			breadcrumbList([
+				{ name: "Home", url: ORIGIN + "/" },
+				{ name: sectionName, url: `${ORIGIN}/${sectionId}/` },
+				{ name: moduleObj.title || moduleObj.id, url: canonical }
+			])
+		]
 	};
 }
 
@@ -166,16 +215,24 @@ function sectionJsonLd({ sectionId, canonical, modules }) {
 	const meta = SECTIONS[sectionId];
 	return {
 		"@context": "https://schema.org",
-		"@type": "CollectionPage",
-		"name": `${meta.title} — Code Crispies`,
-		"description": meta.description,
-		"url": canonical,
-		"inLanguage": "en",
-		"hasPart": modules.map((m) => ({
-			"@type": "Course",
-			"name": m.title || m.id,
-			"url": `${ORIGIN}/${m.id}/`
-		}))
+		"@graph": [
+			{
+				"@type": "CollectionPage",
+				"name": `${meta.title} — Code Crispies`,
+				"description": meta.description,
+				"url": canonical,
+				"inLanguage": "en",
+				"hasPart": modules.map((m) => ({
+					"@type": "Course",
+					"name": m.title || m.id,
+					"url": `${ORIGIN}/${m.id}/`
+				}))
+			},
+			breadcrumbList([
+				{ name: "Home", url: ORIGIN + "/" },
+				{ name: meta.title, url: canonical }
+			])
+		]
 	};
 }
 
