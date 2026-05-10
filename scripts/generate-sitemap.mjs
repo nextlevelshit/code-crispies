@@ -71,17 +71,18 @@ function buildSitemap(modules, blogPosts) {
 	urls.push(urlEntry("/", "1.0", "weekly"));
 
 	for (const sec of SECTIONS) {
-		urls.push(urlEntry(`/${sec}`, "0.8", "weekly"));
+		urls.push(urlEntry(`/${sec}/`, "0.8", "weekly"));
 	}
 
-	urls.push(urlEntry("/reference", "0.6", "monthly"));
+	urls.push(urlEntry("/reference/", "0.6", "monthly"));
 	for (const ref of REFERENCE_IDS) {
-		urls.push(urlEntry(`/reference/${ref}`, "0.6", "monthly"));
+		urls.push(urlEntry(`/reference/${ref}/`, "0.6", "monthly"));
 	}
 
 	for (const m of modules) {
+		urls.push(urlEntry(`/${m.id}/`, "0.75", "monthly"));
 		for (let i = 0; i < m.lessonCount; i++) {
-			urls.push(urlEntry(`/${m.id}/${i}`, "0.7", "monthly"));
+			urls.push(urlEntry(`/${m.id}/${i}/`, "0.7", "monthly"));
 		}
 	}
 

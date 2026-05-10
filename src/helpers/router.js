@@ -73,12 +73,16 @@ export function parseRoute() {
 export const parseHash = parseRoute;
 
 function lessonPath(moduleId, lessonIndex) {
-	return `/${moduleId}/${lessonIndex}`;
+	// Trailing slash so URLs match what nginx serves for static
+	// per-lesson HTML at dist/<moduleId>/<index>/index.html — avoids
+	// a 301 redirect on every in-app navigation.
+	return `/${moduleId}/${lessonIndex}/`;
 }
 
 function routePath(route) {
 	if (!route) return "/";
-	return route.startsWith("/") ? route : `/${route}`;
+	const path = route.startsWith("/") ? route : `/${route}`;
+	return path.endsWith("/") ? path : `${path}/`;
 }
 
 /** Update URL with history entry (for navigation). */
@@ -140,7 +144,10 @@ export function migrateLegacyHashRoute() {
 
 	if (!looksLikeRoute) return false;
 
-	const newUrl = `/${hash}${window.location.search}`;
+	// Use trailing slash so the migrated URL matches the canonical
+	// served path (avoids a follow-up nginx 301).
+	const trailing = hash.endsWith("/") ? "" : "/";
+	const newUrl = `/${hash}${trailing}${window.location.search}`;
 	history.replaceState(null, "", newUrl);
 	return true;
 }

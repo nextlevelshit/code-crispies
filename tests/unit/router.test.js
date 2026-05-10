@@ -70,7 +70,7 @@ describe("Router", () => {
 		});
 
 		test.each([
-			["/css", "css"],
+			["/css/", "css"],
 			["/html", "html"],
 			["/markdown", "markdown"],
 			["/javascript", "javascript"]
@@ -90,7 +90,7 @@ describe("Router", () => {
 		});
 
 		test("parseRoute_ReferenceWithFlexboxSubpage_ReturnsCorrectRefId", () => {
-			setPath("/reference/flexbox");
+			setPath("/reference/flexbox/");
 			expect(parseRoute()).toEqual({ type: RouteType.REFERENCE, refId: "flexbox" });
 		});
 
@@ -100,12 +100,12 @@ describe("Router", () => {
 		});
 
 		test("parseRoute_ModuleWithLessonIndex_ReturnsLessonRoute", () => {
-			setPath("/flexbox/2");
+			setPath("/flexbox/2/");
 			expect(parseRoute()).toEqual({ type: RouteType.LESSON, moduleId: "flexbox", lessonIndex: 2 });
 		});
 
 		test("parseRoute_ModuleWithIndex0_ReturnsLessonRoute", () => {
-			setPath("/box-model/0");
+			setPath("/box-model/0/");
 			expect(parseRoute()).toEqual({ type: RouteType.LESSON, moduleId: "box-model", lessonIndex: 0 });
 		});
 
@@ -130,7 +130,7 @@ describe("Router", () => {
 		});
 
 		test("parseHash_BackwardsCompatAlias_BehavesLikeParseRoute", () => {
-			setPath("/flexbox/3");
+			setPath("/flexbox/3/");
 			expect(parseHash()).toEqual({ type: RouteType.LESSON, moduleId: "flexbox", lessonIndex: 3 });
 		});
 	});
@@ -139,11 +139,11 @@ describe("Router", () => {
 		test("updateHash_NewPath_CallsPushState", () => {
 			setPath("/");
 			updateHash("flexbox", 2);
-			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/2");
+			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/2/");
 		});
 
 		test("updateHash_SamePath_DoesNotCallPushState", () => {
-			setPath("/flexbox/2");
+			setPath("/flexbox/2/");
 			updateHash("flexbox", 2);
 			expect(pushStateSpy).not.toHaveBeenCalled();
 		});
@@ -151,7 +151,7 @@ describe("Router", () => {
 		test("updateHash_DifferentModule_CallsPushState", () => {
 			setPath("/flexbox/0");
 			updateHash("box-model", 0);
-			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/box-model/0");
+			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/box-model/0/");
 		});
 	});
 
@@ -159,17 +159,17 @@ describe("Router", () => {
 		test("navigateTo_SectionRoute_CallsPushState", () => {
 			setPath("/");
 			navigateTo("css");
-			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/css");
+			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/css/");
 		});
 
 		test("navigateTo_EmptyRoute_NavigatesToHome", () => {
-			setPath("/something");
+			setPath("/something/");
 			navigateTo("");
 			expect(pushStateSpy).toHaveBeenCalledWith(null, "", "/");
 		});
 
 		test("navigateTo_SamePath_DoesNotCallPushState", () => {
-			setPath("/css");
+			setPath("/css/");
 			navigateTo("css");
 			expect(pushStateSpy).not.toHaveBeenCalled();
 		});
@@ -178,19 +178,19 @@ describe("Router", () => {
 	describe("replaceHash", () => {
 		test("replaceHash_ValidArgs_CallsReplaceState", () => {
 			replaceHash("flexbox", 3);
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/3");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/3/");
 		});
 
 		test("replaceHash_Index0_FormatsCorrectly", () => {
 			replaceHash("box-model", 0);
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/box-model/0");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/box-model/0/");
 		});
 	});
 
 	describe("replaceTo", () => {
 		test("replaceTo_Route_CallsReplaceState", () => {
 			replaceTo("css");
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/css");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/css/");
 		});
 
 		test("replaceTo_EmptyRoute_ReplacesToHome", () => {
@@ -200,20 +200,20 @@ describe("Router", () => {
 
 		test("replaceTo_ReferenceRoute_FormatsCorrectly", () => {
 			replaceTo("reference/flexbox");
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/reference/flexbox");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/reference/flexbox/");
 		});
 	});
 
 	describe("getShareableUrl", () => {
 		test("getShareableUrl_ValidArgs_ReturnsFullPathUrl", () => {
 			const url = getShareableUrl("flexbox", 2);
-			expect(url).toContain("/flexbox/2");
-			expect(url).toMatch(/^https?:\/\/.+\/flexbox\/2$/);
+			expect(url).toContain("/flexbox/2/");
+			expect(url).toMatch(/^https?:\/\/.+\/flexbox\/2\/$/);
 		});
 
 		test("getShareableUrl_Index0_IncludesIndex", () => {
 			const url = getShareableUrl("box-model", 0);
-			expect(url).toContain("/box-model/0");
+			expect(url).toContain("/box-model/0/");
 		});
 	});
 
@@ -273,7 +273,7 @@ describe("Router", () => {
 			setHash("#flexbox/2");
 			replaceStateSpy.mockClear();
 			expect(migrateLegacyHashRoute()).toBe(true);
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/2");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/flexbox/2/");
 		});
 
 		test("legacySectionHash_RedirectedToPath", () => {
@@ -281,7 +281,7 @@ describe("Router", () => {
 			setHash("#css");
 			replaceStateSpy.mockClear();
 			expect(migrateLegacyHashRoute()).toBe(true);
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/css");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/css/");
 		});
 
 		test("legacyReferenceHash_RedirectedToPath", () => {
@@ -289,7 +289,7 @@ describe("Router", () => {
 			setHash("#reference/flexbox");
 			replaceStateSpy.mockClear();
 			expect(migrateLegacyHashRoute()).toBe(true);
-			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/reference/flexbox");
+			expect(replaceStateSpy).toHaveBeenCalledWith(null, "", "/reference/flexbox/");
 		});
 	});
 });

@@ -157,7 +157,7 @@ function moduleJsonLd({ moduleObj, canonical }) {
 			"@type": "LearningResource",
 			"name": l.title,
 			"position": i + 1,
-			"url": `${ORIGIN}/${moduleObj.id}/${i}`
+			"url": `${ORIGIN}/${moduleObj.id}/${i}/`
 		}))
 	};
 }
@@ -189,7 +189,7 @@ let sectionPages = 0;
 // Per-section landings
 for (const sectionId of Object.keys(SECTIONS)) {
 	const meta = SECTIONS[sectionId];
-	const canonical = `${ORIGIN}/${sectionId}`;
+	const canonical = `${ORIGIN}/${sectionId}/`;
 	// Filter modules that match this section by mode (or accept all if mode missing)
 	const sectionModules = modules.filter((m) => {
 		const mode = (m.mode || "").toLowerCase();
@@ -235,7 +235,7 @@ for (const m of modules) {
 	for (let i = 0; i < m.lessons.length; i++) {
 		const lesson = m.lessons[i];
 		if (!lesson) continue;
-		const canonical = `${ORIGIN}/${m.id}/${i}`;
+		const canonical = `${ORIGIN}/${m.id}/${i}/`;
 		const title = `${lesson.title} — ${m.title || m.id} | Code Crispies`;
 		const description = stripHtml(lesson.task || lesson.description || moduleDesc).slice(0, 200) || moduleDesc;
 
