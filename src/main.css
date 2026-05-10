@@ -40,6 +40,13 @@
 	--error-color: #cb6e75;
 	--danger-color: #dc3545;
 
+	/* High-contrast text variants for use on white/light backgrounds.
+	   Brand colors above are calibrated for filled backgrounds; the
+	   *-text variants are darker (≥4.5:1 vs white) for body text. */
+	--success-text: #6b3fc7;
+	--section-text: #6e3fa3;
+	--danger-text: #b02a37;
+
 	/* Special colors */
 	--primary-bg-light: rgba(94, 75, 139, 0.05);
 	--primary-bg-medium: rgba(94, 75, 139, 0.1);
@@ -1297,7 +1304,7 @@ details.module-container[open] > summary.module-header::before {
 .module-header.completed::after {
 	content: "✓";
 	margin-left: 8px;
-	color: var(--success-color);
+	color: var(--success-text);
 }
 
 .lessons-container {
@@ -1327,7 +1334,7 @@ details.module-container[open] > summary.module-header::before {
 .lesson-list-item.completed::before {
 	content: "✓";
 	margin-right: 6px;
-	color: var(--success-color);
+	color: var(--success-text);
 }
 
 /* Sidebar focus styles - enhance visibility without overriding defaults */
@@ -1783,7 +1790,7 @@ input:checked + .toggle-slider::before {
 }
 
 .copy-feedback {
-	color: var(--success-color);
+	color: var(--success-text);
 	font-size: 0.9rem;
 	margin-top: var(--spacing-sm);
 }
@@ -1899,7 +1906,7 @@ input:checked + .toggle-slider::before {
 }
 
 .auth-success {
-	color: var(--success-color);
+	color: var(--success-text);
 	font-size: 0.875rem;
 	margin: 0;
 }
@@ -2608,7 +2615,7 @@ input:checked + .toggle-slider::before {
 
 .newsletter-signup .btn-outline {
 	border: 2px solid var(--section-color);
-	color: var(--section-color);
+	color: var(--section-text);
 	background: transparent;
 	padding: 0.5rem 1.5rem;
 	font-weight: 500;
@@ -2914,7 +2921,7 @@ input:checked + .toggle-slider::before {
 }
 
 .topic-row:hover .topic-text h2 {
-	color: var(--section-color, var(--primary-color));
+	color: var(--section-text, var(--primary-color));
 }
 
 .topic-row:target {
@@ -2989,7 +2996,7 @@ input:checked + .toggle-slider::before {
 }
 
 .topic-ref:hover {
-	color: var(--section-color, var(--primary-color));
+	color: var(--section-text, var(--primary-color));
 	text-decoration: underline;
 }
 
@@ -3001,7 +3008,7 @@ input:checked + .toggle-slider::before {
 }
 
 .section-see-also a {
-	color: var(--section-color, var(--primary-color));
+	color: var(--section-text, var(--primary-color));
 	text-decoration: none;
 }
 
@@ -3119,7 +3126,7 @@ input:checked + .toggle-slider::before {
 }
 
 .module-card-progress {
-	color: var(--success-color);
+	color: var(--success-text);
 	font-weight: 500;
 }
 
@@ -3309,7 +3316,7 @@ input:checked + .toggle-slider::before {
 }
 
 .ref-see-also a {
-	color: var(--section-color, var(--primary-color));
+	color: var(--section-text, var(--primary-color));
 	text-decoration: none;
 	font-weight: 600;
 	padding: 0.25rem 0.5rem;
@@ -4109,7 +4116,7 @@ body[data-section="javascript"] #lesson-title {
 
 .section-footer .footer-links a:hover,
 .reference-footer .footer-links a:hover {
-	color: var(--section-color, var(--primary-color));
+	color: var(--section-text, var(--primary-color));
 }
 
 /* ================= ACCESSIBILITY ================= */
