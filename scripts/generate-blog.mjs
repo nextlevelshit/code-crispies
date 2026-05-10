@@ -273,17 +273,60 @@ document.querySelectorAll(".cb-copy").forEach((btn) => {
 }
 
 function indexPage(posts) {
+	// Collect tag set for filter chips. Sorted alphabetically — stable
+	// across builds even when posts are reordered.
+	const tagSet = new Set();
+	for (const p of posts) for (const t of p.meta.tags || []) tagSet.add(t);
+	const tags = [...tagSet].sort();
+
 	const items = posts
-		.map(
-			(p) => `  <li>
+		.map((p) => {
+			const tagAttr = (p.meta.tags || []).join(" ");
+			return `  <li data-tags="${escapeHtml(tagAttr)}">
     <a href="/blog/${p.meta.slug}/">
       <h2>${escapeHtml(p.meta.title)}</h2>
       <p class="meta"><time datetime="${p.meta.date}">${p.meta.date}</time> · ${readingTime(p.body)} min read</p>
       <p class="excerpt">${escapeHtml(p.meta.description || "")}</p>
     </a>
-  </li>`
-		)
+  </li>`;
+		})
 		.join("\n");
+
+	const filterChips =
+		tags.length > 0
+			? `<nav class="tag-filter" aria-label="Filter posts by tag">
+  <button type="button" class="tag-chip is-active" data-tag="" aria-pressed="true">All</button>
+${tags.map((t) => `  <button type="button" class="tag-chip" data-tag="${escapeHtml(t)}" aria-pressed="false">${escapeHtml(t)}</button>`).join("\n")}
+</nav>`
+			: "";
+
+	const indexJsonLd = JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Blog",
+				url: `${ORIGIN}/blog/`,
+				name: "Code Crispies Blog",
+				description: "Hands-on web-development tutorials from the Code Crispies team.",
+				publisher: { "@type": "Organization", name: "Code Crispies", url: ORIGIN },
+				blogPost: posts.map((p) => ({
+					"@type": "BlogPosting",
+					headline: p.meta.title,
+					url: `${ORIGIN}/blog/${p.meta.slug}/`,
+					datePublished: p.meta.date,
+					description: p.meta.description || "",
+					keywords: (p.meta.tags || []).join(", ")
+				}))
+			},
+			{
+				"@type": "BreadcrumbList",
+				itemListElement: [
+					{ "@type": "ListItem", position: 1, name: "Home", item: ORIGIN + "/" },
+					{ "@type": "ListItem", position: 2, name: "Blog", item: ORIGIN + "/blog/" }
+				]
+			}
+		]
+	});
 
 	return `<!doctype html>
 <html lang="en">
@@ -300,17 +343,28 @@ function indexPage(posts) {
 <meta property="og:image" content="${ORIGIN}/og-image.png">
 <link rel="icon" href="/favicon.ico">
 <link rel="alternate" type="application/rss+xml" title="Code Crispies Blog" href="/blog/rss.xml">
+<script type="application/ld+json">
+${indexJsonLd}
+</script>
 <style>${SHARED_STYLES}
   h1 { font-size: 2rem; margin: 0 0 .5rem; letter-spacing: -.02em; }
   .lede { color: #6b7280; margin: 0 0 2rem; font-size: 1.05rem; }
+  .tag-filter { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.5rem; }
+  .tag-chip { font: inherit; font-size: .85rem; padding: 4px 12px; background: #fff; color: #4b5563; border: 1px solid #e5e7eb; border-radius: 999px; cursor: pointer; transition: border-color .15s, color .15s, background .15s; }
+  .tag-chip:hover { border-color: #818cf8; color: #4f46e5; }
+  .tag-chip.is-active { background: #4f46e5; border-color: #4f46e5; color: #fff; }
+  .tag-chip:focus-visible { outline: 2px solid #4f46e5; outline-offset: 2px; }
   ul { list-style: none; padding: 0; margin: 0; }
   li { margin-bottom: 1.25rem; }
+  li[hidden] { display: none; }
   li a { display: block; padding: 1.25rem; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
   li a:hover { border-color: #818cf8; transform: translateY(-1px); }
   li h2 { margin: 0 0 .25rem; font-size: 1.3rem; letter-spacing: -.01em; color: #1f2937; }
   li a:hover h2 { color: #4f46e5; }
   li .meta { color: #9ca3af; font-size: .85rem; margin: 0 0 .5rem; }
   li .excerpt { color: #4b5563; margin: 0; font-size: .98rem; }
+  .empty-msg { color: #6b7280; font-style: italic; padding: 2rem 0; text-align: center; }
+  .empty-msg[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -320,13 +374,45 @@ function indexPage(posts) {
 </header>
 <h1>Blog</h1>
 <p class="lede">Hands-on web-development tutorials. Each post is short, code-first, and links back to a Code Crispies module to practice.</p>
-<ul>
+${filterChips}
+<ul id="post-list">
 ${items}
 </ul>
+<p class="empty-msg" id="empty-msg" hidden>No posts match this tag.</p>
 <footer class="site">
-  <span>${posts.length} post${posts.length === 1 ? "" : "s"}</span>
+  <span><span id="post-count">${posts.length}</span> post${posts.length === 1 ? "" : "s"}</span>
   <span><a href="/blog/rss.xml">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
 </footer>
+<script>
+// Tag-filter: hide non-matching <li>, update count, toggle empty state.
+// Pure DOM, no framework. Falls back to "show all" if JS disabled (the
+// default state has every <li> visible).
+(function () {
+  const chips = document.querySelectorAll(".tag-chip");
+  const items = document.querySelectorAll("#post-list > li");
+  const empty = document.getElementById("empty-msg");
+  const count = document.getElementById("post-count");
+  function apply(tag) {
+    let visible = 0;
+    items.forEach((li) => {
+      const tags = (li.dataset.tags || "").split(/\\s+/);
+      const match = !tag || tags.includes(tag);
+      li.hidden = !match;
+      if (match) visible++;
+    });
+    if (empty) empty.hidden = visible !== 0;
+    if (count) count.textContent = visible;
+  }
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => { c.classList.remove("is-active"); c.setAttribute("aria-pressed", "false"); });
+      chip.classList.add("is-active");
+      chip.setAttribute("aria-pressed", "true");
+      apply(chip.dataset.tag);
+    });
+  });
+})();
+</script>
 </body>
 </html>
 `;
