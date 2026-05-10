@@ -9,7 +9,8 @@
 <p align="center">
   <a href="https://codecrispi.es"><img src="https://img.shields.io/badge/live-codecrispi.es-4f46e5?style=for-the-badge" alt="live demo"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-fbca04?style=for-the-badge" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/lessons-135-0e8a16?style=for-the-badge" alt="135 lessons">
+  <img src="https://img.shields.io/badge/lessons-120-0e8a16?style=for-the-badge" alt="120 lessons">
+  <img src="https://img.shields.io/badge/modules-32-7c3aed?style=for-the-badge" alt="32 modules">
   <img src="https://img.shields.io/badge/no-signup-1da1f2?style=for-the-badge" alt="no signup">
 </p>
 
@@ -21,9 +22,13 @@
   <a href="https://codecrispi.es/blog/rss.xml">RSS</a>
 </p>
 
+<p align="center">
+  <a href="https://codecrispi.es"><img src="./public/og-image.png" alt="Code Crispies — interactive CSS lesson with live preview" width="720"></a>
+</p>
+
 ---
 
-135 progressive lessons across HTML, CSS, Tailwind, JavaScript, and Markdown. Each lesson is a short coding challenge with live preview and instant validation. No account, no ads, no tracking beyond privacy-friendly Umami. Self-hostable.
+120 progressive lessons across 32 modules covering HTML, CSS, Tailwind, JavaScript, and Markdown. Each lesson is a short coding challenge with live preview and instant validation. No account, no ads, no tracking beyond privacy-friendly Umami. Self-hostable.
 
 ## How it compares
 
@@ -31,10 +36,27 @@
 |---|:---:|:---:|:---:|:---:|---|
 | **Code Crispies** | ✅ | ✅ | ✅ | ✅ | HTML, CSS, Tailwind, JS, Markdown |
 | Flexbox Froggy | ✅ | ✅ | ❌ | ✅ | Flexbox only |
+| Grid Garden | ✅ | ✅ | ❌ | ✅ | Grid only |
 | CSS Diner | ✅ | ✅ | ❌ | ✅ | Selectors only |
 | CSSBattle | ✅ | ❌ | ❌ | ✅ | CSS code-golf |
 | Frontend Mentor | partial | ❌ | ❌ | manual | Design challenges |
 | Scrimba | freemium | ❌ | ❌ | via video | Video courses |
+| FreeCodeCamp | ✅ | ❌ | ❌ | ✅ | Long-form curriculum |
+
+Code Crispies is the only option that combines **all five**: free, no signup, self-hostable, live validation, and broad multi-stack scope.
+
+## From the blog
+
+Hands-on tutorials on modern web platform features, each linking to a Code Crispies module to practice:
+
+- [Web Components in 2026 — Finally Worth Using](https://codecrispi.es/blog/web-components-2026-finally-good/)
+- [JavaScript Signals — Fine-Grained Reactivity Without a Framework](https://codecrispi.es/blog/signals-fine-grained-reactivity/)
+- [The Navigation API — Finally a Sane Router Primitive](https://codecrispi.es/blog/navigation-api/)
+- [Speculation Rules — Prerender the Page Before They Click](https://codecrispi.es/blog/speculation-rules-prerender/)
+- [@scope — Style Without Naming Things](https://codecrispi.es/blog/css-scope-rule/)
+- [Native CSS Nesting — Stop Compiling for Sass-Style Code](https://codecrispi.es/blog/css-nesting-native-no-postcss/)
+
+Browse all at [codecrispi.es/blog](https://codecrispi.es/blog/) · subscribe via [RSS](https://codecrispi.es/blog/rss.xml).
 
 ## Local development
 
@@ -110,7 +132,11 @@ For Tailwind mode, `{{USER_CLASSES}}` in `previewHTML` is replaced with student 
 
 ## Deployment
 
-`npm run build` → `dist/`. Deploy to any static web server. GitHub Pages: base path `/code-crispies/` is preconfigured.
+`npm run build` → `dist/`. Deploy to any static web server (nginx, caddy, GitHub Pages, Netlify, Vercel, S3+CloudFront).
+
+Live deploy at [codecrispi.es](https://codecrispi.es) runs on a single nginx container, alias of `cc.cloud.librete.ch`.
+
+The build also emits per-lesson static HTML pages with structured data + a sitemap (185 URLs), so all content is crawlable without JS.
 
 ## Internationalization
 
