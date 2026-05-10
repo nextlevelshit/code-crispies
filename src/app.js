@@ -167,6 +167,103 @@ function applyTheme(value) {
 	}
 }
 
+/**
+ * Onboarding tour — 5-step intro shown once on first visit when the user
+ * has no recorded progress. Dismissable at any step via Skip; persisted
+ * to localStorage.codeCrispies.onboarded so the tour never re-appears.
+ *
+ * Steps are pure copy + a target selector hint. Anchoring the popover to
+ * targets via CSS would require Anchor Positioning (not yet universal),
+ * so this version is a centered modal with text describing where to look.
+ */
+const ONBOARDING_STEPS = [
+	{
+		title: "Welcome to Code Crispies",
+		body: "Learn HTML, CSS, JavaScript, Tailwind, and Markdown by writing real code in your browser. Every lesson has a live preview and instant feedback. No account, no ads.",
+	},
+	{
+		title: "Pick a section to start",
+		body: "Use the top navigation (CSS, HTML, JavaScript, Markdown) to browse modules. Each module has 3–10 short lessons that build on each other.",
+	},
+	{
+		title: "Search any lesson",
+		body: "Click the magnifier icon in the header to search across all 32 modules and 120 lessons. Type a topic and jump straight to it.",
+	},
+	{
+		title: "Customize your editor",
+		body: "Open the menu (☰) on the left to access settings: language, theme (light/dark/auto), and editor font size. Your preferences persist across visits.",
+	},
+	{
+		title: "Track your progress",
+		body: "Completed lessons are remembered locally. Log in (top right) to sync progress across devices. Each section landing shows your next un-completed lesson.",
+	}
+];
+
+function wireOnboarding() {
+	const dialog = document.getElementById("onboarding-dialog");
+	if (!dialog) return;
+	const skipBtn = document.getElementById("onboarding-skip");
+	const nextBtn = document.getElementById("onboarding-next");
+	const backBtn = document.getElementById("onboarding-back");
+	const titleEl = document.getElementById("onboarding-title");
+	const bodyEl = document.getElementById("onboarding-body");
+	const stepLabel = document.getElementById("onboarding-step-label");
+	const dots = dialog.querySelectorAll(".onboarding-dot");
+
+	let stepIdx = 0;
+
+	function render() {
+		const step = ONBOARDING_STEPS[stepIdx];
+		titleEl.textContent = step.title;
+		bodyEl.textContent = step.body;
+		stepLabel.textContent = `Step ${stepIdx + 1} of ${ONBOARDING_STEPS.length}`;
+		dots.forEach((d, i) => d.classList.toggle("is-active", i <= stepIdx));
+		backBtn.disabled = stepIdx === 0;
+		nextBtn.textContent = stepIdx === ONBOARDING_STEPS.length - 1 ? "Get started" : "Next →";
+	}
+
+	function close(reason) {
+		try { dialog.close(); } catch (_) {}
+		try { localStorage.setItem("codeCrispies.onboarded", "1"); } catch (_) {}
+		track("onboarding_close", { reason, step: stepIdx + 1 });
+	}
+
+	skipBtn.addEventListener("click", () => close("skip"));
+	backBtn.addEventListener("click", () => {
+		if (stepIdx > 0) { stepIdx--; render(); track("onboarding_back", { step: stepIdx + 1 }); }
+	});
+	nextBtn.addEventListener("click", () => {
+		if (stepIdx < ONBOARDING_STEPS.length - 1) {
+			stepIdx++;
+			render();
+			track("onboarding_next", { step: stepIdx + 1 });
+		} else {
+			close("complete");
+		}
+	});
+	dialog.addEventListener("click", (e) => {
+		if (e.target === dialog) close("backdrop");
+	});
+
+	// Show only on first visit: no onboarded flag AND no recorded progress.
+	let onboarded = false;
+	try { onboarded = localStorage.getItem("codeCrispies.onboarded") === "1"; } catch (_) {}
+	const hasProgress = Object.keys(lessonEngine.userProgress || {}).some(
+		(k) => (lessonEngine.userProgress[k]?.completed?.length || 0) > 0
+	);
+	if (!onboarded && !hasProgress) {
+		stepIdx = 0;
+		render();
+		// Defer to next frame so the page paints first
+		requestAnimationFrame(() => {
+			try {
+				dialog.showModal();
+				track("onboarding_open");
+			} catch (_) {}
+		});
+	}
+}
+
 // Track CodeMirror views for cleanup
 let sectionCodeViews = [];
 
@@ -3332,6 +3429,10 @@ function init() {
 			track("setting_change", { setting: "theme", value: v });
 		});
 	}
+
+	// Onboarding tour — shown once on first visit when user has no progress.
+	// 5 steps; localStorage flag prevents re-showing after Skip / completion.
+	wireOnboarding();
 
 	// Click on editor content to focus CodeMirror
 	elements.editorContent?.addEventListener("click", () => {

@@ -773,6 +773,31 @@
 				</div>
 			</dialog>
 
+			<!-- Onboarding tour: shown once on first visit (no progress + no
+			     codeCrispies.onboarded flag). 5-step sequence with Skip / Next.
+			     Uses native <dialog> + .showModal() for backdrop + focus trap. -->
+			<dialog id="onboarding-dialog" class="dialog onboarding-dialog">
+				<div class="onboarding-content">
+					<header class="onboarding-header">
+						<span class="onboarding-step" id="onboarding-step-label">Step 1 of 5</span>
+						<button id="onboarding-skip" class="onboarding-skip" type="button">Skip tour</button>
+					</header>
+					<h2 id="onboarding-title">Welcome</h2>
+					<p id="onboarding-body">Body text.</p>
+					<div class="onboarding-progress" aria-hidden="true">
+						<span class="onboarding-dot is-active"></span>
+						<span class="onboarding-dot"></span>
+						<span class="onboarding-dot"></span>
+						<span class="onboarding-dot"></span>
+						<span class="onboarding-dot"></span>
+					</div>
+					<div class="onboarding-actions">
+						<button id="onboarding-back" class="btn btn-outline btn-sm" type="button" disabled>Back</button>
+						<button id="onboarding-next" class="btn btn-primary btn-sm" type="button">Next →</button>
+					</div>
+				</div>
+			</dialog>
+
 			<!-- Lesson Search Dialog -->
 			<dialog id="search-dialog" class="dialog search-dialog">
 				<div class="dialog-header">
