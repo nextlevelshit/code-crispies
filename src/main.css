@@ -1,5 +1,17 @@
 /* ================= BASE THEME ================= */
+/* Dark mode strategy:
+   - data-theme="light" on <html>  → force light (current default tokens)
+   - data-theme="dark" on <html>   → force dark (override block below)
+   - no attr / data-theme="auto"   → follow prefers-color-scheme via @media
+
+   Tokens are scoped per-root, so any component reading var(--bg-color) etc
+   automatically picks up the active theme without component-level changes.
+   Section brand colors stay constant (purples work in both modes); only
+   surface/text/border + the high-contrast *-text variants flip. */
+
 :root {
+	color-scheme: light dark;
+
 	/* Primary colors */
 	--primary-color: #5e4b8b;
 	--primary-light: #8a77b5;
@@ -62,6 +74,9 @@
 	--shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	--shadow-modal: 0 4px 20px rgba(0, 0, 0, 0.15);
 
+	/* Theme transition (smooth toggle, respects reduced-motion further down) */
+	--theme-transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
 	/* Sizes */
 	--header-height: 50px;
 	--sidebar-width: 280px;
@@ -73,6 +88,97 @@
 	--spacing-md: 1rem;
 	--spacing-lg: 1.5rem;
 	--spacing-xl: 2rem;
+}
+
+/* Dark mode tokens — flipped surfaces, lifted text contrast, brand
+   colors slightly tinted for dark surfaces. Applied via:
+   - data-theme="dark" on <html>  → manual override
+   - prefers-color-scheme: dark   → auto when no override OR data-theme="auto" */
+:root[data-theme="dark"],
+:root[data-theme="auto"] {
+	color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		color-scheme: dark;
+	}
+}
+
+:root[data-theme="dark"] {
+	--text-color: #e5e7eb;
+	--dark-text: #f9fafb;
+	--light-text: #9ca3af;
+	--bg-color: #0f172a;
+	--panel-bg: #1e293b;
+	--code-bg: #111827;
+	--editor-bg: #0a0f1a;
+	--editor-highlight: #1f2937;
+	--border-color: #334155;
+	/* Lift the brand purples 10% for richer surfaces in dark mode */
+	--primary-color: #8b7bd1;
+	--primary-light: #a89bd9;
+	--primary-dark: #6d5fb5;
+	--section-color: #b08fd9;
+	--section-color-light: #c5a9e6;
+	--section-color-dark: #8b6fbb;
+	--section-color-rgb: 176, 143, 217;
+	/* High-contrast text variants for dark backgrounds */
+	--success-text: #c4b5fd;
+	--section-text: #d4bfee;
+	--danger-text: #fca5a5;
+	--success-color-light: #6d5fb5;
+	/* Translucent overlays — brighter to remain visible on dark surfaces */
+	--primary-bg-light: rgba(139, 123, 209, 0.08);
+	--primary-bg-medium: rgba(139, 123, 209, 0.18);
+	--primary-bg-instruction: rgba(176, 143, 217, 0.85);
+	--success-bg-light: rgba(176, 143, 217, 0.18);
+	--modal-bg: rgba(0, 0, 0, 0.7);
+	--shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	--shadow-modal: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]):not([data-theme="dark"]) {
+		--text-color: #e5e7eb;
+		--dark-text: #f9fafb;
+		--light-text: #9ca3af;
+		--bg-color: #0f172a;
+		--panel-bg: #1e293b;
+		--code-bg: #111827;
+		--editor-bg: #0a0f1a;
+		--editor-highlight: #1f2937;
+		--border-color: #334155;
+		--primary-color: #8b7bd1;
+		--primary-light: #a89bd9;
+		--primary-dark: #6d5fb5;
+		--section-color: #b08fd9;
+		--section-color-light: #c5a9e6;
+		--section-color-dark: #8b6fbb;
+		--section-color-rgb: 176, 143, 217;
+		--success-text: #c4b5fd;
+		--section-text: #d4bfee;
+		--danger-text: #fca5a5;
+		--success-color-light: #6d5fb5;
+		--primary-bg-light: rgba(139, 123, 209, 0.08);
+		--primary-bg-medium: rgba(139, 123, 209, 0.18);
+		--primary-bg-instruction: rgba(176, 143, 217, 0.85);
+		--success-bg-light: rgba(176, 143, 217, 0.18);
+		--modal-bg: rgba(0, 0, 0, 0.7);
+		--shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+		--shadow-modal: 0 4px 20px rgba(0, 0, 0, 0.6);
+	}
+}
+
+/* Smooth theme switching */
+body, .panel, .header, .sidebar, .module-card, .search-dialog, .dialog,
+.section-page, .landing-page, .game-layout {
+	transition: var(--theme-transition);
+}
+@media (prefers-reduced-motion: reduce) {
+	body, .panel, .header, .sidebar, .module-card, .search-dialog, .dialog,
+	.section-page, .landing-page, .game-layout {
+		transition: none;
+	}
 }
 
 /* ================= RESET ================= */

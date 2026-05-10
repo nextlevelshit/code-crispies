@@ -134,7 +134,8 @@ const state = {
 	userSettings: {
 		disableFeedbackErrors: false,
 		skipResetCodeConfirmation: false,
-		editorFontSize: 14
+		editorFontSize: 14,
+		theme: "auto"
 	},
 	showExpected: false,
 	animationTimeout: null,
@@ -148,6 +149,22 @@ const state = {
 function applyEditorFontSize(px) {
 	const clamped = Math.max(11, Math.min(20, Number(px) || 14));
 	document.documentElement.style.setProperty("--cm-font-size", `${clamped}px`);
+}
+
+/**
+ * Apply theme preference to the document. Sets data-theme on <html>:
+ *   "auto"  → no attribute (CSS picks via prefers-color-scheme)
+ *   "light" → data-theme=light (force light, ignores OS preference)
+ *   "dark"  → data-theme=dark  (force dark, ignores OS preference)
+ * The inline bootstrap in index.html sets this before paint to avoid flash.
+ */
+function applyTheme(value) {
+	const v = value === "dark" || value === "light" ? value : "auto";
+	if (v === "auto") {
+		document.documentElement.removeAttribute("data-theme");
+	} else {
+		document.documentElement.setAttribute("data-theme", v);
+	}
 }
 
 // Track CodeMirror views for cleanup
@@ -497,6 +514,12 @@ function loadUserSettings() {
 	const valueLabel = document.getElementById("editor-font-size-value");
 	if (slider) slider.value = state.userSettings.editorFontSize;
 	if (valueLabel) valueLabel.textContent = `${state.userSettings.editorFontSize}px`;
+
+	// Apply theme + sync select. Inline bootstrap in index.html already set
+	// data-theme before paint; we just sync the dropdown UI here.
+	applyTheme(state.userSettings.theme);
+	const themeSelect = document.getElementById("theme-select");
+	if (themeSelect) themeSelect.value = state.userSettings.theme;
 }
 
 function saveUserSettings() {
@@ -3267,6 +3290,18 @@ function init() {
 				saveUserSettings();
 				track("setting_change", { setting: "editor_font_size", value: px });
 			}, 300);
+		});
+	}
+
+	// Theme select (auto / light / dark) — applied immediately, persisted.
+	const themeSelect = document.getElementById("theme-select");
+	if (themeSelect) {
+		themeSelect.addEventListener("change", (e) => {
+			const v = e.target.value;
+			state.userSettings.theme = v;
+			applyTheme(v);
+			saveUserSettings();
+			track("setting_change", { setting: "theme", value: v });
 		});
 	}
 
