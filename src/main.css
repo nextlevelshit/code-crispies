@@ -2835,12 +2835,24 @@ input:checked + .toggle-slider::before {
 }
 
 .footer-section h4 {
-	font-size: 0.875rem;
+	font-size: 0.85rem;
 	font-weight: 600;
 	color: var(--text-color);
-	margin-bottom: 1rem;
+	margin: 0 0 1rem;
 	text-transform: uppercase;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.06em;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Section icons next to footer headings — visually anchor each column.
+   Inherits currentColor so dark mode flips automatically. */
+.footer-icon {
+	width: 14px;
+	height: 14px;
+	color: var(--primary-color);
+	flex-shrink: 0;
 }
 
 .footer-links {
@@ -2916,7 +2928,11 @@ input:checked + .toggle-slider::before {
 }
 
 .footer-bottom {
-	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem 1.5rem;
 	padding-top: 1.5rem;
 	border-top: 1px solid var(--border-color);
 }
@@ -2929,10 +2945,47 @@ input:checked + .toggle-slider::before {
 
 .footer-bottom a {
 	color: var(--light-text);
+	transition: color 0.15s;
 }
 
-.footer-bottom a:hover {
-	color: var(--primary-color);
+.footer-bottom a:hover { color: var(--primary-color); }
+.footer-bottom a:focus-visible {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+.footer-legal {
+	display: inline-flex;
+	gap: 0.4rem;
+	align-items: center;
+}
+.footer-legal .btn-text {
+	font-size: 0.8rem;
+	color: var(--light-text);
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.footer-legal .btn-text:hover { color: var(--primary-color); }
+.footer-legal .btn-text:focus-visible {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+.footer-separator { color: var(--border-color); }
+
+@media (max-width: 720px) {
+	.footer-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+	.footer-section.footer-modules,
+	.footer-section.footer-support {
+		grid-column: span 2;
+	}
 }
 
 @media (max-width: 768px) {
