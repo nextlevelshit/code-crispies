@@ -223,6 +223,7 @@ const elements = {
 	sectionProgressFill: document.getElementById("section-progress-fill"),
 	sectionProgressText: document.getElementById("section-progress-text"),
 	sectionIntro: document.getElementById("section-intro"),
+	sectionModules: document.getElementById("section-modules"),
 
 	// Reference page elements
 	referencePage: document.getElementById("reference-page"),
@@ -2698,6 +2699,11 @@ function showSectionPage(sectionId) {
 	// Get modules for this section to calculate progress
 	const sectionModules = getModulesBySection(lessonEngine.modules, sectionId);
 
+	// Render module-cards grid (next-lesson hint per module)
+	if (elements.sectionModules) {
+		elements.sectionModules.innerHTML = renderSectionModuleCards(sectionModules, lessonEngine.userProgress);
+	}
+
 	// Calculate section progress
 	let completed = 0;
 	let total = 0;
@@ -2716,6 +2722,56 @@ function showSectionPage(sectionId) {
 
 	// Scroll to top after content is rendered
 	requestAnimationFrame(() => window.scrollTo(0, 0));
+}
+
+function escapeAttr(s) {
+	return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
+/**
+ * Render the per-section module-card grid. Each card shows the
+ * module title, lesson-count progress, and a continue/start CTA
+ * pointing at the user's next un-completed lesson (or lesson 0 if
+ * untouched / fully completed).
+ */
+function renderSectionModuleCards(modules, userProgress) {
+	if (!modules || modules.length === 0) return "";
+	const cards = modules
+		.map((m) => {
+			const total = m.lessons?.length || 0;
+			const progress = userProgress[m.id] || { completed: [], current: 0 };
+			const done = (progress.completed || []).length;
+			const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+			// Pick next lesson: first non-completed; fall back to current; else 0
+			let nextIdx = 0;
+			for (let i = 0; i < total; i++) {
+				if (!progress.completed?.includes(i)) {
+					nextIdx = i;
+					break;
+				}
+			}
+			if (done === total && total > 0) nextIdx = total - 1;
+			const nextLesson = m.lessons?.[nextIdx];
+			const cta = done === 0 ? "Start" : done === total ? "Review" : "Continue";
+			const url = `/${m.id}/${nextIdx}/`;
+			return `<a class="module-card" href="${escapeAttr(url)}" data-module-id="${escapeAttr(m.id)}">
+				<header class="module-card-header">
+					<h3>${escapeAttr(m.title || m.id)}</h3>
+					<span class="module-card-meta">${total} lesson${total === 1 ? "" : "s"} · ${m.difficulty || ""}</span>
+				</header>
+				<div class="module-card-progress" aria-label="${pct}% complete">
+					<div class="module-card-progress-bar"><span style="width: ${pct}%"></span></div>
+					<span class="module-card-progress-text">${done} / ${total}</span>
+				</div>
+				<footer class="module-card-footer">
+					<span class="module-card-next">${cta}: <strong>${escapeAttr(nextLesson?.title || "Lesson " + (nextIdx + 1))}</strong></span>
+					<span class="module-card-arrow" aria-hidden="true">→</span>
+				</footer>
+			</a>`;
+		})
+		.join("");
+	return `<h2 class="section-modules-heading">Modules in this section</h2>
+		<div class="module-cards-grid">${cards}</div>`;
 }
 
 /**
