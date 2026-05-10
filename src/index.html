@@ -814,6 +814,13 @@
 						spellcheck="false"
 						aria-label="Search query"
 					/>
+					<nav class="search-filter" aria-label="Filter by section">
+						<button type="button" class="search-chip is-active" data-section="" aria-pressed="true">All</button>
+						<button type="button" class="search-chip" data-section="css" aria-pressed="false">CSS</button>
+						<button type="button" class="search-chip" data-section="html" aria-pressed="false">HTML</button>
+						<button type="button" class="search-chip" data-section="javascript" aria-pressed="false">JS</button>
+						<button type="button" class="search-chip" data-section="markdown" aria-pressed="false">Markdown</button>
+					</nav>
 					<ul id="search-results" class="search-results" role="listbox" aria-label="Search results"></ul>
 					<p id="search-empty" class="search-empty" hidden>No lessons match. Try fewer characters.</p>
 				</div>

@@ -4469,8 +4469,32 @@ body[data-section="javascript"] #lesson-title {
 .search-result-sub { font-size: 0.8rem; color: var(--light-text); }
 .search-empty { color: var(--light-text); font-style: italic; padding: 1rem; text-align: center; margin: 0; }
 .search-empty[hidden] { display: none; }
+.search-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin: 0.75rem 0 0;
+}
+.search-chip {
+	font: inherit;
+	font-size: 0.78rem;
+	padding: 3px 11px;
+	background: var(--panel-bg);
+	color: var(--light-text);
+	border: 1px solid var(--border-color);
+	border-radius: 999px;
+	cursor: pointer;
+	transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.search-chip:hover { border-color: var(--primary-color); color: var(--text-color); }
+.search-chip.is-active {
+	background: var(--primary-color);
+	border-color: var(--primary-color);
+	color: var(--white-text);
+}
+.search-chip:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-	.search-toggle, .search-results a { transition: none; }
+	.search-toggle, .search-results a, .search-chip { transition: none; }
 }
 
 /* ================= EDITOR FONT-SIZE SLIDER ================= */

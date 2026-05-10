@@ -3279,7 +3279,22 @@ function init() {
 	const searchInput = document.getElementById("search-input");
 	const searchResults = document.getElementById("search-results");
 	const searchEmpty = document.getElementById("search-empty");
+	let searchSectionFilter = "";  // "" = all, else section id
+	const searchChips = document.querySelectorAll(".search-chip");
 	if (searchBtn && searchDialog && searchInput && searchResults) {
+		searchChips.forEach((chip) => {
+			chip.addEventListener("click", () => {
+				searchChips.forEach((c) => {
+					c.classList.remove("is-active");
+					c.setAttribute("aria-pressed", "false");
+				});
+				chip.classList.add("is-active");
+				chip.setAttribute("aria-pressed", "true");
+				searchSectionFilter = chip.dataset.section || "";
+				renderSearchResults(searchInput.value);
+				track("search_filter", { section: searchSectionFilter || "all" });
+			});
+		});
 		searchBtn.addEventListener("click", () => {
 			renderSearchResults("");
 			searchDialog.showModal();
@@ -3329,6 +3344,11 @@ function init() {
 		const matches = [];
 		for (const m of modules) {
 			if (m.excludeFromProgress) continue;
+			// Section filter — skip modules outside the active section chip
+			if (searchSectionFilter) {
+				const ms = getModuleSection(m);
+				if (ms !== searchSectionFilter) continue;
+			}
 			const moduleTitle = m.title || m.id;
 			const moduleHit = !q || moduleTitle.toLowerCase().includes(q);
 			if (moduleHit) {
