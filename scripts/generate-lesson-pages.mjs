@@ -83,6 +83,24 @@ function loadModules() {
  * Uses regex on a small set of known tags so we don't reparse HTML.
  * If a tag is missing, append it.
  */
+/**
+ * Inject crawler-visible content into <aside id="cc-prerender"> in the body.
+ * The SPA hides it post-hydration via body.cc-hydrated CSS rule, so users
+ * never see this content (it's purely for crawlers + no-JS browsers).
+ *
+ * Replaces an empty <aside id="cc-prerender" ...></aside> in the shell with
+ * one whose content slot is filled. If the placeholder is missing, the
+ * function is a no-op (defensive against shell edits).
+ */
+function fillPrerender(html, contentHtml) {
+	const placeholderRe = /<aside\s+id="cc-prerender"[^>]*>(\s*)<\/aside>/i;
+	if (!placeholderRe.test(html)) return html;
+	return html.replace(
+		placeholderRe,
+		`<aside id="cc-prerender" class="cc-prerender" aria-hidden="true">\n${contentHtml}\n\t\t</aside>`
+	);
+}
+
 function rewriteHead(shellHtml, { title, description, canonical, jsonLd }) {
 	let html = shellHtml;
 
@@ -227,6 +245,66 @@ function moduleJsonLd({ moduleObj, canonical }) {
 	};
 }
 
+/**
+ * Build crawler-visible HTML for a single lesson page. Includes the
+ * lesson title, task description, the static preview HTML (so search
+ * engines see the actual code context), and a link back to the module.
+ */
+function lessonPrerender({ moduleObj, lesson, lessonIndex }) {
+	const sectionId = sectionFor(moduleObj);
+	const sectionName = SECTIONS[sectionId]?.title || sectionId;
+	const taskHtml = lesson.task ? `<p>${escapeHtml(stripHtml(lesson.task))}</p>` : "";
+	const hint = lesson.hint ? `<p><strong>Hint:</strong> ${escapeHtml(stripHtml(lesson.hint))}</p>` : "";
+	const initialCode = lesson.initialCode
+		? `<h2>Starting code</h2><pre><code>${escapeHtml(lesson.initialCode)}</code></pre>`
+		: "";
+	const previewHtml = lesson.previewHTML
+		? `<h2>Preview markup</h2><pre><code>${escapeHtml(lesson.previewHTML)}</code></pre>`
+		: "";
+	const navLinks = `
+			<p>
+				Lesson ${lessonIndex + 1} of ${moduleObj.lessons.length} in
+				<a href="/${moduleObj.id}/">${escapeHtml(moduleObj.title || moduleObj.id)}</a>
+				(<a href="/${sectionId}/">${escapeHtml(sectionName)}</a> section).
+			</p>`;
+	return `
+			<h1>${escapeHtml(lesson.title)}</h1>${navLinks}
+			${taskHtml}
+			${hint}
+			${initialCode}
+			${previewHtml}
+			<p>Open this lesson in your browser to write live code with instant feedback. <a href="/">Code Crispies</a> is a free, open-source learning platform — no signup required.</p>`;
+}
+
+function modulePrerender({ moduleObj }) {
+	const sectionId = sectionFor(moduleObj);
+	const sectionName = SECTIONS[sectionId]?.title || sectionId;
+	const desc = stripHtml(moduleObj.description || "");
+	const lessons = moduleObj.lessons
+		.map((l, i) => `<li><a href="/${moduleObj.id}/${i}/">${escapeHtml(l.title || `Lesson ${i + 1}`)}</a></li>`)
+		.join("");
+	return `
+			<h1>${escapeHtml(moduleObj.title || moduleObj.id)}</h1>
+			<p>Part of the <a href="/${sectionId}/">${escapeHtml(sectionName)}</a> section. Difficulty: ${escapeHtml(moduleObj.difficulty || "beginner")}. ${moduleObj.lessons.length} lessons.</p>
+			${desc ? `<p>${escapeHtml(desc)}</p>` : ""}
+			<h2>Lessons</h2>
+			<ol>${lessons}</ol>
+			<p>Open any lesson to start coding. Hands-on, instant feedback, no signup.</p>`;
+}
+
+function sectionPrerender({ sectionId, modules }) {
+	const meta = SECTIONS[sectionId];
+	const moduleList = modules
+		.map((m) => `<li><a href="/${m.id}/">${escapeHtml(m.title || m.id)}</a> — ${m.lessons?.length || 0} lessons (${escapeHtml(m.difficulty || "beginner")})</li>`)
+		.join("");
+	return `
+			<h1>${escapeHtml(meta.title)} on Code Crispies</h1>
+			<p>${escapeHtml(meta.description)}</p>
+			<h2>Modules</h2>
+			<ul>${moduleList}</ul>
+			<p>Each module breaks down into 3–10 short lessons with a live preview. Pick one to start; progress saves locally.</p>`;
+}
+
 function sectionJsonLd({ sectionId, canonical, modules }) {
 	const meta = SECTIONS[sectionId];
 	return {
@@ -276,12 +354,13 @@ for (const sectionId of Object.keys(SECTIONS)) {
 		}
 		return false;
 	});
-	const html = rewriteHead(shellHtml, {
+	let html = rewriteHead(shellHtml, {
 		title: `${meta.title} — Code Crispies`,
 		description: meta.description,
 		canonical,
 		jsonLd: sectionJsonLd({ sectionId, canonical, modules: sectionModules })
 	});
+	html = fillPrerender(html, sectionPrerender({ sectionId, modules: sectionModules }));
 	const dir = join(DIST, sectionId);
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, "index.html"), html);
@@ -294,12 +373,13 @@ for (const m of modules) {
 	const moduleTitle = `${m.title || m.id} — Code Crispies`;
 	const moduleDesc = stripHtml(m.description || `Interactive lessons covering ${m.title || m.id}.`).slice(0, 200);
 
-	const moduleHtml = rewriteHead(shellHtml, {
+	let moduleHtml = rewriteHead(shellHtml, {
 		title: moduleTitle,
 		description: moduleDesc,
 		canonical: moduleCanonical,
 		jsonLd: moduleJsonLd({ moduleObj: m, canonical: moduleCanonical })
 	});
+	moduleHtml = fillPrerender(moduleHtml, modulePrerender({ moduleObj: m }));
 	const moduleDir = join(DIST, m.id);
 	mkdirSync(moduleDir, { recursive: true });
 	writeFileSync(join(moduleDir, "index.html"), moduleHtml);
@@ -312,12 +392,13 @@ for (const m of modules) {
 		const title = `${lesson.title} — ${m.title || m.id} | Code Crispies`;
 		const description = stripHtml(lesson.task || lesson.description || moduleDesc).slice(0, 200) || moduleDesc;
 
-		const html = rewriteHead(shellHtml, {
+		let html = rewriteHead(shellHtml, {
 			title,
 			description,
 			canonical,
 			jsonLd: lessonJsonLd({ moduleObj: m, lesson, lessonIndex: i, canonical })
 		});
+		html = fillPrerender(html, lessonPrerender({ moduleObj: m, lesson, lessonIndex: i }));
 		const lessonDir = join(DIST, m.id, String(i));
 		mkdirSync(lessonDir, { recursive: true });
 		writeFileSync(join(lessonDir, "index.html"), html);

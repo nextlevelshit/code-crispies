@@ -991,6 +991,12 @@
 			</dialog>
 		</div>
 
+		<!-- Crawler-visible content slot. Per-route generator (scripts/generate-lesson-pages.mjs)
+		     fills this with semantic HTML for the lesson/module/section so search engines see
+		     the actual content even when JS execution is partial. SPA hides it after hydration
+		     via body.cc-hydrated rule in main.css. -->
+		<aside id="cc-prerender" class="cc-prerender" aria-hidden="true"></aside>
+
 		<script type="module" src="app.js"></script>
 	</body>
 </html>

@@ -3164,6 +3164,11 @@ function initCodeEditor() {
 }
 
 function init() {
+	// Mark body as hydrated → CSS hides .cc-prerender (the crawler-visible
+	// per-route static content). Set early so users never see the prerendered
+	// content swap; SPA UI takes over immediately.
+	document.body.classList.add("cc-hydrated");
+
 	// Initialize i18n before anything else
 	initI18n();
 
