@@ -166,7 +166,7 @@ async function handleLogin(user) {
 
   if (data) {
     // Merge with localStorage (cloud wins for conflicts)
-    mergeProgress(data);
+    mergeProgress(data, "initial_load");
   } else {
     // First login: upload localStorage to cloud
     await syncToCloud();
@@ -184,7 +184,7 @@ async function handleLogin(user) {
       user_code: row.user_code,
       settings: row.settings,
       language: row.language
-    });
+    }, "realtime_channel");
     setSyncStatus("synced");
   });
 
@@ -252,9 +252,11 @@ export async function syncToCloud() {
 
   const { error } = await progressModule.save(currentUser.id, progress, userCode, settings, language);
   setSyncStatus(error ? "error" : "synced");
+  track("sync_push", { ok: !error });
 }
 
-function mergeProgress(cloudData) {
+function mergeProgress(cloudData, source = "unknown") {
+  track("sync_pull", { source });
   // Update localStorage with cloud data
   localStorage.setItem(
     "codeCrispies.progress",

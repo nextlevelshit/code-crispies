@@ -381,7 +381,7 @@ ${items}
 <p class="empty-msg" id="empty-msg" hidden>No posts match this tag.</p>
 <footer class="site">
   <span><span id="post-count">${posts.length}</span> post${posts.length === 1 ? "" : "s"}</span>
-  <span><a href="/blog/rss.xml">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
+  <span><a href="/blog/rss.xml" id="rss-link">RSS</a> · <a href="https://github.com/nextlevelshit/code-crispies">Source</a></span>
 </footer>
 <script>
 // Tag-filter: hide non-matching <li>, update count, toggle empty state.
@@ -392,6 +392,10 @@ ${items}
   const items = document.querySelectorAll("#post-list > li");
   const empty = document.getElementById("empty-msg");
   const count = document.getElementById("post-count");
+  const rssLink = document.getElementById("rss-link");
+  function track(name, data) {
+    if (typeof umami !== "undefined" && umami.track) umami.track(name, data || {});
+  }
   function apply(tag) {
     let visible = 0;
     items.forEach((li) => {
@@ -409,8 +413,10 @@ ${items}
       chip.classList.add("is-active");
       chip.setAttribute("aria-pressed", "true");
       apply(chip.dataset.tag);
+      track("blog_tag_filter", { tag: chip.dataset.tag || "all" });
     });
   });
+  if (rssLink) rssLink.addEventListener("click", () => track("blog_rss_click"));
 })();
 </script>
 </body>
